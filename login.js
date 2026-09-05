@@ -1,74 +1,37 @@
 /* =========================================
    TRANSPORTPRO LOGIN JAVASCRIPT
-   PART 3 / 5
+   SUPABASE AUTH VERSION
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
-
-    /* =====================================
-       ELEMENTS
-    ===================================== */
 
     const loginForm = document.getElementById("loginForm");
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
 
-    const togglePassword =
-        document.getElementById("togglePassword");
+    const togglePassword = document.getElementById("togglePassword");
+    const loginButton = document.getElementById("loginButton");
+    const loginButtonText = document.getElementById("loginButtonText");
+    const loginLoader = document.getElementById("loginLoader");
+    const rememberMe = document.getElementById("rememberMe");
 
-    const loginButton =
-        document.getElementById("loginButton");
+    const forgotPassword = document.getElementById("forgotPassword");
+    const otpLogin = document.getElementById("otpLogin");
+    const registerButton = document.getElementById("registerButton");
 
-    const loginButtonText =
-        document.getElementById("loginButtonText");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
 
-    const loginLoader =
-        document.getElementById("loginLoader");
-
-    const rememberMe =
-        document.getElementById("rememberMe");
-
-    const forgotPassword =
-        document.getElementById("forgotPassword");
-
-    const otpLogin =
-        document.getElementById("otpLogin");
-
-    const registerButton =
-        document.getElementById("registerButton");
-
-    const emailError =
-        document.getElementById("emailError");
-
-    const passwordError =
-        document.getElementById("passwordError");
+    const messageModal = document.getElementById("messageModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalIcon = document.getElementById("modalIcon");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMessage = document.getElementById("modalMessage");
+    const modalAction = document.getElementById("modalAction");
 
 
     /* =====================================
-       MODAL ELEMENTS
-    ===================================== */
-
-    const messageModal =
-        document.getElementById("messageModal");
-
-    const closeModal =
-        document.getElementById("closeModal");
-
-    const modalIcon =
-        document.getElementById("modalIcon");
-
-    const modalTitle =
-        document.getElementById("modalTitle");
-
-    const modalMessage =
-        document.getElementById("modalMessage");
-
-    const modalAction =
-        document.getElementById("modalAction");
-
-
-    /* =====================================
-       MODAL FUNCTION
+       MODAL
     ===================================== */
 
     function showModal(
@@ -78,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
         buttonText = "Continue",
         action = null
     ) {
-
         if (!messageModal) {
             alert(message);
             return;
@@ -90,68 +52,43 @@ document.addEventListener("DOMContentLoaded", function () {
         modalAction.textContent = buttonText;
 
         messageModal.classList.add("show");
-
-        messageModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
+        messageModal.setAttribute("aria-hidden", "false");
 
         modalAction.onclick = function () {
-
             if (typeof action === "function") {
                 action();
             } else {
                 closeModalFunction();
             }
-
         };
     }
 
 
-    /* =====================================
-       CLOSE MODAL
-    ===================================== */
-
     function closeModalFunction() {
-
         if (!messageModal) return;
 
         messageModal.classList.remove("show");
-
-        messageModal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        messageModal.setAttribute("aria-hidden", "true");
     }
 
 
     if (closeModal) {
-
         closeModal.addEventListener(
             "click",
             closeModalFunction
         );
-
     }
 
 
-    /* =====================================
-       CLOSE MODAL OUTSIDE
-    ===================================== */
-
     if (messageModal) {
-
         messageModal.addEventListener(
             "click",
             function (event) {
-
                 if (event.target === messageModal) {
                     closeModalFunction();
                 }
-
             }
         );
-
     }
 
 
@@ -165,33 +102,15 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function () {
 
-                if (
-                    passwordInput.type ===
-                    "password"
-                ) {
+                if (passwordInput.type === "password") {
 
                     passwordInput.type = "text";
-
-                    togglePassword.textContent =
-                        "🙈";
-
-                    togglePassword.setAttribute(
-                        "aria-label",
-                        "Hide password"
-                    );
+                    togglePassword.textContent = "🙈";
 
                 } else {
 
-                    passwordInput.type =
-                        "password";
-
-                    togglePassword.textContent =
-                        "👁️";
-
-                    togglePassword.setAttribute(
-                        "aria-label",
-                        "Show password"
-                    );
+                    passwordInput.type = "password";
+                    togglePassword.textContent = "👁️";
 
                 }
 
@@ -216,86 +135,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (emailInput) {
-
-            const box =
-                emailInput.closest(".input-box");
+            const box = emailInput.closest(".input-box");
 
             if (box) {
-
                 box.classList.remove(
                     "input-error",
                     "input-success"
                 );
-
             }
-
         }
 
         if (passwordInput) {
-
-            const box =
-                passwordInput.closest(".input-box");
+            const box = passwordInput.closest(".input-box");
 
             if (box) {
-
                 box.classList.remove(
                     "input-error",
                     "input-success"
                 );
-
             }
-
         }
-
     }
 
 
     /* =====================================
-       VALIDATE MOBILE / EMAIL
+       VALIDATE EMAIL
     ===================================== */
 
-    function validateIdentity(value) {
-
-        const cleanValue =
-            value.trim();
-
-        if (cleanValue === "") {
-
-            return {
-                valid: false,
-                message:
-                    "Please enter your mobile number or email."
-            };
-
-        }
-
-
-        const mobilePattern =
-            /^[6-9][0-9]{9}$/;
+    function validateEmail(value) {
 
         const emailPattern =
             /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
-        if (
-            mobilePattern.test(cleanValue) ||
-            emailPattern.test(cleanValue)
-        ) {
-
-            return {
-                valid: true,
-                message: ""
-            };
-
-        }
-
-
-        return {
-            valid: false,
-            message:
-                "Enter a valid 10-digit mobile number or email."
-        };
-
+        return emailPattern.test(value.trim());
     }
 
 
@@ -306,37 +178,29 @@ document.addEventListener("DOMContentLoaded", function () {
     function validatePassword(value) {
 
         if (value === "") {
-
             return {
                 valid: false,
-                message:
-                    "Please enter your password."
+                message: "Please enter your password."
             };
-
         }
 
-
         if (value.length < 6) {
-
             return {
                 valid: false,
                 message:
                     "Password must contain at least 6 characters."
             };
-
         }
-
 
         return {
             valid: true,
             message: ""
         };
-
     }
 
 
     /* =====================================
-       LIVE INPUT CLEAR
+       LIVE ERROR CLEAR
     ===================================== */
 
     if (emailInput) {
@@ -353,16 +217,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     emailInput.closest(".input-box");
 
                 if (box) {
-
-                    box.classList.remove(
-                        "input-error"
-                    );
-
+                    box.classList.remove("input-error");
                 }
 
             }
         );
-
     }
 
 
@@ -380,235 +239,239 @@ document.addEventListener("DOMContentLoaded", function () {
                     passwordInput.closest(".input-box");
 
                 if (box) {
-
-                    box.classList.remove(
-                        "input-error"
-                    );
-
+                    box.classList.remove("input-error");
                 }
 
             }
         );
-
     }
 
 
     /* =====================================
-       LOGIN
+       REAL SUPABASE LOGIN
     ===================================== */
 
     if (loginForm) {
 
         loginForm.addEventListener(
             "submit",
-            function (event) {
+            async function (event) {
 
                 event.preventDefault();
 
                 clearErrors();
 
-
-                const identity =
+                const email =
                     emailInput.value.trim();
 
                 const password =
                     passwordInput.value;
 
 
-                /* Validate identity */
+                /* EMAIL VALIDATION */
 
-                const identityResult =
-                    validateIdentity(identity);
-
-
-                if (!identityResult.valid) {
+                if (!validateEmail(email)) {
 
                     if (emailError) {
-
                         emailError.textContent =
-                            identityResult.message;
-
+                            "Please enter a valid email address.";
                     }
 
                     const box =
-                        emailInput.closest(
-                            ".input-box"
-                        );
+                        emailInput.closest(".input-box");
 
                     if (box) {
-
-                        box.classList.add(
-                            "input-error"
-                        );
-
+                        box.classList.add("input-error");
                     }
 
                     emailInput.focus();
 
                     return;
-
                 }
 
 
-                /* Validate password */
+                /* PASSWORD VALIDATION */
 
                 const passwordResult =
                     validatePassword(password);
 
-
                 if (!passwordResult.valid) {
 
                     if (passwordError) {
-
                         passwordError.textContent =
                             passwordResult.message;
-
                     }
 
                     const box =
-                        passwordInput.closest(
-                            ".input-box"
-                        );
+                        passwordInput.closest(".input-box");
 
                     if (box) {
-
-                        box.classList.add(
-                            "input-error"
-                        );
-
+                        box.classList.add("input-error");
                     }
 
                     passwordInput.focus();
 
                     return;
-
                 }
 
 
-                /* =================================
-                   LOADING
-                ================================= */
+                /* LOADING */
 
                 if (loginButton) {
-
                     loginButton.disabled = true;
-
-                    loginButton.classList.add(
-                        "loading"
-                    );
-
+                    loginButton.classList.add("loading");
                 }
-
 
                 if (loginButtonText) {
-
                     loginButtonText.textContent =
                         "Signing in...";
-
                 }
-
 
                 if (loginLoader) {
-
                     loginLoader.style.display =
                         "inline-block";
-
                 }
 
 
-                /* =================================
-                   DEMO LOGIN
-                ================================= */
+                try {
 
-                setTimeout(
-                    function () {
+                    /* SUPABASE LOGIN */
 
-                        /* Save session */
+                    const {
+                        data,
+                        error
+                    } =
+                        await supabaseClient.auth
+                            .signInWithPassword({
+                                email: email,
+                                password: password
+                            });
+
+
+                    /* ERROR */
+
+                    if (error) {
+                        throw error;
+                    }
+
+
+                    /* SAVE LOCAL INFO */
+
+                    localStorage.setItem(
+                        "userLoggedIn",
+                        "true"
+                    );
+
+                    localStorage.setItem(
+                        "userIdentity",
+                        email
+                    );
+
+
+                    if (
+                        rememberMe &&
+                        rememberMe.checked
+                    ) {
 
                         localStorage.setItem(
-                            "userLoggedIn",
+                            "rememberMe",
                             "true"
                         );
 
-                        localStorage.setItem(
-                            "userIdentity",
-                            identity
+                    } else {
+
+                        localStorage.removeItem(
+                            "rememberMe"
                         );
 
+                    }
 
-                        /* Remember me */
+
+                    /* SUCCESS */
+
+                    showModal(
+                        "✅",
+                        "Login Successful",
+                        "Welcome back to TransportPro!",
+                        "Continue",
+                        function () {
+
+                            window.location.href =
+                                "Home.html";
+
+                        }
+                    );
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Supabase Login Error:",
+                        error
+                    );
+
+
+                    let message =
+                        "Login failed. Please check your email and password.";
+
+
+                    if (error.message) {
 
                         if (
-                            rememberMe &&
-                            rememberMe.checked
+                            error.message
+                                .toLowerCase()
+                                .includes("email not confirmed")
                         ) {
 
-                            localStorage.setItem(
-                                "rememberMe",
-                                "true"
-                            );
+                            message =
+                                "Please verify your email before logging in.";
+
+                        } else if (
+                            error.message
+                                .toLowerCase()
+                                .includes("invalid login credentials")
+                        ) {
+
+                            message =
+                                "Incorrect email or password.";
 
                         } else {
 
-                            localStorage.removeItem(
-                                "rememberMe"
-                            );
-
+                            message =
+                                error.message;
                         }
+                    }
 
 
-                        /* Reset button */
-
-                        if (loginButton) {
-
-                            loginButton.disabled =
-                                false;
-
-                            loginButton.classList.remove(
-                                "loading"
-                            );
-
-                        }
+                    showModal(
+                        "❌",
+                        "Login Failed",
+                        message,
+                        "OK"
+                    );
 
 
-                        if (loginButtonText) {
+                } finally {
 
-                            loginButtonText.textContent =
-                                "Login";
+                    if (loginButton) {
+                        loginButton.disabled = false;
+                        loginButton.classList.remove("loading");
+                    }
 
-                        }
+                    if (loginButtonText) {
+                        loginButtonText.textContent =
+                            "Login";
+                    }
 
+                    if (loginLoader) {
+                        loginLoader.style.display =
+                            "none";
+                    }
 
-                        if (loginLoader) {
-
-                            loginLoader.style.display =
-                                "none";
-
-                        }
-
-
-                        /* Success */
-
-                        showModal(
-                            "✅",
-                            "Login Successful",
-                            "Welcome back to TransportPro!",
-                            "Continue",
-                            function () {
-
-                                window.location.href =
-                                    "Home.html";
-
-                            }
-                        );
-
-                    },
-                    1200
-                );
+                }
 
             }
         );
-
     }
 
 
@@ -620,23 +483,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
         forgotPassword.addEventListener(
             "click",
-            function () {
+            async function () {
 
-                showModal(
-                    "🔑",
-                    "Forgot Password?",
-                    "Password reset will be connected with OTP in the next part.",
-                    "Continue"
-                );
+                const email =
+                    emailInput.value.trim();
+
+                if (!validateEmail(email)) {
+
+                    showModal(
+                        "📧",
+                        "Enter Email",
+                        "Enter your registered email address first.",
+                        "OK"
+                    );
+
+                    emailInput.focus();
+
+                    return;
+                }
+
+
+                try {
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient.auth
+                            .resetPasswordForEmail(
+                                email,
+                                {
+                                    redirectTo:
+                                        window.location.origin +
+                                        "/reset-password.html"
+                                }
+                            );
+
+
+                    if (error) {
+                        throw error;
+                    }
+
+
+                    showModal(
+                        "📩",
+                        "Reset Email Sent",
+                        "Please check your email for the password reset link.",
+                        "OK"
+                    );
+
+
+                } catch (error) {
+
+                    showModal(
+                        "❌",
+                        "Reset Failed",
+                        error.message ||
+                        "Unable to send reset email.",
+                        "OK"
+                    );
+
+                }
 
             }
         );
-
     }
 
 
     /* =====================================
-       OTP LOGIN
+       OTP
     ===================================== */
 
     if (otpLogin) {
@@ -647,14 +561,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 showModal(
                     "📲",
-                    "Login with OTP",
-                    "OTP login will be connected with the backend later.",
-                    "Continue"
+                    "OTP Login",
+                    "Mobile OTP login will be connected after Email Login is working.",
+                    "OK"
                 );
 
             }
         );
-
     }
 
 
@@ -668,16 +581,11 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function () {
 
-                showModal(
-                    "👤",
-                    "Create Account",
-                    "Registration page will be connected in Part 4.",
-                    "Continue"
-                );
+                window.location.href =
+                    "register.html";
 
             }
         );
-
     }
 
 
@@ -709,85 +617,26 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rememberMe) {
             rememberMe.checked = true;
         }
-
     }
 
 
-    /* =====================================
-       ENTER KEY
-    ===================================== */
+ /* =====================================
+   INITIAL STATE
+===================================== */
 
-    if (passwordInput) {
+if (loginLoader) {
+    loginLoader.style.display = "none";
+}
 
-        passwordInput.addEventListener(
-            "keydown",
-            function (event) {
+if (loginButton) {
+    loginButton.disabled = false;
+}
 
-                if (event.key === "Enter") {
-
-                    event.preventDefault();
-
-                    if (loginForm) {
-
-                        loginForm.requestSubmit();
-
-                    }
-
-                }
-
-            }
-        );
-
-    }
+if (togglePassword) {
+    togglePassword.textContent = "👁️";
+}
 
 
-    /* =====================================
-       ESC KEY
-    ===================================== */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape" &&
-                messageModal &&
-                messageModal.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeModalFunction();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================
-       INITIAL STATE
-    ===================================== */
-
-    if (loginLoader) {
-        loginLoader.style.display = "none";
-    }
-
-    if (loginButton) {
-        loginButton.disabled = false;
-    }
-
-    if (togglePassword) {
-
-        togglePassword.textContent =
-            "👁️";
-
-    }
-
-
-    /* =====================================
-       FINAL CHECK
-    ===================================== */
 /* =====================================
    FINAL CHECK
 ===================================== */
@@ -820,6 +669,24 @@ if (!messageModal) {
     console.warn(
         "TransportPro: messageModal not found."
     );
+
+
+/* =====================================
+   SUPABASE STATUS
+===================================== */
+
+if (typeof supabaseClient !== "undefined") {
+
+    console.log(
+        "TransportPro: Supabase client detected ✅"
+    );
+
+} else {
+
+    console.error(
+        "TransportPro: Supabase client not found ❌"
+    );
+
 }
 
 
@@ -828,7 +695,7 @@ if (!messageModal) {
 ===================================== */
 
 console.log(
-    "TransportPro Login Frontend Ready ✅"
+    "TransportPro Login System Ready ✅"
 );
 
 
