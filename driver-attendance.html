@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Driver Attendance - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.attendance-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   DATE
+===================================== */
+
+.date-section{
+    margin-bottom:14px;
+}
+
+.date-section label{
+    display:block;
+
+    color:#344054;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+}
+
+.date-section input{
+    width:100%;
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    color:#172033;
+
+    padding:0 12px;
+
+    font-size:11px;
+
+    outline:none;
+}
+
+.date-section input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.attendance-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:14px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:17px;
+}
+
+.summary-box.present{
+    background:#f0fbf4;
+
+    border-color:#c8ead3;
+}
+
+.summary-box.present strong{
+    color:#137333;
+}
+
+.summary-box.absent{
+    background:#fff4f4;
+
+    border-color:#f1d0d0;
+}
+
+.summary-box.absent strong{
+    color:#c62828;
+}
+
+.summary-box.leave{
+    background:#fff9ed;
+
+    border-color:#f1dfb7;
+}
+
+.summary-box.leave strong{
+    color:#a15c00;
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-box{
+    display:flex;
+
+    width:100%;
+
+    margin-bottom:14px;
+}
+
+.search-box input{
+    flex:1;
+
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-right:0;
+
+    border-radius:9px 0 0 9px;
+
+    padding:0 12px;
+
+    font-size:11px;
+
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#1769e0;
+}
+
+.search-box button{
+    width:48px;
+
+    height:44px;
+
+    border:1px solid #1769e0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    border-radius:0 9px 9px 0;
+
+    cursor:pointer;
+
+    font-size:17px;
+}
+
+
+/* =====================================
+   ATTENDANCE LIST
+===================================== */
+
+.attendance-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+    margin-bottom:14px;
+}
+
+
+/* =====================================
+   DRIVER ATTENDANCE ITEM
+===================================== */
+
+.attendance-item{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:11px;
+
+    background:#fff;
+}
+
+.driver-info{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.driver-avatar{
+    width:44px;
+    height:44px;
+
+    border-radius:50%;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    flex-shrink:0;
+}
+
+.driver-details{
+    flex:1;
+
+    min-width:0;
+}
+
+.driver-details strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.driver-details small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:13px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   ATTENDANCE OPTIONS
+===================================== */
+
+.attendance-options{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+}
+
+.attendance-option{
+    position:relative;
+}
+
+.attendance-option input{
+    position:absolute;
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.attendance-option label{
+    height:35px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:7px;
+
+    background:#fff;
+
+    color:#475467;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.15s ease;
+}
+
+.attendance-option input:checked + label{
+    background:#1769e0;
+
+    border-color:#1769e0;
+
+    color:#fff;
+}
+
+
+/* =====================================
+   SAVE BUTTON
+===================================== */
+
+.save-btn{
+    width:100%;
+
+    height:46px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.save-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:15px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .attendance-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .attendance-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .attendance-options{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .attendance-card{
+        padding:10px;
+    }
+
+    .attendance-option label{
+        font-size:7px;
+    }
+
+    .summary-box strong{
+        font-size:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Driver Attendance
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="attendance-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🗓️
+            </div>
+
+            <div>
+
+                <h1>
+                    Driver Attendance
+                </h1>
+
+                <p>
+                    Drivers ki daily attendance
+                    manage aur track karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DATE -->
+
+        <div class="date-section">
+
+            <label>
+                Attendance Date
+            </label>
+
+            <input
+                type="date"
+                id="attendanceDate">
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="attendance-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="totalDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box present">
+
+                <span>
+                    Present
+                </span>
+
+                <strong id="presentDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box absent">
+
+                <span>
+                    Absent
+                </span>
+
+                <strong id="absentDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box leave">
+
+                <span>
+                    Leave
+                </span>
+
+                <strong id="leaveDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="driverSearch"
+                placeholder="Search driver..."
+                oninput="filterAttendance()">
+
+            <button
+                onclick="filterAttendance()">
+
+                🔍
+
+            </button>
+
+        </div>
+
+
+
+        <!-- DRIVER ATTENDANCE LIST -->
+
+        <div
+            id="attendanceList"
+            class="attendance-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🗓️
+                </div>
+
+                <strong>
+                    No Drivers Found
+                </strong>
+
+                <small>
+                    My Drivers mein driver add
+                    karne ke baad attendance yahan manage karein.
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SAVE -->
+
+        <button
+            class="save-btn"
+            onclick="saveAttendance()">
+
+            💾 Save Attendance
+
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   DRIVER ATTENDANCE - JAVASCRIPT
+===================================== */
+
+const DRIVER_KEY = "tp_drivers";
+const ATTENDANCE_KEY = "tp_driver_attendance";
+
+let selectedDate = "";
+let attendanceData = {};
+
+
+/* =====================================
+   GET DRIVERS
+===================================== */
+
+function getDrivers(){
+
+    const saved =
+        localStorage.getItem(DRIVER_KEY);
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data = JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   GET TODAY
+===================================== */
+
+function getToday(){
+
+    const date = new Date();
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+
+/* =====================================
+   LOAD ATTENDANCE STORAGE
+===================================== */
+
+function loadAttendanceStorage(){
+
+    const saved =
+        localStorage.getItem(
+            ATTENDANCE_KEY
+        );
+
+    if(!saved){
+
+        attendanceData = {};
+
+        return;
+
+    }
+
+    try{
+
+        attendanceData =
+            JSON.parse(saved) || {};
+
+    }catch(error){
+
+        console.log(error);
+
+        attendanceData = {};
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE ATTENDANCE STORAGE
+===================================== */
+
+function saveAttendanceStorage(){
+
+    localStorage.setItem(
+        ATTENDANCE_KEY,
+        JSON.stringify(
+            attendanceData
+        )
+    );
+
+}
+
+
+/* =====================================
+   LOAD DRIVER LIST
+===================================== */
+
+function loadDriverAttendance(){
+
+    const drivers =
+        getDrivers();
+
+
+    const container =
+        document.getElementById(
+            "attendanceList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(drivers.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    👨‍✈️
+                </div>
+
+                <strong>
+                    No Drivers Found
+                </strong>
+
+                <small>
+                    Pehle My Drivers page mein
+                    driver add karein.
+                </small>
+
+            </div>
+
+        `;
+
+        updateSummary();
+
+        return;
+
+    }
+
+
+    const dateData =
+        attendanceData[
+            selectedDate
+        ] || {};
+
+
+    const searchInput =
+        document.getElementById(
+            "driverSearch"
+        );
+
+
+    const query =
+        searchInput
+        ? searchInput.value
+            .trim()
+            .toLowerCase()
+        : "";
+
+
+    const filteredDrivers =
+        drivers.filter(driver => {
+
+            return (
+
+                query === "" ||
+
+                String(driver.name)
+                    .toLowerCase()
+                    .includes(query) ||
+
+                String(driver.phone)
+                    .toLowerCase()
+                    .includes(query) ||
+
+                String(driver.id)
+                    .toLowerCase()
+                    .includes(query)
+
+            );
+
+        });
+
+
+    if(filteredDrivers.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔍
+                </div>
+
+                <strong>
+                    Driver Not Found
+                </strong>
+
+                <small>
+                    Search keyword change karke
+                    dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        filteredDrivers
+        .map(driver => {
+
+            const currentStatus =
+                dateData[
+                    driver.id
+                ] || "Present";
+
+
+            return `
+
+                <div
+                    class="attendance-item"
+                >
+
+                    <div class="driver-info">
+
+                        <div class="driver-avatar">
+                            👨‍✈️
+                        </div>
+
+
+                        <div class="driver-details">
+
+                            <strong>
+                                ${escapeHTML(
+                                    driver.name
+                                )}
+                            </strong>
+
+                            <small>
+                                ID:
+                                ${escapeHTML(
+                                    driver.id
+                                )}
+                            </small>
+
+                            <small>
+                                📞
+                                ${escapeHTML(
+                                    driver.phone
+                                )}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="attendance-options"
+                    >
+
+
+                        <div
+                            class="attendance-option"
+                        >
+
+                            <input
+                                type="radio"
+                                id="present-${driver.id}"
+                                name="attendance-${driver.id}"
+                                value="Present"
+                                ${currentStatus === "Present"
+                                    ? "checked"
+                                    : ""}
+                                onchange="
+                                    setAttendance(
+                                        '${driver.id}',
+                                        'Present'
+                                    )
+                                "
+                            >
+
+                            <label
+                                for="present-${driver.id}"
+                            >
+
+                                ✓ Present
+
+                            </label>
+
+                        </div>
+
+
+                        <div
+                            class="attendance-option"
+                        >
+
+                            <input
+                                type="radio"
+                                id="absent-${driver.id}"
+                                name="attendance-${driver.id}"
+                                value="Absent"
+                                ${currentStatus === "Absent"
+                                    ? "checked"
+                                    : ""}
+                                onchange="
+                                    setAttendance(
+                                        '${driver.id}',
+                                        'Absent'
+                                    )
+                                "
+                            >
+
+                            <label
+                                for="absent-${driver.id}"
+                            >
+
+                                ✕ Absent
+
+                            </label>
+
+                        </div>
+
+
+                        <div
+                            class="attendance-option"
+                        >
+
+                            <input
+                                type="radio"
+                                id="leave-${driver.id}"
+                                name="attendance-${driver.id}"
+                                value="Leave"
+                                ${currentStatus === "Leave"
+                                    ? "checked"
+                                    : ""}
+                                onchange="
+                                    setAttendance(
+                                        '${driver.id}',
+                                        'Leave'
+                                    )
+                                "
+                            >
+
+                            <label
+                                for="leave-${driver.id}"
+                            >
+
+                                ⏸ Leave
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+
+    updateSummary();
+
+}
+
+
+/* =====================================
+   SET ATTENDANCE
+===================================== */
+
+function setAttendance(
+    driverId,
+    status
+){
+
+    if(!selectedDate){
+
+        return;
+
+    }
+
+
+    if(
+        !attendanceData[
+            selectedDate
+        ]
+    ){
+
+        attendanceData[
+            selectedDate
+        ] = {};
+
+    }
+
+
+    attendanceData[
+        selectedDate
+    ][
+        driverId
+    ] = status;
+
+
+    updateSummary();
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(){
+
+    const drivers =
+        getDrivers();
+
+
+    const dateData =
+        attendanceData[
+            selectedDate
+        ] || {};
+
+
+    let present = 0;
+    let absent = 0;
+    let leave = 0;
+
+
+    drivers.forEach(driver => {
+
+        const status =
+            dateData[
+                driver.id
+            ] || "Present";
+
+
+        if(status === "Present"){
+
+            present++;
+
+        }
+        else if(status === "Absent"){
+
+            absent++;
+
+        }
+        else if(status === "Leave"){
+
+            leave++;
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "totalDrivers"
+    ).innerText =
+        drivers.length;
+
+
+    document.getElementById(
+        "presentDrivers"
+    ).innerText =
+        present;
+
+
+    document.getElementById(
+        "absentDrivers"
+    ).innerText =
+        absent;
+
+
+    document.getElementById(
+        "leaveDrivers"
+    ).innerText =
+        leave;
+
+}
+
+
+/* =====================================
+   DATE CHANGE
+===================================== */
+
+function changeDate(){
+
+    const input =
+        document.getElementById(
+            "attendanceDate"
+        );
+
+
+    if(!input){
+        return;
+    }
+
+
+    selectedDate =
+        input.value;
+
+
+    loadDriverAttendance();
+
+}
+
+
+/* =====================================
+   FILTER ATTENDANCE
+===================================== */
+
+function filterAttendance(){
+
+    loadDriverAttendance();
+
+}
+
+
+/* =====================================
+   SAVE ATTENDANCE
+===================================== */
+
+function saveAttendance(){
+
+    const drivers =
+        getDrivers();
+
+
+    if(drivers.length === 0){
+
+        alert(
+            "⚠️ Save karne ke liye koi driver nahi hai."
+        );
+
+        return;
+
+    }
+
+
+    if(!selectedDate){
+
+        alert(
+            "⚠️ Attendance date select karein."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !attendanceData[
+            selectedDate
+        ]
+    ){
+
+        attendanceData[
+            selectedDate
+        ] = {};
+
+    }
+
+
+    /*
+     * Jis driver ka status select nahi kiya gaya,
+     * usko default Present rakha jayega.
+     */
+
+    drivers.forEach(driver => {
+
+        if(
+            !attendanceData[
+                selectedDate
+            ][
+                driver.id
+            ]
+        ){
+
+            attendanceData[
+                selectedDate
+            ][
+                driver.id
+            ] = "Present";
+
+        }
+
+    });
+
+
+    saveAttendanceStorage();
+
+
+    loadDriverAttendance();
+
+
+    alert(
+        "✅ Attendance saved successfully.\n\nDate: " +
+        selectedDate
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "driver-performance.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadAttendanceStorage();
+
+
+        const dateInput =
+            document.getElementById(
+                "attendanceDate"
+            );
+
+
+        if(dateInput){
+
+            dateInput.value =
+                getToday();
+
+            selectedDate =
+                dateInput.value;
+
+
+            dateInput.addEventListener(
+                "change",
+                changeDate
+            );
+
+        }
+
+
+        loadDriverAttendance();
+
+
+        console.log(
+            "Driver Attendance loaded successfully."
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

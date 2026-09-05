@@ -1,0 +1,4932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Professional Dashboard | TransportPro</title>
+
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:1100px;
+    min-height:64px;
+    margin:auto;
+
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+.backBtn:active{
+    transform:scale(.95);
+}
+
+.logoBox{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.headerTitle{
+    flex:1;
+    min-width:0;
+}
+
+.headerTitle strong{
+    display:block;
+
+    font-size:14px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.headerTitle small{
+    display:block;
+
+    margin-top:3px;
+
+    color:#94a3b8;
+
+    font-size:7px;
+}
+
+.headerAction{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#172235;
+
+    color:#fff;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    position:relative;
+}
+
+.notificationDot{
+    position:absolute;
+
+    top:7px;
+    right:7px;
+
+    width:7px;
+    height:7px;
+
+    background:#ef4444;
+
+    border-radius:50%;
+
+    border:1px solid #172235;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main{
+    max-width:1100px;
+    margin:auto;
+
+    padding:16px 14px 100px;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome{
+    background:#07111f;
+
+    color:#fff;
+
+    border-radius:19px;
+
+    padding:19px 16px;
+
+    margin-bottom:14px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.welcome:after{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    right:-55px;
+    top:-55px;
+
+    border-radius:50%;
+
+    border:25px solid rgba(255,255,255,.05);
+}
+
+.welcome small{
+    color:#94a3b8;
+
+    font-size:7px;
+}
+
+.welcome h1{
+    margin-top:6px;
+
+    font-size:21px;
+}
+
+.welcome p{
+    margin-top:7px;
+
+    color:#cbd5e1;
+
+    font-size:8px;
+
+    line-height:1.7;
+}
+
+.profileMini{
+    margin-top:13px;
+
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+}
+
+.profileAvatar{
+    width:37px;
+    height:37px;
+
+    border-radius:50%;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+}
+
+.profileMiniText strong{
+    display:block;
+
+    font-size:8px;
+}
+
+.profileMiniText span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#94a3b8;
+
+    font-size:6px;
+}
+
+
+/* =========================================
+   PROFESSIONAL ID
+========================================= */
+
+.idCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-bottom:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    box-shadow:0 4px 14px rgba(16,24,40,.04);
+}
+
+.idIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    flex-shrink:0;
+}
+
+.idInfo{
+    flex:1;
+}
+
+.idInfo span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.idInfo strong{
+    display:block;
+
+    color:#175cd3;
+
+    font-size:11px;
+
+    letter-spacing:.6px;
+}
+
+.verified{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:#ecfdf3;
+
+    color:#067647;
+
+    font-size:6px;
+
+    font-weight:700;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.sectionTitle{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin:17px 2px 9px;
+}
+
+.sectionTitle h2{
+    font-size:12px;
+}
+
+.sectionTitle span{
+    color:#667085;
+
+    font-size:7px;
+}
+
+
+/* =========================================
+   QUICK ACTION GRID
+========================================= */
+
+.quickGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.quickCard{
+    min-height:100px;
+
+    background:#fff;
+
+    border:1px solid #e4e9f0; 
+
+    border-radius:15px;
+
+    padding:12px;
+
+    text-decoration:none;
+
+    color:#101828;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+
+    transition:.15s;
+}
+
+.quickCard:active{
+    transform:scale(.97);
+}
+
+.quickIcon{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#f2f4f7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    margin-bottom:9px;
+}
+
+.quickCard strong{
+    display:block;
+
+    font-size:8px;
+
+    margin-bottom:4px;
+}
+
+.quickCard span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   FEATURE GRID
+========================================= */
+
+.featureGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.featureCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:14px;
+
+    padding:12px;
+
+    min-height:87px;
+
+    text-decoration:none;
+
+    color:#101828;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:9px;
+}
+
+.featureIcon{
+    width:34px;
+    height:34px;
+
+    border-radius:9px;
+
+    background:#f2f4f7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:16px;
+
+    flex-shrink:0;
+}
+
+.featureText strong{
+    display:block;
+
+    font-size:8px;
+
+    margin-bottom:4px;
+}
+
+.featureText span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   STAT GRID
+========================================= */
+
+.statsGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.statCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:14px;
+
+    padding:13px;
+}
+
+.statCard span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-bottom:7px;
+}
+
+.statCard strong{
+    display:block;
+
+    font-size:17px;
+}
+
+.statCard small{
+    display:block;
+
+    margin-top:4px;
+
+    color:#98a2b3;
+
+    font-size:6px;
+}
+
+
+/* =========================================
+   TRACKING CARD
+========================================= */
+
+.trackingCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:16px;
+
+    padding:14px;
+
+    margin-top:9px;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+}
+
+.trackingTop{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.truckIcon{
+    width:42px;
+    height:42px;
+
+    border-radius:11px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.trackingInfo{
+    flex:1;
+}
+
+.trackingInfo strong{
+    display:block;
+
+    font-size:9px;
+}
+
+.trackingInfo span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-top:3px;
+}
+
+.liveBadge{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:#ecfdf3;
+
+    color:#067647;
+
+    font-size:6px;
+
+    font-weight:700;
+}
+
+.routeLine{
+    margin-top:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.routePoint{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    flex-shrink:0;
+}
+
+.routeLineMiddle{
+    flex:1;
+
+    height:3px;
+
+    background:#dbeafe;
+
+    border-radius:5px;
+}
+
+.routeText{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:6px;
+
+    color:#667085;
+
+    font-size:6px;
+}
+
+
+/* =========================================
+   COMMUNITY CARD
+========================================= */
+
+.communityCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:16px;
+
+    padding:14px;
+
+    margin-top:9px;
+}
+
+.communityHeader{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.communityIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#f2f4f7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.communityText{
+    flex:1;
+}
+
+.communityText strong{
+    display:block;
+
+    font-size:9px;
+}
+
+.communityText span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-top:4px;
+}
+
+.communityButton{
+    border:0;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border-radius:9px;
+
+    padding:8px 10px;
+
+    font-size:6px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+
+/* =========================================
+   BOTTOM NAV
+========================================= */
+
+.bottomNav{
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    z-index:999;
+
+    background:#fff;
+
+    border-top:1px solid #e4e7ec;
+
+    box-shadow:
+    0 -4px 15px
+    rgba(16,24,40,.08);
+}
+
+.navInner{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    min-height:64px;
+}
+
+.navItem{
+    border:0;
+
+    background:transparent;
+
+    color:#667085;
+
+    text-decoration:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    font-size:6px;
+
+    cursor:pointer;
+}
+
+.navItem span{
+    font-size:18px;
+}
+
+.navItem.active{
+    color:#2563eb;
+
+    font-weight:700;
+}
+
+
+/* =========================================
+   TABLET / DESKTOP
+========================================= */
+
+@media(min-width:600px){
+
+    .quickGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .featureGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .statsGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+}
+
+
+@media(min-width:900px){
+
+    .quickGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .featureGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+<div class="header">
+
+
+<button
+class="backBtn"
+onclick="goBack()"
+aria-label="Back">
+
+←
+
+</button>
+
+
+<div class="logoBox">
+    🚚
+</div>
+
+
+<div class="headerTitle">
+
+<strong>
+    TransportPro
+</strong>
+
+<small id="headerRole">
+    Professional Dashboard
+</small>
+
+</div>
+
+
+<button
+class="headerAction"
+onclick="openNotifications()"
+aria-label="Notifications">
+
+🔔
+
+<div class="notificationDot"></div>
+
+</button>
+
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================
+     WELCOME
+========================================= -->
+
+<section class="welcome">
+
+<small>
+    PROFESSIONAL DASHBOARD
+</small>
+
+
+<h1>
+    Welcome back 👋
+</h1>
+
+
+<p>
+    Transport industry के लिए आपके सभी
+    important tools और services एक ही जगह।
+</p>
+
+
+<div class="profileMini">
+
+<div
+class="profileAvatar"
+id="profileAvatar">
+
+👤
+
+</div>
+
+
+<div class="profileMiniText">
+
+<strong id="profileName">
+    Transport Professional
+</strong>
+
+<span id="profileRole">
+    Professional Member
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     PROFESSIONAL ID
+========================================= -->
+
+<div class="idCard">
+
+<div class="idIcon">
+    🪪
+</div>
+
+
+<div class="idInfo">
+
+<span>
+    PROFESSIONAL / EMPLOYEE ID
+</span>
+
+<strong id="professionalId">
+    TP-2026-000000
+</strong>
+
+</div>
+
+
+<div class="verified">
+    ✓ ACTIVE
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     QUICK ACTIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Quick Actions
+</h2>
+
+<span>
+    Most used
+</span>
+
+</div>
+
+
+<div class="quickGrid">
+
+
+<a
+href="find-truck.html"
+class="quickCard">
+
+<div class="quickIcon">
+    🚚
+</div>
+
+<strong>
+    Find Truck
+</strong>
+
+<span>
+    Available vehicles खोजें और booking करें।
+</span>
+
+</a>
+
+
+
+<a
+href="post-load.html"
+class="quickCard">
+
+<div class="quickIcon">
+    📦
+</div>
+
+<strong>
+    Post Load
+</strong>
+
+<span>
+    अपना load पोस्ट करके transport खोजें।
+</span>
+
+</a>
+
+
+
+<a
+href="live-tracking.html"
+class="quickCard">
+
+<div class="quickIcon">
+    📍
+</div>
+
+<strong>
+    Live Tracking
+</strong>
+
+<span>
+    Vehicle और shipment की live location देखें।
+</span>
+
+</a>
+
+
+
+<a
+href="my-bookings.html"
+class="quickCard">
+
+<div class="quickIcon">
+    📋
+</div>
+
+<strong>
+    My Bookings
+</strong>
+
+<span>
+    अपनी सभी bookings और trips देखें।
+</span>
+
+</a>
+
+
+</div>
+
+
+
+<!-- =========================================
+     TRANSPORT FEATURES
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Transport Services
+</h2>
+
+<span>
+    Explore all
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="driver-community.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👨‍✈️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driver Community
+</strong>
+
+<span>
+    Drivers से connect करें और work opportunities देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="transporter-community.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🏢
+</div>
+
+<div class="featureText">
+
+<strong>
+    Transporters
+</strong>
+
+<span>
+    Transport business network और services।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="dealer-dashboard.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    Dealer Community
+</strong>
+
+<span>
+    Dealers और goods businesses से connect करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="employee-community.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👥
+</div>
+
+<div class="featureText">
+
+<strong>
+    Employee Community
+</strong>
+
+<span>
+    Transport employees के लिए professional network।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="marketplace.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛒
+</div>
+
+<div class="featureText">
+
+<strong>
+    Marketplace
+</strong>
+
+<span>
+    Vehicles, parts, services और transport products।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="customer-messages.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💬
+</div>
+
+<div class="featureText">
+
+<strong>
+    Messages
+</strong>
+
+<span>
+    Customers, drivers और businesses से chat करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="payment.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💳
+</div>
+
+<div class="featureText">
+
+<strong>
+    Payments
+</strong>
+
+<span>
+    Payment history और future payment setup।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="notifications.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔔
+</div>
+
+<div class="featureText">
+
+<strong>
+    Notifications
+</strong>
+
+<span>
+    Booking, load और business updates।
+</span>
+
+</div>
+
+</a>
+
+
+
+</div>
+
+
+
+<!-- =========================================
+     DASHBOARD STATS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Activity Overview
+</h2>
+
+<span>
+    This account
+</span>
+
+</div>
+
+
+<div class="statsGrid">
+
+
+<div class="statCard">
+
+<span>
+    ACTIVE BOOKINGS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Current trips
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    ACTIVE LOADS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Posted loads
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    CONNECTIONS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Professional network
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    COMPLETED
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Completed trips
+</small>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     LIVE TRIP PREVIEW
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Live Trip
+</h2>
+
+<span>
+    Tracking
+</span>
+
+</div>
+
+
+<div class="trackingCard">
+
+<div class="trackingTop">
+
+<div class="truckIcon">
+    🚛
+</div>
+
+
+<div class="trackingInfo">
+
+<strong>
+    No active trip
+</strong>
+
+<span>
+    आपकी active booking यहाँ दिखाई देगी।
+</span>
+
+</div>
+
+
+<div class="liveBadge">
+    OFFLINE
+</div>
+
+</div>
+
+
+<div class="routeLine">
+
+<div class="routePoint"></div>
+
+<div class="routeLineMiddle"></div>
+
+<div
+class="routePoint"
+style="background:#98a2b3;">
+</div>
+
+</div>
+
+
+<div class="routeText">
+
+<span>
+    Pickup
+</span>
+
+<span>
+    Destination
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     COMMUNITY
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Professional Community
+</h2>
+
+<span>
+    Connect
+</span>
+
+</div>
+
+
+<div class="communityCard">
+
+<div class="communityHeader">
+
+<div class="communityIcon">
+    🌐
+</div>
+
+
+<div class="communityText">
+
+<strong>
+    Transport Industry Network
+</strong>
+
+<span>
+    Driver, Manager, Dealer, Employee,
+    Transporter और अन्य professionals।
+</span>
+
+</div>
+
+
+<button
+class="communityButton"
+onclick="openCommunity()">
+
+Join
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     PART 1 END
+========================================= -->
+
+<!--
+
+=================================================
+PROFESSIONAL-DASHBOARD.HTML — PART 2
+
+अगले Part में आएगा:
+
+• More dashboard features
+• Load management
+• Fleet management
+• Driver management
+• Documents
+• Earnings
+• Reports
+• Support
+• Profile
+• Settings
+• Role-based controls
+
+अभी PART 2 आने तक यहीं रुकें।
+
+=================================================
+
+-->
+<!-- =========================================
+     PART 2 : MANAGEMENT + BUSINESS FEATURES
+========================================= -->
+
+
+<!-- =========================================
+     LOAD MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Load Management
+</h2>
+
+<span>
+    Manage work
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="my-loads.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Loads
+</strong>
+
+<span>
+    Posted और received loads की पूरी list देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="load-search.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔎
+</div>
+
+<div class="featureText">
+
+<strong>
+    Search Loads
+</strong>
+
+<span>
+    Location, vehicle और route के अनुसार loads खोजें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="load-bids.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💼
+</div>
+
+<div class="featureText">
+
+<strong>
+    Load Bids
+</strong>
+
+<span>
+    Transport offers और bids manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="assigned-loads.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ✅
+</div>
+
+<div class="featureText">
+
+<strong>
+    Assigned Loads
+</strong>
+
+<span>
+    आपको assign किए गए loads और trips देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     FLEET MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Fleet Management
+</h2>
+
+<span>
+    Vehicles
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="my-vehicles.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🚛
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Vehicles
+</strong>
+
+<span>
+    अपने सभी registered vehicles manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="add-vehicle.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ➕
+</div>
+
+<div class="featureText">
+
+<strong>
+    Add Vehicle
+</strong>
+
+<span>
+    नया truck, tempo या commercial vehicle जोड़ें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-documents.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📄
+</div>
+
+<div class="featureText">
+
+<strong>
+    Vehicle Documents
+</strong>
+
+<span>
+    RC, insurance और अन्य documents manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-maintenance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔧
+</div>
+
+<div class="featureText">
+
+<strong>
+    Maintenance
+</strong>
+
+<span>
+    Service, repair और maintenance records रखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Driver Management
+</h2>
+
+<span>
+    Drivers
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="my-drivers.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👨‍✈️
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Drivers
+</strong>
+
+<span>
+    Drivers की list और assigned vehicles देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-search.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔎
+</div>
+
+<div class="featureText">
+
+<strong>
+    Find Driver
+</strong>
+
+<span>
+    Route और work requirement के अनुसार driver खोजें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-performance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📊
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driver Performance
+</strong>
+
+<span>
+    Trips, ratings और work activity देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-attendance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🕘
+</div>
+
+<div class="featureText">
+
+<strong>
+    Attendance
+</strong>
+
+<span>
+    Driver attendance और duty records manage करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     TRACKING & TRIPS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Trips & Tracking
+</h2>
+
+<span>
+    Live operations
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="tracking.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📍
+</div>
+
+<div class="featureText">
+
+<strong>
+    Live Tracking
+</strong>
+
+<span>
+    Active vehicles की location और route देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-history.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🗂️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip History
+</strong>
+
+<span>
+    पुराने trips और completed journeys देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛣️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip Management
+</strong>
+
+<span>
+    Pickup, destination और trip status manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="route-planner.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🗺️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Route Planner
+</strong>
+
+<span>
+    Transport route planning और route information।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     FINANCE
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Finance & Earnings
+</h2>
+
+<span>
+    Money management
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="payments.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💳
+</div>
+
+<div class="featureText">
+
+<strong>
+    Payments
+</strong>
+
+<span>
+    Payment records और transaction status देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="earnings.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💰
+</div>
+
+<div class="featureText">
+
+<strong>
+    Earnings
+</strong>
+
+<span>
+    Trips और services से earnings देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="expenses.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🧾
+</div>
+
+<div class="featureText">
+
+<strong>
+    Expenses
+</strong>
+
+<span>
+    Fuel, maintenance और business expenses track करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="financial-reports.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📈
+</div>
+
+<div class="featureText">
+
+<strong>
+    Financial Reports
+</strong>
+
+<span>
+    Income और expenses की reports देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DOCUMENT CENTER
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Documents
+</h2>
+
+<span>
+    Important records
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="document-center.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📁
+</div>
+
+<div class="featureText">
+
+<strong>
+    Document Center
+</strong>
+
+<span>
+    अपने professional documents एक जगह manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🤵
+</div>
+
+<div class="featureText">
+
+<strong>
+    manegement 
+</strong>
+
+<span>
+    manegement dipartment और  information manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="insurance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛡️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Insurance
+</strong>
+
+<span>
+    Vehicle और business insurance records देखें।
+</span>
+
+</a>
+
+
+
+<a
+href="verification-status.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔐
+</div>
+
+<div class="featureText">
+
+<strong>
+    Verification Status
+</strong>
+
+<span>
+    Identity और professional verification status देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     MARKETPLACE
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Transport Marketplace
+</h2>
+
+<span>
+    Buy & Sell
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="marketplace.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛒
+</div>
+
+<div class="featureText">
+
+<strong>
+    Marketplace
+</strong>
+
+<span>
+    Transport products और services खोजें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="post-product.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📤
+</div>
+
+<div class="featureText">
+
+<strong>
+    Sell / Post Product
+</strong>
+
+<span>
+    अपना product या service marketplace पर डालें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="my-listings.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🏷️
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Listings
+</strong>
+
+<span>
+    अपनी marketplace listings manage करें।
+</span>
+
+</a>
+
+
+
+<a
+href="orders.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    Orders
+</strong>
+
+<span>
+    Marketplace orders और delivery status देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     REPORTS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Reports & Analytics
+</h2>
+
+<span>
+    Business insights
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="reports.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📊
+</div>
+
+<div class="featureText">
+
+<strong>
+    Reports
+</strong>
+
+<span>
+    Transport और account activity reports।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="analytics.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📈
+</div>
+
+<div class="featureText">
+
+<strong>
+    Analytics
+</strong>
+
+<span>
+    Business performance और activity insights।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="performance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🎯
+</div>
+
+<div class="featureText">
+
+<strong>
+    Performance
+</strong>
+
+<span>
+    Work और service performance monitor करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="activity-log.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🕐
+</div>
+
+<div class="featureText">
+
+<strong>
+    Activity Log
+</strong>
+
+<span>
+    Account में हुई important activities देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     SUPPORT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Help & Support
+</h2>
+
+<span>
+    Need help?
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="help-center.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ❓
+</div>
+
+<div class="featureText">
+
+<strong>
+    Help Center
+</strong>
+
+<span>
+    Common questions और solutions।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="support.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🎧
+</div>
+
+<div class="featureText">
+
+<strong>
+    Customer Support
+</strong>
+
+<span>
+    Support team से contact करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="report-problem.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⚠️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Report a Problem
+</strong>
+
+<span>
+    Technical या service problem report करें।
+</span>
+
+</a>
+
+
+
+<a
+href="safety-center.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛡️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Safety Center
+</strong>
+
+<span>
+    Transport safety और account security information।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     PART 2 END
+========================================= -->
+
+<!--
+
+=================================================
+PROFESSIONAL-DASHBOARD.HTML — PART 3
+
+अगले Part में आएगा:
+
+• Profile & Settings
+• Role-based dashboard controls
+• Account security
+• Logout
+• Bottom navigation
+• Back button JavaScript
+• Professional ID loading
+• Role loading
+• Page routing
+• Notifications
+• Community
+• Final </body>
+• Final </html>
+
+अभी Part 3 आने तक यहीं रुकें।
+
+<!-- =========================================
+     PART 3 : PROFILE + SETTINGS + JAVASCRIPT
+========================================= -->
+
+
+<!-- =========================================
+     PROFILE & ACCOUNT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Account
+</h2>
+
+<span>
+    Manage account
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="profile.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👤
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Profile
+</strong>
+
+<span>
+    Personal और professional profile manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="professional-profile.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🪪
+</div>
+
+<div class="featureText">
+
+<strong>
+    Professional Profile
+</strong>
+
+<span>
+    Role, Employee ID और professional details देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="settings.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⚙️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Settings
+</strong>
+
+<span>
+    Account और application settings manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="security.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔐
+</div>
+
+<div class="featureText">
+
+<strong>
+    Security
+</strong>
+
+<span>
+    Login और account security options।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     ROLE ACCESS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Your Professional Access
+</h2>
+
+<span>
+    Role based
+</span>
+
+</div>
+
+
+<div class="formCard">
+
+<div
+style="
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:13px;
+    padding:13px;
+"
+>
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+"
+>
+
+<div
+style="
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    background:#eff6ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+"
+>
+    👥
+</div>
+
+
+<div
+style="
+    flex:1;
+"
+>
+
+<span
+style="
+    display:block;
+    color:#667085;
+    font-size:6px;
+    margin-bottom:4px;
+"
+>
+    CURRENT PROFESSIONAL ROLE
+</span>
+
+
+<strong
+id="accessRole"
+style="
+    display:block;
+    color:#175cd3;
+    font-size:10px;
+"
+>
+    Transport Professional
+</strong>
+
+</div>
+
+</div>
+
+
+<div
+style="
+    margin-top:11px;
+    color:#667085;
+    font-size:7px;
+    line-height:1.7;
+"
+>
+
+आपके selected role के अनुसार आगे Driver,
+Manager, Dealer, Salesman, Employee, Admin
+और अन्य professional dashboards में specific
+features दिखाई देंगे।
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     SECURITY
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Account Security
+</h2>
+
+<span>
+    Protect account
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="change-password.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔑
+</div>
+
+<div class="featureText">
+
+<strong>
+    Change Password
+</strong>
+
+<span>
+    Account password update करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="login-security.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📱
+</div>
+
+<div class="featureText">
+
+<strong>
+    Login Security
+</strong>
+
+<span>
+    Login sessions और security settings।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="employee-id.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🪪
+</div>
+
+<div class="featureText">
+
+<strong>
+    Employee ID
+</strong>
+
+<span>
+    आपकी unique professional identity।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="verification-status.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ✅
+</div>
+
+<div class="featureText">
+
+<strong>
+    Verification
+</strong>
+
+<span>
+    Account verification status देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     SUPPORT BANNER
+========================================= -->
+
+<div
+style="
+    margin-top:15px;
+    background:#07111f;
+    color:#fff;
+    border-radius:16px;
+    padding:15px;
+"
+>
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:11px;
+"
+>
+
+<div
+style="
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:#172235;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    flex-shrink:0;
+"
+>
+    🆘
+</div>
+
+
+<div
+style="
+    flex:1;
+"
+>
+
+<strong
+style="
+    display:block;
+    font-size:9px;
+    margin-bottom:4px;
+"
+>
+    Need Help?
+</strong>
+
+<span
+style="
+    display:block;
+    color:#cbd5e1;
+    font-size:6px;
+    line-height:1.5;
+"
+>
+    TransportPro support team आपकी मदद के लिए available है।
+</span>
+
+</div>
+
+
+<button
+onclick="openSupport()"
+style="
+    border:0;
+    background:#fff;
+    color:#07111f;
+    border-radius:9px;
+    padding:8px 10px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    Help
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     LOGOUT
+========================================= -->
+
+<div
+style="
+    margin-top:14px;
+"
+>
+
+<button
+onclick="logoutUser()"
+style="
+    width:100%;
+    min-height:45px;
+    border:1px solid #fecdca;
+    background:#fff;
+    color:#b42318;
+    border-radius:11px;
+    font-size:8px;
+    font-weight:700;
+    cursor:pointer;
+"
+>
+    ↪ Logout
+</button>
+
+</div>
+
+
+
+</main>
+
+
+
+<!-- =========================================
+     BOTTOM NAVIGATION
+========================================= -->
+
+<nav class="bottomNav">
+
+<div class="navInner">
+
+
+<a
+href="professional-dashboard.html"
+class="navItem active"
+>
+
+<span>
+    🏠
+</span>
+
+Home
+
+</a>
+
+
+
+<a
+href="find-truck.html"
+class="navItem"
+>
+
+<span>
+    🚚
+</span>
+
+Find Truck
+
+</a>
+
+
+
+<a
+href="tracking.html"
+class="navItem"
+>
+
+<span>
+    📍
+</span>
+
+Tracking
+
+</a>
+
+
+
+<a
+href="marketplace.html"
+class="navItem"
+>
+
+<span>
+    🛒
+</span>
+
+Market
+
+</a>
+
+
+
+<a
+href="profile.html"
+class="navItem"
+>
+
+<span>
+    👤
+</span>
+
+Profile
+
+</a>
+
+
+</div>
+
+</nav>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   GO BACK
+========================================= */
+
+function goBack(){
+
+    if(
+        window.history.length > 1
+    ){
+
+        window.history.back();
+
+    }
+
+    else{
+
+        window.location.href =
+            "identity-verification.html";
+
+    }
+
+}
+
+
+
+/* =========================================
+   LOAD PROFESSIONAL DATA
+========================================= */
+
+function loadProfessionalData(){
+
+    let role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    let professionalId =
+        localStorage.getItem(
+            "professionalId"
+        );
+
+
+    let registrationData =
+        localStorage.getItem(
+            "registrationData"
+        );
+
+
+    /* -------------------------------------
+       ROLE
+    ------------------------------------- */
+
+    if(
+        !role &&
+        registrationData
+    ){
+
+        try{
+
+            const data =
+                JSON.parse(
+                    registrationData
+                );
+
+            role =
+                data.role || "";
+
+        }
+
+        catch(error){
+
+            role = "";
+
+        }
+
+    }
+
+
+    if(!role){
+
+        role =
+            "Transport Professional";
+
+    }
+
+
+    /* -------------------------------------
+       ID
+    ------------------------------------- */
+
+    if(
+        !professionalId &&
+        registrationData
+    ){
+
+        try{
+
+            const data =
+                JSON.parse(
+                    registrationData
+                );
+
+            professionalId =
+                data.professionalId || "";
+
+        }
+
+        catch(error){
+
+            professionalId = "";
+
+        }
+
+    }
+
+
+    if(!professionalId){
+
+        professionalId =
+            "TP-2026-000000";
+
+    }
+
+
+    /* -------------------------------------
+       UPDATE UI
+    ------------------------------------- */
+
+    const headerRole =
+        document.getElementById(
+            "headerRole"
+        );
+
+
+    const profileName =
+        document.getElementById(
+            "profileName"
+        );
+
+
+    const profileRole =
+        document.getElementById(
+            "profileRole"
+        );
+
+
+    const professionalIdElement =
+        document.getElementById(
+            "professionalId"
+        );
+
+
+    const accessRole =
+        document.getElementById(
+            "accessRole"
+        );
+
+
+    if(headerRole){
+
+        headerRole.textContent =
+            role +
+            " Dashboard";
+
+    }
+
+
+    if(profileName){
+
+        profileName.textContent =
+            role;
+
+    }
+
+
+    if(profileRole){
+
+        profileRole.textContent =
+            "Verified Professional";
+
+    }
+
+
+    if(professionalIdElement){
+
+        professionalIdElement.textContent =
+            professionalId;
+
+    }
+
+
+    if(accessRole){
+
+        accessRole.textContent =
+            role;
+
+    }
+
+}
+
+
+
+/* =========================================
+   ROLE ICON
+========================================= */
+
+function setRoleIcon(){
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    const avatar =
+        document.getElementById(
+            "profileAvatar"
+        );
+
+
+    if(!avatar){
+
+        return;
+
+    }
+
+
+    if(role === "Driver"){
+
+        avatar.textContent =
+            "👨‍✈️";
+
+    }
+
+    else if(role === "Manager"){
+
+        avatar.textContent =
+            "👔";
+
+    }
+
+    else if(role === "Dealer"){
+
+        avatar.textContent =
+            "📦";
+
+    }
+
+    else if(role === "Salesman"){
+
+        avatar.textContent =
+            "💼";
+
+    }
+
+    else if(role === "Employee"){
+
+        avatar.textContent =
+            "👤";
+
+    }
+
+    else if(role === "Admin"){
+
+        avatar.textContent =
+            "🛡️";
+
+    }
+
+    else{
+
+        avatar.textContent =
+            "👤";
+
+    }
+
+}
+
+
+
+/* =========================================
+   NOTIFICATIONS
+========================================= */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+
+/* =========================================
+   COMMUNITY
+========================================= */
+
+function openCommunity(){
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    if(role === "Driver"){
+
+        window.location.href =
+            "driver-community.html";
+
+    }
+
+    else if(role === "Manager"){
+
+        window.location.href =
+            "manager-community.html";
+
+    }
+
+    else if(role === "Dealer"){
+
+        window.location.href =
+            "dealer-community.html";
+
+    }
+
+    else if(role === "Employee"){
+
+        window.location.href =
+            "employee-community.html";
+
+    }
+
+    else{
+
+        window.location.href =
+            "professional-community.html";
+
+    }
+
+}
+
+
+
+/* =========================================
+   SUPPORT
+========================================= */
+
+function openSupport(){
+
+    window.location.href =
+        "support.html";
+
+}
+
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logoutUser(){
+
+    const confirmLogout =
+        confirm(
+            "क्या आप logout करना चाहते हैं?"
+        );
+
+
+    if(!confirmLogout){
+
+        return;
+
+    }
+
+
+    /*
+       अभी frontend demo में केवल
+       login session flag remove किया जा रहा है।
+
+       Registration data और Professional ID
+       को जानबूझकर delete नहीं किया जा रहा,
+       ताकि user दोबारा आने पर profile data
+       बना रहे।
+
+       Production में secure server-side
+       session/token logout होगा।
+    */
+
+
+    localStorage.removeItem(
+        "loginSession"
+    );
+
+
+    localStorage.removeItem(
+        "isLoggedIn"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =========================================
+   PREVENT BROKEN INTERNAL LINKS
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadProfessionalData();
+
+        setRoleIcon();
+
+
+        const links =
+            document.querySelectorAll(
+                "a[href]"
+            );
+
+
+        links.forEach(
+            function(link){
+
+                link.addEventListener(
+                    "click",
+                    function(){
+
+                        /*
+                           Future pages के लिए
+                           actual files बाद में बनाए जाएंगे।
+                        */
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================
+   ONLINE / OFFLINE STATUS
+========================================= */
+
+window.addEventListener(
+    "online",
+    function(){
+
+        console.log(
+            "TransportPro: Online"
+        );
+
+    }
+);
+
+
+window.addEventListener(
+    "offline",
+    function(){
+
+        console.log(
+            "TransportPro: Offline"
+        );
+
+    }
+);
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1220">
+
+<title>TransportPro - Messages</title>
+
+<style>
+
+/* =====================================
+   TRANSPORTPRO CUSTOMER MESSAGES
+   PART 1 - HTML + CSS
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#111827;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.top-header{
+    height:68px;
+    width:100%;
+    background:#0b1220;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 18px rgba(0,0,0,.16);
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.back-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:#1c2738;
+    color:white;
+    font-size:21px;
+    cursor:pointer;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-logo{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:800;
+}
+
+.brand-text h2{
+    font-size:17px;
+}
+
+.brand-text span{
+    display:block;
+    color:#9ca3af;
+    font-size:10px;
+    margin-top:2px;
+}
+
+.header-actions{
+    display:flex;
+    gap:9px;
+}
+
+.header-icon{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:#1c2738;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    position:relative;
+}
+
+.notification-dot{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:#ef4444;
+    border-radius:50%;
+    top:8px;
+    right:8px;
+}
+
+/* MAIN */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:22px 18px 95px;
+}
+
+/* PAGE TITLE */
+
+.page-title{
+    margin-bottom:18px;
+}
+
+.page-title h1{
+    font-size:27px;
+    margin-bottom:6px;
+}
+
+.page-title p{
+    color:#6b7280;
+    font-size:13px;
+}
+
+/* MESSAGE LAYOUT */
+
+.messages-layout{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:16px;
+    height:650px;
+}
+
+/* CONTACT LIST */
+
+.contacts-panel{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+.contacts-header{
+    padding:18px;
+    border-bottom:1px solid #eef0f3;
+}
+
+.contacts-header h2{
+    font-size:18px;
+    margin-bottom:13px;
+}
+
+.search-messages{
+    width:100%;
+    height:43px;
+    border:1px solid #d1d5db;
+    border-radius:11px;
+    padding:0 13px;
+    outline:none;
+    font-size:13px;
+}
+
+.search-messages:focus{
+    border-color:#2563eb;
+}
+
+/* CONTACTS */
+
+.contacts-list{
+    overflow-y:auto;
+    flex:1;
+}
+
+.contact{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:14px;
+    cursor:pointer;
+    border-bottom:1px solid #f0f2f4;
+    transition:.2s;
+}
+
+.contact:hover{
+    background:#f8fafc;
+}
+
+.contact.active{
+    background:#eff6ff;
+}
+
+.avatar{
+    width:46px;
+    height:46px;
+    min-width:46px;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:800;
+}
+
+.contact-info{
+    flex:1;
+    min-width:0;
+}
+
+.contact-top{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.contact-name{
+    font-size:13px;
+    font-weight:700;
+}
+
+.contact-time{
+    color:#9ca3af;
+    font-size:10px;
+}
+
+.last-message{
+    color:#6b7280;
+    font-size:11px;
+    margin-top:5px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.unread{
+    min-width:19px;
+    height:19px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+    font-weight:700;
+}
+
+/* CHAT PANEL */
+
+.chat-panel{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+/* CHAT HEADER */
+
+.chat-header{
+    height:72px;
+    padding:12px 16px;
+    border-bottom:1px solid #eef0f3;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.chat-user{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.chat-user-info h3{
+    font-size:14px;
+}
+
+.online-status{
+    font-size:10px;
+    color:#059669;
+    margin-top:4px;
+}
+
+.chat-actions{
+    display:flex;
+    gap:7px;
+}
+
+.chat-action{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:10px;
+    background:#f3f4f6;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* CHAT BODY */
+
+.chat-body{
+    flex:1;
+    overflow-y:auto;
+    padding:18px;
+    background:#f8fafc;
+}
+
+.date-divider{
+    text-align:center;
+    margin:8px 0 18px;
+}
+
+.date-divider span{
+    background:#e5e7eb;
+    color:#6b7280;
+    border-radius:20px;
+    padding:5px 11px;
+    font-size:9px;
+}
+
+/* MESSAGE */
+
+.message-row{
+    display:flex;
+    margin-bottom:13px;
+}
+
+.message-row.sent{
+    justify-content:flex-end;
+}
+
+.message{
+    max-width:70%;
+    padding:10px 13px;
+    border-radius:15px;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.received .message{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-bottom-left-radius:4px;
+}
+
+.sent .message{
+    background:#2563eb;
+    color:white;
+    border-bottom-right-radius:4px;
+}
+
+.message-time{
+    display:block;
+    font-size:8px;
+    opacity:.65;
+    text-align:right;
+    margin-top:4px;
+}
+
+/* CHAT INPUT */
+
+.chat-input-area{
+    padding:12px;
+    border-top:1px solid #eef0f3;
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.attach-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:11px;
+    background:#f3f4f6;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.message-input{
+    flex:1;
+    height:43px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    padding:0 13px;
+    outline:none;
+    font-size:12px;
+}
+
+.message-input:focus{
+    border-color:#2563eb;
+}
+
+.send-btn{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.send-btn:hover{
+    background:#1d4ed8;
+}
+
+/* EMPTY STATE */
+
+.empty-chat{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+}
+
+.empty-icon{
+    width:75px;
+    height:75px;
+    border-radius:22px;
+    background:#eff6ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.empty-chat h2{
+    font-size:18px;
+    margin-bottom:7px;
+}
+
+.empty-chat p{
+    color:#6b7280;
+    font-size:12px;
+    line-height:1.5;
+    max-width:300px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:68px;
+    background:white;
+    border-top:1px solid #e5e7eb;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:999;
+}
+
+.nav-item{
+    border:none;
+    background:none;
+    color:#6b7280;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    font-size:10px;
+}
+
+.nav-item span{
+    font-size:20px;
+}
+
+.nav-item.active{
+    color:#2563eb;
+    font-weight:700;
+}
+
+/* MODAL */
+
+.modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:3000;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+}
+
+.modal{
+    width:100%;
+    max-width:420px;
+    background:white;
+    border-radius:22px;
+    padding:24px;
+}
+
+.modal h2{
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.modal p{
+    color:#6b7280;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.modal-close{
+    width:100%;
+    height:45px;
+    margin-top:18px;
+    border:none;
+    border-radius:11px;
+    background:#111827;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+    .messages-layout{
+        grid-template-columns:290px 1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .top-header{
+        height:62px;
+        padding:0 12px;
+    }
+
+    .brand-logo{
+        width:38px;
+        height:38px;
+    }
+
+    .header-icon,
+    .back-btn{
+        width:38px;
+        height:38px;
+    }
+
+    .container{
+        padding:18px 10px 90px;
+    }
+
+    .page-title h1{
+        font-size:23px;
+    }
+
+    .messages-layout{
+        display:block;
+        height:auto;
+    }
+
+    .contacts-panel{
+        height:270px;
+        margin-bottom:12px;
+    }
+
+    .chat-panel{
+        height:550px;
+    }
+
+}
+
+@media(max-width:400px){
+
+    .message{
+        max-width:82%;
+    }
+
+    .chat-body{
+        padding:13px;
+    }
+
+    .contacts-panel{
+        height:250px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <div class="header-left">
+
+        <button
+            class="back-btn"
+            id="backBtn"
+        >
+            ←
+        </button>
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                TP
+            </div>
+
+            <div class="brand-text">
+
+                <h2>TransportPro</h2>
+
+                <span>
+                    Customer Messages
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <button
+            class="header-icon"
+            id="notificationBtn"
+        >
+            🔔
+            <span class="notification-dot"></span>
+        </button>
+
+        <button
+            class="header-icon"
+            id="profileBtn"
+        >
+            👤
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h1>Messages</h1>
+
+        <p>
+            Chat with drivers, vehicle owners,
+            transporters and support team.
+        </p>
+
+    </div>
+
+
+    <section class="messages-layout">
+
+
+        <!-- =============================
+             CONTACTS
+        ============================== -->
+
+        <div class="contacts-panel">
+
+            <div class="contacts-header">
+
+                <h2>
+                    Conversations
+                </h2>
+
+                <input
+                    type="search"
+                    id="searchMessages"
+                    class="search-messages"
+                    placeholder="Search conversations..."
+                >
+
+            </div>
+
+
+            <div
+                class="contacts-list"
+                id="contactsList"
+            >
+
+
+                <!-- DRIVER -->
+
+                <div
+                    class="contact active"
+                    data-name="Rajesh Kumar"
+                    data-role="Driver"
+                >
+
+                    <div class="avatar">
+                        RK
+                    </div>
+
+                    <div class="contact-info">
+
+                        <div class="contact-top">
+
+                            <span class="contact-name">
+                                Rajesh Kumar
+                            </span>
+
+                            <span class="contact-time">
+                                10:45 AM
+                            </span>
+
+                        </div>
+
+                        <div class="last-message">
+                            Your truck has reached...
+                        </div>
+
+                    </div>
+
+                    <div class="unread">
+                        2
+                    </div>
+
+                </div>
+
+
+                <!-- VEHICLE OWNER -->
+
+                <div
+                    class="contact"
+                    data-name="Amit Transport"
+                    data-role="Vehicle Owner"
+                >
+
+                    <div class="avatar">
+                        AT
+                    </div>
+
+                    <div class="contact-info">
+
+                        <div class="contact-top">
+
+                            <span class="contact-name">
+                                Amit Transport
+                            </span>
+
+                            <span class="contact-time">
+                                Yesterday
+                            </span>
+
+                        </div>
+
+                        <div class="last-message">
+                            Booking details confirmed.
+                        </div>
+
+                    </div>
+
+                    <div class="unread">
+                        1
+                    </div>
+
+                </div>
+
+
+                <!-- SUPPORT -->
+
+                <div
+                    class="contact"
+                    data-name="TransportPro Support"
+                    data-role="Support"
+                >
+
+                    <div class="avatar">
+                        TP
+                    </div>
+
+                    <div class="contact-info">
+
+                        <div class="contact-top">
+
+                            <span class="contact-name">
+                                TransportPro Support
+                            </span>
+
+                            <span class="contact-time">
+                                Mon
+                            </span>
+
+                        </div>
+
+                        <div class="last-message">
+                            How can we help you?
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MECHANIC -->
+
+                <div
+                    class="contact"
+                    data-name="Nearby Mechanic"
+                    data-role="Mechanic"
+                >
+
+                    <div class="avatar">
+                        MK
+                    </div>
+
+                    <div class="contact-info">
+
+                        <div class="contact-top">
+
+                            <span class="contact-name">
+                                Nearby Mechanic
+                            </span>
+
+                            <span class="contact-time">
+                                Sun
+                            </span>
+
+                        </div>
+
+                        <div class="last-message">
+                            Repair request received.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================
+             CHAT PANEL
+        ============================== -->
+
+        <div class="chat-panel">
+
+
+            <div class="chat-header">
+
+                <div class="chat-user">
+
+                    <div
+                        class="avatar"
+                        id="chatAvatar"
+                    >
+                        RK
+                    </div>
+
+                    <div class="chat-user-info">
+
+                        <h3 id="chatName">
+                            Rajesh Kumar
+                        </h3>
+
+                        <div
+                            class="online-status"
+                            id="chatStatus"
+                        >
+                            ● Online
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-actions">
+
+                    <button
+                        class="chat-action"
+                        id="callBtn"
+                    >
+                        📞
+                    </button>
+
+                    <button
+                        class="chat-action"
+                        id="moreBtn"
+                    >
+                        ⋮
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHAT BODY -->
+
+            <div
+                class="chat-body"
+                id="chatBody"
+            >
+
+                <div class="date-divider">
+                    <span>
+                        Today
+                    </span>
+                </div>
+
+
+                <div class="message-row received">
+
+                    <div class="message">
+
+                        Hello! Your transport booking
+                        is confirmed.
+
+                        <span class="message-time">
+                            10:30 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-row sent">
+
+                    <div class="message">
+
+                        Thank you. Please share the
+                        current truck location.
+
+                        <span class="message-time">
+                            10:32 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-row received">
+
+                    <div class="message">
+
+                        Sure. I will share the location
+                        shortly.
+
+                        <span class="message-time">
+                            10:35 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-row received">
+
+                    <div class="message">
+
+                        The truck is moving normally.
+
+                        <span class="message-time">
+                            10:45 AM
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="chat-input-area">
+
+                <button
+                    class="attach-btn"
+                    id="attachBtn"
+                >
+                    📎
+                </button>
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    class="message-input"
+                    placeholder="Type a message..."
+                    autocomplete="off"
+                >
+
+                <button
+                    class="send-btn"
+                    id="sendBtn"
+                >
+                    ➤
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================
+     BOTTOM NAV
+===================================== -->
+
+<nav class="bottom-nav">
+
+    <button
+        class="nav-item"
+        id="homeNav"
+    >
+        <span>⌂</span>
+        Home
+    </button>
+
+
+    <button
+        class="nav-item"
+        id="findTruckNav"
+    >
+        <span>🚚</span>
+        Find Truck
+    </button>
+
+
+    <button
+        class="nav-item"
+        id="bookingNav"
+    >
+        <span>▣</span>
+        Bookings
+    </button>
+
+
+    <button
+        class="nav-item active"
+    >
+        <span>💬</span>
+        Messages
+    </button>
+ <a href
+
+    <button
+        class="nav-item"
+        id="profileNav"
+    >
+        <span>👤</span>
+        Profile
+    </button>
+
+</nav>
+
+
+<!-- =====================================
+     MODAL
+===================================== -->
+
+<div
+    class="modal-overlay"
+    id="modalOverlay"
+>
+
+    <div class="modal">
+
+        <h2 id="modalTitle">
+            TransportPro
+        </h2>
+
+        <p id="modalMessage">
+            Message
+        </p>
+
+        <button
+            class="modal-close"
+            id="modalClose"
+        >
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     PART 2 YAHAN SE CONTINUE HOGA
+===================================== -->
+<script>
+
+/* =====================================
+   TRANSPORTPRO CUSTOMER MESSAGES
+   PART 2 - JAVASCRIPT
+===================================== */
+
+document.addEventListener("DOMContentLoa
+
+/* =========================================
+   PAGE VISIBILITY
+========================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            loadProfessionalData();
+
+        }
+
+    }
+    
+);
+
+src="./Vehicle-Kharab.js"
+
+</script>
+
+<script src="./Vehicle-Kharab.js"></script>
+</body>
+
+</html>
+
+=================================================
+
+-->

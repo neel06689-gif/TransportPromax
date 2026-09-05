@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>My Drivers - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.drivers-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-box{
+    display:flex;
+
+    width:100%;
+
+    margin-bottom:14px;
+}
+
+.search-box input{
+    flex:1;
+
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-right:0;
+
+    border-radius:9px 0 0 9px;
+
+    padding:0 12px;
+
+    font-size:11px;
+
+    color:#172033;
+
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#1769e0;
+}
+
+.search-box button{
+    width:48px;
+
+    height:44px;
+
+    border:1px solid #1769e0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    border-radius:0 9px 9px 0;
+
+    cursor:pointer;
+
+    font-size:17px;
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.driver-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:14px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:17px;
+}
+
+
+/* =====================================
+   ADD DRIVER
+===================================== */
+
+.add-driver-btn{
+    width:100%;
+
+    height:44px;
+
+    border:1px dashed #1769e0;
+
+    background:#eef5ff;
+
+    color:#1769e0;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:14px;
+}
+
+.add-driver-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   DRIVER LIST
+===================================== */
+
+.driver-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+
+/* =====================================
+   DRIVER CARD
+===================================== */
+
+.driver-card{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    background:#fff;
+}
+
+.driver-top{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.driver-avatar{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+    flex-shrink:0;
+}
+
+.driver-title{
+    flex:1;
+}
+
+.driver-title strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.driver-title small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:14px;
+}
+
+
+/* =====================================
+   STATUS
+===================================== */
+
+.driver-status{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.status-active{
+    background:#eaf8ef;
+    color:#137333;
+}
+
+.status-available{
+    background:#eef5ff;
+    color:#1769e0;
+}
+
+.status-trip{
+    background:#fff5df;
+    color:#a15c00;
+}
+
+.status-inactive{
+    background:#fff0f0;
+    color:#c62828;
+}
+
+
+/* =====================================
+   DRIVER INFO
+===================================== */
+
+.driver-info{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:10px;
+}
+
+.info-box{
+    border:1px solid #edf0f4;
+
+    border-radius:7px;
+
+    padding:8px 5px;
+
+    text-align:center;
+}
+
+.info-box span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:7px;
+
+    margin-bottom:4px;
+}
+
+.info-box strong{
+    display:block;
+
+    font-size:9px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   ACTIONS
+===================================== */
+
+.driver-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.driver-actions button{
+    flex:1;
+
+    height:34px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.view-driver-btn{
+    background:#1769e0;
+
+    border:0;
+
+    color:#fff;
+}
+
+.edit-driver-btn{
+    background:#fff;
+
+    border:1px solid #1769e0;
+
+    color:#1769e0;
+}
+
+.delete-driver-btn{
+    background:#fff;
+
+    border:1px solid #e2bcbc;
+
+    color:#c62828;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+}
+
+
+/* =====================================
+   NO SEARCH RESULT
+===================================== */
+
+.no-result{
+    text-align:center;
+
+    padding:30px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+}
+
+.no-result-icon{
+    font-size:30px;
+
+    margin-bottom:7px;
+}
+
+.no-result strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.no-result small{
+    color:#667085;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .drivers-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .driver-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .driver-top{
+        flex-wrap:wrap;
+    }
+
+    .driver-title{
+        min-width:
+            calc(100% - 58px);
+    }
+
+    .driver-status{
+        margin-left:58px;
+    }
+
+    .driver-info{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .drivers-card{
+        padding:10px;
+    }
+
+    .driver-actions button{
+        font-size:8px;
+    }
+
+}
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            My Drivers
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="drivers-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                👨‍✈️
+            </div>
+
+            <div>
+
+                <h1>
+                    My Drivers
+                </h1>
+
+                <p>
+                    Apne drivers ko add,
+                    manage aur track karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="driverSearch"
+                placeholder="Search driver by name, phone or ID..."
+                oninput="searchDrivers()">
+
+            <button
+                onclick="searchDrivers()">
+
+                🔍
+
+            </button>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="driver-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Drivers
+                </span>
+
+                <strong id="totalDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Active
+                </span>
+
+                <strong id="activeDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Available
+                </span>
+
+                <strong id="availableDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    On Trip
+                </span>
+
+                <strong id="onTripDrivers">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ADD DRIVER -->
+
+        <button
+            class="add-driver-btn"
+            onclick="addDriver()">
+
+            + Add New Driver
+
+        </button>
+
+
+
+        <!-- DRIVER LIST -->
+
+        <div
+            id="driverList"
+            class="driver-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    👨‍✈️
+                </div>
+
+                <strong>
+                    No Drivers Added
+                </strong>
+
+                <small>
+                    + Add New Driver par click
+                    karke driver add karein.
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   MY DRIVERS - JAVASCRIPT
+===================================== */
+
+
+/* =====================================
+   STORAGE KEY
+===================================== */
+
+const DRIVER_KEY = "tp_drivers";
+
+
+/* =====================================
+   GET DRIVERS
+===================================== */
+
+function getDrivers(){
+
+    const saved =
+        localStorage.getItem(DRIVER_KEY);
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data = JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE DRIVERS
+===================================== */
+
+function saveDrivers(drivers){
+
+    localStorage.setItem(
+        DRIVER_KEY,
+        JSON.stringify(drivers)
+    );
+
+}
+
+
+/* =====================================
+   INITIAL DEMO DRIVER
+===================================== */
+
+function createDemoDriver(){
+
+    const drivers = getDrivers();
+
+    if(drivers.length > 0){
+        return;
+    }
+
+    /*
+       Demo data automatically add nahi kiya ja raha.
+       User + Add New Driver se driver add karega.
+    */
+
+}
+
+
+/* =====================================
+   DISPLAY DRIVERS
+===================================== */
+
+function displayDrivers(drivers){
+
+    const list =
+        document.getElementById(
+            "driverList"
+        );
+
+
+    if(!list){
+        return;
+    }
+
+
+    if(drivers.length === 0){
+
+        list.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    👨‍✈️
+                </div>
+
+                <strong>
+                    No Drivers Found
+                </strong>
+
+                <small>
+                    + Add New Driver par click
+                    karke driver add karein.
+                </small>
+
+            </div>
+
+        `;
+
+        updateSummary([]);
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        drivers.map(
+            driver => {
+
+                let statusClass =
+                    "status-active";
+
+
+                if(
+                    driver.status ===
+                    "Available"
+                ){
+
+                    statusClass =
+                        "status-available";
+
+                }
+                else if(
+                    driver.status ===
+                    "On Trip"
+                ){
+
+                    statusClass =
+                        "status-trip";
+
+                }
+                else if(
+                    driver.status ===
+                    "Inactive"
+                ){
+
+                    statusClass =
+                        "status-inactive";
+
+                }
+
+
+                return `
+
+                    <div
+                        class="driver-card"
+                        data-id="${driver.id}"
+                    >
+
+                        <div class="driver-top">
+
+
+                            <div class="driver-avatar">
+                                👨‍✈️
+                            </div>
+
+
+                            <div class="driver-title">
+
+                                <strong>
+                                    ${escapeHTML(
+                                        driver.name
+                                    )}
+                                </strong>
+
+                                <small>
+                                    Driver ID:
+                                    ${escapeHTML(
+                                        driver.id
+                                    )}
+                                </small>
+
+                                <small>
+                                    📞
+                                    ${escapeHTML(
+                                        driver.phone
+                                    )}
+                                </small>
+
+                            </div>
+
+
+                            <span
+                                class="
+                                    driver-status
+                                    ${statusClass}
+                                "
+                            >
+
+                                ${escapeHTML(
+                                    driver.status
+                                )}
+
+                            </span>
+
+
+                        </div>
+
+
+                        <div class="driver-info">
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    License
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        driver.license
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Experience
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        driver.experience
+                                    )} yrs
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Rating
+                                </span>
+
+                                <strong>
+                                    ⭐
+                                    ${escapeHTML(
+                                        driver.rating
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="driver-actions">
+
+
+                            <button
+                                class="view-driver-btn"
+                                onclick="
+                                    viewDriver(
+                                        '${driver.id}'
+                                    )
+                                "
+                            >
+
+                                👁 View
+
+                            </button>
+
+
+                            <button
+                                class="edit-driver-btn"
+                                onclick="
+                                    editDriver(
+                                        '${driver.id}'
+                                    )
+                                "
+                            >
+
+                                ✏️ Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-driver-btn"
+                                onclick="
+                                    deleteDriver(
+                                        '${driver.id}'
+                                    )
+                                "
+                            >
+
+                                🗑 Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+
+    updateSummary(drivers);
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(drivers){
+
+    let active = 0;
+    let available = 0;
+    let onTrip = 0;
+
+
+    drivers.forEach(driver => {
+
+        if(
+            driver.status ===
+            "Active"
+        ){
+
+            active++;
+
+        }
+
+
+        if(
+            driver.status ===
+            "Available"
+        ){
+
+            available++;
+
+        }
+
+
+        if(
+            driver.status ===
+            "On Trip"
+        ){
+
+            onTrip++;
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "totalDrivers"
+    ).innerText =
+        drivers.length;
+
+
+    document.getElementById(
+        "activeDrivers"
+    ).innerText =
+        active;
+
+
+    document.getElementById(
+        "availableDrivers"
+    ).innerText =
+        available;
+
+
+    document.getElementById(
+        "onTripDrivers"
+    ).innerText =
+        onTrip;
+
+}
+
+
+/* =====================================
+   ADD DRIVER
+===================================== */
+
+function addDriver(){
+
+    const name =
+        prompt(
+            "Driver Name:"
+        );
+
+
+    if(name === null){
+        return;
+    }
+
+
+    if(name.trim() === ""){
+
+        alert(
+            "⚠️ Driver name required."
+        );
+
+        return;
+
+    }
+
+
+    const phone =
+        prompt(
+            "Mobile Number:"
+        );
+
+
+    if(phone === null){
+        return;
+    }
+
+
+    if(
+        phone.trim() === "" ||
+        phone.length < 10
+    ){
+
+        alert(
+            "⚠️ Valid mobile number enter karein."
+        );
+
+        return;
+
+    }
+
+
+    const license =
+        prompt(
+            "Driving License Number:"
+        );
+
+
+    if(license === null){
+        return;
+    }
+
+
+    if(
+        license.trim() === ""
+    ){
+
+        alert(
+            "⚠️ License number required."
+        );
+
+        return;
+
+    }
+
+
+    const experience =
+        prompt(
+            "Driving Experience (years):"
+        );
+
+
+    if(experience === null){
+        return;
+    }
+
+
+    if(
+        experience.trim() !== "" &&
+        isNaN(Number(experience))
+    ){
+
+        alert(
+            "⚠️ Experience mein number enter karein."
+        );
+
+        return;
+
+    }
+
+
+    const statusOption =
+        prompt(
+
+            "Driver Status:\n\n" +
+
+            "1 = Active\n" +
+            "2 = Available\n" +
+            "3 = On Trip\n" +
+            "4 = Inactive"
+
+        );
+
+
+    if(statusOption === null){
+        return;
+    }
+
+
+    const statusMap = {
+
+        "1":"Active",
+        "2":"Available",
+        "3":"On Trip",
+        "4":"Inactive"
+
+    };
+
+
+    const status =
+        statusMap[statusOption];
+
+
+    if(!status){
+
+        alert(
+            "⚠️ 1 se 4 tak valid option choose karein."
+        );
+
+        return;
+
+    }
+
+
+    const rating =
+        prompt(
+            "Driver Rating (1-5):",
+            "5"
+        );
+
+
+    if(rating === null){
+        return;
+    }
+
+
+    let ratingNumber =
+        Number(rating);
+
+
+    if(
+        isNaN(ratingNumber) ||
+        ratingNumber < 1 ||
+        ratingNumber > 5
+    ){
+
+        ratingNumber = 5;
+
+    }
+
+
+    const drivers =
+        getDrivers();
+
+
+    const driverId =
+        "DRV" +
+        Date.now()
+        .toString()
+        .slice(-7);
+
+
+    const newDriver = {
+
+        id:
+            driverId,
+
+        name:
+            name.trim(),
+
+        phone:
+            phone.trim(),
+
+        license:
+            license.trim(),
+
+        experience:
+            Number(experience) || 0,
+
+        status:
+            status,
+
+        rating:
+            ratingNumber.toFixed(1),
+
+        createdAt:
+            new Date()
+            .toISOString()
+
+    };
+
+
+    drivers.push(
+        newDriver
+    );
+
+
+    saveDrivers(
+        drivers
+    );
+
+
+    displayDrivers(
+        drivers
+    );
+
+
+    alert(
+        "✅ Driver successfully added.\n\nDriver ID: " +
+        driverId
+    );
+
+}
+
+
+/* =====================================
+   SEARCH DRIVER
+===================================== */
+
+function searchDrivers(){
+
+    const input =
+        document.getElementById(
+            "driverSearch"
+        );
+
+
+    const query =
+        input.value
+        .trim()
+        .toLowerCase();
+
+
+    const drivers =
+        getDrivers();
+
+
+    if(query === ""){
+
+        displayDrivers(
+            drivers
+        );
+
+        return;
+
+    }
+
+
+    const filtered =
+        drivers.filter(
+            driver =>
+
+                String(
+                    driver.name
+                )
+                .toLowerCase()
+                .includes(query)
+
+                ||
+
+                String(
+                    driver.phone
+                )
+                .toLowerCase()
+                .includes(query)
+
+                ||
+
+                String(
+                    driver.id
+                )
+                .toLowerCase()
+                .includes(query)
+
+                ||
+
+                String(
+                    driver.license
+                )
+                .toLowerCase()
+                .includes(query)
+
+                ||
+
+                String(
+                    driver.status
+                )
+                .toLowerCase()
+                .includes(query)
+
+        );
+
+
+    if(filtered.length === 0){
+
+        const list =
+            document.getElementById(
+                "driverList"
+            );
+
+
+        list.innerHTML = `
+
+            <div class="no-result">
+
+                <div class="no-result-icon">
+                    🔍
+                </div>
+
+                <strong>
+                    Driver Not Found
+                </strong>
+
+                <small>
+                    Search keyword change karke
+                    dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    displayDrivers(
+        filtered
+    );
+
+}
+
+
+/* =====================================
+   VIEW DRIVER
+===================================== */
+
+function viewDriver(id){
+
+    const drivers =
+        getDrivers();
+
+
+    const driver =
+        drivers.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!driver){
+
+        alert(
+            "⚠️ Driver nahi mila."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+
+        "👨‍✈️ DRIVER DETAILS\n\n" +
+
+        "Name: " +
+        driver.name +
+
+        "\n\nDriver ID: " +
+        driver.id +
+
+        "\n\nMobile: " +
+        driver.phone +
+
+        "\n\nLicense: " +
+        driver.license +
+
+        "\n\nExperience: " +
+        driver.experience +
+        " years" +
+
+        "\n\nStatus: " +
+        driver.status +
+
+        "\n\nRating: ⭐ " +
+        driver.rating
+
+    );
+
+}
+
+
+/* =====================================
+   EDIT DRIVER
+===================================== */
+
+function editDriver(id){
+
+    const drivers =
+        getDrivers();
+
+
+    const index =
+        drivers.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+
+        alert(
+            "Driver nahi mila."
+        );
+
+        return;
+
+    }
+
+
+    const driver =
+        drivers[index];
+
+
+    const newName =
+        prompt(
+            "Driver Name:",
+            driver.name
+        );
+
+
+    if(newName === null){
+        return;
+    }
+
+
+    const newPhone =
+        prompt(
+            "Mobile Number:",
+            driver.phone
+        );
+
+
+    if(newPhone === null){
+        return;
+    }
+
+
+    const newLicense =
+        prompt(
+            "Driving License:",
+            driver.license
+        );
+
+
+    if(newLicense === null){
+        return;
+    }
+
+
+    const newExperience =
+        prompt(
+            "Experience:",
+            driver.experience
+        );
+
+
+    if(newExperience === null){
+        return;
+    }
+
+
+    const newStatus =
+        prompt(
+
+            "Status:\n\n" +
+
+            "1 = Active\n" +
+            "2 = Available\n" +
+            "3 = On Trip\n" +
+            "4 = Inactive\n\n" +
+
+            "Current: " +
+            driver.status
+
+        );
+
+
+    if(newStatus === null){
+        return;
+    }
+
+
+    const statusMap = {
+
+        "1":"Active",
+        "2":"Available",
+        "3":"On Trip",
+        "4":"Inactive"
+
+    };
+
+
+    const selectedStatus =
+        statusMap[newStatus];
+
+
+    if(!selectedStatus){
+
+        alert(
+            "⚠️ Valid status choose karein."
+        );
+
+        return;
+
+    }
+
+
+    driver.name =
+        newName.trim();
+
+
+    driver.phone =
+        newPhone.trim();
+
+
+    driver.license =
+        newLicense.trim();
+
+
+    driver.experience =
+        Number(
+            newExperience
+        ) || 0;
+
+
+    driver.status =
+        selectedStatus;
+
+
+    saveDrivers(
+        drivers
+    );
+
+
+    searchDrivers();
+
+
+    alert(
+        "✅ Driver updated successfully."
+    );
+
+}
+
+
+/* =====================================
+   DELETE DRIVER
+===================================== */
+
+function deleteDriver(id){
+
+    const drivers =
+        getDrivers();
+
+
+    const index =
+        drivers.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const driver =
+        drivers[index];
+
+
+    const confirmed =
+        confirm(
+
+            "⚠️ Delete Driver?\n\n" +
+
+            "Name: " +
+            driver.name +
+
+            "\nDriver ID: " +
+            driver.id +
+
+            "\n\nKya aap is driver ko delete karna chahte hain?"
+
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    drivers.splice(
+        index,
+        1
+    );
+
+
+    saveDrivers(
+        drivers
+    );
+
+
+    searchDrivers();
+
+
+    alert(
+        "✅ Driver deleted successfully."
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "my-vehicles.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        createDemoDriver();
+
+        const drivers =
+            getDrivers();
+
+        displayDrivers(
+            drivers
+        );
+
+        console.log(
+            "TransportPro My Drivers loaded successfully."
+        );
+
+    }
+);
+</script>
+
+
+</body>
+
+</html>

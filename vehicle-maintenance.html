@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Vehicle Maintenance - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.maintenance-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#fff5df;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   VEHICLE SELECTOR
+===================================== */
+
+.vehicle-selector{
+    margin-bottom:14px;
+}
+
+.vehicle-selector label{
+    display:block;
+
+    color:#344054;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+}
+
+.vehicle-selector select{
+    width:100%;
+    height:44px;
+
+    border:1px solid #d7dee8;
+    border-radius:9px;
+
+    background:#fff;
+    color:#172033;
+
+    padding:0 12px;
+
+    font-size:11px;
+    outline:none;
+}
+
+.vehicle-selector select:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.maintenance-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:14px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:17px;
+}
+
+
+/* =====================================
+   ADD BUTTON
+===================================== */
+
+.add-maintenance-btn{
+    width:100%;
+    height:44px;
+
+    border:1px dashed #1769e0;
+
+    background:#eef5ff;
+    color:#1769e0;
+
+    border-radius:9px;
+
+    font-size:10px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:14px;
+}
+
+.add-maintenance-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAINTENANCE LIST
+===================================== */
+
+.maintenance-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:18px;
+}
+
+
+/* =====================================
+   MAINTENANCE CARD
+===================================== */
+
+.maintenance-item{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    background:#fff;
+}
+
+.maintenance-top{
+    display:flex;
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.maintenance-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:10px;
+
+    background:#fff5df;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+    flex-shrink:0;
+}
+
+.maintenance-title{
+    flex:1;
+}
+
+.maintenance-title strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.maintenance-title small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:13px;
+}
+
+
+/* =====================================
+   STATUS
+===================================== */
+
+.maintenance-status{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.status-completed{
+    background:#eaf8ef;
+    color:#137333;
+}
+
+.status-pending{
+    background:#fff5df;
+    color:#a15c00;
+}
+
+
+/* =====================================
+   INFO
+===================================== */
+
+.maintenance-info{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:10px;
+}
+
+.info-box{
+    border:1px solid #edf0f4;
+
+    border-radius:7px;
+
+    padding:8px 5px;
+
+    text-align:center;
+}
+
+.info-box span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:7px;
+
+    margin-bottom:4px;
+}
+
+.info-box strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   ACTIONS
+===================================== */
+
+.maintenance-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.maintenance-actions button{
+    flex:1;
+
+    height:34px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.complete-btn{
+    background:#1769e0;
+    color:#fff;
+
+    border:0;
+}
+
+.edit-maintenance-btn{
+    background:#fff;
+    color:#1769e0;
+
+    border:1px solid #1769e0;
+}
+
+.delete-maintenance-btn{
+    background:#fff;
+    color:#c62828;
+
+    border:1px solid #e2bcbc;
+}
+
+
+/* =====================================
+   QUICK OPTIONS
+===================================== */
+
+.quick-options{
+    border-top:1px solid #edf0f4;
+
+    padding-top:15px;
+}
+
+.quick-options h2{
+    font-size:13px;
+
+    margin-bottom:10px;
+}
+
+.type-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+}
+
+.type-grid button{
+    min-height:70px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:9px;
+
+    color:#172033;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:5px;
+
+    cursor:pointer;
+}
+
+.type-grid button:active{
+    transform:scale(.97);
+}
+
+.type-grid button:first-line{
+    font-size:20px;
+}
+
+.type-grid strong{
+    font-size:9px;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .maintenance-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .maintenance-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .maintenance-top{
+        flex-wrap:wrap;
+    }
+
+    .maintenance-title{
+        min-width:
+            calc(100% - 56px);
+    }
+
+    .maintenance-status{
+        margin-left:56px;
+    }
+
+    .maintenance-info{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .type-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .maintenance-card{
+        padding:10px;
+    }
+
+    .type-grid{
+        grid-template-columns:1fr;
+    }
+
+    .maintenance-actions button{
+        font-size:8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Vehicle Maintenance
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="maintenance-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🔧
+            </div>
+
+            <div>
+
+                <h1>
+                    Vehicle Maintenance
+                </h1>
+
+                <p>
+                    Vehicle service, repair aur
+                    maintenance records manage karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VEHICLE SELECT -->
+
+        <div class="vehicle-selector">
+
+            <label>
+                Select Vehicle
+            </label>
+
+            <select
+                id="vehicleSelect"
+                onchange="loadMaintenance()">
+
+                <option value="">
+                    Select Vehicle
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="maintenance-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Jobs
+                </span>
+
+                <strong id="totalJobs">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Completed
+                </span>
+
+                <strong id="completedJobs">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingJobs">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Cost
+                </span>
+
+                <strong id="totalCost">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ADD MAINTENANCE -->
+
+        <button
+            class="add-maintenance-btn"
+            onclick="addMaintenance()">
+
+            + Add Maintenance Record
+
+        </button>
+
+
+
+        <!-- MAINTENANCE LIST -->
+
+        <div
+            id="maintenanceList"
+            class="maintenance-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔧
+                </div>
+
+                <strong>
+                    Select a Vehicle
+                </strong>
+
+                <small>
+                    Maintenance records dekhne ke liye
+                    vehicle select karein.
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUICK OPTIONS -->
+
+        <div class="quick-options">
+
+            <h2>
+                Maintenance Types
+            </h2>
+
+
+            <div class="type-grid">
+
+
+                <button
+                    onclick="quickAdd('Regular Service')">
+
+                    🛠️
+                    <strong>
+                        Regular Service
+                    </strong>
+
+                </button>
+
+
+                <button
+                    onclick="quickAdd('Oil Change')">
+
+                    🛢️
+                    <strong>
+                        Oil Change
+                    </strong>
+
+                </button>
+
+
+                <button
+                    onclick="quickAdd('Tyre Service')">
+
+                    🛞
+                    <strong>
+                        Tyre Service
+                    </strong>
+
+                </button>
+
+
+                <button
+                    onclick="quickAdd('Brake Service')">
+
+                    ⚙️
+                    <strong>
+                        Brake Service
+                    </strong>
+
+                </button>
+
+
+                <button
+                    onclick="quickAdd('Engine Repair')">
+
+                    🔩
+                    <strong>
+                        Engine Repair
+                    </strong>
+
+                </button>
+
+
+                <button
+                    onclick="quickAdd('Other Repair')">
+
+                    🔧
+                    <strong>
+                        Other Repair
+                    </strong>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   VEHICLE MAINTENANCE - JAVASCRIPT
+===================================== */
+
+
+/* =====================================
+   MAINTENANCE TYPES
+===================================== */
+
+const maintenanceIcons = {
+
+    "Regular Service": "🛠️",
+    "Oil Change": "🛢️",
+    "Tyre Service": "🛞",
+    "Brake Service": "⚙️",
+    "Engine Repair": "🔩",
+    "Other Repair": "🔧"
+
+};
+
+
+/* =====================================
+   GET VEHICLES
+===================================== */
+
+function getVehicles(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_vehicles"
+        );
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }
+    catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   GET MAINTENANCE RECORDS
+===================================== */
+
+function getMaintenance(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_vehicle_maintenance"
+        );
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }
+    catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE MAINTENANCE
+===================================== */
+
+function saveMaintenance(records){
+
+    localStorage.setItem(
+        "tp_vehicle_maintenance",
+        JSON.stringify(records)
+    );
+
+}
+
+
+/* =====================================
+   POPULATE VEHICLES
+===================================== */
+
+function populateVehicles(){
+
+    const select =
+        document.getElementById(
+            "vehicleSelect"
+        );
+
+    if(!select){
+        return;
+    }
+
+
+    const vehicles =
+        getVehicles();
+
+
+    select.innerHTML = `
+        <option value="">
+            Select Vehicle
+        </option>
+    `;
+
+
+    vehicles.forEach(vehicle => {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            vehicle.id;
+
+        option.textContent =
+            vehicle.number +
+            " - " +
+            vehicle.type;
+
+        select.appendChild(
+            option
+        );
+
+    });
+
+}
+
+
+/* =====================================
+   LOAD MAINTENANCE
+===================================== */
+
+function loadMaintenance(){
+
+    const select =
+        document.getElementById(
+            "vehicleSelect"
+        );
+
+
+    const vehicleId =
+        select.value;
+
+
+    if(!vehicleId){
+
+        showEmptyState();
+
+        updateSummary([]);
+
+        return;
+
+    }
+
+
+    const records =
+        getMaintenance();
+
+
+    const vehicleRecords =
+        records.filter(
+            record =>
+                record.vehicleId ===
+                vehicleId
+        );
+
+
+    displayMaintenance(
+        vehicleRecords
+    );
+
+
+    updateSummary(
+        vehicleRecords
+    );
+
+}
+
+
+/* =====================================
+   DISPLAY RECORDS
+===================================== */
+
+function displayMaintenance(records){
+
+    const list =
+        document.getElementById(
+            "maintenanceList"
+        );
+
+
+    if(!list){
+        return;
+    }
+
+
+    if(records.length === 0){
+
+        list.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔧
+                </div>
+
+                <strong>
+                    No Maintenance Records
+                </strong>
+
+                <small>
+                    Add Maintenance Record
+                    par click karke record add karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        records.map(
+            record => {
+
+                const icon =
+                    maintenanceIcons[
+                        record.type
+                    ] || "🔧";
+
+
+                const statusClass =
+                    record.status ===
+                    "Completed"
+                    ?
+                    "status-completed"
+                    :
+                    "status-pending";
+
+
+                return `
+
+                    <div class="maintenance-item">
+
+                        <div class="maintenance-top">
+
+                            <div class="maintenance-icon">
+                                ${icon}
+                            </div>
+
+
+                            <div class="maintenance-title">
+
+                                <strong>
+                                    ${escapeHTML(
+                                        record.type
+                                    )}
+                                </strong>
+
+                                <small>
+                                    ${escapeHTML(
+                                        record.vehicleNumber
+                                    )}
+                                    •
+                                    ${formatDate(
+                                        record.date
+                                    )}
+                                </small>
+
+                            </div>
+
+
+                            <span class="
+                                maintenance-status
+                                ${statusClass}
+                            ">
+
+                                ${record.status}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="maintenance-info">
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Cost
+                                </span>
+
+                                <strong>
+                                    ₹${Number(
+                                        record.cost || 0
+                                    ).toLocaleString("en-IN")}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Odometer
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        record.odometer ||
+                                        "-"
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Workshop
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        record.workshop ||
+                                        "-"
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="maintenance-actions">
+
+
+                            ${
+                                record.status !==
+                                "Completed"
+
+                                ?
+
+                                `
+                                <button
+                                    class="complete-btn"
+                                    onclick="
+                                        completeMaintenance(
+                                            '${record.id}'
+                                        )
+                                    ">
+
+                                    ✓ Complete
+
+                                </button>
+                                `
+
+                                :
+
+                                `
+                                <button
+                                    class="complete-btn"
+                                    onclick="
+                                        viewMaintenance(
+                                            '${record.id}'
+                                        )
+                                    ">
+
+                                    👁 View
+
+                                </button>
+                                `
+                            }
+
+
+                            <button
+                                class="edit-maintenance-btn"
+                                onclick="
+                                    editMaintenance(
+                                        '${record.id}'
+                                    )
+                                ">
+
+                                ✏️ Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-maintenance-btn"
+                                onclick="
+                                    deleteMaintenance(
+                                        '${record.id}'
+                                    )
+                                ">
+
+                                🗑 Delete
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+function showEmptyState(){
+
+    const list =
+        document.getElementById(
+            "maintenanceList"
+        );
+
+
+    list.innerHTML = `
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                🔧
+            </div>
+
+            <strong>
+                Select a Vehicle
+            </strong>
+
+            <small>
+                Maintenance records dekhne ke liye
+                vehicle select karein.
+            </small>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(records){
+
+    let completed = 0;
+    let pending = 0;
+    let totalCost = 0;
+
+
+    records.forEach(record => {
+
+        if(
+            record.status ===
+            "Completed"
+        ){
+
+            completed++;
+
+        }
+        else{
+
+            pending++;
+
+        }
+
+
+        totalCost +=
+            Number(
+                record.cost || 0
+            );
+
+    });
+
+
+    document.getElementById(
+        "totalJobs"
+    ).innerText =
+        records.length;
+
+
+    document.getElementById(
+        "completedJobs"
+    ).innerText =
+        completed;
+
+
+    document.getElementById(
+        "pendingJobs"
+    ).innerText =
+        pending;
+
+
+    document.getElementById(
+        "totalCost"
+    ).innerText =
+        "₹" +
+        totalCost.toLocaleString(
+            "en-IN"
+        );
+
+}
+
+
+/* =====================================
+   ADD MAINTENANCE
+===================================== */
+
+function addMaintenance(){
+
+    const select =
+        document.getElementById(
+            "vehicleSelect"
+        );
+
+
+    const vehicleId =
+        select.value;
+
+
+    if(!vehicleId){
+
+        alert(
+            "⚠️ Pehle vehicle select karein."
+        );
+
+        return;
+
+    }
+
+
+    const vehicles =
+        getVehicles();
+
+
+    const vehicle =
+        vehicles.find(
+            item =>
+                item.id ===
+                vehicleId
+        );
+
+
+    if(!vehicle){
+
+        alert(
+            "⚠️ Vehicle nahi mila."
+        );
+
+        return;
+
+    }
+
+
+    const type =
+        prompt(
+
+            "Maintenance Type:\n\n" +
+
+            "1 = Regular Service\n" +
+            "2 = Oil Change\n" +
+            "3 = Tyre Service\n" +
+            "4 = Brake Service\n" +
+            "5 = Engine Repair\n" +
+            "6 = Other Repair"
+
+        );
+
+
+    if(type === null){
+        return;
+    }
+
+
+    const typeMap = {
+
+        "1":"Regular Service",
+        "2":"Oil Change",
+        "3":"Tyre Service",
+        "4":"Brake Service",
+        "5":"Engine Repair",
+        "6":"Other Repair"
+
+    };
+
+
+    const selectedType =
+        typeMap[type];
+
+
+    if(!selectedType){
+
+        alert(
+            "⚠️ 1 se 6 tak valid option choose karein."
+        );
+
+        return;
+
+    }
+
+
+    const date =
+        prompt(
+            "Maintenance Date:\nExample: 2026-09-03"
+        );
+
+
+    if(date === null){
+        return;
+    }
+
+
+    const cost =
+        prompt(
+            "Maintenance Cost:\nExample: 5000"
+        );
+
+
+    if(cost === null){
+        return;
+    }
+
+
+    if(
+        cost.trim() !== "" &&
+        isNaN(Number(cost))
+    ){
+
+        alert(
+            "⚠️ Cost mein sirf number enter karein."
+        );
+
+        return;
+
+    }
+
+
+    const odometer =
+        prompt(
+            "Odometer Reading:\nExample: 85000 KM"
+        );
+
+
+    if(odometer === null){
+        return;
+    }
+
+
+    const workshop =
+        prompt(
+            "Workshop / Service Center Name:"
+        );
+
+
+    if(workshop === null){
+        return;
+    }
+
+
+    const notes =
+        prompt(
+            "Additional Notes:"
+        );
+
+
+    if(notes === null){
+        return;
+    }
+
+
+    const records =
+        getMaintenance();
+
+
+    const newRecord = {
+
+        id:
+            "MT" +
+            Date.now()
+            .toString()
+            .slice(-8),
+
+        vehicleId:
+            vehicle.id,
+
+        vehicleNumber:
+            vehicle.number,
+
+        type:
+            selectedType,
+
+        date:
+            date.trim(),
+
+        cost:
+            Number(cost) || 0,
+
+        odometer:
+            odometer.trim(),
+
+        workshop:
+            workshop.trim(),
+
+        notes:
+            notes.trim(),
+
+        status:
+            "Pending",
+
+        createdAt:
+            new Date()
+            .toISOString()
+
+    };
+
+
+    records.push(
+        newRecord
+    );
+
+
+    saveMaintenance(
+        records
+    );
+
+
+    loadMaintenance();
+
+
+    alert(
+        "✅ Maintenance record added successfully."
+    );
+
+}
+
+
+/* =====================================
+   QUICK ADD
+===================================== */
+
+function quickAdd(type){
+
+    const select =
+        document.getElementById(
+            "vehicleSelect"
+        );
+
+
+    if(!select.value){
+
+        alert(
+            "⚠️ Pehle vehicle select karein."
+        );
+
+        return;
+
+    }
+
+
+    const vehicles =
+        getVehicles();
+
+
+    const vehicle =
+        vehicles.find(
+            item =>
+                item.id ===
+                select.value
+        );
+
+
+    if(!vehicle){
+        return;
+    }
+
+
+    const date =
+        prompt(
+            type +
+            "\n\nMaintenance Date:\nExample: 2026-09-03"
+        );
+
+
+    if(date === null){
+        return;
+    }
+
+
+    const cost =
+        prompt(
+            "Maintenance Cost:"
+        );
+
+
+    if(cost === null){
+        return;
+    }
+
+
+    if(
+        cost.trim() !== "" &&
+        isNaN(Number(cost))
+    ){
+
+        alert(
+            "⚠️ Cost valid number hona chahiye."
+        );
+
+        return;
+
+    }
+
+
+    const records =
+        getMaintenance();
+
+
+    records.push({
+
+        id:
+            "MT" +
+            Date.now()
+            .toString()
+            .slice(-8),
+
+        vehicleId:
+            vehicle.id,
+
+        vehicleNumber:
+            vehicle.number,
+
+        type:
+            type,
+
+        date:
+            date.trim(),
+
+        cost:
+            Number(cost) || 0,
+
+        odometer:
+            "",
+
+        workshop:
+            "",
+
+        notes:
+            "",
+
+        status:
+            "Pending",
+
+        createdAt:
+            new Date()
+            .toISOString()
+
+    });
+
+
+    saveMaintenance(
+        records
+    );
+
+
+    loadMaintenance();
+
+
+    alert(
+        "✅ " +
+        type +
+        " record added."
+    );
+
+}
+
+
+/* =====================================
+   VIEW
+===================================== */
+
+function viewMaintenance(id){
+
+    const records =
+        getMaintenance();
+
+
+    const record =
+        records.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!record){
+
+        alert(
+            "Record nahi mila."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+
+        "🔧 MAINTENANCE DETAILS\n\n" +
+
+        "Type: " +
+        record.type +
+
+        "\n\nVehicle: " +
+        record.vehicleNumber +
+
+        "\n\nDate: " +
+        record.date +
+
+        "\n\nCost: ₹" +
+        Number(
+            record.cost || 0
+        ).toLocaleString("en-IN") +
+
+        "\n\nOdometer: " +
+        (record.odometer || "-") +
+
+        "\n\nWorkshop: " +
+        (record.workshop || "-") +
+
+        "\n\nStatus: " +
+        record.status +
+
+        "\n\nNotes: " +
+        (record.notes || "-")
+
+    );
+
+}
+
+
+/* =====================================
+   COMPLETE
+===================================== */
+
+function completeMaintenance(id){
+
+    const records =
+        getMaintenance();
+
+
+    const index =
+        records.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    records[index].status =
+        "Completed";
+
+
+    records[index].completedAt =
+        new Date()
+        .toISOString();
+
+
+    saveMaintenance(
+        records
+    );
+
+
+    loadMaintenance();
+
+
+    alert(
+        "✅ Maintenance marked as completed."
+    );
+
+}
+
+
+/* =====================================
+   EDIT
+===================================== */
+
+function editMaintenance(id){
+
+    const records =
+        getMaintenance();
+
+
+    const index =
+        records.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const record =
+        records[index];
+
+
+    const newDate =
+        prompt(
+            "Maintenance Date:",
+            record.date
+        );
+
+
+    if(newDate === null){
+        return;
+    }
+
+
+    const newCost =
+        prompt(
+            "Maintenance Cost:",
+            record.cost
+        );
+
+
+    if(newCost === null){
+        return;
+    }
+
+
+    if(
+        newCost.trim() !== "" &&
+        isNaN(Number(newCost))
+    ){
+
+        alert(
+            "⚠️ Cost valid number hona chahiye."
+        );
+
+        return;
+
+    }
+
+
+    const newWorkshop =
+        prompt(
+            "Workshop Name:",
+            record.workshop || ""
+        );
+
+
+    if(newWorkshop === null){
+        return;
+    }
+
+
+    const newNotes =
+        prompt(
+            "Notes:",
+            record.notes || ""
+        );
+
+
+    if(newNotes === null){
+        return;
+    }
+
+
+    record.date =
+        newDate.trim();
+
+
+    record.cost =
+        Number(newCost) || 0;
+
+
+    record.workshop =
+        newWorkshop.trim();
+
+
+    record.notes =
+        newNotes.trim();
+
+
+    saveMaintenance(
+        records
+    );
+
+
+    loadMaintenance();
+
+
+    alert(
+        "✅ Maintenance record updated."
+    );
+
+}
+
+
+/* =====================================
+   DELETE
+===================================== */
+
+function deleteMaintenance(id){
+
+    const records =
+        getMaintenance();
+
+
+    const index =
+        records.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const record =
+        records[index];
+
+
+    const confirmDelete =
+        confirm(
+
+            "⚠️ Delete Maintenance Record?\n\n" +
+
+            record.type +
+
+            "\n" +
+
+            record.vehicleNumber +
+
+            "\n\nKya aap ise delete karna chahte hain?"
+
+        );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    records.splice(
+        index,
+        1
+    );
+
+
+    saveMaintenance(
+        records
+    );
+
+
+    loadMaintenance();
+
+
+    alert(
+        "✅ Maintenance record deleted."
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /
+</script>
+
+
+</body>
+
+</html>

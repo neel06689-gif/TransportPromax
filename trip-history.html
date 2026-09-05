@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Trip History - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.history-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.history-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:15px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:15px;
+}
+
+
+/* =====================================
+   DATE FILTER
+===================================== */
+
+.filter-section{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:8px;
+
+    margin-bottom:10px;
+}
+
+.filter-field label{
+    display:block;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+}
+
+.filter-field input{
+    width:100%;
+    height:42px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    padding:0 10px;
+
+    font-size:10px;
+
+    color:#172033;
+
+    background:#fff;
+
+    outline:none;
+}
+
+.filter-field input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-box{
+    display:flex;
+
+    width:100%;
+
+    margin-bottom:10px;
+}
+
+.search-box input{
+    flex:1;
+
+    height:43px;
+
+    border:1px solid #d7dee8;
+
+    border-right:0;
+
+    border-radius:9px 0 0 9px;
+
+    padding:0 12px;
+
+    font-size:10px;
+
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#1769e0;
+}
+
+.search-box button{
+    width:47px;
+
+    height:43px;
+
+    border:1px solid #1769e0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    border-radius:0 9px 9px 0;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+
+/* =====================================
+   STATUS FILTERS
+===================================== */
+
+.status-filters{
+    display:flex;
+
+    gap:6px;
+
+    overflow-x:auto;
+
+    padding-bottom:3px;
+
+    margin-bottom:13px;
+}
+
+.status-filters::-webkit-scrollbar{
+    display:none;
+}
+
+.filter-btn{
+    flex-shrink:0;
+
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#475467;
+
+    border-radius:20px;
+
+    padding:7px 12px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+
+    border-color:#1769e0;
+
+    color:#fff;
+}
+
+
+/* =====================================
+   TRIP LIST
+===================================== */
+
+.trip-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+    margin-bottom:13px;
+}
+
+
+/* =====================================
+   TRIP ITEM
+===================================== */
+
+.trip-item{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:11px;
+
+    background:#fff;
+}
+
+.trip-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:10px;
+}
+
+.trip-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:9px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    flex-shrink:0;
+}
+
+.trip-title{
+    flex:1;
+
+    min-width:0;
+}
+
+.trip-title strong{
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+.trip-title small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:13px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+.trip-status{
+    flex-shrink:0;
+
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    font-size:7px;
+
+    font-weight:bold;
+
+    background:#eaf8ef;
+
+    color:#137333;
+}
+
+.trip-status.cancelled{
+    background:#fff0f0;
+
+    color:#c62828;
+}
+
+.trip-status.active{
+    background:#eef5ff;
+
+    color:#1769e0;
+}
+
+
+/* =====================================
+   TRIP DETAILS
+===================================== */
+
+.trip-details{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:6px;
+
+    margin-bottom:9px;
+}
+
+.trip-info{
+    background:#f8fafc;
+
+    border:1px solid #edf0f4;
+
+    border-radius:7px;
+
+    padding:7px 4px;
+
+    text-align:center;
+}
+
+.trip-info span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+    margin-bottom:3px;
+}
+
+.trip-info strong{
+    display:block;
+
+    font-size:8px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   TRIP ACTIONS
+===================================== */
+
+.trip-actions{
+    display:flex;
+
+    gap:6px;
+}
+
+.trip-actions button{
+    flex:1;
+
+    height:32px;
+
+    border-radius:7px;
+
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#1769e0;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.trip-actions button:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   REFRESH BUTTON
+===================================== */
+
+.refresh-btn{
+    width:100%;
+
+    height:44px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.refresh-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:15px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .history-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .history-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .trip-details{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .history-card{
+        padding:10px;
+    }
+
+    .trip-status{
+        padding:4px 6px;
+        font-size:6px;
+    }
+
+    .trip-actions button{
+        font-size:7px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Trip History
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="history-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🧾
+            </div>
+
+            <div>
+
+                <h1>
+                    Trip History
+                </h1>
+
+                <p>
+                    Completed aur previous trips
+                    ki complete history dekhein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="history-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Trips
+                </span>
+
+                <strong id="totalTrips">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Completed
+                </span>
+
+                <strong id="completedTrips">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Cancelled
+                </span>
+
+                <strong id="cancelledTrips">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Distance
+                </span>
+
+                <strong id="totalDistance">
+                    0 km
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FILTER AREA -->
+
+        <div class="filter-section">
+
+
+            <div class="filter-field">
+
+                <label>
+                    From Date
+                </label>
+
+                <input
+                    type="date"
+                    id="fromDate">
+
+            </div>
+
+
+            <div class="filter-field">
+
+                <label>
+                    To Date
+                </label>
+
+                <input
+                    type="date"
+                    id="toDate">
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="tripSearch"
+                placeholder="Search trip, driver, vehicle..."
+                oninput="filterTrips()">
+
+            <button
+                onclick="filterTrips()">
+
+                🔍
+
+            </button>
+
+        </div>
+
+
+
+        <!-- STATUS FILTER -->
+
+        <div class="status-filters">
+
+            <button
+                class="filter-btn active"
+                data-status="All"
+                onclick="
+                    setStatusFilter(
+                        'All',
+                        this
+                    )
+                ">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-status="Completed"
+                onclick="
+                    setStatusFilter(
+                        'Completed',
+                        this
+                    )
+                ">
+
+                Completed
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-status="Cancelled"
+                onclick="
+                    setStatusFilter(
+                        'Cancelled',
+                        this
+                    )
+                ">
+
+                Cancelled
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-status="Active"
+                onclick="
+                    setStatusFilter(
+                        'Active',
+                        this
+                    )
+                ">
+
+                Active
+
+            </button>
+
+        </div>
+
+
+
+        <!-- TRIP LIST -->
+
+        <div
+            id="tripList"
+            class="trip-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🧾
+                </div>
+
+                <strong>
+                    No Trip History
+                </strong>
+
+                <small>
+                    Trip records yahan show honge.
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REFRESH -->
+
+        <button
+            class="refresh-btn"
+            onclick="loadTripHistory()">
+
+            ↻ Refresh History
+
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   TRIP HISTORY - JAVASCRIPT
+===================================== */
+
+const TRIP_KEY = "tp_trips";
+
+let currentStatus = "All";
+let allTrips = [];
+
+
+/* =====================================
+   GET TRIPS
+===================================== */
+
+function getTrips(){
+
+    const saved =
+        localStorage.getItem(TRIP_KEY);
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data = JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   CREATE DEMO TRIPS
+===================================== */
+
+function createDemoTrips(){
+
+    const drivers =
+        getDrivers();
+
+    if(drivers.length === 0){
+        return [];
+    }
+
+
+    return drivers.slice(0,5).map(
+        (driver,index) => {
+
+            const date =
+                new Date();
+
+            date.setDate(
+                date.getDate() - index
+            );
+
+
+            return {
+
+                id:
+                    "TRP-" +
+                    String(
+                        1001 + index
+                    ),
+
+                driverId:
+                    driver.id,
+
+                driverName:
+                    driver.name,
+
+                vehicle:
+                    driver.vehicle ||
+                    "Transport Vehicle",
+
+                from:
+                    "Delhi",
+
+                to:
+                    "Jaipur",
+
+                distance:
+                    250 + index * 35,
+
+                status:
+                    index === 3
+                    ? "Cancelled"
+                    : "Completed",
+
+                amount:
+                    4500 + index * 500,
+
+                date:
+                    formatDate(
+                        date
+                    )
+
+            };
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   GET DRIVERS
+===================================== */
+
+function getDrivers(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_drivers"
+        );
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD TRIP HISTORY
+===================================== */
+
+function loadTripHistory(){
+
+    let trips =
+        getTrips();
+
+
+    /*
+     * Agar actual trip data nahi hai
+     * to drivers ke basis par demo records
+     * display honge.
+     */
+
+    if(trips.length === 0){
+
+        trips =
+            createDemoTrips();
+
+    }
+
+
+    allTrips =
+        trips;
+
+
+    filterTrips();
+
+}
+
+
+/* =====================================
+   FILTER STATUS
+===================================== */
+
+function setStatusFilter(
+    status,
+    button
+){
+
+    currentStatus =
+        status;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    filterTrips();
+
+}
+
+
+/* =====================================
+   FILTER TRIPS
+===================================== */
+
+function filterTrips(){
+
+    const searchInput =
+        document.getElementById(
+            "tripSearch"
+        );
+
+
+    const fromInput =
+        document.getElementById(
+            "fromDate"
+        );
+
+
+    const toInput =
+        document.getElementById(
+            "toDate"
+        );
+
+
+    const query =
+        searchInput
+        ? searchInput.value
+            .trim()
+            .toLowerCase()
+        : "";
+
+
+    const fromDate =
+        fromInput
+        ? fromInput.value
+        : "";
+
+
+    const toDate =
+        toInput
+        ? toInput.value
+        : "";
+
+
+    let filtered =
+        allTrips.filter(trip => {
+
+
+            const searchable =
+                (
+                    trip.id +
+                    " " +
+                    trip.driverName +
+                    " " +
+                    trip.vehicle +
+                    " " +
+                    trip.from +
+                    " " +
+                    trip.to
+                ).toLowerCase();
+
+
+            const matchesSearch =
+                query === "" ||
+                searchable.includes(
+                    query
+                );
+
+
+            const matchesStatus =
+                currentStatus === "All" ||
+                trip.status === currentStatus;
+
+
+            const matchesFrom =
+                !fromDate ||
+                trip.date >= fromDate;
+
+
+            const matchesTo =
+                !toDate ||
+                trip.date <= toDate;
+
+
+            return (
+                matchesSearch &&
+                matchesStatus &&
+                matchesFrom &&
+                matchesTo
+            );
+
+        });
+
+
+    displayTrips(
+        filtered
+    );
+
+
+    updateSummary(
+        filtered
+    );
+
+}
+
+
+/* =====================================
+   DISPLAY TRIPS
+===================================== */
+
+function displayTrips(trips){
+
+    const container =
+        document.getElementById(
+            "tripList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(trips.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔍
+                </div>
+
+                <strong>
+                    No Trips Found
+                </strong>
+
+                <small>
+                    Search ya filters change
+                    karke dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        trips.map(
+            trip => {
+
+
+                let statusClass =
+                    "";
+
+
+                if(
+                    trip.status ===
+                    "Cancelled"
+                ){
+
+                    statusClass =
+                        "cancelled";
+
+                }
+                else if(
+                    trip.status ===
+                    "Active"
+                ){
+
+                    statusClass =
+                        "active";
+
+                }
+
+
+                return `
+
+                    <div
+                        class="trip-item"
+                    >
+
+                        <div class="trip-top">
+
+
+                            <div class="trip-icon">
+                                🚛
+                            </div>
+
+
+                            <div class="trip-title">
+
+                                <strong>
+                                    ${escapeHTML(
+                                        trip.id
+                                    )}
+                                </strong>
+
+                                <small>
+                                    ${escapeHTML(
+                                        trip.driverName ||
+                                        "Unknown Driver"
+                                    )}
+                                </small>
+
+                                <small>
+                                    ${escapeHTML(
+                                        trip.date ||
+                                        "-"
+                                    )}
+                                </small>
+
+                            </div>
+
+
+                            <span
+                                class="
+                                    trip-status
+                                    ${statusClass}
+                                "
+                            >
+
+                                ${escapeHTML(
+                                    trip.status ||
+                                    "Completed"
+                                )}
+
+                            </span>
+
+
+                        </div>
+
+
+                        <div
+                            class="trip-details"
+                        >
+
+
+                            <div
+                                class="trip-info"
+                            >
+
+                                <span>
+                                    Route
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        trip.from ||
+                                        "-"
+                                    )}
+                                    →
+                                    ${escapeHTML(
+                                        trip.to ||
+                                        "-"
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="trip-info"
+                            >
+
+                                <span>
+                                    Distance
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        trip.distance ||
+                                        0
+                                    )}
+                                    km
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="trip-info"
+                            >
+
+                                <span>
+                                    Vehicle
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        trip.vehicle ||
+                                        "-"
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="trip-info"
+                            >
+
+                                <span>
+                                    Amount
+                                </span>
+
+                                <strong>
+                                    ₹${escapeHTML(
+                                        trip.amount ||
+                                        0
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div
+                            class="trip-actions"
+                        >
+
+                            <button
+                                onclick="
+                                    viewTrip(
+                                        '${trip.id}'
+                                    )
+                                "
+                            >
+
+                                👁 View
+
+                            </button>
+
+
+                            <button
+                                onclick="
+                                    deleteTrip(
+                                        '${trip.id}'
+                                    )
+                                "
+                            >
+
+                                🗑 Delete
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(trips){
+
+    const total =
+        trips.length;
+
+
+    const completed =
+        trips.filter(
+            trip =>
+                trip.status ===
+                "Completed"
+        ).length;
+
+
+    const cancelled =
+        trips.filter(
+            trip =>
+                trip.status ===
+                "Cancelled"
+        ).length;
+
+
+    const distance =
+        trips.reduce(
+            (
+                total,
+                trip
+            ) =>
+                total +
+                Number(
+                    trip.distance ||
+                    0
+                ),
+            0
+        );
+
+
+    document.getElementById(
+        "totalTrips"
+    ).innerText =
+        total;
+
+
+    document.getElementById(
+        "completedTrips"
+    ).innerText =
+        completed;
+
+
+    document.getElementById(
+        "cancelledTrips"
+    ).innerText =
+        cancelled;
+
+
+    document.getElementById(
+        "totalDistance"
+    ).innerText =
+        distance +
+        " km";
+
+}
+
+
+/* =====================================
+   VIEW TRIP
+===================================== */
+
+function viewTrip(id){
+
+    const trip =
+        allTrips.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!trip){
+
+        alert(
+            "⚠️ Trip nahi mila."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+
+        "🚛 TRIP DETAILS\n\n" +
+
+        "Trip ID: " +
+        (trip.id || "-") +
+
+        "\n\nDriver: " +
+        (trip.driverName || "-") +
+
+        "\n\nVehicle: " +
+        (trip.vehicle || "-") +
+
+        "\n\nRoute: " +
+        (trip.from || "-") +
+        " → " +
+        (trip.to || "-") +
+
+        "\n\nDistance: " +
+        (trip.distance || 0) +
+        " km" +
+
+        "\n\nDate: " +
+        (trip.date || "-") +
+
+        "\n\nStatus: " +
+        (trip.status || "-") +
+
+        "\n\nAmount: ₹" +
+        (trip.amount || 0)
+
+    );
+
+}
+
+
+/* =====================================
+   DELETE TRIP
+===================================== */
+
+function deleteTrip(id){
+
+    const confirmed =
+        confirm(
+            "⚠️ Kya aap is trip ko delete karna chahte hain?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    let trips =
+        getTrips();
+
+
+    trips =
+        trips.filter(
+            trip =>
+                trip.id !== id
+        );
+
+
+    localStorage.setItem(
+        TRIP_KEY,
+        JSON.stringify(
+            trips
+        )
+    );
+
+
+    allTrips =
+        trips;
+
+
+    filterTrips();
+
+
+    alert(
+        "✅ Trip deleted successfully."
+    );
+
+}
+
+
+/* =====================================
+   DATE FORMAT
+===================================== */
+
+function formatDate(date){
+
+    const year =
+        date.getFullYear();
+
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "driver-attendance.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const fromDate =
+            document.getElementById(
+                "fromDate"
+            );
+
+
+        const toDate =
+            document.getElementById(
+                "toDate"
+            );
+
+
+        if(fromDate){
+
+            fromDate.addEventListener(
+                "change",
+                filterTrips
+            );
+
+        }
+
+
+        if(toDate){
+
+            toDate.addEventListener(
+                "change",
+                filterTrips
+            );
+
+        }
+
+
+        loadTripHistory();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

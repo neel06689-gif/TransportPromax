@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Payments - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   PAYMENT CARD
+===================================== */
+
+.payment-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   BALANCE CARD
+===================================== */
+
+.balance-card{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
+
+    background:#1769e0;
+    color:#fff;
+
+    border-radius:12px;
+
+    padding:16px;
+
+    margin-bottom:12px;
+}
+
+.balance-card span{
+    display:block;
+
+    color:#dceaff;
+
+    font-size:8px;
+
+    margin-bottom:6px;
+}
+
+.balance-card strong{
+    display:block;
+
+    font-size:23px;
+}
+
+.balance-card button{
+    border:1px solid rgba(255,255,255,.5);
+
+    background:#fff;
+
+    color:#1769e0;
+
+    border-radius:8px;
+
+    padding:9px 11px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.balance-card button:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   PAYMENT SUMMARY
+===================================== */
+
+.payment-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+
+    margin-bottom:18px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:9px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:15px;
+}
+
+
+/* =====================================
+   SECTION HEADING
+===================================== */
+
+.section-heading{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:9px;
+}
+
+.section-heading strong{
+    font-size:12px;
+}
+
+.section-heading button{
+    border:0;
+
+    background:transparent;
+
+    color:#1769e0;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   PAYMENT METHODS
+===================================== */
+
+.payment-methods{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+    margin-bottom:17px;
+}
+
+.payment-method{
+    width:100%;
+
+    min-height:62px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:9px;
+
+    border:1px solid #dfe5ed;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    text-align:left;
+
+    cursor:pointer;
+}
+
+.payment-method.active{
+    border-color:#1769e0;
+
+    background:#f4f8ff;
+
+    box-shadow:
+        0 0 0 2px rgba(23,105,224,.06);
+}
+
+.method-icon{
+    width:40px;
+    height:40px;
+
+    border-radius:9px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    flex-shrink:0;
+}
+
+.method-text{
+    flex:1;
+
+    min-width:0;
+}
+
+.method-text strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+.method-text small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+.method-check{
+    width:21px;
+    height:21px;
+
+    border-radius:50%;
+
+    background:#e9edf2;
+
+    color:transparent;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+.payment-method.active
+.method-check{
+    background:#1769e0;
+
+    color:#fff;
+}
+
+
+/* =====================================
+   PAY BOX
+===================================== */
+
+.pay-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:11px;
+
+    padding:13px;
+
+    margin-bottom:18px;
+}
+
+.pay-box label{
+    display:block;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+}
+
+.amount-input{
+    display:flex;
+
+    align-items:center;
+
+    height:45px;
+
+    background:#fff;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    margin-bottom:9px;
+}
+
+.amount-input span{
+    width:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#1769e0;
+
+    font-size:16px;
+
+    font-weight:bold;
+}
+
+.amount-input input{
+    flex:1;
+
+    height:100%;
+
+    border:0;
+
+    outline:none;
+
+    padding-right:10px;
+
+    font-size:13px;
+}
+
+.pay-btn{
+    width:100%;
+
+    height:44px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.pay-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   TRANSACTION HISTORY
+===================================== */
+
+.history-heading{
+    border-top:1px solid #edf0f4;
+
+    padding-top:14px;
+}
+
+.transaction-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+}
+
+
+/* =====================================
+   TRANSACTION ITEM
+===================================== */
+
+.transaction-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:10px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:9px;
+
+    background:#fff;
+}
+
+.transaction-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:8px;
+
+    background:#effaf3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+
+    flex-shrink:0;
+}
+
+.transaction-info{
+    flex:1;
+
+    min-width:0;
+}
+
+.transaction-info strong{
+    display:block;
+
+    font-size:9px;
+
+    margin-bottom:3px;
+}
+
+.transaction-info small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:12px;
+}
+
+.transaction-amount{
+    text-align:right;
+}
+
+.transaction-amount strong{
+    display:block;
+
+    color:#137333;
+
+    font-size:10px;
+
+    margin-bottom:3px;
+}
+
+.transaction-amount small{
+    color:#667085;
+
+    font-size:6px;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:28px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+}
+
+.empty-icon{
+    font-size:30px;
+
+    margin-bottom:7px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:14px;
+}
+
+
+/* =====================================
+   MODAL
+===================================== */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px;
+
+    z-index:500;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:420px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:17px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.2);
+}
+
+.modal-header{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.modal-header strong{
+    font-size:15px;
+}
+
+.modal-header button{
+    width:32px;
+    height:32px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:#f2f4f7;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   CONFIRM PAYMENT
+===================================== */
+
+.confirm-payment{
+    text-align:center;
+
+    background:#f8fafc;
+
+    border-radius:10px;
+
+    padding:17px;
+
+    margin-bottom:12px;
+}
+
+.confirm-icon{
+    font-size:35px;
+
+    margin-bottom:10px;
+}
+
+.confirm-payment p{
+    color:#667085;
+
+    font-size:8px;
+
+    margin-top:7px;
+}
+
+.confirm-payment strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:15px;
+
+    margin-top:4px;
+}
+
+.confirm-btn{
+    width:100%;
+
+    height:43px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:7px;
+}
+
+.cancel-btn{
+    width:100%;
+
+    height:40px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .payment-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .balance-card{
+        padding:13px;
+    }
+
+    .balance-card strong{
+        font-size:20px;
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .payment-summary{
+        grid-template-columns:1fr;
+    }
+
+    .balance-card{
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
+
+    .balance-card button{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+        ←
+    </button>
+
+    <div class="logo">
+        TP
+    </div>
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Payments
+        </small>
+
+    </div>
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+        🔔
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="payment-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                💳
+            </div>
+
+            <div>
+
+                <h1>
+                    Payments
+                </h1>
+
+                <p>
+                    Transport bookings aur trips ke
+                    payments manage karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BALANCE -->
+
+        <div class="balance-card">
+
+            <div>
+
+                <span>
+                    Available Balance
+                </span>
+
+                <strong id="availableBalance">
+                    ₹0
+                </strong>
+
+            </div>
+
+            <button
+                onclick="addMoney()">
+
+                + Add Money
+
+            </button>
+
+        </div>
+
+
+
+        <!-- PAYMENT SUMMARY -->
+
+        <div class="payment-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Paid
+                </span>
+
+                <strong id="totalPaid">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingAmount">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Transactions
+                </span>
+
+                <strong id="transactionCount">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- PAYMENT METHODS -->
+
+        <div class="section-heading">
+
+            <strong>
+                Payment Methods
+            </strong>
+
+            <button
+                onclick="addPaymentMethod()">
+
+                + Add
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="paymentMethods"
+            class="payment-methods">
+
+
+            <button
+                class="payment-method active"
+                onclick="
+                    selectPaymentMethod(
+                        'UPI',
+                        this
+                    )
+                ">
+
+                <span class="method-icon">
+                    📱
+                </span>
+
+                <span class="method-text">
+
+                    <strong>
+                        UPI
+                    </strong>
+
+                    <small>
+                        Google Pay / Paytm / Other UPI
+                    </small>
+
+                </span>
+
+                <span class="method-check">
+                    ✓
+                </span>
+
+            </button>
+
+
+            <button
+                class="payment-method"
+                onclick="
+                    selectPaymentMethod(
+                        'Card',
+                        this
+                    )
+                ">
+
+                <span class="method-icon">
+                    💳
+                </span>
+
+                <span class="method-text">
+
+                    <strong>
+                        Debit / Credit Card
+                    </strong>
+
+                    <small>
+                        Visa / Mastercard / RuPay
+                    </small>
+
+                </span>
+
+                <span class="method-check">
+                    ✓
+                </span>
+
+            </button>
+
+
+            <button
+                class="payment-method"
+                onclick="
+                    selectPaymentMethod(
+                        'Net Banking',
+                        this
+                    )
+                ">
+
+                <span class="method-icon">
+                    🏦
+                </span>
+
+                <span class="method-text">
+
+                    <strong>
+                        Net Banking
+                    </strong>
+
+                    <small>
+                        All major banks
+                    </small>
+
+                </span>
+
+                <span class="method-check">
+                    ✓
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- PAY NOW -->
+
+        <div class="pay-box">
+
+            <label>
+                Enter Payment Amount
+            </label>
+
+            <div class="amount-input">
+
+                <span>
+                    ₹
+                </span>
+
+                <input
+                    type="number"
+                    id="paymentAmount"
+                    placeholder="Enter amount"
+                    min="1">
+
+            </div>
+
+
+            <button
+                class="pay-btn"
+                onclick="processPayment()">
+
+                🔐 Pay Securely
+
+            </button>
+
+        </div>
+
+
+
+        <!-- TRANSACTION HISTORY -->
+
+        <div class="section-heading history-heading">
+
+            <strong>
+                Transaction History
+            </strong>
+
+            <button
+                onclick="loadTransactions()">
+
+                ↻ Refresh
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="transactionList"
+            class="transaction-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    💳
+                </div>
+
+                <strong>
+                    No Transactions
+                </strong>
+
+                <small>
+                    Aapki payment history yahan
+                    show hogi.
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================
+     PAYMENT MODAL
+===================================== -->
+
+<div
+    id="paymentModal"
+    class="modal">
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <strong>
+                Confirm Payment
+            </strong>
+
+            <button
+                onclick="closePaymentModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="confirm-payment">
+
+            <div class="confirm-icon">
+                🔐
+            </div>
+
+            <p>
+                Payment Method
+            </p>
+
+            <strong
+                id="confirmMethod">
+                UPI
+            </strong>
+
+
+            <p>
+                Amount
+            </p>
+
+            <strong
+                id="confirmAmount">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <button
+            class="confirm-btn"
+            onclick="confirmPayment()">
+
+            Confirm & Pay
+
+        </button>
+
+
+        <button
+            class="cancel-btn"
+            onclick="closePaymentModal()">
+
+            Cancel
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   PAYMENTS - JAVASCRIPT PART 3
+===================================== */
+
+const PAYMENT_KEY = "tp_payment_transactions";
+const BALANCE_KEY = "tp_payment_balance";
+
+let selectedPaymentMethod = "UPI";
+let pendingPayment = null;
+
+
+/* =====================================
+   GET BALANCE
+===================================== */
+
+function getBalance(){
+
+    const balance =
+        Number(
+            localStorage.getItem(
+                BALANCE_KEY
+            ) || 0
+        );
+
+    return balance;
+
+}
+
+
+/* =====================================
+   SAVE BALANCE
+===================================== */
+
+function saveBalance(amount){
+
+    localStorage.setItem(
+        BALANCE_KEY,
+        String(amount)
+    );
+
+}
+
+
+/* =====================================
+   GET TRANSACTIONS
+===================================== */
+
+function getTransactions(){
+
+    const saved =
+        localStorage.getItem(
+            PAYMENT_KEY
+        );
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE TRANSACTIONS
+===================================== */
+
+function saveTransactions(
+    transactions
+){
+
+    localStorage.setItem(
+        PAYMENT_KEY,
+        JSON.stringify(
+            transactions
+        )
+    );
+
+}
+
+
+/* =====================================
+   SELECT PAYMENT METHOD
+===================================== */
+
+function selectPaymentMethod(
+    method,
+    button
+){
+
+    selectedPaymentMethod =
+        method;
+
+
+    document
+        .querySelectorAll(
+            ".payment-method"
+        )
+        .forEach(item => {
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   PROCESS PAYMENT
+===================================== */
+
+function processPayment(){
+
+    const amountInput =
+        document.getElementById(
+            "paymentAmount"
+        );
+
+
+    const amount =
+        Number(
+            amountInput.value
+        );
+
+
+    if(!amount || amount <= 0){
+
+        alert(
+            "⚠️ Please enter a valid payment amount."
+        );
+
+        amountInput.focus();
+
+        return;
+
+    }
+
+
+    if(amount > 10000000){
+
+        alert(
+            "⚠️ Maximum demo payment limit is ₹1 crore."
+        );
+
+        return;
+
+    }
+
+
+    pendingPayment = {
+
+        amount:
+            amount,
+
+        method:
+            selectedPaymentMethod
+
+    };
+
+
+    document.getElementById(
+        "confirmMethod"
+    ).innerText =
+        selectedPaymentMethod;
+
+
+    document.getElementById(
+        "confirmAmount"
+    ).innerText =
+        "₹" +
+        amount.toLocaleString(
+            "en-IN"
+        );
+
+
+    document.getElementById(
+        "paymentModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =====================================
+   CONFIRM PAYMENT
+===================================== */
+
+function confirmPayment(){
+
+    if(!pendingPayment){
+
+        closePaymentModal();
+
+        return;
+
+    }
+
+
+    const amount =
+        pendingPayment.amount;
+
+
+    const transaction = {
+
+        id:
+            "PAY-" +
+            Date.now()
+                .toString()
+                .slice(-8),
+
+        amount:
+            amount,
+
+        method:
+            pendingPayment.method,
+
+        status:
+            "Success",
+
+        date:
+            getDateTime()
+
+    };
+
+
+    const transactions =
+        getTransactions();
+
+
+    transactions.unshift(
+        transaction
+    );
+
+
+    saveTransactions(
+        transactions
+    );
+
+
+    /*
+     * Demo wallet balance.
+     * Real bank/UPI payment ke liye
+     * payment gateway/backend integration
+     * required hoga.
+     */
+
+    const currentBalance =
+        getBalance();
+
+
+    saveBalance(
+        currentBalance +
+        amount
+    );
+
+
+    pendingPayment =
+        null;
+
+
+    closePaymentModal();
+
+
+    document.getElementById(
+        "paymentAmount"
+    ).value = "";
+
+
+    updatePaymentDashboard();
+
+
+    alert(
+        "✅ Payment successful!\n\n" +
+        "Transaction ID: " +
+        transaction.id +
+        "\nAmount: ₹" +
+        amount.toLocaleString(
+            "en-IN"
+        )
+    );
+
+}
+
+
+/* =====================================
+   CLOSE PAYMENT MODAL
+===================================== */
+
+function closePaymentModal(){
+
+    const modal =
+        document.getElementById(
+            "paymentModal"
+        );
+
+
+    if(modal){
+
+        modal.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    pendingPayment =
+        null;
+
+}
+
+
+/* =====================================
+   LOAD TRANSACTIONS
+===================================== */
+
+function loadTransactions(){
+
+    const container =
+        document.getElementById(
+            "transactionList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    const transactions =
+        getTransactions();
+
+
+    if(transactions.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    💳
+                </div>
+
+                <strong>
+                    No Transactions
+                </strong>
+
+                <small>
+                    Aapki payment history yahan
+                    show hogi.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        transactions
+        .map(
+            transaction => `
+
+                <div
+                    class="transaction-item"
+                >
+
+                    <div
+                        class="transaction-icon"
+                    >
+                        ✓
+                    </div>
+
+
+                    <div
+                        class="transaction-info"
+                    >
+
+                        <strong>
+                            ${escapeHTML(
+                                transaction.method
+                            )}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(
+                                transaction.id
+                            )}
+                        </small>
+
+                        <small>
+                            ${escapeHTML(
+                                transaction.date
+                            )}
+                        </small>
+
+                    </div>
+
+
+                    <div
+                        class="transaction-amount"
+                    >
+
+                        <strong>
+                            + ₹${Number(
+                                transaction.amount
+                            ).toLocaleString(
+                                "en-IN"
+                            )}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(
+                                transaction.status
+                            )}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            `
+        )
+        .join("");
+
+}
+
+
+/* =====================================
+   UPDATE PAYMENT DASHBOARD
+===================================== */
+
+function updatePaymentDashboard(){
+
+    const balance =
+        getBalance();
+
+
+    const transactions =
+        getTransactions();
+
+
+    const totalPaid =
+        transactions.reduce(
+            (
+                total,
+                transaction
+            ) =>
+                total +
+                Number(
+                    transaction.amount ||
+                    0
+                ),
+            0
+        );
+
+
+    document.getElementById(
+        "availableBalance"
+    ).innerText =
+        "₹" +
+        balance.toLocaleString(
+            "en-IN"
+        );
+
+
+    document.getElementById(
+        "totalPaid"
+    ).innerText =
+        "₹" +
+        totalPaid.toLocaleString(
+            "en-IN"
+        );
+
+
+    document.getElementById(
+        "pendingAmount"
+    ).innerText =
+        "₹0";
+
+
+    document.getElementById(
+        "transactionCount"
+    ).innerText =
+        transactions.length;
+
+
+    loadTransactions();
+
+}
+
+
+/* =====================================
+   ADD MONEY
+===================================== */
+
+function addMoney(){
+
+    const amount =
+        prompt(
+            "Wallet mein kitna amount add karna hai?"
+        );
+
+
+    if(amount === null){
+        return;
+    }
+
+
+    const value =
+        Number(amount);
+
+
+    if(!value || value <= 0){
+
+        alert(
+            "⚠️ Valid amount enter karein."
+        );
+
+        return;
+
+    }
+
+
+    if(value > 10000000){
+
+        alert(
+            "⚠️ Amount limit exceed ho gayi."
+        );
+
+        return;
+
+    }
+
+
+    const newBalance =
+        getBalance() +
+        value;
+
+
+    saveBalance(
+        newBalance
+    );
+
+
+    updatePaymentDashboard();
+
+
+    alert(
+        "✅ ₹" +
+        value.toLocaleString(
+            "en-IN"
+        ) +
+        " wallet balance mein add ho gaya."
+    );
+
+}
+
+
+/* =====================================
+   ADD PAYMENT METHOD
+===================================== */
+
+function addPaymentMethod(){
+
+    alert(
+        "ℹ️ Payment method management ko backend/payment gateway ke saath connect kiya ja sakta hai."
+    );
+
+}
+
+
+/* =====================================
+   DATE + TIME
+===================================== */
+
+function getDateTime(){
+
+    const date =
+        new Date();
+
+
+    return date.toLocaleString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric",
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "payment.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   CLOSE MODAL OUTSIDE CLICK
+===================================== */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const modal =
+            document.getElementById(
+                "paymentModal"
+            );
+
+
+        if(
+            modal &&
+            event.target === modal
+        ){
+
+            closePaymentModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updatePaymentDashboard();
+
+        console.log(
+            "Payments page loaded successfully."
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

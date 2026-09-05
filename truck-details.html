@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Truck Details | TransportPro</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+}
+
+button{
+    font:inherit;
+    cursor:pointer;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#07111f;
+    color:#fff;
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:900px;
+    min-height:64px;
+    margin:auto;
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:11px;
+    background:#172235;
+    color:#fff;
+    font-size:22px;
+}
+
+.logoBox{
+    width:39px;
+    height:39px;
+    border-radius:11px;
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:14px;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+    color:#94a3b8;
+    font-size:7px;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+    padding:16px 14px 120px;
+}
+
+
+/* ==============================
+   TRUCK HERO
+============================== */
+
+.truckHero{
+    background:#07111f;
+    color:#fff;
+    border-radius:18px;
+    padding:18px 16px;
+    margin-bottom:14px;
+}
+
+.truckTop{
+    display:flex;
+    gap:13px;
+    align-items:center;
+}
+
+.truckImage{
+    width:72px;
+    height:72px;
+    border-radius:16px;
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:38px;
+    border:1px solid #334155;
+}
+
+.truckName{
+    flex:1;
+}
+
+.truckName h1{
+    font-size:18px;
+}
+
+.truckName p{
+    margin-top:5px;
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.verified{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+
+    margin-top:7px;
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:#064e3b;
+    color:#a7f3d0;
+
+    font-size:6px;
+    font-weight:700;
+}
+
+.heroStats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:16px;
+}
+
+.heroStat{
+    background:#172235;
+    border-radius:11px;
+    padding:10px;
+    text-align:center;
+}
+
+.heroStat strong{
+    display:block;
+    font-size:10px;
+}
+
+.heroStat span{
+    display:block;
+    margin-top:4px;
+    color:#94a3b8;
+    font-size:6px;
+}
+
+
+/* ==============================
+   CARD
+============================== */
+
+.card{
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:17px;
+    padding:15px;
+    margin-bottom:14px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.cardTitle{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:13px;
+}
+
+.cardIcon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.cardTitle strong{
+    display:block;
+    font-size:11px;
+}
+
+.cardTitle span{
+    display:block;
+    margin-top:3px;
+    color:#667085;
+    font-size:6px;
+}
+
+
+/* ==============================
+   DETAIL ROW
+============================== */
+
+.detailRow{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+
+    padding:9px 0;
+
+    border-bottom:1px solid #eaecf0;
+}
+
+.detailRow:last-child{
+    border-bottom:0;
+}
+
+.detailRow span{
+    color:#667085;
+    font-size:7px;
+}
+
+.detailRow strong{
+    max-width:58%;
+    text-align:right;
+    font-size:7px;
+    word-break:break-word;
+}
+
+
+/* ==============================
+   STATUS
+============================== */
+
+.statusBox{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    background:#ecfdf3;
+    border:1px solid #abefc6;
+
+    border-radius:11px;
+    padding:11px;
+}
+
+.statusDot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#12b76a;
+}
+
+.statusBox strong{
+    display:block;
+    color:#067647;
+    font-size:8px;
+}
+
+.statusBox span{
+    display:block;
+    margin-top:3px;
+    color:#667085;
+    font-size:6px;
+}
+
+
+/* ==============================
+   DRIVER
+============================== */
+
+.driverBox{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.driverAvatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#e0e7ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+}
+
+.driverInfo{
+    flex:1;
+}
+
+.driverInfo strong{
+    display:block;
+    font-size:10px;
+}
+
+.driverInfo span{
+    display:block;
+    margin-top:4px;
+    color:#667085;
+    font-size:6px;
+}
+
+.rating{
+    margin-top:5px;
+    color:#b54708;
+    font-size:7px;
+    font-weight:700;
+}
+
+
+/* ==============================
+   ROUTE
+============================== */
+
+.route{
+    position:relative;
+    padding-left:25px;
+}
+
+.routeLine{
+    position:absolute;
+    left:7px;
+    top:15px;
+    bottom:15px;
+
+    width:2px;
+    background:#d0d5dd;
+}
+
+.routePoint{
+    position:relative;
+    margin-bottom:18px;
+}
+
+.routePoint:last-child{
+    margin-bottom:0;
+}
+
+.routeDot{
+    position:absolute;
+    left:-22px;
+    top:1px;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+    border:3px solid #dbeafe;
+}
+
+.routePoint strong{
+    display:block;
+    font-size:8px;
+}
+
+.routePoint span{
+    display:block;
+    margin-top:4px;
+    color:#667085;
+    font-size:6px;
+}
+
+
+/* ==============================
+   SAFETY
+============================== */
+
+.noticeSafety{
+    display:flex;
+    gap:9px;
+
+    padding:11px;
+    margin-bottom:8px;
+
+    background:#f8fafc;
+    border:1px solid #e4e9f0;
+
+    border-radius:10px;
+}
+
+.noticeSafety:last-child{
+    margin-bottom:0;
+}
+
+.noticeSafety > div{
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:#eff6ff;
+    color:#175cd3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:8px;
+    font-weight:800;
+}
+
+.noticeSafety p{
+    flex:1;
+    color:#667085;
+    font-size:6px;
+    line-height:1.6;
+}
+
+
+/* ==============================
+   CONTACT
+============================== */
+
+.contactGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+}
+
+.contactBtn{
+    min-height:45px;
+
+    border-radius:10px;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.callBtn{
+    background:#fff;
+    color:#344054;
+    border:1px solid #d0d5dd;
+}
+
+.chatBtn{
+    background:#eff6ff;
+    color:#175cd3;
+    border:1px solid #2563eb;
+}
+
+
+/* ==============================
+   ACTION
+============================== */
+
+.actionRow{
+    display:flex;
+    gap:9px;
+
+    position:sticky;
+    bottom:10px;
+
+    z-index:100;
+
+    background:rgba(244,247,251,.94);
+
+    padding-top:5px;
+}
+
+.secondaryBtn,
+.primaryBtn{
+    min-height:47px;
+    border-radius:11px;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.secondaryBtn{
+    width:105px;
+
+    background:#fff;
+    color:#344054;
+
+    border:1px solid #d0d5dd;
+}
+
+.primaryBtn{
+    flex:1;
+
+    border:0;
+
+    background:#2563eb;
+    color:#fff;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:420px){
+
+    .truckImage{
+        width:64px;
+        height:64px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     HEADER
+============================== -->
+
+<header>
+
+<div class="header">
+
+<button
+class="backBtn"
+onclick="goBack()">
+←
+</button>
+
+<div class="logoBox">
+🚛
+</div>
+
+<div class="headerTitle">
+
+<strong>
+Truck Details
+</strong>
+
+<small>
+TransportPro Marketplace
+</small>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- ==============================
+     TRUCK HERO
+============================== -->
+
+<section class="truckHero">
+
+<div class="truckTop">
+
+<div class="truckImage">
+🚛
+</div>
+
+<div class="truckName">
+
+<h1 id="truckName">
+Premium Transport Truck
+</h1>
+
+<p id="truckNumber">
+Vehicle Number: MP 09 AB 1234
+</p>
+
+<div class="verified">
+✓ VERIFIED VEHICLE
+</div>
+
+</div>
+
+</div>
+
+
+<div class="heroStats">
+
+<div class="heroStat">
+
+<strong id="truckCapacity">
+20 Ton
+</strong>
+
+<span>
+Capacity
+</span>
+
+</div>
+
+
+<div class="heroStat">
+
+<strong id="truckRating">
+4.8
+</strong>
+
+<span>
+Rating
+</span>
+
+</div>
+
+
+<div class="heroStat">
+
+<strong id="truckTrips">
+286
+</strong>
+
+<span>
+Trips
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     AVAILABILITY
+============================== -->
+
+<section class="card">
+
+<div class="statusBox">
+
+<div class="statusDot"></div>
+
+<div>
+
+<strong>
+Available for Booking
+</strong>
+
+<span>
+Driver अभी transport request receive कर सकता है।
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     VEHICLE INFORMATION
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+🚛
+</div>
+
+<div>
+
+<strong>
+Vehicle Information
+</strong>
+
+<span>
+Truck की पूरी जानकारी
+</span>
+
+</div>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Vehicle Type
+</span>
+
+<strong id="vehicleType">
+Open Truck
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Body Type
+</span>
+
+<strong id="bodyType">
+Open Body
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Capacity
+</span>
+
+<strong id="capacityDetail">
+20 Ton
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Vehicle Model
+</span>
+
+<strong id="vehicleModel">
+2024 Model
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Vehicle Age
+</span>
+
+<strong id="vehicleAge">
+2 Years
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+GPS Tracking
+</span>
+
+<strong id="gpsStatus">
+Available
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Insurance
+</span>
+
+<strong id="insuranceStatus">
+Verified
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     DRIVER PROFILE
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+👨‍✈️
+</div>
+
+<div>
+
+<strong>
+Driver Profile
+</strong>
+
+<span>
+Transporter / Driver information
+</span>
+
+</div>
+
+</div>
+
+
+<div class="driverBox">
+
+<div class="driverAvatar">
+👨‍✈️
+</div>
+
+<div class="driverInfo">
+
+<strong id="driverName">
+Verified Driver
+</strong>
+
+<span>
+Experienced Transport Driver
+</span>
+
+<div
+class="rating"
+id="driverRating">
+⭐ 4.8 / 5
+</div>
+
+</div>
+
+</div>
+
+
+<div style="height:10px"></div>
+
+
+<div class="detailRow">
+
+<span>
+Driver Verification
+</span>
+
+<strong style="color:#067647;">
+✓ Verified
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Driving Experience
+</span>
+
+<strong id="experience">
+8+ Years
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Completed Trips
+</span>
+
+<strong id="completedTrips">
+420+
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     CURRENT ROUTE
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+📍
+</div>
+
+<div>
+
+<strong>
+Current Route
+</strong>
+
+<span>
+Vehicle route information
+</span>
+
+</div>
+
+</div>
+
+
+<div class="route">
+
+<div class="routeLine"></div>
+
+
+<div class="routePoint">
+
+<div class="routeDot"></div>
+
+<strong id="currentLocation">
+Current Location
+</strong>
+
+<span>
+Last updated location
+</span>
+
+</div>
+
+
+<div class="routePoint">
+
+<div class="routeDot"></div>
+
+<strong id="availableLocation">
+Indore
+</strong>
+
+<span>
+Truck availability location
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     ROUTE & TRIP INFORMATION
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+🛣️
+</div>
+
+<div>
+
+<strong>
+Route & Trip Information
+</strong>
+
+<span>
+आपके load के अनुसार trip details
+</span>
+
+</div>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Pickup
+</span>
+
+<strong id="requestPickup">
+—
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Destination
+</span>
+
+<strong id="requestDestination">
+—
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Estimated Distance
+</span>
+
+<strong id="estimatedDistance">
+Will be calculated
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Estimated Travel Time
+</span>
+
+<strong id="estimatedTime">
+Will be calculated
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Trip Status
+</span>
+
+<strong>
+Available
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     FREIGHT
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+💰
+</div>
+
+<div>
+
+<strong>
+Freight & Pricing
+</strong>
+
+<span>
+Estimated transport cost
+</span>
+
+</div>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Estimated Freight
+</span>
+
+<strong id="estimatedFreight">
+Negotiable
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Price Basis
+</span>
+
+<strong>
+Negotiable
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Payment Method
+</span>
+
+<strong>
+UPI / Online
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Advance
+</span>
+
+<strong>
+As agreed
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Remaining Payment
+</span>
+
+<strong>
+After Delivery
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     VERIFICATION
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+🛡️
+</div>
+
+<div>
+
+<strong>
+Verification & Documents
+</strong>
+
+<span>
+Vehicle और driver verification status
+</span>
+
+</div>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Vehicle RC
+</span>
+
+<strong style="color:#067647;">
+✓ Verified
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Insurance
+</span>
+
+<strong style="color:#067647;">
+✓ Valid
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Fitness Certificate
+</span>
+
+<strong style="color:#067647;">
+✓ Verified
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+PUC
+</span>
+
+<strong style="color:#067647;">
+✓ Valid
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Driver License
+</span>
+
+<strong style="color:#067647;">
+✓ Verified
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Identity Verification
+</span>
+
+<strong style="color:#067647;">
+✓ Completed
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     DRIVER PERFORMANCE
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+⭐
+</div>
+
+<div>
+
+<strong>
+Driver Performance
+</strong>
+
+<span>
+Previous trip performance
+</span>
+
+</div>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Overall Rating
+</span>
+
+<strong>
+⭐ <span id="performanceRating">
+4.8
+</span> / 5
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+On-Time Delivery
+</span>
+
+<strong>
+96%
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Successful Trips
+</span>
+
+<strong>
+420+
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Customer Satisfaction
+</span>
+
+<strong>
+98%
+</strong>
+
+</div>
+
+
+<div class="detailRow">
+
+<span>
+Cancellation Rate
+</span>
+
+<strong>
+2%
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     CONTACT
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+📞
+</div>
+
+<div>
+
+<strong>
+Contact Transporter
+</strong>
+
+<span>
+Request से पहले transporter से बात करें
+</span>
+
+</div>
+
+</div>
+
+
+<div class="contactGrid">
+
+<button
+class="contactBtn callBtn"
+onclick="callTransporter()">
+📞 Call
+</button>
+
+
+<button
+class="contactBtn chatBtn"
+onclick="openChat()">
+💬 Chat
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     SAFETY
+============================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+🔐
+</div>
+
+<div>
+
+<strong>
+TransportPro Safety
+</strong>
+
+<span>
+Secure booking के लिए important information
+</span>
+
+</div>
+
+</div>
+
+
+<div class="noticeSafety">
+
+<div>
+✓
+</div>
+
+<p>
+Driver और vehicle की verification platform
+पर maintain की जाएगी। Booking के बाद trip
+status और tracking information available होगी।
+</p>
+
+</div>
+
+
+<div class="noticeSafety">
+
+<div>
+📍
+</div>
+
+<p>
+GPS-enabled vehicle होने पर authorized users
+को trip के दौरान location tracking उपलब्ध
+कराई जा सकती है।
+</p>
+
+</div>
+
+
+<div class="noticeSafety">
+
+<div>
+💳
+</div>
+
+<p>
+Payment authorized TransportPro payment
+flow के माध्यम से किया जाएगा।
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- ==============================
+     BOTTOM ACTION
+============================== -->
+
+<div class="actionRow">
+
+<button
+class="secondaryBtn"
+onclick="goBack()">
+← Back
+</button>
+
+
+<button
+class="primaryBtn"
+onclick="requestTruck()">
+🚚 Request Truck
+</button>
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================================
+   DEFAULT TRUCK
+========================================= */
+
+const defaultTruck = {
+
+    name:
+        "Premium Transport Truck",
+
+    number:
+        "MP 09 AB 1234",
+
+    type:
+        "Open Truck",
+
+    body:
+        "Open Body",
+
+    capacity:
+        "20 Ton",
+
+    model:
+        "2024 Model",
+
+    age:
+        "2 Years",
+
+    rating:
+        "4.8",
+
+    trips:
+        "286",
+
+    gps:
+        "Available",
+
+    insurance:
+        "Verified",
+
+    driver:
+        "Verified Driver",
+
+    experience:
+        "8+ Years",
+
+    completedTrips:
+        "420+",
+
+    location:
+        "Current Location",
+
+    availableFrom:
+        "Indore",
+
+    freight:
+        ""
+
+};
+
+
+/* =========================================
+   GET TRUCK DATA
+========================================= */
+
+function getTruckData(){
+
+    const saved =
+        localStorage.getItem(
+            "selectedTruck"
+        );
+
+
+    if(!saved){
+
+        return defaultTruck;
+
+    }
+
+
+    try{
+
+        return {
+            ...defaultTruck,
+            ...JSON.parse(saved)
+        };
+
+    }
+
+    catch(error){
+
+        return defaultTruck;
+
+    }
+
+}
+
+
+/* =========================================
+   DISPLAY TRUCK
+========================================= */
+
+/* =========================================
+   DISPLAY TRUCK
+========================================= */
+
+function displayTruck(){
+
+    const truck = getTruckData();
+
+    document.getElementById("truckName").textContent =
+        truck.name || "Premium Transport Truck";
+
+    document.getElementById("truckNumber").textContent =
+        "Vehicle Number: " +
+        (truck.number || "Not Available");
+
+    document.getElementById("truckCapacity").textContent =
+        truck.capacity || "—";
+
+    document.getElementById("truckRating").textContent =
+        truck.rating || "—";
+
+    document.getElementById("truckTrips").textContent =
+        truck.trips || "—";
+
+    document.getElementById("vehicleType").textContent =
+        truck.type || "—";
+
+    document.getElementById("bodyType").textContent =
+        truck.body || "—";
+
+    document.getElementById("capacityDetail").textContent =
+        truck.capacity || "—";
+
+    document.getElementById("vehicleModel").textContent =
+        truck.model || "—";
+
+    document.getElementById("vehicleAge").textContent =
+        truck.age || "—";
+
+    document.getElementById("gpsStatus").textContent =
+        truck.gps || "Not Available";
+
+    document.getElementById("insuranceStatus").textContent =
+        truck.insurance || "Not Available";
+
+    document.getElementById("driverName").textContent =
+        truck.driver || "Verified Driver";
+
+    document.getElementById("experience").textContent =
+        truck.experience || "—";
+
+    document.getElementById("completedTrips").textContent =
+        truck.completedTrips || "—";
+
+    document.getElementById("currentLocation").textContent =
+        truck.location || "Location unavailable";
+
+    document.getElementById("availableLocation").textContent =
+        truck.availableFrom || "—";
+
+    document.getElementById("driverRating").textContent =
+        "⭐ " +
+        (truck.rating || "—") +
+        " / 5";
+
+    document.getElementById("performanceRating").textContent =
+        truck.rating || "—";
+
+
+    /* Freight */
+
+    if(truck.freight){
+
+        const freight =
+            Number(truck.freight);
+
+        if(!isNaN(freight)){
+
+            document.getElementById(
+                "estimatedFreight"
+            ).textContent =
+                "₹" +
+                freight.toLocaleString("en-IN");
+
+        }else{
+
+            document.getElementById(
+                "estimatedFreight"
+            ).textContent =
+                truck.freight;
+
+        }
+
+    }else{
+
+        document.getElementById(
+            "estimatedFreight"
+        ).textContent =
+            "Negotiable";
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD SEARCH REQUEST
+========================================= */
+
+function loadTripRequest(){
+
+    const saved =
+        localStorage.getItem(
+            "truckSearchRequest"
+        );
+
+    if(!saved){
+        return;
+    }
+
+    try{
+
+        const request =
+            JSON.parse(saved);
+
+        document.getElementById(
+            "requestPickup"
+        ).textContent =
+            request.pickupLocation || "—";
+
+        document.getElementById(
+            "requestDestination"
+        ).textContent =
+            request.destination || "—";
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Search request unavailable"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   REQUEST TRUCK
+========================================= */
+
+function requestTruck(){
+
+    const truck =
+        getTruckData();
+
+    let searchRequest = null;
+
+    const savedRequest =
+        localStorage.getItem(
+            "truckSearchRequest"
+        );
+
+    if(savedRequest){
+
+        try{
+
+            searchRequest =
+                JSON.parse(savedRequest);
+
+        }
+
+        catch(error){
+
+            searchRequest = null;
+
+        }
+
+    }
+
+
+    const request = {
+
+        requestId:
+            "REQ-" +
+            Date.now(),
+
+        status:
+            "Pending",
+
+        truck:
+            truck,
+
+        searchRequest:
+            searchRequest,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "truckBookingRequest",
+        JSON.stringify(request)
+    );
+
+
+    window.location.href =
+        "truck-request.html";
+
+}
+
+
+/* =========================================
+   CALL TRANSPORTER
+========================================= */
+
+function callTransporter(){
+
+    alert(
+        "📞 Transporter calling feature backend और verified phone number connect होने के बाद active होगा।"
+    );
+
+}
+
+
+/* =========================================
+   CHAT
+========================================= */
+
+function openChat(){
+
+    localStorage.setItem(
+        "chatContext",
+        "truck-details"
+    );
+
+
+    window.location.href =
+        "transport-chat.html";
+
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+function goBack(){
+
+    window.history.back();
+
+}
+
+
+/* =========================================
+   PAGE START
+========================================= */
+
+/* =========================================
+   PAGE START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        displayTruck();
+
+        loadTripRequest();
+
+    }
+);
+
+
+/* =========================================
+   PAGE VISIBILITY CHECK
+========================================= */
+
+function checkPageReady(){
+
+    const truck =
+        getTruckData();
+
+    if(!truck){
+
+        console.log(
+            "Truck data not available"
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+/* =========================================
+   UPDATE DISTANCE / TIME
+========================================= */
+
+function updateTripEstimate(
+    distance,
+    time
+){
+
+    const distanceElement =
+        document.getElementById(
+            "estimatedDistance"
+        );
+
+    const timeElement =
+        document.getElementById(
+            "estimatedTime"
+        );
+
+
+    if(distanceElement){
+
+        distanceElement.textContent =
+            distance || "—";
+
+    }
+
+
+    if(timeElement){
+
+        timeElement.textContent =
+            time || "—";
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE CURRENT TRUCK
+========================================= */
+
+function saveTruck(){
+
+    const truck =
+        getTruckData();
+
+
+    localStorage.setItem(
+        "savedTruck",
+        JSON.stringify(
+            truck
+        )
+    );
+
+
+    alert(
+        "✓ Truck saved successfully"
+    );
+
+}
+
+
+/* =========================================
+   REQUEST STATUS
+========================================= */
+
+function getBookingStatus(){
+
+    const saved =
+        localStorage.getItem(
+            "truckBookingRequest"
+        );
+
+
+    if(!saved){
+
+        return null;
+
+    }
+
+
+    try{
+
+        return JSON.parse(
+            saved
+        );
+
+    }
+
+    catch(error){
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================
+   CHECK EXISTING REQUEST
+========================================= */
+
+function checkExistingRequest(){
+
+    const request =
+        getBookingStatus();
+
+
+    if(!request){
+
+        return;
+
+    }
+
+
+    const button =
+        document.querySelector(
+            ".primaryBtn"
+        );
+
+
+    if(button){
+
+        if(request.status === "Pending"){
+
+            button.textContent =
+                "✓ Request Sent";
+
+            button.disabled =
+                true;
+
+            button.style.opacity =
+                "0.65";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   REQUEST TRUCK
+========================================= */
+
+function requestTruck(){
+
+    const truck =
+        getTruckData();
+
+
+    if(!truck){
+
+        alert(
+            "Truck information उपलब्ध नहीं है।"
+        );
+
+        return;
+
+    }
+
+
+    let searchRequest =
+        null;
+
+
+    const savedRequest =
+        localStorage.getItem(
+            "truckSearchRequest"
+        );
+
+
+    if(savedRequest){
+
+        try{
+
+            searchRequest =
+                JSON.parse(
+                    savedRequest
+                );
+
+        }
+
+        catch(error){
+
+            searchRequest =
+                null;
+
+        }
+
+    }
+
+
+    const request = {
+
+        requestId:
+            "REQ-" +
+            Date.now(),
+
+        status:
+            "Pending",
+
+        truck:
+            truck,
+
+        searchRequest:
+            searchRequest,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "truckBookingRequest",
+        JSON.stringify(
+            request
+        )
+    );
+
+
+    /*
+       Next booking page
+    */
+
+    window.location.href =
+        "truck-request.html";
+
+}
+
+
+/* =========================================
+   CALL TRANSPORTER
+========================================= */
+
+function callTransporter(){
+
+    const truck =
+        getTruckData();
+
+
+    /*
+       Real phone number backend
+       से आने पर यहां tel: लगाया जाएगा।
+    */
+
+    if(
+        truck.phone &&
+        truck.phone.trim() !== ""
+    ){
+
+        window.location.href =
+            "tel:" +
+            truck.phone;
+
+        return;
+
+    }
+
+
+    alert(
+        "📞 Verified transporter phone number अभी उपलब्ध नहीं है।"
+    );
+
+}
+
+
+/* =========================================
+   OPEN CHAT
+========================================= */
+
+function openChat(){
+
+    const truck =
+        getTruckData();
+
+
+    localStorage.setItem(
+        "chatContext",
+        JSON.stringify({
+
+            page:
+                "truck-details",
+
+            truck:
+                truck
+
+        })
+    );
+
+
+    window.location.href =
+        "transport-chat.html";
+
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+function goBack(){
+
+    if(
+        window.history.length >
+        1
+    ){
+
+        window.history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "find-truck.html";
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE TRUCK BUTTON
+========================================= */
+
+function saveCurrentTruck(){
+
+    saveTruck();
+
+}
+
+
+/* =========================================
+   PAGE INITIALIZATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        displayTruck();
+
+        loadTripRequest();
+
+        checkPageReady();
+
+        checkExistingRequest();
+
+    }
+);
+
+
+/* =========================================
+   PREVENT DOUBLE CLICK
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const button =
+            event.target.closest(
+                ".primaryBtn"
+            );
+
+
+        if(!button){
+
+            return;
+
+        }
+
+
+        if(button.dataset.processing === "true"){
+
+            event.preventDefault();
+
+            return;
+
+        }
+
+
+        button.dataset.processing =
+            "true";
+
+    }
+);
+
+
+/* =========================================
+   END OF TRUCK DETAILS PAGE
+========================================= */
+
+</script>
+
+
+</body>
+
+</html>

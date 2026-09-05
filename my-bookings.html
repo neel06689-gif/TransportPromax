@@ -1,0 +1,3853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>My Bookings | Transport</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:#f4f7fb;
+    color:#111827;
+    min-height:100vh;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+
+    background:#07111f;
+
+    color:white;
+
+    padding:16px 14px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+
+.header-row{
+
+    max-width:900px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.back-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#172335;
+
+    color:white;
+
+    font-size:21px;
+
+}
+
+
+.header-title{
+
+    flex:1;
+
+}
+
+
+.header-title h1{
+
+    font-size:19px;
+
+    margin-bottom:4px;
+
+}
+
+
+.header-title p{
+
+    color:#aeb9c8;
+
+    font-size:10px;
+
+}
+
+
+.refresh-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#172335;
+
+    color:white;
+
+    font-size:22px;
+
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:16px 12px 40px;
+
+}
+
+
+/* =========================================
+   SUMMARY CARDS
+========================================= */
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:14px;
+
+}
+
+
+.summary-card{
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:14px;
+
+    padding:13px 5px;
+
+    text-align:center;
+
+    box-shadow:
+        0 2px 8px
+        rgba(0,0,0,.04);
+
+}
+
+
+.summary-icon{
+
+    font-size:18px;
+
+    margin-bottom:5px;
+
+}
+
+
+.summary-number{
+
+    font-size:17px;
+
+    font-weight:800;
+
+}
+
+
+.summary-label{
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:9px;
+
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.section{
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:15px;
+
+    padding:14px;
+
+    margin-bottom:14px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(0,0,0,.03);
+
+}
+
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    font-size:14px;
+
+    font-weight:800;
+
+    margin-bottom:11px;
+
+}
+
+
+/* =========================================
+   FILTER BUTTONS
+========================================= */
+
+.filters{
+
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-bottom:2px;
+
+}
+
+
+.filters::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+.filterBtn{
+
+    flex-shrink:0;
+
+    border:1px solid #d0d5dd;
+
+    background:white;
+
+    color:#344054;
+
+    border-radius:20px;
+
+    padding:8px 14px;
+
+    font-size:10px;
+
+    transition:.2s;
+
+}
+
+
+.filterBtn:active{
+
+    transform:scale(.96);
+
+}
+
+
+.filterBtn.active{
+
+    background:#2563eb;
+
+    border-color:#2563eb;
+
+    color:white;
+
+}
+
+
+/* =========================================
+   BOOKING LIST
+========================================= */
+
+#bookingList{
+
+    display:grid;
+
+    gap:12px;
+
+}
+
+
+/* =========================================
+   BOOKING CARD
+========================================= */
+
+.booking-card{
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:15px;
+
+    padding:14px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.04);
+
+}
+
+
+.booking-top{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:8px;
+
+    margin-bottom:12px;
+
+}
+
+
+.booking-id{
+
+    color:#667085;
+
+    font-size:8px;
+
+}
+
+
+.booking-id strong{
+
+    display:block;
+
+    color:#111827;
+
+    margin-top:3px;
+
+    font-size:11px;
+
+}
+
+
+.status{
+
+    padding:6px 9px;
+
+    border-radius:20px;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================
+   ROUTE
+========================================= */
+
+.route-box{
+
+    background:#f8fafc;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+}
+
+
+.route-row{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:9px;
+
+}
+
+
+.route-icon{
+
+    width:26px;
+
+    height:26px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+
+.route-text{
+
+    min-width:0;
+
+}
+
+
+.route-text small{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-bottom:3px;
+
+}
+
+
+.route-text strong{
+
+    display:block;
+
+    font-size:10px;
+
+    word-break:break-word;
+
+}
+
+
+.route-line{
+
+    height:15px;
+
+    border-left:
+        2px dashed
+        #cbd5e1;
+
+    margin-left:12px;
+
+}
+
+
+/* =========================================
+   DETAILS GRID
+========================================= */
+
+.details-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:8px;
+
+    margin-bottom:12px;
+
+}
+
+
+.detail{
+
+    background:#f8fafc;
+
+    border-radius:10px;
+
+    padding:9px;
+
+}
+
+
+.detail small{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-bottom:4px;
+
+}
+
+
+.detail strong{
+
+    display:block;
+
+    font-size:9px;
+
+    word-break:break-word;
+
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.booking-actions{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:8px;
+
+}
+
+
+.action-btn{
+
+    min-height:42px;
+
+    border-radius:10px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+
+.view-btn{
+
+    border:
+        1px solid
+        #2563eb;
+
+    background:white;
+
+    color:#2563eb;
+
+}
+
+
+.track-btn{
+
+    border:none;
+
+    background:#07111f;
+
+    color:white;
+
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty{
+
+    background:white;
+
+    border:
+        1px dashed
+        #cbd5e1;
+
+    border-radius:15px;
+
+    padding:35px 18px;
+
+    text-align:center;
+
+}
+
+
+.empty-icon{
+
+    font-size:36px;
+
+    margin-bottom:10px;
+
+}
+
+
+.empty h3{
+
+    font-size:14px;
+
+    margin-bottom:6px;
+
+}
+
+
+.empty p{
+
+    color:#667085;
+
+    font-size:10px;
+
+    line-height:1.5;
+
+}
+
+
+@media(max-width:420px){
+
+    .summary-card{
+
+        padding:11px 3px;
+
+    }
+
+    .summary-number{
+
+        font-size:15px;
+
+    }
+
+    .summary-label{
+
+        font-size:8px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+    <div class="header-row">
+
+        <button
+            type="button"
+            class="back-btn"
+            onclick="goBack()"
+        >
+            ←
+        </button>
+
+
+        <div class="header-title">
+
+            <h1>
+                My Bookings
+            </h1>
+
+            <p>
+                Manage your transport bookings
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="refresh-btn"
+            onclick="loadBookings()"
+        >
+            ↻
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="container">
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary">
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📋
+            </div>
+
+            <div
+                id="totalBookings"
+                class="summary-number"
+            >
+                0
+            </div>
+
+            <div class="summary-label">
+                Total
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                ⏳
+            </div>
+
+            <div
+                id="pendingBookings"
+                class="summary-number"
+            >
+                0
+            </div>
+
+            <div class="summary-label">
+                Pending
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                🚚
+            </div>
+
+            <div
+                id="activeBookings"
+                class="summary-number"
+            >
+                0
+            </div>
+
+            <div class="summary-label">
+                Active
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                ✓
+            </div>
+
+            <div
+                id="completedBookings"
+                class="summary-number"
+            >
+                0
+            </div>
+
+            <div class="summary-label">
+                Completed
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         BOOKING REQUESTS
+    ====================================== -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            📦
+
+            <span>
+                Booking Requests
+            </span>
+
+        </div>
+
+
+        <div class="filters">
+
+
+            <button
+                type="button"
+                class="filterBtn active"
+                data-filter="all"
+                onclick="filterBookings('all')"
+            >
+                All
+            </button>
+
+
+            <button
+                type="button"
+                class="filterBtn"
+                data-filter="pending"
+                onclick="filterBookings('pending')"
+            >
+                Pending
+            </button>
+
+
+            <button
+                type="button"
+                class="filterBtn"
+                data-filter="accepted"
+                onclick="filterBookings('accepted')"
+            >
+                Accepted
+            </button>
+
+
+            <button
+                type="button"
+                class="filterBtn"
+                data-filter="in transit"
+                onclick="filterBookings('in transit')"
+            >
+                In Transit
+            </button>
+
+
+            <button
+                type="button"
+                class="filterBtn"
+                data-filter="delivered"
+                onclick="filterBookings('delivered')"
+            >
+                Delivered
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         BOOKING LIST
+    ====================================== -->
+
+    <div id="bookingList"></div>
+
+
+    <!-- =====================================
+         EMPTY STATE
+    ====================================== -->
+
+    <div
+        id="emptyState"
+        class="empty"
+    >
+
+        <div class="empty-icon">
+            📦
+        </div>
+
+        <h3>
+            No bookings found
+        </h3>
+
+        <p>
+            जब आप truck booking करेंगे,
+            आपकी booking यहाँ दिखाई देगी।
+        </p>
+
+    </div>
+
+
+</main>
+<!-- =========================================
+     BOOKING DETAILS MODAL
+========================================= -->
+
+<div
+    id="bookingModal"
+    class="modal"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.68);
+        z-index:1000;
+        align-items:flex-end;
+        justify-content:center;
+    "
+>
+
+    <div
+        class="modal-box"
+        style="
+            width:100%;
+            max-width:600px;
+            max-height:90vh;
+            overflow-y:auto;
+            background:white;
+            border-radius:20px 20px 0 0;
+            padding:17px 14px 25px;
+        "
+    >
+
+        <div
+            style="
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                margin-bottom:15px;
+            "
+        >
+
+            <h2 style="font-size:16px;">
+                📋 Booking Details
+            </h2>
+
+            <button
+                type="button"
+                onclick="closeBookingModal()"
+                style="
+                    width:36px;
+                    height:36px;
+                    border:0;
+                    border-radius:10px;
+                    background:#f2f4f7;
+                    font-size:22px;
+                "
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="modalContent"
+            style="
+                display:grid;
+                gap:9px;
+            "
+        >
+        </div>
+
+
+        <button
+            type="button"
+            onclick="closeBookingModal()"
+            style="
+                width:100%;
+                min-height:43px;
+                margin-top:12px;
+                border:0;
+                border-radius:10px;
+                background:#07111f;
+                color:white;
+                font-weight:700;
+                font-size:11px;
+            "
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     TRACKING MODAL
+========================================= -->
+
+<div
+    id="trackingModal"
+    class="modal"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.68);
+        z-index:1001;
+        align-items:flex-end;
+        justify-content:center;
+    "
+>
+
+    <div
+        style="
+            width:100%;
+            max-width:600px;
+            max-height:90vh;
+            overflow-y:auto;
+            background:white;
+            border-radius:20px 20px 0 0;
+            padding:17px 14px 25px;
+        "
+    >
+
+        <div
+            style="
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                margin-bottom:15px;
+            "
+        >
+
+            <h2 style="font-size:16px;">
+                🚚 Track Trip
+            </h2>
+
+
+            <button
+                type="button"
+                onclick="closeTrackingModal()"
+                style="
+                    width:36px;
+                    height:36px;
+                    border:0;
+                    border-radius:10px;
+                    background:#f2f4f7;
+                    font-size:22px;
+                "
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="trackingContent">
+        </div>
+
+
+        <button
+            type="button"
+            onclick="closeTrackingModal()"
+            style="
+                width:100%;
+                min-height:43px;
+                margin-top:14px;
+                border:0;
+                border-radius:10px;
+                background:#07111f;
+                color:white;
+                font-weight:700;
+                font-size:11px;
+            "
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT START
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+let allBookings = [];
+
+let currentFilter = "all";
+
+
+/* =========================================
+   SAFE HTML
+========================================= */
+
+function escapeHTML(value){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        String(value ?? "");
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   GET NESTED VALUE
+========================================= */
+
+function getValue(
+    object,
+    paths,
+    fallback
+){
+
+    for(
+        let i = 0;
+        i < paths.length;
+        i++
+    ){
+
+        const parts =
+            paths[i].split(".");
+
+        let value =
+            object;
+
+
+        for(
+            let j = 0;
+            j < parts.length;
+            j++
+        ){
+
+            if(
+                value === null ||
+                value === undefined
+            ){
+
+                value = undefined;
+
+                break;
+
+            }
+
+
+            value =
+                value[parts[j]];
+
+        }
+
+
+        if(
+            value !== undefined &&
+            value !== null &&
+            value !== ""
+        ){
+
+            return value;
+
+        }
+
+    }
+
+
+    return fallback;
+
+}
+
+
+/* =========================================
+   NORMALIZE STATUS
+========================================= */
+
+function normalizeStatus(status){
+
+    const value =
+        String(status)
+        .trim()
+        .toLowerCase();
+
+
+    if(
+        value === "accepted" ||
+        value === "accept"
+    ){
+
+        return "Accepted";
+
+    }
+
+
+    if(
+        value === "in transit" ||
+        value === "in-transit" ||
+        value === "transit" ||
+        value === "ongoing"
+    ){
+
+        return "In Transit";
+
+    }
+
+
+    if(
+        value === "delivered" ||
+        value === "complete" ||
+        value === "completed"
+    ){
+
+        return "Delivered";
+
+    }
+
+
+    if(
+        value === "cancelled" ||
+        value === "canceled"
+    ){
+
+        return "Cancelled";
+
+    }
+
+
+    return "Pending";
+
+}
+
+
+/* =========================================
+   NORMALIZE BOOKING
+========================================= */
+
+function normalizeBooking(raw){
+
+    const booking =
+        raw || {};
+
+
+    return {
+
+        raw: booking,
+
+
+        requestId:
+            getValue(
+                booking,
+                [
+                    "requestId",
+                    "requestID",
+                    "bookingId",
+                    "bookingID",
+                    "booking_id",
+                    "id"
+                ],
+                "BOOKING-" +
+                Date.now()
+            ),
+
+
+        status:
+            normalizeStatus(
+                getValue(
+                    booking,
+                    [
+                        "status",
+                        "bookingStatus",
+                        "booking_status"
+                    ],
+                    "Pending"
+                )
+            ),
+
+
+        truckName:
+            getValue(
+                booking,
+                [
+                    "truck.name",
+                    "truckName",
+                    "vehicle.name",
+                    "vehicleName",
+                    "truckType"
+                ],
+                "Transport Truck"
+            ),
+
+
+        truckNumber:
+            getValue(
+                booking,
+                [
+                    "truck.number",
+                    "truckNumber",
+                    "vehicle.number",
+                    "vehicleNumber",
+                    "registrationNumber"
+                ],
+                "—"
+            ),
+
+
+        pickup:
+            getValue(
+                booking,
+                [
+                    "route.pickup",
+                    "pickup",
+                    "pickupLocation",
+                    "pickup_location",
+                    "from",
+                    "source"
+                ],
+                "—"
+            ),
+
+
+        destination:
+            getValue(
+                booking,
+                [
+                    "route.destination",
+                    "destination",
+                    "dropLocation",
+                    "drop_location",
+                    "to",
+                    "drop"
+                ],
+                "—"
+            ),
+
+
+        goodsType:
+            getValue(
+                booking,
+                [
+                    "goods.type",
+                    "goodsType",
+                    "goods_type",
+                    "goodsName",
+                    "goods"
+                ],
+                "—"
+            ),
+
+
+        weight:
+            getValue(
+                booking,
+                [
+                    "goods.weight",
+                    "weight",
+                    "loadWeight"
+                ],
+                "—"
+            ),
+
+
+        unit:
+            getValue(
+                booking,
+                [
+                    "goods.unit",
+                    "weightUnit",
+                    "unit"
+                ],
+                ""
+            ),
+
+
+        pickupDate:
+            getValue(
+                booking,
+                [
+                    "schedule.date",
+                    "pickupDate",
+                    "pickup_date",
+                    "date"
+                ],
+                "—"
+            ),
+
+
+        pickupTime:
+            getValue(
+                booking,
+                [
+                    "schedule.time",
+                    "pickupTime",
+                    "pickup_time",
+                    "time"
+                ],
+                "—"
+            ),
+
+
+        freight:
+            getValue(
+                booking,
+                [
+                    "freight",
+                    "price",
+                    "amount",
+                    "fare",
+                    "totalAmount"
+                ],
+                ""
+            ),
+
+
+        customerName:
+            getValue(
+                booking,
+                [
+                    "customer.name",
+                    "customerName",
+                    "name"
+                ],
+                "—"
+            ),
+
+
+        customerPhone:
+            getValue(
+                booking,
+                [
+                    "customer.phone",
+                    "customerPhone",
+                    "phone"
+                ],
+                "—"
+            )
+
+    };
+
+}
+
+
+/* =========================================
+   ADD BOOKING
+========================================= */
+
+function addBooking(raw){
+
+    if(
+        !raw ||
+        typeof raw !== "object"
+    ){
+
+        return;
+
+    }
+
+
+    const booking =
+        normalizeBooking(raw);
+
+
+    const exists =
+        allBookings.some(
+            function(item){
+
+                return String(
+                    item.requestId
+                ) === String(
+                    booking.requestId
+                );
+
+            }
+        );
+
+
+    if(!exists){
+
+        allBookings.push(
+            booking
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD BOOKINGS
+========================================= */
+
+function loadBookings(){
+
+    allBookings = [];
+
+
+    const storageKeys = [
+
+        "myBookings",
+
+        "truckBookingRequest",
+
+        "bookingData",
+
+        "currentBooking",
+
+        "bookings",
+
+        "transportBookings"
+
+    ];
+
+
+    storageKeys.forEach(
+        function(key){
+
+            const saved =
+                localStorage.getItem(key);
+
+
+            if(!saved){
+
+                return;
+
+            }
+
+
+            try{
+
+                const parsed =
+                    JSON.parse(saved);
+
+
+                if(
+                    Array.isArray(parsed)
+                ){
+
+                    parsed.forEach(
+                        function(item){
+
+                            addBooking(item);
+
+                        }
+                    );
+
+                }
+                else if(
+                    parsed &&
+                    typeof parsed === "object"
+                ){
+
+                    addBooking(parsed);
+
+                }
+
+            }
+            catch(error){
+
+                console.log(
+                    "Storage error:",
+                    key,
+                    error
+                );
+
+            }
+
+        }
+    );
+
+
+    updateSummary();
+
+    renderBookings();
+
+}
+
+
+/* =========================================
+   UPDATE SUMMARY
+========================================= */
+
+function updateSummary(){
+
+    const total =
+        allBookings.length;
+
+
+    const pending =
+        allBookings.filter(
+            function(item){
+
+                return (
+                    item.status ===
+                    "Pending"
+                );
+
+            }
+        ).length;
+
+
+    const active =
+        allBookings.filter(
+            function(item){
+
+                return (
+                    item.status ===
+                    "Accepted" ||
+
+                    item.status ===
+                    "In Transit"
+                );
+
+            }
+        ).length;
+
+
+    const completed =
+        allBookings.filter(
+            function(item){
+
+                return (
+                    item.status ===
+                    "Delivered"
+                );
+
+            }
+        ).length;
+
+
+    const totalElement =
+        document.getElementById(
+            "totalBookings"
+        );
+
+
+    const pendingElement =
+        document.getElementById(
+            "pendingBookings"
+        );
+
+
+    const activeElement =
+        document.getElementById(
+            "activeBookings"
+        );
+
+
+    const completedElement =
+        document.getElementById(
+            "completedBookings"
+        );
+
+
+    if(totalElement){
+
+        totalElement.textContent =
+            total;
+
+    }
+
+
+    if(pendingElement){
+
+        pendingElement.textContent =
+            pending;
+
+    }
+
+
+    if(activeElement){
+
+        activeElement.textContent =
+            active;
+
+    }
+
+
+    if(completedElement){
+
+        completedElement.textContent =
+            completed;
+
+    }
+
+}
+
+
+/* =========================================
+   FILTER BOOKINGS
+========================================= */
+
+function filterBookings(filter){
+
+    currentFilter =
+        filter;
+
+
+    document
+    .querySelectorAll(
+        ".filterBtn"
+    )
+    .forEach(
+        function(button){
+
+            button.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    const selected =
+        document.querySelector(
+            '[data-filter="' +
+            filter +
+            '"]'
+        );
+
+
+    if(selected){
+
+        selected.classList.add(
+            "active"
+        );
+
+    }
+
+
+    renderBookings();
+
+}
+
+
+/* =========================================
+   RENDER BOOKINGS
+========================================= */
+
+function renderBookings(){
+
+    const list =
+        document.getElementById(
+            "bookingList"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "emptyState"
+        );
+
+
+    if(!list){
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    let filtered =
+        allBookings;
+
+
+    if(
+        currentFilter !== "all"
+    ){
+
+        filtered =
+            allBookings.filter(
+                function(booking){
+
+                    return (
+                        booking.status
+                        .toLowerCase()
+                        ===
+                        currentFilter
+                        .toLowerCase()
+                    );
+
+                }
+            );
+
+    }
+
+
+    if(
+        filtered.length === 0
+    ){
+
+        if(empty){
+
+            empty.style.display =
+                "block";
+
+        }
+
+        return;
+
+    }
+
+
+    if(empty){
+
+        empty.style.display =
+            "none";
+
+    }
+
+
+    filtered.forEach(
+        function(booking){
+
+            list.appendChild(
+                createBookingCard(
+                    booking
+                )
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   CREATE BOOKING CARD
+========================================= */
+
+/* =========================================
+   CREATE BOOKING CARD
+========================================= */
+
+function createBookingCard(booking){
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "booking-card";
+
+
+    const freight =
+        booking.freight
+        ? "₹" +
+          Number(
+              booking.freight
+          ).toLocaleString("en-IN")
+        : "Negotiable";
+
+
+    card.innerHTML = `
+
+        <div class="booking-top">
+
+            <div class="booking-id">
+
+                REQUEST ID
+
+                <strong>
+                    ${escapeHTML(
+                        booking.requestId
+                    )}
+                </strong>
+
+            </div>
+
+
+            <span
+                class="status"
+                style="
+                    background:
+                    ${statusBackground(
+                        booking.status
+                    )};
+
+                    color:
+                    ${statusColor(
+                        booking.status
+                    )};
+                "
+            >
+
+                ${escapeHTML(
+                    booking.status
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- ROUTE -->
+
+        <div class="route-box">
+
+            <div class="route-row">
+
+                <div class="route-icon">
+                    A
+                </div>
+
+                <div class="route-text">
+
+                    <small>
+                        PICKUP
+                    </small>
+
+                    <strong>
+                        ${escapeHTML(
+                            booking.pickup
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="route-line">
+            </div>
+
+
+            <div class="route-row">
+
+                <div class="route-icon">
+                    B
+                </div>
+
+                <div class="route-text">
+
+                    <small>
+                        DESTINATION
+                    </small>
+
+                    <strong>
+                        ${escapeHTML(
+                            booking.destination
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DETAILS -->
+
+        <div class="details-grid">
+
+
+            <div class="detail">
+
+                <small>
+                    GOODS TYPE
+                </small>
+
+                <strong>
+                    ${escapeHTML(
+                        booking.goodsType
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>
+                    WEIGHT
+                </small>
+
+                <strong>
+
+                    ${escapeHTML(
+                        booking.weight
+                    )}
+
+                    ${escapeHTML(
+                        booking.unit
+                    )}
+
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>
+                    PICKUP DATE
+                </small>
+
+                <strong>
+                    ${escapeHTML(
+                        formatDate(
+                            booking.pickupDate
+                        )
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>
+                    FREIGHT
+                </small>
+
+                <strong>
+                    ${escapeHTML(
+                        freight
+                    )}
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="booking-actions">
+
+
+            <button
+                type="button"
+                class="action-btn view-btn"
+            >
+
+                👁 View Details
+
+            </button>
+
+
+            <button
+                type="button"
+                class="action-btn track-btn"
+            >
+
+                🚚 Track Trip
+
+            </button>
+
+
+        </div>
+
+    `;
+
+
+    /* VIEW DETAILS */
+
+    const viewButton =
+        card.querySelector(
+            ".view-btn"
+        );
+
+
+    viewButton.addEventListener(
+        "click",
+        function(){
+
+            showBookingDetails(
+                booking
+            );
+
+        }
+    );
+
+
+    /* TRACK TRIP */
+
+    const trackButton =
+        card.querySelector(
+            ".track-btn"
+        );
+
+
+    trackButton.addEventListener(
+        "click",
+        function(){
+
+            showTracking(
+                booking
+            );
+
+        }
+    );
+
+
+    return card;
+
+}
+
+
+
+/* =========================================
+   STATUS BACKGROUND
+========================================= */
+
+function statusBackground(status){
+
+    switch(status){
+
+        case "Accepted":
+
+            return "#ecfdf3";
+
+
+        case "In Transit":
+
+            return "#eff6ff";
+
+
+        case "Delivered":
+
+            return "#ecfdf3";
+
+
+        case "Cancelled":
+
+            return "#fef3f2";
+
+
+        default:
+
+            return "#fff7ed";
+
+    }
+
+}
+
+
+
+/* =========================================
+   STATUS COLOR
+========================================= */
+
+function statusColor(status){
+
+    switch(status){
+
+        case "Accepted":
+
+            return "#067647";
+
+
+        case "In Transit":
+
+            return "#175cd3";
+
+
+        case "Delivered":
+
+            return "#067647";
+
+
+        case "Cancelled":
+
+            return "#b42318";
+
+
+        default:
+
+            return "#c2410c";
+
+    }
+
+}
+
+
+
+/* =========================================
+   BOOKING DETAILS
+========================================= */
+
+function showBookingDetails(
+    booking
+){
+
+    const modal =
+        document.getElementById(
+            "bookingModal"
+        );
+
+
+    const content =
+        document.getElementById(
+            "modalContent"
+        );
+
+
+    if(!modal || !content){
+
+        return;
+
+    }
+
+
+    const freight =
+        booking.freight
+        ? "₹" +
+          Number(
+              booking.freight
+          ).toLocaleString(
+              "en-IN"
+          )
+        : "Negotiable";
+
+
+    content.innerHTML = `
+
+
+        <div class="modal-detail">
+
+            <small>
+                REQUEST ID
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.requestId
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                BOOKING STATUS
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.status
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                TRUCK
+            </small>
+
+            <strong>
+
+                ${escapeHTML(
+                    booking.truckName
+                )}
+
+                <br>
+
+                ${escapeHTML(
+                    booking.truckNumber
+                )}
+
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                PICKUP LOCATION
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.pickup
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                DESTINATION
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.destination
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                GOODS TYPE
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.goodsType
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                WEIGHT
+            </small>
+
+            <strong>
+
+                ${escapeHTML(
+                    booking.weight
+                )}
+
+                ${escapeHTML(
+                    booking.unit
+                )}
+
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                PICKUP DATE
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    formatDate(
+                        booking.pickupDate
+                    )
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                PICKUP TIME
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.pickupTime
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                FREIGHT
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    freight
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                CUSTOMER NAME
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.customerName
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-detail">
+
+            <small>
+                CUSTOMER PHONE
+            </small>
+
+            <strong>
+                ${escapeHTML(
+                    booking.customerPhone
+                )}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-status">
+
+            Current Status:
+
+            <strong>
+                ${escapeHTML(
+                    booking.status
+                )}
+            </strong>
+
+        </div>
+
+    `;
+
+
+    modal.style.display =
+        "flex";
+
+}
+
+
+
+/* =========================================
+   CLOSE BOOKING DETAILS
+========================================= */
+
+function closeBookingModal(){
+
+    const modal =
+        document.getElementById(
+            "bookingModal"
+        );
+
+
+    if(modal){
+
+        modal.style.display =
+            "none";
+
+    }
+
+}
+
+
+
+/* =========================================
+   TRACKING
+========================================= */
+
+function showTracking(
+    booking
+){
+
+    const modal =
+        document.getElementById(
+            "trackingModal"
+        );
+
+
+    const content =
+        document.getElementById(
+            "trackingContent"
+        );
+
+
+    if(!modal || !content){
+
+        return;
+
+    }
+
+
+    const steps = [
+
+        "Request Sent",
+
+        "Transporter Accepted",
+
+        "Truck In Transit",
+
+        "Delivered"
+
+    ];
+
+
+    const positions = {
+
+        "Pending":0,
+
+        "Accepted":1,
+
+        "In Transit":2,
+
+        "Delivered":3
+
+    };
+
+
+    const activeIndex =
+        positions[
+            booking.status
+        ] ?? 0;
+
+
+    let html = `
+
+        <div class="tracking-id">
+
+            Request ID:
+
+            <strong>
+                ${escapeHTML(
+                    booking.requestId
+                )}
+            </strong>
+
+            <br><br>
+
+            Current Status:
+
+            <strong>
+                ${escapeHTML(
+                    booking.status
+                )}
+            </strong>
+
+        </div>
+
+    `;
+
+
+    steps.forEach(
+        function(step,index){
+
+            const completed =
+                index <= activeIndex;
+
+
+            html += `
+
+                <div class="track-step">
+
+
+                    <div class="
+                        track-circle
+                        ${
+                            completed
+                            ? "done"
+                            : "waiting"
+                        }
+                    ">
+
+                        ${
+                            completed
+                            ? "✓"
+                            : index + 1
+                        }
+
+                    </div>
+
+
+                    <div class="track-info">
+
+                        <strong>
+                            ${step}
+                        </strong>
+
+                        <span>
+
+                            ${
+                                completed
+                                ? (
+                                    index === activeIndex
+                                    ? "Current status"
+                                    : "Completed"
+                                )
+                                : "Waiting"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                ${
+                    index <
+                    steps.length - 1
+
+                    ? `
+
+                        <div class="
+                            track-connector
+                            ${
+                                index <
+                                activeIndex
+                                ? "done"
+                                : "waiting"
+                            }
+                        ">
+                        </div>
+
+                    `
+
+                    : ""
+                }
+
+            `;
+
+        }
+    );
+
+
+    html += `
+
+        <div class="gps-note">
+
+            📍
+
+            <strong>
+                Live GPS Tracking
+            </strong>
+
+            <br>
+
+            Real-time truck location
+            backend और GPS connection
+            के बाद यहाँ दिखाई जाएगी।
+
+        </div>
+
+    `;
+
+
+    content.innerHTML =
+        html;
+
+
+    modal.style.display =
+        "flex";
+
+}
+
+
+
+/* =========================================
+   CLOSE TRACKING
+========================================= */
+
+function closeTrackingModal(){
+
+    const modal =
+        document.getElementById(
+            "trackingModal"
+        );
+
+
+    if(modal){
+
+        modal.style.display =
+            "none";
+
+    }
+
+}
+
+
+
+/* =========================================
+   FORMAT DATE
+========================================= */
+
+function formatDate(value){
+
+    if(
+        !value ||
+        value === "—"
+    ){
+
+        return "—";
+
+    }
+
+
+    const date =
+        new Date(
+            String(value)
+            .includes("T")
+            ? value
+            : value + "T00:00:00"
+        );
+
+
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+
+        return String(value);
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+function goBack(){
+
+    if(
+        window.history.length > 1
+    ){
+
+        window.history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "index.html";
+
+    }
+
+}
+
+
+
+/* =========================================
+   OUTSIDE MODAL CLICK
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const bookingModal =
+            document.getElementById(
+                "bookingModal"
+            );
+
+
+        const trackingModal =
+            document.getElementById(
+                "trackingModal"
+            );
+
+
+        if(
+            event.target ===
+            bookingModal
+        ){
+
+            closeBookingModal();
+
+        }
+
+
+        if(
+            event.target ===
+            trackingModal
+        ){
+
+            closeTrackingModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   ESC KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key ===
+            "Escape"
+        ){
+
+            closeBookingModal();
+
+            closeTrackingModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   STORAGE CHANGE
+========================================= */
+
+window.addEventListener(
+    "storage",
+    function(){
+
+        loadBookings();
+
+    }
+);
+
+
+
+/* =========================================
+   PAGE START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadBookings();
+
+    }
+);
+
+
+
+/* =========================================
+   AUTO REFRESH
+========================================= */
+
+setInterval(
+    function(){
+
+        loadBookings();
+
+    },
+    10000
+);
+
+
+
+/* =========================================
+   END SCRIPT
+========================================= */
+
+
+
+
+
+
+
+/* =========================================
+   BOOKING CARD ACTIONS
+========================================= */
+
+function openBookingDetails(booking){
+
+    showBookingDetails(booking);
+
+}
+
+
+function openTripTracking(booking){
+
+    showTracking(booking);
+
+}
+
+
+/* =========================================
+   UPDATE BOOKING STATUS
+========================================= */
+
+function updateBookingStatus(
+    requestId,
+    newStatus
+){
+
+    let changed = false;
+
+
+    const storageKeys = [
+
+        "myBookings",
+        "truckBookingRequest",
+        "bookingData",
+        "currentBooking",
+        "bookings",
+        "transportBookings"
+
+    ];
+
+
+    storageKeys.forEach(
+        function(key){
+
+            const saved =
+                localStorage.getItem(key);
+
+
+            if(!saved){
+
+                return;
+
+            }
+
+
+            try{
+
+                const data =
+                    JSON.parse(saved);
+
+
+                if(Array.isArray(data)){
+
+                    data.forEach(
+                        function(item){
+
+                            const id =
+                                getValue(
+                                    item,
+                                    [
+                                        "requestId",
+                                        "requestID",
+                                        "bookingId",
+                                        "bookingID",
+                                        "booking_id",
+                                        "id"
+                                    ],
+                                    ""
+                                );
+
+
+                            if(
+                                String(id) ===
+                                String(requestId)
+                            ){
+
+                                item.status =
+                                    newStatus;
+
+                                changed = true;
+
+                            }
+
+                        }
+                    );
+
+
+                    if(changed){
+
+                        localStorage.setItem(
+                            key,
+                            JSON.stringify(data)
+                        );
+
+                    }
+
+                }
+                else if(
+                    data &&
+                    typeof data === "object"
+                ){
+
+                    const id =
+                        getValue(
+                            data,
+                            [
+                                "requestId",
+                                "requestID",
+                                "bookingId",
+                                "bookingID",
+                                "booking_id",
+                                "id"
+                            ],
+                            ""
+                        );
+
+
+                    if(
+                        String(id) ===
+                        String(requestId)
+                    ){
+
+                        data.status =
+                            newStatus;
+
+                        localStorage.setItem(
+                            key,
+                            JSON.stringify(data)
+                        );
+
+                        changed = true;
+
+                    }
+
+                }
+
+            }
+            catch(error){
+
+                console.log(
+                    "Status update error:",
+                    error
+                );
+
+            }
+
+        }
+    );
+
+
+    if(changed){
+
+        loadBookings();
+
+    }
+
+}
+
+
+
+/* =========================================
+   SAVE BOOKING
+========================================= */
+
+function saveNewBooking(
+    booking
+){
+
+    if(
+        !booking ||
+        typeof booking !== "object"
+    ){
+
+        return false;
+
+    }
+
+
+    let bookings = [];
+
+
+    const saved =
+        localStorage.getItem(
+            "myBookings"
+        );
+
+
+    if(saved){
+
+        try{
+
+            const parsed =
+                JSON.parse(saved);
+
+
+            if(
+                Array.isArray(parsed)
+            ){
+
+                bookings =
+                    parsed;
+
+            }
+            else if(
+                parsed &&
+                typeof parsed === "object"
+            ){
+
+                bookings = [
+                    parsed
+                ];
+
+            }
+
+        }
+        catch(error){
+
+            bookings = [];
+
+        }
+
+    }
+
+
+    if(
+        !booking.requestId
+    ){
+
+        booking.requestId =
+            "BK-" +
+            Date.now();
+
+    }
+
+
+    if(
+        !booking.status
+    ){
+
+        booking.status =
+            "Pending";
+
+    }
+
+
+    bookings.push(
+        booking
+    );
+
+
+    try{
+
+        localStorage.setItem(
+            "myBookings",
+            JSON.stringify(
+                bookings
+            )
+        );
+
+
+        loadBookings();
+
+        return true;
+
+    }
+    catch(error){
+
+        console.log(
+            "Save booking error:",
+            error
+        );
+
+        return false;
+
+    }
+
+}
+
+
+
+/* =========================================
+   DELETE BOOKING
+========================================= */
+
+function deleteBooking(
+    requestId
+){
+
+    const confirmDelete =
+        confirm(
+            "क्या आप यह booking delete करना चाहते हैं?"
+        );
+
+
+    if(!confirmDelete){
+
+        return;
+
+    }
+
+
+    const saved =
+        localStorage.getItem(
+            "myBookings"
+        );
+
+
+    if(!saved){
+
+        return;
+
+    }
+
+
+    try{
+
+        let bookings =
+            JSON.parse(saved);
+
+
+        if(!Array.isArray(bookings)){
+
+            bookings = [
+                bookings
+            ];
+
+        }
+
+
+        bookings =
+            bookings.filter(
+                function(item){
+
+                    const id =
+                        getValue(
+                            item,
+                            [
+                                "requestId",
+                                "requestID",
+                                "bookingId",
+                                "bookingID",
+                                "booking_id",
+                                "id"
+                            ],
+                            ""
+                        );
+
+
+                    return String(id) !==
+                        String(requestId);
+
+                }
+            );
+
+
+        localStorage.setItem(
+            "myBookings",
+            JSON.stringify(
+                bookings
+            )
+        );
+
+
+        loadBookings();
+
+    }
+    catch(error){
+
+        console.log(
+            "Delete error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   SEARCH BOOKINGS
+========================================= */
+
+function searchBookings(
+    searchText
+){
+
+    const text =
+        String(
+            searchText || ""
+        )
+        .trim()
+        .toLowerCase();
+
+
+    const list =
+        document.getElementById(
+            "bookingList"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "emptyState"
+        );
+
+
+    if(!list){
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    let results =
+        allBookings;
+
+
+    if(text){
+
+        results =
+            allBookings.filter(
+                function(booking){
+
+                    const searchable = (
+
+                        booking.requestId +
+                        " " +
+                        booking.pickup +
+                        " " +
+                        booking.destination +
+                        " " +
+                        booking.goodsType +
+                        " " +
+                        booking.truckName +
+                        " " +
+                        booking.truckNumber +
+                        " " +
+                        booking.status
+
+                    ).toLowerCase();
+
+
+                    return searchable
+                        .includes(text);
+
+                }
+            );
+
+    }
+
+
+    if(
+        currentFilter !== "all"
+    ){
+
+        results =
+            results.filter(
+                function(booking){
+
+                    return (
+                        booking.status
+                        .toLowerCase()
+                        ===
+                        currentFilter
+                        .toLowerCase()
+                    );
+
+                }
+            );
+
+    }
+
+
+    if(
+        results.length === 0
+    ){
+
+        if(empty){
+
+            empty.style.display =
+                "block";
+
+        }
+
+        return;
+
+    }
+
+
+    if(empty){
+
+        empty.style.display =
+            "none";
+
+    }
+
+
+    results.forEach(
+        function(booking){
+
+            list.appendChild(
+                createBookingCard(
+                    booking
+                )
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   FORMAT CURRENCY
+========================================= */
+
+function formatCurrency(
+    amount
+){
+
+    if(
+        amount === "" ||
+        amount === null ||
+        amount === undefined
+    ){
+
+        return "Negotiable";
+
+    }
+
+
+    const number =
+        Number(amount);
+
+
+    if(
+        Number.isNaN(number)
+    ){
+
+        return String(amount);
+
+    }
+
+
+    return "₹" +
+        number.toLocaleString(
+            "en-IN"
+        );
+
+}
+
+
+
+/* =========================================
+   FORMAT DATE
+========================================= */
+
+function formatDate(
+    value
+){
+
+    if(
+        !value ||
+        value === "—"
+    ){
+
+        return "—";
+
+    }
+
+
+    const text =
+        String(value);
+
+
+    const date =
+        new Date(
+            text.includes("T")
+            ? text
+            : text + "T00:00:00"
+        );
+
+
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+
+        return text;
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(
+    value
+){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        String(
+            value ?? ""
+        );
+
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =========================================
+   MODAL BACKGROUND CLICK
+========================================= */
+
+const bookingModal =
+    document.getElementById(
+        "bookingModal"
+    );
+
+
+const trackingModal =
+    document.getElementById(
+        "trackingModal"
+    );
+
+
+if(bookingModal){
+
+    bookingModal.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target ===
+                bookingModal
+            ){
+
+                closeBookingModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+if(trackingModal){
+
+    trackingModal.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target ===
+                trackingModal
+            ){
+
+                closeTrackingModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   ESC KEY CLOSE
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key ===
+            "Escape"
+        ){
+
+            closeBookingModal();
+
+            closeTrackingModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================
+   BROWSER BACK BUTTON
+========================================= */
+
+window.addEventListener(
+    "popstate",
+    function(){
+
+        closeBookingModal();
+
+        closeTrackingModal();
+
+    }
+);
+
+
+
+/* =========================================
+   STORAGE UPDATE
+========================================= */
+
+window.addEventListener(
+    "storage",
+    function(){
+
+        loadBookings();
+
+    }
+);
+
+
+
+/* =========================================
+   PAGE VISIBILITY
+========================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            loadBookings();
+
+        }
+
+    }
+);
+/* =========================================
+   INITIALIZE PAGE
+========================================= */
+
+function initializeMyBookings(){
+
+    currentFilter = "all";
+
+    loadBookings();
+
+}
+
+
+/* =========================================
+   REFRESH BOOKINGS
+========================================= */
+
+function refreshBookings(){
+
+    loadBookings();
+
+}
+
+
+/* =========================================
+   CLOSE MODALS
+========================================= */
+
+function closeAllModals(){
+
+    closeBookingModal();
+
+    closeTrackingModal();
+
+}
+
+
+/* =========================================
+   PAGE LOAD
+========================================= */
+
+if(
+    document.readyState ===
+    "loading"
+){
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function(){
+
+            initializeMyBookings();
+
+        }
+    );
+
+}
+else{
+
+    initializeMyBookings();
+
+}
+
+
+/* =========================================
+   AUTO REFRESH
+========================================= */
+
+setInterval(
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            loadBookings();
+
+        }
+
+    },
+    15000
+);
+
+
+/* =========================================
+   FINAL GLOBAL FUNCTIONS
+========================================= */
+
+window.filterBookings =
+    filterBookings;
+
+window.showBookingDetails =
+    showBookingDetails;
+
+window.showTracking =
+    showTracking;
+
+window.closeBookingModal =
+    closeBookingModal;
+
+window.closeTrackingModal =
+    closeTrackingModal;
+
+window.loadBookings =
+    loadBookings;
+
+window.refreshBookings =
+    refreshBookings;
+
+window.saveNewBooking =
+    saveNewBooking;
+
+window.deleteBooking =
+    deleteBooking;
+
+window.searchBookings =
+    searchBookings;
+
+window.updateBookingStatus =
+    updateBookingStatus;
+
+window.goBack =
+    goBack;
+
+
+/* =========================================
+   END
+========================================= */
+
+</script>
+
+</body>
+
+</html>

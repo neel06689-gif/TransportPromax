@@ -1,0 +1,3875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Driver Dashboard | TransportPro</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:1100px;
+    min-height:64px;
+    margin:auto;
+
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+.logoBox{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.headerTitle{
+    flex:1;
+    min-width:0;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:14px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.headerAction{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:17px;
+
+    cursor:pointer;
+    position:relative;
+}
+
+.notificationDot{
+    position:absolute;
+
+    top:7px;
+    right:7px;
+
+    width:7px;
+    height:7px;
+
+    background:#ef4444;
+
+    border-radius:50%;
+    border:1px solid #172235;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main{
+    max-width:1100px;
+    margin:auto;
+
+    padding:16px 14px 100px;
+}
+
+
+/* =========================================
+   DRIVER WELCOME
+========================================= */
+
+.welcome{
+    background:#07111f;
+    color:#fff;
+
+    border-radius:19px;
+
+    padding:19px 16px;
+
+    margin-bottom:14px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.welcome:after{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    right:-55px;
+    top:-55px;
+
+    border-radius:50%;
+
+    border:25px solid rgba(255,255,255,.05);
+}
+
+.welcome small{
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.welcome h1{
+    margin-top:6px;
+    font-size:21px;
+}
+
+.welcome p{
+    margin-top:7px;
+
+    color:#cbd5e1;
+
+    font-size:8px;
+    line-height:1.7;
+}
+
+.driverMini{
+    margin-top:13px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.driverAvatar{
+    width:39px;
+    height:39px;
+
+    border-radius:50%;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.driverMiniText strong{
+    display:block;
+    font-size:8px;
+}
+
+.driverMiniText span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#94a3b8;
+    font-size:6px;
+}
+
+
+/* =========================================
+   DRIVER STATUS
+========================================= */
+
+.statusCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+}
+
+.statusIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#ecfdf3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.statusInfo{
+    flex:1;
+}
+
+.statusInfo span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.statusInfo strong{
+    display:block;
+
+    color:#067647;
+
+    font-size:10px;
+}
+
+.statusInfo small{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+    margin-top:3px;
+}
+
+.statusToggle{
+    width:45px;
+    height:25px;
+
+    border:0;
+    border-radius:20px;
+
+    background:#12b76a;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+.statusToggle:after{
+    content:"";
+
+    position:absolute;
+
+    width:19px;
+    height:19px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    top:3px;
+    right:3px;
+}
+
+
+/* =========================================
+   DRIVER ID CARD
+========================================= */
+
+.idCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+}
+
+.idIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    flex-shrink:0;
+}
+
+.idInfo{
+    flex:1;
+}
+
+.idInfo span{
+    display:block;
+
+    color:#667085;
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.idInfo strong{
+    display:block;
+
+    color:#175cd3;
+
+    font-size:11px;
+
+    letter-spacing:.6px;
+}
+
+.verified{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:#ecfdf3;
+
+    color:#067647;
+
+    font-size:6px;
+
+    font-weight:700;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.sectionTitle{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin:17px 2px 9px;
+}
+
+.sectionTitle h2{
+    font-size:12px;
+}
+
+.sectionTitle span{
+    color:#667085;
+    font-size:7px;
+}
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.quickGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.quickCard{
+    min-height:100px;
+
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:12px;
+
+    text-decoration:none;
+
+    color:#101828;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+
+    transition:.15s;
+}
+
+.quickCard:active{
+    transform:scale(.97);
+}
+
+.quickIcon{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#f2f4f7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    margin-bottom:9px;
+}
+
+.quickCard strong{
+    display:block;
+
+    font-size:8px;
+
+    margin-bottom:4px;
+}
+
+.quickCard span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   DRIVER SERVICES
+========================================= */
+
+.featureGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.featureCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:14px;
+
+    padding:12px;
+
+    min-height:87px;
+
+    text-decoration:none;
+
+    color:#101828;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:9px;
+
+    box-shadow:
+    0 3px 10px
+    rgba(16,24,40,.03);
+}
+
+.featureCard:active{
+    transform:scale(.98);
+}
+
+.featureIcon{
+    width:34px;
+    height:34px;
+
+    border-radius:9px;
+
+    background:#f2f4f7;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:16px;
+
+    flex-shrink:0;
+}
+
+.featureText strong{
+    display:block;
+
+    font-size:8px;
+
+    margin-bottom:4px;
+}
+
+.featureText span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.statsGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.statCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:14px;
+
+    padding:13px;
+}
+
+.statCard span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-bottom:7px;
+}
+
+.statCard strong{
+    display:block;
+
+    font-size:17px;
+}
+
+.statCard small{
+    display:block;
+
+    margin-top:4px;
+
+    color:#98a2b3;
+
+    font-size:6px;
+}
+
+
+/* =========================================
+   ACTIVE TRIP
+========================================= */
+
+.tripCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:16px;
+
+    padding:14px;
+
+    margin-top:9px;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+}
+
+.tripTop{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.tripIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.tripInfo{
+    flex:1;
+}
+
+.tripInfo strong{
+    display:block;
+
+    font-size:9px;
+}
+
+.tripInfo span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-top:3px;
+}
+
+.tripBadge{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:#f2f4f7;
+
+    color:#667085;
+
+    font-size:6px;
+
+    font-weight:700;
+}
+
+.route{
+    margin-top:14px;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.routeDot{
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    flex-shrink:0;
+}
+
+.routeLine{
+    flex:1;
+
+    height:3px;
+
+    background:#dbeafe;
+
+    border-radius:5px;
+}
+
+.routeLabels{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:6px;
+
+    color:#667085;
+
+    font-size:6px;
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media(min-width:600px){
+
+    .quickGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .featureGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .statsGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+<div class="header">
+
+
+<button
+class="backBtn"
+onclick="goBack()">
+
+←
+
+</button>
+
+
+<div class="logoBox">
+    🚚
+</div>
+
+
+<div class="headerTitle">
+
+<strong>
+    TransportPro
+</strong>
+
+<small>
+    Driver Dashboard
+</small>
+
+</div>
+
+
+<button
+class="headerAction"
+onclick="openNotifications()">
+
+🔔
+
+<div class="notificationDot"></div>
+
+</button>
+
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================
+     WELCOME
+========================================= -->
+
+<section class="welcome">
+
+<small>
+    DRIVER PORTAL
+</small>
+
+
+<h1>
+    Driver Dashboard 👨‍✈️
+</h1>
+
+
+<p>
+    Trips, loads, vehicle, earnings और
+    tracking की सारी सुविधाएँ एक जगह।
+</p>
+
+
+<div class="driverMini">
+
+<div
+class="driverAvatar"
+id="driverAvatar">
+
+👨‍✈️
+
+</div>
+
+
+<div class="driverMiniText">
+
+<strong id="driverName">
+    Driver
+</strong>
+
+<span id="driverRole">
+    Professional Driver
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     DRIVER STATUS
+========================================= -->
+
+<div class="statusCard">
+
+<div class="statusIcon">
+    🟢
+</div>
+
+
+<div class="statusInfo">
+
+<span>
+    DRIVER AVAILABILITY
+</span>
+
+<strong id="availabilityText">
+    Available for Work
+</strong>
+
+<small>
+    You can receive trip requests
+</small>
+
+</div>
+
+
+<button
+class="statusToggle"
+id="availabilityToggle"
+onclick="toggleAvailability()">
+
+</button>
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER ID
+========================================= -->
+
+<div class="idCard">
+
+<div class="idIcon">
+    🪪
+</div>
+
+
+<div class="idInfo">
+
+<span>
+    DRIVER PROFESSIONAL ID
+</span>
+
+<strong id="professionalId">
+    TP-2026-000000
+</strong>
+
+</div>
+
+
+<div class="verified">
+    ✓ ACTIVE
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     QUICK ACTIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Quick Actions
+</h2>
+
+<span>
+    Driver tools
+</span>
+
+</div>
+
+
+<div class="quickGrid">
+
+
+<a
+href="available-trips.html"
+class="quickCard">
+
+<div class="quickIcon">
+    🚛
+</div>
+
+<strong>
+    Available Trips
+</strong>
+
+<span>
+    आपके route के available trips खोजें।
+</span>
+
+</a>
+
+
+
+<a
+href="my-loads.html"
+class="quickCard">
+
+<div class="quickIcon">
+    📦
+</div>
+
+<strong>
+    My Loads
+</strong>
+
+<span>
+    Assigned और active loads देखें।
+</span>
+
+</a>
+
+
+
+<a
+href="tracking.html"
+class="quickCard">
+
+<div class="quickIcon">
+    📍
+</div>
+
+<strong>
+    Live Tracking
+</strong>
+
+<span>
+    Current trip की live location share करें।
+</span>
+
+</a>
+
+
+
+<a
+href="earnings.html"
+class="quickCard">
+
+<div class="quickIcon">
+    💰
+</div>
+
+<strong>
+    Earnings
+</strong>
+
+<span>
+    अपनी trip और earning details देखें।
+</span>
+
+</a>
+
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER SERVICES
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Driver Services
+</h2>
+
+<span>
+    All features
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="my-vehicle.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🚚
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Vehicle
+</strong>
+
+<span>
+    जिस vehicle को आप चला रहे हैं उसकी details।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-documents.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📄
+</div>
+
+<div class="featureText">
+
+<strong>
+    Vehicle Documents
+</strong>
+
+<span>
+    RC, insurance और vehicle documents।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-license.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🪪
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driving Licence
+</strong>
+
+<span>
+    Licence details और validity information।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-maintenance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔧
+</div>
+
+<div class="featureText">
+
+<strong>
+    Vehicle Maintenance
+</strong>
+
+<span>
+    Service और repair records manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="route-planner.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🗺️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Route Planner
+</strong>
+
+<span>
+    Pickup और destination route planning।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-history.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🗂️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip History
+</strong>
+
+<span>
+    सभी completed trips का record।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-community.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👥
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driver Community
+</strong>
+
+<span>
+    दूसरे verified drivers से connect करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="messages.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💬
+</div>
+
+<div class="featureText">
+
+<strong>
+    Messages
+</strong>
+
+<span>
+    Owner, manager और customers से chat।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER STATS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    My Activity
+</h2>
+
+<span>
+    Overview
+</span>
+
+</div>
+
+
+<div class="statsGrid">
+
+
+<div class="statCard">
+
+<span>
+    ACTIVE TRIPS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Current trips
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    COMPLETED TRIPS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Total completed
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    TOTAL EARNINGS
+</span>
+
+<strong>
+    ₹0
+</strong>
+
+<small>
+    Current period
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    RATING
+</span>
+
+<strong>
+    0.0
+</strong>
+
+<small>
+    Driver rating
+</small>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     ACTIVE TRIP
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Current Trip
+</h2>
+
+<span>
+    Live status
+</span>
+
+</div>
+
+
+<div class="tripCard">
+
+<div class="tripTop">
+
+<div class="tripIcon">
+    🚛
+</div>
+
+
+<div class="tripInfo">
+
+<strong>
+    No Active Trip
+</strong>
+
+<span>
+    जब आपको trip assign होगी,
+    उसकी details यहाँ दिखाई देंगी।
+</span>
+
+</div>
+
+
+<div class="tripBadge">
+    IDLE
+</div>
+
+</div>
+
+
+<div class="route">
+
+<div class="routeDot"></div>
+
+<div class="routeLine"></div>
+
+<div
+class="routeDot"
+style="background:#98a2b3;">
+</div>
+
+</div>
+
+
+<div class="routeLabels">
+
+<span>
+    Pickup
+</span>
+
+<span>
+    Destination
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     PART 1 END
+========================================= -->
+
+<!--
+
+=================================================
+DRIVER-DASHBOARD.HTML — PART 2
+
+इसमें आएगा:
+
+• Load & trip management
+• GPS / tracking controls
+• Driver safety
+• Emergency assistance
+• Fuel records
+• Toll records
+• Documents
+• Earnings
+• Payment history
+• Driver community
+• Ratings
+• Reports
+
+=================================================
+
+-->
+<!-- =========================================
+     PART 2 : DRIVER OPERATIONS
+========================================= -->
+
+
+<!-- =========================================
+     LOAD & TRIP MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Load & Trip Management
+</h2>
+
+<span>
+    Manage trips
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="available-trips.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔎
+</div>
+
+<div class="featureText">
+
+<strong>
+    Find Available Trip
+</strong>
+
+<span>
+    अपनी location और route के अनुसार trip खोजें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-requests.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📩
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip Requests
+</strong>
+
+<span>
+    नई trip requests देखें और respond करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="assigned-loads.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    Assigned Loads
+</strong>
+
+<span>
+    आपको assign किए गए सभी loads देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛣️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Manage Trip
+</strong>
+
+<span>
+    Pickup, loading, delivery और trip status update करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     GPS & TRACKING
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    GPS & Live Tracking
+</h2>
+
+<span>
+    Location services
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="tracking.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📍
+</div>
+
+<div class="featureText">
+
+<strong>
+    Live GPS
+</strong>
+
+<span>
+    Active trip में अपनी live location manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="share-location.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📡
+</div>
+
+<div class="featureText">
+
+<strong>
+    Share Location
+</strong>
+
+<span>
+    Authorized customer या manager के साथ location share करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="navigation.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🗺️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Navigation
+</strong>
+
+<span>
+    Pickup और destination तक route देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="route-planner.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🧭
+</div>
+
+<div class="featureText">
+
+<strong>
+    Route Planner
+</strong>
+
+<span>
+    Trip के लिए route और stops plan करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER SAFETY
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Driver Safety
+</h2>
+
+<span>
+    Safety first
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="emergency.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🆘
+</div>
+
+<div class="featureText">
+
+<strong>
+    Emergency Help
+</strong>
+
+<span>
+    Emergency situation में सहायता options।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="roadside-assistance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔧
+</div>
+
+<div class="featureText">
+
+<strong>
+    Roadside Assistance
+</strong>
+
+<span>
+    Vehicle breakdown या roadside problem में help।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="safety-center.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛡️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Safety Center
+</strong>
+
+<span>
+    Safe driving और transport safety information।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="incident-report.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⚠️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Report Incident
+</strong>
+
+<span>
+    Accident, damage या अन्य incident report करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     FUEL & EXPENSES
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Fuel & Trip Expenses
+</h2>
+
+<span>
+    Expense tracking
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="fuel-records.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⛽
+</div>
+
+<div class="featureText">
+
+<strong>
+    Fuel Records
+</strong>
+
+<span>
+    Fuel quantity, cost और refuelling history रखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="toll-records.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛣️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Toll Records
+</strong>
+
+<span>
+    Trip के toll और FASTag expenses देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-expenses.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🧾
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip Expenses
+</strong>
+
+<span>
+    Trip से जुड़े अन्य खर्च record करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="expense-reports.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📊
+</div>
+
+<div class="featureText">
+
+<strong>
+    Expense Reports
+</strong>
+
+<span>
+    अपने trip expenses की reports देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DOCUMENTS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Driver Documents
+</h2>
+
+<span>
+    Important documents
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="driver-license.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🪪
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driving Licence
+</strong>
+
+<span>
+    Licence number, validity और document status।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-documents.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📄
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Documents
+</strong>
+
+<span>
+    Driver के जरूरी documents सुरक्षित रखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-documents.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📑
+</div>
+
+<div class="featureText">
+
+<strong>
+    Vehicle Documents
+</strong>
+
+<span>
+    जिस vehicle पर आप assigned हैं उसके documents।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="verification-status.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ✅
+</div>
+
+<div class="featureText">
+
+<strong>
+    Verification
+</strong>
+
+<span>
+    Driver और professional verification status।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     EARNINGS & PAYMENTS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Earnings & Payments
+</h2>
+
+<span>
+    Your money
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="earnings.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💰
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Earnings
+</strong>
+
+<span>
+    Trip-wise और total earnings देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="payment-history.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💳
+</div>
+
+<div class="featureText">
+
+<strong>
+    Payment History
+</strong>
+
+<span>
+    Received और pending payments का record।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="bank-account.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🏦
+</div>
+
+<div class="featureText">
+
+<strong>
+    Bank Account
+</strong>
+
+<span>
+    Future secure payment system के लिए bank details।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="withdrawals.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💸
+</div>
+
+<div class="featureText">
+
+<strong>
+    Withdrawals
+</strong>
+
+<span>
+    Available balance और withdrawal records।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER PERFORMANCE
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Performance
+</h2>
+
+<span>
+    Track progress
+</span>
+
+</div>
+
+
+<div class="statsGrid">
+
+
+<div class="statCard">
+
+<span>
+    COMPLETED TRIPS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Total completed
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    TOTAL KM
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Distance travelled
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    RATING
+</span>
+
+<strong>
+    0.0
+</strong>
+
+<small>
+    Customer rating
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    ON-TIME
+</span>
+
+<strong>
+    0%
+</strong>
+
+<small>
+    Delivery performance
+</small>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     TRIP HISTORY
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Recent Trips
+</h2>
+
+<span>
+    History
+</span>
+
+</div>
+
+
+<div class="tripCard">
+
+<div class="tripTop">
+
+<div class="tripIcon">
+    📋
+</div>
+
+
+<div class="tripInfo">
+
+<strong>
+    No completed trips
+</strong>
+
+<span>
+    आपकी completed trip history यहाँ दिखाई देगी।
+</span>
+
+</div>
+
+
+<div class="tripBadge">
+    EMPTY
+</div>
+
+</div>
+
+
+<div class="route">
+
+<div class="routeDot"></div>
+
+<div class="routeLine"></div>
+
+<div
+class="routeDot"
+style="background:#98a2b3;">
+</div>
+
+</div>
+
+
+<div class="routeLabels">
+
+<span>
+    Pickup
+</span>
+
+<span>
+    Destination
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER COMMUNITY
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Driver Community
+</h2>
+
+<span>
+    Connect
+</span>
+
+</div>
+
+
+<div
+style="
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:16px;
+    padding:14px;
+    margin-top:9px;
+"
+>
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+"
+>
+
+<div
+style="
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:#f2f4f7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+"
+>
+    👥
+</div>
+
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:9px;
+"
+>
+    Verified Driver Network
+</strong>
+
+<span
+style="
+    display:block;
+    margin-top:4px;
+    color:#667085;
+    font-size:6px;
+    line-height:1.5;
+"
+>
+    दूसरे verified drivers से connect करें,
+    route information share करें और work opportunities देखें।
+</span>
+
+</div>
+
+
+<button
+onclick="openDriverCommunity()"
+style="
+    border:0;
+    background:#2563eb;
+    color:#fff;
+    border-radius:9px;
+    padding:8px 10px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    Open
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     PART 2 END
+========================================= -->
+
+<!--
+
+=================================================
+DRIVER-DASHBOARD.HTML — PART 3
+
+अगले Part में आएगा:
+
+• Ratings & reviews
+• Notifications
+• Messages
+• Support
+• Driver profile
+• Settings
+• Security
+• Employee ID
+• Bottom navigation
+• Role protection
+• JavaScript
+• Logout
+• Final </body>
+• Final </html>
+
+=================================================
+
+-->
+<!-- =========================================
+     PART 3 : PROFILE + COMMUNITY + SECURITY
+========================================= -->
+
+
+<!-- =========================================
+     RATINGS & REVIEWS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Ratings & Reviews
+</h2>
+
+<span>
+    Performance
+</span>
+
+</div>
+
+
+<div
+style="
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:16px;
+    padding:14px;
+"
+>
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:12px;
+"
+>
+
+<div
+style="
+    width:55px;
+    height:55px;
+    border-radius:14px;
+    background:#f2f4f7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+"
+>
+    ⭐
+</div>
+
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:20px;
+"
+id="driverRating"
+>
+    0.0
+</strong>
+
+<span
+style="
+    display:block;
+    margin-top:4px;
+    color:#667085;
+    font-size:6px;
+"
+>
+    Average Driver Rating
+</span>
+
+</div>
+
+</div>
+
+
+<div
+style="
+    margin-top:12px;
+    padding-top:11px;
+    border-top:1px solid #eaecf0;
+    color:#667085;
+    font-size:7px;
+    line-height:1.6;
+"
+>
+
+Customers और transport partners की ratings
+और reviews यहाँ दिखाई देंगे।
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     NOTIFICATIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Notifications
+</h2>
+
+<span>
+    Updates
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="notifications.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔔
+</div>
+
+<div class="featureText">
+
+<strong>
+    All Notifications
+</strong>
+
+<span>
+    Trips, loads, payments और account updates।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-alerts.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🚨
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip Alerts
+</strong>
+
+<span>
+    नई trip requests और important trip alerts।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="payment-alerts.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💰
+</div>
+
+<div class="featureText">
+
+<strong>
+    Payment Alerts
+</strong>
+
+<span>
+    Payment received और pending payment updates।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="document-alerts.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📄
+</div>
+
+<div class="featureText">
+
+<strong>
+    Document Alerts
+</strong>
+
+<span>
+    Licence और documents की expiry reminders।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     MESSAGES
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Communication
+</h2>
+
+<span>
+    Stay connected
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="messages.html"
+class="featureCard">
+
+<div class="featureIcon">
+    💬
+</div>
+
+<div class="featureText">
+
+<strong>
+    Messages
+</strong>
+
+<span>
+    Owner, manager, dealer और customers से chat।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="support-chat.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🎧
+</div>
+
+<div class="featureText">
+
+<strong>
+    Support Chat
+</strong>
+
+<span>
+    TransportPro support team से बात करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-community.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👥
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driver Community
+</strong>
+
+<span>
+    Verified drivers की professional community।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="industry-network.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🌐
+</div>
+
+<div class="featureText">
+
+<strong>
+    Industry Network
+</strong>
+
+<span>
+    Transport industry professionals से connect करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DRIVER PROFILE
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Driver Account
+</h2>
+
+<span>
+    My account
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="driver-profile.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👤
+</div>
+
+<div class="featureText">
+
+<strong>
+    My Profile
+</strong>
+
+<span>
+    Driver की personal और professional details।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="employee-id.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🪪
+</div>
+
+<div class="featureText">
+
+<strong>
+    Employee ID
+</strong>
+
+<span>
+    आपकी unique professional पहचान।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-verification.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ✅
+</div>
+
+<div class="featureText">
+
+<strong>
+    Verification
+</strong>
+
+<span>
+    Driver verification और account status।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-settings.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⚙️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Settings
+</strong>
+
+<span>
+    Driver dashboard की settings manage करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     SECURITY
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Account Security
+</h2>
+
+<span>
+    Secure login
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="change-password.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔑
+</div>
+
+<div class="featureText">
+
+<strong>
+    Change Password
+</strong>
+
+<span>
+    अपना account password बदलें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="login-security.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔐
+</div>
+
+<div class="featureText">
+
+<strong>
+    Login Security
+</strong>
+
+<span>
+    Login sessions और security settings।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="privacy.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛡️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Privacy
+</strong>
+
+<span>
+    Profile और location privacy controls।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="account-security.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔒
+</div>
+
+<div class="featureText">
+
+<strong>
+    Account Security
+</strong>
+
+<span>
+    Account protection और security information।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     HELP & SUPPORT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Help & Support
+</h2>
+
+<span>
+    Assistance
+</span>
+
+</div>
+
+
+<div
+style="
+    background:#07111f;
+    color:#fff;
+    border-radius:16px;
+    padding:15px;
+"
+>
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:11px;
+"
+>
+
+<div
+style="
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:#172235;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    flex-shrink:0;
+"
+>
+    🆘
+</div>
+
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:9px;
+    margin-bottom:4px;
+"
+>
+    Driver Support
+</strong>
+
+<span
+style="
+    display:block;
+    color:#cbd5e1;
+    font-size:6px;
+    line-height:1.5;
+"
+>
+    Trip, payment, vehicle या account
+    problem के लिए सहायता लें।
+</span>
+
+</div>
+
+
+<button
+onclick="openSupport()"
+style="
+    border:0;
+    background:#fff;
+    color:#07111f;
+    border-radius:9px;
+    padding:8px 10px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    Help
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     LOGOUT
+========================================= -->
+
+<div style="margin-top:14px;">
+
+<button
+onclick="logoutDriver()"
+style="
+    width:100%;
+    min-height:45px;
+
+    border:1px solid #fecdca;
+
+    background:#fff;
+
+    color:#b42318;
+
+    border-radius:11px;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    cursor:pointer;
+"
+>
+    ↪ Logout Driver Account
+</button>
+
+</div>
+
+
+</main>
+
+
+
+<!-- =========================================
+     BOTTOM NAVIGATION
+========================================= -->
+
+<nav class="bottomNav">
+
+<div
+class="navInner">
+
+
+<a
+href="driver-dashboard.html"
+class="navItem active"
+>
+
+<span>
+    🏠
+</span>
+
+Home
+
+</a>
+
+
+
+<a
+href="available-trips.html"
+class="navItem"
+>
+
+<span>
+    🚛
+</span>
+
+Trips
+
+</a>
+
+
+
+<a
+href="tracking.html"
+class="navItem"
+>
+
+<span>
+    📍
+</span>
+
+Tracking
+
+</a>
+
+
+
+<a
+href="messages.html"
+class="navItem"
+>
+
+<span>
+    💬
+</span>
+
+Messages
+
+</a>
+
+
+
+<a
+href="driver-profile.html"
+class="navItem"
+>
+
+<span>
+    👤
+</span>
+
+Profile
+
+</a>
+
+
+</div>
+
+</nav>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   GO BACK
+========================================= */
+
+function goBack(){
+
+    if(
+        window.history.length > 1
+    ){
+
+        window.history.back();
+
+    }
+
+    else{
+
+        window.location.href =
+            "professional-dashboard.html";
+
+    }
+
+}
+
+
+
+/* =========================================
+   LOAD DRIVER DATA
+========================================= */
+
+function loadDriverData(){
+
+    let driverName =
+        localStorage.getItem(
+            "driverName"
+        );
+
+
+    let professionalId =
+        localStorage.getItem(
+            "professionalId"
+        );
+
+
+    let role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    /*
+       अगर registrationData पहले से
+       localStorage में है तो उससे भी
+       information लेने की कोशिश होगी।
+    */
+
+    let registrationData =
+        localStorage.getItem(
+            "registrationData"
+        );
+
+
+    if(
+        registrationData
+    ){
+
+        try{
+
+            const data =
+                JSON.parse(
+                    registrationData
+                );
+
+
+            if(
+                !driverName
+            ){
+
+                driverName =
+                    data.name ||
+                    data.fullName ||
+                    "";
+
+            }
+
+
+            if(
+                !professionalId
+            ){
+
+                professionalId =
+                    data.professionalId ||
+                    "";
+
+            }
+
+
+            if(
+                !role
+            ){
+
+                role =
+                    data.role ||
+                    "";
+
+            }
+
+        }
+
+        catch(error){
+
+            console.log(
+                "Registration data unavailable"
+            );
+
+        }
+
+    }
+
+
+    if(
+        !driverName
+    ){
+
+        driverName =
+            "Driver";
+
+    }
+
+
+    if(
+        !professionalId
+    ){
+
+        professionalId =
+            "TP-2026-000000";
+
+    }
+
+
+    if(
+        !role
+    ){
+
+        role =
+            "Driver";
+
+    }
+
+
+    const nameElement =
+        document.getElementById(
+            "driverName"
+        );
+
+
+    const roleElement =
+        document.getElementById(
+            "driverRole"
+        );
+
+
+    const idElement =
+        document.getElementById(
+            "professionalId"
+        );
+
+
+    if(nameElement){
+
+        nameElement.textContent =
+            driverName;
+
+    }
+
+
+    if(roleElement){
+
+        roleElement.textContent =
+            "Verified " +
+            role;
+
+    }
+
+
+    if(idElement){
+
+        idElement.textContent =
+            professionalId;
+
+    }
+
+}
+
+
+
+/* =========================================
+   AVAILABILITY
+========================================= */
+
+let driverAvailable = true;
+
+
+function toggleAvailability(){
+
+    const button =
+        document.getElementById(
+            "availabilityToggle"
+        );
+
+
+    const text =
+        document.getElementById(
+            "availabilityText"
+        );
+
+
+    const icon =
+        document.querySelector(
+            ".statusIcon"
+        );
+
+
+    driverAvailable =
+        !driverAvailable;
+
+
+    if(
+        driverAvailable
+    ){
+
+        text.textContent =
+            "Available for Work";
+
+
+        icon.textContent =
+            "🟢";
+
+
+        button.style.background =
+            "#12b76a";
+
+
+        button.style.opacity =
+            "1";
+
+    }
+
+    else{
+
+        text.textContent =
+            "Not Available";
+
+
+        icon.textContent =
+            "⚪";
+
+
+        button.style.background =
+            "#98a2b3";
+
+
+        button.style.opacity =
+            ".8";
+
+    }
+
+
+    localStorage.setItem(
+        "driverAvailability",
+        driverAvailable
+    );
+
+}
+
+
+
+/* =========================================
+   LOAD AVAILABILITY
+========================================= */
+
+function loadAvailability(){
+
+    const saved =
+        localStorage.getItem(
+            "driverAvailability"
+        );
+
+
+    if(
+        saved === "false"
+    ){
+
+        driverAvailable =
+            false;
+
+
+        const text =
+            document.getElementById(
+                "availabilityText"
+            );
+
+
+        const button =
+            document.getElementById(
+                "availabilityToggle"
+            );
+
+
+        const icon =
+            document.querySelector(
+                ".statusIcon"
+            );
+
+
+        if(text){
+
+            text.textContent =
+                "Not Available";
+
+        }
+
+
+        if(icon){
+
+            icon.textContent =
+                "⚪";
+
+        }
+
+
+        if(button){
+
+            button.style.background =
+                "#98a2b3";
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================
+   NOTIFICATIONS
+========================================= */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+
+/* =========================================
+   DRIVER COMMUNITY
+========================================= */
+
+function openDriverCommunity(){
+
+    window.location.href =
+        "driver-community.html";
+
+}
+
+
+
+/* =========================================
+   SUPPORT
+========================================= */
+
+function openSupport(){
+
+    window.location.href =
+        "support.html";
+
+}
+
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logoutDriver(){
+
+    const confirmLogout =
+        confirm(
+            "क्या आप Driver account से logout करना चाहते हैं?"
+        );
+
+
+    if(
+        !confirmLogout
+    ){
+
+        return;
+
+    }
+
+
+    /*
+       अभी यह frontend demo logout है।
+
+       Backend बनने के बाद secure
+       server-side session/token भी
+       invalidate किया जाएगा।
+    */
+
+    localStorage.removeItem(
+        "loginSession"
+    );
+
+
+    localStorage.removeItem(
+        "isLoggedIn"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =========================================
+   ROLE PROTECTION — FRONTEND DEMO
+========================================= */
+
+function checkDriverRole(){
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    /*
+       अगर role मौजूद है और Driver नहीं है,
+       तो user को generic professional
+       dashboard पर भेज दिया जाएगा।
+
+       ध्यान:
+       यह केवल frontend protection है।
+       Real security backend में होगी।
+    */
+
+    if(
+        role &&
+        role !== "Driver"
+    ){
+
+        window.location.href =
+            "professional-dashboard.html";
+
+    }
+
+}
+
+
+
+/* =========================================
+   PAGE INITIALIZATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        checkDriverRole();
+
+        loadDriverData();
+
+        loadAvailability();
+
+    }
+);
+
+
+
+/* =========================================
+   ONLINE STATUS
+========================================= */
+
+window.addEventListener(
+    "online",
+    function(){
+
+        console.log(
+            "Driver Dashboard: Online"
+        );
+
+    }
+);
+
+
+window.addEventListener(
+    "offline",
+    function(){
+
+        console.log(
+            "Driver Dashboard: Offline"
+        );
+
+    }
+);
+
+
+
+/* =========================================
+   REFRESH DATA WHEN PAGE RETURNS
+========================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            loadDriverData();
+
+            loadAvailability();
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

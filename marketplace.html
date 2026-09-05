@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Transport Marketplace - TransportPro</title>
+
+<style>
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    height:62px;
+    width:100%;
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    background:transparent;
+    color:#fff;
+
+    font-size:25px;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    background:#fff;
+    color:#1769e0;
+
+    border-radius:9px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+    padding:15px;
+}
+
+
+/* =====================================
+   DASHBOARD BUTTON
+===================================== */
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.main-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-area{
+    margin-bottom:12px;
+}
+
+.search-area input{
+    width:100%;
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.search-area input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   FILTERS
+===================================== */
+
+.filter-row{
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-bottom:3px;
+
+    margin-bottom:13px;
+}
+
+.filter-btn{
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#172033;
+
+    border-radius:20px;
+
+    padding:8px 12px;
+
+    font-size:10px;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+
+    color:#fff;
+
+    border-color:#1769e0;
+}
+
+.filter-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   MARKETPLACE LIST
+===================================== */
+
+.marketplace-list{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================
+   MARKET ITEM
+===================================== */
+
+.market-item{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.market-item:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 6px 16px rgba(16,24,40,.08);
+}
+
+
+/* =====================================
+   ITEM IMAGE
+===================================== */
+
+.item-image{
+    height:125px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:48px;
+}
+
+
+/* =====================================
+   ITEM CONTENT
+===================================== */
+
+.item-content{
+    padding:11px;
+}
+
+.item-content h3{
+    font-size:13px;
+
+    margin-bottom:5px;
+}
+
+.item-type{
+    display:inline-block;
+
+    background:#f1f5f9;
+
+    color:#475467;
+
+    padding:4px 7px;
+
+    border-radius:12px;
+
+    font-size:8px;
+
+    margin-bottom:7px;
+}
+
+.item-details{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:15px;
+
+    margin-bottom:9px;
+}
+
+.item-price{
+    color:#172033;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    margin-bottom:9px;
+}
+
+
+/* =====================================
+   ITEM BUTTONS
+===================================== */
+
+.item-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.view-btn,
+.contact-btn{
+    flex:1;
+
+    padding:8px 5px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.view-btn{
+    background:#1769e0;
+
+    color:#fff;
+
+    border:0;
+}
+
+.contact-btn{
+    background:#fff;
+
+    color:#1769e0;
+
+    border:1px solid #1769e0;
+}
+
+
+/* =====================================
+   SELL BOX
+===================================== */
+
+.sell-box{
+    background:#eef6ff;
+
+    border:1px solid #d7e8ff;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.sell-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:11px;
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+}
+
+.sell-content{
+    flex:1;
+}
+
+.sell-content h2{
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.sell-content p{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+}
+
+.sell-btn{
+    border:0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    padding:10px 13px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:#667085;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+}
+
+.empty-state .empty-icon{
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    font-size:9px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:700px){
+
+    .marketplace-list{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .main-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .item-image{
+        height:115px;
+    }
+
+    .sell-box{
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .sell-content{
+        min-width:calc(100% - 60px);
+    }
+
+    .sell-btn{
+        width:100%;
+        margin-top:3px;
+    }
+
+}
+
+
+/* =====================================
+   END OF CSS
+===================================== */
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goDashboard()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Professional Transport Marketplace
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="showNotification()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <section class="main-card">
+
+
+        <!-- =================================
+             PAGE HEADING
+        ================================== -->
+
+        <div class="page-heading">
+
+
+            <div class="page-icon">
+                🛒
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Transport Marketplace
+                </h1>
+
+                <p>
+                    Trucks, trailers, transport services aur
+                    logistics solutions ek hi jagah par find karein.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             SEARCH
+        ================================== -->
+
+        <div class="search-area">
+
+            <input
+                type="search"
+                id="marketSearch"
+                placeholder="Search truck, trailer, service..."
+                oninput="searchMarketplace()">
+
+        </div>
+
+
+
+        <!-- =================================
+             FILTERS
+        ================================== -->
+
+        <div class="filter-row">
+
+            <button
+                class="filter-btn active"
+                onclick="filterMarketplace('all',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMarketplace('truck',this)">
+
+                🚛 Trucks
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMarketplace('trailer',this)">
+
+                🚚 Trailers
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMarketplace('service',this)">
+
+                🛠 Services
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================
+             MARKETPLACE LIST
+        ================================== -->
+
+        <div
+            id="marketplaceList"
+            class="marketplace-list">
+
+            <!-- JavaScript se products load honge -->
+
+        </div>
+
+
+
+        <!-- =================================
+             SELL / LIST ITEM
+        ================================== -->
+
+        <div class="sell-box">
+
+
+            <div class="sell-icon">
+                ➕
+            </div>
+
+
+            <div class="sell-content">
+
+                <h2>
+                    List Your Transport
+                </h2>
+
+                <p>
+                    Apna truck, trailer ya transport service
+                    marketplace par list karein.
+                </p>
+
+            </div>
+
+
+            <button
+                class="sell-btn"
+                onclick="listTransport()">
+
+                List Now
+
+            </button>
+
+
+        </div>
+
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT PART 3
+===================================== -->
+
+<script>
+
+/* =====================================
+   MARKETPLACE DATA
+===================================== */
+
+const marketplaceItems = [
+
+    {
+        id: 1,
+        name: "Tata 1618 Truck",
+        type: "truck",
+        icon: "🚛",
+        location: "Delhi",
+        details: "16 Ton • Diesel • Good Condition",
+        price: 1250000
+    },
+
+    {
+        id: 2,
+        name: "Ashok Leyland Trailer",
+        type: "trailer",
+        icon: "🚚",
+        location: "Mumbai",
+        details: "32 Ton • 40 Feet • Available",
+        price: 1850000
+    },
+
+    {
+        id: 3,
+        name: "Container Transport",
+        type: "service",
+        icon: "📦",
+        location: "Pune",
+        details: "All India • Safe Delivery",
+        price: 25000
+    },
+
+    {
+        id: 4,
+        name: "Heavy Truck Service",
+        type: "service",
+        icon: "🛠️",
+        location: "Jaipur",
+        details: "Heavy Load • All India",
+        price: 30000
+    },
+
+    {
+        id: 5,
+        name: "BharatBenz 2823",
+        type: "truck",
+        icon: "🚛",
+        location: "Lucknow",
+        details: "28 Ton • Diesel • Excellent",
+        price: 2100000
+    },
+
+    {
+        id: 6,
+        name: "Flatbed Trailer",
+        type: "trailer",
+        icon: "🚚",
+        location: "Ahmedabad",
+        details: "40 Feet • 25 Ton • Ready",
+        price: 1450000
+    }
+
+];
+
+
+/* =====================================
+   CURRENT FILTER
+===================================== */
+
+let currentFilter = "all";
+
+
+/* =====================================
+   GO TO DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   NOTIFICATION
+===================================== */
+
+function showNotification(){
+
+    alert(
+        "🔔 Notifications\n\n" +
+        "No new notifications."
+    );
+
+}
+
+
+/* =====================================
+   DISPLAY MARKETPLACE
+===================================== */
+
+function displayMarketplace(list){
+
+    const container =
+        document.getElementById(
+            "marketplaceList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔍
+                </div>
+
+                <strong>
+                    No Items Found
+                </strong>
+
+                <small>
+                    Search ya filter change karke
+                    dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+
+        list.map(
+            item => `
+
+            <div class="market-item">
+
+
+                <div class="item-image">
+                    ${item.icon}
+                </div>
+
+
+                <div class="item-content">
+
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+
+                    <span class="item-type">
+                        ${getTypeName(item.type)}
+                    </span>
+
+
+                    <div class="item-details">
+
+                        📍 ${item.location}
+
+                        <br>
+
+                        ${item.details}
+
+                    </div>
+
+
+                    <div class="item-price">
+
+                        ₹${formatPrice(item.price)}
+
+                    </div>
+
+
+                    <div class="item-actions">
+
+
+                        <button
+                            class="view-btn"
+                            onclick="viewItem(${item.id})">
+
+                            View
+
+                        </button>
+
+
+                        <button
+                            class="contact-btn"
+                            onclick="contactSeller(${item.id})">
+
+                            Contact
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        `
+        ).join("");
+
+}
+
+
+/* =====================================
+   TYPE NAME
+===================================== */
+
+function getTypeName(type){
+
+    if(type === "truck"){
+        return "🚛 Truck";
+    }
+
+    if(type === "trailer"){
+        return "🚚 Trailer";
+    }
+
+    if(type === "service"){
+        return "🛠 Service";
+    }
+
+    return "Transport";
+
+}
+
+
+/* =====================================
+   PRICE FORMAT
+===================================== */
+
+function formatPrice(price){
+
+    return Number(price)
+        .toLocaleString("en-IN");
+
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+function searchMarketplace(){
+
+    const input =
+        document.getElementById(
+            "marketSearch"
+        );
+
+
+    if(!input){
+        return;
+    }
+
+
+    const search =
+        input.value
+        .toLowerCase()
+        .trim();
+
+
+    let result =
+        marketplaceItems;
+
+
+    if(currentFilter !== "all"){
+
+        result =
+            result.filter(
+                item =>
+                    item.type ===
+                    currentFilter
+            );
+
+    }
+
+
+    if(search){
+
+        result =
+            result.filter(
+                item =>
+
+                    item.name
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    item.location
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    item.details
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    item.type
+                    .toLowerCase()
+                    .includes(search)
+
+            );
+
+    }
+
+
+    displayMarketplace(result);
+
+}
+
+
+/* =====================================
+   FILTER MARKETPLACE
+===================================== */
+
+function filterMarketplace(
+    type,
+    button
+){
+
+    currentFilter = type;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            btn =>
+                btn.classList.remove(
+                    "active"
+                )
+        );
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    searchMarketplace();
+
+}
+
+
+/* =====================================
+   VIEW ITEM
+===================================== */
+
+function viewItem(id){
+
+    const item =
+        marketplaceItems.find(
+            product =>
+                product.id === id
+        );
+
+
+    if(!item){
+        return;
+    }
+
+
+    alert(
+
+        "📋 ITEM DETAILS\n\n" +
+
+        "Name: " +
+        item.name +
+
+        "\nType: " +
+        getTypeName(item.type) +
+
+        "\nLocation: " +
+        item.location +
+
+        "\nDetails: " +
+        item.details +
+
+        "\nPrice: ₹" +
+        formatPrice(item.price)
+
+    );
+
+}
+
+
+/* =====================================
+   CONTACT SELLER
+===================================== */
+
+function contactSeller(id){
+
+    const item =
+        marketplaceItems.find(
+            product =>
+                product.id === id
+        );
+
+
+    if(!item){
+        return;
+    }
+
+
+    alert(
+
+        "📞 CONTACT SELLER\n\n" +
+
+        "Item: " +
+        item.name +
+
+        "\nLocation: " +
+        item.location +
+
+        "\n\nSeller contact system opened."
+
+    );
+
+}
+
+
+/* =====================================
+   LIST TRANSPORT
+===================================== */
+
+function listTransport(){
+
+    const name =
+        prompt(
+            "Transport / Truck ka naam enter karein:"
+        );
+
+
+    if(!name || !name.trim()){
+
+        alert(
+            "⚠️ Name required hai."
+        );
+
+        return;
+    }
+
+
+    const location =
+        prompt(
+            "City / Location enter karein:"
+        );
+
+
+    if(!location || !location.trim()){
+
+        alert(
+            "⚠️ Location required hai."
+        );
+
+        return;
+    }
+
+
+    const price =
+        prompt(
+            "Price enter karein:"
+        );
+
+
+    if(!price || isNaN(price)){
+
+        alert(
+            "⚠️ Valid price enter karein."
+        );
+
+        return;
+    }
+
+
+    const newItem = {
+
+        id:
+            Date.now(),
+
+        name:
+            name.trim(),
+
+        type:
+            "truck",
+
+        icon:
+            "🚛",
+
+        location:
+            location.trim(),
+
+        details:
+            "New Marketplace Listing",
+
+        price:
+            Number(price)
+
+    };
+
+
+    marketplaceItems.unshift(
+        newItem
+    );
+
+
+    localStorage.setItem(
+
+        "tp_marketplace_items",
+
+        JSON.stringify(
+            marketplaceItems
+        )
+
+    );
+
+
+    displayMarketplace(
+        marketplaceItems
+    );
+
+
+    alert(
+
+        "✅ Listing Successfully Added!\n\n" +
+
+        newItem.name +
+
+        "\nLocation: " +
+        newItem.location +
+
+        "\nPrice: ₹" +
+        formatPrice(newItem.price)
+
+    );
+
+}
+
+
+/* =====================================
+   LOAD SAVED LISTINGS
+===================================== */
+
+function loadSavedListings(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_marketplace_items"
+        );
+
+
+    if(!saved){
+        return;
+    }
+
+
+    try{
+
+        const savedItems =
+            JSON.parse(saved);
+
+
+        if(
+            Array.isArray(savedItems)
+        ){
+
+            savedItems.forEach(
+                savedItem => {
+
+                    const exists =
+                        marketplaceItems.some(
+                            item =>
+                                item.id ===
+                                savedItem.id
+                        );
+
+
+                    if(!exists){
+
+                        marketplaceItems.unshift(
+                            savedItem
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            "Saved marketplace data could not be loaded."
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   PAGE START
+===================================== */
+
+loadSavedListings();
+
+displayMarketplace(
+    marketplaceItems
+);
+
+
+/* =====================================
+   SEARCH KEYBOARD
+===================================== */
+
+const searchBox =
+    document.getElementById(
+        "marketSearch"
+    );
+
+
+if(searchBox){
+
+    searchBox.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                event.preventDefault();
+
+                searchMarketplace();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        loadSavedListings();
+
+        displayMarketplace(
+            marketplaceItems
+        );
+
+        console.log(
+            "TransportPro Marketplace loaded successfully."
+        );
+
+    }
+);
+
+
+/* =====================================
+   END OF JAVASCRIPT
+===================================== */
+
+</script>
+
+
+</body>
+
+</html>
+</script>
+
+
+</body>
+
+</html>

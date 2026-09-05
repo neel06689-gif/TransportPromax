@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Mechanic Community | TransportPro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#111827;
+}
+
+.page{
+    max-width:700px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+/* HEADER */
+
+.header{
+    background:#07152d;
+    color:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    font-size:25px;
+}
+
+.headerText{
+    flex:1;
+}
+
+.headerText strong{
+    display:block;
+    font-size:17px;
+}
+
+.headerText small{
+    display:block;
+    margin-top:3px;
+    color:#aebbd0;
+    font-size:9px;
+}
+
+/* PROFILE */
+
+.profile{
+    margin:15px;
+    padding:17px;
+    background:white;
+    border-radius:17px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.profileTop{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    background:#eaf0f7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.profileInfo{
+    flex:1;
+}
+
+.profileInfo strong{
+    display:block;
+    font-size:16px;
+}
+
+.profileInfo small{
+    display:block;
+    margin-top:4px;
+    color:#7b8797;
+    font-size:9px;
+}
+
+.verified{
+    background:#e8f7ee;
+    color:#16834b;
+    padding:5px 7px;
+    border-radius:7px;
+    font-size:7px;
+    font-weight:900;
+}
+
+/* STATS */
+
+.stats{
+    margin-top:14px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+}
+
+.stat{
+    padding:10px;
+    background:#f7f9fb;
+    border-radius:10px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:15px;
+}
+
+.stat small{
+    display:block;
+    margin-top:3px;
+    color:#7b8797;
+    font-size:7px;
+}
+
+/* QUICK ACTIONS */
+
+.quickGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:15px;
+}
+
+.quickCard{
+    display:block;
+    padding:14px;
+    background:white;
+    border:1px solid #e5e9ee;
+    border-radius:15px;
+    text-decoration:none;
+    color:#111827;
+    box-shadow:0 4px 12px rgba(0,0,0,.04);
+}
+
+.quickIcon{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    background:#eef3f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    margin-bottom:9px;
+}
+
+.quickCard strong{
+    display:block;
+    font-size:11px;
+}
+
+.quickCard span{
+    display:block;
+    margin-top:4px;
+    color:#7b8797;
+    font-size:7px;
+    line-height:1.4;
+}
+
+/* SERVICE */
+
+.serviceCard{
+    margin:15px;
+    padding:16px;
+    background:#111827;
+    color:white;
+    border-radius:17px;
+}
+
+.serviceCard span{
+    font-size:8px;
+    opacity:.65;
+}
+
+.serviceCard strong{
+    display:block;
+    margin-top:4px;
+    font-size:18px;
+}
+
+.serviceCard p{
+    margin-top:4px;
+    color:#c6cfdb;
+    font-size:9px;
+    line-height:1.4;
+}
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    gap:8px;
+    padding:0 15px 12px;
+    overflow-x:auto;
+}
+
+.filter{
+    border:1px solid #dfe4ea;
+    background:white;
+    padding:9px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+    font-size:9px;
+}
+
+.filter.active{
+    background:#07152d;
+    color:white;
+}
+
+/* SECTION */
+
+.section{
+    padding:5px 15px 10px;
+}
+
+.section strong{
+    font-size:15px;
+}
+
+.section small{
+    display:block;
+    margin-top:3px;
+    color:#7b8797;
+    font-size:8px;
+}
+
+/* REQUEST */
+
+.request{
+    margin:0 15px 11px;
+    padding:14px;
+    background:white;
+    border:1px solid #e5e9ee;
+    border-radius:16px;
+    box-shadow:0 5px 16px rgba(0,0,0,.05);
+}
+
+.requestTop{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+}
+
+.requestIcon{
+    width:42px;
+    height:42px;
+    background:#fff0f0;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.requestInfo{
+    flex:1;
+}
+
+.requestInfo strong{
+    display:block;
+    font-size:12px;
+}
+
+.requestInfo small{
+    display:block;
+    margin-top:4px;
+    color:#7b8797;
+    font-size:8px;
+}
+
+.urgent{
+    background:#ffe5e5;
+    color:#c62828;
+    padding:5px 7px;
+    border-radius:7px;
+    font-size:7px;
+    font-weight:900;
+}
+
+.problem{
+    margin-top:10px;
+    padding:10px;
+    background:#f7f9fb;
+    border-radius:10px;
+}
+
+.problem strong{
+    font-size:10px;
+}
+
+.problem p{
+    margin-top:4px;
+    color:#697586;
+    font-size:8px;
+    line-height:1.4;
+}
+
+.requestDetails{
+    margin-top:9px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.detail{
+    padding:8px;
+    background:#f7f9fb;
+    border-radius:8px;
+}
+
+.detail small{
+    display:block;
+    color:#8a94a2;
+    font-size:7px;
+}
+
+.detail strong{
+    display:block;
+    margin-top:3px;
+    font-size:9px;
+}
+
+.requestBottom{
+    margin-top:11px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+}
+
+.requestBottom strong{
+    font-size:15px;
+}
+
+.requestBottom small{
+    display:block;
+    color:#7b8797;
+    font-size:7px;
+    margin-top:2px;
+}
+
+.acceptBtn{
+    border:0;
+    background:#07152d;
+    color:white;
+    padding:10px 13px;
+    border-radius:10px;
+    font-size:8px;
+    font-weight:900;
+}
+
+/* EMPTY */
+
+.empty{
+    margin:15px;
+    padding:30px 15px;
+    text-align:center;
+    background:white;
+    border-radius:16px;
+    display:none;
+}
+
+.empty div{
+    font-size:30px;
+}
+
+.empty strong{
+    display:block;
+    margin-top:8px;
+    font-size:13px;
+}
+
+.empty p{
+    margin-top:4px;
+    color:#7b8797;
+    font-size:8px;
+}
+
+/* BOTTOM */
+
+.bottomAction{
+    margin:15px;
+    padding:15px;
+    border-radius:15px;
+    background:#fff;
+    border:1px solid #e5e9ee;
+}
+
+.bottomAction strong{
+    display:block;
+    font-size:12px;
+}
+
+.bottomAction p{
+    margin-top:4px;
+    color:#7b8797;
+    font-size:8px;
+}
+
+.bottomAction a{
+    display:inline-block;
+    margin-top:10px;
+    padding:9px 12px;
+    background:#07152d;
+    color:white;
+    border-radius:9px;
+    text-decoration:none;
+    font-size:8px;
+    font-weight:900;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- HEADER -->
+
+<header class="header">
+
+<a href="home.html" class="back">
+‹
+</a>
+
+<div class="headerText">
+
+<strong>
+Mechanic Community
+</strong>
+
+<small>
+TransportPro Professional Network
+</small>
+
+</div>
+
+</header>
+
+
+<!-- PROFILE -->
+
+<section class="profile">
+
+<div class="profileTop">
+
+<div class="avatar">
+🔧
+</div>
+
+<div class="profileInfo">
+
+<strong id="mechanicName">
+Mechanic
+</strong>
+
+<small>
+Vehicle Repair Professional
+</small>
+
+</div>
+
+<div class="verified">
+✓ VERIFIED
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<strong id="openCount">
+0
+</strong>
+
+<small>
+Open Jobs
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<strong id="acceptedCount">
+0
+</strong>
+
+<small>
+My Jobs
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+₹
+</strong>
+
+<small>
+Earn
+</small>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+
+<div class="quickGrid">
+
+<a href="mechanic-work.html" class="quickCard">
+
+<div class="quickIcon">
+🔧
+</div>
+
+<strong>
+My Accepted Work
+</strong>
+
+<span>
+Accepted repair jobs देखें और status update करें।
+</span>
+
+</a>
+
+
+<a href="mechanic-profile.html" class="quickCard">
+
+<div class="quickIcon">
+👤
+</div>
+
+<strong>
+My Profile
+</strong>
+
+<span>
+Skills, experience और service area update करें।
+</span>
+
+</a>
+
+</div>
+
+
+<!-- SERVICE -->
+
+<section class="serviceCard">
+
+<span>
+MECHANIC WORK MARKETPLACE
+</span>
+
+<strong>
+Repair Jobs Near You
+</strong>
+
+<p>
+Truck owners apni vehicle problem list karenge.
+Aap suitable repair request select karke work accept kar sakte hain.
+</p>
+
+</section>
+
+
+<!-- FILTER -->
+
+<div class="filters">
+
+<button
+class="filter active"
+onclick="filterRequests('all',this)">
+All
+</button>
+
+<button
+class="filter"
+onclick="filterRequests('urgent',this)">
+🔴 Urgent
+</button>
+
+<button
+class="filter"
+onclick="filterRequests('today',this)">
+📅 Today
+</button>
+
+</div>
+
+
+<div class="section">
+
+<strong>
+Available Repair Requests
+</strong>
+
+<small>
+Truck owners ki currently available service requests
+</small>
+
+</div>
+
+
+<div id="requestList">
+</div>
+
+
+<div id="empty" class="empty">
+
+<div>
+🔧
+</div>
+
+<strong>
+No Repair Requests
+</strong>
+
+<p>
+Jab truck owner problem post karega,
+request yahan दिखाई देगी.
+</p>
+
+</div>
+
+
+<!-- BOTTOM -->
+
+<section class="bottomAction">
+
+<strong>
+Apni Mechanic Profile Complete Karein
+</strong>
+
+<p>
+Skills, experience, service area aur contact details add karke
+better work opportunities paayein.
+</p>
+
+<a href="mechanic-profile.html">
+Complete Profile →
+</a>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   USER
+===================================================== */
+
+function getUser(){
+
+const keys=[
+"loggedInUser",
+"currentUser",
+"user",
+"profile",
+"customer"
+];
+
+for(let key of keys){
+
+const raw=localStorage.getItem(key);
+
+if(!raw) continue;
+
+try{
+
+return JSON.parse(raw);
+
+}catch(e){
+
+return {
+name:raw
+};
+
+}
+
+}
+
+return null;
+
+}
+
+
+/* =====================================================
+   CURRENT MECHANIC
+===================================================== */
+
+function getMechanicName(){
+
+const profile=
+JSON.parse(
+localStorage.getItem("mechanicProfile") || "null"
+);
+
+if(profile){
+
+return profile.name ||
+"Mechanic";
+
+}
+
+const user=getUser();
+
+if(user){
+
+return user.name ||
+user.fullName ||
+user.username ||
+"Mechanic";
+
+}
+
+return "Mechanic";
+
+}
+
+
+const mechanicName=
+getMechanicName();
+
+
+document.getElementById(
+"mechanicName"
+).textContent=
+mechanicName;
+
+
+/* =====================================================
+   REPAIR REQUESTS
+===================================================== */
+
+let currentFilter="all";
+
+
+function getRequests(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(
+"truckRepairRequests"
+) || "[]"
+);
+
+}catch(e){
+
+return [];
+
+}
+
+}
+
+
+/* =====================================================
+   RENDER REQUESTS
+===================================================== */
+
+function renderRequests(){
+
+const list=
+document.getElementById(
+"requestList"
+);
+
+list.innerHTML="";
+
+
+const requests=
+getRequests();
+
+
+/* ONLY OPEN JOBS */
+
+let filtered=
+requests.filter(function(request){
+
+if(request.status &&
+request.status!=="Open"){
+
+return false;
+
+}
+
+
+if(currentFilter==="urgent"){
+
+return request.urgency==="Urgent";
+
+}
+
+
+if(currentFilter==="today"){
+
+return request.urgency==="Today";
+
+}
+
+
+return true;
+
+});
+
+
+/* COUNTS */
+
+const openJobs=
+requests.filter(function(request){
+
+return !request.status ||
+request.status==="Open";
+
+}).length;
+
+
+const myJobs=
+requests.filter(function(request){
+
+return request.status==="Accepted" &&
+request.acceptedBy===mechanicName;
+
+}).length;
+
+
+document.getElementById(
+"openCount"
+).textContent=
+openJobs;
+
+
+document.getElementById(
+"acceptedCount"
+).textContent=
+myJobs;
+
+
+/* EMPTY */
+
+document.getElementById(
+"empty"
+).style.display=
+filtered.length===0
+? "block"
+: "none";
+
+
+/* NEWEST FIRST */
+
+filtered
+.slice()
+.reverse()
+.forEach(function(request){
+
+
+const card=
+document.createElement(
+"div"
+);
+
+card.className=
+"request";
+
+
+card.innerHTML=`
+
+<div class="requestTop">
+
+<div class="requestIcon">
+🔧
+</div>
+
+<div class="requestInfo">
+
+<strong>
+${request.problem || "Repair"} Repair Required
+</strong>
+
+<small>
+Vehicle: ${request.vehicleNumber || "Not provided"}
+</small>
+
+</div>
+
+${
+request.urgency==="Urgent"
+?
+`
+<span class="urgent">
+URGENT
+</span>
+`
+:
+""
+}
+
+</div>
+
+
+<div class="problem">
+
+<strong>
+Problem Details
+</strong>
+
+<p>
+${request.details || "No details provided"}
+</p>
+
+</div>
+
+
+<div class="requestDetails">
+
+<div class="detail">
+
+<small>
+VEHICLE
+</small>
+
+<strong>
+${request.vehicleType || "Vehicle"}
+</strong>
+
+</div>
+
+
+<div class="detail">
+
+<small>
+LOCATION
+</small>
+
+<strong>
+${request.location || "Location not provided"}
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="requestBottom">
+
+<div>
+
+<strong>
+Service Job
+</strong>
+
+<small>
+Request ID: ${request.id || "-"}
+</small>
+
+</div>
+
+
+<button
+class="acceptBtn"
+onclick="acceptRequest('${request.id}')">
+
+Accept Work →
+
+</button>
+
+</div>
+
+`;
+
+
+list.appendChild(card);
+
+});
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function filterRequests(
+filter,
+button
+){
+
+currentFilter=
+filter;
+
+
+document
+.querySelectorAll(".filter")
+.forEach(function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+});
+
+
+button.classList.add(
+"active"
+);
+
+
+renderRequests();
+
+}
+
+
+/* =====================================================
+   ACCEPT WORK
+===================================================== */
+
+function acceptRequest(
+requestId
+){
+
+const requests=
+getRequests();
+
+
+const index=
+requests.findIndex(
+r=>r.id===requestId
+);
+
+
+if(index===-1){
+
+alert(
+"Request not found."
+);
+
+return;
+
+}
+
+
+/* CHECK STATUS */
+
+if(
+requests[index].status &&
+requests[index].status!=="Open"
+){
+
+alert(
+"This work is already assigned."
+);
+
+return;
+
+}
+
+
+/* ACCEPT */
+
+requests[index].status=
+"Accepted";
+
+requests[index].workStatus=
+"Accepted";
+
+requests[index].acceptedBy=
+mechanicName;
+
+requests[index].acceptedAt=
+new Date().toISOString();
+
+
+localStorage.setItem(
+"truckRepairRequests",
+JSON.stringify(
+requests
+)
+);
+
+
+alert(
+"Work accepted successfully!\n\n" +
+"Request ID: " +
+requestId
+);
+
+
+/* REFRESH */
+
+renderRequests();
+
+}
+
+
+/* =====================================================
+   AUTO REFRESH
+===================================================== */
+
+renderRequests();
+
+
+setInterval(
+renderRequests,
+3000
+);
+
+</script>
+
+</body>
+
+</html>

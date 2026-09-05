@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Request Truck | TransportPro</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    min-height:64px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 14px;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:21px;
+}
+
+.logo{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+}
+
+.headerText{
+    flex:1;
+}
+
+.headerText strong{
+    display:block;
+    font-size:14px;
+}
+
+.headerText span{
+    display:block;
+    margin-top:3px;
+
+    color:#94a3b8;
+
+    font-size:7px;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+
+    padding:15px 14px 120px;
+}
+
+
+/* =====================================
+   PROGRESS
+===================================== */
+
+.progress{
+    display:flex;
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+.step{
+    width:31px;
+    height:31px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#e4e7ec;
+    color:#667085;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+.step.active{
+    background:#2563eb;
+    color:#fff;
+}
+
+.stepLine{
+    flex:1;
+    height:2px;
+
+    background:#d0d5dd;
+}
+
+.stepLine.active{
+    background:#2563eb;
+}
+
+
+/* =====================================
+   CARD
+===================================== */
+
+.card{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:17px;
+
+    padding:15px;
+
+    margin-bottom:14px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.cardTitle{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    margin-bottom:14px;
+}
+
+.cardIcon{
+    width:38px;
+    height:38px;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.cardTitle strong{
+    display:block;
+    font-size:11px;
+}
+
+.cardTitle span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:6px;
+}
+
+
+/* =====================================
+   TRUCK
+===================================== */
+
+.truckBox{
+    display:flex;
+    gap:11px;
+    align-items:center;
+}
+
+.truckImage{
+    width:64px;
+    height:64px;
+
+    border-radius:14px;
+
+    background:#07111f;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:32px;
+}
+
+.truckInfo{
+    flex:1;
+}
+
+.truckInfo strong{
+    display:block;
+    font-size:11px;
+}
+
+.truckInfo span{
+    display:block;
+
+    margin-top:5px;
+
+    color:#667085;
+
+    font-size:6px;
+}
+
+.verified{
+    display:inline-block;
+
+    margin-top:6px;
+
+    padding:4px 7px;
+
+    border-radius:20px;
+
+    background:#ecfdf3;
+
+    color:#067647;
+
+    font-size:6px;
+    font-weight:700;
+}
+
+
+/* =====================================
+   FORM
+===================================== */
+
+.field{
+    margin-bottom:13px;
+}
+
+.field:last-child{
+    margin-bottom:0;
+}
+
+.field label{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#344054;
+
+    font-size:7px;
+
+    font-weight:700;
+}
+
+.field input,
+.field textarea,
+.field select{
+
+    width:100%;
+
+    min-height:43px;
+
+    padding:10px;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    background:#fff;
+
+    color:#101828;
+
+    font-size:8px;
+}
+
+.field textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px rgba(37,99,235,.10);
+}
+
+.required{
+    color:#d92d20;
+}
+
+
+/* =====================================
+   TWO COLUMN
+===================================== */
+
+.twoCol{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+}
+
+
+/* =====================================
+   ROUTE
+===================================== */
+
+.routeBox{
+    display:flex;
+    gap:10px;
+}
+
+.routeIcon{
+    width:26px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.routeDot{
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    margin-top:4px;
+}
+
+.routeLine{
+    width:2px;
+    flex:1;
+
+    background:#d0d5dd;
+
+    margin:4px 0;
+}
+
+.routeContent{
+    flex:1;
+}
+
+.routeField{
+    margin-bottom:12px;
+}
+
+.routeField:last-child{
+    margin-bottom:0;
+}
+
+.routeField label{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#667085;
+
+    font-size:6px;
+}
+
+.routeField input{
+    width:100%;
+
+    min-height:41px;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:9px;
+
+    padding:9px;
+
+    font-size:8px;
+
+    outline:none;
+}
+
+
+/* =====================================
+   PRICE
+===================================== */
+
+.priceBox{
+    background:#f8fafc;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:12px;
+
+    padding:12px;
+}
+
+.priceRow{
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eaecf0;
+}
+
+.priceRow:last-child{
+    border-bottom:0;
+}
+
+.priceRow span{
+    color:#667085;
+    font-size:7px;
+}
+
+.priceRow strong{
+    font-size:8px;
+}
+
+.total{
+    font-size:11px !important;
+}
+
+
+/* =====================================
+   CHECKBOX
+===================================== */
+
+.checkBox{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+    margin-top:10px;
+}
+
+.checkBox input{
+    margin-top:2px;
+}
+
+.checkBox label{
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.6;
+}
+
+
+/* =====================================
+   INFO
+===================================== */
+
+.info{
+    padding:11px;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+
+    border:1px solid #bfdbfe;
+
+    color:#175cd3;
+
+    font-size:6px;
+
+    line-height:1.6;
+}
+
+
+/* =====================================
+   BOTTOM
+===================================== */
+
+.bottomAction{
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    z-index:900;
+
+    background:rgba(255,255,255,.96);
+
+    border-top:1px solid #e4e7ec;
+
+    padding:9px 14px;
+
+    backdrop-filter:blur(8px);
+}
+
+.bottomInner{
+    max-width:900px;
+    margin:auto;
+
+    display:flex;
+
+    gap:9px;
+}
+
+.cancelBtn,
+.submitBtn{
+    min-height:47px;
+
+    border-radius:11px;
+
+    font-size:8px;
+
+    font-weight:700;
+}
+
+.cancelBtn{
+    width:100px;
+
+    background:#fff;
+
+    border:1px solid #d0d5dd;
+
+    color:#344054;
+}
+
+.submitBtn{
+    flex:1;
+
+    border:0;
+
+    background:#2563eb;
+
+    color:#fff;
+}
+
+.submitBtn:disabled{
+    opacity:.55;
+
+    cursor:not-allowed;
+}
+
+
+/* =====================================
+   SUCCESS
+===================================== */
+
+.successScreen{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    background:rgba(7,17,31,.70);
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+}
+
+.successCard{
+    width:100%;
+    max-width:420px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px 18px;
+
+    text-align:center;
+}
+
+.successIcon{
+    width:64px;
+    height:64px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#ecfdf3;
+
+    color:#067647;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+}
+
+.successCard h2{
+    margin-top:13px;
+
+    font-size:17px;
+}
+
+.successCard p{
+    margin-top:8px;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.7;
+}
+
+.requestId{
+    margin-top:13px;
+
+    padding:10px;
+
+    background:#f8fafc;
+
+    border-radius:10px;
+
+    font-size:8px;
+
+    font-weight:700;
+}
+
+.successBtn{
+    width:100%;
+
+    min-height:45px;
+
+    margin-top:15px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:8px;
+
+    font-weight:700;
+}
+
+
+@media(max-width:420px){
+
+    .twoCol{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="header">
+
+<button
+class="backBtn"
+type="button"
+onclick="goBack()">
+
+←
+
+</button>
+
+
+<div class="logo">
+🚛
+</div>
+
+
+<div class="headerText">
+
+<strong>
+Request Truck
+</strong>
+
+<span>
+TransportPro Booking
+</span>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================
+     PROGRESS
+===================================== -->
+
+<div class="progress">
+
+<div class="step active">
+1
+</div>
+
+<div class="stepLine active"></div>
+
+<div class="step active">
+2
+</div>
+
+<div class="stepLine"></div>
+
+<div class="step">
+3
+</div>
+
+</div>
+
+
+
+<!-- =====================================
+     SELECTED TRUCK
+===================================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+🚛
+</div>
+
+<div>
+
+<strong>
+Selected Truck
+</strong>
+
+<span>
+आप जिस vehicle को request कर रहे हैं
+</span>
+
+</div>
+
+</div>
+
+
+<div class="truckBox">
+
+<div class="truckImage">
+🚛
+</div>
+
+
+<div class="truckInfo">
+
+<strong id="truckName">
+Premium Transport Truck
+</strong>
+
+<span id="truckNumber">
+Vehicle Number: —
+</span>
+
+<span id="truckCapacity">
+Capacity: —
+</span>
+
+<div class="verified">
+✓ VERIFIED
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     ROUTE
+===================================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+📍
+</div>
+
+<div>
+
+<strong>
+Pickup & Delivery Route
+</strong>
+
+<span>
+Goods कहाँ से कहाँ तक जाएँगे
+</span>
+
+</div>
+
+</div>
+
+
+<div class="routeBox">
+
+
+<div class="routeIcon">
+
+<div class="routeDot"></div>
+
+<div class="routeLine"></div>
+
+<div
+class="routeDot">
+</div>
+
+</div>
+
+
+<div class="routeContent">
+
+
+<div class="routeField">
+
+<label>
+Pickup Location
+<span class="required">*</span>
+</label>
+
+<input
+id="pickup"
+type="text"
+placeholder="Pickup location">
+
+</div>
+
+
+<div class="routeField">
+
+<label>
+Destination
+<span class="required">*</span>
+</label>
+
+<input
+id="destination"
+type="text"
+placeholder="Delivery destination">
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     GOODS DETAILS
+===================================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+📦
+</div>
+
+<div>
+
+<strong>
+Goods Details
+</strong>
+
+<span>
+Load की जानकारी
+</span>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Goods Type
+<span class="required">*</span>
+</label>
+
+<input
+id="goodsType"
+type="text"
+placeholder="जैसे Cement, Steel, Food आदि">
+
+</div>
+
+
+<div class="twoCol">
+
+<div class="field">
+
+<label>
+Weight
+<span class="required">*</span>
+</label>
+
+<input
+id="goodsWeight"
+type="number"
+min="0"
+placeholder="Weight">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Unit
+</label>
+
+<select id="weightUnit">
+
+<option value="Ton">
+Ton
+</option>
+
+<option value="Kg">
+Kg
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Special Instructions
+</label>
+
+<textarea
+id="instructions"
+placeholder="Loading, unloading या goods से जुड़ी कोई खास जानकारी..."></textarea>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     DATE & TIME
+===================================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+📅
+</div>
+
+<div>
+
+<strong>
+Pickup Schedule
+</strong>
+
+<span>
+Pickup कब चाहिए
+</span>
+
+</div>
+
+</div>
+
+
+<div class="twoCol">
+
+<div class="field">
+
+<label>
+Pickup Date
+<span class="required">*</span>
+</label>
+
+<input
+id="pickupDate"
+type="date">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Pickup Time
+<span class="required">*</span>
+</label>
+
+<input
+id="pickupTime"
+type="time">
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     CUSTOMER DETAILS
+===================================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+👤
+</div>
+
+<div>
+
+<strong>
+Customer Details
+</strong>
+
+<span>
+Booking contact information
+</span>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Customer / Company Name
+<span class="required">*</span>
+</label>
+
+<input
+id="customerName"
+type="text"
+placeholder="आपका नाम या company name">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="customerPhone"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+placeholder="10 digit mobile number">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Email
+</label>
+
+<input
+id="customerEmail"
+type="email"
+placeholder="example@email.com">
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     FREIGHT
+===================================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+💰
+</div>
+
+<div>
+
+<strong>
+Freight Confirmation
+</strong>
+
+<span>
+Transport cost
+</span>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Your Offered Freight
+</label>
+
+<input
+id="freight"
+type="number"
+min="0"
+placeholder="₹ Amount">
+
+</div>
+
+
+<div class="priceBox">
+
+<div class="priceRow">
+
+<span>
+Truck Freight
+</span>
+
+<strong id="freightDisplay">
+₹ Negotiable
+</strong>
+
+</div>
+
+
+<div class="priceRow">
+
+<span>
+Platform Fee
+</span>
+
+<strong>
+To be calculated
+</strong>
+
+</div>
+
+
+<div class="priceRow">
+
+<span>
+Payment
+</span>
+
+<strong>
+After confirmation
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="info">
+
+💡 Final freight transporter और customer की
+confirmation के बाद तय होगा।
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     TERMS
+===================================== -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="cardIcon">
+🔐
+</div>
+
+<div>
+
+<strong>
+Confirmation
+</strong>
+
+<span>
+Booking request भेजने से पहले
+</span>
+
+</div>
+
+</div>
+
+
+<div class="checkBox">
+
+<input
+id="terms"
+type="checkbox">
+
+<label for="terms">
+
+मैं confirm करता/करती हूँ कि दी गई pickup,
+destination, goods और contact information
+सही है तथा transporter के response का इंतजार
+करूँगा/करूँगी।
+
+</label>
+
+</div>
+
+
+<div class="checkBox">
+
+<input
+id="safety"
+type="checkbox">
+
+<label for="safety">
+
+मैं TransportPro के safety और verification
+rules को समझता/समझती हूँ।
+
+</label>
+
+</div>
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- =====================================
+     BOTTOM ACTION
+===================================== -->
+
+<div class="bottomAction">
+
+<div class="bottomInner">
+
+<button
+type="button"
+class="cancelBtn"
+onclick="goBack()">
+
+← Back
+
+</button>
+
+
+<button
+type="button"
+id="submitBtn"
+class="submitBtn"
+onclick="submitRequest()"
+disabled>
+
+🚚 Send Booking Request
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================
+     SUCCESS
+===================================== -->
+
+<div
+class="successScreen"
+id="successScreen">
+
+<div class="successCard">
+
+<div class="successIcon">
+✓
+</div>
+
+<h2>
+Request Sent Successfully
+</h2>
+
+<p>
+
+आपकी truck booking request तैयार हो गई है।
+Transporter के response के बाद अगला step
+available होगा।
+
+</p>
+
+
+<div class="requestId">
+
+Request ID:
+<span id="successRequestId">
+—
+</span>
+
+</div>
+
+
+<button
+class="successBtn"
+onclick="continueAfterRequest()">
+
+Continue
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* =====================================
+   GET SELECTED TRUCK
+===================================== */
+
+function getTruckData(){
+
+    const saved =
+        localStorage.getItem(
+            "selectedTruck"
+        );
+
+
+    if(!saved){
+
+        return {
+
+            name:
+                "Premium Transport Truck",
+
+            number:
+                "Vehicle Number Not Available",
+
+            capacity:
+                "Capacity Not Available",
+
+            rating:
+                "4.8",
+
+            freight:
+                ""
+
+        };
+
+    }
+
+
+    try{
+
+        return JSON.parse(
+            saved
+        );
+
+    }
+
+    catch(error){
+
+        return {
+
+            name:
+                "Premium Transport Truck",
+
+            number:
+                "Vehicle Number Not Available",
+
+            capacity:
+                "Capacity Not Available"
+
+        };
+
+    }
+
+}
+
+
+/* =====================================
+   DISPLAY TRUCK
+===================================== */
+
+function displayTruck(){
+
+    const truck =
+        getTruckData();
+
+
+    document.getElementById(
+        "truckName"
+    ).textContent =
+        truck.name ||
+        "Premium Transport Truck";
+
+
+    document.getElementById(
+        "truckNumber"
+    ).textContent =
+        "Vehicle Number: " +
+        (
+            truck.number ||
+            "—"
+        );
+
+
+    document.getElementById(
+        "truckCapacity"
+    ).textContent =
+        "Capacity: " +
+        (
+            truck.capacity ||
+            "—"
+        );
+
+
+    if(truck.freight){
+
+        document.getElementById(
+            "freightDisplay"
+        ).textContent =
+            "₹" +
+            Number(
+                truck.freight
+            ).toLocaleString(
+                "en-IN"
+            );
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD SEARCH DATA
+===================================== */
+
+function loadSearchData(){
+
+    const saved =
+        localStorage.getItem(
+            "truckSearchRequest"
+        );
+
+
+    if(!saved){
+
+        return;
+
+    }
+
+
+    try{
+
+        const data =
+            JSON.parse(
+                saved
+            );
+
+
+        if(data.pickupLocation){
+
+            document.getElementById(
+                "pickup"
+            ).value =
+                data.pickupLocation;
+
+        }
+
+
+        if(data.destination){
+
+            document.getElementById(
+                "destination"
+            ).value =
+                data.destination;
+
+        }
+
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Search data unavailable"
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD SAVED CUSTOMER DATA
+===================================== */
+
+function loadCustomerData(){
+
+    const saved =
+        localStorage.getItem(
+            "customerProfile"
+        );
+
+
+    if(!saved){
+
+        return;
+
+    }
+
+
+    try{
+
+        const customer =
+            JSON.parse(
+                saved
+            );
+
+
+        if(customer.name){
+
+            document.getElementById(
+                "customerName"
+            ).value =
+                customer.name;
+
+        }
+
+
+        if(customer.phone){
+
+            document.getElementById(
+                "customerPhone"
+            ).value =
+                customer.phone;
+
+        }
+
+
+        if(customer.email){
+
+            document.getElementById(
+                "customerEmail"
+            ).value =
+                customer.email;
+
+        }
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Customer profile unavailable"
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   DATE
+===================================== */
+
+function setMinimumDate(){
+
+    const today =
+        new Date();
+
+
+    const year =
+        today.getFullYear();
+
+
+    const month =
+        String(
+            today.getMonth()+1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const date =
+        year +
+        "-" +
+        month +
+        "-" +
+        day;
+
+
+    document.getElementById(
+        "pickupDate"
+    ).min =
+        date;
+
+}
+
+
+/* =====================================
+   VALIDATION
+===================================== */
+
+<script>
+
+/* =====================================
+   VALIDATION
+===================================== */
+
+function validateForm(){
+
+    const pickup =
+        document.getElementById("pickup").value.trim();
+
+    const destination =
+        document.getElementById("destination").value.trim();
+
+    const goodsType =
+        document.getElementById("goodsType").value.trim();
+
+    const goodsWeight =
+        document.getElementById("goodsWeight").value.trim();
+
+    const pickupDate =
+        document.getElementById("pickupDate").value;
+
+    const pickupTime =
+        document.getElementById("pickupTime").value;
+
+    const customerName =
+        document.getElementById("customerName").value.trim();
+
+    const customerPhone =
+        document.getElementById("customerPhone").value.trim();
+
+    const terms =
+        document.getElementById("terms").checked;
+
+    const safety =
+        document.getElementById("safety").checked;
+
+
+    if(!pickup){
+        alert("📍 Pickup location डालें।");
+        document.getElementById("pickup").focus();
+        return false;
+    }
+
+
+    if(!destination){
+        alert("📍 Destination डालें।");
+        document.getElementById("destination").focus();
+        return false;
+    }
+
+
+    if(pickup.toLowerCase() === destination.toLowerCase()){
+        alert("⚠️ Pickup और destination अलग होने चाहिए।");
+        return false;
+    }
+
+
+    if(!goodsType){
+        alert("📦 Goods type डालें।");
+        document.getElementById("goodsType").focus();
+        return false;
+    }
+
+
+    if(
+        !goodsWeight ||
+        Number(goodsWeight) <= 0
+    ){
+        alert("⚖️ Goods weight सही डालें।");
+        document.getElementById("goodsWeight").focus();
+        return false;
+    }
+
+
+    if(!pickupDate){
+        alert("📅 Pickup date चुनें।");
+        document.getElementById("pickupDate").focus();
+        return false;
+    }
+
+
+    if(!pickupTime){
+        alert("⏰ Pickup time चुनें।");
+        document.getElementById("pickupTime").focus();
+        return false;
+    }
+
+
+    if(!customerName){
+        alert("👤 Customer / Company name डालें।");
+        document.getElementById("customerName").focus();
+        return false;
+    }
+
+
+    if(!/^[0-9]{10}$/.test(customerPhone)){
+        alert("📱 सही 10 digit mobile number डालें।");
+        document.getElementById("customerPhone").focus();
+        return false;
+    }
+
+
+    if(!terms){
+        alert(
+            "☑️ कृपया booking confirmation को accept करें।"
+        );
+        return false;
+    }
+
+
+    if(!safety){
+        alert(
+            "🔐 कृपया safety confirmation को accept करें।"
+        );
+        return false;
+    }
+
+
+    return true;
+
+}
+
+
+/* =====================================
+   SUBMIT BUTTON STATUS
+===================================== */
+
+function updateSubmitButton(){
+
+    const terms =
+        document.getElementById("terms").checked;
+
+    const safety =
+        document.getElementById("safety").checked;
+
+    const button =
+        document.getElementById("submitBtn");
+
+
+    button.disabled =
+        !(terms && safety);
+
+}
+
+
+/* =====================================
+   FREIGHT DISPLAY
+===================================== */
+
+function updateFreight(){
+
+    const input =
+        document.getElementById("freight");
+
+    const display =
+        document.getElementById("freightDisplay");
+
+    if(!input || !display){
+        return;
+    }
+
+
+    const value =
+        input.value.trim();
+
+
+    if(
+        value &&
+        Number(value) > 0
+    ){
+
+        display.textContent =
+            "₹" +
+            Number(value).toLocaleString("en-IN");
+
+    }
+    else{
+
+        const truck =
+            getTruckData();
+
+
+        if(
+            truck &&
+            truck.freight &&
+            Number(truck.freight) > 0
+        ){
+
+            display.textContent =
+                "₹" +
+                Number(
+                    truck.freight
+                ).toLocaleString("en-IN");
+
+        }
+        else{
+
+            display.textContent =
+                "₹ Negotiable";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================
+   CREATE BOOKING REQUEST
+===================================== */
+
+function submitRequest(){
+
+    if(!validateForm()){
+        return;
+    }
+
+
+    const truck =
+        getTruckData();
+
+
+    const requestId =
+        "REQ-" +
+        Date.now();
+
+
+    const request = {
+
+        requestId:
+            requestId,
+
+        status:
+            "Pending",
+
+        createdAt:
+            new Date().toISOString(),
+
+
+        truck:{
+
+            name:
+                truck.name || "",
+
+            number:
+                truck.number || "",
+
+            capacity:
+                truck.capacity || "",
+
+            rating:
+                truck.rating || ""
+
+        },
+
+
+        route:{
+
+            pickup:
+                document
+                .getElementById("pickup")
+                .value
+                .trim(),
+
+            destination:
+                document
+                .getElementById("destination")
+                .value
+                .trim()
+
+        },
+
+
+        goods:{
+
+            type:
+                document
+                .getElementById("goodsType")
+                .value
+                .trim(),
+
+            weight:
+                document
+                .getElementById("goodsWeight")
+                .value,
+
+            unit:
+                document
+                .getElementById("weightUnit")
+                .value,
+
+            instructions:
+                document
+                .getElementById("instructions")
+                .value
+                .trim()
+
+        },
+
+
+        schedule:{
+
+            date:
+                document
+                .getElementById("pickupDate")
+                .value,
+
+            time:
+                document
+                .getElementById("pickupTime")
+                .value
+
+        },
+
+
+        customer:{
+
+            name:
+                document
+                .getElementById("customerName")
+                .value
+                .trim(),
+
+            phone:
+                document
+                .getElementById("customerPhone")
+                .value
+                .trim(),
+
+            email:
+                document
+                .getElementById("customerEmail")
+                .value
+                .trim()
+
+        },
+
+
+        freight:
+            document
+            .getElementById("freight")
+            .value
+            .trim() || null
+
+    };
+
+
+    /* =================================
+       SAVE BOOKING REQUEST
+    ================================= */
+
+    localStorage.setItem(
+        "truckBookingRequest",
+        JSON.stringify(request)
+    );
+
+
+    /* =================================
+       SAVE CUSTOMER PROFILE
+    ================================= */
+
+    localStorage.setItem(
+        "customerProfile",
+        JSON.stringify(
+            request.customer
+        )
+    );
+
+
+    /* =================================
+       SHOW SUCCESS SCREEN
+    ================================= */
+
+    const successId =
+        document.getElementById(
+            "successRequestId"
+        );
+
+
+    if(successId){
+
+        successId.textContent =
+            requestId;
+
+    }
+
+
+    const successScreen =
+        document.getElementById(
+            "successScreen"
+        );
+
+
+    if(successScreen){
+
+        successScreen.style.display =
+            "flex";
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "submitBtn"
+        );
+
+
+    if(button){
+
+        button.disabled =
+            true;
+
+        button.textContent =
+            "✓ Request Sent";
+
+    }
+
+}
+
+
+/* =====================================
+   CONTINUE AFTER REQUEST
+===================================== */
+
+function continueAfterRequest(){
+
+    /*
+       Backend connect होने के बाद
+       यह page customer booking
+       status page से connect होगा।
+    */
+
+    window.location.href =
+        "my-bookings.html";
+
+}
+
+
+/* =====================================
+   BACK BUTTON
+===================================== */
+
+function goBack(){
+
+    if(
+        window.history.length > 1
+    ){
+
+        window.history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "find-truck.html";
+
+    }
+
+}
+
+
+/* =====================================
+   MOBILE NUMBER VALIDATION
+===================================== */
+
+const phoneInput =
+    document.getElementById(
+        "customerPhone"
+    );
+
+
+if(phoneInput){
+
+    phoneInput.addEventListener(
+        "input",
+        function(){
+
+            this.value =
+                this.value
+                .replace(
+                    /[^0-9]/g,
+                    ""
+                )
+                .slice(0,10);
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   TERMS EVENT
+===================================== */
+
+const termsCheckbox =
+    document.getElementById(
+        "terms"
+    );
+
+
+if(termsCheckbox){
+
+    termsCheckbox.addEventListener(
+        "change",
+        updateSubmitButton
+    );
+
+}
+
+
+/* =====================================
+   SAFETY EVENT
+===================================== */
+
+const safetyCheckbox =
+    document.getElementById(
+        "safety"
+    );
+
+
+if(safetyCheckbox){
+
+    safetyCheckbox.addEventListener(
+        "change",
+        updateSubmitButton
+    );
+
+}
+
+
+/* =====================================
+   FREIGHT EVENT
+===================================== */
+
+const freightInput =
+    document.getElementById(
+        "freight"
+    );
+
+
+if(freightInput){
+
+    freightInput.addEventListener(
+        "input",
+        updateFreight
+    );
+
+}
+
+
+/* =====================================
+   PAGE START
+===================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        displayTruck();
+
+        loadSearchData();
+
+        loadCustomerData();
+
+        setMinimumDate();
+
+        updateFreight();
+
+        updateSubmitButton();
+
+    }
+);
+
+
+/* =====================================
+   PROTECT AGAINST ACCIDENTAL SUBMIT
+===================================== */
+
+window.addEventListener(
+    "beforeunload",
+    function(event){
+
+        /*
+           User ने form में data भरा हो
+           तो browser accidental refresh/
+           close पर warning दे सकता है।
+        */
+
+        const pickup =
+            document.getElementById(
+                "pickup"
+            );
+
+        const destination =
+            document.getElementById(
+                "destination"
+            );
+
+
+        if(
+            pickup &&
+            destination &&
+            (
+                pickup.value.trim() ||
+                destination.value.trim()
+            )
+        ){
+
+            /*
+               Modern browsers custom
+               message ignore कर सकते हैं।
+            */
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   FINAL INITIALIZATION
+===================================== */
+
+(function(){
+
+    try{
+
+        updateSubmitButton();
+
+        updateFreight();
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Initialization error:",
+            error
+        );
+
+    }
+
+})();
+
+</script>
+
+
+</body>
+
+</html>

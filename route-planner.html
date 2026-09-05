@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Route Planner - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.route-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   ROUTE FORM
+===================================== */
+
+.route-form{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:12px;
+
+    padding:13px;
+
+    margin-bottom:15px;
+}
+
+.form-group{
+    margin-bottom:12px;
+}
+
+.form-group label{
+    display:block;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+
+    height:43px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#172033;
+
+    padding:0 10px;
+
+    font-size:10px;
+
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   SWAP
+===================================== */
+
+.swap-row{
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:-4px;
+
+    margin-bottom:7px;
+}
+
+.swap-btn{
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#1769e0;
+
+    border-radius:20px;
+
+    padding:6px 12px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.swap-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   FORM ROW
+===================================== */
+
+.form-row{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:8px;
+}
+
+
+/* =====================================
+   CALCULATE BUTTON
+===================================== */
+
+.calculate-btn{
+    width:100%;
+
+    height:45px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.calculate-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   ROUTE RESULT
+===================================== */
+
+.route-result{
+    border:1px solid #dce5f0;
+
+    border-radius:12px;
+
+    padding:13px;
+
+    background:#fff;
+
+    margin-bottom:16px;
+}
+
+.result-heading{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.result-heading strong{
+    font-size:13px;
+}
+
+.result-heading span{
+    background:#eaf8ef;
+
+    color:#137333;
+
+    border-radius:20px;
+
+    padding:5px 9px;
+
+    font-size:7px;
+
+    font-weight:bold;
+}
+
+
+/* =====================================
+   ROUTE PATH
+===================================== */
+
+.route-path{
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:15px;
+}
+
+.location-point{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.point{
+    width:34px;
+    height:34px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    flex-shrink:0;
+}
+
+.point.start{
+    background:#1769e0;
+}
+
+.point.end{
+    background:#137333;
+}
+
+.location-point small{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+    margin-bottom:3px;
+}
+
+.location-point strong{
+    display:block;
+
+    font-size:10px;
+}
+
+.route-line{
+    height:27px;
+
+    border-left:2px dashed #b8c5d5;
+
+    margin-left:16px;
+
+    display:flex;
+    align-items:center;
+
+    padding-left:10px;
+}
+
+.route-line span{
+    font-size:15px;
+}
+
+
+/* =====================================
+   ROUTE STATS
+===================================== */
+
+.route-stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:7px;
+
+    margin-bottom:12px;
+}
+
+.stat-box{
+    background:#f8fafc;
+
+    border:1px solid #edf0f4;
+
+    border-radius:8px;
+
+    padding:9px 4px;
+
+    text-align:center;
+}
+
+.stat-box span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.stat-box strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   ROUTE ACTIONS
+===================================== */
+
+.route-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.route-actions button{
+    flex:1;
+
+    height:38px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#1769e0;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.route-actions button:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   SAVED ROUTES
+===================================== */
+
+.saved-section{
+    border-top:1px solid #edf0f4;
+
+    padding-top:14px;
+}
+
+.section-heading{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+}
+
+.section-heading strong{
+    font-size:12px;
+}
+
+.section-heading button{
+    border:0;
+
+    background:transparent;
+
+    color:#1769e0;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.saved-routes{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+
+/* =====================================
+   SAVED ROUTE ITEM
+===================================== */
+
+.saved-route{
+    border:1px solid #e2e8f0;
+
+    border-radius:10px;
+
+    padding:10px;
+
+    background:#fff;
+}
+
+.saved-route-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:8px;
+}
+
+.saved-route-icon{
+    width:35px;
+    height:35px;
+
+    border-radius:8px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+}
+
+.saved-route-title{
+    flex:1;
+
+    min-width:0;
+}
+
+.saved-route-title strong{
+    display:block;
+
+    font-size:9px;
+
+    margin-bottom:3px;
+}
+
+.saved-route-title small{
+    color:#667085;
+
+    font-size:7px;
+}
+
+.saved-route-delete{
+    width:30px;
+    height:30px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:#fff1f1;
+
+    color:#c62828;
+
+    cursor:pointer;
+}
+
+.saved-route-details{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:6px;
+}
+
+.saved-route-details div{
+    background:#f8fafc;
+
+    border-radius:6px;
+
+    padding:6px 3px;
+
+    text-align:center;
+}
+
+.saved-route-details span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+    margin-bottom:3px;
+}
+
+.saved-route-details strong{
+    font-size:7px;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:28px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+}
+
+.empty-icon{
+    font-size:30px;
+
+    margin-bottom:7px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:14px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .route-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .route-stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .route-card{
+        padding:10px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .route-actions{
+        flex-direction:column;
+    }
+
+    .saved-route-details{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Route Planner
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="route-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🗺️
+            </div>
+
+            <div>
+
+                <h1>
+                    Route Planner
+                </h1>
+
+                <p>
+                    Pickup aur destination enter karke
+                    apni transport route plan karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ROUTE FORM -->
+
+        <div class="route-form">
+
+
+            <div class="form-group">
+
+                <label>
+                    Pickup Location
+                </label>
+
+                <input
+                    type="text"
+                    id="pickupLocation"
+                    placeholder="Enter pickup location">
+
+            </div>
+
+
+            <div class="swap-row">
+
+                <button
+                    class="swap-btn"
+                    onclick="swapLocations()">
+
+                    ⇅ Swap Locations
+
+                </button>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Destination
+                </label>
+
+                <input
+                    type="text"
+                    id="destinationLocation"
+                    placeholder="Enter destination">
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Vehicle Type
+                    </label>
+
+                    <select
+                        id="vehicleType">
+
+                        <option value="">
+                            Select Vehicle
+                        </option>
+
+                        <option value="Mini Truck">
+                            Mini Truck
+                        </option>
+
+                        <option value="Pickup">
+                            Pickup
+                        </option>
+
+                        <option value="Tata 407">
+                            Tata 407
+                        </option>
+
+                        <option value="Truck">
+                            Truck
+                        </option>
+
+                        <option value="Trailer">
+                            Trailer
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Load Weight
+                    </label>
+
+                    <input
+                        type="number"
+                        id="loadWeight"
+                        placeholder="Weight in tons">
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="calculate-btn"
+                onclick="calculateRoute()">
+
+                🧭 Calculate Route
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- ROUTE RESULT -->
+
+        <div
+            id="routeResult"
+            class="route-result"
+            style="display:none;">
+
+
+            <div class="result-heading">
+
+                <strong>
+                    Route Result
+                </strong>
+
+                <span id="routeStatus">
+                    Ready
+                </span>
+
+            </div>
+
+
+            <div class="route-path">
+
+
+                <div class="location-point">
+
+                    <div class="point start">
+                        A
+                    </div>
+
+                    <div>
+
+                        <small>
+                            PICKUP
+                        </small>
+
+                        <strong
+                            id="resultPickup">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-line">
+
+                    <span>
+                        🚛
+                    </span>
+
+                </div>
+
+
+                <div class="location-point">
+
+                    <div class="point end">
+                        B
+                    </div>
+
+                    <div>
+
+                        <small>
+                            DESTINATION
+                        </small>
+
+                        <strong
+                            id="resultDestination">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ROUTE STATS -->
+
+            <div class="route-stats">
+
+
+                <div class="stat-box">
+
+                    <span>
+                        Distance
+                    </span>
+
+                    <strong
+                        id="routeDistance">
+                        0 km
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span>
+                        Estimated Time
+                    </span>
+
+                    <strong
+                        id="routeTime">
+                        0 hr
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span>
+                        Estimated Fuel
+                    </span>
+
+                    <strong
+                        id="routeFuel">
+                        0 L
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span>
+                        Estimated Cost
+                    </span>
+
+                    <strong
+                        id="routeCost">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="route-actions">
+
+                <button
+                    onclick="saveRoute()">
+
+                    💾 Save Route
+
+                </button>
+
+
+                <button
+                    onclick="openMaps()">
+
+                    📍 Open Maps
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SAVED ROUTES -->
+
+        <div class="saved-section">
+
+            <div class="section-heading">
+
+                <strong>
+                    Saved Routes
+                </strong>
+
+                <button
+                    onclick="loadSavedRoutes()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="savedRoutes"
+                class="saved-routes">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        🗺️
+                    </div>
+
+                    <strong>
+                        No Saved Routes
+                    </strong>
+
+                    <small>
+                        Calculate karke route save karein.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   ROUTE PLANNER - JAVASCRIPT
+===================================== */
+
+const ROUTE_KEY = "tp_saved_routes";
+
+let currentRoute = null;
+
+
+/* =====================================
+   GET SAVED ROUTES
+===================================== */
+
+function getSavedRoutes(){
+
+    const saved =
+        localStorage.getItem(ROUTE_KEY);
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE TO LOCAL STORAGE
+===================================== */
+
+function saveRoutes(routes){
+
+    localStorage.setItem(
+        ROUTE_KEY,
+        JSON.stringify(routes)
+    );
+
+}
+
+
+/* =====================================
+   SWAP LOCATIONS
+===================================== */
+
+function swapLocations(){
+
+    const pickup =
+        document.getElementById(
+            "pickupLocation"
+        );
+
+    const destination =
+        document.getElementById(
+            "destinationLocation"
+        );
+
+
+    if(!pickup || !destination){
+        return;
+    }
+
+
+    const temp =
+        pickup.value;
+
+
+    pickup.value =
+        destination.value;
+
+
+    destination.value =
+        temp;
+
+}
+
+
+/* =====================================
+   CALCULATE ROUTE
+===================================== */
+
+function calculateRoute(){
+
+    const pickup =
+        document.getElementById(
+            "pickupLocation"
+        ).value.trim();
+
+
+    const destination =
+        document.getElementById(
+            "destinationLocation"
+        ).value.trim();
+
+
+    const vehicle =
+        document.getElementById(
+            "vehicleType"
+        ).value;
+
+
+    const weight =
+        Number(
+            document.getElementById(
+                "loadWeight"
+            ).value || 0
+        );
+
+
+    if(!pickup){
+
+        alert(
+            "⚠️ Pickup location enter karein."
+        );
+
+        return;
+
+    }
+
+
+    if(!destination){
+
+        alert(
+            "⚠️ Destination enter karein."
+        );
+
+        return;
+
+    }
+
+
+    if(pickup.toLowerCase() ===
+       destination.toLowerCase()){
+
+        alert(
+            "⚠️ Pickup aur destination alag hone chahiye."
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Ye frontend estimation hai.
+     * Real GPS distance ke liye future mein
+     * Google Maps/Map API backend se connect
+     * ki ja sakti hai.
+     */
+
+    const distance =
+        estimateDistance(
+            pickup,
+            destination
+        );
+
+
+    const speed =
+        getVehicleSpeed(
+            vehicle
+        );
+
+
+    const time =
+        distance / speed;
+
+
+    const fuelMileage =
+        getMileage(
+            vehicle
+        );
+
+
+    let fuel =
+        distance /
+        fuelMileage;
+
+
+    /*
+     * Heavy load hone par
+     * estimated fuel thoda increase.
+     */
+
+    if(weight > 5){
+
+        fuel =
+            fuel * 1.10;
+
+    }
+
+
+    const fuelPrice =
+        95;
+
+
+    const tollEstimate =
+        Math.round(
+            distance * 1.20
+        );
+
+
+    const fuelCost =
+        Math.round(
+            fuel * fuelPrice
+        );
+
+
+    const estimatedCost =
+        fuelCost +
+        tollEstimate;
+
+
+    currentRoute = {
+
+        id:
+            "RT-" +
+            Date.now()
+                .toString()
+                .slice(-6),
+
+        pickup:
+            pickup,
+
+        destination:
+            destination,
+
+        vehicle:
+            vehicle ||
+            "Not Selected",
+
+        weight:
+            weight,
+
+        distance:
+            Math.round(distance),
+
+        time:
+            formatTime(time),
+
+        fuel:
+            Math.round(
+                fuel * 10
+            ) / 10,
+
+        cost:
+            estimatedCost,
+
+        date:
+            getToday()
+
+    };
+
+
+    showRouteResult(
+        currentRoute
+    );
+
+}
+
+
+/* =====================================
+   ESTIMATE DISTANCE
+===================================== */
+
+function estimateDistance(
+    pickup,
+    destination
+){
+
+    /*
+     * Frontend demo estimation.
+     * Different city names par
+     * deterministic distance generate hoti hai.
+     */
+
+    const text =
+        (
+            pickup +
+            destination
+        ).toLowerCase();
+
+
+    let hash = 0;
+
+
+    for(
+        let i = 0;
+        i < text.length;
+        i++
+    ){
+
+        hash =
+            (
+                hash * 31 +
+                text.charCodeAt(i)
+            ) >>> 0;
+
+    }
+
+
+    const distance =
+        80 +
+        (
+            hash % 620
+        );
+
+
+    return distance;
+
+}
+
+
+/* =====================================
+   VEHICLE SPEED
+===================================== */
+
+function getVehicleSpeed(
+    vehicle
+){
+
+    switch(vehicle){
+
+        case "Mini Truck":
+            return 45;
+
+        case "Pickup":
+            return 50;
+
+        case "Tata 407":
+            return 45;
+
+        case "Truck":
+            return 40;
+
+        case "Trailer":
+            return 35;
+
+        default:
+            return 45;
+
+    }
+
+}
+
+
+/* =====================================
+   VEHICLE MILEAGE
+===================================== */
+
+function getMileage(
+    vehicle
+){
+
+    switch(vehicle){
+
+        case "Mini Truck":
+            return 10;
+
+        case "Pickup":
+            return 12;
+
+        case "Tata 407":
+            return 8;
+
+        case "Truck":
+            return 5;
+
+        case "Trailer":
+            return 3.5;
+
+        default:
+            return 7;
+
+    }
+
+}
+
+
+/* =====================================
+   FORMAT TIME
+===================================== */
+
+function formatTime(hours){
+
+    const totalMinutes =
+        Math.round(
+            hours * 60
+        );
+
+
+    const h =
+        Math.floor(
+            totalMinutes / 60
+        );
+
+
+    const m =
+        totalMinutes % 60;
+
+
+    if(h === 0){
+
+        return m + " min";
+
+    }
+
+
+    if(m === 0){
+
+        return h + " hr";
+
+    }
+
+
+    return (
+        h +
+        " hr " +
+        m +
+        " min"
+    );
+
+}
+
+
+/* =====================================
+   SHOW RESULT
+===================================== */
+
+function showRouteResult(
+    route
+){
+
+    document.getElementById(
+        "routeResult"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "resultPickup"
+    ).innerText =
+        route.pickup;
+
+
+    document.getElementById(
+        "resultDestination"
+    ).innerText =
+        route.destination;
+
+
+    document.getElementById(
+        "routeDistance"
+    ).innerText =
+        route.distance +
+        " km";
+
+
+    document.getElementById(
+        "routeTime"
+    ).innerText =
+        route.time;
+
+
+    document.getElementById(
+        "routeFuel"
+    ).innerText =
+        route.fuel +
+        " L";
+
+
+    document.getElementById(
+        "routeCost"
+    ).innerText =
+        "₹" +
+        route.cost;
+
+
+    document.getElementById(
+        "routeStatus"
+    ).innerText =
+        "Calculated";
+
+}
+
+
+/* =====================================
+   SAVE CURRENT ROUTE
+===================================== */
+
+function saveRoute(){
+
+    if(!currentRoute){
+
+        alert(
+            "⚠️ Pehle route calculate karein."
+        );
+
+        return;
+
+    }
+
+
+    const routes =
+        getSavedRoutes();
+
+
+    /*
+     * Same pickup + destination ko
+     * duplicate save nahi karenge.
+     */
+
+    const duplicate =
+        routes.some(
+            route =>
+
+                route.pickup
+                    .toLowerCase() ===
+                currentRoute.pickup
+                    .toLowerCase()
+
+                &&
+
+                route.destination
+                    .toLowerCase() ===
+                currentRoute.destination
+                    .toLowerCase()
+        );
+
+
+    if(duplicate){
+
+        alert(
+            "ℹ️ Ye route pehle se saved hai."
+        );
+
+        return;
+
+    }
+
+
+    routes.unshift(
+        currentRoute
+    );
+
+
+    saveRoutes(
+        routes
+    );
+
+
+    loadSavedRoutes();
+
+
+    alert(
+        "✅ Route successfully saved."
+    );
+
+}
+
+
+/* =====================================
+   LOAD SAVED ROUTES
+===================================== */
+
+function loadSavedRoutes(){
+
+    const container =
+        document.getElementById(
+            "savedRoutes"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    const routes =
+        getSavedRoutes();
+
+
+    if(routes.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🗺️
+                </div>
+
+                <strong>
+                    No Saved Routes
+                </strong>
+
+                <small>
+                    Route calculate karke
+                    Save Route par click karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        routes.map(
+            route => `
+
+                <div
+                    class="saved-route"
+                >
+
+                    <div
+                        class="saved-route-top"
+                    >
+
+                        <div
+                            class="saved-route-icon"
+                        >
+                            🗺️
+                        </div>
+
+
+                        <div
+                            class="saved-route-title"
+                        >
+
+                            <strong>
+                                ${escapeHTML(
+                                    route.pickup
+                                )}
+                                →
+                                ${escapeHTML(
+                                    route.destination
+                                )}
+                            </strong>
+
+                            <small>
+                                ${escapeHTML(
+                                    route.vehicle
+                                )}
+                                •
+                                ${escapeHTML(
+                                    route.date
+                                )}
+                            </small>
+
+                        </div>
+
+
+                        <button
+                            class="saved-route-delete"
+                            onclick="
+                                deleteSavedRoute(
+                                    '${route.id}'
+                                )
+                            "
+                        >
+
+                            🗑
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="saved-route-details"
+                    >
+
+                        <div>
+
+                            <span>
+                                DISTANCE
+                            </span>
+
+                            <strong>
+                                ${route.distance}
+                                km
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                TIME
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    route.time
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                COST
+                            </span>
+
+                            <strong>
+                                ₹${route.cost}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+/* =====================================
+   DELETE SAVED ROUTE
+===================================== */
+
+function deleteSavedRoute(id){
+
+    const confirmed =
+        confirm(
+            "⚠️ Kya aap saved route delete karna chahte hain?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    let routes =
+        getSavedRoutes();
+
+
+    routes =
+        routes.filter(
+            route =>
+                route.id !== id
+        );
+
+
+    saveRoutes(
+        routes
+    );
+
+
+    loadSavedRoutes();
+
+
+    alert(
+        "✅ Saved route deleted."
+    );
+
+}
+
+
+/* =====================================
+   OPEN MAPS
+===================================== */
+
+function openMaps(){
+
+    if(!currentRoute){
+
+        alert(
+            "⚠️ Pehle route calculate karein."
+        );
+
+        return;
+
+    }
+
+
+    const origin =
+        encodeURIComponent(
+            currentRoute.pickup
+        );
+
+
+    const destination =
+        encodeURIComponent(
+            currentRoute.destination
+        );
+
+
+    const mapsURL =
+        "https://www.google.com/maps/dir/?api=1" +
+        "&origin=" +
+        origin +
+        "&destination=" +
+        destination;
+
+
+    window.open(
+        mapsURL,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================
+   TODAY
+===================================== */
+
+function getToday(){
+
+    const date =
+        new Date();
+
+
+    const year =
+        date.getFullYear();
+
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "trip-management.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadSavedRoutes();
+
+        console.log(
+            "Route Planner loaded successfully."
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

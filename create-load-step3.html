@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Review Load | TransportPro</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+}
+
+button{
+    font:inherit;
+    cursor:pointer;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#07111f;
+    color:#fff;
+}
+
+.header{
+    max-width:900px;
+    min-height:64px;
+    margin:auto;
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:11px;
+    background:#172235;
+    color:#fff;
+    font-size:22px;
+}
+
+.logoBox{
+    width:39px;
+    height:39px;
+    border-radius:11px;
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:14px;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+    color:#94a3b8;
+    font-size:7px;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+    padding:16px 14px 120px;
+}
+
+.intro{
+    background:#07111f;
+    color:#fff;
+    border-radius:18px;
+    padding:18px 16px;
+    margin-bottom:15px;
+}
+
+.intro small{
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.intro h1{
+    margin-top:6px;
+    font-size:20px;
+}
+
+.intro p{
+    margin-top:7px;
+    color:#cbd5e1;
+    font-size:8px;
+    line-height:1.6;
+}
+
+.progressCard{
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:15px;
+    padding:14px;
+    margin-bottom:15px;
+}
+
+.progressTop{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.progressTop strong{
+    font-size:9px;
+}
+
+.progressTop span{
+    color:#667085;
+    font-size:7px;
+}
+
+.progressBar{
+    height:6px;
+    background:#eaecf0;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progressFill{
+    width:100%;
+    height:100%;
+    background:#2563eb;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:17px;
+    padding:15px;
+    margin-bottom:14px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.cardTitle{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:13px;
+}
+
+.icon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.cardTitle strong{
+    display:block;
+    font-size:11px;
+}
+
+.cardTitle span{
+    display:block;
+    margin-top:3px;
+    color:#667085;
+    font-size:6px;
+}
+
+.summaryRow{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+
+    padding:9px 0;
+
+    border-bottom:1px solid #eaecf0;
+}
+
+.summaryRow:last-child{
+    border-bottom:0;
+}
+
+.summaryRow span{
+    color:#667085;
+    font-size:7px;
+}
+
+.summaryRow strong{
+    max-width:58%;
+    text-align:right;
+    font-size:7px;
+    word-break:break-word;
+}
+
+.priceBox{
+    background:#07111f;
+    color:#fff;
+    border-radius:15px;
+    padding:15px;
+    margin-bottom:14px;
+}
+
+.priceLabel{
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.priceValue{
+    margin-top:5px;
+    font-size:25px;
+    font-weight:800;
+}
+
+.priceBasis{
+    margin-top:5px;
+    color:#cbd5e1;
+    font-size:7px;
+}
+
+.notice{
+    display:flex;
+    gap:9px;
+
+    background:#f8fafc;
+    border:1px solid #e4e9f0;
+    border-radius:12px;
+
+    padding:12px;
+    margin-bottom:14px;
+}
+
+.notice p{
+    color:#667085;
+    font-size:6px;
+    line-height:1.6;
+}
+
+.checkboxBox{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+
+    background:#fff;
+    border:1px solid #d0d5dd;
+    border-radius:11px;
+    padding:12px;
+    margin-bottom:14px;
+}
+
+.checkboxBox input{
+    width:17px;
+    height:17px;
+    margin-top:1px;
+}
+
+.checkboxBox label{
+    color:#344054;
+    font-size:7px;
+    line-height:1.6;
+}
+
+.buttonRow{
+    display:flex;
+    gap:9px;
+}
+
+.backAction,
+.postBtn{
+    min-height:47px;
+    border-radius:11px;
+    font-size:8px;
+    font-weight:700;
+}
+
+.backAction{
+    width:105px;
+    background:#fff;
+    color:#344054;
+    border:1px solid #d0d5dd;
+}
+
+.postBtn{
+    flex:1;
+    border:0;
+    background:#16a34a;
+    color:#fff;
+}
+
+.postBtn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.success{
+    display:none;
+
+    background:#ecfdf3;
+    border:1px solid #abefc6;
+    color:#067647;
+
+    border-radius:15px;
+    padding:16px;
+
+    margin-bottom:14px;
+}
+
+.success strong{
+    display:block;
+    font-size:11px;
+}
+
+.success p{
+    margin-top:6px;
+    font-size:7px;
+    line-height:1.6;
+}
+
+.loadId{
+    margin-top:9px;
+    padding:9px;
+    background:#fff;
+    border-radius:8px;
+    font-weight:700;
+    font-size:8px;
+}
+
+.homeBtn{
+    width:100%;
+    margin-top:10px;
+    min-height:43px;
+
+    border:1px solid #067647;
+    border-radius:10px;
+
+    background:#fff;
+    color:#067647;
+
+    font-size:8px;
+    font-weight:700;
+}
+
+@media(max-width:420px){
+
+    .summaryRow{
+        gap:8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="header">
+
+<button
+class="backBtn"
+onclick="goBack()">
+←
+</button>
+
+<div class="logoBox">
+📦
+</div>
+
+<div class="headerTitle">
+
+<strong>
+Review & Post Load
+</strong>
+
+<small>
+TransportPro Dealer Portal
+</small>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<section class="intro">
+
+<small>
+DEALER • FINAL REVIEW
+</small>
+
+<h1>
+Review Your Load 🚀
+</h1>
+
+<p>
+सारी जानकारी check करें। सही होने पर
+load को marketplace में post करें।
+</p>
+
+</section>
+
+
+
+<div class="progressCard">
+
+<div class="progressTop">
+
+<strong>
+Load Posting
+</strong>
+
+<span>
+Step 3 of 3
+</span>
+
+</div>
+
+<div class="progressBar">
+
+<div class="progressFill"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     SUCCESS
+========================================= -->
+
+<div
+id="successBox"
+class="success"
+>
+
+<strong>
+✅ Load Successfully Posted
+</strong>
+
+<p>
+आपका load अभी frontend marketplace system
+में create हो गया है।
+</p>
+
+<div
+id="generatedLoadId"
+class="loadId">
+</div>
+
+<button
+class="homeBtn"
+onclick="goDashboard()">
+Go To Dealer Dashboard
+</button>
+
+</div>
+
+
+
+<!-- =========================================
+     LOAD DETAILS
+========================================= -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="icon">
+📦
+</div>
+
+<div>
+
+<strong>
+Load Details
+</strong>
+
+<span>
+आपके load की basic information
+</span>
+
+</div>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Goods
+</span>
+
+<strong id="goods">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Category
+</span>
+
+<strong id="category">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Weight
+</span>
+
+<strong id="weight">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Quantity
+</span>
+
+<strong id="quantity">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Description
+</span>
+
+<strong id="description">
+-
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     ROUTE
+========================================= -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="icon">
+📍
+</div>
+
+<div>
+
+<strong>
+Route Details
+</strong>
+
+<span>
+Pickup से destination तक
+</span>
+
+</div>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Pickup
+</span>
+
+<strong id="pickup">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Destination
+</span>
+
+<strong id="destination">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Pickup Date
+</span>
+
+<strong id="pickupDate">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Pickup Time
+</span>
+
+<strong id="pickupTime">
+-
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     VEHICLE
+========================================= -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="icon">
+🚛
+</div>
+
+<div>
+
+<strong>
+Vehicle Requirements
+</strong>
+
+<span>
+Transporter के लिए requirements
+</span>
+
+</div>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Vehicle Type
+</span>
+
+<strong id="vehicle">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Minimum Capacity
+</span>
+
+<strong id="capacity">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Body Type
+</span>
+
+<strong id="body">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Vehicle Condition
+</span>
+
+<strong id="condition">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Driver Requirement
+</span>
+
+<strong id="driver">
+-
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     PRICE
+========================================= -->
+
+<div class="priceBox">
+
+<div class="priceLabel">
+EXPECTED FREIGHT
+</div>
+
+<div
+id="freight"
+class="priceValue">
+₹0
+</div>
+
+<div
+id="basis"
+class="priceBasis">
+Payment basis: -
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     SAFETY / OTHER
+========================================= -->
+
+<section class="card">
+
+<div class="cardTitle">
+
+<div class="icon">
+🛡️
+</div>
+
+<div>
+
+<strong>
+Additional Requirements
+</strong>
+
+<span>
+Final transport instructions
+</span>
+
+</div>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Advance
+</span>
+
+<strong id="advance">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Insurance
+</span>
+
+<strong id="insurance">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Handling
+</span>
+
+<strong id="handling">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Contact
+</span>
+
+<strong id="contact">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Instructions
+</span>
+
+<strong id="instructions">
+-
+</strong>
+
+</div>
+
+</section>
+
+
+
+<div class="notice">
+
+<div>
+⚠️
+</div>
+
+<p>
+Post करने से पहले सभी details carefully check करें।
+Real platform में transporter offers, booking,
+payment और tracking backend verification के बाद
+secure तरीके से handle होंगे।
+</p>
+
+</div>
+
+
+
+<!-- =========================================
+     CONFIRM
+========================================= -->
+
+<div
+id="confirmArea"
+>
+
+<div class="checkboxBox">
+
+<input
+type="checkbox"
+id="confirmCheck"
+onchange="togglePostButton()">
+
+<label for="confirmCheck">
+
+मैं confirm करता/करती हूँ कि ऊपर दी गई
+load information सही है और मैं इस load को
+transport marketplace पर post करना चाहता/चाहती हूँ।
+
+</label>
+
+</div>
+
+
+<div class="buttonRow">
+
+<button
+class="backAction"
+onclick="goBack()">
+← Back
+</button>
+
+
+<button
+id="postButton"
+class="postBtn"
+onclick="postLoad()"
+disabled>
+🚀 Post Load
+</button>
+
+</div>
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================================
+   GET LOAD DATA
+========================================= */
+
+function getLoadData(){
+
+    const saved =
+        localStorage.getItem(
+            "dealerLoadDraft"
+        );
+
+
+    if(!saved){
+
+        alert(
+            "Load data नहीं मिली।"
+        );
+
+        window.location.href =
+            "create-load.html";
+
+        return null;
+
+    }
+
+
+    try{
+
+        return JSON.parse(saved);
+
+    }catch(error){
+
+        alert(
+            "Load data पढ़ने में समस्या हुई।"
+        );
+
+        window.location.href =
+            "create-load.html";
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================
+   DISPLAY DATA
+========================================= */
+
+function displayData(){
+
+    const data =
+        getLoadData();
+
+
+    if(!data){
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "goods"
+    ).textContent =
+        data.goodsName || "-";
+
+
+    document.getElementById(
+        "category"
+    ).textContent =
+        data.goodsCategory || "-";
+
+
+    document.getElementById(
+        "weight"
+    ).textContent =
+        (
+            data.weight || "-"
+        )
+        + " "
+        + (
+            data.weightUnit || ""
+        );
+
+
+    document.getElementById(
+        "quantity"
+    ).textContent =
+        data.quantity || "-";
+
+
+    document.getElementById(
+        "description"
+    ).textContent =
+        data.goodsDescription || "-";
+
+
+    document.getElementById(
+        "pickup"
+    ).textContent =
+        data.pickupLocation || "-";
+
+
+    document.getElementById(
+        "destination"
+    ).textContent =
+        data.destination || "-";
+
+
+    document.getElementById(
+        "pickupDate"
+    ).textContent =
+        data.pickupDate || "-";
+
+
+    document.getElementById(
+        "pickupTime"
+    ).textContent =
+        data.pickupTime || "-";
+
+
+    document.getElementById(
+        "vehicle"
+    ).textContent =
+        data.vehicleType || "-";
+
+
+    document.getElementById(
+        "capacity"
+    ).textContent =
+        (
+            data.minCapacity || "-"
+        )
+        + " "
+        + (
+            data.capacityUnit || ""
+        );
+
+
+    document.getElementById(
+        "body"
+    ).textContent =
+        data.bodyType || "-";
+
+
+    document.getElementById(
+        "condition"
+    ).textContent =
+        data.vehicleCondition || "-";
+
+
+    document.getElementById(
+        "driver"
+    ).textContent =
+        data.driverRequirement || "-";
+
+
+    const freight =
+        Number(
+            data.expectedFreight || 0
+        );
+
+
+    document.getElementById(
+        "freight"
+    ).textContent =
+        "₹" +
+        freight.toLocaleString("en-IN");
+
+
+    document.getElementById(
+        "basis"
+    ).textContent =
+        "Payment basis: " +
+        (
+            data.paymentBasis ||
+            "-"
+        );
+
+
+    document.getElementById(
+        "advance"
+    ).textContent =
+        data.advancePayment || "-";
+
+
+    document.getElementById(
+        "insurance"
+    ).textContent =
+        data.insuranceRequirement || "-";
+
+
+    document.getElementById(
+        "handling"
+    ).textContent =
+        data.handlingRequirement || "-";
+
+
+    document.getElementById(
+        "contact"
+    ).textContent =
+        data.contactMethod || "-";
+
+
+    document.getElementById(
+        "instructions"
+    ).textContent =
+        data.specialInstructions || "-";
+
+}
+
+
+/* =========================================
+   POST BUTTON
+========================================= */
+
+function togglePostButton(){
+
+    const checked =
+        document.getElementById(
+            "confirmCheck"
+        ).checked;
+
+
+    document.getElementById(
+        "postButton"
+    ).disabled =
+        !checked;
+
+}
+
+
+/* =========================================
+   GENERATE LOAD ID
+========================================= */
+
+function generateLoadId(){
+
+    const time =
+        Date.now()
+        .toString()
+        .slice(-8);
+
+
+    const random =
+        Math.floor(
+            1000 + Math.random() * 9000
+        );
+
+
+    return (
+        "TP-LD-" +
+        time +
+        "-" +
+        random
+    );
+
+}
+
+
+/* =========================================
+   POST LOAD
+========================================= */
+
+function postLoad(){
+
+    const check =
+        document.getElementById(
+            "confirmCheck"
+        );
+
+
+    if(!check.checked){
+
+        alert(
+            "पहले confirmation checkbox select करें।"
+        );
+
+        return;
+
+    }
+
+
+    const data =
+        getLoadData();
+
+
+    if(!data){
+
+        return;
+
+    }
+
+
+    const loadId =
+        generateLoadId();
+
+
+    const postedLoad = {
+
+        ...data,
+
+        loadId:
+            loadId,
+
+        status:
+            "Posted",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    /*
+       Frontend marketplace storage.
+       Backend आने पर यही data
+       secure database में जाएगा।
+    */
+
+    let existingLoads = [];
+
+
+    try{
+
+        existingLoads =
+            JSON.parse(
+                localStorage.getItem(
+                    "transportMarketplaceLoads"
+                )
+            ) || [];
+
+    }catch(error){
+
+        existingLoads = [];
+
+    }
+
+
+    existingLoads.push(
+        postedLoad
+    );
+
+
+    localStorage.setItem(
+        "transportMarketplaceLoads",
+        JSON.stringify(
+            existingLoads
+        )
+    );
+
+
+    localStorage.setItem(
+        "lastPostedLoad",
+        JSON.stringify(
+            postedLoad
+        )
+    );
+
+
+    document.getElementById(
+        "generatedLoadId"
+    ).textContent =
+        "Load ID: " +
+        loadId;
+
+
+    document.getElementById(
+        "successBox"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "confirmArea"
+    ).style.display =
+        "none";
+
+
+    /*
+       Draft को हटाया जा रहा है क्योंकि
+       load successfully posted हो गया।
+    */
+
+    localStorage.removeItem(
+        "dealerLoadDraft"
+    );
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+function goDashboard(){
+
+    window.location.href =
+        "dealer-dashboard.html";
+
+}
+
+
+/* =========================================
+   BACK
+========================================= */
+
+function goBack(){
+
+    window.location.href =
+        "create-load-step2.html";
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        displayData();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

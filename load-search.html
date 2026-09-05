@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Load Search - TransportPro</title>
+
+<style>
+
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================
+   SEARCH CARD
+===================================== */
+
+.search-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   MAIN SEARCH
+===================================== */
+
+.main-search{
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:13px;
+}
+
+.main-search input{
+    flex:1;
+
+    height:45px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.main-search input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+.main-search button{
+    min-width:90px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.main-search button:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   FILTER GRID
+===================================== */
+
+.filter-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:10px;
+
+    margin-bottom:12px;
+}
+
+.input-group{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.input-group label{
+    color:#475467;
+
+    font-size:9px;
+
+    font-weight:bold;
+}
+
+.input-group input,
+.input-group select{
+    width:100%;
+
+    height:40px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    padding:0 10px;
+
+    background:#fff;
+
+    color:#172033;
+
+    outline:none;
+
+    font-size:10px;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   ACTION ROW
+===================================== */
+
+.action-row{
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:18px;
+}
+
+.search-btn{
+    flex:1;
+
+    height:40px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.reset-btn{
+    min-width:75px;
+
+    height:40px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#475467;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.search-btn:active,
+.reset-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   RESULT HEADER
+===================================== */
+
+.result-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:10px;
+
+    padding-bottom:10px;
+
+    border-bottom:1px solid #edf0f4;
+}
+
+.result-header strong{
+    display:block;
+
+    font-size:13px;
+
+    margin-bottom:3px;
+}
+
+.result-header small{
+    color:#667085;
+
+    font-size:8px;
+}
+
+.result-header select{
+    height:34px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:7px;
+
+    background:#fff;
+
+    padding:0 8px;
+
+    font-size:9px;
+
+    outline:none;
+}
+
+
+/* =====================================
+   SEARCH RESULTS
+===================================== */
+
+.search-results{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+
+/* =====================================
+   RESULT CARD
+===================================== */
+
+.result-card{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    background:#fff;
+
+    transition:.2s;
+}
+
+.result-card:hover{
+    box-shadow:
+        0 4px 13px rgba(16,24,40,.07);
+}
+
+
+/* =====================================
+   RESULT TOP
+===================================== */
+
+.result-top{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.result-icon{
+    width:44px;
+    height:44px;
+
+    border-radius:10px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    flex-shrink:0;
+}
+
+.result-title{
+    flex:1;
+}
+
+.result-title strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.result-title small{
+    color:#667085;
+
+    font-size:8px;
+}
+
+
+/* =====================================
+   LOAD PRICE
+===================================== */
+
+.result-price{
+    text-align:right;
+
+    white-space:nowrap;
+}
+
+.result-price strong{
+    display:block;
+
+    color:#137333;
+
+    font-size:13px;
+}
+
+.result-price small{
+    color:#98a2b3;
+
+    font-size:7px;
+}
+
+
+/* =====================================
+   ROUTE
+===================================== */
+
+.result-route{
+    background:#f8fafc;
+
+    border-radius:9px;
+
+    padding:10px;
+
+    margin-bottom:9px;
+}
+
+.route-row{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:10px;
+}
+
+.route-dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#1769e0;
+
+    flex-shrink:0;
+}
+
+.route-line{
+    width:1px;
+    height:11px;
+
+    background:#cbd5e1;
+
+    margin-left:4px;
+
+    margin-top:-2px;
+
+    margin-bottom:-2px;
+}
+
+
+/* =====================================
+   RESULT DETAILS
+===================================== */
+
+.result-details{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:7px;
+
+    margin-bottom:10px;
+}
+
+.detail-box{
+    border:1px solid #edf0f4;
+
+    border-radius:7px;
+
+    padding:7px;
+
+    text-align:center;
+}
+
+.detail-box span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:7px;
+
+    margin-bottom:3px;
+}
+
+.detail-box strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   RESULT ACTIONS
+===================================== */
+
+.result-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.result-actions button{
+    flex:1;
+
+    height:34px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.bid-btn{
+    background:#1769e0;
+
+    border:0;
+
+    color:#fff;
+}
+
+.details-btn{
+    background:#fff;
+
+    border:1px solid #1769e0;
+
+    color:#1769e0;
+}
+
+.save-btn{
+    background:#fff;
+
+    border:1px solid #d7dee8;
+
+    color:#475467;
+}
+
+
+/* =====================================
+   SAVED STATE
+===================================== */
+
+.save-btn.saved{
+    background:#eef6ff;
+
+    border-color:#1769e0;
+
+    color:#1769e0;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+
+    color:#667085;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    font-size:9px;
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .search-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .main-search{
+        flex-direction:column;
+    }
+
+    .main-search button{
+        height:42px;
+        width:100%;
+    }
+
+    .filter-grid{
+        grid-template-columns:1fr;
+    }
+
+    .result-details{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .result-top{
+        flex-wrap:wrap;
+    }
+
+    .result-title{
+        min-width:
+            calc(100% - 55px);
+    }
+
+    .result-price{
+        width:100%;
+
+        text-align:left;
+
+        margin-left:54px;
+
+        margin-top:-4px;
+    }
+
+}
+
+
+/* =====================================
+   END OF CSS
+===================================== */
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Load Search
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <section class="search-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🔎
+            </div>
+
+            <div>
+
+                <h1>
+                    Find Loads
+                </h1>
+
+                <p>
+                    Apne route aur vehicle ke according
+                    available loads search karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SEARCH AREA -->
+
+        <div class="main-search">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search city, product, load ID..."
+                oninput="searchLoads()">
+
+            <button
+                onclick="searchLoads()">
+
+                Search
+
+            </button>
+
+        </div>
+
+
+
+        <!-- FILTERS -->
+
+        <div class="filter-grid">
+
+
+            <div class="input-group">
+
+                <label>
+                    From
+                </label>
+
+                <input
+                    type="text"
+                    id="fromCity"
+                    placeholder="Pickup city">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    To
+                </label>
+
+                <input
+                    type="text"
+                    id="toCity"
+                    placeholder="Destination">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Vehicle Type
+                </label>
+
+                <select id="vehicleType">
+
+                    <option value="">
+                        All Vehicles
+                    </option>
+
+                    <option value="Mini Truck">
+                        Mini Truck
+                    </option>
+
+                    <option value="14 FT Truck">
+                        14 FT Truck
+                    </option>
+
+                    <option value="20 FT Truck">
+                        20 FT Truck
+                    </option>
+
+                    <option value="32 FT Container">
+                        32 FT Container
+                    </option>
+
+                    <option value="Trailer">
+                        Trailer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Load Type
+                </label>
+
+                <select id="loadType">
+
+                    <option value="">
+                        All Load Types
+                    </option>
+
+                    <option value="General">
+                        General Goods
+                    </option>
+
+                    <option value="Electronics">
+                        Electronics
+                    </option>
+
+                    <option value="Furniture">
+                        Furniture
+                    </option>
+
+                    <option value="Industrial">
+                        Industrial
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SEARCH BUTTONS -->
+
+        <div class="action-row">
+
+            <button
+                class="search-btn"
+                onclick="searchLoads()">
+
+                🔎 Search Loads
+
+            </button>
+
+
+            <button
+                class="reset-btn"
+                onclick="resetSearch()">
+
+                Reset
+
+            </button>
+
+        </div>
+
+
+
+        <!-- RESULT HEADER -->
+
+        <div class="result-header">
+
+            <div>
+
+                <strong>
+                    Available Loads
+                </strong>
+
+                <small id="resultCount">
+                    0 loads found
+                </small>
+
+            </div>
+
+
+            <select
+                id="sortSelect"
+                onchange="sortLoads()">
+
+                <option value="latest">
+                    Latest
+                </option>
+
+                <option value="priceHigh">
+                    Price: High to Low
+                </option>
+
+                <option value="priceLow">
+                    Price: Low to High
+                </option>
+
+                <option value="weightHigh">
+                    Weight: High to Low
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- LOAD RESULTS -->
+
+        <div
+            id="searchResults"
+            class="search-results">
+
+            <!-- JavaScript Part 3 -->
+            <!-- results yahan show honge -->
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   LOAD SEARCH DATA
+===================================== */
+
+let loads = [
+    {
+        id: "LD2001",
+        title: "Industrial Equipment",
+        from: "Delhi",
+        to: "Mumbai",
+        vehicle: "32 FT Container",
+        type: "Industrial",
+        weight: 8,
+        price: 42000,
+        distance: 1400,
+        posted: "10 min ago"
+    },
+
+    {
+        id: "LD2002",
+        title: "Electronics Goods",
+        from: "Noida",
+        to: "Jaipur",
+        vehicle: "14 FT Truck",
+        type: "Electronics",
+        weight: 4,
+        price: 18500,
+        distance: 280,
+        posted: "25 min ago"
+    },
+
+    {
+        id: "LD2003",
+        title: "Furniture Shipment",
+        from: "Gurugram",
+        to: "Lucknow",
+        vehicle: "20 FT Truck",
+        type: "Furniture",
+        weight: 6,
+        price: 27000,
+        distance: 550,
+        posted: "1 hour ago"
+    },
+
+    {
+        id: "LD2004",
+        title: "General Goods",
+        from: "Mumbai",
+        to: "Pune",
+        vehicle: "Mini Truck",
+        type: "General",
+        weight: 2,
+        price: 9500,
+        distance: 150,
+        posted: "2 hours ago"
+    },
+
+    {
+        id: "LD2005",
+        title: "Industrial Machinery",
+        from: "Ahmedabad",
+        to: "Delhi",
+        vehicle: "Trailer",
+        type: "Industrial",
+        weight: 18,
+        price: 78000,
+        distance: 950,
+        posted: "3 hours ago"
+    }
+];
+
+
+/* =====================================
+   SAVED LOADS
+===================================== */
+
+let savedLoads = JSON.parse(
+    localStorage.getItem(
+        "tp_saved_loads"
+    ) || "[]"
+);
+
+
+/* =====================================
+   DISPLAY LOADS
+===================================== */
+
+function displayLoads(list){
+
+    const container =
+        document.getElementById(
+            "searchResults"
+        );
+
+    const count =
+        document.getElementById(
+            "resultCount"
+        );
+
+
+    if(count){
+
+        count.innerText =
+            list.length +
+            " loads found";
+
+    }
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <strong>
+                    No Loads Found
+                </strong>
+
+                <small>
+                    Search criteria change karke
+                    dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        list.map(
+            load => `
+
+            <div class="result-card">
+
+                <div class="result-top">
+
+                    <div class="result-icon">
+                        📦
+                    </div>
+
+
+                    <div class="result-title">
+
+                        <strong>
+                            ${load.title}
+                        </strong>
+
+                        <small>
+                            Load ID: ${load.id}
+                            • ${load.posted}
+                        </small>
+
+                    </div>
+
+
+                    <div class="result-price">
+
+                        <strong>
+                            ₹${load.price.toLocaleString("en-IN")}
+                        </strong>
+
+                        <small>
+                            Estimated Fare
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-route">
+
+                    <div class="route-row">
+
+                        <span class="route-dot"></span>
+
+                        <strong>
+                            ${load.from}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-row">
+
+                        <span class="route-dot"></span>
+
+                        <strong>
+                            ${load.to}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-details">
+
+                    <div class="detail-box">
+
+                        <span>
+                            Vehicle
+                        </span>
+
+                        <strong>
+                            ${load.vehicle}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Weight
+                        </span>
+
+                        <strong>
+                            ${load.weight} Ton
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Distance
+                        </span>
+
+                        <strong>
+                            ${load.distance} KM
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Type
+                        </span>
+
+                        <strong>
+                            ${load.type}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-actions">
+
+                    <button
+                        class="bid-btn"
+                        onclick="placeBid('${load.id}')">
+
+                        💰 Place Bid
+
+                    </button>
+
+
+                    <button
+                        class="details-btn"
+                        onclick="viewDetails('${load.id}')">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="save-btn
+                        ${
+                            savedLoads.includes(load.id)
+                            ? "saved"
+                            : ""
+                        }"
+                        onclick="toggleSave('${load.id}',this)">
+
+                        ${
+                            savedLoads.includes(load.id)
+                            ? "★ Saved"
+                            : "☆ Save"
+                        }
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `
+        ).join("");
+
+}
+
+
+/* =====================================
+   SEARCH LOADS
+===================================== */
+
+function searchLoads(){
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const from =
+        document
+        .getElementById("fromCity")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const to =
+        document
+        .getElementById("toCity")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const vehicle =
+        document
+        .getElementById("vehicleType")
+        .value;
+
+
+    const type =
+        document
+        .getElementById("loadType")
+        .value;
+
+
+    let result =
+        loads.filter(load => {
+
+
+            const searchMatch =
+                !search ||
+
+                load.id
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.title
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.from
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.to
+                    .toLowerCase()
+                    .includes(search);
+
+
+            const fromMatch =
+                !from ||
+                load.from
+                    .toLowerCase()
+                    .includes(from);
+
+
+            const toMatch =
+                !to ||
+                load.to
+                    .toLowerCase()
+                    .includes(to);
+
+
+            const vehicleMatch =
+                !vehicle ||
+                load.vehicle === vehicle;
+
+
+            const typeMatch =
+                !type ||
+                load.type === type;
+
+
+            return (
+                searchMatch &&
+                fromMatch &&
+                toMatch &&
+                vehicleMatch &&
+                typeMatch
+            );
+
+        });
+
+
+    displayLoads(result);
+
+}
+
+
+/* =====================================
+   SORT LOADS
+===================================== */
+
+function sortLoads(){
+
+    const sort =
+        document
+        .getElementById("sortSelect")
+        .value;
+
+
+    let result =
+        [...loads];
+
+
+    if(sort === "priceHigh"){
+
+        result.sort(
+            (a,b) =>
+                b.price - a.price
+        );
+
+    }
+
+
+    if(sort === "priceLow"){
+
+        result.sort(
+            (a,b) =>
+                a.price - b.price
+        );
+
+    }
+
+
+    if(sort === "weightHigh"){
+
+        result.sort(
+            (a,b) =>
+                b.weight - a.weight
+        );
+
+    }
+
+
+    if(sort === "latest"){
+
+        /*
+          Demo data already arranged
+          from latest to older.
+        */
+
+        result = [...loads];
+
+    }
+
+
+    displayLoads(result);
+
+}
+
+
+/* =====================================
+   RESET SEARCH
+===================================== */
+
+function resetSearch(){
+
+    document
+        .getElementById("searchInput")
+        .value = "";
+
+
+    document
+        .getElementById("fromCity")
+        .value = "";
+
+
+    document
+        .getElementById("toCity")
+        .value = "";
+
+
+    document
+        .getElementById("vehicleType")
+        .value = "";
+
+
+    document
+        .getElementById("loadType")
+        .value = "";
+
+
+    document
+        .getElementById("sortSelect")
+        .value = "latest";
+
+
+    displayLoads(loads);
+
+}
+
+
+/* =====================================
+   VIEW DETAILS
+===================================== */
+
+function viewDetails(id){
+
+    const load =
+        loads.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!load){
+        return;
+    }
+
+
+    alert(
+
+        "📦 LOAD DETAILS\n\n" +
+
+        "Load ID: " +
+        load.id +
+
+        "\n\nProduct: " +
+        load.title +
+
+        "\n\nRoute: " +
+        load.from +
+        " → " +
+        load.to +
+
+        "\n\nVehicle: " +
+        load.vehicle +
+
+        "\n\nWeight: " +
+        load.weight +
+        " Ton" +
+
+        "\n\nDistance: " +
+        load.distance +
+        " KM" +
+
+        "\n\nLoad Type: " +
+        load.type +
+
+        "\n\nEstimated Fare: ₹" +
+        load.price.toLocaleString(
+            "en-IN"
+        )
+
+    );
+
+}
+
+
+/* =====================================
+   PLACE BID
+===================================== */
+
+function placeBid(id){
+
+    const load =
+        loads.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!load){
+        return;
+    }
+
+
+    const bid =
+        prompt(
+
+            "💰 Place Your Bid\n\n" +
+
+            "Load: " +
+            load.title +
+
+            "\nRoute: " +
+            load.from +
+            " → " +
+            load.to +
+
+            "\nEstimated Fare: ₹" +
+            load.price.toLocaleString(
+                "en-IN"
+            ) +
+
+            "\n\nApni bid amount ₹ me enter karein:"
+
+        );
+
+
+    if(bid === null){
+        return;
+    }
+
+
+    const amount =
+        Number(bid);
+
+
+    if(
+        !amount ||
+        amount <= 0
+    ){
+
+        alert(
+            "⚠️ Valid bid amount enter karein."
+        );
+
+        return;
+
+    }
+
+
+    const bids =
+        JSON.parse(
+            localStorage.getItem(
+                "tp_load_bids"
+            ) || "[]"
+        );
+
+
+    bids.push({
+
+        id:
+            Date.now(),
+
+        loadId:
+            load.id,
+
+        loadTitle:
+            load.title,
+
+        from:
+            load.from,
+
+        to:
+            load.to,
+
+        amount:
+            amount,
+
+        date:
+            new Date()
+                .toLocaleString(),
+
+        status:
+            "Pending"
+
+    });
+
+
+    localStorage.setItem(
+        "tp_load_bids",
+        JSON.stringify(bids)
+    );
+
+
+    alert(
+
+        "✅ Bid Submitted Successfully!\n\n" +
+
+        "Load ID: " +
+        load.id +
+
+        "\nBid Amount: ₹" +
+        amount.toLocaleString(
+            "en-IN"
+        ) +
+
+        "\n\nStatus: Pending"
+
+    );
+
+}
+
+
+/* =====================================
+   SAVE / UNSAVE LOAD
+===================================== */
+
+function toggleSave(id,button){
+
+    const index =
+        savedLoads.indexOf(id);
+
+
+    if(index === -1){
+
+        savedLoads.push(id);
+
+        button.classList.add(
+            "saved"
+        );
+
+        button.innerText =
+            "★ Saved";
+
+    }
+    else{
+
+        savedLoads.splice(
+            index,
+            1
+        );
+
+        button.classList.remove(
+            "saved"
+        );
+
+        button.innerText =
+            "☆ Save";
+
+    }
+
+
+    localStorage.setItem(
+        "tp_saved_loads",
+        JSON.stringify(
+            savedLoads
+        )
+    );
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        goDashboard();
+
+    }
+
+}
+
+
+/* =====================================
+   INITIALIZE
+===================================== */
+
+displayLoads(loads);
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        displayLoads(loads);
+
+        console.log(
+            "TransportPro Load Search loaded successfully."
+        );
+
+    }
+);
+
+
+/* =====================================
+   END OF JAVASCRIPT
+===================================== */
+
+</script>
+
+
+</body>
+
+</html>
+
+</script>
+
+
+</body>
+
+</html>

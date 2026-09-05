@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Document Center - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================
+   DOCUMENT CARD
+===================================== */
+
+.document-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:16px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-box{
+    height:43px;
+
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    padding:0 12px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    margin-bottom:10px;
+}
+
+.search-box span{
+    font-size:15px;
+}
+
+.search-box input{
+    width:100%;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
+
+    font-size:10px;
+
+    color:#172033;
+}
+
+
+/* =====================================
+   CATEGORY
+===================================== */
+
+.category-row{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:6px;
+
+    margin-bottom:11px;
+}
+
+.category-btn{
+    height:35px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#667085;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.category-btn.active{
+    background:#1769e0;
+
+    border-color:#1769e0;
+
+    color:#fff;
+}
+
+.category-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   ADD DOCUMENT
+===================================== */
+
+.add-document-btn{
+    width:100%;
+
+    height:43px;
+
+    border:1px solid #1769e0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:16px;
+}
+
+.add-document-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   DOCUMENT HEADER
+===================================== */
+
+.document-header{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:9px;
+
+    padding-bottom:9px;
+
+    border-bottom:1px solid #edf0f4;
+}
+
+.document-header strong{
+    font-size:12px;
+}
+
+.document-header span{
+    color:#667085;
+
+    font-size:8px;
+}
+
+
+/* =====================================
+   DOCUMENT LIST
+===================================== */
+
+.document-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+
+/* =====================================
+   DOCUMENT ITEM
+===================================== */
+
+.document-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:11px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+.document-item:active{
+    transform:scale(.99);
+}
+
+.document-icon{
+    width:43px;
+    height:43px;
+
+    border-radius:9px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.document-info{
+    flex:1;
+
+    min-width:0;
+}
+
+.document-info strong{
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.document-info small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:12px;
+}
+
+.document-status{
+    font-size:7px;
+
+    padding:4px 6px;
+
+    border-radius:20px;
+
+    white-space:nowrap;
+}
+
+.status-valid{
+    background:#ecfdf3;
+    color:#087443;
+}
+
+.status-expired{
+    background:#fef3f2;
+    color:#b42318;
+}
+
+.status-warning{
+    background:#fffaeb;
+    color:#b54708;
+}
+
+
+/* =====================================
+   DOCUMENT ACTIONS
+===================================== */
+
+.document-actions{
+    display:flex;
+
+    gap:4px;
+}
+
+.document-actions button{
+    width:30px;
+    height:30px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:#f2f4f7;
+
+    cursor:pointer;
+
+    font-size:12px;
+}
+
+.document-actions button:active{
+    transform:scale(.94);
+}
+
+.view-action{
+    color:#1769e0;
+}
+
+.delete-action{
+    color:#d92d20;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:30px 12px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:14px;
+
+    margin-bottom:12px;
+}
+
+.empty-state button{
+    border:1px solid #1769e0;
+
+    background:#eef5ff;
+
+    color:#1769e0;
+
+    padding:8px 12px;
+
+    border-radius:7px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   MODAL
+===================================== */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px;
+
+    z-index:500;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:430px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:17px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.2);
+}
+
+
+/* =====================================
+   MODAL HEADER
+===================================== */
+
+.modal-header{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.modal-header strong{
+    font-size:15px;
+}
+
+.modal-header button{
+    width:32px;
+    height:32px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:#f2f4f7;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   FORM
+===================================== */
+
+.form-group{
+    margin-bottom:13px;
+}
+
+.form-group label{
+    display:block;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+
+    color:#344054;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+
+    height:42px;
+
+    padding:0 10px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:8px;
+
+    outline:0;
+
+    background:#fff;
+
+    color:#172033;
+
+    font-size:9px;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#1769e0;
+}
+
+.form-group input[type="file"]{
+    padding:9px;
+
+    font-size:8px;
+}
+
+.file-hint{
+    display:block;
+
+    margin-top:5px;
+
+    color:#98a2b3;
+
+    font-size:7px;
+}
+
+
+/* =====================================
+   SAVE / CANCEL
+===================================== */
+
+.save-btn{
+    width:100%;
+
+    height:43px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:3px;
+
+    margin-bottom:7px;
+}
+
+.cancel-btn{
+    width:100%;
+
+    height:40px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   DETAIL CARD
+===================================== */
+
+.detail-card{
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:10px;
+
+    padding:13px;
+
+    margin-bottom:12px;
+}
+
+.detail-title{
+    font-size:13px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+}
+
+.detail-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #e5eaf0;
+}
+
+.detail-row:last-child{
+    border-bottom:0;
+}
+
+.detail-row span{
+    color:#667085;
+
+    font-size:8px;
+}
+
+.detail-row strong{
+    font-size:8px;
+
+    text-align:right;
+
+    word-break:break-word;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:500px){
+
+    .container{
+        padding:10px;
+    }
+
+    .document-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .document-item{
+        align-items:flex-start;
+    }
+
+    .document-actions{
+        flex-direction:column;
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL SCREEN
+===================================== */
+
+@media(max-width:350px){
+
+    .category-row{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .document-status{
+        display:none;
+    }
+
+}
+
+
+/* =====================================
+   PRINT
+===================================== */
+
+@media print{
+
+    .top-header,
+    .dashboard-btn,
+    .search-box,
+    .category-row,
+    .add-document-btn,
+    .document-actions,
+    .modal{
+        display:none !important;
+    }
+
+    body{
+        background:#fff;
+    }
+
+    .container{
+        max-width:none;
+        padding:0;
+    }
+
+    .document-card{
+        border:0;
+        box-shadow:none;
+    }
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+        ←
+    </button>
+
+    <div class="logo">
+        TP
+    </div>
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Document Center
+        </small>
+
+    </div>
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+        🔔
+    </button>
+
+</header>
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="document-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                📁
+            </div>
+
+            <div>
+
+                <h1>
+                    Document Center
+                </h1>
+
+                <p>
+                    Vehicle, driver aur business ke
+                    important documents manage karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <span>
+                🔍
+            </span>
+
+            <input
+                type="search"
+                id="documentSearch"
+                placeholder="Search documents..."
+                oninput="searchDocuments()">
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+
+        <div class="category-row">
+
+            <button
+                class="category-btn active"
+                onclick="filterCategory('All',this)">
+                All
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Vehicle',this)">
+                🚛 Vehicle
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Driver',this)">
+                👨‍✈️ Driver
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Business',this)">
+                🏢 Business
+            </button>
+
+        </div>
+
+
+        <!-- ADD DOCUMENT -->
+
+        <button
+            class="add-document-btn"
+            onclick="openAddDocument()">
+
+            + Add Document
+
+        </button>
+
+
+        <!-- DOCUMENT COUNT -->
+
+        <div class="document-header">
+
+            <strong>
+                My Documents
+            </strong>
+
+            <span id="documentCount">
+                0 Documents
+            </span>
+
+        </div>
+
+
+        <!-- DOCUMENT LIST -->
+
+        <div
+            id="documentList"
+            class="document-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📄
+                </div>
+
+                <strong>
+                    No Documents
+                </strong>
+
+                <small>
+                    Add your first document to manage
+                    it from here.
+                </small>
+
+                <button
+                    onclick="openAddDocument()">
+
+                    + Add Document
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+<!-- =====================================
+     ADD DOCUMENT MODAL
+===================================== -->
+
+<div
+    id="documentModal"
+    class="modal">
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <strong>
+                Add Document
+            </strong>
+
+            <button
+                onclick="closeDocumentModal()">
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- DOCUMENT NAME -->
+
+        <div class="form-group">
+
+            <label>
+                Document Name
+            </label>
+
+            <input
+                type="text"
+                id="documentName"
+                placeholder="e.g. RC, Driving Licence">
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="form-group">
+
+            <label>
+                Category
+            </label>
+
+            <select id="documentCategory">
+
+                <option value="Vehicle">
+                    Vehicle
+                </option>
+
+                <option value="Driver">
+                    Driver
+                </option>
+
+                <option value="Business">
+                    Business
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- DOCUMENT NUMBER -->
+
+        <div class="form-group">
+
+            <label>
+                Document Number
+            </label>
+
+            <input
+                type="text"
+                id="documentNumber"
+                placeholder="Enter document number">
+
+        </div>
+
+
+        <!-- EXPIRY DATE -->
+
+        <div class="form-group">
+
+            <label>
+                Expiry Date
+            </label>
+
+            <input
+                type="date"
+                id="documentExpiry">
+
+        </div>
+
+
+        <!-- FILE -->
+
+        <div class="form-group">
+
+            <label>
+                Document File
+            </label>
+
+            <input
+                type="file"
+                id="documentFile"
+                accept=".pdf,.jpg,.jpeg,.png">
+
+            <small class="file-hint">
+                PDF, JPG, JPEG या PNG
+            </small>
+
+        </div>
+
+
+        <!-- SAVE -->
+
+        <button
+            class="save-btn"
+            onclick="saveDocument()">
+
+            💾 Save Document
+
+        </button>
+
+
+        <button
+            class="cancel-btn"
+            onclick="closeDocumentModal()">
+
+            Cancel
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     VIEW DOCUMENT MODAL
+===================================== -->
+
+<div
+    id="viewModal"
+    class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <strong>
+                Document Details
+            </strong>
+
+            <button
+                onclick="closeViewModal()">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="documentDetails">
+
+            <!-- DETAILS WILL LOAD HERE -->
+
+        </div>
+
+
+        <button
+            class="cancel-btn"
+            onclick="closeViewModal()">
+
+            Close
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   DOCUMENT CENTER - JAVASCRIPT
+===================================== */
+
+const DOCUMENT_KEY = "transportpro_documents";
+
+let currentCategory = "All";
+
+
+/* =====================================
+   STORAGE
+===================================== */
+
+function getDocuments(){
+
+    try{
+
+        const data = JSON.parse(
+            localStorage.getItem(DOCUMENT_KEY) || "[]"
+        );
+
+        return Array.isArray(data) ? data : [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE STORAGE
+===================================== */
+
+function saveDocuments(documents){
+
+    localStorage.setItem(
+        DOCUMENT_KEY,
+        JSON.stringify(documents)
+    );
+
+}
+
+
+/* =====================================
+   OPEN ADD DOCUMENT
+===================================== */
+
+function openAddDocument(){
+
+    document.getElementById(
+        "documentModal"
+    ).classList.add("show");
+
+}
+
+
+/* =====================================
+   CLOSE ADD MODAL
+===================================== */
+
+function closeDocumentModal(){
+
+    document.getElementById(
+        "documentModal"
+    ).classList.remove("show");
+
+    clearForm();
+
+}
+
+
+/* =====================================
+   CLEAR FORM
+===================================== */
+
+function clearForm(){
+
+    document.getElementById(
+        "documentName"
+    ).value = "";
+
+    document.getElementById(
+        "documentNumber"
+    ).value = "";
+
+    document.getElementById(
+        "documentExpiry"
+    ).value = "";
+
+    document.getElementById(
+        "documentFile"
+    ).value = "";
+
+    document.getElementById(
+        "documentCategory"
+    ).value = "Vehicle";
+
+}
+
+
+/* =====================================
+   SAVE DOCUMENT
+===================================== */
+
+function saveDocument(){
+
+    const name =
+        document.getElementById(
+            "documentName"
+        ).value.trim();
+
+
+    const category =
+        document.getElementById(
+            "documentCategory"
+        ).value;
+
+
+    const number =
+        document.getElementById(
+            "documentNumber"
+        ).value.trim();
+
+
+    const expiry =
+        document.getElementById(
+            "documentExpiry"
+        ).value;
+
+
+    const fileInput =
+        document.getElementById(
+            "documentFile"
+        );
+
+
+    if(!name){
+
+        alert(
+            "Please enter document name."
+        );
+
+        return;
+
+    }
+
+
+    if(!number){
+
+        alert(
+            "Please enter document number."
+        );
+
+        return;
+
+    }
+
+
+    if(!expiry){
+
+        alert(
+            "Please select expiry date."
+        );
+
+        return;
+
+    }
+
+
+    const file =
+        fileInput.files[0];
+
+
+    let fileName = "";
+
+    let fileType = "";
+
+
+    if(file){
+
+        fileName =
+            file.name;
+
+        fileType =
+            file.type || "application/octet-stream";
+
+    }
+
+
+    const documentData = {
+
+        id:
+            "DOC-" +
+            Date.now()
+                .toString()
+                .slice(-8),
+
+        name:
+            name,
+
+        category:
+            category,
+
+        number:
+            number,
+
+        expiry:
+            expiry,
+
+        fileName:
+            fileName,
+
+        fileType:
+            fileType,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    const documents =
+        getDocuments();
+
+
+    documents.unshift(
+        documentData
+    );
+
+
+    saveDocuments(
+        documents
+    );
+
+
+    closeDocumentModal();
+
+    renderDocuments();
+
+    alert(
+        "Document saved successfully!"
+    );
+
+}
+
+
+/* =====================================
+   CATEGORY FILTER
+===================================== */
+
+function filterCategory(
+    category,
+    button
+){
+
+    currentCategory =
+        category;
+
+
+    document
+        .querySelectorAll(
+            ".category-btn"
+        )
+        .forEach(
+            btn => {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    renderDocuments();
+
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+function searchDocuments(){
+
+    renderDocuments();
+
+}
+
+
+/* =====================================
+   RENDER DOCUMENTS
+===================================== */
+
+function renderDocuments(){
+
+    const container =
+        document.getElementById(
+            "documentList"
+        );
+
+
+    const count =
+        document.getElementById(
+            "documentCount"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    let documents =
+        getDocuments();
+
+
+    /* CATEGORY */
+
+    if(
+        currentCategory !== "All"
+    ){
+
+        documents =
+            documents.filter(
+                doc =>
+                    doc.category ===
+                    currentCategory
+            );
+
+    }
+
+
+    /* SEARCH */
+
+    const searchInput =
+        document.getElementById(
+            "documentSearch"
+        );
+
+
+    const search =
+        searchInput
+            ? searchInput.value
+                .trim()
+                .toLowerCase()
+            : "";
+
+
+    if(search){
+
+        documents =
+            documents.filter(
+                doc =>
+
+                    String(
+                        doc.name
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        doc.number
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    String(
+                        doc.category
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+            );
+
+    }
+
+
+    if(count){
+
+        count.innerText =
+            documents.length +
+            (
+                documents.length === 1
+                ? " Document"
+                : " Documents"
+            );
+
+    }
+
+
+    if(documents.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📄
+                </div>
+
+                <strong>
+                    No Documents Found
+                </strong>
+
+                <small>
+                    Add a document or change your
+                    search/filter.
+                </small>
+
+                <button
+                    onclick="openAddDocument()">
+
+                    + Add Document
+
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        documents
+        .map(
+            doc =>
+                createDocumentHTML(
+                    doc
+                )
+        )
+        .join("");
+
+}
+
+
+/* =====================================
+   DOCUMENT HTML
+===================================== */
+
+function createDocumentHTML(
+    doc
+){
+
+    const status =
+        getExpiryStatus(
+            doc.expiry
+        );
+
+
+    return `
+
+        <div class="document-item">
+
+            <div class="document-icon">
+                ${getCategoryIcon(
+                    doc.category
+                )}
+            </div>
+
+
+            <div class="document-info">
+
+                <strong>
+                    ${escapeHTML(
+                        doc.name
+                    )}
+                </strong>
+
+                <small>
+                    ${escapeHTML(
+                        doc.category
+                    )}
+                    •
+                    ${escapeHTML(
+                        doc.number
+                    )}
+                </small>
+
+                <small>
+                    Expiry:
+                    ${formatDate(
+                        doc.expiry
+                    )}
+                </small>
+
+            </div>
+
+
+            <span
+                class="document-status ${status.className}">
+
+                ${status.text}
+
+            </span>
+
+
+            <div class="document-actions">
+
+                <button
+                    class="view-action"
+                    onclick="
+                        viewDocument(
+                            '${doc.id}'
+                        )
+                    "
+                    title="View">
+
+                    👁
+
+                </button>
+
+
+                <button
+                    class="delete-action"
+                    onclick="
+                        deleteDocument(
+                            '${doc.id}'
+                        )
+                    "
+                    title="Delete">
+
+                    🗑️
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   CATEGORY ICON
+===================================== */
+
+function getCategoryIcon(
+    category
+){
+
+    if(category === "Vehicle"){
+        return "🚛";
+    }
+
+    if(category === "Driver"){
+        return "👨‍✈️";
+    }
+
+    if(category === "Business"){
+        return "🏢";
+    }
+
+    return "📄";
+
+}
+
+
+/* =====================================
+   EXPIRY STATUS
+===================================== */
+
+function getExpiryStatus(
+    expiry
+){
+
+    const today =
+        new Date();
+
+    today.setHours(
+        0,0,0,0
+    );
+
+
+    const expiryDate =
+        new Date(
+            expiry + "T00:00:00"
+        );
+
+
+    if(
+        isNaN(
+            expiryDate.getTime()
+        )
+    ){
+
+        return {
+
+            text:"Unknown",
+            className:"status-warning"
+
+        };
+
+    }
+
+
+    const difference =
+        Math.ceil(
+            (
+                expiryDate -
+                today
+            )
+            /
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
+        );
+
+
+    if(
+        difference < 0
+    ){
+
+        return {
+
+            text:"Expired",
+            className:"status-expired"
+
+        };
+
+    }
+
+
+    if(
+        difference <= 30
+    ){
+
+        return {
+
+            text:
+                difference +
+                " Days Left",
+
+            className:
+                "status-warning"
+
+        };
+
+    }
+
+
+    return {
+
+        text:"Valid",
+
+        className:
+            "status-valid"
+
+    };
+
+}
+
+
+/* =====================================
+   VIEW DOCUMENT
+===================================== */
+
+function viewDocument(
+    id
+){
+
+    const documents =
+        getDocuments();
+
+
+    const doc =
+        documents.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!doc){
+
+        alert(
+            "Document not found."
+        );
+
+        return;
+
+    }
+
+
+    const status =
+        getExpiryStatus(
+            doc.expiry
+        );
+
+
+    const details =
+        document.getElementById(
+            "documentDetails"
+        );
+
+
+    details.innerHTML = `
+
+        <div class="detail-card">
+
+            <div class="detail-title">
+
+                ${getCategoryIcon(
+                    doc.category
+                )}
+
+                ${escapeHTML(
+                    doc.name
+                )}
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Document ID
+                </span>
+
+                <strong>
+                    ${escapeHTML(
+                        doc.id
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Category
+                </span>
+
+                <strong>
+                    ${escapeHTML(
+                        doc.category
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Document Number
+                </span>
+
+                <strong>
+                    ${escapeHTML(
+                        doc.number
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Expiry Date
+                </span>
+
+                <strong>
+                    ${formatDate(
+                        doc.expiry
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Status
+                </span>
+
+                <strong>
+                    ${status.text}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    File
+                </span>
+
+                <strong>
+                    ${
+                        doc.fileName
+                        ? escapeHTML(
+                            doc.fileName
+                        )
+                        : "No file attached"
+                    }
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Added
+                </span>
+
+                <strong>
+                    ${formatDate(
+                        doc.createdAt
+                    )}
+                </strong>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "viewModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =====================================
+   CLOSE VIEW
+===================================== */
+
+function closeViewModal(){
+
+    document.getElementById(
+        "viewModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================
+   DELETE DOCUMENT
+===================================== */
+
+function deleteDocument(
+    id
+){
+
+    const documents =
+        getDocuments();
+
+
+    const doc =
+        documents.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!doc){
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Delete " +
+            doc.name +
+            "?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    const updated =
+        documents.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveDocuments(
+        updated
+    );
+
+
+    renderDocuments();
+
+
+    alert(
+        "Document deleted."
+    );
+
+}
+
+
+/* =====================================
+   DATE FORMAT
+===================================== */
+
+function formatDate(
+    dateString
+){
+
+    if(!dateString){
+        return "-";
+    }
+
+
+    const date =
+        new Date(
+            dateString
+        );
+
+
+    if(isNaN(
+        date.getTime()
+    )){
+
+        return dateString;
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "home(1).html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   MODAL OUTSIDE CLICK
+===================================== */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const addModal =
+            document.getElementById(
+                "documentModal"
+            );
+
+        const viewModal =
+            document.getElementById(
+                "viewModal"
+            );
+
+
+        if(
+            event.target === addModal
+        ){
+
+            closeDocumentModal();
+
+        }
+
+
+        if(
+            event.target === viewModal
+        ){
+
+            closeViewModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   PAGE LOAD
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        renderDocuments();
+
+        console.log(
+            "Document Center loaded successfully."
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

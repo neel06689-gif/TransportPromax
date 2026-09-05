@@ -1,0 +1,2887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Identity Verification | TransportPro</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:950px;
+    min-height:64px;
+    margin:auto;
+
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+.backBtn:active{
+    transform:scale(.95);
+}
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:15px;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+
+    color:#94a3b8;
+    font-size:8px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    max-width:950px;
+    margin:auto;
+
+    padding:18px 14px 40px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progressBox{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-bottom:14px;
+
+    box-shadow:0 4px 14px rgba(16,24,40,.04);
+}
+
+.progressTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:9px;
+}
+
+.progressTop strong{
+    font-size:8px;
+}
+
+.progressTop span{
+    color:#667085;
+    font-size:7px;
+}
+
+.progressTrack{
+    height:6px;
+
+    background:#eaecf0;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.progressFill{
+    width:100%;
+    height:100%;
+
+    background:#2563eb;
+
+    border-radius:10px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:#07111f;
+    color:#fff;
+
+    border-radius:19px;
+
+    padding:19px 16px;
+
+    margin-bottom:14px;
+}
+
+.heroIcon{
+    width:46px;
+    height:46px;
+
+    border-radius:13px;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+    margin-bottom:11px;
+}
+
+.hero h1{
+    font-size:21px;
+    margin-bottom:6px;
+}
+
+.hero p{
+    color:#cbd5e1;
+
+    font-size:8px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   ROLE CARD
+========================= */
+
+.roleCard{
+    background:#eff6ff;
+
+    border:1px solid #bfdbfe;
+
+    border-radius:15px;
+
+    padding:12px;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:14px;
+}
+
+.roleIcon{
+    width:42px;
+    height:42px;
+
+    border-radius:11px;
+
+    background:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.roleText{
+    flex:1;
+}
+
+.roleText span{
+    display:block;
+
+    color:#475467;
+
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.roleText strong{
+    display:block;
+
+    color:#175cd3;
+
+    font-size:10px;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.formCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:17px;
+
+    padding:15px;
+
+    margin-bottom:14px;
+
+    box-shadow:0 4px 15px rgba(16,24,40,.04);
+}
+
+.formTitle{
+    margin-bottom:13px;
+}
+
+.formTitle h2{
+    font-size:14px;
+
+    margin-bottom:4px;
+}
+
+.formTitle p{
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   FORM GRID
+========================= */
+
+.formGrid{
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:11px;
+}
+
+.formGroup{
+    display:flex;
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.formGroup label{
+    font-size:8px;
+
+    font-weight:700;
+
+    color:#344054;
+}
+
+.required{
+    color:#d92d20;
+}
+
+.formGroup input,
+.formGroup select{
+    width:100%;
+
+    min-height:43px;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    padding:10px 11px;
+
+    background:#fff;
+
+    color:#101828;
+
+    font-size:8px;
+}
+
+.formGroup input:focus,
+.formGroup select:focus{
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.10);
+}
+
+.formHint{
+    color:#98a2b3;
+
+    font-size:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   SECURITY NOTICE
+========================= */
+
+.securityBox{
+    background:#ecfdf3;
+
+    border:1px solid #abefc6;
+
+    border-radius:13px;
+
+    padding:12px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:9px;
+
+    margin-bottom:14px;
+}
+
+.securityIcon{
+    font-size:18px;
+}
+
+.securityText{
+    color:#475467;
+
+    font-size:7px;
+
+    line-height:1.6;
+}
+
+.securityText strong{
+    display:block;
+
+    color:#067647;
+
+    font-size:8px;
+
+    margin-bottom:3px;
+}
+
+
+/* =========================
+   DOCUMENT UPLOAD
+========================= */
+
+.uploadBox{
+    border:2px dashed #cbd5e1;
+
+    border-radius:13px;
+
+    padding:17px 12px;
+
+    text-align:center;
+
+    background:#f8fafc;
+
+    transition:.2s;
+}
+
+.uploadBox:hover{
+    border-color:#2563eb;
+}
+
+.uploadIcon{
+    font-size:27px;
+
+    margin-bottom:6px;
+}
+
+.uploadBox strong{
+    display:block;
+
+    font-size:9px;
+
+    color:#344054;
+
+    margin-bottom:4px;
+}
+
+.uploadBox span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+    margin-bottom:11px;
+}
+
+.uploadBox input{
+    width:100%;
+
+    font-size:7px;
+}
+
+
+/* =========================
+   DOCUMENT PREVIEW
+========================= */
+
+.previewArea{
+    margin-top:12px;
+
+    display:none;
+
+    background:#f8fafc;
+
+    border:1px solid #e4e7ec;
+
+    border-radius:11px;
+
+    padding:10px;
+}
+
+.previewArea img{
+    max-width:100%;
+
+    max-height:180px;
+
+    border-radius:8px;
+
+    display:block;
+
+    margin:auto;
+}
+
+.previewName{
+    margin-top:7px;
+
+    text-align:center;
+
+    font-size:7px;
+
+    color:#475467;
+
+    word-break:break-word;
+}
+
+
+/* =========================
+   VERIFICATION STATUS
+========================= */
+
+.statusCard{
+    background:#f8fafc;
+
+    border:1px solid #e4e7ec;
+
+    border-radius:13px;
+
+    padding:12px;
+
+    margin-top:13px;
+}
+
+.statusRow{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:9px;
+}
+
+.statusDot{
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#f79009;
+
+    flex-shrink:0;
+}
+
+.statusRow strong{
+    font-size:8px;
+
+    color:#344054;
+}
+
+.statusText{
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(min-width:600px){
+
+    .formGrid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .fullWidth{
+        grid-column:1 / -1;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="header">
+
+
+<button
+class="backBtn"
+onclick="goBack()">
+
+←
+
+</button>
+
+
+<div class="headerTitle">
+
+<strong>
+Identity Verification
+</strong>
+
+<small>
+Step 3 • TransportPro Registration
+</small>
+
+</div>
+
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<div class="progressBox">
+
+<div class="progressTop">
+
+<strong>
+Registration Progress
+</strong>
+
+<span>
+Step 3 of 3
+</span>
+
+</div>
+
+
+<div class="progressTrack">
+
+<div class="progressFill"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<div class="heroIcon">
+🔐
+</div>
+
+<h1>
+Identity Verification
+</h1>
+
+<p>
+आपकी professional identity verify करने के
+लिए आवश्यक जानकारी यहाँ submit की जाएगी।
+</p>
+
+</section>
+
+
+
+<!-- =========================
+     SELECTED ROLE
+========================= -->
+
+<div class="roleCard">
+
+<div
+class="roleIcon"
+id="roleIcon">
+
+👤
+
+</div>
+
+
+<div class="roleText">
+
+<span>
+YOUR PROFESSIONAL ROLE
+</span>
+
+<strong id="selectedRole">
+Loading...
+</strong>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     SECURITY NOTICE
+========================= -->
+
+<div class="securityBox">
+
+<div class="securityIcon">
+🛡️
+</div>
+
+<div class="securityText">
+
+<strong>
+Secure Verification
+</strong>
+
+Production version में identity documents
+को secure storage और controlled verification
+process के माध्यम से handle किया जाएगा।
+Frontend demo में कोई real verification नहीं
+हो रही है।
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     IDENTITY INFORMATION
+========================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+Identity Information
+</h2>
+
+<p>
+अपने verification document की basic जानकारी दें।
+</p>
+
+</div>
+
+
+<div class="formGrid">
+
+
+<!-- DOCUMENT TYPE -->
+
+<div class="formGroup">
+
+<label>
+Document Type
+<span class="required">*</span>
+</label>
+
+<select id="verificationDocumentType">
+
+<option value="">
+Select Document
+</option>
+
+<option value="Aadhaar">
+Aadhaar Card
+</option>
+
+<option value="PAN">
+PAN Card
+</option>
+
+<option value="Driving Licence">
+Driving Licence
+</option>
+
+<option value="Voter ID">
+Voter ID
+</option>
+
+<option value="Passport">
+Passport
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- DOCUMENT NUMBER -->
+
+<div class="formGroup">
+
+<label>
+Document Number
+<span class="required">*</span>
+</label>
+
+<input
+id="verificationDocumentNumber"
+type="text"
+placeholder="Enter document number"
+autocomplete="off">
+
+<span class="formHint">
+अपना वास्तविक document number केवल secure
+production system में ही submit करें।
+</span>
+
+</div>
+
+
+
+<!-- NAME ON DOCUMENT -->
+
+<div class="formGroup">
+
+<label>
+Name as per Document
+<span class="required">*</span>
+</label>
+
+<input
+id="documentName"
+type="text"
+placeholder="Full name as shown on document">
+
+</div>
+
+
+
+<!-- DOCUMENT ISSUE COUNTRY -->
+
+<div class="formGroup">
+
+<label>
+Issuing Country
+</label>
+
+<select id="issuingCountry">
+
+<option value="India">
+India
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     DOCUMENT UPLOAD
+========================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+Upload Verification Document
+</h2>
+
+<p>
+Document की clear photo या PDF upload करें।
+</p>
+
+</div>
+
+
+<div class="uploadBox">
+
+<div class="uploadIcon">
+📄
+</div>
+
+<strong>
+Choose Verification Document
+</strong>
+
+<span>
+JPG, PNG या PDF • Frontend demo
+</span>
+
+
+<input
+id="verificationFile"
+type="file"
+accept="image/*,.pdf"
+onchange="previewDocument(event)"
+>
+
+
+<div
+id="documentPreview"
+class="previewArea">
+
+<img
+id="previewImage"
+src=""
+alt="Document Preview"
+>
+
+<div
+id="previewName"
+class="previewName">
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="statusCard">
+
+<div class="statusRow">
+
+<div class="statusDot"></div>
+
+<strong>
+Verification Pending
+</strong>
+
+</div>
+
+<div class="statusText">
+
+Document submit करने के बाद production
+backend verification के लिए भेजा जाएगा।
+अभी यह केवल frontend interface है।
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PART 1 END
+========================= -->
+
+<!--
+
+==================================================
+IDENTITY-VERIFICATION.HTML — PART 2
+
+अगले Part में आएगा:
+
+• Selfie / face verification UI
+• Address confirmation
+• Emergency contact
+• Professional ID information
+• Verification checklist
+• Secure consent
+
+अभी यहाँ तक ही paste करो।
+
+==================================================
+
+-->
+<!-- ==========================================
+     PART 2 : SELFIE + ADDRESS + CONTACT
+========================================== -->
+
+
+<!-- ==========================================
+     SELFIE VERIFICATION
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Selfie Verification
+</h2>
+
+<p>
+    Professional account verification के लिए
+    एक clear selfie upload करने का विकल्प।
+</p>
+
+</div>
+
+
+<div class="uploadBox">
+
+<div class="uploadIcon">
+📸
+</div>
+
+<strong>
+    Upload Selfie
+</strong>
+
+<span>
+    Clear face photo • JPG / PNG
+</span>
+
+
+<input
+    id="selfieFile"
+    type="file"
+    accept="image/*"
+    capture="user"
+    onchange="previewSelfie(event)"
+>
+
+
+<div
+    id="selfiePreview"
+    class="previewArea">
+
+<img
+    id="selfieImage"
+    src=""
+    alt="Selfie Preview"
+>
+
+<div
+    id="selfieName"
+    class="previewName">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="statusCard">
+
+<div class="statusRow">
+
+<div
+    class="statusDot"
+    style="background:#12b76a;">
+</div>
+
+<strong>
+    Face Verification
+</strong>
+
+</div>
+
+<div class="statusText">
+
+Actual face matching और liveness verification
+production backend में secure verification
+service के माध्यम से किया जाएगा।
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     ADDRESS INFORMATION
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Address Information
+</h2>
+
+<p>
+    अपने current operating/residential location
+    की basic जानकारी दें।
+</p>
+
+</div>
+
+
+<div class="formGrid">
+
+
+<!-- ADDRESS -->
+
+<div class="formGroup fullWidth">
+
+<label>
+    Address
+    <span class="required">*</span>
+</label>
+
+<input
+    id="address"
+    type="text"
+    placeholder="House / Street / Area">
+
+</div>
+
+
+<!-- CITY -->
+
+<div class="formGroup">
+
+<label>
+    City
+    <span class="required">*</span>
+</label>
+
+<input
+    id="city"
+    type="text"
+    placeholder="Enter city">
+
+</div>
+
+
+<!-- STATE -->
+
+<div class="formGroup">
+
+<label>
+    State
+    <span class="required">*</span>
+</label>
+
+<select id="state">
+
+<option value="">
+    Select State
+</option>
+
+<option>
+    Andhra Pradesh
+</option>
+
+<option>
+    Arunachal Pradesh
+</option>
+
+<option>
+    Assam
+</option>
+
+<option>
+    Bihar
+</option>
+
+<option>
+    Chhattisgarh
+</option>
+
+<option>
+    Goa
+</option>
+
+<option>
+    Gujarat
+</option>
+
+<option>
+    Haryana
+</option>
+
+<option>
+    Himachal Pradesh
+</option>
+
+<option>
+    Jharkhand
+</option>
+
+<option>
+    Karnataka
+</option>
+
+<option>
+    Kerala
+</option>
+
+<option>
+    Madhya Pradesh
+</option>
+
+<option>
+    Maharashtra
+</option>
+
+<option>
+    Manipur
+</option>
+
+<option>
+    Meghalaya
+</option>
+
+<option>
+    Mizoram
+</option>
+
+<option>
+    Nagaland
+</option>
+
+<option>
+    Odisha
+</option>
+
+<option>
+    Punjab
+</option>
+
+<option>
+    Rajasthan
+</option>
+
+<option>
+    Sikkim
+</option>
+
+<option>
+    Tamil Nadu
+</option>
+
+<option>
+    Telangana
+</option>
+
+<option>
+    Tripura
+</option>
+
+<option>
+    Uttar Pradesh
+</option>
+
+<option>
+    Uttarakhand
+</option>
+
+<option>
+    West Bengal
+</option>
+
+<option>
+    Delhi
+</option>
+
+<option>
+    Jammu & Kashmir
+</option>
+
+<option>
+    Ladakh
+</option>
+
+</select>
+
+</div>
+
+
+<!-- PINCODE -->
+
+<div class="formGroup">
+
+<label>
+    PIN Code
+    <span class="required">*</span>
+</label>
+
+<input
+    id="pincode"
+    type="tel"
+    inputmode="numeric"
+    maxlength="6"
+    placeholder="6 digit PIN">
+
+</div>
+
+
+<!-- ADDRESS TYPE -->
+
+<div class="formGroup">
+
+<label>
+    Address Type
+</label>
+
+<select id="addressType">
+
+<option>
+    Residential
+</option>
+
+<option>
+    Business
+</option>
+
+<option>
+    Office
+</option>
+
+<option>
+    Warehouse
+</option>
+
+<option>
+    Workshop
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     EMERGENCY / ALTERNATE CONTACT
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Emergency / Alternate Contact
+</h2>
+
+<p>
+    जरूरत पड़ने पर contact करने के लिए
+    optional alternate person की जानकारी।
+</p>
+
+</div>
+
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Contact Name
+</label>
+
+<input
+    id="emergencyName"
+    type="text"
+    placeholder="Full name">
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Relationship
+</label>
+
+<select id="emergencyRelation">
+
+<option value="">
+    Select Relationship
+</option>
+
+<option>
+    Parent
+</option>
+
+<option>
+    Spouse
+</option>
+
+<option>
+    Sibling
+</option>
+
+<option>
+    Friend
+</option>
+
+<option>
+    Business Partner
+</option>
+
+<option>
+    Other
+</option>
+
+</select>
+
+</div>
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Contact Number
+</label>
+
+<input
+    id="emergencyPhone"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="10 digit mobile number">
+
+</div>
+
+
+</div>
+
+
+<div class="infoBox">
+
+<div class="infoIcon">
+    ℹ️
+</div>
+
+<div class="infoText">
+
+<strong>
+    Optional Information
+</strong>
+
+Emergency contact देना optional है।
+Production version में इस information को
+securely store और access-control के साथ
+handle किया जाएगा।
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     PROFESSIONAL ID
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Professional Identification
+</h2>
+
+<p>
+    आपकी professional community में पहचान के
+    लिए system एक unique Employee / Member ID
+    generate करेगा।
+</p>
+
+</div>
+
+
+<div
+style="
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:13px;
+    padding:14px;
+"
+>
+
+<div
+style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+"
+>
+
+<div>
+
+<span
+style="
+    display:block;
+    color:#667085;
+    font-size:6px;
+    margin-bottom:5px;
+"
+>
+    PROFESSIONAL ID
+</span>
+
+<strong
+id="professionalId"
+style="
+    display:block;
+    color:#175cd3;
+    font-size:14px;
+    letter-spacing:1px;
+"
+>
+    AUTO-GENERATING
+</strong>
+
+</div>
+
+
+<div
+style="
+    font-size:25px;
+"
+>
+    🪪
+</div>
+
+</div>
+
+
+<div
+style="
+    margin-top:10px;
+    color:#667085;
+    font-size:7px;
+    line-height:1.6;
+"
+>
+
+यह ID frontend demo में generate होगी।
+Final system में unique ID backend द्वारा
+create और permanently associate की जाएगी।
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     VERIFICATION CHECKLIST
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Verification Checklist
+</h2>
+
+<p>
+    Submit करने से पहले यह checklist check करें।
+</p>
+
+</div>
+
+
+<div
+style="
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+"
+>
+
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    border:1px solid #e4e7ec;
+    border-radius:10px;
+"
+>
+
+<span style="font-size:17px;">
+    🪪
+</span>
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:8px;
+"
+>
+    Identity Document
+</strong>
+
+<span
+style="
+    display:block;
+    margin-top:3px;
+    color:#667085;
+    font-size:6px;
+"
+>
+    Document information provided
+</span>
+
+</div>
+
+<span
+style="
+    color:#12b76a;
+    font-size:16px;
+"
+>
+    ✓
+</span>
+
+</div>
+
+
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    border:1px solid #e4e7ec;
+    border-radius:10px;
+"
+>
+
+<span style="font-size:17px;">
+    📸
+</span>
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:8px;
+"
+>
+    Selfie
+</strong>
+
+<span
+style="
+    display:block;
+    margin-top:3px;
+    color:#667085;
+    font-size:6px;
+"
+>
+    Face verification photo
+</span>
+
+</div>
+
+<span
+style="
+    color:#12b76a;
+    font-size:16px;
+"
+>
+    ✓
+</span>
+
+</div>
+
+
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    border:1px solid #e4e7ec;
+    border-radius:10px;
+"
+>
+
+<span style="font-size:17px;">
+    📍
+</span>
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:8px;
+"
+>
+    Address
+</strong>
+
+<span
+style="
+    display:block;
+    margin-top:3px;
+    color:#667085;
+    font-size:6px;
+"
+>
+    Location information
+</span>
+
+</div>
+
+<span
+style="
+    color:#12b76a;
+    font-size:16px;
+"
+>
+    ✓
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     PART 2 END
+========================================== -->
+
+<!--
+
+==================================================
+IDENTITY-VERIFICATION.HTML — PART 3
+
+Part 3 में आएगा:
+
+• Final verification consent
+• Privacy confirmation
+• Employee/Member ID final generation
+• Complete Registration button
+• Data validation
+• LocalStorage save
+• Registration success screen
+• Dashboard पर redirect
+• Back navigation
+• Final JavaScript
+• </body>
+• </html>
+
+अभी Part 3 आने तक कुछ और paste मत करना।
+
+==================================================
+
+-->
+<!-- ==========================================
+     PART 3 : FINAL CONSENT + REGISTRATION
+========================================== -->
+
+
+<!-- ==========================================
+     FINAL SECURITY NOTICE
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Final Verification
+</h2>
+
+<p>
+    Registration complete करने से पहले सभी
+    information को एक बार confirm करें।
+</p>
+
+</div>
+
+
+<div
+style="
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:13px;
+    padding:13px;
+"
+>
+
+<div
+style="
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+"
+>
+
+<div style="font-size:20px;">
+    🔒
+</div>
+
+<div>
+
+<strong
+style="
+    display:block;
+    color:#344054;
+    font-size:9px;
+    margin-bottom:5px;
+"
+>
+    Your information matters
+</strong>
+
+<div
+style="
+    color:#667085;
+    font-size:7px;
+    line-height:1.7;
+"
+>
+
+TransportPro के production version में
+sensitive identity information को secure
+backend, authentication और access-control
+के साथ handle किया जाएगा।
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     FINAL CONSENT
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Confirmation & Consent
+</h2>
+
+<p>
+    नीचे दिए गए confirmations को accept करके
+    registration complete करें।
+</p>
+
+</div>
+
+
+<label
+style="
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    padding:10px;
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+"
+>
+
+<input
+id="finalInformationConsent"
+type="checkbox"
+style="
+    width:18px;
+    height:18px;
+    margin-top:1px;
+    flex-shrink:0;
+"
+>
+
+<span
+style="
+    font-size:7px;
+    line-height:1.7;
+    color:#475467;
+"
+>
+
+मैं confirm करता/करती हूँ कि registration में
+दी गई information मेरी जानकारी के अनुसार सही है।
+
+</span>
+
+</label>
+
+
+
+<label
+style="
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    padding:10px;
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+"
+>
+
+<input
+id="finalVerificationConsent"
+type="checkbox"
+style="
+    width:18px;
+    height:18px;
+    margin-top:1px;
+    flex-shrink:0;
+"
+>
+
+<span
+style="
+    font-size:7px;
+    line-height:1.7;
+    color:#475467;
+"
+>
+
+मैं TransportPro द्वारा लागू किए जाने वाले
+professional verification process के लिए
+सहमति देता/देती हूँ।
+
+</span>
+
+</label>
+
+
+
+<label
+style="
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    padding:10px;
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+"
+>
+
+<input
+id="finalCommunityConsent"
+type="checkbox"
+style="
+    width:18px;
+    height:18px;
+    margin-top:1px;
+    flex-shrink:0;
+"
+>
+
+<span
+style="
+    font-size:7px;
+    line-height:1.7;
+    color:#475467;
+"
+>
+
+मैं अपनी selected professional community में
+शामिल होने और अपने role के अनुसार उपलब्ध
+features इस्तेमाल करने के लिए सहमत हूँ।
+
+</span>
+
+</label>
+
+
+
+<label
+style="
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    padding:10px;
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:10px;
+    cursor:pointer;
+"
+>
+
+<input
+id="finalPrivacyConsent"
+type="checkbox"
+style="
+    width:18px;
+    height:18px;
+    margin-top:1px;
+    flex-shrink:0;
+"
+>
+
+<span
+style="
+    font-size:7px;
+    line-height:1.7;
+    color:#475467;
+"
+>
+
+मैं TransportPro की privacy और security
+policies को पढ़कर उनका पालन करने के लिए
+सहमत हूँ।
+
+</span>
+
+</label>
+
+</section>
+
+
+
+<!-- ==========================================
+     REGISTRATION SUMMARY
+========================================== -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Registration Summary
+</h2>
+
+<p>
+    आपके registration की basic summary।
+</p>
+
+</div>
+
+
+<div
+style="
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+"
+>
+
+
+<div
+style="
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px;
+    border-bottom:1px solid #eaecf0;
+"
+>
+
+<span
+style="
+    color:#667085;
+    font-size:7px;
+"
+>
+    Professional Role
+</span>
+
+<strong
+id="summaryRole"
+style="
+    color:#344054;
+    font-size:8px;
+    text-align:right;
+"
+>
+    —
+</strong>
+
+</div>
+
+
+
+<div
+style="
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px;
+    border-bottom:1px solid #eaecf0;
+"
+>
+
+<span
+style="
+    color:#667085;
+    font-size:7px;
+"
+>
+    Professional ID
+</span>
+
+<strong
+id="summaryId"
+style="
+    color:#175cd3;
+    font-size:8px;
+    text-align:right;
+"
+>
+    —
+</strong>
+
+</div>
+
+
+
+<div
+style="
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px;
+"
+>
+
+<span
+style="
+    color:#667085;
+    font-size:7px;
+"
+>
+    Registration Status
+</span>
+
+<strong
+style="
+    color:#12b76a;
+    font-size:8px;
+"
+>
+    Ready to Submit
+</strong>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     ACTION BUTTONS
+========================================== -->
+
+<section class="formCard">
+
+<div
+style="
+    display:grid;
+    grid-template-columns:1fr;
+    gap:9px;
+"
+>
+
+
+<button
+type="button"
+class="secondaryBtn"
+onclick="goBack()"
+>
+    ← Back
+</button>
+
+
+<button
+type="button"
+class="primaryBtn"
+onclick="completeRegistration()"
+>
+    Complete Registration ✓
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================
+     SUCCESS SCREEN
+========================================== -->
+
+<div
+id="successScreen"
+style="
+    display:none;
+    background:#fff;
+    border:1px solid #abefc6;
+    border-radius:18px;
+    padding:25px 16px;
+    text-align:center;
+    margin-bottom:25px;
+"
+>
+
+<div
+style="
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#ecfdf3;
+    margin:0 auto 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+"
+>
+    ✓
+</div>
+
+
+<h2
+style="
+    font-size:17px;
+    color:#067647;
+    margin-bottom:7px;
+"
+>
+    Registration Submitted!
+</h2>
+
+
+<p
+style="
+    color:#667085;
+    font-size:8px;
+    line-height:1.7;
+    margin-bottom:15px;
+"
+>
+
+आपका TransportPro professional registration
+frontend demo में successfully complete हो गया है।
+
+</p>
+
+
+<div
+style="
+    background:#f8fafc;
+    border:1px solid #e4e7ec;
+    border-radius:12px;
+    padding:13px;
+    margin-bottom:14px;
+"
+>
+
+<span
+style="
+    display:block;
+    color:#667085;
+    font-size:6px;
+    margin-bottom:5px;
+"
+>
+    YOUR PROFESSIONAL ID
+</span>
+
+
+<strong
+id="successProfessionalId"
+style="
+    display:block;
+    color:#175cd3;
+    font-size:16px;
+    letter-spacing:1px;
+"
+>
+    —
+</strong>
+
+</div>
+
+
+<button
+type="button"
+class="primaryBtn"
+onclick="openProfessionalDashboard()"
+>
+    Go to Professional Dashboard →
+</button>
+
+</div>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer
+style="
+    max-width:950px;
+    margin:0 auto;
+    padding:20px 14px;
+    text-align:center;
+    color:#667085;
+    font-size:7px;
+"
+>
+
+<div
+style="
+    border-top:1px solid #e4e9f0;
+    padding-top:15px;
+"
+>
+
+<strong
+style="
+    display:block;
+    color:#344054;
+    font-size:8px;
+    margin-bottom:5px;
+"
+>
+    TransportPro
+</strong>
+
+<div>
+    Professional Transport Business Platform
+</div>
+
+<div
+style="
+    margin-top:6px;
+    color:#98a2b3;
+"
+>
+    © 2026 TransportPro
+</div>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+/* ==========================================
+   BACK
+========================================== */
+
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href =
+            "professional-details.html";
+
+    }
+
+}
+
+
+
+/* ==========================================
+   GENERATE FRONTEND DEMO ID
+========================================== */
+
+function generateProfessionalId(){
+
+    let existingId =
+        localStorage.getItem(
+            "professionalId"
+        );
+
+
+    if(existingId){
+
+        return existingId;
+
+    }
+
+
+    const randomNumber =
+        Math.floor(
+            100000 + Math.random() * 900000
+        );
+
+
+    const year =
+        new Date().getFullYear();
+
+
+    const id =
+        "TP-" +
+        year +
+        "-" +
+        randomNumber;
+
+
+    localStorage.setItem(
+        "professionalId",
+        id
+    );
+
+
+    return id;
+
+}
+
+
+
+/* ==========================================
+   LOAD ROLE
+========================================== */
+
+function loadVerificationData(){
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        ) ||
+        "Transport Professional";
+
+
+    const roleElement =
+        document.getElementById(
+            "selectedRole"
+        );
+
+
+    const summaryRole =
+        document.getElementById(
+            "summaryRole"
+        );
+
+
+    if(roleElement){
+
+        roleElement.textContent =
+            role;
+
+    }
+
+
+    if(summaryRole){
+
+        summaryRole.textContent =
+            role;
+
+    }
+
+
+    const id =
+        generateProfessionalId();
+
+
+    const professionalId =
+        document.getElementById(
+            "professionalId"
+        );
+
+
+    const summaryId =
+        document.getElementById(
+            "summaryId"
+        );
+
+
+    if(professionalId){
+
+        professionalId.textContent =
+            id;
+
+    }
+
+
+    if(summaryId){
+
+        summaryId.textContent =
+            id;
+
+    }
+
+}
+
+
+
+/* ==========================================
+   VALIDATE FINAL CONSENT
+========================================== */
+
+function validateFinalConsent(){
+
+
+    const information =
+        document.getElementById(
+            "finalInformationConsent"
+        ).checked;
+
+
+    const verification =
+        document.getElementById(
+            "finalVerificationConsent"
+        ).checked;
+
+
+    const community =
+        document.getElementById(
+            "finalCommunityConsent"
+        ).checked;
+
+
+    const privacy =
+        document.getElementById(
+            "finalPrivacyConsent"
+        ).checked;
+
+
+    if(!information){
+
+        alert(
+            "Please confirm your information."
+        );
+
+        return false;
+
+    }
+
+
+    if(!verification){
+
+        alert(
+            "Please accept verification consent."
+        );
+
+        return false;
+
+    }
+
+
+    if(!community){
+
+        alert(
+            "Please accept community consent."
+        );
+
+        return false;
+
+    }
+
+
+    if(!privacy){
+
+        alert(
+            "Please accept privacy consent."
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+
+/* ==========================================
+   COMPLETE REGISTRATION
+========================================== */
+
+function completeRegistration(){
+
+
+    if(
+        !validateFinalConsent()
+    ){
+
+        return;
+
+    }
+
+
+    const professionalId =
+        generateProfessionalId();
+
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        ) || "";
+
+
+    const registrationData = {
+
+        professionalId:
+            professionalId,
+
+        role:
+            role,
+
+        status:
+            "Registration Submitted",
+
+        verificationStatus:
+            "Pending",
+
+        registeredAt:
+            new Date().toISOString(),
+
+        frontendDemo:
+            true
+
+    };
+
+
+    localStorage.setItem(
+        "registrationComplete",
+        "true"
+    );
+
+
+    localStorage.setItem(
+        "registrationData",
+        JSON.stringify(
+            registrationData
+        )
+    );
+
+
+    localStorage.setItem(
+        "registrationStep",
+        "complete"
+    );
+
+
+    const successId =
+        document.getElementById(
+            "successProfessionalId"
+        );
+
+
+    if(successId){
+
+        successId.textContent =
+            professionalId;
+
+    }
+
+
+    document
+        .querySelectorAll(
+            "main > section, main > .roleCard, main > .securityBox, main > .progressBox, main > .hero, main > .formCard"
+        )
+        .forEach(
+            function(element){
+
+                element.style.display =
+                    "none";
+
+            }
+        );
+
+
+    const success =
+        document.getElementById(
+            "successScreen"
+        );
+
+
+    if(success){
+
+        success.style.display =
+            "block";
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+
+/* ==========================================
+   PROFESSIONAL DASHBOARD
+========================================== */
+
+function openProfessionalDashboard(){
+
+    /*
+       Dashboard अगले frontend phase में
+       अलग-अलग role के हिसाब से बनाया जाएगा.
+    */
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    /*
+       अभी temporary routing.
+       बाद में:
+
+       Driver → driver-dashboard.html
+       Manager → manager-dashboard.html
+       Dealer → dealer-dashboard.html
+       Employee → employee-dashboard.html
+       Admin → admin-dashboard.html
+       आदि
+    */
+
+
+    if(role === "Driver"){
+
+        window.location.href =
+            "driver-dashboard.html";
+
+    }
+
+    else if(role === "Manager"){
+
+        window.location.href =
+            "manager-dashboard.html";
+
+    }
+
+    else if(role === "Dealer"){
+
+        window.location.href =
+            "dealer-dashboard.html";
+
+    }
+
+    else if(role === "Employee"){
+
+        window.location.href =
+            "employee-dashboard.html";
+
+    }
+
+    else if(role === "Admin"){
+
+        window.location.href =
+            "admin-dashboard.html";
+
+    }
+
+    else{
+
+        window.location.href =
+            "professional-dashboard.html";
+
+    }
+
+}
+
+
+
+/* ==========================================
+   PINCODE RESTRICTION
+========================================== */
+
+document.addEventListener(
+    "input",
+    function(event){
+
+        if(
+            event.target.id === "pincode"
+        ){
+
+            event.target.value =
+                event.target.value
+                .replace(/\D/g,"")
+                .slice(0,6);
+
+        }
+
+
+        if(
+            event.target.id === "emergencyPhone"
+        ){
+
+            event.target.value =
+                event.target.value
+                .replace(/\D/g,"")
+                .slice(0,10);
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   PAGE LOAD
+========================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadVerificationData();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

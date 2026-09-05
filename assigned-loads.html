@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Assigned Loads - TransportPro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+.top-header{
+    height:62px;
+    background:#101820;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 14px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:8px;
+    background:transparent;
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+    border-radius:9px;
+    background:white;
+    color:#1769e0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:white;
+    border:1px solid #dbe2ea;
+    color:#172033;
+    padding:10px 13px;
+    border-radius:9px;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-bottom:12px;
+}
+
+.assigned-card{
+    background:white;
+    border:1px solid #e2e8f0;
+    border-radius:15px;
+    padding:16px;
+    box-shadow:0 4px 15px rgba(16,24,40,.05);
+}
+
+.page-heading{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+    border-radius:14px;
+    background:#eef5ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+    font-size:11px;
+    line-height:17px;
+}
+
+.load-summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-bottom:14px;
+}
+
+.summary-box{
+    background:#f8fafc;
+    border:1px solid #e5eaf0;
+    border-radius:10px;
+    padding:11px 5px;
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+    color:#667085;
+    font-size:8px;
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:18px;
+}
+
+.search-box{
+    margin-bottom:10px;
+}
+
+.search-box input{
+    width:100%;
+    height:44px;
+    border:1px solid #d7dee8;
+    border-radius:9px;
+    padding:0 13px;
+    outline:none;
+    font-size:12px;
+}
+
+.search-box input:focus{
+    border-color:#1769e0;
+}
+
+.filter-row{
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+    margin-bottom:13px;
+}
+
+.filter-btn{
+    border:1px solid #d7dee8;
+    background:white;
+    color:#172033;
+    border-radius:20px;
+    padding:8px 13px;
+    font-size:10px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+    color:white;
+    border-color:#1769e0;
+}
+
+.assigned-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.load-card{
+    border:1px solid #e2e8f0;
+    border-radius:11px;
+    padding:12px;
+    background:white;
+}
+
+.load-top{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.load-icon{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    background:#eef5ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    flex-shrink:0;
+}
+
+.load-title{
+    flex:1;
+}
+
+.load-title strong{
+    display:block;
+    font-size:12px;
+    margin-bottom:4px;
+}
+
+.load-title small{
+    color:#667085;
+    font-size:8px;
+}
+
+.load-status{
+    padding:5px 8px;
+    border-radius:20px;
+    font-size:8px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.status-assigned{
+    background:#fff5df;
+    color:#a15c00;
+}
+
+.status-transit{
+    background:#eaf2ff;
+    color:#1769e0;
+}
+
+.status-delivered{
+    background:#eaf8ef;
+    color:#137333;
+}
+
+.route-box{
+    background:#f8fafc;
+    border-radius:9px;
+    padding:10px;
+    margin-bottom:9px;
+}
+
+.route-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:10px;
+}
+
+.route-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#1769e0;
+    flex-shrink:0;
+}
+
+.route-line{
+    width:1px;
+    height:11px;
+    background:#cbd5e1;
+    margin-left:4px;
+}
+
+.load-details{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+    margin-bottom:10px;
+}
+
+.detail-box{
+    border:1px solid #edf0f4;
+    border-radius:7px;
+    padding:7px;
+    text-align:center;
+}
+
+.detail-box span{
+    display:block;
+    color:#98a2b3;
+    font-size:7px;
+    margin-bottom:3px;
+}
+
+.detail-box strong{
+    display:block;
+    font-size:9px;
+}
+
+.load-actions{
+    display:flex;
+    gap:7px;
+}
+
+.load-actions button{
+    flex:1;
+    height:34px;
+    border-radius:7px;
+    font-size:9px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.track-btn{
+    background:#1769e0;
+    border:0;
+    color:white;
+}
+
+.view-btn{
+    background:white;
+    border:1px solid #1769e0;
+    color:#1769e0;
+}
+
+.update-btn{
+    background:white;
+    border:1px solid #d7dee8;
+    color:#475467;
+}
+
+.find-load-box{
+    background:#eef6ff;
+    border:1px solid #d7e8ff;
+    border-radius:12px;
+    padding:14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.find-icon{
+    width:46px;
+    height:46px;
+    border-radius:11px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+}
+
+.find-content{
+    flex:1;
+}
+
+.find-content h2{
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.find-content p{
+    color:#667085;
+    font-size:9px;
+    line-height:14px;
+}
+
+.find-btn{
+    border:0;
+    background:#1769e0;
+    color:white;
+    padding:10px 13px;
+    border-radius:8px;
+    font-size:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.empty-state{
+    text-align:center;
+    padding:35px 10px;
+    border:1px dashed #d7dee8;
+    border-radius:11px;
+}
+
+.empty-icon{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+    font-size:12px;
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    color:#667085;
+    font-size:9px;
+}
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .assigned-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .load-summary{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .load-top{
+        flex-wrap:wrap;
+    }
+
+    .load-title{
+        min-width:calc(100% - 55px);
+    }
+
+    .load-status{
+        margin-left:54px;
+    }
+
+    .load-details{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .find-load-box{
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .find-content{
+        min-width:calc(100% - 60px);
+    }
+
+    .find-btn{
+        width:100%;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Assigned Loads
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <section class="assigned-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🚛
+            </div>
+
+            <div>
+
+                <h1>
+                    Assigned Loads
+                </h1>
+
+                <p>
+                    Aapko assigned loads ko manage,
+                    update aur track karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="load-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="totalAssigned">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Assigned
+                </span>
+
+                <strong id="assignedCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    In Transit
+                </span>
+
+                <strong id="transitCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Delivered
+                </span>
+
+                <strong id="deliveredCount">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="assignedSearch"
+                placeholder="Search Load ID, city or product..."
+                oninput="searchAssignedLoads()">
+
+        </div>
+
+
+
+        <!-- FILTER -->
+
+        <div class="filter-row">
+
+
+            <button
+                class="filter-btn active"
+                onclick="filterAssigned('all',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterAssigned('Assigned',this)">
+
+                Assigned
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterAssigned('In Transit',this)">
+
+                In Transit
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterAssigned('Delivered',this)">
+
+                Delivered
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- ASSIGNED LOAD LIST -->
+
+        <div
+            id="assignedList"
+            class="assigned-list">
+
+            <!-- JavaScript Part 3 -->
+            <!-- Loads yahan show honge -->
+
+        </div>
+
+
+
+        <!-- FIND MORE LOADS -->
+
+        <div class="find-load-box">
+
+
+            <div class="find-icon">
+                🔎
+            </div>
+
+
+            <div class="find-content">
+
+                <h2>
+                    Find More Loads
+                </h2>
+
+                <p>
+                    New transport loads search karein
+                    aur profitable routes par bid karein.
+                </p>
+
+            </div>
+
+
+            <button
+                class="find-btn"
+                onclick="findLoads()">
+
+                Find Loads
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   ASSIGNED LOADS DATA
+===================================== */
+
+let assignedLoads = [
+
+    {
+        id: "AL-1001",
+        product: "Industrial Equipment",
+        from: "Delhi",
+        to: "Mumbai",
+        vehicle: "32 FT Container",
+        weight: "8 Ton",
+        fare: 42000,
+        status: "Assigned",
+        driver: "Rahul Kumar",
+        date: "Today, 10:30 AM"
+    },
+
+    {
+        id: "AL-1002",
+        product: "Electronics Goods",
+        from: "Noida",
+        to: "Jaipur",
+        vehicle: "14 FT Truck",
+        weight: "4 Ton",
+        fare: 18500,
+        status: "In Transit",
+        driver: "Amit Singh",
+        date: "Today, 08:15 AM"
+    },
+
+    {
+        id: "AL-1003",
+        product: "Furniture Shipment",
+        from: "Gurugram",
+        to: "Lucknow",
+        vehicle: "20 FT Truck",
+        weight: "6 Ton",
+        fare: 27000,
+        status: "Delivered",
+        driver: "Vikas Sharma",
+        date: "Yesterday, 06:40 PM"
+    },
+
+    {
+        id: "AL-1004",
+        product: "General Goods",
+        from: "Mumbai",
+        to: "Pune",
+        vehicle: "Mini Truck",
+        weight: "2 Ton",
+        fare: 9500,
+        status: "Assigned",
+        driver: "Rohit Verma",
+        date: "Yesterday, 02:20 PM"
+    }
+
+];
+
+
+/* =====================================
+   CURRENT FILTER
+===================================== */
+
+let currentFilter = "all";
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(){
+
+    document.getElementById(
+        "totalAssigned"
+    ).innerText = assignedLoads.length;
+
+
+    document.getElementById(
+        "assignedCount"
+    ).innerText =
+        assignedLoads.filter(
+            load => load.status === "Assigned"
+        ).length;
+
+
+    document.getElementById(
+        "transitCount"
+    ).innerText =
+        assignedLoads.filter(
+            load => load.status === "In Transit"
+        ).length;
+
+
+    document.getElementById(
+        "deliveredCount"
+    ).innerText =
+        assignedLoads.filter(
+            load => load.status === "Delivered"
+        ).length;
+
+}
+
+
+/* =====================================
+   DISPLAY LOADS
+===================================== */
+
+function displayAssignedLoads(list){
+
+    const container =
+        document.getElementById(
+            "assignedList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🚛
+                </div>
+
+                <strong>
+                    No Assigned Loads Found
+                </strong>
+
+                <small>
+                    Search ya filter change karke
+                    dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        list.map(load => `
+
+            <div class="load-card">
+
+                <div class="load-top">
+
+                    <div class="load-icon">
+                        📦
+                    </div>
+
+
+                    <div class="load-title">
+
+                        <strong>
+                            ${load.product}
+                        </strong>
+
+                        <small>
+                            ${load.id} • ${load.date}
+                        </small>
+
+                    </div>
+
+
+                    <span class="
+                        load-status
+                        ${
+                            load.status === "Assigned"
+                            ? "status-assigned"
+                            : load.status === "In Transit"
+                            ? "status-transit"
+                            : "status-delivered"
+                        }
+                    ">
+
+                        ${load.status}
+
+                    </span>
+
+                </div>
+
+
+                <!-- ROUTE -->
+
+                <div class="route-box">
+
+                    <div class="route-row">
+
+                        <span class="route-dot"></span>
+
+                        <strong>
+                            ${load.from}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-row">
+
+                        <span class="route-dot"></span>
+
+                        <strong>
+                            ${load.to}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DETAILS -->
+
+                <div class="load-details">
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Vehicle
+                        </span>
+
+                        <strong>
+                            ${load.vehicle}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Weight
+                        </span>
+
+                        <strong>
+                            ${load.weight}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Driver
+                        </span>
+
+                        <strong>
+                            ${load.driver}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Fare
+                        </span>
+
+                        <strong>
+                            ₹${Number(
+                                load.fare
+                            ).toLocaleString("en-IN")}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="load-actions">
+
+
+                    <button
+                        class="track-btn"
+                        onclick="trackLoad('${load.id}')">
+
+                        📍 Track
+
+                    </button>
+
+
+                    <button
+                        class="view-btn"
+                        onclick="viewLoad('${load.id}')">
+
+                        👁 View
+
+                    </button>
+
+
+                    ${
+                        load.status !== "Delivered"
+                        ?
+                        `
+                        <button
+                            class="update-btn"
+                            onclick="updateLoad('${load.id}')">
+
+                            ✏️ Update
+
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+/* =====================================
+   FILTER
+===================================== */
+
+function filterAssigned(
+    filter,
+    button
+){
+
+    currentFilter = filter;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+function searchAssignedLoads(){
+
+    applyFilters();
+
+}
+
+
+/* =====================================
+   SEARCH + FILTER
+===================================== */
+
+function applyFilters(){
+
+    const searchInput =
+        document.getElementById(
+            "assignedSearch"
+        );
+
+
+    const search =
+        searchInput
+        ?
+        searchInput.value
+            .trim()
+            .toLowerCase()
+        :
+        "";
+
+
+    let result =
+        [...assignedLoads];
+
+
+    /* FILTER */
+
+    if(currentFilter !== "all"){
+
+        result =
+            result.filter(
+                load =>
+                    load.status === currentFilter
+            );
+
+    }
+
+
+    /* SEARCH */
+
+    if(search){
+
+        result =
+            result.filter(load =>
+
+                load.id
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.product
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.from
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.to
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.vehicle
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                load.driver
+                    .toLowerCase()
+                    .includes(search)
+
+            );
+
+    }
+
+
+    displayAssignedLoads(
+        result
+    );
+
+}
+
+
+/* =====================================
+   VIEW LOAD
+===================================== */
+
+function viewLoad(id){
+
+    const load =
+        assignedLoads.find(
+            item => item.id === id
+        );
+
+
+    if(!load){
+        return;
+    }
+
+
+    alert(
+
+        "🚛 LOAD DETAILS\n\n" +
+
+        "Load ID: " +
+        load.id +
+
+        "\n\nProduct: " +
+        load.product +
+
+        "\n\nRoute: " +
+        load.from +
+        " → " +
+        load.to +
+
+        "\n\nVehicle: " +
+        load.vehicle +
+
+        "\n\nWeight: " +
+        load.weight +
+
+        "\n\nDriver: " +
+        load.driver +
+
+        "\n\nFare: ₹" +
+        Number(
+            load.fare
+        ).toLocaleString(
+            "en-IN"
+        ) +
+
+        "\n\nStatus: " +
+        load.status +
+
+        "\n\nAssigned: " +
+        load.date
+
+    );
+
+}
+
+
+/* =====================================
+   TRACK LOAD
+===================================== */
+
+function trackLoad(id){
+
+    const load =
+        assignedLoads.find(
+            item => item.id === id
+        );
+
+
+    if(!load){
+        return;
+    }
+
+
+    /*
+       Agar future me live-tracking page
+       banaya jayega to yahan us page
+       ka link add kiya ja sakta hai.
+    */
+
+    localStorage.setItem(
+        "tp_current_tracking_load",
+        JSON.stringify(load)
+    );
+
+
+    alert(
+
+        "📍 LIVE TRACKING\n\n" +
+
+        "Load: " +
+        load.id +
+
+        "\n\n" +
+        load.from +
+        " → " +
+        load.to +
+
+        "\n\nDriver: " +
+        load.driver +
+
+        "\n\nVehicle: " +
+        load.vehicle +
+
+        "\n\nCurrent Status: " +
+        load.status +
+
+        "\n\n📍 Tracking data saved."
+
+    );
+
+}
+
+
+/* =====================================
+   UPDATE LOAD
+===================================== */
+
+function updateLoad(id){
+
+    const load =
+        assignedLoads.find(
+            item => item.id === id
+        );
+
+
+    if(!load){
+        return;
+    }
+
+
+    if(load.status === "Delivered"){
+
+        alert(
+            "✅ Delivered load ko update karne ki zarurat nahi hai."
+        );
+
+        return;
+
+    }
+
+
+    const options =
+        prompt(
+
+            "Update Load Status\n\n" +
+
+            "1 = Assigned\n" +
+
+            "2 = In Transit\n" +
+
+            "3 = Delivered\n\n" +
+
+            "Current: " +
+            load.status +
+
+            "\n\nNumber enter karein:"
+
+        );
+
+
+    if(options === null){
+        return;
+    }
+
+
+    if(options === "1"){
+
+        load.status =
+            "Assigned";
+
+    }
+    else if(options === "2"){
+
+        load.status =
+            "In Transit";
+
+    }
+    else if(options === "3"){
+
+        load.status =
+            "Delivered";
+
+    }
+    else{
+
+        alert(
+            "⚠️ Please 1, 2 ya 3 enter karein."
+        );
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "tp_assigned_loads",
+        JSON.stringify(
+            assignedLoads
+        )
+    );
+
+
+    updateSummary();
+
+    applyFilters();
+
+
+    alert(
+        "✅ Load status successfully updated."
+    );
+
+}
+
+
+/* =====================================
+   FIND LOADS
+===================================== */
+
+function findLoads(){
+
+    window.location.href =
+        "load-search.html";
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        goDashboard();
+
+    }
+
+}
+
+
+/* =====================================
+   INITIALIZE
+===================================== */
+
+const savedAssignedLoads =
+    localStorage.getItem(
+        "tp_assigned_loads"
+    );
+
+
+if(savedAssignedLoads){
+
+    try{
+
+        const saved =
+            JSON.parse(
+                savedAssignedLoads
+            );
+
+
+        if(Array.isArray(saved)){
+
+            assignedLoads =
+                saved;
+
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            "Saved load data error:",
+            error
+        );
+
+    }
+
+}
+
+
+updateSummary();
+
+displayAssignedLoads(
+    assignedLoads
+);
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        updateSummary();
+
+        displayAssignedLoads(
+            assignedLoads
+        );
+
+        console.log(
+            "TransportPro Assigned Loads loaded."
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

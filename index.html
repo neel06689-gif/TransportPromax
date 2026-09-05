@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TransportPro - Login</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,#183b68 0,#07111f 42%,#03070d 100%);
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.auth-container{
+  width:100%;
+  max-width:460px;
+}
+
+.logo-area{
+  text-align:center;
+  margin-bottom:22px;
+}
+
+.logo{
+  width:70px;
+  height:70px;
+  margin:auto;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  background:linear-gradient(135deg,#16a085,#2563eb);
+  box-shadow:0 15px 40px rgba(37,99,235,.35);
+}
+
+.logo-area h1{
+  margin-top:12px;
+  font-size:28px;
+}
+
+.logo-area p{
+  color:#9fb0c5;
+  margin-top:6px;
+}
+
+.card{
+  background:rgba(12,23,38,.92);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 25px 70px rgba(0,0,0,.45);
+  backdrop-filter:blur(15px);
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  background:#07111e;
+  padding:5px;
+  border-radius:14px;
+  margin-bottom:22px;
+}
+
+.tab{
+  flex:1;
+  border:0;
+  background:transparent;
+  color:#91a1b6;
+  padding:12px;
+  border-radius:10px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:#2563eb;
+  color:#fff;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+label{
+  display:block;
+  margin-bottom:7px;
+  color:#cbd5e1;
+  font-size:14px;
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #26384e;
+  background:#07111e;
+  color:#fff;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus,select:focus{
+  border-color:#3b82f6;
+  box-shadow:0 0 0 3px rgba(59,130,246,.12);
+}
+
+.phone-row{
+  display:flex;
+  gap:8px;
+}
+
+.country-code{
+  width:75px;
+  text-align:center;
+}
+
+.phone-row input{
+  flex:1;
+}
+
+.otp-row{
+  display:flex;
+  gap:8px;
+}
+
+.otp-row input{
+  flex:1;
+}
+
+.otp-btn{
+  width:105px;
+  border:0;
+  border-radius:12px;
+  background:#12345d;
+  color:#60a5fa;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.role-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.role{
+  border:1px solid #26384e;
+  background:#07111e;
+  padding:13px 8px;
+  border-radius:13px;
+  cursor:pointer;
+  text-align:center;
+  transition:.2s;
+}
+
+.role:hover{
+  border-color:#3b82f6;
+}
+
+.role.selected{
+  border-color:#3b82f6;
+  background:rgba(37,99,235,.16);
+  box-shadow:0 0 0 2px rgba(37,99,235,.15);
+}
+
+.role-icon{
+  font-size:25px;
+  display:block;
+  margin-bottom:5px;
+}
+
+.role-name{
+  font-size:13px;
+  color:#dbeafe;
+}
+
+.password-wrap{
+  position:relative;
+}
+
+.password-wrap input{
+  padding-right:50px;
+}
+
+.show-password{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  color:#8da0b7;
+}
+
+.options{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:5px 0 18px;
+  font-size:13px;
+  color:#94a3b8;
+}
+
+.remember{
+  display:flex;
+  gap:7px;
+  align-items:center;
+}
+
+.remember input{
+  width:auto;
+}
+
+.forgot{
+  color:#60a5fa;
+  cursor:pointer;
+}
+
+.main-btn{
+  width:100%;
+  border:0;
+  padding:15px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#2563eb,#16a085);
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 12px 25px rgba(37,99,235,.25);
+}
+
+.main-btn:active{
+  transform:scale(.98);
+}
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:20px 0;
+  color:#64748b;
+  font-size:12px;
+}
+
+.divider span{
+  height:1px;
+  background:#26384e;
+  flex:1;
+}
+
+.demo-info{
+  padding:12px;
+  border-radius:12px;
+  background:rgba(37,99,235,.08);
+  border:1px solid rgba(37,99,235,.18);
+  color:#94a3b8;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.hidden{
+  display:none;
+}
+
+.footer-text{
+  text-align:center;
+  margin-top:18px;
+  color:#64748b;
+  font-size:12px;
+}
+
+@media(max-width:380px){
+  .card{
+    padding:18px;
+  }
+
+  .role-grid{
+    gap:7px;
+  }
+
+  .role{
+    padding:10px 5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="auth-container">
+
+  <div class="logo-area">
+    <div class="logo">🚛</div>
+    <h1>TransportPro</h1>
+    <p>India's Smart Transport Network</p>
+  </div>
+
+  <div class="card">
+
+    <div class="tabs">
+      <button class="tab active" id="loginTab" onclick="showLogin()">Login</button>
+      <button class="tab" id="registerTab" onclick="showRegister()">Register</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form id="loginForm" onsubmit="loginUser(event)">
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+
+        <div class="phone-row">
+          <input
+            class="country-code"
+            value="+91"
+            readonly
+          >
+
+          <input
+            type="tel"
+            id="loginMobile"
+            placeholder="Enter mobile number"
+            maxlength="10"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+
+        <div class="password-wrap">
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter password"
+            required
+          >
+
+          <span
+            class="show-password"
+            onclick="togglePassword('loginPassword',this)"
+          >👁</span>
+        </div>
+      </div>
+
+      <div class="options">
+        <label class="remember">
+          <input type="checkbox" id="rememberMe">
+          Remember me
+        </label>
+
+        <span class="forgot" onclick="forgotPassword()">
+          Forgot Password?
+        </span>
+      </div>
+
+      <button class="main-btn" type="submit">
+        Login to TransportPro
+      </button>
+
+    </form>
+
+
+    <!-- REGISTER -->
+    <form
+      id="registerForm"
+      class="hidden"
+      onsubmit="registerUser(event)"
+    >
+
+      <div class="form-group">
+        <label>Full Name</label>
+
+        <input
+          type="text"
+          id="registerName"
+          placeholder="Enter your full name"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+
+        <div class="phone-row">
+          <input
+            class="country-code"
+            value="+91"
+            readonly
+          >
+
+          <input
+            type="tel"
+            id="registerMobile"
+            placeholder="10 digit mobile number"
+            maxlength="10"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+
+        <input
+          type="email"
+          id="registerEmail"
+          placeholder="Enter email address"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Create Password</label>
+
+        <div class="password-wrap">
+          <input
+            type="password"
+            id="registerPassword"
+            placeholder="Create password"
+            required
+          >
+
+          <span
+            class="show-password"
+            onclick="togglePassword('registerPassword',this)"
+          >👁</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Verify Mobile with OTP</label>
+
+        <div class="otp-row">
+          <input
+            type="number"
+            id="otp"
+            placeholder="Enter OTP"
+          >
+
+          <button
+            type="button"
+            class="otp-btn"
+            onclick="sendOTP()"
+          >
+            Send OTP
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Select Your Role</label>
+
+        <div class="role-grid">
+
+          <div
+            class="role"
+            onclick="selectRole('Driver',this)"
+          >
+            <span class="role-icon">🚚</span>
+            <span class="role-name">Driver</span>
+          </div>
+
+          <div
+            class="role"
+            onclick="selectRole('Vehicle Owner',this)"
+          >
+            <span class="role-icon">🚛</span>
+            <span class="role-name">Vehicle Owner</span>
+          </div>
+
+          <div
+            class="role"
+            onclick="selectRole('Goods Dealer',this)"
+          >
+            <span class="role-icon">📦</span>
+            <span class="role-name">Goods Dealer</span>
+          </div>
+
+          <div
+            class="role"
+            onclick="selectRole('Transporter',this)"
+          >
+            <span class="role-icon">🏢</span>
+            <span class="role-name">Transporter</span>
+          </div>
+
+          <div
+            class="role"
+            onclick="selectRole('Mechanic',this)"
+          >
+            <span class="role-icon">🔧</span>
+            <span class="role-name">Mechanic</span>
+          </div>
+
+          <div
+            class="role"
+            onclick="selectRole('Customer',this)"
+          >
+            <span class="role-icon">👤</span>
+            <span class="role-name">Customer</span>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="main-btn" type="submit">
+        Create TransportPro Account
+      </button>
+
+    </form>
+
+    <div class="divider">
+      <span></span>
+      SECURE TRANSPORT NETWORK
+      <span></span>
+    </div>
+
+    <div class="demo-info">
+      🔒 <b>Frontend Demo:</b> अभी Login, Register और OTP
+      browser के LocalStorage में demo के रूप में काम करेंगे।
+      Real OTP और secure authentication backend में जोड़ा जाएगा।
+    </div>
+
+  </div>
+
+  <div class="footer-text">
+    © 2026 TransportPro • Smart • Secure • Connected
+  </div>
+
+</div>
+
+
+<script>
+
+let selectedRole = "";
+let generatedOTP = "";
+
+
+/* LOGIN / REGISTER */
+
+function showLogin(){
+
+  document.getElementById("loginForm").classList.remove("hidden");
+  document.getElementById("registerForm").classList.add("hidden");
+
+  document.getElementById("loginTab").classList.add("active");
+  document.getElementById("registerTab").classList.remove("active");
+}
+
+
+function showRegister(){
+
+  document.getElementById("loginForm").classList.add("hidden");
+  document.getElementById("registerForm").classList.remove("hidden");
+
+  document.getElementById("loginTab").classList.remove("active");
+  document.getElementById("registerTab").classList.add("active");
+}
+
+
+/* ROLE */
+
+function selectRole(role,element){
+
+  selectedRole = role;
+
+  document.querySelectorAll(".role").forEach(function(item){
+    item.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
+}
+
+
+/* OTP DEMO */
+
+function sendOTP(){
+
+  const mobile =
+    document.getElementById("registerMobile").value.trim();
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+    alert("Please enter a valid 10 digit mobile number.");
+    return;
+  }
+
+  generatedOTP = "123456";
+
+  alert(
+    "Demo OTP sent successfully.\n\nYour Demo OTP is: 123456"
+  );
+}
+
+
+/* REGISTER */
+
+function registerUser(event){
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById("registerName").value.trim();
+
+  const mobile =
+    document.getElementById("registerMobile").value.trim();
+
+  const email =
+    document.getElementById("registerEmail").value.trim();
+
+  const password =
+    document.getElementById("registerPassword").value;
+
+  const otp =
+    document.getElementById("otp").value.trim();
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+    alert("Please enter a valid 10 digit mobile number.");
+    return;
+  }
+
+  if(password.length < 6){
+    alert("Password must contain at least 6 characters.");
+    return;
+  }
+
+  if(!generatedOTP){
+    alert("Please click Send OTP first.");
+    return;
+  }
+
+  if(otp !== generatedOTP){
+    alert("Invalid OTP. Demo OTP is 123456.");
+    return;
+  }
+
+  if(!selectedRole){
+    alert("Please select your role.");
+    return;
+  }
+
+  const user = {
+    name:name,
+    mobile:mobile,
+    email:email,
+    password:password,
+    role:selectedRole,
+    createdAt:new Date().toISOString()
+  };
+
+  localStorage.setItem(
+    "transportProUser",
+    JSON.stringify(user)
+  );
+
+  localStorage.setItem(
+    "transportProProfile",
+    JSON.stringify({
+      name:name,
+      mobile:mobile,
+      email:email,
+      role:selectedRole
+    })
+  );
+
+  localStorage.setItem(
+    "transportProLoggedIn",
+    "true"
+  );
+
+  alert(
+    "Account created successfully!\n\nWelcome to TransportPro, " +
+    name
+  );
+
+  window.location.href = "Home.html";
+}
+
+
+/* LOGIN */
+
+function loginUser(event){
+
+  event.preventDefault();
+
+  const mobile =
+    document.getElementById("loginMobile").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+    alert("Please enter a valid 10 digit mobile number.");
+    return;
+  }
+
+  const savedUser =
+    JSON.parse(
+      localStorage.getItem("transportProUser")
+    );
+
+  if(!savedUser){
+
+    alert(
+      "No account found.\n\nPlease Register first."
+    );
+
+    showRegister();
+    return;
+  }
+
+  if(
+    savedUser.mobile !== mobile ||
+    savedUser.password !== password
+  ){
+
+    alert(
+      "Incorrect mobile number or password."
+    );
+
+    return;
+  }
+
+  localStorage.setItem(
+    "transportProLoggedIn",
+    "true"
+  );
+
+  alert(
+    "Login successful!\n\nWelcome back, " +
+    savedUser.name
+  );
+
+  window.location.href = "Home.html";
+}
+
+
+/* PASSWORD */
+
+function togglePassword(inputId,element){
+
+  const input =
+    document.getElementById(inputId);
+
+  if(input.type === "password"){
+
+    input.type = "text";
+    element.textContent = "🙈";
+
+  }else{
+
+    input.type = "password";
+    element.textContent = "👁";
+  }
+}
+
+
+/* FORGOT PASSWORD */
+
+function forgotPassword(){
+
+  const mobile =
+    prompt(
+      "Enter your registered 10 digit mobile number:"
+    );
+
+  if(!mobile) return;
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+
+    alert("Invalid mobile number.");
+    return;
+  }
+
+  const savedUser =
+    JSON.parse(
+      localStorage.getItem("transportProUser")
+    );
+
+  if(savedUser && savedUser.mobile === mobile){
+
+    alert(
+      "Demo password recovery.\n\n" +
+      "Real OTP password reset will be connected with backend."
+    );
+
+  }else{
+
+    alert("No account found with this mobile number.");
+  }
+}
+
+
+/* AUTO CHECK */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  const loggedIn =
+    localStorage.getItem("transportProLoggedIn");
+
+  console.log(
+    "TransportPro Login Status:",
+    loggedIn
+  );
+
+});
+
+</script>
+
+</body>
+</html>

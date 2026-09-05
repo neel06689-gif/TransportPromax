@@ -1,0 +1,3336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Post Load | TransportPro</title>
+
+<style>
+
+/* =====================================================
+   TRANSPORTPRO POST LOAD
+   PART 1 / 3
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f4f7fb;
+
+    color:#101828;
+
+    min-height:100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.postHeader{
+
+    height:68px;
+
+    background:#07152d;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 16px;
+
+    gap:12px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:
+    0 4px 18px
+    rgba(0,0,0,.15);
+}
+
+
+.backButton{
+
+    width:38px;
+
+    height:38px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:
+    rgba(255,255,255,.10);
+
+    color:#fff;
+
+    font-size:21px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+.postBrand{
+
+    flex:1;
+}
+
+
+.postBrand strong{
+
+    display:block;
+
+    font-size:14px;
+
+    font-weight:900;
+}
+
+
+.postBrand small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#b9c7dc;
+
+    font-size:8px;
+}
+
+
+.headerTruck{
+
+    font-size:25px;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.postPage{
+
+    width:100%;
+
+    max-width:850px;
+
+    margin:auto;
+
+    padding:18px 14px 100px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.postHero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:19px;
+
+    padding:23px 18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0b2445,
+        #1765a8
+    );
+
+    color:#fff;
+
+    box-shadow:
+    0 10px 30px
+    rgba(10,50,100,.18);
+}
+
+
+.postHero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    right:-75px;
+
+    top:-80px;
+
+    background:
+    rgba(255,255,255,.08);
+}
+
+
+.postHero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    left:-65px;
+
+    bottom:-70px;
+
+    background:
+    rgba(255,255,255,.06);
+}
+
+
+.heroContent{
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.heroBadge{
+
+    display:inline-block;
+
+    padding:6px 9px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,.12);
+
+    border:
+    1px solid
+    rgba(255,255,255,.15);
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:.7px;
+}
+
+
+.postHero h1{
+
+    margin-top:11px;
+
+    font-size:25px;
+
+    line-height:1.12;
+
+    font-weight:950;
+}
+
+
+.postHero p{
+
+    margin-top:8px;
+
+    max-width:550px;
+
+    color:#d6e4f5;
+
+    font-size:9px;
+
+    line-height:1.55;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progressBox{
+
+    margin-top:17px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+}
+
+
+.progressStep{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    color:#aebed3;
+
+    font-size:7px;
+
+    font-weight:800;
+}
+
+
+.progressCircle{
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+    rgba(255,255,255,.14);
+
+    border:
+    1px solid
+    rgba(255,255,255,.20);
+
+    font-size:8px;
+}
+
+
+.progressStep.active{
+
+    color:#fff;
+}
+
+
+.progressStep.active
+.progressCircle{
+
+    background:#fff;
+
+    color:#1765a8;
+}
+
+
+.progressLine{
+
+    flex:1;
+
+    max-width:50px;
+
+    height:2px;
+
+    background:
+    rgba(255,255,255,.16);
+}
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.formCard{
+
+    margin-top:16px;
+
+    background:#fff;
+
+    border:
+    1px solid #e5eaf1;
+
+    border-radius:17px;
+
+    padding:17px;
+
+    box-shadow:
+    0 5px 20px
+    rgba(16,24,40,.05);
+}
+
+
+.formTitle{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:16px;
+}
+
+
+.formTitleIcon{
+
+    width:37px;
+
+    height:37px;
+
+    border-radius:10px;
+
+    background:#eaf1ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+}
+
+
+.formTitle strong{
+
+    display:block;
+
+    font-size:12px;
+
+    font-weight:950;
+}
+
+
+.formTitle small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:7px;
+}
+
+
+/* =====================================================
+   FIELD
+===================================================== */
+
+.field{
+
+    margin-bottom:14px;
+}
+
+
+.field label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#344054;
+
+    font-size:8px;
+
+    font-weight:900;
+}
+
+
+.required{
+
+    color:#dc2626;
+}
+
+
+.field input,
+.field select,
+.field textarea{
+
+    width:100%;
+
+    min-height:43px;
+
+    padding:
+    0 11px;
+
+    border:
+    1px solid #d9dee8;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:#101828;
+
+    outline:none;
+
+    font-size:9px;
+
+    transition:.2s;
+}
+
+
+.field textarea{
+
+    padding:11px;
+
+    min-height:90px;
+
+    resize:vertical;
+}
+
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.08);
+}
+
+
+/* =====================================================
+   TWO COLUMN
+===================================================== */
+
+.formGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:12px;
+}
+
+
+/* =====================================================
+   GOODS TYPE
+===================================================== */
+
+.goodsTypes{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:8px;
+}
+
+
+.goodsOption{
+
+    position:relative;
+}
+
+
+.goodsOption input{
+
+    position:absolute;
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+
+.goodsOption label{
+
+    min-height:54px;
+
+    padding:7px;
+
+    border:
+    1px solid #e1e6ef;
+
+    border-radius:11px;
+
+    background:#f9fafb;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    cursor:pointer;
+
+    text-align:center;
+
+    font-size:7px;
+
+    font-weight:800;
+
+    color:#475467;
+
+}
+
+
+.goodsOption label span{
+
+    font-size:19px;
+}
+
+
+.goodsOption input:checked
++ label{
+
+    border-color:#2563eb;
+
+    background:#eef4ff;
+
+    color:#155eef;
+
+    box-shadow:
+    0 0 0 2px
+    rgba(37,99,235,.08);
+}
+
+
+/* =====================================================
+   LOCATION BOX
+===================================================== */
+
+.locationCard{
+
+    margin-top:4px;
+
+    padding:12px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:
+    1px solid #e9edf3;
+}
+
+
+.locationTitle{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-bottom:10px;
+
+    font-size:8px;
+
+    font-weight:900;
+}
+
+
+.locationDot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    box-shadow:
+    0 0 0 4px
+    rgba(37,99,235,.10);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .postPage{
+
+        padding:
+        13px 10px 90px;
+    }
+
+
+    .postHero{
+
+        padding:
+        20px 15px;
+    }
+
+
+    .postHero h1{
+
+        font-size:22px;
+    }
+
+
+    .formGrid{
+
+        grid-template-columns:1fr;
+
+        gap:0;
+    }
+
+
+    .goodsTypes{
+
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+
+    .formCard{
+
+        padding:14px;
+    }
+
+}
+
+
+@media(max-width:380px){
+
+    .goodsTypes{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+
+    .postHero h1{
+
+        font-size:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="postHeader">
+
+    <button
+        type="button"
+        class="backButton"
+        onclick="history.back()"
+        aria-label="Go Back"
+    >
+        ‹
+    </button>
+
+
+    <div class="postBrand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Post Your Load
+        </small>
+
+    </div>
+
+
+    <div class="headerTruck">
+        🚚
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="postPage">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="postHero">
+
+    <div class="heroContent">
+
+        <span class="heroBadge">
+            📦 LOAD MANAGEMENT
+        </span>
+
+
+        <h1>
+            Post Your Load
+            <br>
+            Find the Right Truck
+        </h1>
+
+
+        <p>
+            Enter your goods and route details.
+            Verified transport partners can find
+            and respond to your load.
+        </p>
+
+
+        <!-- PROGRESS -->
+
+        <div class="progressBox">
+
+            <div class="progressStep active">
+
+                <div class="progressCircle">
+                    1
+                </div>
+
+                <span>
+                    Load
+                </span>
+
+            </div>
+
+
+            <div class="progressLine"></div>
+
+
+            <div class="progressStep">
+
+                <div class="progressCircle">
+                    2
+                </div>
+
+                <span>
+                    Route
+                </span>
+
+            </div>
+
+
+            <div class="progressLine"></div>
+
+
+            <div class="progressStep">
+
+                <div class="progressCircle">
+                    3
+                </div>
+
+                <span>
+                    Submit
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GOODS DETAILS
+===================================================== -->
+
+<section class="formCard">
+
+    <div class="formTitle">
+
+        <div class="formTitleIcon">
+            📦
+        </div>
+
+        <div>
+
+            <strong>
+                Goods Details
+            </strong>
+
+            <small>
+                Tell us what you want to transport
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- GOODS TYPE -->
+
+    <div class="field">
+
+        <label>
+            Goods Type
+            <span class="required">*</span>
+        </label>
+
+
+        <div class="goodsTypes">
+
+
+            <div class="goodsOption">
+
+                <input
+                    type="radio"
+                    id="goodsGeneral"
+                    name="goodsType"
+                    value="General"
+                    checked
+                >
+
+                <label for="goodsGeneral">
+
+                    <span>📦</span>
+
+                    General
+
+                </label>
+
+            </div>
+
+
+            <div class="goodsOption">
+
+                <input
+                    type="radio"
+                    id="goodsFood"
+                    name="goodsType"
+                    value="Food"
+                >
+
+                <label for="goodsFood">
+
+                    <span>🌾</span>
+
+                    Food
+
+                </label>
+
+            </div>
+
+
+            <div class="goodsOption">
+
+                <input
+                    type="radio"
+                    id="goodsConstruction"
+                    name="goodsType"
+                    value="Construction"
+                >
+
+                <label for="goodsConstruction">
+
+                    <span>🏗️</span>
+
+                    Construction
+
+                </label>
+
+            </div>
+
+
+            <div class="goodsOption">
+
+                <input
+                    type="radio"
+                    id="goodsMachinery"
+                    name="goodsType"
+                    value="Machinery"
+                >
+
+                <label for="goodsMachinery">
+
+                    <span>⚙️</span>
+
+                    Machinery
+
+                </label>
+
+            </div>
+
+
+            <div class="goodsOption">
+
+                <input
+                    type="radio"
+                    id="goodsFurniture"
+                    name="goodsType"
+                    value="Furniture"
+                >
+
+                <label for="goodsFurniture">
+
+                    <span>🪑</span>
+
+                    Furniture
+
+                </label>
+
+            </div>
+
+
+            <div class="goodsOption">
+
+                <input
+                    type="radio"
+                    id="goodsOther"
+                    name="goodsType"
+                    value="Other"
+                >
+
+                <label for="goodsOther">
+
+                    <span>➕</span>
+
+                    Other
+
+                </label>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+
+    <div class="field">
+
+        <label for="goodsDescription">
+
+            Goods Description
+
+            <span class="required">*</span>
+
+        </label>
+
+        <textarea
+            id="goodsDescription"
+            placeholder="Example: Cement bags, steel material, furniture, agricultural goods..."
+        ></textarea>
+
+    </div>
+
+
+    <!-- WEIGHT / PACKAGES -->
+
+    <div class="formGrid">
+
+
+        <div class="field">
+
+            <label for="goodsWeight">
+
+                Approx. Weight
+
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="number"
+                id="goodsWeight"
+                min="1"
+                placeholder="Enter weight"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="weightUnit">
+
+                Weight Unit
+
+            </label>
+
+            <select id="weightUnit">
+
+                <option value="Ton">
+                    Ton
+                </option>
+
+                <option value="Kg">
+                    Kg
+                </option>
+
+                <option value="Quintal">
+                    Quintal
+                </option>
+
+            </select>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="formGrid">
+
+
+        <div class="field">
+
+            <label for="packageCount">
+
+                Number of Packages
+
+            </label>
+
+            <input
+                type="number"
+                id="packageCount"
+                min="1"
+                placeholder="Example: 50"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="packageType">
+
+                Package Type
+
+            </label>
+
+            <select id="packageType">
+
+                <option value="Bags">
+                    Bags
+                </option>
+
+                <option value="Boxes">
+                    Boxes
+                </option>
+
+                <option value="Pallets">
+                    Pallets
+                </option>
+
+                <option value="Bundles">
+                    Bundles
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     PART 1 END
+===================================================== -->
+
+<!-- PART 2 यहाँ से continue होगा -->
+<!-- =====================================================
+     PART 2 / 3
+     ROUTE + TRUCK REQUIREMENTS
+===================================================== -->
+
+<!-- =====================================================
+     ROUTE DETAILS
+===================================================== -->
+
+<section class="formCard">
+
+    <div class="formTitle">
+
+        <div class="formTitleIcon">
+            📍
+        </div>
+
+        <div>
+
+            <strong>
+                Route Details
+            </strong>
+
+            <small>
+                Enter pickup and delivery locations
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="locationCard">
+
+        <div class="locationTitle">
+
+            <span class="locationDot"></span>
+
+            Pickup Location
+
+        </div>
+
+
+        <div class="formGrid">
+
+            <div class="field">
+
+                <label for="pickupCity">
+                    City / Location
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="pickupCity"
+                    placeholder="Example: Indore"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="pickupState">
+                    State
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="pickupState"
+                    placeholder="Example: Madhya Pradesh"
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="locationCard">
+
+        <div class="locationTitle">
+
+            <span
+                class="locationDot"
+                style="background:#16a34a;"
+            ></span>
+
+            Delivery Location
+
+        </div>
+
+
+        <div class="formGrid">
+
+            <div class="field">
+
+                <label for="destinationCity">
+                    City / Location
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="destinationCity"
+                    placeholder="Example: Delhi"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="destinationState">
+                    State
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="destinationState"
+                    placeholder="Example: Delhi"
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="formGrid">
+
+        <div class="field">
+
+            <label for="loadDate">
+
+                Required Pickup Date
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="date"
+                id="loadDate"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="loadTime">
+
+                Preferred Time
+
+            </label>
+
+            <input
+                type="time"
+                id="loadTime"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRUCK REQUIREMENTS
+===================================================== -->
+
+<section class="formCard">
+
+    <div class="formTitle">
+
+        <div class="formTitleIcon">
+            🚛
+        </div>
+
+        <div>
+
+            <strong>
+                Truck Requirements
+            </strong>
+
+            <small>
+                Select the vehicle required for your load
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- TRUCK TYPE -->
+
+    <div class="field">
+
+        <label for="truckType">
+
+            Truck Type
+            <span class="required">*</span>
+
+        </label>
+
+
+        <select id="truckType">
+
+            <option value="">
+                Select Truck Type
+            </option>
+
+            <option value="Mini Truck">
+                Mini Truck
+            </option>
+
+            <option value="Pickup">
+                Pickup
+            </option>
+
+            <option value="Tata 407">
+                Tata 407
+            </option>
+
+            <option value="LCV">
+                LCV
+            </option>
+
+            <option value="Open Truck">
+                Open Truck
+            </option>
+
+            <option value="Container Truck">
+                Container Truck
+            </option>
+
+            <option value="Trailer">
+                Trailer
+            </option>
+
+            <option value="Tanker">
+                Tanker
+            </option>
+
+            <option value="Refrigerated Truck">
+                Refrigerated Truck
+            </option>
+
+            <option value="Any Suitable Truck">
+                Any Suitable Truck
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- BODY TYPE -->
+
+    <div class="field">
+
+        <label for="bodyType">
+
+            Body Type
+
+        </label>
+
+
+        <select id="bodyType">
+
+            <option value="">
+                Select Body Type
+            </option>
+
+            <option value="Open Body">
+                Open Body
+            </option>
+
+            <option value="Closed Body">
+                Closed Body
+            </option>
+
+            <option value="Container">
+                Container
+            </option>
+
+            <option value="Flatbed">
+                Flatbed
+            </option>
+
+            <option value="Trailer">
+                Trailer
+            </option>
+
+            <option value="Tanker">
+                Tanker
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- CAPACITY -->
+
+    <div class="formGrid">
+
+        <div class="field">
+
+            <label for="truckCapacity">
+
+                Required Capacity
+                <span class="required">*</span>
+
+            </label>
+
+            <select id="truckCapacity">
+
+                <option value="">
+                    Select Capacity
+                </option>
+
+                <option value="Below 1 Ton">
+                    Below 1 Ton
+                </option>
+
+                <option value="1-2 Ton">
+                    1–2 Ton
+                </option>
+
+                <option value="2-5 Ton">
+                    2–5 Ton
+                </option>
+
+                <option value="5-10 Ton">
+                    5–10 Ton
+                </option>
+
+                <option value="10-20 Ton">
+                    10–20 Ton
+                </option>
+
+                <option value="20-30 Ton">
+                    20–30 Ton
+                </option>
+
+                <option value="30+ Ton">
+                    30+ Ton
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="vehicleCount">
+
+                Number of Trucks
+
+            </label>
+
+            <input
+                type="number"
+                id="vehicleCount"
+                min="1"
+                value="1"
+                placeholder="1"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- SPECIAL REQUIREMENTS -->
+
+    <div class="field">
+
+        <label for="specialRequirement">
+
+            Special Requirement
+
+        </label>
+
+
+        <select id="specialRequirement">
+
+            <option value="None">
+                No Special Requirement
+            </option>
+
+            <option value="Fragile">
+                Fragile Goods
+            </option>
+
+            <option value="Temperature Controlled">
+                Temperature Controlled
+            </option>
+
+            <option value="Covered Vehicle">
+                Covered Vehicle
+            </option>
+
+            <option value="GPS Required">
+                GPS Tracking Required
+            </option>
+
+            <option value="Fast Delivery">
+                Fast Delivery
+            </option>
+
+        </select>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BUDGET & CONTACT
+===================================================== -->
+
+<section class="formCard">
+
+    <div class="formTitle">
+
+        <div class="formTitleIcon">
+            💰
+        </div>
+
+        <div>
+
+            <strong>
+                Budget & Contact
+            </strong>
+
+            <small>
+                Add your expected freight and contact details
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="formGrid">
+
+
+        <div class="field">
+
+            <label for="budget">
+
+                Expected Freight
+
+            </label>
+
+            <input
+                type="number"
+                id="budget"
+                min="0"
+                placeholder="₹ Enter amount"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="paymentMode">
+
+                Payment Mode
+
+            </label>
+
+            <select id="paymentMode">
+
+                <option value="Negotiable">
+                    Negotiable
+                </option>
+
+                <option value="UPI">
+                    UPI
+                </option>
+
+                <option value="Bank Transfer">
+                    Bank Transfer
+                </option>
+
+                <option value="Cash">
+                    Cash
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <div class="formGrid">
+
+
+        <div class="field">
+
+            <label for="contactName">
+
+                Contact Name
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="text"
+                id="contactName"
+                placeholder="Your name"
+                autocomplete="name"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="contactPhone">
+
+                Mobile Number
+                <span class="required">*</span>
+
+            </label>
+
+            <input
+                type="tel"
+                id="contactPhone"
+                inputmode="numeric"
+                maxlength="10"
+                placeholder="10-digit mobile number"
+                autocomplete="tel"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label for="loadNotes">
+
+            Additional Instructions
+
+        </label>
+
+        <textarea
+            id="loadNotes"
+            placeholder="Loading/unloading instructions, delivery requirements, or any other important information..."
+        ></textarea>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PART 2 END
+===================================================== -->
+
+<!-- PART 3 WILL CONTINUE HERE -->
+<!-- =====================================================
+     PART 3 / 3
+     VALIDATION + SUBMIT + SUCCESS
+===================================================== -->
+
+
+<!-- =====================================================
+     FINAL REVIEW
+===================================================== -->
+
+<section class="formCard">
+
+    <div class="formTitle">
+
+        <div class="formTitleIcon">
+            ✅
+        </div>
+
+        <div>
+
+            <strong>
+                Review & Submit
+            </strong>
+
+            <small>
+                Check your information before posting
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="reviewBox">
+
+        <div class="reviewRow">
+            <span>Goods</span>
+            <strong id="reviewGoods">—</strong>
+        </div>
+
+        <div class="reviewRow">
+            <span>Weight</span>
+            <strong id="reviewWeight">—</strong>
+        </div>
+
+        <div class="reviewRow">
+            <span>Route</span>
+            <strong id="reviewRoute">—</strong>
+        </div>
+
+        <div class="reviewRow">
+            <span>Truck</span>
+            <strong id="reviewTruck">—</strong>
+        </div>
+
+        <div class="reviewRow">
+            <span>Pickup Date</span>
+            <strong id="reviewDate">—</strong>
+        </div>
+
+        <div class="reviewRow">
+            <span>Expected Freight</span>
+            <strong id="reviewBudget">—</strong>
+        </div>
+
+    </div>
+
+
+    <div class="termsBox">
+
+        <input
+            type="checkbox"
+            id="agreeTerms"
+        >
+
+        <label for="agreeTerms">
+
+            I confirm that the information provided
+            is correct and I agree to the TransportPro
+            terms and conditions.
+
+        </label>
+
+    </div>
+
+
+    <button
+        type="button"
+        id="submitLoadBtn"
+        class="submitLoadBtn"
+    >
+
+        <span>🚛</span>
+
+        Post Load
+
+        <span>→</span>
+
+    </button>
+
+
+    <button
+        type="button"
+        id="clearLoadBtn"
+        class="clearLoadBtn"
+    >
+
+        Clear Form
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     SUCCESS MODAL
+===================================================== -->
+
+<div
+    id="successModal"
+    class="successModal"
+>
+
+    <div class="successCard">
+
+        <div class="successIcon">
+            ✓
+        </div>
+
+
+        <h2>
+            Load Posted Successfully!
+        </h2>
+
+
+        <p>
+            Your load has been saved successfully.
+            Transport partners can now view your requirement.
+        </p>
+
+
+        <div class="loadIdBox">
+
+            <small>
+                LOAD ID
+            </small>
+
+            <strong id="generatedLoadId">
+                TP-000000
+            </strong>
+
+        </div>
+
+
+        <div class="successButtons">
+
+            <button
+                type="button"
+                id="viewLoadsBtn"
+            >
+                View My Loads
+            </button>
+
+
+            <button
+                type="button"
+                id="successHomeBtn"
+            >
+                Go Home
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="postFooter">
+
+    <strong>
+        TransportPro
+    </strong>
+
+    <span>
+        Smart • Reliable • Connected
+    </span>
+
+</footer>
+
+
+
+<style>
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+.reviewBox{
+
+    border:
+    1px solid #e5eaf1;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    background:#f8fafc;
+
+}
+
+
+.reviewRow{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:11px 12px;
+
+    border-bottom:
+    1px solid #e8edf3;
+
+}
+
+
+.reviewRow:last-child{
+
+    border-bottom:0;
+
+}
+
+
+.reviewRow span{
+
+    color:#667085;
+
+    font-size:8px;
+
+}
+
+
+.reviewRow strong{
+
+    color:#101828;
+
+    font-size:8px;
+
+    text-align:right;
+
+    max-width:60%;
+
+    word-break:break-word;
+
+}
+
+
+/* =====================================================
+   TERMS
+===================================================== */
+
+.termsBox{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+    margin-top:14px;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:#f9fafb;
+
+}
+
+
+.termsBox input{
+
+    margin-top:2px;
+
+    width:15px;
+
+    height:15px;
+
+    accent-color:#2563eb;
+
+}
+
+
+.termsBox label{
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.5;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+.submitLoadBtn{
+
+    width:100%;
+
+    min-height:46px;
+
+    margin-top:14px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #155eef,
+        #2563eb
+    );
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:950;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    box-shadow:
+    0 8px 18px
+    rgba(37,99,235,.20);
+
+}
+
+
+.submitLoadBtn:active{
+
+    transform:scale(.98);
+
+}
+
+
+.clearLoadBtn{
+
+    width:100%;
+
+    min-height:38px;
+
+    margin-top:8px;
+
+    border:1px solid #d9dee8;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:#475467;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+   SUCCESS MODAL
+===================================================== */
+
+.successModal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:18px;
+
+    background:
+    rgba(3,12,28,.65);
+
+    backdrop-filter:blur(6px);
+}
+
+
+.successModal.show{
+
+    display:flex;
+
+}
+
+
+.successCard{
+
+    width:100%;
+
+    max-width:390px;
+
+    padding:25px 18px;
+
+    border-radius:20px;
+
+    background:#fff;
+
+    text-align:center;
+
+    box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.25);
+
+}
+
+
+.successIcon{
+
+    width:58px;
+
+    height:58px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    font-size:28px;
+
+    font-weight:950;
+}
+
+
+.successCard h2{
+
+    margin-top:14px;
+
+    font-size:19px;
+
+    font-weight:950;
+
+}
+
+
+.successCard p{
+
+    margin-top:8px;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:1.6;
+
+}
+
+
+.loadIdBox{
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    background:#f3f6fa;
+
+}
+
+
+.loadIdBox small{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+
+.loadIdBox strong{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:#155eef;
+
+    font-size:15px;
+
+    letter-spacing:.7px;
+
+}
+
+
+.successButtons{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-top:16px;
+
+}
+
+
+.successButtons button{
+
+    min-height:40px;
+
+    border-radius:10px;
+
+    border:0;
+
+    background:#155eef;
+
+    color:#fff;
+
+    font-size:8px;
+
+    font-weight:900;
+
+}
+
+
+.successButtons button:last-child{
+
+    background:#eef2f6;
+
+    color:#344054;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.postFooter{
+
+    padding:20px 15px 30px;
+
+    text-align:center;
+
+    color:#667085;
+
+}
+
+
+.postFooter strong{
+
+    display:block;
+
+    color:#172b4d;
+
+    font-size:10px;
+
+}
+
+
+.postFooter span{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:7px;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.submitLoadBtn.loading{
+
+    opacity:.7;
+
+    pointer-events:none;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .successCard{
+
+        max-width:350px;
+
+        padding:22px 15px;
+
+    }
+
+}
+
+</style>
+
+
+
+<script>
+
+/* =====================================================
+   POST LOAD SYSTEM
+===================================================== */
+
+(function(){
+
+    "use strict";
+
+
+    /* =================================================
+       HELPERS
+    ================================================= */
+
+    function get(id){
+
+        return document.getElementById(id);
+
+    }
+
+
+    function value(id){
+
+        const element = get(id);
+
+        return element
+            ? element.value.trim()
+            : "";
+
+    }
+
+
+    function selectedGoods(){
+
+        const selected =
+            document.querySelector(
+                'input[name="goodsType"]:checked'
+            );
+
+        return selected
+            ? selected.value
+            : "";
+
+    }
+
+
+    /* =================================================
+       TODAY AS MINIMUM DATE
+    ================================================= */
+
+    const dateInput = get("loadDate");
+
+    if(dateInput){
+
+        const today =
+            new Date()
+            .toISOString()
+            .split("T")[0];
+
+        dateInput.min = today;
+
+    }
+
+
+    /* =================================================
+       VALIDATION
+    ================================================= */
+
+    function validateForm(){
+
+        const goods =
+            selectedGoods();
+
+        const description =
+            value("goodsDescription");
+
+        const weight =
+            value("goodsWeight");
+
+        const pickup =
+            value("pickupCity");
+
+        const pickupState =
+            value("pickupState");
+
+        const destination =
+            value("destinationCity");
+
+        const destinationState =
+            value("destinationState");
+
+        const date =
+            value("loadDate");
+
+        const truck =
+            value("truckType");
+
+        const capacity =
+            value("truckCapacity");
+
+        const name =
+            value("contactName");
+
+        const phone =
+            value("contactPhone");
+
+        const terms =
+            get("agreeTerms").checked;
+
+
+        if(!goods){
+
+            alert("Please select goods type.");
+
+            return false;
+
+        }
+
+
+        if(!description){
+
+            alert("Please enter goods description.");
+
+            get("goodsDescription").focus();
+
+            return false;
+
+        }
+
+
+        if(!weight || Number(weight) <= 0){
+
+            alert("Please enter a valid goods weight.");
+
+            get("goodsWeight").focus();
+
+            return false;
+
+        }
+
+
+        if(!pickup || !pickupState){
+
+            alert("Please enter pickup location.");
+
+            get("pickupCity").focus();
+
+            return false;
+
+        }
+
+
+        if(!destination || !destinationState){
+
+            alert("Please enter delivery location.");
+
+            get("destinationCity").focus();
+
+            return false;
+
+        }
+
+
+        if(
+            pickup.toLowerCase() ===
+            destination.toLowerCase()
+        ){
+
+            alert(
+                "Pickup and destination cannot be the same."
+            );
+
+            return false;
+
+        }
+
+
+        if(!date){
+
+            alert("Please select pickup date.");
+
+            get("loadDate").focus();
+
+            return false;
+
+        }
+
+
+        if(!truck){
+
+            alert("Please select truck type.");
+
+            get("truckType").focus();
+
+            return false;
+
+        }
+
+
+        if(!capacity){
+
+            alert("Please select truck capacity.");
+
+            get("truckCapacity").focus();
+
+            return false;
+
+        }
+
+
+        if(!name){
+
+            alert("Please enter contact name.");
+
+            get("contactName").focus();
+
+            return false;
+
+        }
+
+
+        if(!/^[6-9][0-9]{9}$/.test(phone)){
+
+            alert(
+                "Please enter a valid 10-digit Indian mobile number."
+            );
+
+            get("contactPhone").focus();
+
+            return false;
+
+        }
+
+
+        if(!terms){
+
+            alert(
+                "Please accept the confirmation checkbox."
+            );
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
+
+
+    /* =================================================
+       GENERATE LOAD ID
+    ================================================= */
+
+    function generateLoadId(){
+
+        const now =
+            Date.now()
+            .toString()
+            .slice(-6);
+
+        return "TP-" + now;
+
+    }
+
+
+    /* =================================================
+       COLLECT FORM DATA
+    ================================================= */
+
+    function collectData(){
+
+        return {
+
+            id:generateLoadId(),
+
+            goodsType:selectedGoods(),
+
+            goodsDescription:
+                value("goodsDescription"),
+
+            weight:
+                value("goodsWeight"),
+
+            weightUnit:
+                value("weightUnit"),
+
+            packageCount:
+                value("packageCount"),
+
+            packageType:
+                value("packageType"),
+
+            pickupCity:
+                value("pickupCity"),
+
+            pickupState:
+                value("pickupState"),
+
+            destinationCity:
+                value("destinationCity"),
+
+            destinationState:
+                value("destinationState"),
+
+            pickupDate:
+                value("loadDate"),
+
+            pickupTime:
+                value("loadTime"),
+
+            truckType:
+                value("truckType"),
+
+            bodyType:
+                value("bodyType"),
+
+            truckCapacity:
+                value("truckCapacity"),
+
+            vehicleCount:
+                value("vehicleCount"),
+
+            specialRequirement:
+                value("specialRequirement"),
+
+            budget:
+                value("budget"),
+
+            paymentMode:
+                value("paymentMode"),
+
+            contactName:
+                value("contactName"),
+
+            contactPhone:
+                value("contactPhone"),
+
+            notes:
+                value("loadNotes"),
+
+            status:
+                "Posted",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+    }
+
+
+    /* =================================================
+       SAVE LOAD
+    ================================================= */
+
+    function saveLoad(load){
+
+        let loads = [];
+
+        try{
+
+            loads =
+                JSON.parse(
+                    localStorage.getItem(
+                        "transportProLoads"
+                    )
+                ) || [];
+
+        }catch(error){
+
+            loads = [];
+
+        }
+
+
+        loads.unshift(load);
+
+
+        localStorage.setItem(
+            "transportProLoads",
+            JSON.stringify(loads)
+        );
+
+    }
+
+
+    /* =================================================
+       UPDATE REVIEW
+    ================================================= */
+
+    function updateReview(){
+
+        const goods =
+            selectedGoods();
+
+        const weight =
+            value("goodsWeight");
+
+        const unit =
+            value("weightUnit");
+
+        const pickup =
+            value("pickupCity");
+
+        const destination =
+            value("destinationCity");
+
+        const truck =
+            value("truckType");
+
+        const date =
+            value("loadDate");
+
+        const budget =
+            value("budget");
+
+
+        get("reviewGoods").textContent =
+            goods || "—";
+
+
+        get("reviewWeight").textContent =
+            weight
+            ? weight + " " + unit
+            : "—";
+
+
+        get("reviewRoute").textContent =
+            pickup && destination
+            ? pickup + " → " + destination
+            : "—";
+
+
+        get("reviewTruck").textContent =
+            truck || "—";
+
+
+        get("reviewDate").textContent =
+            date || "—";
+
+
+        get("reviewBudget").textContent =
+            budget
+            ? "₹" + Number(budget).toLocaleString("en-IN")
+            : "Negotiable";
+
+    }
+
+
+    /* =================================================
+       INPUT CHANGE → REVIEW
+    ================================================= */
+
+    document.addEventListener(
+        "input",
+        updateReview
+    );
+
+
+    document.addEventListener(
+        "change",
+        updateReview
+    );
+
+
+    /* =================================================
+       SUBMIT
+    ================================================= */
+
+    const submitBtn =
+        get("submitLoadBtn");
+
+
+    if(submitBtn){
+
+        submitBtn.addEventListener(
+            "click",
+            function(){
+
+                if(!validateForm()){
+
+                    return;
+
+                }
+
+
+                submitBtn.classList.add(
+                    "loading"
+                );
+
+
+                submitBtn.innerHTML =
+                    "⏳ Posting Load...";
+
+
+                setTimeout(
+                    function(){
+
+                        const load =
+                            collectData();
+
+
+                        saveLoad(load);
+
+
+                        get(
+                            "generatedLoadId"
+                        ).textContent =
+                            load.id;
+
+
+                        get(
+                            "successModal"
+                        ).classList.add(
+                            "show"
+                        );
+
+
+                        submitBtn.classList.remove(
+                            "loading"
+                        );
+
+
+                        submitBtn.innerHTML =
+                            "<span>🚛</span> Post Load <span>→</span>";
+
+                    },
+                    500
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       CLEAR FORM
+    ================================================= */
+
+    <!-- =====================================================
+     CLEAR FORM → LAST
+===================================================== -->
+
+<script>
+
+(function(){
+
+    "use strict";
+
+
+    /* ================================================
+       GET ELEMENT
+    ================================================ */
+
+    function get(id){
+        return document.getElementById(id);
+    }
+
+
+    /* ================================================
+       CLEAR FORM
+    ================================================ */
+
+    const clearBtn = get("clearLoadBtn");
+
+    if(clearBtn){
+
+        clearBtn.addEventListener("click", function(){
+
+            const confirmed = confirm(
+                "Clear all entered load details?"
+            );
+
+            if(!confirmed){
+                return;
+            }
+
+
+            document
+            .querySelectorAll(
+                "input, textarea, select"
+            )
+            .forEach(function(field){
+
+                if(field.type === "radio"){
+
+                    field.checked =
+                        field.value === "General";
+
+                }
+                else if(field.type === "checkbox"){
+
+                    field.checked = false;
+
+                }
+                else if(field.id === "vehicleCount"){
+
+                    field.value = "1";
+
+                }
+                else{
+
+                    field.value = "";
+
+                }
+
+            });
+
+
+            /* Default values */
+
+            if(get("weightUnit")){
+                get("weightUnit").value = "Ton";
+            }
+
+
+            if(get("packageType")){
+                get("packageType").value = "Bags";
+            }
+
+
+            if(get("paymentMode")){
+                get("paymentMode").value = "Negotiable";
+            }
+
+
+            if(get("specialRequirement")){
+                get("specialRequirement").value = "None";
+            }
+
+
+            updateReview();
+
+        });
+
+    }
+
+
+
+    /* ================================================
+       VIEW MY LOADS
+    ================================================ */
+
+    const viewLoadsBtn =
+        get("viewLoadsBtn");
+
+
+    if(viewLoadsBtn){
+
+        viewLoadsBtn.addEventListener(
+            "click",
+            function(){
+
+                window.location.href =
+                    "my-loads.html";
+
+            }
+        );
+
+    }
+
+
+
+    /* ================================================
+       GO HOME
+    ================================================ */
+
+    const successHomeBtn =
+        get("successHomeBtn");
+
+
+    if(successHomeBtn){
+
+        successHomeBtn.addEventListener(
+            "click",
+            function(){
+
+                window.location.href =
+                    "home.html";
+
+            }
+        );
+
+    }
+
+
+
+    /* ================================================
+       UPDATE REVIEW
+    ================================================ */
+
+    function updateReview(){
+
+        const goods =
+            document.querySelector(
+                'input[name="goodsType"]:checked'
+            );
+
+
+        const goodsText =
+            goods
+            ? goods.value
+            : "—";
+
+
+        const weight =
+            get("goodsWeight")
+            ? get("goodsWeight").value.trim()
+            : "";
+
+
+        const unit =
+            get("weightUnit")
+            ? get("weightUnit").value
+            : "";
+
+
+        const pickup =
+            get("pickupCity")
+            ? get("pickupCity").value.trim()
+            : "";
+
+
+        const destination =
+            get("destinationCity")
+            ? get("destinationCity").value.trim()
+            : "";
+
+
+        const truck =
+            get("truckType")
+            ? get("truckType").value
+            : "";
+
+
+        const date =
+            get("loadDate")
+            ? get("loadDate").value
+            : "";
+
+
+        const budget =
+            get("budget")
+            ? get("budget").value.trim()
+            : "";
+
+
+        if(get("reviewGoods")){
+            get("reviewGoods").textContent =
+                goodsText;
+        }
+
+
+        if(get("reviewWeight")){
+
+            get("reviewWeight").textContent =
+                weight
+                ? weight + " " + unit
+                : "—";
+
+        }
+
+
+        if(get("reviewRoute")){
+
+            get("reviewRoute").textContent =
+                pickup && destination
+                ? pickup + " → " + destination
+                : "—";
+
+        }
+
+
+        if(get("reviewTruck")){
+
+            get("reviewTruck").textContent =
+                truck || "—";
+
+        }
+
+
+        if(get("reviewDate")){
+
+            get("reviewDate").textContent =
+                date || "—";
+
+        }
+
+
+        if(get("reviewBudget")){
+
+            get("reviewBudget").textContent =
+                budget
+                ? "₹" +
+                  Number(budget)
+                  .toLocaleString("en-IN")
+                : "Negotiable";
+
+        }
+
+    }
+
+
+
+    /* ================================================
+       LIVE REVIEW UPDATE
+    ================================================ */
+
+    document.addEventListener(
+        "input",
+        updateReview
+    );
+
+
+    document.addEventListener(
+        "change",
+        updateReview
+    );
+
+
+
+    /* ================================================
+       INITIAL UPDATE
+    ================================================ */
+
+    updateReview();
+
+
+
+    /* ================================================
+       SUCCESS MODAL CLOSE ON BACKGROUND
+    ================================================ */
+
+    const successModal =
+        get("successModal");
+
+
+    if(successModal){
+
+        successModal.addEventListener(
+            "click",
+            function(event){
+
+                if(event.target === successModal){
+
+                    successModal.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* ================================================
+       ESCAPE KEY CLOSE
+    ================================================ */
+
+    document.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Escape" &&
+                successModal
+            ){
+
+                successModal.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+
+})();
+
+</script>
+
+
+<!-- =====================================================
+     FINAL FOOTER
+===================================================== -->
+
+<footer class="postFooter">
+
+    <strong>
+        TransportPro
+    </strong>
+
+    <span>
+        Smart • Reliable • Connected
+    </span>
+
+</footer>
+
+
+<!-- =====================================================
+     FINAL HTML CLOSE
+===================================================== -->
+
+</main>
+
+</body>
+
+</html>

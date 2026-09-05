@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Mechanic Profile | TransportPro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#111827;
+}
+
+.page{
+    max-width:700px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+.header{
+    background:#07152d;
+    color:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    font-size:25px;
+}
+
+.headerText{
+    flex:1;
+}
+
+.headerText strong{
+    display:block;
+    font-size:17px;
+}
+
+.headerText small{
+    display:block;
+    margin-top:3px;
+    color:#aebbd0;
+    font-size:9px;
+}
+
+.card{
+    margin:15px;
+    padding:16px;
+    background:white;
+    border-radius:17px;
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+}
+
+.title{
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:14px;
+}
+
+.field{
+    margin-bottom:13px;
+}
+
+label{
+    display:block;
+    margin-bottom:5px;
+    font-size:9px;
+    font-weight:900;
+    color:#374151;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #dfe4ea;
+    border-radius:10px;
+    background:white;
+    font-size:11px;
+    outline:none;
+}
+
+textarea{
+    min-height:75px;
+    resize:vertical;
+}
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+}
+
+.skill{
+    padding:10px;
+    border:1px solid #dfe4ea;
+    border-radius:10px;
+    background:white;
+    cursor:pointer;
+    font-size:9px;
+    font-weight:800;
+}
+
+.skill.selected{
+    background:#07152d;
+    color:white;
+    border-color:#07152d;
+}
+
+.availability{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+}
+
+.available{
+    padding:11px;
+    border:1px solid #dfe4ea;
+    border-radius:10px;
+    background:white;
+    cursor:pointer;
+    font-size:9px;
+    font-weight:800;
+}
+
+.available.selected{
+    background:#e8f7ee;
+    color:#16834b;
+    border-color:#16834b;
+}
+
+.saveBtn{
+    width:100%;
+    border:0;
+    background:#07152d;
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    font-size:11px;
+    font-weight:900;
+}
+
+.status{
+    margin-top:10px;
+    padding:11px;
+    border-radius:10px;
+    background:#f7f9fb;
+    color:#697586;
+    font-size:8px;
+    line-height:1.5;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="header">
+
+<a href="mechanic.html"
+class="back">
+‹
+</a>
+
+<div class="headerText">
+
+<strong>
+Mechanic Profile
+</strong>
+
+<small>
+Build your professional work profile
+</small>
+
+</div>
+
+</header>
+
+
+<section class="card">
+
+<div class="title">
+Professional Information
+</div>
+
+
+<div class="field">
+
+<label>
+MECHANIC NAME *
+</label>
+
+<input
+id="name"
+type="text"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="field">
+
+<label>
+MOBILE NUMBER *
+</label>
+
+<input
+id="phone"
+type="tel"
+placeholder="Enter mobile number">
+
+</div>
+
+
+<div class="field">
+
+<label>
+EXPERIENCE *
+</label>
+
+<select id="experience">
+
+<option value="">
+Select experience
+</option>
+
+<option>
+0-1 Year
+</option>
+
+<option>
+1-3 Years
+</option>
+
+<option>
+3-5 Years
+</option>
+
+<option>
+5-10 Years
+</option>
+
+<option>
+10+ Years
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+WORKSHOP / BUSINESS NAME
+</label>
+
+<input
+id="business"
+type="text"
+placeholder="Workshop name">
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="title">
+Your Skills
+</div>
+
+<div class="skills">
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'Engine')">
+🔧 Engine
+</button>
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'Clutch')">
+⚙️ Clutch
+</button>
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'Brake')">
+🛑 Brake
+</button>
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'Electrical')">
+🔋 Electrical
+</button>
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'Transmission')">
+⚙️ Transmission
+</button>
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'AC')">
+❄️ AC
+</button>
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'Suspension')">
+🛠️ Suspension
+</button>
+
+<button
+type="button"
+class="skill"
+onclick="toggleSkill(this,'General Service')">
+🔩 General Service
+</button>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="title">
+Service Area
+</div>
+
+<div class="field">
+
+<label>
+CITY / AREA *
+</label>
+
+<input
+id="area"
+type="text"
+placeholder="Example: Indore">
+
+</div>
+
+
+<div class="field">
+
+<label>
+MAXIMUM SERVICE DISTANCE
+</label>
+
+<select id="radius">
+
+<option>
+5 km
+</option>
+
+<option selected>
+10 km
+</option>
+
+<option>
+25 km
+</option>
+
+<option>
+50 km
+</option>
+
+<option>
+100 km
+</option>
+
+</select>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="title">
+Availability
+</div>
+
+<div class="availability">
+
+<button
+type="button"
+class="available selected"
+onclick="setAvailability(this,'Available')">
+🟢 Available
+</button>
+
+<button
+type="button"
+class="available"
+onclick="setAvailability(this,'Busy')">
+🔴 Busy
+</button>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<div class="title">
+About Your Service
+</div>
+
+<textarea
+id="about"
+placeholder="Apne experience, services aur special skills ke bare me likhein..."></textarea>
+
+</section>
+
+
+<section class="card">
+
+<button
+class="saveBtn"
+onclick="saveProfile()">
+
+✓ Save Mechanic Profile
+
+</button>
+
+<div
+id="status"
+class="status">
+
+Profile abhi save nahi hui.
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+let selectedSkills=[];
+
+let availability="Available";
+
+
+/* USER */
+
+function getUser(){
+
+const keys=[
+"loggedInUser",
+"currentUser",
+"user",
+"profile",
+"customer"
+];
+
+for(let key of keys){
+
+const raw=
+localStorage.getItem(key);
+
+if(!raw) continue;
+
+try{
+
+return JSON.parse(raw);
+
+}catch(e){
+
+return {
+name:raw
+};
+
+}
+
+}
+
+return null;
+
+}
+
+
+/* SKILLS */
+
+function toggleSkill(
+button,
+skill
+){
+
+button.classList.toggle(
+"selected"
+);
+
+if(
+selectedSkills.includes(skill)
+){
+
+selectedSkills=
+selectedSkills.filter(
+item=>item!==skill
+);
+
+}else{
+
+selectedSkills.push(
+skill
+);
+
+}
+
+}
+
+
+/* AVAILABILITY */
+
+function setAvailability(
+button,
+value
+){
+
+document
+.querySelectorAll(
+".available"
+)
+.forEach(function(item){
+
+item.classList.remove(
+"selected"
+);
+
+});
+
+button.classList.add(
+"selected"
+);
+
+availability=value;
+
+}
+
+
+/* SAVE */
+
+function saveProfile(){
+
+const name=
+document.getElementById(
+"name"
+).value.trim();
+
+const phone=
+document.getElementById(
+"phone"
+).value.trim();
+
+const experience=
+document.getElementById(
+"experience"
+).value;
+
+const business=
+document.getElementById(
+"business"
+).value.trim();
+
+const area=
+document.getElementById(
+"area"
+).value.trim();
+
+const radius=
+document.getElementById(
+"radius"
+).value;
+
+const about=
+document.getElementById(
+"about"
+).value.trim();
+
+
+if(!name){
+
+alert(
+"Mechanic name enter karein."
+);
+
+return;
+
+}
+
+
+if(!phone){
+
+alert(
+"Mobile number enter karein."
+);
+
+return;
+
+}
+
+
+if(!experience){
+
+alert(
+"Experience select karein."
+);
+
+return;
+
+}
+
+
+if(
+selectedSkills.length===0
+){
+
+alert(
+"Kam se kam ek skill select karein."
+);
+
+return;
+
+}
+
+
+if(!area){
+
+alert(
+"Service area enter karein."
+);
+
+return;
+
+}
+
+
+/* PROFILE OBJECT */
+
+const profile={
+
+name:name,
+
+phone:phone,
+
+experience:experience,
+
+business:business,
+
+skills:selectedSkills,
+
+serviceArea:area,
+
+serviceRadius:radius,
+
+availability:availability,
+
+about:about,
+
+role:"Mechanic",
+
+updatedAt:
+new Date().toISOString()
+
+};
+
+
+/* SAVE */
+
+localStorage.setItem(
+"mechanicProfile",
+JSON.stringify(profile)
+);
+
+
+/* ALSO UPDATE USER */
+
+const user=
+getUser();
+
+if(user){
+
+user.name=name;
+
+user.phone=phone;
+
+user.role="Mechanic";
+
+localStorage.setItem(
+"loggedInUser",
+JSON.stringify(user)
+);
+
+}
+
+
+/* STATUS */
+
+document.getElementById(
+"status"
+).textContent=
+"✓ Profile saved successfully. You can now receive suitable mechanic work requests.";
+
+alert(
+"Mechanic profile successfully saved!"
+);
+
+}
+
+
+/* LOAD EXISTING */
+
+function loadProfile(){
+
+const raw=
+localStorage.getItem(
+"mechanicProfile"
+);
+
+if(!raw) return;
+
+
+try{
+
+const profile=
+JSON.parse(raw);
+
+
+document.getElementById(
+"name"
+).value=
+profile.name || "";
+
+
+document.getElementById(
+"phone"
+).value=
+profile.phone || "";
+
+
+document.getElementById(
+"experience"
+).value=
+profile.experience || "";
+
+
+document.getElementById(
+"business"
+).value=
+profile.business || "";
+
+
+document.getElementById(
+"area"
+).value=
+profile.serviceArea || "";
+
+
+document.getElementById(
+"radius"
+).value=
+profile.serviceRadius || "10 km";
+
+
+document.getElementById(
+"about"
+).value=
+profile.about || "";
+
+
+selectedSkills=
+profile.skills || [];
+
+
+availability=
+profile.availability ||
+"Available";
+
+
+document
+.querySelectorAll(
+".skill"
+)
+.forEach(function(button){
+
+const text=
+button.textContent.trim();
+
+selectedSkills.forEach(
+function(skill){
+
+if(
+text.includes(skill)
+){
+
+button.classList.add(
+"selected"
+);
+
+}
+
+});
+
+});
+
+
+document
+.querySelectorAll(
+".available"
+)
+.forEach(function(button){
+
+if(
+button.textContent.includes(
+availability
+)
+){
+
+button.classList.add(
+"selected"
+);
+
+}else{
+
+button.classList.remove(
+"selected"
+);
+
+}
+
+});
+
+
+}catch(e){
+
+console.log(e);
+
+}
+
+}
+
+
+loadProfile();
+
+</script>
+
+</body>
+
+</html>

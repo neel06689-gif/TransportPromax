@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Notifications - TransportPro</title>
+
+<style>
+
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+    padding:15px;
+}
+
+
+/* =====================================
+   DASHBOARD BUTTON
+===================================== */
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.notification-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.notification-summary{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:11px;
+
+    padding:11px;
+
+    margin-bottom:13px;
+}
+
+.summary-item{
+    flex:1;
+
+    text-align:center;
+
+    border-right:1px solid #e2e8f0;
+}
+
+.summary-item:last-of-type{
+    border-right:0;
+}
+
+.summary-item span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:4px;
+}
+
+.summary-item strong{
+    font-size:16px;
+}
+
+.read-all-btn{
+    border:0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    padding:9px 11px;
+
+    border-radius:8px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   FILTER ROW
+===================================== */
+
+.filter-row{
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-bottom:3px;
+
+    margin-bottom:13px;
+}
+
+.filter-btn{
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#172033;
+
+    border-radius:20px;
+
+    padding:8px 12px;
+
+    font-size:10px;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+
+    color:#fff;
+
+    border-color:#1769e0;
+}
+
+.filter-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   NOTIFICATION LIST
+===================================== */
+
+.notification-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================
+   NOTIFICATION ITEM
+===================================== */
+
+.notification-item{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:11px;
+
+    padding:12px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.notification-item:hover{
+    box-shadow:
+        0 4px 12px rgba(16,24,40,.06);
+}
+
+.notification-item.unread{
+    background:#f4f8ff;
+
+    border-color:#cfe0ff;
+}
+
+.notification-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:10px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    flex-shrink:0;
+}
+
+.notification-content{
+    flex:1;
+    min-width:0;
+}
+
+.notification-content strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.notification-content p{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+
+    margin-bottom:5px;
+}
+
+.notification-time{
+    color:#98a2b3;
+
+    font-size:8px;
+}
+
+.unread-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#1769e0;
+
+    flex-shrink:0;
+
+    margin-top:5px;
+}
+
+
+/* =====================================
+   CLEAR SECTION
+===================================== */
+
+.clear-section{
+    border-top:1px solid #eef1f5;
+
+    padding-top:13px;
+
+    text-align:center;
+}
+
+.clear-btn{
+    border:1px solid #e0e5eb;
+
+    background:#fff;
+
+    color:#c62828;
+
+    padding:9px 14px;
+
+    border-radius:8px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.clear-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+
+    color:#667085;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    font-size:9px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:700px){
+
+    .notification-card{
+        padding:13px;
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .notification-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .notification-summary{
+        flex-wrap:wrap;
+    }
+
+    .summary-item{
+        min-width:80px;
+    }
+
+    .read-all-btn{
+        width:100%;
+    }
+
+    .notification-item{
+        padding:10px;
+    }
+
+}
+
+
+/* =====================================
+   END OF CSS
+===================================== */
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Notifications Center
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="markAllRead()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <section class="notification-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+
+            <div class="page-icon">
+                🔔
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Notifications
+                </h1>
+
+                <p>
+                    Bookings, loads, payments aur
+                    transport activities ke latest updates.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- NOTIFICATION SUMMARY -->
+
+        <div class="notification-summary">
+
+
+            <div class="summary-item">
+
+                <span>
+                    Unread
+                </span>
+
+                <strong id="unreadCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="totalCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <button
+                class="read-all-btn"
+                onclick="markAllRead()">
+
+                Mark All Read
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- FILTER -->
+
+        <div class="filter-row">
+
+
+            <button
+                class="filter-btn active"
+                onclick="filterNotifications('all',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterNotifications('unread',this)">
+
+                Unread
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterNotifications('booking',this)">
+
+                📦 Booking
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterNotifications('payment',this)">
+
+                💳 Payment
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterNotifications('system',this)">
+
+                ⚙️ System
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- NOTIFICATION LIST -->
+
+        <div
+            id="notificationList"
+            class="notification-list">
+
+            <!-- JavaScript Part 3 se notifications load hongi -->
+
+        </div>
+
+
+
+        <!-- CLEAR ALL -->
+
+        <div class="clear-section">
+
+            <button
+                class="clear-btn"
+                onclick="clearNotifications()">
+
+                🗑 Clear All Notifications
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT PART 3
+===================================== -->
+
+<script>
+
+/* =====================================
+   NOTIFICATION DATA
+===================================== */
+
+let notifications = [
+
+    {
+        id: 1,
+        type: "booking",
+        icon: "📦",
+        title: "Booking Confirmed",
+        message: "Your transport booking has been confirmed successfully.",
+        time: "10 minutes ago",
+        read: false
+    },
+
+    {
+        id: 2,
+        type: "payment",
+        icon: "💳",
+        title: "Payment Successful",
+        message: "Your payment of ₹5,000 was completed successfully.",
+        time: "1 hour ago",
+        read: false
+    },
+
+    {
+        id: 3,
+        type: "booking",
+        icon: "🚛",
+        title: "Driver Assigned",
+        message: "A driver has been assigned to your transport booking.",
+        time: "2 hours ago",
+        read: true
+    },
+
+    {
+        id: 4,
+        type: "system",
+        icon: "⚙️",
+        title: "Profile Verification",
+        message: "Your profile verification is under review.",
+        time: "Yesterday",
+        read: true
+    },
+
+    {
+        id: 5,
+        type: "payment",
+        icon: "💰",
+        title: "Payment Reminder",
+        message: "A pending transport payment requires your attention.",
+        time: "Yesterday",
+        read: false
+    }
+
+];
+
+
+/* =====================================
+   CURRENT FILTER
+===================================== */
+
+let currentFilter = "all";
+
+
+/* =====================================
+   LOAD SAVED NOTIFICATIONS
+===================================== */
+
+function loadNotifications(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_notifications"
+        );
+
+    if(!saved){
+        return;
+    }
+
+    try{
+
+        const savedData =
+            JSON.parse(saved);
+
+        if(Array.isArray(savedData)){
+
+            notifications =
+                savedData;
+
+        }
+
+    }catch(error){
+
+        console.log(
+            "Notification data could not be loaded."
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE NOTIFICATIONS
+===================================== */
+
+function saveNotifications(){
+
+    localStorage.setItem(
+
+        "tp_notifications",
+
+        JSON.stringify(
+            notifications
+        )
+
+    );
+
+}
+
+
+/* =====================================
+   UPDATE COUNTS
+===================================== */
+
+function updateCounts(){
+
+    const unread =
+        notifications.filter(
+            notification =>
+                !notification.read
+        ).length;
+
+
+    const total =
+        notifications.length;
+
+
+    const unreadElement =
+        document.getElementById(
+            "unreadCount"
+        );
+
+
+    const totalElement =
+        document.getElementById(
+            "totalCount"
+        );
+
+
+    if(unreadElement){
+
+        unreadElement.innerText =
+            unread;
+
+    }
+
+
+    if(totalElement){
+
+        totalElement.innerText =
+            total;
+
+    }
+
+}
+
+
+/* =====================================
+   DISPLAY NOTIFICATIONS
+===================================== */
+
+function displayNotifications(list){
+
+    const container =
+        document.getElementById(
+            "notificationList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔔
+                </div>
+
+                <strong>
+                    No Notifications
+                </strong>
+
+                <small>
+                    Abhi is category mein koi notification nahi hai.
+                </small>
+
+            </div>
+
+        `;
+
+        updateCounts();
+
+        return;
+    }
+
+
+    container.innerHTML =
+
+        list.map(
+            notification => `
+
+            <div
+                class="notification-item
+                ${notification.read ? "" : "unread"}"
+                onclick="openNotification(${notification.id})">
+
+
+                <div class="notification-icon">
+                    ${notification.icon}
+                </div>
+
+
+                <div class="notification-content">
+
+                    <strong>
+                        ${notification.title}
+                    </strong>
+
+                    <p>
+                        ${notification.message}
+                    </p>
+
+                    <span class="notification-time">
+                        ${notification.time}
+                    </span>
+
+                </div>
+
+
+                ${
+                    notification.read
+                    ? ""
+                    : `<span class="unread-dot"></span>`
+                }
+
+
+            </div>
+
+        `
+        ).join("");
+
+
+    updateCounts();
+
+}
+
+
+/* =====================================
+   FILTER NOTIFICATIONS
+===================================== */
+
+function filterNotifications(
+    type,
+    button
+){
+
+    currentFilter =
+        type;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            btn =>
+                btn.classList.remove(
+                    "active"
+                )
+        );
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    let result =
+        notifications;
+
+
+    if(type === "unread"){
+
+        result =
+            notifications.filter(
+                notification =>
+                    !notification.read
+            );
+
+    }
+    else if(type !== "all"){
+
+        result =
+            notifications.filter(
+                notification =>
+                    notification.type ===
+                    type
+            );
+
+    }
+
+
+    displayNotifications(
+        result
+    );
+
+}
+
+
+/* =====================================
+   OPEN NOTIFICATION
+===================================== */
+
+function openNotification(id){
+
+    const notification =
+        notifications.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!notification){
+        return;
+    }
+
+
+    notification.read =
+        true;
+
+
+    saveNotifications();
+
+
+    alert(
+
+        "🔔 " +
+        notification.title +
+
+        "\n\n" +
+
+        notification.message +
+
+        "\n\n" +
+
+        "Time: " +
+        notification.time
+
+    );
+
+
+    refreshCurrentFilter();
+
+}
+
+
+/* =====================================
+   MARK ALL READ
+===================================== */
+
+function markAllRead(){
+
+    if(
+        notifications.length === 0
+    ){
+
+        alert(
+            "There are no notifications."
+        );
+
+        return;
+
+    }
+
+
+    notifications.forEach(
+        notification => {
+
+            notification.read =
+                true;
+
+        }
+    );
+
+
+    saveNotifications();
+
+
+    refreshCurrentFilter();
+
+
+    alert(
+        "✅ All notifications marked as read."
+    );
+
+}
+
+
+/* =====================================
+   CLEAR ALL
+===================================== */
+
+function clearNotifications(){
+
+    if(
+        notifications.length === 0
+    ){
+
+        alert(
+            "Notifications already empty."
+        );
+
+        return;
+
+    }
+
+
+    const confirmClear =
+        confirm(
+
+            "⚠️ Clear All Notifications?\n\n" +
+            "All notification history will be removed."
+
+        );
+
+
+    if(!confirmClear){
+        return;
+    }
+
+
+    notifications =
+        [];
+
+
+    saveNotifications();
+
+
+    displayNotifications(
+        []
+    );
+
+
+    alert(
+        "✅ All notifications cleared."
+    );
+
+}
+
+
+/* =====================================
+   REFRESH CURRENT FILTER
+===================================== */
+
+function refreshCurrentFilter(){
+
+    let result =
+        notifications;
+
+
+    if(
+        currentFilter ===
+        "unread"
+    ){
+
+        result =
+            notifications.filter(
+                notification =>
+                    !notification.read
+            );
+
+    }
+    else if(
+        currentFilter !==
+        "all"
+    ){
+
+        result =
+            notifications.filter(
+                notification =>
+                    notification.type ===
+                    currentFilter
+            );
+
+    }
+
+
+    displayNotifications(
+        result
+    );
+
+}
+
+
+/* =====================================
+   BACK BUTTON
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        goDashboard();
+
+    }
+
+}
+
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   INITIALIZE PAGE
+===================================== */
+
+loadNotifications();
+
+displayNotifications(
+    notifications
+);
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        loadNotifications();
+
+        displayNotifications(
+            notifications
+        );
+
+        updateCounts();
+
+        console.log(
+            "TransportPro Notifications loaded successfully."
+        );
+
+    }
+);
+
+
+/* =====================================
+   END OF JAVASCRIPT
+===================================== */
+
+</script>
+
+
+</body>
+
+</html>
+
+</script>
+
+
+</body>
+
+</html>

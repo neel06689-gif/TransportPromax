@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Payment - TransportPro</title>
+
+<style>
+
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:25px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+
+    padding:15px;
+}
+
+
+/* =====================================
+   DASHBOARD BUTTON
+===================================== */
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   PAYMENT CARD
+===================================== */
+
+.payment-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   BALANCE CARD
+===================================== */
+
+.balance-card{
+    background:#eef6ff;
+
+    border:1px solid #d7e8ff;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:18px;
+}
+
+.balance-card span{
+    display:block;
+
+    color:#667085;
+
+    font-size:9px;
+
+    margin-bottom:5px;
+}
+
+.balance-card strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:25px;
+}
+
+.add-money-btn{
+    border:0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    padding:10px 13px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.add-money-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   SECTION TITLE
+===================================== */
+
+.section-title{
+    font-size:14px;
+
+    margin-bottom:10px;
+}
+
+
+/* =====================================
+   PAYMENT METHODS
+===================================== */
+
+.payment-methods{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:10px;
+
+    margin-bottom:18px;
+}
+
+.method-card{
+    width:100%;
+
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    color:#172033;
+
+    transition:.2s;
+}
+
+.method-card:hover{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 4px 12px rgba(16,24,40,.06);
+}
+
+.method-card:active{
+    transform:scale(.98);
+}
+
+.method-icon{
+    width:43px;
+    height:43px;
+
+    border-radius:10px;
+
+    background:#f1f6ff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    flex-shrink:0;
+}
+
+.method-card span:nth-child(2){
+    flex:1;
+}
+
+.method-card strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.method-card small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:12px;
+}
+
+.method-card > b{
+    color:#1769e0;
+
+    font-size:17px;
+}
+
+
+/* =====================================
+   QUICK PAYMENT
+===================================== */
+
+.quick-payment{
+    display:flex;
+
+    gap:8px;
+
+    margin-bottom:20px;
+}
+
+.quick-payment input{
+    flex:1;
+
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.quick-payment input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+.pay-btn{
+    min-width:100px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+    color:#fff;
+
+    font-size:11px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.pay-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   TRANSACTION HEADING
+===================================== */
+
+.transaction-heading{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+}
+
+.transaction-heading .section-title{
+    margin-bottom:0;
+}
+
+.view-all-btn{
+    border:0;
+
+    background:transparent;
+
+    color:#1769e0;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   TRANSACTION LIST
+===================================== */
+
+.transaction-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.transaction{
+    border:1px solid #e2e8f0;
+
+    border-radius:10px;
+
+    padding:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.transaction-icon{
+    width:40px;
+    height:40px;
+
+    border-radius:9px;
+
+    background:#f1f6ff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    flex-shrink:0;
+}
+
+.transaction-info{
+    flex:1;
+}
+
+.transaction-info strong{
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+.transaction-info small{
+    color:#667085;
+
+    font-size:8px;
+}
+
+.transaction-amount{
+    font-size:11px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.transaction-success{
+    color:#137333;
+}
+
+.transaction-pending{
+    color:#b26a00;
+}
+
+
+/* =====================================
+   EMPTY TRANSACTIONS
+===================================== */
+
+.empty-transactions{
+    text-align:center;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+
+    padding:25px 10px;
+
+    color:#667085;
+}
+
+.empty-transactions div{
+    font-size:28px;
+
+    margin-bottom:7px;
+}
+
+.empty-transactions strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.empty-transactions small{
+    font-size:9px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:700px){
+
+    .payment-methods{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .payment-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .balance-card{
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
+
+    .add-money-btn{
+        width:100%;
+    }
+
+    .quick-payment{
+        flex-direction:column;
+    }
+
+    .pay-btn{
+        height:44px;
+        width:100%;
+    }
+
+    .transaction{
+        padding:9px;
+    }
+
+}
+
+
+/* =====================================
+   END OF CSS
+===================================== */
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Secure Transport Payments
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="showNotification()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <!-- BACK TO DASHBOARD -->
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <!-- =================================
+         PAYMENT CARD
+    ================================== -->
+
+    <section class="payment-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+
+            <div class="page-icon">
+                💳
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Payments
+                </h1>
+
+                <p>
+                    Apne transport bookings aur services
+                    ke payments securely manage karein.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             BALANCE
+        ================================== -->
+
+        <div class="balance-card">
+
+            <div>
+
+                <span>
+                    Available Balance
+                </span>
+
+                <strong id="balance">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <button
+                class="add-money-btn"
+                onclick="addMoney()">
+
+                + Add Money
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================
+             PAYMENT METHODS
+        ================================== -->
+
+        <h2 class="section-title">
+            Payment Methods
+        </h2>
+
+
+        <div class="payment-methods">
+
+
+            <button
+                class="method-card"
+                onclick="selectPayment('UPI')">
+
+                <span class="method-icon">
+                    📱
+                </span>
+
+                <span>
+                    <strong>UPI</strong>
+                    <small>Google Pay / PhonePe / Other UPI</small>
+                </span>
+
+                <b>
+                    →
+                </b>
+
+            </button>
+
+
+
+            <button
+                class="method-card"
+                onclick="selectPayment('Card')">
+
+                <span class="method-icon">
+                    💳
+                </span>
+
+                <span>
+                    <strong>Card</strong>
+                    <small>Debit / Credit Card</small>
+                </span>
+
+                <b>
+                    →
+                </b>
+
+            </button>
+
+
+
+            <button
+                class="method-card"
+                onclick="selectPayment('Net Banking')">
+
+                <span class="method-icon">
+                    🏦
+                </span>
+
+                <span>
+                    <strong>Net Banking</strong>
+                    <small>Pay using your bank account</small>
+                </span>
+
+                <b>
+                    →
+                </b>
+
+            </button>
+
+
+
+            <button
+                class="method-card"
+                onclick="selectPayment('Wallet')">
+
+                <span class="method-icon">
+                    👛
+                </span>
+
+                <span>
+                    <strong>Wallet</strong>
+                    <small>TransportPro Wallet</small>
+                </span>
+
+                <b>
+                    →
+                </b>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             QUICK PAYMENT
+        ================================== -->
+
+        <h2 class="section-title">
+            Quick Payment
+        </h2>
+
+
+        <div class="quick-payment">
+
+
+            <input
+                type="number"
+                id="paymentAmount"
+                placeholder="Enter amount ₹"
+                min="1">
+
+
+            <button
+                class="pay-btn"
+                onclick="makePayment()">
+
+                Pay Now
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             RECENT TRANSACTIONS
+        ================================== -->
+
+        <div class="transaction-heading">
+
+            <h2 class="section-title">
+                Recent Transactions
+            </h2>
+
+            <button
+                class="view-all-btn"
+                onclick="viewTransactions()">
+
+                View All
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="transactionList"
+            class="transaction-list">
+
+            <!-- JavaScript transactions load karega -->
+
+        </div>
+
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT PART 3
+===================================== -->
+
+<script>
+
+/* =====================================
+   PAYMENT DATA
+===================================== */
+
+let balance =
+    Number(
+        localStorage.getItem(
+            "tp_payment_balance"
+        )
+    ) || 0;
+
+
+let transactions =
+    JSON.parse(
+        localStorage.getItem(
+            "tp_payment_transactions"
+        ) || "[]"
+    );
+
+
+let selectedPaymentMethod = "";
+
+
+/* =====================================
+   FORMAT MONEY
+===================================== */
+
+function formatMoney(amount){
+
+    return Number(amount)
+        .toLocaleString("en-IN");
+
+}
+
+
+/* =====================================
+   UPDATE BALANCE
+===================================== */
+
+function updateBalance(){
+
+    const balanceElement =
+        document.getElementById(
+            "balance"
+        );
+
+
+    if(balanceElement){
+
+        balanceElement.innerText =
+            "₹" + formatMoney(balance);
+
+    }
+
+
+    localStorage.setItem(
+        "tp_payment_balance",
+        balance
+    );
+
+}
+
+
+/* =====================================
+   SAVE TRANSACTIONS
+===================================== */
+
+function saveTransactions(){
+
+    localStorage.setItem(
+
+        "tp_payment_transactions",
+
+        JSON.stringify(
+            transactions
+        )
+
+    );
+
+}
+
+
+/* =====================================
+   SELECT PAYMENT METHOD
+===================================== */
+
+function selectPayment(method){
+
+    selectedPaymentMethod =
+        method;
+
+
+    alert(
+
+        "✅ Payment Method Selected\n\n" +
+
+        "Method: " +
+        method +
+
+        "\n\n" +
+
+        "Ab aap amount enter karke " +
+        "Pay Now par click karein."
+
+    );
+
+}
+
+
+/* =====================================
+   ADD MONEY
+===================================== */
+
+function addMoney(){
+
+    const amount =
+        prompt(
+            "Wallet me kitna money add karna hai?\n\nAmount ₹ me enter karein:"
+        );
+
+
+    if(amount === null){
+        return;
+    }
+
+
+    const value =
+        Number(amount);
+
+
+    if(
+        !value ||
+        value <= 0
+    ){
+
+        alert(
+            "⚠️ Valid amount enter karein."
+        );
+
+        return;
+
+    }
+
+
+    balance += value;
+
+
+    transactions.unshift({
+
+        id:
+            Date.now(),
+
+        title:
+            "Money Added",
+
+        amount:
+            value,
+
+        type:
+            "credit",
+
+        method:
+            "Wallet",
+
+        status:
+            "Success",
+
+        date:
+            new Date()
+            .toLocaleString()
+
+    });
+
+
+    updateBalance();
+
+    saveTransactions();
+
+    displayTransactions();
+
+
+    alert(
+
+        "✅ Money Added Successfully!\n\n" +
+
+        "Amount: ₹" +
+        formatMoney(value) +
+
+        "\n\n" +
+
+        "New Balance: ₹" +
+        formatMoney(balance)
+
+    );
+
+}
+
+
+/* =====================================
+   MAKE PAYMENT
+===================================== */
+
+function makePayment(){
+
+    const amountInput =
+        document.getElementById(
+            "paymentAmount"
+        );
+
+
+    const amount =
+        Number(
+            amountInput.value
+        );
+
+
+    if(!amount || amount <= 0){
+
+        alert(
+            "⚠️ Please enter a valid amount."
+        );
+
+        return;
+
+    }
+
+
+    if(!selectedPaymentMethod){
+
+        alert(
+
+            "⚠️ Pehle payment method select karein.\n\n" +
+
+            "UPI, Card, Net Banking ya Wallet select karein."
+
+        );
+
+        return;
+
+    }
+
+
+    if(
+        selectedPaymentMethod ===
+        "Wallet" &&
+        amount > balance
+    ){
+
+        alert(
+
+            "❌ Insufficient Wallet Balance\n\n" +
+
+            "Available: ₹" +
+            formatMoney(balance)
+
+        );
+
+        return;
+
+    }
+
+
+    const confirmPayment =
+        confirm(
+
+            "💳 PAYMENT CONFIRMATION\n\n" +
+
+            "Amount: ₹" +
+            formatMoney(amount) +
+
+            "\nMethod: " +
+            selectedPaymentMethod +
+
+            "\n\n" +
+
+            "Payment continue karein?"
+
+        );
+
+
+    if(!confirmPayment){
+        return;
+    }
+
+
+    /*
+       Demo payment flow.
+       Real UPI/Card gateway ke liye
+       backend/payment gateway integration
+       baad me add ki ja sakti hai.
+    */
+
+
+    if(
+        selectedPaymentMethod ===
+        "Wallet"
+    ){
+
+        balance -= amount;
+
+        updateBalance();
+
+    }
+
+
+    transactions.unshift({
+
+        id:
+            Date.now(),
+
+        title:
+            "Transport Payment",
+
+        amount:
+            amount,
+
+        type:
+            "debit",
+
+        method:
+            selectedPaymentMethod,
+
+        status:
+            "Success",
+
+        date:
+            new Date()
+            .toLocaleString()
+
+    });
+
+
+    saveTransactions();
+
+    displayTransactions();
+
+
+    amountInput.value = "";
+
+
+    alert(
+
+        "✅ Payment Successful!\n\n" +
+
+        "Amount: ₹" +
+        formatMoney(amount) +
+
+        "\nMethod: " +
+        selectedPaymentMethod +
+
+        "\n\nTransaction ID:\n" +
+        "TP" +
+        Date.now()
+
+    );
+
+
+    selectedPaymentMethod = "";
+
+}
+
+
+/* =====================================
+   DISPLAY TRANSACTIONS
+===================================== */
+
+function displayTransactions(){
+
+    const container =
+        document.getElementById(
+            "transactionList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(transactions.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-transactions">
+
+                <div>
+                    💳
+                </div>
+
+                <strong>
+                    No Transactions Yet
+                </strong>
+
+                <small>
+                    Aapke recent payments yahan show honge.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const recent =
+        transactions.slice(0,5);
+
+
+    container.innerHTML =
+
+        recent.map(
+            transaction => {
+
+                const isCredit =
+                    transaction.type ===
+                    "credit";
+
+
+                return `
+
+                    <div class="transaction">
+
+
+                        <div class="transaction-icon">
+
+                            ${
+                                isCredit
+                                ? "➕"
+                                : "💳"
+                            }
+
+                        </div>
+
+
+                        <div class="transaction-info">
+
+                            <strong>
+                                ${transaction.title}
+                            </strong>
+
+                            <small>
+
+                                ${transaction.method}
+
+                                •
+                                
+                                ${transaction.date}
+
+                            </small>
+
+                        </div>
+
+
+                        <div class="transaction-amount
+                            ${
+                                transaction.status ===
+                                "Success"
+                                ? "transaction-success"
+                                : "transaction-pending"
+                            }">
+
+                            ${
+                                isCredit
+                                ? "+"
+                                : "-"
+                            }
+
+                            ₹${formatMoney(
+                                transaction.amount
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =====================================
+   VIEW ALL TRANSACTIONS
+===================================== */
+
+function viewTransactions(){
+
+    if(transactions.length === 0){
+
+        alert(
+            "📋 No transactions available."
+        );
+
+        return;
+
+    }
+
+
+    let message =
+        "📋 TRANSACTION HISTORY\n\n";
+
+
+    transactions.forEach(
+        (transaction,index) => {
+
+            message +=
+
+                (index + 1) +
+                ". " +
+
+                transaction.title +
+
+                "\nAmount: ₹" +
+                formatMoney(
+                    transaction.amount
+                ) +
+
+                "\nMethod: " +
+                transaction.method +
+
+                "\nStatus: " +
+                transaction.status +
+
+                "\nDate: " +
+                transaction.date +
+
+                "\n\n";
+
+        }
+    );
+
+
+    alert(message);
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        goDashboard();
+
+    }
+
+}
+
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   NOTIFICATION
+===================================== */
+
+function showNotification(){
+
+    alert(
+
+        "🔔 Notifications\n\n" +
+
+        "No new payment notifications."
+
+    );
+
+}
+
+
+/* =====================================
+   PAGE INITIALIZATION
+===================================== */
+
+/* =====================================
+   PAGE INITIALIZATION
+===================================== */
+
+updateBalance();
+
+displayTransactions();
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener("load", function(){
+
+    updateBalance();
+
+    displayTransactions();
+
+    console.log(
+        "TransportPro Payment page loaded successfully."
+    );
+
+});
+
+
+/* =====================================
+   AMOUNT INPUT VALIDATION
+===================================== */
+
+const paymentAmount =
+    document.getElementById("paymentAmount");
+
+if(paymentAmount){
+
+    paymentAmount.addEventListener(
+        "input",
+        function(){
+
+            if(Number(this.value) < 0){
+
+                this.value = 0;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   PREVENT FORM SUBMIT / RELOAD
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" &&
+            document.activeElement &&
+            document.activeElement.tagName === "INPUT"
+        ){
+
+            event.preventDefault();
+
+            makePayment();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   PAGE VISIBILITY CHECK
+===================================== */
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            updateBalance();
+
+            displayTransactions();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   AUTO SAVE
+===================================== */
+
+window.addEventListener(
+    "beforeunload",
+    function(){
+
+        localStorage.setItem(
+            "tp_payment_balance",
+            balance
+        );
+
+        localStorage.setItem(
+            "tp_payment_transactions",
+            JSON.stringify(
+                transactions
+            )
+        );
+
+    }
+);
+
+
+/* =====================================
+   FINAL START
+===================================== */
+
+console.log(
+    "--------------------------------"
+);
+
+console.log(
+    "TransportPro Payment System"
+);
+
+console.log(
+    "Payment page ready."
+);
+
+console.log(
+    "--------------------------------"
+);
+
+
+/* =====================================
+   END OF JAVASCRIPT
+===================================== */
+
+</script>
+
+
+</body>
+
+</html>
+
+</script>
+
+
+</body>
+
+</html>

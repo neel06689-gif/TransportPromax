@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Earnings - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.earnings-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   PERIOD BUTTONS
+===================================== */
+
+.period-row{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:6px;
+
+    margin-bottom:12px;
+}
+
+.period-btn{
+    height:34px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#667085;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.period-btn.active{
+    background:#1769e0;
+
+    border-color:#1769e0;
+
+    color:#fff;
+}
+
+.period-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   TOTAL EARNING
+===================================== */
+
+.total-earning-card{
+    background:#1769e0;
+
+    color:#fff;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    margin-bottom:12px;
+
+    text-align:center;
+}
+
+.total-earning-card span{
+    display:block;
+
+    color:#dceaff;
+
+    font-size:8px;
+
+    margin-bottom:7px;
+}
+
+.total-earning-card strong{
+    display:block;
+
+    font-size:28px;
+
+    margin-bottom:5px;
+}
+
+.total-earning-card small{
+    display:block;
+
+    color:#dceaff;
+
+    font-size:8px;
+}
+
+
+/* =====================================
+   EARNING STATS
+===================================== */
+
+.earning-stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:7px;
+
+    margin-bottom:18px;
+}
+
+.earning-stat{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:9px;
+
+    padding:11px 4px;
+
+    text-align:center;
+}
+
+.earning-stat span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:9px;
+
+    margin-bottom:5px;
+}
+
+.earning-stat strong{
+    display:block;
+
+    font-size:12px;
+}
+
+
+/* =====================================
+   SECTION HEADING
+===================================== */
+
+.section-heading{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:9px;
+}
+
+.section-heading strong{
+    font-size:12px;
+}
+
+.section-heading button{
+    border:0;
+
+    background:transparent;
+
+    color:#1769e0;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   QUICK ACTIONS
+===================================== */
+
+.quick-actions{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:7px;
+
+    margin-bottom:18px;
+}
+
+.quick-actions button{
+    min-height:72px;
+
+    border:1px solid #e1e7ef;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    cursor:pointer;
+}
+
+.quick-actions button:active{
+    transform:scale(.97);
+
+    background:#f7faff;
+}
+
+.quick-actions span{
+    width:32px;
+    height:32px;
+
+    border-radius:8px;
+
+    background:#eef5ff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+}
+
+.quick-actions strong{
+    color:#344054;
+
+    font-size:7px;
+}
+
+
+/* =====================================
+   HISTORY
+===================================== */
+
+.history-heading{
+    border-top:1px solid #edf0f4;
+
+    padding-top:14px;
+}
+
+.earning-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+}
+
+
+/* =====================================
+   EARNING ITEM
+===================================== */
+
+.earning-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:10px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:9px;
+
+    background:#fff;
+}
+
+.earning-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:8px;
+
+    background:#effaf3;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+
+    flex-shrink:0;
+}
+
+.earning-info{
+    flex:1;
+
+    min-width:0;
+}
+
+.earning-info strong{
+    display:block;
+
+    font-size:9px;
+
+    margin-bottom:3px;
+}
+
+.earning-info small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:12px;
+}
+
+.earning-amount{
+    text-align:right;
+}
+
+.earning-amount strong{
+    display:block;
+
+    color:#137333;
+
+    font-size:10px;
+
+    margin-bottom:3px;
+}
+
+.earning-amount small{
+    color:#667085;
+
+    font-size:6px;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:28px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+}
+
+.empty-icon{
+    font-size:30px;
+
+    margin-bottom:7px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:14px;
+}
+
+
+/* =====================================
+   MODAL
+===================================== */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px;
+
+    z-index:500;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:420px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:17px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.2);
+}
+
+.modal-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.modal-header strong{
+    font-size:15px;
+}
+
+.modal-header button{
+    width:32px;
+    height:32px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:#f2f4f7;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+.modal-box label{
+    display:block;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+}
+
+.modal-box input{
+    width:100%;
+
+    height:43px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    outline:none;
+
+    padding:0 10px;
+
+    font-size:10px;
+
+    margin-bottom:11px;
+}
+
+.modal-box input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+.modal-primary{
+    width:100%;
+
+    height:43px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:7px;
+}
+
+.modal-secondary{
+    width:100%;
+
+    height:40px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .earnings-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .total-earning-card strong{
+        font-size:25px;
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .earning-stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .quick-actions{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .period-btn{
+        font-size:7px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+        ←
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Earnings
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+        🔔
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="earnings-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                💰
+            </div>
+
+            <div>
+
+                <h1>
+                    Earnings
+                </h1>
+
+                <p>
+                    Apni transport income aur
+                    earning performance dekhein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PERIOD SELECTOR -->
+
+        <div class="period-row">
+
+            <button
+                class="period-btn active"
+                onclick="
+                    changePeriod(
+                        'Today',
+                        this
+                    )
+                ">
+
+                Today
+
+            </button>
+
+
+            <button
+                class="period-btn"
+                onclick="
+                    changePeriod(
+                        'Week',
+                        this
+                    )
+                ">
+
+                Week
+
+            </button>
+
+
+            <button
+                class="period-btn"
+                onclick="
+                    changePeriod(
+                        'Month',
+                        this
+                    )
+                ">
+
+                Month
+
+            </button>
+
+
+            <button
+                class="period-btn"
+                onclick="
+                    changePeriod(
+                        'Year',
+                        this
+                    )
+                ">
+
+                Year
+
+            </button>
+
+        </div>
+
+
+
+        <!-- TOTAL EARNINGS -->
+
+        <div class="total-earning-card">
+
+            <span>
+                Total Earnings
+            </span>
+
+            <strong id="totalEarnings">
+                ₹0
+            </strong>
+
+            <small id="earningPeriod">
+                Today
+            </small>
+
+        </div>
+
+
+
+        <!-- EARNING STATS -->
+
+        <div class="earning-stats">
+
+
+            <div class="earning-stat">
+
+                <span>
+                    Completed Trips
+                </span>
+
+                <strong id="completedTrips">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="earning-stat">
+
+                <span>
+                    Average / Trip
+                </span>
+
+                <strong id="averageTrip">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="earning-stat">
+
+                <span>
+                    Expenses
+                </span>
+
+                <strong id="totalExpenses">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="earning-stat">
+
+                <span>
+                    Net Earnings
+                </span>
+
+                <strong id="netEarnings">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="section-heading">
+
+            <strong>
+                Quick Actions
+            </strong>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <button
+                onclick="addEarning()">
+
+                <span>
+                    ➕
+                </span>
+
+                <strong>
+                    Add Earning
+                </strong>
+
+            </button>
+
+
+            <button
+                onclick="addExpense()">
+
+                <span>
+                    💸
+                </span>
+
+                <strong>
+                    Add Expense
+                </strong>
+
+            </button>
+
+
+            <button
+                onclick="viewExpenses()">
+
+                <span>
+                    🧾
+                </span>
+
+                <strong>
+                    Expenses
+                </strong>
+
+            </button>
+
+
+            <button
+                onclick="openReports()">
+
+                <span>
+                    📊
+                </span>
+
+                <strong>
+                    Reports
+                </strong>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- RECENT EARNINGS -->
+
+        <div class="section-heading history-heading">
+
+            <strong>
+                Recent Earnings
+            </strong>
+
+            <button
+                onclick="loadEarnings()">
+
+                ↻ Refresh
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="earningList"
+            class="earning-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    💰
+                </div>
+
+                <strong>
+                    No Earnings Yet
+                </strong>
+
+                <small>
+                    Completed trips ki earning
+                    yahan show hogi.
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================
+     ADD EARNING MODAL
+===================================== -->
+
+<div
+    id="earningModal"
+    class="modal">
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <strong>
+                Add Earning
+            </strong>
+
+            <button
+                onclick="closeEarningModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <label>
+            Trip / Reference
+        </label>
+
+        <input
+            type="text"
+            id="earningReference"
+            placeholder="e.g. TRP-1001">
+
+
+        <label>
+            Amount
+        </label>
+
+        <input
+            type="number"
+            id="earningAmount"
+            placeholder="Enter earning amount"
+            min="1">
+
+
+        <button
+            class="modal-primary"
+            onclick="saveEarning()">
+
+            Save Earning
+
+        </button>
+
+
+        <button
+            class="modal-secondary"
+            onclick="closeEarningModal()">
+
+            Cancel
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   EARNINGS - JAVASCRIPT
+===================================== */
+
+const EARNING_KEY = "tp_earnings";
+const EXPENSE_KEY = "tp_expenses";
+
+let selectedPeriod = "Today";
+
+
+/* =====================================
+   STORAGE
+===================================== */
+
+function getEarnings(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(
+                EARNING_KEY
+            ) || "[]"
+        );
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+function saveEarnings(data){
+
+    localStorage.setItem(
+        EARNING_KEY,
+        JSON.stringify(data)
+    );
+
+}
+
+
+function getExpenses(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(
+                EXPENSE_KEY
+            ) || "[]"
+        );
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   PERIOD
+===================================== */
+
+function changePeriod(
+    period,
+    button
+){
+
+    selectedPeriod =
+        period;
+
+
+    document
+        .querySelectorAll(
+            ".period-btn"
+        )
+        .forEach(
+            btn =>
+                btn.classList.remove(
+                    "active"
+                )
+        );
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document.getElementById(
+        "earningPeriod"
+    ).innerText =
+        period;
+
+
+    updateDashboard();
+
+}
+
+
+/* =====================================
+   DATE HELPERS
+===================================== */
+
+function getDateObject(date){
+
+    return new Date(
+        date
+    );
+
+}
+
+
+function isInSelectedPeriod(
+    dateString
+){
+
+    const date =
+        getDateObject(
+            dateString
+        );
+
+    const now =
+        new Date();
+
+
+    if(selectedPeriod === "Today"){
+
+        return (
+            date.getDate() ===
+            now.getDate()
+            &&
+            date.getMonth() ===
+            now.getMonth()
+            &&
+            date.getFullYear() ===
+            now.getFullYear()
+        );
+
+    }
+
+
+    if(selectedPeriod === "Week"){
+
+        const start =
+            new Date(now);
+
+        start.setDate(
+            now.getDate() - 6
+        );
+
+        start.setHours(
+            0,0,0,0
+        );
+
+
+        return date >= start;
+
+    }
+
+
+    if(selectedPeriod === "Month"){
+
+        return (
+            date.getMonth() ===
+            now.getMonth()
+            &&
+            date.getFullYear() ===
+            now.getFullYear()
+        );
+
+    }
+
+
+    if(selectedPeriod === "Year"){
+
+        return (
+            date.getFullYear() ===
+            now.getFullYear()
+        );
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =====================================
+   ADD EARNING MODAL
+===================================== */
+
+function addEarning(){
+
+    document.getElementById(
+        "earningModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =====================================
+   CLOSE MODAL
+===================================== */
+
+function closeEarningModal(){
+
+    document.getElementById(
+        "earningModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================
+   SAVE EARNING
+===================================== */
+
+function saveEarning(){
+
+    const reference =
+        document.getElementById(
+            "earningReference"
+        ).value.trim();
+
+
+    const amount =
+        Number(
+            document.getElementById(
+                "earningAmount"
+            ).value
+        );
+
+
+    if(!reference){
+
+        alert(
+            "⚠️ Trip / Reference enter karein."
+        );
+
+        return;
+
+    }
+
+
+    if(!amount || amount <= 0){
+
+        alert(
+            "⚠️ Valid earning amount enter karein."
+        );
+
+        return;
+
+    }
+
+
+    const earning = {
+
+        id:
+            "ERN-" +
+            Date.now()
+                .toString()
+                .slice(-8),
+
+        reference:
+            reference,
+
+        amount:
+            amount,
+
+        date:
+            new Date().toISOString(),
+
+        status:
+            "Received"
+
+    };
+
+
+    const earnings =
+        getEarnings();
+
+
+    earnings.unshift(
+        earning
+    );
+
+
+    saveEarnings(
+        earnings
+    );
+
+
+    document.getElementById(
+        "earningReference"
+    ).value = "";
+
+
+    document.getElementById(
+        "earningAmount"
+    ).value = "";
+
+
+    closeEarningModal();
+
+
+    updateDashboard();
+
+
+    alert(
+        "✅ Earning successfully added."
+    );
+
+}
+
+
+/* =====================================
+   ADD EXPENSE
+===================================== */
+
+function addExpense(){
+
+    const category =
+        prompt(
+            "Expense category enter karein:"
+        );
+
+
+    if(category === null){
+        return;
+    }
+
+
+    const cleanCategory =
+        category.trim();
+
+
+    if(!cleanCategory){
+
+        alert(
+            "⚠️ Category required hai."
+        );
+
+        return;
+
+    }
+
+
+    const amount =
+        Number(
+            prompt(
+                "Expense amount enter karein:"
+            )
+        );
+
+
+    if(!amount || amount <= 0){
+
+        alert(
+            "⚠️ Valid expense amount enter karein."
+        );
+
+        return;
+
+    }
+
+
+    const expenses =
+        getExpenses();
+
+
+    expenses.unshift({
+
+        id:
+            "EXP-" +
+            Date.now()
+                .toString()
+                .slice(-8),
+
+        category:
+            cleanCategory,
+
+        amount:
+            amount,
+
+        date:
+            new Date().toISOString()
+
+    });
+
+
+    localStorage.setItem(
+        EXPENSE_KEY,
+        JSON.stringify(
+            expenses
+        )
+    );
+
+
+    updateDashboard();
+
+
+    alert(
+        "✅ Expense added successfully."
+    );
+
+}
+
+
+/* =====================================
+   VIEW EXPENSES
+===================================== */
+
+function viewExpenses(){
+
+    const expenses =
+        getExpenses();
+
+
+    if(expenses.length === 0){
+
+        alert(
+            "ℹ️ Abhi koi expense record nahi hai."
+        );
+
+        return;
+
+    }
+
+
+    let message =
+        "🧾 EXPENSES\n\n";
+
+
+    expenses
+        .slice(0,10)
+        .forEach(
+            expense => {
+
+                message +=
+                    expense.category +
+                    " — ₹" +
+                    Number(
+                        expense.amount
+                    ).toLocaleString(
+                        "en-IN"
+                    ) +
+                    "\n";
+
+            }
+        );
+
+
+    alert(
+        message
+    );
+
+}
+
+
+/* =====================================
+   REPORTS
+===================================== */
+
+function openReports(){
+
+    window.location.href =
+        "financial-reports.html";
+
+}
+
+
+/* =====================================
+   CALCULATE DASHBOARD
+===================================== */
+
+function updateDashboard(){
+
+    const earnings =
+        getEarnings();
+
+
+    const expenses =
+        getExpenses();
+
+
+    const periodEarnings =
+        earnings.filter(
+            earning =>
+                isInSelectedPeriod(
+                    earning.date
+                )
+        );
+
+
+    const periodExpenses =
+        expenses.filter(
+            expense =>
+                isInSelectedPeriod(
+                    expense.date
+                )
+        );
+
+
+    const total =
+        periodEarnings.reduce(
+            (
+                sum,
+                item
+            ) =>
+                sum +
+                Number(
+                    item.amount || 0
+                ),
+            0
+        );
+
+
+    const expenseTotal =
+        periodExpenses.reduce(
+            (
+                sum,
+                item
+            ) =>
+                sum +
+                Number(
+                    item.amount || 0
+                ),
+            0
+        );
+
+
+    const count =
+        periodEarnings.length;
+
+
+    const average =
+        count > 0
+            ? total / count
+            : 0;
+
+
+    const net =
+        total -
+        expenseTotal;
+
+
+    document.getElementById(
+        "totalEarnings"
+    ).innerText =
+        "₹" +
+        total.toLocaleString(
+            "en-IN",
+            {
+                maximumFractionDigits:0
+            }
+        );
+
+
+    document.getElementById(
+        "completedTrips"
+    ).innerText =
+        count;
+
+
+    document.getElementById(
+        "averageTrip"
+    ).innerText =
+        "₹" +
+        Math.round(
+            average
+        ).toLocaleString(
+            "en-IN"
+        );
+
+
+    document.getElementById(
+        "totalExpenses"
+    ).innerText =
+        "₹" +
+        expenseTotal.toLocaleString(
+            "en-IN",
+            {
+                maximumFractionDigits:0
+            }
+        );
+
+
+    document.getElementById(
+        "netEarnings"
+    ).innerText =
+        "₹" +
+        net.toLocaleString(
+            "en-IN",
+            {
+                maximumFractionDigits:0
+            }
+        );
+
+
+    loadEarnings();
+
+}
+
+
+/* =====================================
+   LOAD EARNINGS
+===================================== */
+
+function loadEarnings(){
+
+    const container =
+        document.getElementById(
+            "earningList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    const earnings =
+        getEarnings()
+        .filter(
+            earning =>
+                isInSelectedPeriod(
+                    earning.date
+                )
+        );
+
+
+    if(earnings.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    💰
+                </div>
+
+                <strong>
+                    No Earnings Yet
+                </strong>
+
+                <small>
+                    ${selectedPeriod}
+                    ke earnings records
+                    yahan show honge.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        earnings
+        .map(
+            earning => `
+
+                <div
+                    class="earning-item"
+                >
+
+                    <div
+                        class="earning-icon"
+                    >
+                        ✓
+                    </div>
+
+
+                    <div
+                        class="earning-info"
+                    >
+
+                        <strong>
+                            ${escapeHTML(
+                                earning.reference
+                            )}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(
+                                earning.id
+                            )}
+                        </small>
+
+                        <small>
+                            ${formatDate(
+                                earning.date
+                            )}
+                        </small>
+
+                    </div>
+
+
+                    <div
+                        class="earning-amount"
+                    >
+
+                        <strong>
+                            + ₹${Number(
+                                earning.amount
+                            ).toLocaleString(
+                                "en-IN"
+                            )}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(
+                                earning.status
+                            )}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            `
+        )
+        .join("");
+
+}
+
+
+/* =====================================
+   FORMAT DATE
+===================================== */
+
+function formatDate(
+    dateString
+){
+
+    const date =
+        new Date(
+            dateString
+        );
+
+
+    return date.toLocaleString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric",
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "payments.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   CLOSE MODAL OUTSIDE
+===================================== */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const modal =
+            document.getElementById(
+                "earningModal"
+            );
+
+
+        if(
+            modal &&
+            event.target === modal
+        ){
+
+            closeEarningModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateDashboard();
+
+        console.log(
+            "Earnings page loaded successfully."
+        );
+
+    }
+);
+</script>
+
+
+</body>
+
+</html>

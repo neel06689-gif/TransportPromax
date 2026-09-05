@@ -1,0 +1,2943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#07111f"
+>
+
+<title>Booking Confirmed | TransportPro</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+
+    color:#101828;
+
+    min-height:100vh;
+
+    padding-bottom:40px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background:#07111f;
+
+    color:#fff;
+
+    box-shadow:
+    0 3px 15px
+    rgba(0,0,0,.18);
+}
+
+
+.header{
+
+    max-width:900px;
+
+    min-height:64px;
+
+    margin:auto;
+
+    padding:
+    10px 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.backBtn{
+
+    width:40px;
+    height:40px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:#172235;
+
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+
+.headerTitle{
+
+    flex:1;
+}
+
+
+.headerTitle strong{
+
+    display:block;
+
+    font-size:16px;
+}
+
+
+.headerTitle small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#94a3b8;
+
+    font-size:8px;
+}
+
+
+.headerIcon{
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:#172235;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:17px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:
+    18px 14px 35px;
+}
+
+
+/* =========================
+   SUCCESS AREA
+========================= */
+
+.successArea{
+
+    background:#fff;
+
+    border:
+    1px solid #e4e9f0;
+
+    border-radius:20px;
+
+    padding:22px 16px;
+
+    text-align:center;
+
+    margin-bottom:14px;
+
+    box-shadow:
+    0 6px 20px
+    rgba(16,24,40,.05);
+}
+
+
+.successIcon{
+
+    width:70px;
+    height:70px;
+
+    margin:0 auto 12px;
+
+    border-radius:50%;
+
+    background:#ecfdf3;
+
+    border:
+    1px solid #abefc6;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:36px;
+}
+
+
+.successArea h1{
+
+    font-size:24px;
+
+    margin-bottom:7px;
+
+    color:#027a48;
+}
+
+
+.successArea p{
+
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   BOOKING ID
+========================= */
+
+.bookingId{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-top:13px;
+
+    padding:
+    8px 12px;
+
+    border-radius:9px;
+
+    background:#f2f4f7;
+
+    color:#344054;
+
+    font-size:8px;
+}
+
+
+.bookingId strong{
+
+    color:#101828;
+
+    letter-spacing:.5px;
+}
+
+
+/* =========================
+   PAYMENT BADGE
+========================= */
+
+.paidBadge{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    margin-top:12px;
+
+    color:#027a48;
+
+    font-size:8px;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   COMMON CARD
+========================= */
+
+.card{
+
+    background:#fff;
+
+    border:
+    1px solid #e4e9f0;
+
+    border-radius:19px;
+
+    padding:16px;
+
+    margin-bottom:14px;
+
+    box-shadow:
+    0 5px 18px
+    rgba(16,24,40,.04);
+}
+
+
+.cardHeader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:14px;
+}
+
+
+.cardIcon{
+
+    width:38px;
+    height:38px;
+
+    border-radius:10px;
+
+    background:#eff4ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+}
+
+
+.cardHeader h2{
+
+    font-size:14px;
+}
+
+
+.cardHeader small{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   AMOUNT
+========================= */
+
+.amountBox{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:13px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+}
+
+
+.amountBox span{
+
+    color:#667085;
+
+    font-size:8px;
+}
+
+
+.amountBox strong{
+
+    font-size:18px;
+
+    color:#027a48;
+}
+
+
+/* =========================
+   ROUTE
+========================= */
+
+.route{
+
+    position:relative;
+
+    padding-left:32px;
+}
+
+
+.routeLine{
+
+    position:absolute;
+
+    left:9px;
+
+    top:16px;
+
+    bottom:16px;
+
+    width:2px;
+
+    background:#d0d5dd;
+}
+
+
+.location{
+
+    position:relative;
+
+    display:flex;
+
+    gap:10px;
+
+    padding:
+    7px 0 15px;
+}
+
+
+.location:last-child{
+
+    padding-bottom:5px;
+}
+
+
+.locationDot{
+
+    position:absolute;
+
+    left:-29px;
+
+    top:8px;
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    border:4px solid #2563eb;
+
+    z-index:2;
+}
+
+
+.location:last-child
+.locationDot{
+
+    border-color:#12b76a;
+}
+
+
+.locationLabel{
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-bottom:3px;
+}
+
+
+.locationName{
+
+    font-size:10px;
+
+    font-weight:700;
+
+    line-height:1.4;
+}
+
+
+.locationAddress{
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-top:3px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   TRIP INFO
+========================= */
+
+.infoGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:9px;
+}
+
+
+.infoItem{
+
+    background:#f8fafc;
+
+    border-radius:12px;
+
+    padding:11px;
+}
+
+
+.infoItem span{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-bottom:5px;
+}
+
+
+.infoItem strong{
+
+    display:block;
+
+    font-size:9px;
+
+    line-height:1.4;
+}
+
+
+/* =========================
+   TRUCK CARD
+========================= */
+
+.truckCard{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    padding:12px;
+
+    background:#f8fafc;
+
+    border-radius:13px;
+}
+
+
+.truckImage{
+
+    width:58px;
+    height:45px;
+
+    border-radius:10px;
+
+    background:#e4e9f0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:25px;
+
+    flex-shrink:0;
+}
+
+
+.truckInfo{
+
+    flex:1;
+}
+
+
+.truckInfo strong{
+
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+
+.truckInfo span{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-top:2px;
+}
+
+
+.verified{
+
+    padding:
+    5px 7px;
+
+    border-radius:7px;
+
+    background:#ecfdf3;
+
+    color:#027a48;
+
+    font-size:7px;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr;
+
+    gap:9px;
+
+    margin-bottom:14px;
+}
+
+
+.actionBtn{
+
+    width:100%;
+
+    min-height:48px;
+
+    border-radius:12px;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+}
+
+
+.trackBtn{
+
+    border:0;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    box-shadow:
+    0 7px 17px
+    rgba(37,99,235,.18);
+}
+
+
+.homeBtn{
+
+    border:
+    1px solid #d0d5dd;
+
+    background:#fff;
+
+    color:#344054;
+}
+
+
+/* =========================
+   FOOT NOTE
+========================= */
+
+.note{
+
+    text-align:center;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.6;
+
+    padding:
+    0 15px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(min-width:600px){
+
+    .actions{
+
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="header">
+
+
+<button
+    class="backBtn"
+    onclick="goBack()"
+    aria-label="Back">
+
+    ←
+
+</button>
+
+
+<div class="headerTitle">
+
+<strong>
+    Booking Confirmation
+</strong>
+
+<small>
+    Your transport booking is confirmed
+</small>
+
+</div>
+
+
+<div class="headerIcon">
+    ✓
+</div>
+
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+<!-- =========================
+     SUCCESS
+========================= -->
+
+<section class="successArea">
+
+
+<div class="successIcon">
+
+    ✓
+
+</div>
+
+
+<h1>
+    Booking Confirmed!
+</h1>
+
+
+<p>
+    Your transport booking has been
+    successfully confirmed.
+</p>
+
+
+<div class="bookingId">
+
+    🆔
+
+    <span>
+        Booking ID:
+    </span>
+
+    <strong id="bookingId">
+        TP00000000
+    </strong>
+
+</div>
+
+
+<div class="paidBadge">
+
+    ✓ Payment Successful
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     PAYMENT SUMMARY
+========================= -->
+
+<section class="card">
+
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    💳
+</div>
+
+<div>
+
+<h2>
+    Payment Summary
+</h2>
+
+<small>
+    Payment confirmation details
+</small>
+
+</div>
+
+</div>
+
+
+<div class="amountBox">
+
+<span>
+    Amount Paid
+</span>
+
+<strong id="paidAmount">
+    ₹1,890
+</strong>
+
+</div>
+
+
+<div
+style="
+margin-top:10px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+">
+
+
+<div class="infoItem">
+
+<span>
+    Payment Method
+</span>
+
+<strong id="paymentMethod">
+    UPI
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    Transaction ID
+</span>
+
+<strong id="transactionId">
+    TXN000000000
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     TRIP ROUTE
+========================= -->
+
+<section class="card">
+
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    📍
+</div>
+
+<div>
+
+<h2>
+    Trip Route
+</h2>
+
+<small>
+    Pickup and delivery locations
+</small>
+
+</div>
+
+</div>
+
+
+<div class="route">
+
+
+<div class="routeLine"></div>
+
+
+<!-- PICKUP -->
+
+<div class="location">
+
+
+<div class="locationDot"></div>
+
+
+<div>
+
+<div class="locationLabel">
+    PICKUP LOCATION
+</div>
+
+<div
+class="locationName"
+id="pickupLocation">
+
+    Pickup Location
+
+</div>
+
+<div
+class="locationAddress"
+id="pickupAddress">
+
+    Your selected pickup address
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- DESTINATION -->
+
+<div class="location">
+
+
+<div class="locationDot"></div>
+
+
+<div>
+
+<div class="locationLabel">
+    DELIVERY LOCATION
+</div>
+
+<div
+class="locationName"
+id="destinationLocation">
+
+    Destination
+
+</div>
+
+<div
+class="locationAddress"
+id="destinationAddress">
+
+    Your selected delivery address
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     TRIP DETAILS
+========================= -->
+
+<section class="card">
+
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    📦
+</div>
+
+<div>
+
+<h2>
+    Trip Details
+</h2>
+
+<small>
+    Your booking information
+</small>
+
+</div>
+
+</div>
+
+
+<div class="infoGrid">
+
+
+<div class="infoItem">
+
+<span>
+    GOODS
+</span>
+
+<strong id="goodsType">
+    General Goods
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    WEIGHT
+</span>
+
+<strong id="goodsWeight">
+    1,000 kg
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    PICKUP DATE
+</span>
+
+<strong id="pickupDate">
+    Not selected
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    PICKUP TIME
+</span>
+
+<strong id="pickupTime">
+    Not selected
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     TRUCK
+========================= -->
+
+<section class="card">
+
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    🚚
+</div>
+
+<div>
+
+<h2>
+    Assigned Vehicle
+</h2>
+
+<small>
+    Vehicle selected for your booking
+</small>
+
+</div>
+
+</div>
+
+
+<div class="truckCard">
+
+
+<div class="truckImage">
+    🚚
+</div>
+
+
+<div class="truckInfo">
+
+<strong id="truckName">
+    Transport Truck
+</strong>
+
+<span id="truckNumber">
+    Vehicle number pending
+</span>
+
+<span id="truckType">
+    Heavy Transport Vehicle
+</span>
+
+</div>
+
+
+<div class="verified">
+    ✓ Verified
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     ACTIONS
+========================= -->
+
+<div class="actions">
+
+
+<button
+class="actionBtn trackBtn"
+onclick="openTracking()">
+
+    📍 Track Your Truck
+
+</button>
+
+
+<button
+class="actionBtn homeBtn"
+onclick="goHome()">
+
+    🏠 Back to Home
+
+</button>
+
+
+</div>
+
+
+<p class="note">
+
+Your booking information is currently
+shown from the frontend demo.
+Real-time driver tracking and live
+payment verification will be connected
+during the backend phase.
+
+</p>
+
+
+<!-- =========================
+     PART 1 END
+========================= -->
+
+<!--
+
+====================================================
+PART 2 इसी जगह से नीचे paste होगा.
+
+Part 2 में:
+• Driver information
+• Driver contact UI
+• Booking timeline
+• Delivery information
+• Support section
+• Cancel booking UI
+
+आएगा.
+
+अभी </body> और </html> मत लगाना.
+====================================================
+
+--><!-- =========================
+     DRIVER INFORMATION
+========================= -->
+
+<section class="card">
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    👨‍✈️
+</div>
+
+<div>
+
+<h2>
+    Driver Information
+</h2>
+
+<small>
+    Your assigned driver details
+</small>
+
+</div>
+
+</div>
+
+
+<div
+style="
+display:flex;
+align-items:center;
+gap:12px;
+padding:12px;
+background:#f8fafc;
+border-radius:14px;
+">
+
+
+<div
+style="
+width:55px;
+height:55px;
+border-radius:50%;
+background:#e4e9f0;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:27px;
+flex-shrink:0;
+">
+
+👨‍✈️
+
+</div>
+
+
+<div
+style="
+flex:1;
+">
+
+<strong
+id="driverName"
+style="
+display:block;
+font-size:11px;
+margin-bottom:5px;
+">
+
+Driver Name
+
+</strong>
+
+
+<span
+id="driverExperience"
+style="
+display:block;
+font-size:7px;
+color:#667085;
+margin-bottom:4px;
+">
+
+Professional Driver • 5+ Years Experience
+
+</span>
+
+
+<span
+style="
+display:block;
+font-size:7px;
+color:#027a48;
+font-weight:700;
+">
+
+✓ Verified Driver
+
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- DRIVER CONTACT -->
+
+<div
+style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:10px;
+">
+
+
+<button
+onclick="callDriver()"
+style="
+height:43px;
+border:1px solid #d0d5dd;
+border-radius:10px;
+background:#fff;
+color:#344054;
+font-size:8px;
+font-weight:800;
+cursor:pointer;
+">
+
+📞 Call Driver
+
+</button>
+
+
+<button
+onclick="messageDriver()"
+style="
+height:43px;
+border:1px solid #d0d5dd;
+border-radius:10px;
+background:#fff;
+color:#344054;
+font-size:8px;
+font-weight:800;
+cursor:pointer;
+">
+
+💬 Message
+
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     BOOKING TIMELINE
+========================= -->
+
+<section class="card">
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    🕒
+</div>
+
+<div>
+
+<h2>
+    Booking Timeline
+</h2>
+
+<small>
+    Track your booking progress
+</small>
+
+</div>
+
+</div>
+
+
+<div
+style="
+display:flex;
+flex-direction:column;
+gap:0;
+">
+
+
+<!-- STEP 1 -->
+
+<div
+style="
+display:flex;
+gap:11px;
+position:relative;
+padding-bottom:17px;
+">
+
+
+<div
+style="
+width:28px;
+height:28px;
+border-radius:50%;
+background:#ecfdf3;
+color:#027a48;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:11px;
+font-weight:800;
+z-index:2;
+">
+
+✓
+
+</div>
+
+
+<div>
+
+<strong
+style="
+display:block;
+font-size:9px;
+margin-bottom:4px;
+">
+
+Booking Created
+
+</strong>
+
+<span
+style="
+font-size:7px;
+color:#667085;
+">
+
+Your booking request was created.
+
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- STEP 2 -->
+
+<div
+style="
+display:flex;
+gap:11px;
+position:relative;
+padding-bottom:17px;
+">
+
+
+<div
+style="
+width:28px;
+height:28px;
+border-radius:50%;
+background:#ecfdf3;
+color:#027a48;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:11px;
+font-weight:800;
+z-index:2;
+">
+
+✓
+
+</div>
+
+
+<div>
+
+<strong
+style="
+display:block;
+font-size:9px;
+margin-bottom:4px;
+">
+
+Payment Completed
+
+</strong>
+
+<span
+style="
+font-size:7px;
+color:#667085;
+">
+
+Payment has been completed successfully.
+
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- STEP 3 -->
+
+<div
+style="
+display:flex;
+gap:11px;
+position:relative;
+padding-bottom:17px;
+">
+
+
+<div
+style="
+width:28px;
+height:28px;
+border-radius:50%;
+background:#eff6ff;
+color:#2563eb;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:11px;
+font-weight:800;
+z-index:2;
+">
+
+3
+
+</div>
+
+
+<div>
+
+<strong
+style="
+display:block;
+font-size:9px;
+margin-bottom:4px;
+">
+
+Vehicle Assigned
+
+</strong>
+
+<span
+style="
+font-size:7px;
+color:#667085;
+">
+
+Your transport vehicle has been assigned.
+
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- STEP 4 -->
+
+<div
+style="
+display:flex;
+gap:11px;
+position:relative;
+">
+
+
+<div
+style="
+width:28px;
+height:28px;
+border-radius:50%;
+background:#f2f4f7;
+color:#667085;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:11px;
+font-weight:800;
+z-index:2;
+">
+
+4
+
+</div>
+
+
+<div>
+
+<strong
+style="
+display:block;
+font-size:9px;
+margin-bottom:4px;
+">
+
+Delivery
+
+</strong>
+
+<span
+style="
+font-size:7px;
+color:#667085;
+">
+
+Delivery will be completed at destination.
+
+</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     DELIVERY INFORMATION
+========================= -->
+
+<section class="card">
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    📦
+</div>
+
+<div>
+
+<h2>
+    Delivery Information
+</h2>
+
+<small>
+    Important delivery details
+</small>
+
+</div>
+
+</div>
+
+
+<div class="infoGrid">
+
+
+<div class="infoItem">
+
+<span>
+    DELIVERY TYPE
+</span>
+
+<strong id="deliveryType">
+    Door to Door
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    ESTIMATED DELIVERY
+</span>
+
+<strong id="deliveryDate">
+    To be updated
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    GOODS STATUS
+</span>
+
+<strong
+style="
+color:#027a48;
+">
+
+✓ Ready for Transport
+
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    BOOKING STATUS
+</span>
+
+<strong
+style="
+color:#2563eb;
+">
+
+Confirmed
+
+</strong>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CUSTOMER INFORMATION
+========================= -->
+
+<section class="card">
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    👤
+</div>
+
+<div>
+
+<h2>
+    Customer Information
+</h2>
+
+<small>
+    Booking customer details
+</small>
+
+</div>
+
+</div>
+
+
+<div class="infoGrid">
+
+
+<div class="infoItem">
+
+<span>
+    CUSTOMER NAME
+</span>
+
+<strong id="customerName">
+    Customer
+
+</strong>
+
+</div>
+
+
+<div class="infoItem">
+
+<span>
+    MOBILE NUMBER
+</span>
+
+<strong id="customerPhone">
+    **********
+
+</strong>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     SUPPORT
+========================= -->
+
+<section class="card">
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    🛟
+</div>
+
+<div>
+
+<h2>
+    Need Help?
+</h2>
+
+<small>
+    TransportPro customer support
+</small>
+
+</div>
+
+</div>
+
+
+<div
+style="
+background:#f8fafc;
+border-radius:13px;
+padding:12px;
+">
+
+
+<p
+style="
+font-size:8px;
+color:#475467;
+line-height:1.6;
+margin-bottom:10px;
+">
+
+If you have any problem with your
+booking, driver, vehicle or delivery,
+our support team can help you.
+
+</p>
+
+
+<div
+style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+">
+
+
+<button
+onclick="openSupport()"
+style="
+height:43px;
+border:1px solid #d0d5dd;
+border-radius:10px;
+background:#fff;
+font-size:8px;
+font-weight:800;
+color:#344054;
+cursor:pointer;
+">
+
+💬 Help Center
+
+</button>
+
+
+<button
+onclick="callSupport()"
+style="
+height:43px;
+border:1px solid #d0d5dd;
+border-radius:10px;
+background:#fff;
+font-size:8px;
+font-weight:800;
+color:#344054;
+cursor:pointer;
+">
+
+📞 Contact Support
+
+</button>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CANCEL BOOKING
+========================= -->
+
+<section class="card">
+
+<div
+style="
+display:flex;
+align-items:center;
+gap:9px;
+">
+
+<div
+style="
+width:35px;
+height:35px;
+border-radius:9px;
+background:#fff1f3;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:16px;
+">
+
+⚠️
+
+</div>
+
+
+<div
+style="
+flex:1;
+">
+
+<strong
+style="
+display:block;
+font-size:9px;
+">
+
+Cancel Booking
+
+</strong>
+
+
+<span
+style="
+display:block;
+font-size:7px;
+color:#667085;
+margin-top:3px;
+">
+
+Cancellation rules will depend on
+your booking and payment status.
+
+</span>
+
+</div>
+
+
+<button
+onclick="cancelBooking()"
+style="
+height:36px;
+padding:0 10px;
+border:1px solid #fda4af;
+border-radius:9px;
+background:#fff;
+color:#be123c;
+font-size:7px;
+font-weight:800;
+cursor:pointer;
+">
+
+Cancel
+
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PART 2 END
+========================= -->
+
+<!--
+
+====================================================
+PART 3 इसी जगह से नीचे paste होगा.
+
+Part 3 में:
+• Booking data loading
+• Payment data loading
+• Driver data loading
+• Tracking page connection
+• Home page connection
+• Call / message functions
+• Support functions
+• Cancel confirmation
+• Final page closing code
+
+आएगा.
+
+अभी </body> और </html> मत लगाना.
+====================================================
+
+-->
+<script>
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+function goBack(){
+
+    history.back();
+
+}
+
+
+/* =========================================
+   HOME BUTTON
+========================================= */
+
+function goHome(){
+
+    window.location.href =
+        "home.html";
+
+}
+
+
+/* =========================================
+   TRACKING BUTTON
+========================================= */
+
+function openTracking(){
+
+    /*
+       अगर आपकी tracking file का नाम
+       अलग है तो नीचे नाम बदल देना।
+    */
+
+    window.location.href =
+        "tracking.html";
+
+}
+
+
+/* =========================================
+   CALL DRIVER
+========================================= */
+
+function callDriver(){
+
+    const phone =
+        localStorage.getItem(
+            "driverPhone"
+        );
+
+
+    if(phone){
+
+        window.location.href =
+            "tel:" + phone;
+
+        return;
+
+    }
+
+
+    alert(
+        "Driver contact will be available " +
+        "after driver assignment."
+    );
+
+}
+
+
+/* =========================================
+   MESSAGE DRIVER
+========================================= */
+
+function messageDriver(){
+
+    const phone =
+        localStorage.getItem(
+            "driverPhone"
+        );
+
+
+    if(phone){
+
+        window.location.href =
+            "sms:" + phone;
+
+        return;
+
+    }
+
+
+    alert(
+        "Driver messaging will be available " +
+        "after driver assignment."
+    );
+
+}
+
+
+/* =========================================
+   SUPPORT
+========================================= */
+
+function openSupport(){
+
+    alert(
+        "TransportPro Help Center\n\n" +
+        "Frontend support section is ready.\n\n" +
+        "Live support will be connected " +
+        "during the backend phase."
+    );
+
+}
+
+
+function callSupport(){
+
+    alert(
+        "Customer Support\n\n" +
+        "Support calling will be connected " +
+        "during the backend phase."
+    );
+
+}
+
+
+/* =========================================
+   CANCEL BOOKING
+========================================= */
+
+function cancelBooking(){
+
+    const answer =
+        confirm(
+            "Are you sure you want to " +
+            "cancel this booking?"
+        );
+
+
+    if(!answer){
+
+        return;
+
+    }
+
+
+    const reason =
+        prompt(
+            "Please enter cancellation reason:"
+        );
+
+
+    if(
+        reason === null
+    ){
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "bookingStatus",
+        "cancellation-requested"
+    );
+
+
+    localStorage.setItem(
+        "cancellationReason",
+        reason
+    );
+
+
+    alert(
+        "Cancellation request submitted.\n\n" +
+        "Current frontend status:\n" +
+        "Cancellation Requested"
+    );
+
+
+    const statusElements =
+        document.querySelectorAll(
+            ".bookingStatus"
+        );
+
+
+    statusElements.forEach(
+        function(item){
+
+            item.textContent =
+                "Cancellation Requested";
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   LOAD BOOKING DATA
+========================================= */
+
+function loadBookingData(){
+
+    const bookingId =
+        localStorage.getItem(
+            "bookingId"
+        ) ||
+        "TP00000000";
+
+
+    const amount =
+        Number(
+            localStorage.getItem(
+                "paymentAmount"
+            ) ||
+            localStorage.getItem(
+                "totalFare"
+            ) ||
+            1890
+        );
+
+
+    const transactionId =
+        localStorage.getItem(
+            "transactionId"
+        ) ||
+        "TXN000000000";
+
+
+    const paymentMethod =
+        localStorage.getItem(
+            "paymentMethod"
+        ) ||
+        "upi";
+
+
+    /* =========================
+       BOOKING ID
+    ========================= */
+
+    if(
+        document.getElementById(
+            "bookingId"
+        )
+    ){
+
+        document.getElementById(
+            "bookingId"
+        ).textContent =
+            bookingId;
+
+    }
+
+
+    /* =========================
+       AMOUNT
+    ========================= */
+
+    if(
+        document.getElementById(
+            "paidAmount"
+        )
+    ){
+
+        document.getElementById(
+            "paidAmount"
+        ).textContent =
+            "₹" +
+            amount.toLocaleString(
+                "en-IN"
+            );
+
+    }
+
+
+    /* =========================
+       TRANSACTION
+    ========================= */
+
+    if(
+        document.getElementById(
+            "transactionId"
+        )
+    ){
+
+        document.getElementById(
+            "transactionId"
+        ).textContent =
+            transactionId;
+
+    }
+
+
+    /* =========================
+       PAYMENT METHOD
+    ========================= */
+
+    if(
+        document.getElementById(
+            "paymentMethod"
+        )
+    ){
+
+        let methodText =
+            "UPI";
+
+
+        if(
+            paymentMethod ===
+            "gpay"
+        ){
+
+            methodText =
+                "Google Pay";
+
+        }
+
+
+        if(
+            paymentMethod ===
+            "paytm"
+        ){
+
+            methodText =
+                "Paytm";
+
+        }
+
+
+        if(
+            paymentMethod ===
+            "qr"
+        ){
+
+            methodText =
+                "UPI QR";
+
+        }
+
+
+        document.getElementById(
+            "paymentMethod"
+        ).textContent =
+            methodText;
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD ROUTE DATA
+========================================= */
+
+function loadRouteData(){
+
+    const pickup =
+        localStorage.getItem(
+            "pickupLocation"
+        );
+
+
+    const destination =
+        localStorage.getItem(
+            "destinationLocation"
+        );
+
+
+    const pickupAddress =
+        localStorage.getItem(
+            "pickupAddress"
+        );
+
+
+    const destinationAddress =
+        localStorage.getItem(
+            "destinationAddress"
+        );
+
+
+    if(
+        pickup &&
+        document.getElementById(
+            "pickupLocation"
+        )
+    ){
+
+        document.getElementById(
+            "pickupLocation"
+        ).textContent =
+            pickup;
+
+    }
+
+
+    if(
+        destination &&
+        document.getElementById(
+            "destinationLocation"
+        )
+    ){
+
+        document.getElementById(
+            "destinationLocation"
+        ).textContent =
+            destination;
+
+    }
+
+
+    if(
+        pickupAddress &&
+        document.getElementById(
+            "pickupAddress"
+        )
+    ){
+
+        document.getElementById(
+            "pickupAddress"
+        ).textContent =
+            pickupAddress;
+
+    }
+
+
+    if(
+        destinationAddress &&
+        document.getElementById(
+            "destinationAddress"
+        )
+    ){
+
+        document.getElementById(
+            "destinationAddress"
+        ).textContent =
+            destinationAddress;
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD TRIP DATA
+========================================= */
+
+function loadTripData(){
+
+    const goods =
+        localStorage.getItem(
+            "goodsType"
+        );
+
+
+    const weight =
+        localStorage.getItem(
+            "goodsWeight"
+        );
+
+
+    const pickupDate =
+        localStorage.getItem(
+            "pickupDate"
+        );
+
+
+    const pickupTime =
+        localStorage.getItem(
+            "pickupTime"
+        );
+
+
+    if(
+        goods &&
+        document.getElementById(
+            "goodsType"
+        )
+    ){
+
+        document.getElementById(
+            "goodsType"
+        ).textContent =
+            goods;
+
+    }
+
+
+    if(
+        weight &&
+        document.getElementById(
+            "goodsWeight"
+        )
+    ){
+
+        document.getElementById(
+            "goodsWeight"
+        ).textContent =
+            weight;
+
+    }
+
+
+    if(
+        pickupDate &&
+        document.getElementById(
+            "pickupDate"
+        )
+    ){
+
+        document.getElementById(
+            "pickupDate"
+        ).textContent =
+            pickupDate;
+
+    }
+
+
+    if(
+        pickupTime &&
+        document.getElementById(
+            "pickupTime"
+        )
+    ){
+
+        document.getElementById(
+            "pickupTime"
+        ).textContent =
+            pickupTime;
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD DRIVER DATA
+========================================= */
+
+function loadDriverData(){
+
+    const driverName =
+        localStorage.getItem(
+            "driverName"
+        );
+
+
+    const driverPhone =
+        localStorage.getItem(
+            "driverPhone"
+        );
+
+
+    const truckName =
+        localStorage.getItem(
+            "truckName"
+        );
+
+
+    const truckNumber =
+        localStorage.getItem(
+            "truckNumber"
+        );
+
+
+    const truckType =
+        localStorage.getItem(
+            "truckType"
+        );
+
+
+    if(
+        driverName &&
+        document.getElementById(
+            "driverName"
+        )
+    ){
+
+        document.getElementById(
+            "driverName"
+        ).textContent =
+            driverName;
+
+    }
+
+
+    if(
+        truckName &&
+        document.getElementById(
+            "truckName"
+        )
+    ){
+
+        document.getElementById(
+            "truckName"
+        ).textContent =
+            truckName;
+
+    }
+
+
+    if(
+        truckNumber &&
+        document.getElementById(
+            "truckNumber"
+        )
+    ){
+
+        document.getElementById(
+            "truckNumber"
+        ).textContent =
+            truckNumber;
+
+    }
+
+
+    if(
+        truckType &&
+        document.getElementById(
+            "truckType"
+        )
+    ){
+
+        document.getElementById(
+            "truckType"
+        ).textContent =
+            truckType;
+
+    }
+
+
+    /*
+       Phone number को page पर directly
+       show नहीं कर रहे हैं.
+       Call button localStorage से लेगा.
+    */
+
+    if(driverPhone){
+
+        localStorage.setItem(
+            "driverPhone",
+            driverPhone
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD CUSTOMER DATA
+========================================= */
+
+function loadCustomerData(){
+
+    const customerName =
+        localStorage.getItem(
+            "customerName"
+        );
+
+
+    const customerPhone =
+        localStorage.getItem(
+            "customerPhone"
+        );
+
+
+    if(
+        customerName &&
+        document.getElementById(
+            "customerName"
+        )
+    ){
+
+        document.getElementById(
+            "customerName"
+        ).textContent =
+            customerName;
+
+    }
+
+
+    if(
+        customerPhone &&
+        document.getElementById(
+            "customerPhone"
+        )
+    ){
+
+        /*
+           Mobile number को partially hide
+           किया गया है.
+        */
+
+        const phone =
+            String(
+                customerPhone
+            );
+
+
+        if(
+            phone.length >= 4
+        ){
+
+            document.getElementById(
+                "customerPhone"
+            ).textContent =
+                "******" +
+                phone.slice(-4);
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD BOOKING STATUS
+========================================= */
+
+function loadBookingStatus(){
+
+    const status =
+        localStorage.getItem(
+            "bookingStatus"
+        );
+
+
+    if(
+        status ===
+        "cancellation-requested"
+    ){
+
+        document
+        .querySelectorAll(
+            ".pending"
+        )
+        .forEach(
+            function(item){
+
+                item.textContent =
+                    "Cancellation Requested";
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE DEMO DATA
+========================================= */
+
+function createDemoBookingData(){
+
+    /*
+       ये सिर्फ frontend testing के लिए
+       default data है.
+
+       बाद में real booking page से
+       automatically data आएगा.
+    */
+
+
+    if(
+        !localStorage.getItem(
+            "bookingId"
+        )
+    ){
+
+        localStorage.setItem(
+            "bookingId",
+            "TP" +
+            Date.now()
+            .toString()
+            .slice(-8)
+        );
+
+    }
+
+
+    if(
+        !localStorage.getItem(
+            "paymentAmount"
+        )
+    ){
+
+        localStorage.setItem(
+            "paymentAmount",
+            "1890"
+        );
+
+    }
+
+
+    if(
+        !localStorage.getItem(
+            "transactionId"
+        )
+    ){
+
+        localStorage.setItem(
+            "transactionId",
+            "TXN" +
+            Date.now()
+            .toString()
+            .slice(-10)
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   PAGE START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        createDemoBookingData();
+
+        loadBookingData();
+
+        loadRouteData();
+
+        loadTripData();
+
+        loadDriverData();
+
+        loadCustomerData();
+
+        loadBookingStatus();
+
+    }
+);
+
+</script>
+
+
+<!-- =========================
+     END OF FILE
+========================= -->
+
+</body>
+
+</html>

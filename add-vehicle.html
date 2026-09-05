@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Add Vehicle - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.container{
+    width:100%;
+    max-width:700px;
+
+    margin:auto;
+
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   FORM CARD
+===================================== */
+
+.form-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:18px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:16px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   PROGRESS
+===================================== */
+
+.progress-box{
+    display:flex;
+    align-items:center;
+
+    width:100%;
+
+    margin-bottom:22px;
+
+    padding:10px;
+
+    background:#f8fafc;
+
+    border:1px solid #e8edf3;
+
+    border-radius:10px;
+}
+
+.progress-step{
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+
+    color:#98a2b3;
+
+    font-size:8px;
+
+    white-space:nowrap;
+}
+
+.progress-step span{
+    width:25px;
+    height:25px;
+
+    border-radius:50%;
+
+    background:#e5e7eb;
+    color:#667085;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:9px;
+    font-weight:bold;
+}
+
+.progress-step.active{
+    color:#1769e0;
+
+    font-weight:bold;
+}
+
+.progress-step.active span{
+    background:#1769e0;
+    color:#fff;
+}
+
+.progress-line{
+    flex:1;
+
+    height:1px;
+
+    background:#dbe2ea;
+
+    margin:0 8px;
+}
+
+
+/* =====================================
+   FORM TITLE
+===================================== */
+
+form h2{
+    font-size:15px;
+
+    margin-bottom:15px;
+
+    color:#172033;
+}
+
+
+/* =====================================
+   FORM GROUP
+===================================== */
+
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
+    display:block;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    color:#344054;
+
+    margin-bottom:6px;
+}
+
+.form-group label span{
+    color:#d92d20;
+}
+
+
+/* =====================================
+   INPUT + SELECT
+===================================== */
+
+.form-group input,
+.form-group select{
+    width:100%;
+
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    color:#172033;
+
+    padding:0 12px;
+
+    outline:none;
+
+    font-size:11px;
+}
+
+.form-group input::placeholder{
+    color:#98a2b3;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   CHECKBOX
+===================================== */
+
+.check-row{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+    margin:17px 0;
+
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+
+    cursor:pointer;
+}
+
+.check-row input{
+    width:16px;
+    height:16px;
+
+    margin-top:0;
+
+    accent-color:#1769e0;
+
+    flex-shrink:0;
+}
+
+
+/* =====================================
+   FORM ACTIONS
+===================================== */
+
+.form-actions{
+    display:flex;
+
+    gap:9px;
+
+    padding-top:5px;
+}
+
+.cancel-btn,
+.save-btn{
+    height:44px;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.cancel-btn{
+    flex:1;
+
+    background:#fff;
+
+    border:1px solid #d7dee8;
+
+    color:#344054;
+}
+
+.save-btn{
+    flex:2;
+
+    background:#1769e0;
+
+    border:1px solid #1769e0;
+
+    color:#fff;
+}
+
+.cancel-btn:active,
+.save-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   VALIDATION
+===================================== */
+
+.form-group input.invalid,
+.form-group select.invalid{
+    border-color:#d92d20;
+
+    background:#fff8f7;
+}
+
+.error-message{
+    color:#d92d20;
+
+    font-size:8px;
+
+    margin-top:4px;
+}
+
+
+/* =====================================
+   SUCCESS MESSAGE
+===================================== */
+
+.success-box{
+    display:none;
+
+    text-align:center;
+
+    padding:25px 15px;
+
+    border:1px solid #b7e4c7;
+
+    background:#f0fff4;
+
+    border-radius:11px;
+
+    margin-top:10px;
+}
+
+.success-box.show{
+    display:block;
+}
+
+.success-icon{
+    font-size:38px;
+
+    margin-bottom:8px;
+}
+
+.success-box strong{
+    display:block;
+
+    color:#137333;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+.success-box p{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .top-header{
+        height:58px;
+    }
+
+    .container{
+        padding:10px;
+    }
+
+    .form-card{
+        padding:13px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .progress-box{
+        padding:8px 5px;
+    }
+
+    .progress-step{
+        flex-direction:column;
+
+        gap:3px;
+
+        text-align:center;
+
+        font-size:7px;
+    }
+
+    .progress-step span{
+        width:23px;
+        height:23px;
+    }
+
+    .progress-line{
+        margin:0 4px;
+    }
+
+    .form-group input,
+    .form-group select{
+        height:43px;
+        font-size:11px;
+    }
+
+    .form-actions{
+        position:sticky;
+        bottom:0;
+
+        background:#fff;
+
+        padding:10px 0 2px;
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .progress-step{
+        font-size:6px;
+    }
+
+    .progress-step span{
+        width:21px;
+        height:21px;
+        font-size:8px;
+    }
+
+    .page-heading h1{
+        font-size:16px;
+    }
+
+    .form-card{
+        padding:11px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Add Vehicle
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="form-card">
+
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🚛
+            </div>
+
+            <div>
+
+                <h1>
+                    Add Vehicle
+                </h1>
+
+                <p>
+                    Apne fleet mein naya vehicle
+                    register karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROGRESS -->
+
+        <div class="progress-box">
+
+            <div class="progress-step active">
+                <span>1</span>
+                Basic Details
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <span>2</span>
+                Documents
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <span>3</span>
+                Complete
+            </div>
+
+        </div>
+
+
+
+        <!-- VEHICLE FORM -->
+
+        <form
+            id="vehicleForm"
+            onsubmit="saveVehicle(event)">
+
+
+            <h2>
+                Vehicle Information
+            </h2>
+
+
+            <!-- REGISTRATION -->
+
+            <div class="form-group">
+
+                <label>
+                    Registration Number
+                    <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="vehicleNumber"
+                    placeholder="e.g. DL 01 AB 1234"
+                    required>
+
+            </div>
+
+
+            <!-- VEHICLE TYPE -->
+
+            <div class="form-group">
+
+                <label>
+                    Vehicle Type
+                    <span>*</span>
+                </label>
+
+                <select
+                    id="vehicleType"
+                    required>
+
+                    <option value="">
+                        Select Vehicle Type
+                    </option>
+
+                    <option>
+                        Mini Truck
+                    </option>
+
+                    <option>
+                        Pickup
+                    </option>
+
+                    <option>
+                        14 FT Truck
+                    </option>
+
+                    <option>
+                        17 FT Truck
+                    </option>
+
+                    <option>
+                        20 FT Truck
+                    </option>
+
+                    <option>
+                        22 FT Truck
+                    </option>
+
+                    <option>
+                        32 FT Container
+                    </option>
+
+                    <option>
+                        Trailer
+                    </option>
+
+                    <option>
+                        Tanker
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- MODEL -->
+
+            <div class="form-group">
+
+                <label>
+                    Vehicle Model
+                    <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="vehicleModel"
+                    placeholder="e.g. Tata Prima"
+                    required>
+
+            </div>
+
+
+            <!-- YEAR -->
+
+            <div class="form-group">
+
+                <label>
+                    Manufacturing Year
+                    <span>*</span>
+                </label>
+
+                <input
+                    type="number"
+                    id="vehicleYear"
+                    placeholder="e.g. 2024"
+                    min="1950"
+                    max="2030"
+                    required>
+
+            </div>
+
+
+            <!-- CAPACITY -->
+
+            <div class="form-group">
+
+                <label>
+                    Load Capacity
+                    <span>*</span>
+                </label>
+
+                <select
+                    id="vehicleCapacity"
+                    required>
+
+                    <option value="">
+                        Select Capacity
+                    </option>
+
+                    <option>
+                        1 Ton
+                    </option>
+
+                    <option>
+                        2 Ton
+                    </option>
+
+                    <option>
+                        4 Ton
+                    </option>
+
+                    <option>
+                        7 Ton
+                    </option>
+
+                    <option>
+                        9 Ton
+                    </option>
+
+                    <option>
+                        12 Ton
+                    </option>
+
+                    <option>
+                        16 Ton
+                    </option>
+
+                    <option>
+                        20 Ton
+                    </option>
+
+                    <option>
+                        25 Ton
+                    </option>
+
+                    <option>
+                        30 Ton
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DRIVER -->
+
+            <div class="form-group">
+
+                <label>
+                    Driver Name
+                    <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="driverName"
+                    placeholder="Enter driver name"
+                    required>
+
+            </div>
+
+
+            <!-- OPTIONAL MOBILE -->
+
+            <div class="form-group">
+
+                <label>
+                    Driver Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="driverMobile"
+                    placeholder="10 digit mobile number"
+                    maxlength="10">
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    Vehicle Status
+                </label>
+
+                <select
+                    id="vehicleStatus">
+
+                    <option value="Available">
+                        Available
+                    </option>
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Maintenance">
+                        Maintenance
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TERMS -->
+
+            <label class="check-row">
+
+                <input
+                    type="checkbox"
+                    id="vehicleConfirm"
+                    required>
+
+                <span>
+                    I confirm that the vehicle
+                    information entered above is correct.
+                </span>
+
+            </label>
+
+
+            <!-- BUTTONS -->
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="goBack()">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    🚛 Save Vehicle
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   ADD VEHICLE - JAVASCRIPT
+===================================== */
+
+
+/* =====================================
+   SAVE VEHICLE
+===================================== */
+
+function saveVehicle(event){
+
+    event.preventDefault();
+
+
+    /* GET VALUES */
+
+    const number =
+        document
+        .getElementById("vehicleNumber")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    const type =
+        document
+        .getElementById("vehicleType")
+        .value;
+
+
+    const model =
+        document
+        .getElementById("vehicleModel")
+        .value
+        .trim();
+
+
+    const year =
+        document
+        .getElementById("vehicleYear")
+        .value;
+
+
+    const capacity =
+        document
+        .getElementById("vehicleCapacity")
+        .value;
+
+
+    const driver =
+        document
+        .getElementById("driverName")
+        .value
+        .trim();
+
+
+    const driverMobile =
+        document
+        .getElementById("driverMobile")
+        .value
+        .trim();
+
+
+    const status =
+        document
+        .getElementById("vehicleStatus")
+        .value;
+
+
+    /* =================================
+       VALIDATION
+    ================================= */
+
+    if(number === ""){
+
+        alert(
+            "⚠️ Vehicle registration number enter karein."
+        );
+
+        document
+        .getElementById("vehicleNumber")
+        .focus();
+
+        return;
+    }
+
+
+    if(type === ""){
+
+        alert(
+            "⚠️ Vehicle type select karein."
+        );
+
+        return;
+    }
+
+
+    if(model === ""){
+
+        alert(
+            "⚠️ Vehicle model enter karein."
+        );
+
+        return;
+    }
+
+
+    if(year === ""){
+
+        alert(
+            "⚠️ Manufacturing year enter karein."
+        );
+
+        return;
+    }
+
+
+    if(capacity === ""){
+
+        alert(
+            "⚠️ Vehicle capacity select karein."
+        );
+
+        return;
+    }
+
+
+    if(driver === ""){
+
+        alert(
+            "⚠️ Driver name enter karein."
+        );
+
+        return;
+    }
+
+
+    /* =================================
+       MOBILE VALIDATION
+    ================================= */
+
+    if(
+        driverMobile !== "" &&
+        !/^[0-9]{10}$/.test(driverMobile)
+    ){
+
+        alert(
+            "⚠️ Driver mobile number 10 digits ka hona chahiye."
+        );
+
+        document
+        .getElementById("driverMobile")
+        .focus();
+
+        return;
+    }
+
+
+    /* =================================
+       LOAD EXISTING VEHICLES
+    ================================= */
+
+    let vehicles = [];
+
+
+    const savedVehicles =
+        localStorage.getItem(
+            "tp_vehicles"
+        );
+
+
+    if(savedVehicles){
+
+        try{
+
+            const parsed =
+                JSON.parse(savedVehicles);
+
+
+            if(Array.isArray(parsed)){
+
+                vehicles =
+                    parsed;
+
+            }
+
+        }
+        catch(error){
+
+            console.log(
+                "Vehicle data error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =================================
+       DUPLICATE CHECK
+    ================================= */
+
+    const alreadyExists =
+        vehicles.some(
+            vehicle =>
+                String(
+                    vehicle.number
+                )
+                .toUpperCase()
+                === number
+        );
+
+
+    if(alreadyExists){
+
+        alert(
+
+            "⚠️ Ye vehicle registration number\n" +
+
+            number +
+
+            "\n\npehle se registered hai."
+
+        );
+
+        return;
+    }
+
+
+    /* =================================
+       CREATE NEW VEHICLE
+    ================================= */
+
+    const newVehicle = {
+
+        id:
+            "VH" +
+            Date.now()
+            .toString()
+            .slice(-7),
+
+        number:
+            number,
+
+        type:
+            type,
+
+        model:
+            model,
+
+        year:
+            year,
+
+        capacity:
+            capacity,
+
+        driver:
+            driver,
+
+        driverMobile:
+            driverMobile,
+
+        status:
+            status,
+
+        addedOn:
+            new Date()
+            .toLocaleString()
+
+    };
+
+
+    /* =================================
+       ADD TO ARRAY
+    ================================= */
+
+    vehicles.push(
+        newVehicle
+    );
+
+
+    /* =================================
+       SAVE TO LOCAL STORAGE
+    ================================= */
+
+    localStorage.setItem(
+        "tp_vehicles",
+        JSON.stringify(
+            vehicles
+        )
+    );
+
+
+    /* =================================
+       SUCCESS
+    ================================= */
+
+    alert(
+
+        "✅ Vehicle Successfully Added!\n\n" +
+
+        "Vehicle No: " +
+        number +
+
+        "\nVehicle ID: " +
+        newVehicle.id
+
+    );
+
+
+    /* =================================
+       GO TO MY VEHICLES
+    ================================= */
+
+    window.location.href =
+        "my-vehicles.html";
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "my-vehicles.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   INPUT - UPPERCASE
+===================================== */
+
+const vehicleNumberInput =
+    document.getElementById(
+        "vehicleNumber"
+    );
+
+
+if(vehicleNumberInput){
+
+    vehicleNumberInput.addEventListener(
+        "input",
+        function(){
+
+            this.value =
+                this.value
+                .toUpperCase();
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   DRIVER MOBILE ONLY NUMBERS
+===================================== */
+
+const driverMobileInput =
+    document.getElementById(
+        "driverMobile"
+    );
+
+
+if(driverMobileInput){
+
+    driverMobileInput.addEventListener(
+        "input",
+        function(){
+
+            this.value =
+                this.value
+                .replace(
+                    /[^0-9]/g,
+                    ""
+                )
+                .slice(0,10);
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   YEAR VALIDATION
+===================================== */
+
+const yearInput =
+    document.getElementById(
+        "vehicleYear"
+    );
+
+
+if(yearInput){
+
+    yearInput.addEventListener(
+        "input",
+        function(){
+
+            if(
+                this.value.length > 4
+            ){
+
+                this.value =
+                    this.value.slice(
+                        0,
+                        4
+                    );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        console.log(
+            "TransportPro Add Vehicle loaded successfully."
+        );
+
+    }
+);
+</script>
+
+
+</body>
+
+</html>

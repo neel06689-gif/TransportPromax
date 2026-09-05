@@ -1,0 +1,3697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#07111f">
+
+<title>Professional Registration | TransportPro</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:950px;
+    min-height:64px;
+    margin:auto;
+
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:15px;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+
+    color:#94a3b8;
+    font-size:8px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    max-width:950px;
+    margin:auto;
+
+    padding:18px 14px 40px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progressBox{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-bottom:14px;
+
+    box-shadow:0 4px 14px rgba(16,24,40,.04);
+}
+
+.progressTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:9px;
+}
+
+.progressTop strong{
+    font-size:8px;
+}
+
+.progressTop span{
+    color:#667085;
+    font-size:7px;
+}
+
+.progressTrack{
+    height:6px;
+
+    background:#eaecf0;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.progressFill{
+    width:33.33%;
+    height:100%;
+
+    background:#2563eb;
+
+    border-radius:10px;
+
+    transition:width .3s ease;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:#07111f;
+    color:#fff;
+
+    border-radius:19px;
+
+    padding:19px 16px;
+
+    margin-bottom:14px;
+}
+
+.heroIcon{
+    width:46px;
+    height:46px;
+
+    border-radius:13px;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+    margin-bottom:11px;
+}
+
+.hero h1{
+    font-size:21px;
+    margin-bottom:6px;
+}
+
+.hero p{
+    color:#cbd5e1;
+
+    font-size:8px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   ROLE CARD
+========================= */
+
+.roleCard{
+    background:#eff6ff;
+
+    border:1px solid #bfdbfe;
+
+    border-radius:15px;
+
+    padding:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:14px;
+}
+
+.roleIcon{
+    width:42px;
+    height:42px;
+
+    border-radius:11px;
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.roleText{
+    flex:1;
+}
+
+.roleText span{
+    display:block;
+
+    color:#475467;
+
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.roleText strong{
+    display:block;
+
+    color:#175cd3;
+
+    font-size:10px;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.formCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:17px;
+
+    padding:15px;
+
+    margin-bottom:14px;
+
+    box-shadow:0 4px 15px rgba(16,24,40,.04);
+}
+
+.formTitle{
+    margin-bottom:13px;
+}
+
+.formTitle h2{
+    font-size:14px;
+
+    margin-bottom:4px;
+}
+
+.formTitle p{
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   FORM GRID
+========================= */
+
+.formGrid{
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:11px;
+}
+
+.formGroup{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.formGroup label{
+    font-size:8px;
+
+    font-weight:700;
+
+    color:#344054;
+}
+
+.required{
+    color:#d92d20;
+}
+
+.formGroup input,
+.formGroup select{
+    width:100%;
+
+    height:43px;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    padding:0 11px;
+
+    background:#fff;
+
+    color:#101828;
+
+    font-size:8px;
+}
+
+.formGroup input:focus,
+.formGroup select:focus{
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.10);
+}
+
+.formHint{
+    color:#98a2b3;
+
+    font-size:6px;
+
+    line-height:1.4;
+}
+
+
+/* =========================
+   PHONE INPUT
+========================= */
+
+.phoneBox{
+    display:flex;
+
+    gap:7px;
+}
+
+.countryCode{
+    width:65px !important;
+
+    flex-shrink:0;
+
+    text-align:center;
+
+    padding:0 5px !important;
+}
+
+.phoneBox input{
+    flex:1;
+}
+
+
+/* =========================
+   GENDER
+========================= */
+
+.radioGroup{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+}
+
+.radioOption{
+    position:relative;
+}
+
+.radioOption input{
+    position:absolute;
+
+    opacity:0;
+}
+
+.radioOption label{
+    height:40px;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:9px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:7px;
+
+    cursor:pointer;
+
+    color:#475467;
+}
+
+.radioOption input:checked + label{
+    border-color:#2563eb;
+
+    background:#eff6ff;
+
+    color:#175cd3;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   ADDRESS
+========================= */
+
+textarea{
+    width:100%;
+
+    min-height:75px;
+
+    resize:vertical;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    padding:10px;
+
+    font-size:8px;
+
+    color:#101828;
+}
+
+textarea:focus{
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.10);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttonRow{
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:9px;
+
+    margin-top:14px;
+}
+
+.primaryBtn{
+    height:46px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+.primaryBtn:active{
+    transform:scale(.98);
+}
+
+.secondaryBtn{
+    height:44px;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:11px;
+
+    background:#fff;
+
+    color:#344054;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   SECURITY NOTE
+========================= */
+
+.securityNote{
+    background:#f8fafc;
+
+    border:1px solid #eaecf0;
+
+    border-radius:13px;
+
+    padding:11px;
+
+    display:flex;
+
+    gap:9px;
+
+    align-items:flex-start;
+
+    margin-top:13px;
+}
+
+.securityIcon{
+    font-size:15px;
+}
+
+.securityText{
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.6;
+}
+
+.securityText strong{
+    color:#344054;
+
+    display:block;
+
+    margin-bottom:3px;
+
+    font-size:8px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(min-width:600px){
+
+    .formGrid{
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+    .fullWidth{
+        grid-column:1 / -1;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="header">
+
+
+<button
+    class="backBtn"
+    onclick="goBack()">
+
+    ←
+
+</button>
+
+
+<div class="headerTitle">
+
+<strong>
+    Professional Registration
+</strong>
+
+<small>
+    Create your TransportPro professional profile
+</small>
+
+</div>
+
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<div class="progressBox">
+
+<div class="progressTop">
+
+<strong>
+    Registration Progress
+</strong>
+
+<span>
+    Step 1 of 3
+</span>
+
+</div>
+
+
+<div class="progressTrack">
+
+<div
+    class="progressFill"
+    id="progressFill">
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<div class="heroIcon">
+    🪪
+</div>
+
+<h1>
+    Create Your Professional Profile
+</h1>
+
+<p>
+    Enter your basic information to create
+    your professional account. Your final
+    Employee/Professional ID will be generated
+    automatically by the secure backend system.
+</p>
+
+</section>
+
+
+
+<!-- =========================
+     SELECTED ROLE
+========================= -->
+
+<div class="roleCard">
+
+
+<div
+    class="roleIcon"
+    id="roleIcon">
+
+    👤
+
+</div>
+
+
+<div class="roleText">
+
+<span>
+    SELECTED PROFESSIONAL ROLE
+</span>
+
+<strong
+    id="selectedRole">
+
+    Role not selected
+
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     PERSONAL INFORMATION
+========================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Personal Information
+</h2>
+
+<p>
+    Enter your real information so your
+    professional profile can be verified later.
+</p>
+
+</div>
+
+
+<div class="formGrid">
+
+
+<!-- FULL NAME -->
+
+<div class="formGroup">
+
+<label>
+    Full Name
+    <span class="required">*</span>
+</label>
+
+<input
+    id="fullName"
+    type="text"
+    placeholder="Enter your full name"
+    autocomplete="name">
+
+</div>
+
+
+
+<!-- DATE OF BIRTH -->
+
+<div class="formGroup">
+
+<label>
+    Date of Birth
+    <span class="required">*</span>
+</label>
+
+<input
+    id="dob"
+    type="date">
+
+</div>
+
+
+
+<!-- MOBILE -->
+
+<div class="formGroup">
+
+<label>
+    Mobile Number
+    <span class="required">*</span>
+</label>
+
+
+<div class="phoneBox">
+
+<input
+    class="countryCode"
+    type="text"
+    value="+91"
+    readonly>
+
+
+<input
+    id="mobile"
+    type="tel"
+    inputmode="numeric"
+    maxlength="10"
+    placeholder="10 digit mobile number"
+    autocomplete="tel">
+
+</div>
+
+</div>
+
+
+
+<!-- EMAIL -->
+
+<div class="formGroup">
+
+<label>
+    Email Address
+</label>
+
+<input
+    id="email"
+    type="email"
+    placeholder="example@email.com"
+    autocomplete="email">
+
+</div>
+
+
+
+<!-- GENDER -->
+
+<div class="formGroup fullWidth">
+
+<label>
+    Gender
+</label>
+
+
+<div class="radioGroup">
+
+
+<div class="radioOption">
+
+<input
+    type="radio"
+    id="male"
+    name="gender"
+    value="Male">
+
+<label for="male">
+    Male
+</label>
+
+</div>
+
+
+
+<div class="radioOption">
+
+<input
+    type="radio"
+    id="female"
+    name="gender"
+    value="Female">
+
+<label for="female">
+    Female
+</label>
+
+</div>
+
+
+
+<div class="radioOption">
+
+<input
+    type="radio"
+    id="other"
+    name="gender"
+    value="Other">
+
+<label for="other">
+    Other
+</label>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ADDRESS -->
+
+<div class="formGroup fullWidth">
+
+<label>
+    Current Address
+    <span class="required">*</span>
+</label>
+
+<textarea
+    id="address"
+    placeholder="Enter your current address"></textarea>
+
+</div>
+
+
+
+<!-- CITY -->
+
+<div class="formGroup">
+
+<label>
+    City
+    <span class="required">*</span>
+</label>
+
+<input
+    id="city"
+    type="text"
+    placeholder="Enter city">
+
+</div>
+
+
+
+<!-- STATE -->
+
+<div class="formGroup">
+
+<label>
+    State
+    <span class="required">*</span>
+</label>
+
+<select id="state">
+
+<option value="">
+    Select State
+</option>
+
+<option>
+    Andhra Pradesh
+</option>
+
+<option>
+    Arunachal Pradesh
+</option>
+
+<option>
+    Assam
+</option>
+
+<option>
+    Bihar
+</option>
+
+<option>
+    Chhattisgarh
+</option>
+
+<option>
+    Goa
+</option>
+
+<option>
+    Gujarat
+</option>
+
+<option>
+    Haryana
+</option>
+
+<option>
+    Himachal Pradesh
+</option>
+
+<option>
+    Jharkhand
+</option>
+
+<option>
+    Karnataka
+</option>
+
+<option>
+    Kerala
+</option>
+
+<option>
+    Madhya Pradesh
+</option>
+
+<option>
+    Maharashtra
+</option>
+
+<option>
+    Manipur
+</option>
+
+<option>
+    Meghalaya
+</option>
+
+<option>
+    Mizoram
+</option>
+
+<option>
+    Nagaland
+</option>
+
+<option>
+    Odisha
+</option>
+
+<option>
+    Punjab
+</option>
+
+<option>
+    Rajasthan
+</option>
+
+<option>
+    Sikkim
+</option>
+
+<option>
+    Tamil Nadu
+</option>
+
+<option>
+    Telangana
+</option>
+
+<option>
+    Tripura
+</option>
+
+<option>
+    Uttar Pradesh
+</option>
+
+<option>
+    Uttarakhand
+</option>
+
+<option>
+    West Bengal
+</option>
+
+<option>
+    Delhi
+</option>
+
+<option>
+    Jammu and Kashmir
+</option>
+
+<option>
+    Ladakh
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- PINCODE -->
+
+<div class="formGroup">
+
+<label>
+    PIN Code
+    <span class="required">*</span>
+</label>
+
+<input
+    id="pincode"
+    type="tel"
+    inputmode="numeric"
+    maxlength="6"
+    placeholder="6 digit PIN code">
+
+</div>
+
+
+
+<!-- LANGUAGE -->
+
+<div class="formGroup">
+
+<label>
+    Preferred Language
+</label>
+
+<select id="language">
+
+<option value="">
+    Select Language
+</option>
+
+<option>
+    Hindi
+</option>
+
+<option>
+    English
+</option>
+
+<option>
+    Marathi
+</option>
+
+<option>
+    Gujarati
+</option>
+
+<option>
+    Punjabi
+</option>
+
+<option>
+    Bengali
+</option>
+
+<option>
+    Tamil
+</option>
+
+<option>
+    Telugu
+</option>
+
+<option>
+    Kannada
+</option>
+
+<option>
+    Malayalam
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================
+     BUTTONS
+========================= -->
+
+<div class="buttonRow">
+
+<button
+    class="primaryBtn"
+    onclick="saveStepOne()">
+
+    Save & Continue →
+
+</button>
+
+
+<button
+    class="secondaryBtn"
+    onclick="changeRole()">
+
+    ← Change Professional Role
+
+</button>
+
+</div>
+
+
+<div class="securityNote">
+
+<div class="securityIcon">
+    🔐
+</div>
+
+
+<div class="securityText">
+
+<strong>
+    Your information
+</strong>
+
+यह frontend registration form है। वास्तविक
+identity verification, secure storage और
+Employee/Professional ID generation backend
+phase में लागू किया जाएगा।
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     PART 1 END
+========================= -->
+
+<!--
+
+====================================================
+PART 2 इसी जगह से नीचे paste होगा.
+
+Part 2 में:
+• Professional/work information
+• Experience
+• Company details
+• Vehicle/business details
+• Documents section
+• Profile photo UI
+• Role-specific fields
+
+आएगा.
+
+अभी </body> और </html> मत लगाना.
+====================================================
+
+-->
+<!-- =========================
+     PART 2 : PROFESSIONAL DETAILS
+========================= -->
+
+
+<!-- =========================
+     PROFESSIONAL INFORMATION
+========================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Professional Information
+</h2>
+
+<p>
+    अपने काम, experience और business से जुड़ी
+    जानकारी दर्ज करें।
+</p>
+
+</div>
+
+
+<div class="formGrid">
+
+
+<!-- EXPERIENCE -->
+
+<div class="formGroup">
+
+<label>
+    Work Experience
+    <span class="required">*</span>
+</label>
+
+<select id="experience">
+
+<option value="">
+    Select Experience
+</option>
+
+<option>
+    Fresher
+</option>
+
+<option>
+    Less than 1 Year
+</option>
+
+<option>
+    1 - 3 Years
+</option>
+
+<option>
+    3 - 5 Years
+</option>
+
+<option>
+    5 - 10 Years
+</option>
+
+<option>
+    10+ Years
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- WORK TYPE -->
+
+<div class="formGroup">
+
+<label>
+    Work Type
+    <span class="required">*</span>
+</label>
+
+<select id="workType">
+
+<option value="">
+    Select Work Type
+</option>
+
+<option>
+    Full Time
+</option>
+
+<option>
+    Part Time
+</option>
+
+<option>
+    Contract
+</option>
+
+<option>
+    Self Employed
+</option>
+
+<option>
+    Business Owner
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- COMPANY -->
+
+<div class="formGroup">
+
+<label>
+    Company / Organization
+</label>
+
+<input
+    id="companyName"
+    type="text"
+    placeholder="Company name">
+
+</div>
+
+
+
+<!-- DESIGNATION -->
+
+<div class="formGroup">
+
+<label>
+    Current Designation
+</label>
+
+<input
+    id="designation"
+    type="text"
+    placeholder="Your designation">
+
+</div>
+
+
+
+<!-- ID PROOF -->
+
+<div class="formGroup">
+
+<label>
+    ID Proof Type
+</label>
+
+<select id="idProofType">
+
+<option value="">
+    Select ID Proof
+</option>
+
+<option>
+    Aadhaar Card
+</option>
+
+<option>
+    PAN Card
+</option>
+
+<option>
+    Driving Licence
+</option>
+
+<option>
+    Voter ID
+</option>
+
+<option>
+    Passport
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- ID NUMBER -->
+
+<div class="formGroup">
+
+<label>
+    ID Proof Number
+</label>
+
+<input
+    id="idProofNumber"
+    type="text"
+    placeholder="Enter document number">
+
+</div>
+
+
+
+<!-- ABOUT -->
+
+<div class="formGroup fullWidth">
+
+<label>
+    About Your Work
+</label>
+
+<textarea
+    id="aboutWork"
+    placeholder="अपने काम और experience के बारे में बताएं..."></textarea>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ROLE SPECIFIC INFORMATION
+========================= -->
+
+<section
+    class="formCard"
+    id="roleSpecificCard"
+>
+
+<div class="formTitle">
+
+<h2>
+    Role-Specific Information
+</h2>
+
+<p id="roleSpecificDescription">
+    आपके चुने हुए role के अनुसार अतिरिक्त
+    जानकारी यहाँ दिखाई जाएगी।
+</p>
+
+</div>
+
+
+<!-- DRIVER -->
+
+<div
+    id="driverFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Driving Licence Number
+</label>
+
+<input
+    id="drivingLicence"
+    type="text"
+    placeholder="Enter licence number">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Licence Category
+</label>
+
+<select id="licenceCategory">
+
+<option value="">
+    Select Category
+</option>
+
+<option>
+    LMV
+</option>
+
+<option>
+    HMV
+</option>
+
+<option>
+    HTV
+</option>
+
+<option>
+    Transport Vehicle
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Preferred Trip Type
+</label>
+
+<select id="tripType">
+
+<option value="">
+    Select Trip Type
+</option>
+
+<option>
+    Local
+</option>
+
+<option>
+    Interstate
+</option>
+
+<option>
+    Long Distance
+</option>
+
+<option>
+    Any Trip
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Available Status
+</label>
+
+<select id="driverAvailability">
+
+<option>
+    Available
+</option>
+
+<option>
+    Currently Working
+</option>
+
+<option>
+    Not Available
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- VEHICLE OWNER -->
+
+<div
+    id="ownerFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Total Vehicles
+</label>
+
+<input
+    id="totalVehicles"
+    type="number"
+    min="0"
+    placeholder="Number of vehicles">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Fleet Type
+</label>
+
+<select id="fleetType">
+
+<option value="">
+    Select Fleet Type
+</option>
+
+<option>
+    Mini Fleet
+</option>
+
+<option>
+    Medium Fleet
+</option>
+
+<option>
+    Large Fleet
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Vehicle Categories
+</label>
+
+<input
+    id="vehicleCategories"
+    type="text"
+    placeholder="Truck, Trailer, Pickup, Tanker...">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- TRANSPORTER -->
+
+<div
+    id="transporterFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Transport Business Name
+</label>
+
+<input
+    id="transportBusiness"
+    type="text"
+    placeholder="Business name">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Business Experience
+</label>
+
+<select id="transportExperience">
+
+<option value="">
+    Select Experience
+</option>
+
+<option>
+    Less than 1 Year
+</option>
+
+<option>
+    1 - 3 Years
+</option>
+
+<option>
+    3 - 5 Years
+</option>
+
+<option>
+    5+ Years
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Operating Routes
+</label>
+
+<input
+    id="operatingRoutes"
+    type="text"
+    placeholder="Example: Delhi - Mumbai">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- MANAGER -->
+
+<div
+    id="managerFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Department
+</label>
+
+<select id="managerDepartment">
+
+<option value="">
+    Select Department
+</option>
+
+<option>
+    Operations
+</option>
+
+<option>
+    Transport
+</option>
+
+<option>
+    Fleet
+</option>
+
+<option>
+    Sales
+</option>
+
+<option>
+    Accounts
+</option>
+
+<option>
+    HR
+</option>
+
+<option>
+    Logistics
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Team Size
+</label>
+
+<input
+    id="teamSize"
+    type="number"
+    min="0"
+    placeholder="Number of team members">
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Management Experience
+</label>
+
+<textarea
+    id="managementExperience"
+    placeholder="Management experience..."></textarea>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- DEALER -->
+
+<div
+    id="dealerFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Dealer / Business Name
+</label>
+
+<input
+    id="dealerBusiness"
+    type="text"
+    placeholder="Business name">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Goods Category
+</label>
+
+<input
+    id="goodsCategory"
+    type="text"
+    placeholder="Food, Machinery, Cement...">
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Business Location
+</label>
+
+<input
+    id="businessLocation"
+    type="text"
+    placeholder="City / Area">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- DEALER MANAGER -->
+
+<div
+    id="dealerManagerFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Dealer Company
+</label>
+
+<input
+    id="dealerCompany"
+    type="text"
+    placeholder="Company name">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Managed Staff
+</label>
+
+<input
+    id="dealerStaff"
+    type="number"
+    min="0"
+    placeholder="Staff count">
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Department / Operation
+</label>
+
+<input
+    id="dealerOperation"
+    type="text"
+    placeholder="Sales, Dispatch, Warehouse...">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- SALESMAN -->
+
+<div
+    id="salesmanFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Sales Experience
+</label>
+
+<select id="salesExperience">
+
+<option value="">
+    Select Experience
+</option>
+
+<option>
+    Fresher
+</option>
+
+<option>
+    1 - 3 Years
+</option>
+
+<option>
+    3 - 5 Years
+</option>
+
+<option>
+    5+ Years
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Sales Area
+</label>
+
+<input
+    id="salesArea"
+    type="text"
+    placeholder="City / Region">
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Sales Specialization
+</label>
+
+<input
+    id="salesSpecialization"
+    type="text"
+    placeholder="Transport, Logistics, Vehicles...">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- EMPLOYEE -->
+
+<div
+    id="employeeFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Employee Department
+</label>
+
+<select id="employeeDepartment">
+
+<option value="">
+    Select Department
+</option>
+
+<option>
+    Operations
+</option>
+
+<option>
+    Accounts
+</option>
+
+<option>
+    Sales
+</option>
+
+<option>
+    Customer Support
+</option>
+
+<option>
+    HR
+</option>
+
+<option>
+    Logistics
+</option>
+
+<option>
+    Other
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Employee Designation
+</label>
+
+<input
+    id="employeeDesignation"
+    type="text"
+    placeholder="Designation">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- FLEET MANAGER -->
+
+<div
+    id="fleetFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Fleet Size
+</label>
+
+<input
+    id="fleetSize"
+    type="number"
+    min="0"
+    placeholder="Total vehicles">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Drivers Managed
+</label>
+
+<input
+    id="driversManaged"
+    type="number"
+    min="0"
+    placeholder="Driver count">
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Fleet Operation Area
+</label>
+
+<input
+    id="fleetArea"
+    type="text"
+    placeholder="Operating region">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- MECHANIC -->
+
+<div
+    id="mechanicFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Mechanic Specialization
+</label>
+
+<input
+    id="mechanicSpecialization"
+    type="text"
+    placeholder="Engine, Brake, Electrical...">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Experience
+</label>
+
+<select id="mechanicExperience">
+
+<option value="">
+    Select Experience
+</option>
+
+<option>
+    Fresher
+</option>
+
+<option>
+    1 - 3 Years
+</option>
+
+<option>
+    3 - 5 Years
+</option>
+
+<option>
+    5+ Years
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Workshop / Service Area
+</label>
+
+<input
+    id="mechanicArea"
+    type="text"
+    placeholder="City / Area">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- WORKSHOP OWNER -->
+
+<div
+    id="workshopFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Workshop Name
+</label>
+
+<input
+    id="workshopName"
+    type="text"
+    placeholder="Workshop name">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Workshop Type
+</label>
+
+<select id="workshopType">
+
+<option value="">
+    Select Type
+</option>
+
+<option>
+    Truck Workshop
+</option>
+
+<option>
+    Multi Vehicle
+</option>
+
+<option>
+    Electrical
+</option>
+
+<option>
+    Engine Specialist
+</option>
+
+<option>
+    Full Service
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Workshop Address
+</label>
+
+<input
+    id="workshopAddress"
+    type="text"
+    placeholder="Workshop location">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- BROKER -->
+
+<div
+    id="brokerFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Broker Experience
+</label>
+
+<select id="brokerExperience">
+
+<option value="">
+    Select Experience
+</option>
+
+<option>
+    Fresher
+</option>
+
+<option>
+    1 - 3 Years
+</option>
+
+<option>
+    3 - 5 Years
+</option>
+
+<option>
+    5+ Years
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Preferred Load Type
+</label>
+
+<input
+    id="brokerLoadType"
+    type="text"
+    placeholder="General, Heavy, Container...">
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Operating Area
+</label>
+
+<input
+    id="brokerArea"
+    type="text"
+    placeholder="City / State / Route">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- GOODS SUPPLIER -->
+
+<div
+    id="supplierFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Supplier Business
+</label>
+
+<input
+    id="supplierBusiness"
+    type="text"
+    placeholder="Business name">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Goods Type
+</label>
+
+<input
+    id="supplierGoods"
+    type="text"
+    placeholder="Type of goods">
+
+</div>
+
+
+
+<div class="formGroup fullWidth">
+
+<label>
+    Shipment Area
+</label>
+
+<input
+    id="supplierArea"
+    type="text"
+    placeholder="Pickup / delivery area">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- BUSINESS -->
+
+<div
+    id="businessFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Company Name
+</label>
+
+<input
+    id="businessName"
+    type="text"
+    placeholder="Company name">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Business Type
+</label>
+
+<input
+    id="businessType"
+    type="text"
+    placeholder="Manufacturing, Trading...">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Employees
+</label>
+
+<input
+    id="businessEmployees"
+    type="number"
+    min="0"
+    placeholder="Employee count">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Vehicles
+</label>
+
+<input
+    id="businessVehicles"
+    type="number"
+    min="0"
+    placeholder="Vehicle count">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- CUSTOMER -->
+
+<div
+    id="customerFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div class="formGrid">
+
+
+<div class="formGroup">
+
+<label>
+    Customer Type
+</label>
+
+<select id="customerType">
+
+<option value="">
+    Select Type
+</option>
+
+<option>
+    Individual
+</option>
+
+<option>
+    Business
+</option>
+
+<option>
+    Company
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Main Requirement
+</label>
+
+<select id="customerRequirement">
+
+<option value="">
+    Select Requirement
+</option>
+
+<option>
+    Truck Booking
+</option>
+
+<option>
+    Goods Transport
+</option>
+
+<option>
+    Vehicle Service
+</option>
+
+<option>
+    Logistics
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ADMIN -->
+
+<div
+    id="adminFields"
+    class="roleFields"
+    style="display:none;"
+>
+
+<div
+style="
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    border-radius:11px;
+    padding:11px;
+    color:#9a3412;
+    font-size:7px;
+    line-height:1.6;
+"
+>
+
+<strong
+style="
+    display:block;
+    font-size:8px;
+    margin-bottom:4px;
+"
+>
+    🛡️ Admin Verification
+</strong>
+
+Admin account वास्तविक platform में
+सिर्फ authorized verification और backend
+approval के बाद active किया जाएगा।
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     PROFILE PHOTO
+========================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Profile Photo
+</h2>
+
+<p>
+    Professional profile के लिए अपनी photo
+    upload करें।
+</p>
+
+</div>
+
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:13px;
+"
+>
+
+<div
+id="photoPreview"
+style="
+    width:68px;
+    height:68px;
+    border-radius:18px;
+    background:#eff4ff;
+    border:1px dashed #98a2b3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    font-size:25px;
+"
+>
+    👤
+</div>
+
+
+<div style="flex:1;">
+
+<input
+    id="profilePhoto"
+    type="file"
+    accept="image/*"
+    style="
+        width:100%;
+        font-size:7px;
+    "
+    onchange="previewPhoto(event)">
+
+<div
+style="
+    color:#98a2b3;
+    font-size:6px;
+    margin-top:6px;
+"
+>
+    JPG, PNG या WEBP • Recommended square photo
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     DOCUMENT UPLOAD
+========================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<h2>
+    Professional Documents
+</h2>
+
+<p>
+    Verification के लिए documents बाद में
+    securely submit किए जा सकेंगे।
+</p>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Document Upload
+</label>
+
+<input
+    id="documentFile"
+    type="file"
+    accept=".jpg,.jpeg,.png,.pdf"
+    style="
+        width:100%;
+        font-size:7px;
+    ">
+
+<span class="formHint">
+    Frontend demo में file केवल selected दिखाई देगी।
+    वास्तविक secure document storage backend phase में होगा।
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PART 2 END
+========================= -->
+
+<!--
+
+====================================================
+PART 3 इसी जगह से नीचे paste होगा.
+
+Part 3 में:
+• Role detection
+• सभी role-specific fields show/hide
+• Photo preview
+• Form validation
+• Data save
+• Employee/Professional ID generation
+• Next step
+• Final </body>
+• Final </html>
+
+आएगा.
+
+अभी </body> और </html> मत लगाना.
+====================================================
+
+-->
+<!-- =========================
+     PART 3 : JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================================
+   ROLE CONFIGURATION
+========================================= */
+
+const roleConfig = {
+
+    "Driver": {
+        id:"driverFields",
+        icon:"👨‍✈️"
+    },
+
+    "Vehicle Owner": {
+        id:"ownerFields",
+        icon:"🚚"
+    },
+
+    "Transporter": {
+        id:"transporterFields",
+        icon:"🏢"
+    },
+
+    "Manager": {
+        id:"managerFields",
+        icon:"👨‍💼"
+    },
+
+    "Dealer": {
+        id:"dealerFields",
+        icon:"📦"
+    },
+
+    "Dealer Manager": {
+        id:"dealerManagerFields",
+        icon:"🧑‍💼"
+    },
+
+    "Salesman": {
+        id:"salesmanFields",
+        icon:"📈"
+    },
+
+    "Employee": {
+        id:"employeeFields",
+        icon:"👷"
+    },
+
+    "Fleet Manager": {
+        id:"fleetFields",
+        icon:"🚛"
+    },
+
+    "Mechanic": {
+        id:"mechanicFields",
+        icon:"🔧"
+    },
+
+    "Workshop Owner": {
+        id:"workshopFields",
+        icon:"🛠️"
+    },
+
+    "Broker": {
+        id:"brokerFields",
+        icon:"🤝"
+    },
+
+    "Goods Supplier": {
+        id:"supplierFields",
+        icon:"📦"
+    },
+
+    "Business Company": {
+        id:"businessFields",
+        icon:"🏭"
+    },
+
+    "Customer": {
+        id:"customerFields",
+        icon:"👤"
+    },
+
+    "Admin": {
+        id:"adminFields",
+        icon:"🛡️"
+    },
+
+    "Other Transport Professional": {
+        id:null,
+        icon:"➕"
+    }
+
+};
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href="home.html";
+
+    }
+
+}
+
+
+/* =========================================
+   CHANGE ROLE
+========================================= */
+
+function changeRole(){
+
+    window.location.href =
+        "transport-community.html";
+
+}
+
+
+/* =========================================
+   GET SELECTED ROLE
+========================================= */
+
+function getSelectedRole(){
+
+    return localStorage.getItem(
+        "selectedRole"
+    ) || "";
+
+}
+
+
+/* =========================================
+   SHOW ROLE FIELDS
+========================================= */
+
+function showRoleFields(role){
+
+    document
+        .querySelectorAll(".roleFields")
+        .forEach(function(field){
+
+            field.style.display="none";
+
+        });
+
+
+    const config =
+        roleConfig[role];
+
+
+    if(
+        config &&
+        config.id
+    ){
+
+        const element =
+            document.getElementById(
+                config.id
+            );
+
+
+        if(element){
+
+            element.style.display="block";
+
+        }
+
+    }
+
+
+    const roleDescription =
+        document.getElementById(
+            "roleSpecificDescription"
+        );
+
+
+    if(roleDescription){
+
+        roleDescription.textContent =
+            role
+            ? role +
+              " के अनुसार अतिरिक्त जानकारी भरें।"
+            : "कृपया professional role select करें।";
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD SELECTED ROLE
+========================================= */
+
+function loadRole(){
+
+    const role =
+        getSelectedRole();
+
+
+    const roleText =
+        document.getElementById(
+            "selectedRole"
+        );
+
+
+    const roleIcon =
+        document.getElementById(
+            "roleIcon"
+        );
+
+
+    if(role){
+
+        roleText.textContent =
+            role;
+
+
+        if(
+            roleConfig[role]
+        ){
+
+            roleIcon.textContent =
+                roleConfig[role].icon;
+
+        }
+
+
+        showRoleFields(role);
+
+    }else{
+
+        roleText.textContent =
+            "Role not selected";
+
+
+        roleIcon.textContent =
+            "👤";
+
+
+        showRoleFields("");
+
+    }
+
+}
+
+
+/* =========================================
+   INPUT RESTRICTIONS
+========================================= */
+
+document.addEventListener(
+    "input",
+    function(event){
+
+        const target =
+            event.target;
+
+
+        if(
+            target.id === "mobile"
+        ){
+
+            target.value =
+                target.value
+                    .replace(/\D/g,"")
+                    .slice(0,10);
+
+        }
+
+
+        if(
+            target.id === "pincode"
+        ){
+
+            target.value =
+                target.value
+                    .replace(/\D/g,"")
+                    .slice(0,6);
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   PHOTO PREVIEW
+========================================= */
+
+function previewPhoto(event){
+
+    const file =
+        event.target.files[0];
+
+
+    if(!file){
+
+        return;
+
+    }
+
+
+    if(
+        !file.type.startsWith("image/")
+    ){
+
+        alert(
+            "Please select a valid image file."
+        );
+
+        event.target.value="";
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e){
+
+            const preview =
+                document.getElementById(
+                    "photoPreview"
+                );
+
+
+            preview.innerHTML =
+                '<img src="' +
+                e.target.result +
+                '" style="' +
+                'width:100%;' +
+                'height:100%;' +
+                'object-fit:cover;' +
+                '">';
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =========================================
+   BASIC VALIDATION
+========================================= */
+
+function validateStepOne(){
+
+    const name =
+        document
+            .getElementById("fullName")
+            .value
+            .trim();
+
+
+    const dob =
+        document
+            .getElementById("dob")
+            .value;
+
+
+    const mobile =
+        document
+            .getElementById("mobile")
+            .value
+            .trim();
+
+
+    const address =
+        document
+            .getElementById("address")
+            .value
+            .trim();
+
+
+    const city =
+        document
+            .getElementById("city")
+            .value
+            .trim();
+
+
+    const state =
+        document
+            .getElementById("state")
+            .value;
+
+
+    const pincode =
+        document
+            .getElementById("pincode")
+            .value
+            .trim();
+
+
+    if(!name){
+
+        alert(
+            "Please enter your full name."
+        );
+
+        return false;
+
+    }
+
+
+    if(!dob){
+
+        alert(
+            "Please select your date of birth."
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        !/^[0-9]{10}$/.test(mobile)
+    ){
+
+        alert(
+            "Please enter a valid 10 digit mobile number."
+        );
+
+        return false;
+
+    }
+
+
+    if(!address){
+
+        alert(
+            "Please enter your address."
+        );
+
+        return false;
+
+    }
+
+
+    if(!city){
+
+        alert(
+            "Please enter your city."
+        );
+
+        return false;
+
+    }
+
+
+    if(!state){
+
+        alert(
+            "Please select your state."
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        !/^[0-9]{6}$/.test(pincode)
+    ){
+
+        alert(
+            "Please enter a valid 6 digit PIN code."
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================
+   SAVE STEP ONE
+========================================= */
+
+function saveStepOne(){
+
+    const role =
+        getSelectedRole();
+
+
+    if(!role){
+
+        alert(
+            "पहले Professional Role select करें।"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !validateStepOne()
+    ){
+
+        return;
+
+    }
+
+
+    const data = {
+
+        role:role,
+
+        fullName:
+            document
+            .getElementById("fullName")
+            .value
+            .trim(),
+
+        dob:
+            document
+            .getElementById("dob")
+            .value,
+
+        mobile:
+            document
+            .getElementById("mobile")
+            .value
+            .trim(),
+
+        email:
+            document
+            .getElementById("email")
+            .value
+            .trim(),
+
+        gender:
+            document.querySelector(
+                'input[name="gender"]:checked'
+            )?.value || "",
+
+        address:
+            document
+            .getElementById("address")
+            .value
+            .trim(),
+
+        city:
+            document
+            .getElementById("city")
+            .value
+            .trim(),
+
+        state:
+            document
+            .getElementById("state")
+            .value,
+
+        pincode:
+            document
+            .getElementById("pincode")
+            .value
+            .trim(),
+
+        language:
+            document
+            .getElementById("language")
+            .value,
+
+        experience:
+            document
+            .getElementById("experience")
+            .value,
+
+        workType:
+            document
+            .getElementById("workType")
+            .value,
+
+        companyName:
+            document
+            .getElementById("companyName")
+            .value
+            .trim(),
+
+        designation:
+            document
+            .getElementById("designation")
+            .value
+            .trim(),
+
+        idProofType:
+            document
+            .getElementById("idProofType")
+            .value,
+
+        idProofNumber:
+            document
+            .getElementById("idProofNumber")
+            .value
+            .trim(),
+
+        aboutWork:
+            document
+            .getElementById("aboutWork")
+            .value
+            .trim()
+
+    };
+
+
+    /*
+       Frontend demo storage.
+
+       Backend बनने के बाद यही data
+       secure database/API में जाएगा.
+    */
+
+    localStorage.setItem(
+        "professionalRegistration",
+        JSON.stringify(data)
+    );
+
+
+    localStorage.setItem(
+        "registrationStep",
+        "2"
+    );
+
+
+    updateProgress();
+
+
+    /*
+       अभी Step 2 page अगले phase में
+       बनाया जाएगा.
+    */
+
+    alert(
+        "Step 1 saved successfully! ✅\n\n" +
+        "अब Professional Details का Step 2 बनाया जाएगा."
+    );
+
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+function updateProgress(){
+
+    const step =
+        localStorage.getItem(
+            "registrationStep"
+        ) || "1";
+
+
+    const progress =
+        document.getElementById(
+            "progressFill"
+        );
+
+
+    if(!progress){
+
+        return;
+
+    }
+
+
+    if(step === "1"){
+
+        progress.style.width =
+            "33.33%";
+
+    }
+
+    else if(step === "2"){
+
+        progress.style.width =
+            "66.66%";
+
+    }
+
+    else if(step === "3"){
+
+        progress.style.width =
+            "100%";
+
+    }
+
+}
+
+
+/* =========================================
+   PREVENT ENTER SUBMIT BEHAVIOUR
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" &&
+            event.target.tagName !== "TEXTAREA"
+        ){
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   PAGE INITIALIZATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadRole();
+
+        updateProgress();
+
+    }
+);
+
+</script>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer
+style="
+    max-width:950px;
+    margin:0 auto;
+    padding:20px 14px;
+    text-align:center;
+    color:#667085;
+    font-size:7px;
+">
+
+<div
+style="
+    border-top:1px solid #e4e9f0;
+    padding-top:15px;
+">
+
+<strong
+style="
+    display:block;
+    color:#344054;
+    font-size:8px;
+    margin-bottom:5px;
+">
+    TransportPro
+</strong>
+
+<div>
+    Connected transport industry platform
+</div>
+
+<div
+style="
+    margin-top:6px;
+    color:#98a2b3;
+">
+    © 2026 TransportPro
+</div>
+
+</div>
+
+</footer>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Create Load | TransportPro</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:900px;
+    min-height:64px;
+    margin:auto;
+
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.logoBox{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+}
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:14px;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+    color:#94a3b8;
+    font-size:7px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main{
+    max-width:900px;
+    margin:auto;
+
+    padding:16px 14px 110px;
+}
+
+
+/* =========================================
+   PAGE INTRO
+========================================= */
+
+.intro{
+    background:#07111f;
+    color:#fff;
+
+    border-radius:18px;
+
+    padding:18px 16px;
+
+    margin-bottom:15px;
+}
+
+.intro small{
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.intro h1{
+    margin-top:6px;
+    font-size:20px;
+}
+
+.intro p{
+    margin-top:7px;
+
+    color:#cbd5e1;
+
+    font-size:8px;
+    line-height:1.6;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progressCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:14px;
+
+    margin-bottom:15px;
+}
+
+.progressTop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:10px;
+}
+
+.progressTop strong{
+    font-size:9px;
+}
+
+.progressTop span{
+    color:#667085;
+    font-size:7px;
+}
+
+.progressBar{
+    width:100%;
+    height:6px;
+
+    background:#eaecf0;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progressFill{
+    width:33.33%;
+    height:100%;
+
+    background:#2563eb;
+
+    border-radius:20px;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.formCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:17px;
+
+    padding:15px;
+
+    margin-bottom:14px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.formTitle{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    margin-bottom:14px;
+}
+
+.formTitleIcon{
+    width:38px;
+    height:38px;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.formTitle strong{
+    display:block;
+    font-size:11px;
+}
+
+.formTitle span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:6px;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.formGroup{
+    margin-bottom:13px;
+}
+
+.formGroup:last-child{
+    margin-bottom:0;
+}
+
+.formGroup label{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#344054;
+
+    font-size:7px;
+    font-weight:700;
+}
+
+.required{
+    color:#d92d20;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea{
+    width:100%;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:#101828;
+
+    outline:none;
+
+    padding:11px 12px;
+
+    font-size:8px;
+
+    transition:.15s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus{
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px rgba(37,99,235,.10);
+}
+
+.formGroup textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+
+/* =========================================
+   TWO COLUMN FORM
+========================================= */
+
+.twoColumn{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:10px;
+}
+
+
+/* =========================================
+   LOCATION BOX
+========================================= */
+
+.locationBox{
+    position:relative;
+}
+
+.locationBox input{
+    padding-right:42px;
+}
+
+.locationBtn{
+    position:absolute;
+
+    right:6px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:31px;
+    height:31px;
+
+    border:0;
+    border-radius:8px;
+
+    background:#eff6ff;
+
+    color:#175cd3;
+
+    font-size:15px;
+}
+
+
+/* =========================================
+   GOODS TYPE CHIPS
+========================================= */
+
+.goodsOptions{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:8px;
+}
+
+.goodsOption{
+    position:relative;
+}
+
+.goodsOption input{
+    position:absolute;
+    opacity:0;
+}
+
+.goodsOption label{
+    min-height:42px;
+
+    padding:9px;
+
+    border:1px solid #d0d5dd;
+
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+
+    gap:7px;
+
+    cursor:pointer;
+
+    color:#344054;
+
+    font-size:7px;
+    font-weight:600;
+
+    background:#fff;
+}
+
+.goodsOption input:checked + label{
+    border-color:#2563eb;
+
+    background:#eff6ff;
+
+    color:#175cd3;
+}
+
+
+/* =========================================
+   INFO BOX
+========================================= */
+
+.infoBox{
+    background:#f8fafc;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:11px;
+
+    padding:11px;
+
+    margin-top:12px;
+
+    display:flex;
+    gap:8px;
+}
+
+.infoIcon{
+    font-size:14px;
+}
+
+.infoBox p{
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.buttonRow{
+    display:flex;
+
+    gap:9px;
+
+    margin-top:14px;
+}
+
+.primaryBtn,
+.secondaryBtn{
+    min-height:45px;
+
+    border-radius:11px;
+
+    font-size:8px;
+    font-weight:700;
+
+    border:0;
+}
+
+.primaryBtn{
+    flex:1;
+
+    background:#2563eb;
+    color:#fff;
+}
+
+.secondaryBtn{
+    width:110px;
+
+    background:#fff;
+
+    color:#344054;
+
+    border:1px solid #d0d5dd;
+}
+
+.primaryBtn:active,
+.secondaryBtn:active{
+    transform:scale(.98);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:420px){
+
+    .twoColumn{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+<div class="header">
+
+<button
+class="backBtn"
+onclick="goBack()">
+    ←
+</button>
+
+<div class="logoBox">
+    📦
+</div>
+
+<div class="headerTitle">
+
+<strong>
+    Create Load
+</strong>
+
+<small>
+    TransportPro Dealer Portal
+</small>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<section class="intro">
+
+<small>
+    DEALER • LOAD POSTING
+</small>
+
+<h1>
+    Create New Load 📦
+</h1>
+
+<p>
+    अपने goods की transport requirement दर्ज करें।
+    Verified transporters आपके load के लिए offers भेज सकेंगे।
+</p>
+
+</section>
+
+
+
+<!-- =========================================
+     PROGRESS
+========================================= -->
+
+<div class="progressCard">
+
+<div class="progressTop">
+
+<strong>
+    Load Posting
+</strong>
+
+<span>
+    Step 1 of 3
+</span>
+
+</div>
+
+
+<div class="progressBar">
+
+<div class="progressFill"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     GOODS INFORMATION
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+    📦
+</div>
+
+<div>
+
+<strong>
+    Goods Information
+</strong>
+
+<span>
+    अपने सामान की basic details दें
+</span>
+
+</div>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Goods / Product Name
+    <span class="required">*</span>
+</label>
+
+<input
+id="goodsName"
+type="text"
+placeholder="जैसे: Cement, Rice, Machinery">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Goods Category
+    <span class="required">*</span>
+</label>
+
+
+<div class="goodsOptions">
+
+
+<div class="goodsOption">
+
+<input
+type="radio"
+name="goodsCategory"
+id="generalGoods"
+value="General Goods"
+checked>
+
+<label for="generalGoods">
+    📦 General Goods
+</label>
+
+</div>
+
+
+<div class="goodsOption">
+
+<input
+type="radio"
+name="goodsCategory"
+id="foodGoods"
+value="Food">
+
+<label for="foodGoods">
+    🌾 Food / Grain
+</label>
+
+</div>
+
+
+<div class="goodsOption">
+
+<input
+type="radio"
+name="goodsCategory"
+id="machinery"
+value="Machinery">
+
+<label for="machinery">
+    ⚙️ Machinery
+</label>
+
+</div>
+
+
+<div class="goodsOption">
+
+<input
+type="radio"
+name="goodsCategory"
+id="otherGoods"
+value="Other">
+
+<label for="otherGoods">
+    📦 Other
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="twoColumn">
+
+<div class="formGroup">
+
+<label>
+    Weight
+    <span class="required">*</span>
+</label>
+
+<input
+id="weight"
+type="number"
+min="0"
+placeholder="जैसे 20">
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Weight Unit
+</label>
+
+<select id="weightUnit">
+
+<option value="Ton">
+    Ton
+</option>
+
+<option value="Kg">
+    Kg
+</option>
+
+<option value="Quintal">
+    Quintal
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Package / Quantity
+</label>
+
+<input
+id="quantity"
+type="number"
+min="0"
+placeholder="जैसे 500 bags">
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Goods Description
+</label>
+
+<textarea
+id="goodsDescription"
+placeholder="Goods के बारे में additional details लिखें..."></textarea>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     LOCATION
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+    📍
+</div>
+
+<div>
+
+<strong>
+    Pickup & Destination
+</strong>
+
+<span>
+    Goods कहाँ से कहाँ जाना है?
+</span>
+
+</div>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Pickup Location
+    <span class="required">*</span>
+</label>
+
+<div class="locationBox">
+
+<input
+id="pickupLocation"
+type="text"
+placeholder="Pickup city / location">
+
+<button
+type="button"
+class="locationBtn"
+onclick="useCurrentLocation('pickupLocation')">
+    📍
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Destination
+    <span class="required">*</span>
+</label>
+
+<div class="locationBox">
+
+<input
+id="destination"
+type="text"
+placeholder="Destination city / location">
+
+<button
+type="button"
+class="locationBtn"
+onclick="useCurrentLocation('destination')">
+    📍
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="twoColumn">
+
+<div class="formGroup">
+
+<label>
+    Pickup Date
+    <span class="required">*</span>
+</label>
+
+<input
+id="pickupDate"
+type="date">
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Preferred Time
+</label>
+
+<input
+id="pickupTime"
+type="time">
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     VEHICLE REQUIREMENT
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+    🚛
+</div>
+
+<div>
+
+<strong>
+    Vehicle Requirement
+</strong>
+
+<span>
+    किस प्रकार का truck चाहिए?
+</span>
+
+</div>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Vehicle Type
+    <span class="required">*</span>
+</label>
+
+<select id="vehicleType">
+
+<option value="">
+    Select Vehicle Type
+</option>
+
+<option value="Mini Truck">
+    Mini Truck
+</option>
+
+<option value="Pickup">
+    Pickup
+</option>
+
+<option value="Tata 407">
+    Tata 407
+</option>
+
+<option value="LCV">
+    LCV
+</option>
+
+<option value="Open Truck">
+    Open Truck
+</option>
+
+<option value="Container">
+    Container
+</option>
+
+<option value="Trailer">
+    Trailer
+</option>
+
+<option value="Tanker">
+    Tanker
+</option>
+
+<option value="Refrigerated">
+    Refrigerated Truck
+</option>
+
+<option value="Any Suitable Vehicle">
+    Any Suitable Vehicle
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="twoColumn">
+
+<div class="formGroup">
+
+<label>
+    Minimum Capacity
+</label>
+
+<input
+id="minCapacity"
+type="number"
+min="0"
+placeholder="जैसे 10">
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+    Capacity Unit
+</label>
+
+<select id="capacityUnit">
+
+<option value="Ton">
+    Ton
+</option>
+
+<option value="Kg">
+    Kg
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+    Body Type
+</label>
+
+<select id="bodyType">
+
+<option value="">
+    Select Body Type
+</option>
+
+<option value="Open">
+    Open Body
+</option>
+
+<option value="Closed">
+    Closed Body
+</option>
+
+<option value="Container">
+    Container
+</option>
+
+<option value="Trailer">
+    Trailer
+</option>
+
+<option value="Any">
+    Any
+</option>
+
+</select>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     INFORMATION
+========================================= -->
+
+<div class="infoBox">
+
+<div class="infoIcon">
+    💡
+</div>
+
+<p>
+    सही pickup, destination, weight और vehicle details
+    देने से आपको बेहतर transporter offers मिलने में मदद होगी।
+</p>
+
+</div>
+
+
+
+<!-- =========================================
+     BUTTONS
+========================================= -->
+
+<div class="buttonRow">
+
+<button
+type="button"
+class="secondaryBtn"
+onclick="saveDraft()">
+    Save Draft
+</button>
+
+
+<button
+type="button"
+class="primaryBtn"
+onclick="continueToStep2()">
+    Continue →
+</button>
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================================
+   BACK
+========================================= */
+
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href =
+            "dealer-dashboard.html";
+
+    }
+
+}
+
+
+/* =========================================
+   CURRENT LOCATION
+========================================= */
+
+function useCurrentLocation(fieldId){
+
+    const field =
+        document.getElementById(fieldId);
+
+    if(!navigator.geolocation){
+
+        alert(
+            "इस device/browser में location support उपलब्ध नहीं है।"
+        );
+
+        return;
+
+    }
+
+
+    field.placeholder =
+        "Location detect हो रही है...";
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            const lat =
+                position.coords.latitude;
+
+            const lng =
+                position.coords.longitude;
+
+
+            /*
+               अभी frontend में coordinates store होंगे।
+               बाद में Google Maps / backend से
+               proper address conversion जोड़ा जाएगा।
+            */
+
+            field.value =
+                "GPS: " +
+                lat.toFixed(6) +
+                ", " +
+                lng.toFixed(6);
+
+            field.placeholder =
+                "Location selected";
+
+        },
+
+        function(){
+
+            field.placeholder =
+                "Pickup city / location";
+
+            alert(
+                "Location permission नहीं मिली। कृपया location manually डालें।"
+            );
+
+        }
+
+    );
+
+}
+
+
+/* =========================================
+   GET FORM DATA
+========================================= */
+
+function getLoadData(){
+
+    const category =
+        document.querySelector(
+            'input[name="goodsCategory"]:checked'
+        );
+
+
+    return {
+
+        goodsName:
+            document.getElementById(
+                "goodsName"
+            ).value.trim(),
+
+        goodsCategory:
+            category ?
+            category.value :
+            "",
+
+        weight:
+            document.getElementById(
+                "weight"
+            ).value,
+
+        weightUnit:
+            document.getElementById(
+                "weightUnit"
+            ).value,
+
+        quantity:
+            document.getElementById(
+                "quantity"
+            ).value,
+
+        goodsDescription:
+            document.getElementById(
+                "goodsDescription"
+            ).value.trim(),
+
+        pickupLocation:
+            document.getElementById(
+                "pickupLocation"
+            ).value.trim(),
+
+        destination:
+            document.getElementById(
+                "destination"
+            ).value.trim(),
+
+        pickupDate:
+            document.getElementById(
+                "pickupDate"
+            ).value,
+
+        pickupTime:
+            document.getElementById(
+                "pickupTime"
+            ).value,
+
+        vehicleType:
+            document.getElementById(
+                "vehicleType"
+            ).value,
+
+        minCapacity:
+            document.getElementById(
+                "minCapacity"
+            ).value,
+
+        capacityUnit:
+            document.getElementById(
+                "capacityUnit"
+            ).value,
+
+        bodyType:
+            document.getElementById(
+                "bodyType"
+            ).value
+
+    };
+
+}
+
+
+/* =========================================
+   VALIDATION
+========================================= */
+
+function validateStep1(data){
+
+    if(!data.goodsName){
+
+        alert(
+            "Goods / Product Name डालें।"
+        );
+
+        return false;
+
+    }
+
+
+    if(!data.weight){
+
+        alert(
+            "Goods का weight डालें।"
+        );
+
+        return false;
+
+    }
+
+
+    if(!data.pickupLocation){
+
+        alert(
+            "Pickup Location डालें।"
+        );
+
+        return false;
+
+    }
+
+
+    if(!data.destination){
+
+        alert(
+            "Destination डालें।"
+        );
+
+        return false;
+
+    }
+
+
+    if(!data.pickupDate){
+
+        alert(
+            "Pickup Date select करें।"
+        );
+
+        return false;
+
+    }
+
+
+    if(!data.vehicleType){
+
+        alert(
+            "Vehicle Type select करें।"
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================
+   CONTINUE
+========================================= */
+
+function continueToStep2(){
+
+    const data =
+        getLoadData();
+
+
+    if(!validateStep1(data)){
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "dealerLoadDraft",
+        JSON.stringify(data)
+    );
+
+
+    /*
+       Part 2 में इसी data को
+       आगे load posting process में use करेंगे।
+    */
+
+    window.location.href =
+        "create-load-step2.html";
+
+}
+
+
+/* =========================================
+   SAVE DRAFT
+========================================= */
+
+function saveDraft(){
+
+    const data =
+        getLoadData();
+
+
+    localStorage.setItem(
+        "dealerLoadDraft",
+        JSON.stringify(data)
+    );
+
+
+    alert(
+        "Load draft successfully save हो गया।"
+    );
+
+}
+
+
+/* =========================================
+   LOAD SAVED DRAFT
+========================================= */
+
+/* =========================================
+   LOAD SAVED DRAFT
+========================================= */
+
+function loadDraft(){
+
+    const saved =
+        localStorage.getItem("dealerLoadDraft");
+
+    if(!saved){
+        return;
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+
+        document.getElementById("goodsName").value =
+            data.goodsName || "";
+
+
+        document.getElementById("weight").value =
+            data.weight || "";
+
+
+        document.getElementById("weightUnit").value =
+            data.weightUnit || "Ton";
+
+
+        document.getElementById("quantity").value =
+            data.quantity || "";
+
+
+        document.getElementById("goodsDescription").value =
+            data.goodsDescription || "";
+
+
+        document.getElementById("pickupLocation").value =
+            data.pickupLocation || "";
+
+
+        document.getElementById("destination").value =
+            data.destination || "";
+
+
+        document.getElementById("pickupDate").value =
+            data.pickupDate || "";
+
+
+        document.getElementById("pickupTime").value =
+            data.pickupTime || "";
+
+
+        document.getElementById("vehicleType").value =
+            data.vehicleType || "";
+
+
+        document.getElementById("minCapacity").value =
+            data.minCapacity || "";
+
+
+        document.getElementById("capacityUnit").value =
+            data.capacityUnit || "Ton";
+
+
+        document.getElementById("bodyType").value =
+            data.bodyType || "";
+
+
+        /* Goods Category */
+
+        if(data.goodsCategory){
+
+            const category =
+                document.querySelector(
+                    'input[name="goodsCategory"][value="' +
+                    data.goodsCategory +
+                    '"]'
+                );
+
+            if(category){
+                category.checked = true;
+            }
+
+        }
+
+
+    }catch(error){
+
+        console.log(
+            "Saved draft load nahi hua"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   SET MINIMUM PICKUP DATE
+========================================= */
+
+function setMinimumDate(){
+
+    const today = new Date();
+
+    const year =
+        today.getFullYear();
+
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(2,"0");
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(2,"0");
+
+    const dateString =
+        year + "-" +
+        month + "-" +
+        day;
+
+
+    const pickupDate =
+        document.getElementById(
+            "pickupDate"
+        );
+
+
+    if(pickupDate){
+
+        pickupDate.min =
+            dateString;
+
+    }
+
+}
+
+
+/* =========================================
+   AUTO SAVE FORM
+========================================= */
+
+function autoSaveDraft(){
+
+    const data =
+        getLoadData();
+
+    localStorage.setItem(
+        "dealerLoadDraft",
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =========================================
+   AUTO SAVE ON INPUT
+========================================= */
+
+document.addEventListener(
+    "input",
+    function(event){
+
+        if(
+            event.target.closest(
+                "main"
+            )
+        ){
+
+            autoSaveDraft();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   AUTO SAVE ON SELECT
+========================================= */
+
+document.addEventListener(
+    "change",
+    function(event){
+
+        if(
+            event.target.closest(
+                "main"
+            )
+        ){
+
+            autoSaveDraft();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   PAGE START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        setMinimumDate();
+
+        loadDraft();
+
+    }
+);
+
+
+/* =========================================
+   PREVENT ACCIDENTAL DATA LOSS
+========================================= */
+
+window.addEventListener(
+    "beforeunload",
+    function(){
+
+        autoSaveDraft();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

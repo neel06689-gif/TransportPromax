@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TransportPro - Login</title>
+
+    <!-- CSS FILE LINK -->
+    <link rel="stylesheet" href="./login.css">
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!-- Background -->
+    <div class="bg-circle circle-one"></div>
+    <div class="bg-circle circle-two"></div>
+
+    <div class="login-card">
+
+        <!-- BRAND -->
+        <div class="brand">
+            <div class="brand-logo">🚚</div>
+
+            <div>
+                <h1>Transport<span>Pro</span></h1>
+                <p>Smart • Fast • Reliable</p>
+            </div>
+        </div>
+
+        <!-- TITLE -->
+        <div class="login-heading">
+            <h2>Welcome Back</h2>
+            <p>Login to continue your journey</p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm">
+
+            <!-- MOBILE / EMAIL -->
+            <div class="input-group">
+
+                <label for="email">Mobile Number / Email</label>
+
+                <div class="input-box">
+
+                    <span class="input-icon">👤</span>
+
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder="Enter mobile or email"
+                        autocomplete="username"
+                    >
+
+                </div>
+
+                <small id="emailError" class="error-message"></small>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+            <div class="input-group">
+
+                <label for="password">Password</label>
+
+                <div class="input-box">
+
+                    <span class="input-icon">🔒</span>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="password-toggle"
+                    >👁️</button>
+
+                </div>
+
+                <small id="passwordError" class="error-message"></small>
+
+            </div>
+
+
+            <!-- REMEMBER + FORGOT -->
+            <div class="login-options">
+
+                <label class="remember">
+
+                    <input
+                        type="checkbox"
+                        id="rememberMe"
+                    >
+
+                    <span>Remember Me</span>
+
+                </label>
+
+                <button
+                    type="button"
+                    id="forgotPassword"
+                    class="forgot-btn"
+                >
+                    Forgot Password?
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+            <button
+                type="submit"
+                id="loginButton"
+                class="login-button"
+            >
+
+                <span id="loginButtonText">
+                    Login
+                </span>
+
+                <span
+                    id="loginLoader"
+                    class="loader"
+                ></span>
+
+            </button>
+
+        </form>
+
+
+        <!-- DIVIDER -->
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+
+        <!-- OTP LOGIN -->
+        <button
+            type="button"
+            id="otpLogin"
+            class="otp-button"
+        >
+            📲 Login with OTP
+        </button>
+
+
+        <!-- REGISTER -->
+        <button
+            type="button"
+            id="registerButton"
+            class="register-button"
+        >
+            Create New Account
+        </button>
+
+
+        <!-- SECURITY -->
+        <div class="security-note">
+            🔐 Your information is protected and secure.
+        </div>
+
+
+        <!-- FOOTER -->
+        <div class="login-footer">
+            <p>© 2026 TransportPro</p>
+            <span>India's Smart Transport Platform</span>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- MESSAGE MODAL -->
+<div
+    id="messageModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <button
+            id="closeModal"
+            class="modal-close"
+            type="button"
+        >
+            ×
+        </button>
+
+        <div
+            id="modalIcon"
+            class="modal-icon"
+        >
+            ✅
+        </div>
+
+        <h3 id="modalTitle">
+            Success
+        </h3>
+
+        <p id="modalMessage">
+            Login successful.
+        </p>
+
+        <button
+            id="modalAction"
+            class="modal-action"
+            type="button"
+        >
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT FILE LINK -->
+<script src="./login.js"></script>
+
+</body>
+</html>

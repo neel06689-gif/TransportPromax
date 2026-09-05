@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Load Bids - TransportPro</title>
+
+<style>
+
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.bids-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.bid-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:14px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:18px;
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-box{
+    margin-bottom:10px;
+}
+
+.search-box input{
+    width:100%;
+
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.search-box input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   FILTER
+===================================== */
+
+.filter-row{
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-bottom:3px;
+
+    margin-bottom:13px;
+}
+
+.filter-btn{
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#172033;
+
+    border-radius:20px;
+
+    padding:8px 13px;
+
+    font-size:10px;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+
+    color:#fff;
+
+    border-color:#1769e0;
+}
+
+
+/* =====================================
+   BID LIST
+===================================== */
+
+.bid-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================
+   BID CARD
+===================================== */
+
+.bid-card{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    background:#fff;
+
+    transition:.2s;
+}
+
+.bid-card:hover{
+    box-shadow:
+        0 4px 13px rgba(16,24,40,.07);
+}
+
+
+/* =====================================
+   BID TOP
+===================================== */
+
+.bid-top{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.bid-icon{
+    width:44px;
+    height:44px;
+
+    border-radius:10px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    flex-shrink:0;
+}
+
+.bid-title{
+    flex:1;
+}
+
+.bid-title strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.bid-title small{
+    color:#667085;
+
+    font-size:8px;
+}
+
+
+/* =====================================
+   BID STATUS
+===================================== */
+
+.bid-status{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.status-pending{
+    background:#fff5df;
+
+    color:#a15c00;
+}
+
+.status-accepted{
+    background:#eaf8ef;
+
+    color:#137333;
+}
+
+.status-rejected{
+    background:#fdecec;
+
+    color:#c62828;
+}
+
+
+/* =====================================
+   ROUTE
+===================================== */
+
+.bid-route{
+    background:#f8fafc;
+
+    border-radius:9px;
+
+    padding:10px;
+
+    margin-bottom:9px;
+}
+
+.route-row{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:10px;
+}
+
+.route-dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#1769e0;
+
+    flex-shrink:0;
+}
+
+.route-line{
+    width:1px;
+    height:11px;
+
+    background:#cbd5e1;
+
+    margin-left:4px;
+
+    margin-top:-2px;
+
+    margin-bottom:-2px;
+}
+
+
+/* =====================================
+   BID DETAILS
+===================================== */
+
+.bid-details{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:10px;
+}
+
+.detail-box{
+    border:1px solid #edf0f4;
+
+    border-radius:7px;
+
+    padding:7px;
+
+    text-align:center;
+}
+
+.detail-box span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:7px;
+
+    margin-bottom:3px;
+}
+
+.detail-box strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   BID ACTIONS
+===================================== */
+
+.bid-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.bid-actions button{
+    flex:1;
+
+    height:34px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.view-bid-btn{
+    background:#1769e0;
+
+    border:0;
+
+    color:#fff;
+}
+
+.edit-bid-btn{
+    background:#fff;
+
+    border:1px solid #1769e0;
+
+    color:#1769e0;
+}
+
+.cancel-bid-btn{
+    background:#fff;
+
+    border:1px solid #e2bcbc;
+
+    color:#c62828;
+}
+
+
+/* =====================================
+   FIND LOAD BOX
+===================================== */
+
+.find-load-box{
+    background:#eef6ff;
+
+    border:1px solid #d7e8ff;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.find-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:11px;
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+}
+
+.find-content{
+    flex:1;
+}
+
+.find-content h2{
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.find-content p{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+}
+
+.find-btn{
+    border:0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    padding:10px 13px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+
+    color:#667085;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    font-size:9px;
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .bids-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .bid-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .bid-top{
+        flex-wrap:wrap;
+    }
+
+    .bid-title{
+        min-width:
+            calc(100% - 55px);
+    }
+
+    .bid-status{
+        margin-left:54px;
+
+        margin-top:-3px;
+    }
+
+    .bid-details{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .find-load-box{
+        align-items:flex-start;
+
+        flex-wrap:wrap;
+    }
+
+    .find-content{
+        min-width:
+            calc(100% - 60px);
+    }
+
+    .find-btn{
+        width:100%;
+    }
+
+}
+
+
+/* =====================================
+   END OF CSS
+===================================== */
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Load Bids
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <section class="bids-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                💰
+            </div>
+
+            <div>
+
+                <h1>
+                    Load Bids
+                </h1>
+
+                <p>
+                    Apni submitted bids dekhein,
+                    manage karein aur status track karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="bid-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Bids
+                </span>
+
+                <strong id="totalBids">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingBids">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Accepted
+                </span>
+
+                <strong id="acceptedBids">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Rejected
+                </span>
+
+                <strong id="rejectedBids">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="bidSearch"
+                placeholder="Search load, city or Load ID..."
+                oninput="searchBids()">
+
+        </div>
+
+
+
+        <!-- FILTER -->
+
+        <div class="filter-row">
+
+
+            <button
+                class="filter-btn active"
+                onclick="filterBids('all',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterBids('Pending',this)">
+
+                Pending
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterBids('Accepted',this)">
+
+                Accepted
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterBids('Rejected',this)">
+
+                Rejected
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- BID LIST -->
+
+        <div
+            id="bidList"
+            class="bid-list">
+
+            <!-- JavaScript se bids yahan show hongi -->
+
+        </div>
+
+
+
+        <!-- FIND LOADS -->
+
+        <div class="find-load-box">
+
+            <div class="find-icon">
+                🔎
+            </div>
+
+
+            <div class="find-content">
+
+                <h2>
+                    Find More Loads
+                </h2>
+
+                <p>
+                    New loads search karein aur
+                    profitable routes par bid karein.
+                </p>
+
+            </div>
+
+
+            <button
+                class="find-btn"
+                onclick="findLoads()">
+
+                Find Loads
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   LOAD BIDS DATA
+===================================== */
+
+let bids = JSON.parse(
+    localStorage.getItem("tp_load_bids") || "null"
+);
+
+
+/* =====================================
+   DEFAULT DEMO BIDS
+===================================== */
+
+if(!Array.isArray(bids)){
+
+    bids = [
+
+        {
+            id: "BID1001",
+            loadId: "LD2001",
+            title: "Industrial Equipment",
+            from: "Delhi",
+            to: "Mumbai",
+            vehicle: "32 FT Container",
+            amount: 40000,
+            status: "Pending",
+            date: "Today, 10:30 AM"
+        },
+
+        {
+            id: "BID1002",
+            loadId: "LD2002",
+            title: "Electronics Goods",
+            from: "Noida",
+            to: "Jaipur",
+            vehicle: "14 FT Truck",
+            amount: 17500,
+            status: "Accepted",
+            date: "Yesterday, 4:20 PM"
+        },
+
+        {
+            id: "BID1003",
+            loadId: "LD2003",
+            title: "Furniture Shipment",
+            from: "Gurugram",
+            to: "Lucknow",
+            vehicle: "20 FT Truck",
+            amount: 25000,
+            status: "Rejected",
+            date: "Yesterday, 11:15 AM"
+        }
+
+    ];
+
+}
+
+
+/* =====================================
+   CURRENT FILTER
+===================================== */
+
+let currentFilter = "all";
+
+
+/* =====================================
+   SAVE BIDS
+===================================== */
+
+function saveBids(){
+
+    localStorage.setItem(
+        "tp_load_bids",
+        JSON.stringify(bids)
+    );
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(){
+
+    const total =
+        bids.length;
+
+    const pending =
+        bids.filter(
+            bid => bid.status === "Pending"
+        ).length;
+
+    const accepted =
+        bids.filter(
+            bid => bid.status === "Accepted"
+        ).length;
+
+    const rejected =
+        bids.filter(
+            bid => bid.status === "Rejected"
+        ).length;
+
+
+    document.getElementById(
+        "totalBids"
+    ).innerText = total;
+
+
+    document.getElementById(
+        "pendingBids"
+    ).innerText = pending;
+
+
+    document.getElementById(
+        "acceptedBids"
+    ).innerText = accepted;
+
+
+    document.getElementById(
+        "rejectedBids"
+    ).innerText = rejected;
+
+}
+
+
+/* =====================================
+   DISPLAY BIDS
+===================================== */
+
+function displayBids(list){
+
+    const container =
+        document.getElementById(
+            "bidList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    💰
+                </div>
+
+                <strong>
+                    No Bids Found
+                </strong>
+
+                <small>
+                    Is filter ya search ke liye
+                    koi bid available nahi hai.
+                </small>
+
+            </div>
+
+        `;
+
+        updateSummary();
+
+        return;
+    }
+
+
+    container.innerHTML =
+        list.map(
+            bid => `
+
+            <div class="bid-card">
+
+                <div class="bid-top">
+
+                    <div class="bid-icon">
+                        💰
+                    </div>
+
+
+                    <div class="bid-title">
+
+                        <strong>
+                            ${bid.title}
+                        </strong>
+
+                        <small>
+                            ${bid.bidId || bid.id}
+                            • ${bid.date}
+                        </small>
+
+                    </div>
+
+
+                    <span class="bid-status
+                        status-${bid.status.toLowerCase()}">
+
+                        ${bid.status}
+
+                    </span>
+
+                </div>
+
+
+                <div class="bid-route">
+
+                    <div class="route-row">
+
+                        <span class="route-dot"></span>
+
+                        <strong>
+                            ${bid.from}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="route-line"></div>
+
+
+                    <div class="route-row">
+
+                        <span class="route-dot"></span>
+
+                        <strong>
+                            ${bid.to}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bid-details">
+
+                    <div class="detail-box">
+
+                        <span>
+                            Load ID
+                        </span>
+
+                        <strong>
+                            ${bid.loadId}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Vehicle
+                        </span>
+
+                        <strong>
+                            ${bid.vehicle}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <span>
+                            Your Bid
+                        </span>
+
+                        <strong>
+                            ₹${Number(
+                                bid.amount
+                            ).toLocaleString("en-IN")}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bid-actions">
+
+                    <button
+                        class="view-bid-btn"
+                        onclick="viewBid('${bid.id}')">
+
+                        View
+
+                    </button>
+
+
+                    ${
+                        bid.status === "Pending"
+                        ?
+                        `
+                        <button
+                            class="edit-bid-btn"
+                            onclick="editBid('${bid.id}')">
+
+                            Edit Bid
+
+                        </button>
+
+
+                        <button
+                            class="cancel-bid-btn"
+                            onclick="cancelBid('${bid.id}')">
+
+                            Cancel
+
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+            </div>
+
+        `
+        ).join("");
+
+
+    updateSummary();
+
+}
+
+
+/* =====================================
+   FILTER BIDS
+===================================== */
+
+function filterBids(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            btn =>
+                btn.classList.remove(
+                    "active"
+                )
+        );
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================
+   SEARCH BIDS
+===================================== */
+
+function searchBids(){
+
+    applyFilters();
+
+}
+
+
+/* =====================================
+   APPLY FILTER + SEARCH
+===================================== */
+
+function applyFilters(){
+
+    const input =
+        document.getElementById(
+            "bidSearch"
+        );
+
+
+    const search =
+        input
+        ?
+        input.value
+            .trim()
+            .toLowerCase()
+        :
+        "";
+
+
+    let result =
+        [...bids];
+
+
+    if(
+        currentFilter !==
+        "all"
+    ){
+
+        result =
+            result.filter(
+                bid =>
+                    bid.status ===
+                    currentFilter
+            );
+
+    }
+
+
+    if(search){
+
+        result =
+            result.filter(
+                bid =>
+
+                    bid.id
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    bid.loadId
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    bid.title
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    bid.from
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    bid.to
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    bid.vehicle
+                        .toLowerCase()
+                        .includes(search)
+
+            );
+
+    }
+
+
+    displayBids(result);
+
+}
+
+
+/* =====================================
+   VIEW BID
+===================================== */
+
+function viewBid(id){
+
+    const bid =
+        bids.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!bid){
+        return;
+    }
+
+
+    alert(
+
+        "💰 BID DETAILS\n\n" +
+
+        "Bid ID: " +
+        bid.id +
+
+        "\n\nLoad ID: " +
+        bid.loadId +
+
+        "\n\nLoad: " +
+        bid.title +
+
+        "\n\nRoute: " +
+        bid.from +
+        " → " +
+        bid.to +
+
+        "\n\nVehicle: " +
+        bid.vehicle +
+
+        "\n\nYour Bid: ₹" +
+        Number(
+            bid.amount
+        ).toLocaleString(
+            "en-IN"
+        ) +
+
+        "\n\nStatus: " +
+        bid.status +
+
+        "\n\nDate: " +
+        bid.date
+
+    );
+
+}
+
+
+/* =====================================
+   EDIT BID
+===================================== */
+
+function editBid(id){
+
+    const bid =
+        bids.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!bid){
+        return;
+    }
+
+
+    if(
+        bid.status !==
+        "Pending"
+    ){
+
+        alert(
+            "⚠️ Sirf Pending bid edit ki ja sakti hai."
+        );
+
+        return;
+
+    }
+
+
+    const newAmount =
+        prompt(
+
+            "Edit Your Bid\n\n" +
+
+            "Current Bid: ₹" +
+
+            Number(
+                bid.amount
+            ).toLocaleString(
+                "en-IN"
+            ) +
+
+            "\n\nNew Bid Amount ₹:"
+
+        );
+
+
+    if(newAmount === null){
+        return;
+    }
+
+
+    const amount =
+        Number(newAmount);
+
+
+    if(
+        !amount ||
+        amount <= 0
+    ){
+
+        alert(
+            "⚠️ Valid amount enter karein."
+        );
+
+        return;
+
+    }
+
+
+    bid.amount =
+        amount;
+
+
+    bid.date =
+        new Date()
+        .toLocaleString();
+
+
+    saveBids();
+
+    applyFilters();
+
+
+    alert(
+        "✅ Bid updated successfully."
+    );
+
+}
+
+
+/* =====================================
+   CANCEL BID
+===================================== */
+
+function cancelBid(id){
+
+    const index =
+        bids.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const bid =
+        bids[index];
+
+
+    const confirmation =
+        confirm(
+
+            "⚠️ Cancel Bid?\n\n" +
+
+            "Load: " +
+            bid.title +
+
+            "\nBid: ₹" +
+            Number(
+                bid.amount
+            ).toLocaleString(
+                "en-IN"
+            ) +
+
+            "\n\nKya aap is bid ko cancel karna chahte hain?"
+
+        );
+
+
+    if(!confirmation){
+        return;
+    }
+
+
+    bids.splice(
+        index,
+        1
+    );
+
+
+    saveBids();
+
+    applyFilters();
+
+    updateSummary();
+
+
+    alert(
+        "✅ Bid cancelled successfully."
+    );
+
+}
+
+
+/* =====================================
+   FIND LOADS
+===================================== */
+
+function findLoads(){
+
+    window.location.href =
+        "load-search.html";
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        goDashboard();
+
+    }
+
+}
+
+
+/* =====================================
+   INITIALIZE
+===================================== */
+
+saveBids();
+
+updateSummary();
+
+displayBids(bids);
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        updateSummary();
+
+        displayBids(bids);
+
+        console.log(
+            "TransportPro Load Bids loaded successfully."
+        );
+
+    }
+);
+
+
+/* =====================================
+   END
+===================================== */
+
+</script>
+
+
+</body>
+
+</html>
+</script>
+
+
+</body>
+
+</html>

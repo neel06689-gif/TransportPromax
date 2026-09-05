@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>My Repair Requests | TransportPro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#111827;
+}
+
+.page{
+    max-width:700px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+
+/* HEADER */
+
+.header{
+    background:#07152d;
+    color:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    font-size:25px;
+}
+
+.headerText{
+    flex:1;
+}
+
+.headerText strong{
+    display:block;
+    font-size:17px;
+}
+
+.headerText small{
+    display:block;
+    margin-top:3px;
+    color:#aebbd0;
+    font-size:9px;
+}
+
+
+/* SUMMARY */
+
+.summary{
+    margin:15px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.summaryCard{
+    background:white;
+    padding:12px 7px;
+    text-align:center;
+    border-radius:13px;
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+}
+
+.summaryCard strong{
+    display:block;
+    font-size:17px;
+}
+
+.summaryCard small{
+    display:block;
+    margin-top:3px;
+    color:#7b8797;
+    font-size:7px;
+}
+
+
+/* SECTION */
+
+.sectionTitle{
+    padding:5px 15px 10px;
+}
+
+.sectionTitle strong{
+    font-size:15px;
+}
+
+.sectionTitle small{
+    display:block;
+    margin-top:3px;
+    color:#7b8797;
+    font-size:8px;
+}
+
+
+/* REQUEST */
+
+.request{
+    margin:0 15px 11px;
+    padding:15px;
+    background:white;
+    border:1px solid #e5e9ee;
+    border-radius:17px;
+    box-shadow:0 5px 17px rgba(0,0,0,.05);
+}
+
+.requestTop{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.icon{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:#fff1f1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.info{
+    flex:1;
+}
+
+.info strong{
+    display:block;
+    font-size:12px;
+}
+
+.info small{
+    display:block;
+    margin-top:4px;
+    color:#7b8797;
+    font-size:8px;
+}
+
+.status{
+    padding:5px 7px;
+    border-radius:7px;
+    font-size:7px;
+    font-weight:900;
+    background:#eef2f7;
+    color:#526071;
+}
+
+.status.accepted{
+    background:#e8f7ee;
+    color:#16834b;
+}
+
+.status.completed{
+    background:#e7f0ff;
+    color:#2459a6;
+}
+
+.status.open{
+    background:#fff4df;
+    color:#9a6500;
+}
+
+
+.problem{
+    margin-top:11px;
+    padding:10px;
+    background:#f7f9fb;
+    border-radius:10px;
+}
+
+.problem strong{
+    font-size:10px;
+}
+
+.problem p{
+    margin-top:4px;
+    color:#697586;
+    font-size:8px;
+    line-height:1.5;
+}
+
+
+/* DETAILS */
+
+.details{
+    margin-top:10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.detail{
+    padding:8px;
+    background:#f7f9fb;
+    border-radius:8px;
+}
+
+.detail small{
+    display:block;
+    color:#8a94a2;
+    font-size:7px;
+}
+
+.detail strong{
+    display:block;
+    margin-top:3px;
+    font-size:9px;
+}
+
+
+/* WORKER */
+
+.worker{
+    margin-top:10px;
+    padding:10px;
+    background:#eef7ff;
+    border-radius:10px;
+    display:none;
+}
+
+.worker strong{
+    display:block;
+    font-size:10px;
+}
+
+.worker small{
+    display:block;
+    margin-top:4px;
+    color:#617084;
+    font-size:8px;
+}
+
+
+/* STATUS ACTION */
+
+.actions{
+    margin-top:11px;
+    display:flex;
+    gap:7px;
+}
+
+.actionBtn{
+    flex:1;
+    border:0;
+    padding:9px;
+    border-radius:9px;
+    font-size:8px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.trackBtn{
+    background:#07152d;
+    color:white;
+}
+
+.cancelBtn{
+    background:#f1f3f6;
+    color:#4b5563;
+}
+
+
+/* EMPTY */
+
+.empty{
+    margin:15px;
+    padding:35px 15px;
+    text-align:center;
+    background:white;
+    border-radius:17px;
+    display:none;
+}
+
+.empty div{
+    font-size:32px;
+}
+
+.empty strong{
+    display:block;
+    margin-top:8px;
+    font-size:13px;
+}
+
+.empty p{
+    margin-top:5px;
+    color:#7b8797;
+    font-size:8px;
+}
+
+
+/* NEW REQUEST */
+
+.newRequest{
+    margin:15px;
+    padding:15px;
+    border-radius:16px;
+    background:#111827;
+    color:white;
+}
+
+.newRequest span{
+    font-size:7px;
+    opacity:.65;
+}
+
+.newRequest strong{
+    display:block;
+    margin-top:4px;
+    font-size:15px;
+}
+
+.newRequest a{
+    display:inline-block;
+    margin-top:10px;
+    padding:9px 12px;
+    background:white;
+    color:#111827;
+    text-decoration:none;
+    border-radius:9px;
+    font-size:8px;
+    font-weight:900;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<a href="home.html"
+class="back">
+‹
+</a>
+
+<div class="headerText">
+
+<strong>
+My Repair Requests
+</strong>
+
+<small>
+Track your vehicle service requests
+</small>
+
+</div>
+
+</header>
+
+
+<!-- SUMMARY -->
+
+<div class="summary">
+
+<div class="summaryCard">
+
+<strong id="total">
+0
+</strong>
+
+<small>
+TOTAL
+</small>
+
+</div>
+
+
+<div class="summaryCard">
+
+<strong id="open">
+0
+</strong>
+
+<small>
+OPEN
+</small>
+
+</div>
+
+
+<div class="summaryCard">
+
+<strong id="accepted">
+0
+</strong>
+
+<small>
+ACCEPTED
+</small>
+
+</div>
+
+</div>
+
+
+<div class="sectionTitle">
+
+<strong>
+My Truck Problems
+</strong>
+
+<small>
+Service requests and current work status
+</small>
+
+</div>
+
+
+<div id="requestList">
+</div>
+
+
+<div id="empty"
+class="empty">
+
+<div>
+🚛
+</div>
+
+<strong>
+No Repair Requests
+</strong>
+
+<p>
+Aapne abhi koi truck problem report nahi ki hai.
+</p>
+
+</div>
+
+
+<section class="newRequest">
+
+<span>
+VEHICLE SERVICE
+</span>
+
+<strong>
+Truck mein koi problem hai?
+</strong>
+
+<a href="report-truck-problem.html">
++ Report Problem
+</a>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   REQUESTS
+===================================================== */
+
+function getRequests(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "truckRepairRequests"
+        ) || "[]"
+    );
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderRequests(){
+
+    const list =
+        document.getElementById(
+            "requestList"
+        );
+
+    list.innerHTML = "";
+
+
+    const requests =
+        getRequests();
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        requests.length;
+
+
+    document.getElementById(
+        "open"
+    ).textContent =
+        requests.filter(
+            r => !r.status ||
+            r.status === "Open"
+        ).length;
+
+
+    document.getElementById(
+        "accepted"
+    ).textContent =
+        requests.filter(
+            r =>
+            r.status === "Accepted"
+        ).length;
+
+
+    document.getElementById(
+        "empty"
+    ).style.display =
+        requests.length === 0
+        ? "block"
+        : "none";
+
+
+    requests
+    .slice()
+    .reverse()
+    .forEach(function(request){
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+        card.className =
+            "request";
+
+
+        let status =
+            request.status ||
+            "Open";
+
+
+        let statusClass =
+            status.toLowerCase();
+
+
+        card.innerHTML = `
+
+        <div class="requestTop">
+
+            <div class="icon">
+                🚛
+            </div>
+
+            <div class="info">
+
+                <strong>
+                    ${request.problem}
+                    Problem
+                </strong>
+
+                <small>
+                    ${request.vehicleNumber}
+                </small>
+
+            </div>
+
+            <span class="status ${statusClass}">
+                ${status}
+            </span>
+
+        </div>
+
+
+        <div class="problem">
+
+            <strong>
+                Problem Details
+            </strong>
+
+            <p>
+                ${request.details}
+            </p>
+
+        </div>
+
+
+        <div class="details">
+
+            <div class="detail">
+
+                <small>
+                    VEHICLE
+                </small>
+
+                <strong>
+                    ${request.vehicleType}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>
+                    LOCATION
+                </small>
+
+                <strong>
+                    ${request.location}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>
+                    URGENCY
+                </small>
+
+                <strong>
+                    ${request.urgency}
+                </strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <small>
+                    REQUEST ID
+                </small>
+
+                <strong>
+                    ${request.id}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        ${
+            request.acceptedBy
+            ?
+            `
+            <div class="worker"
+                 style="display:block">
+
+                <strong>
+                    🔧 Mechanic Assigned
+                </strong>
+
+                <small>
+                    ${request.acceptedBy}
+                </small>
+
+            </div>
+            `
+            :
+            ""
+        }
+
+
+        <div class="actions">
+
+            ${
+                status === "Accepted"
+                ?
+                `
+                <button
+                    class="actionBtn trackBtn"
+                    onclick="trackWork('${request.id}')">
+
+                    Track Work →
+
+                </button>
+                `
+                :
+                ""
+            }
+
+
+            ${
+                status === "Open"
+                ?
+                `
+                <button
+                    class="actionBtn cancelBtn"
+                    onclick="cancelRequest('${request.id}')">
+
+                    Cancel Request
+
+                </button>
+                `
+                :
+                ""
+            }
+
+        </div>
+
+        `;
+
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   TRACK
+===================================================== */
+
+function trackWork(id){
+
+    alert(
+        "Work tracking module ready.\n\n" +
+        "Request ID: " +
+        id +
+        "\n\n" +
+        "Next backend step mein real-time " +
+        "status aur mechanic location connect karenge."
+    );
+
+}
+
+
+/* =====================================================
+   CANCEL
+===================================================== */
+
+function cancelRequest(id){
+
+    if(
+        !confirm(
+            "Is repair request ko cancel karna hai?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const requests =
+        getRequests();
+
+
+    const index =
+        requests.findIndex(
+            r => r.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    if(
+        requests[index].status &&
+        requests[index].status !== "Open"
+    ){
+
+        alert(
+            "Accepted request ko abhi cancel nahi kiya ja sakta."
+        );
+
+        return;
+
+    }
+
+
+    requests[index].status =
+        "Cancelled";
+
+
+    localStorage.setItem(
+        "truckRepairRequests",
+        JSON.stringify(
+            requests
+        )
+    );
+
+
+    renderRequests();
+
+}
+
+
+/* START */
+
+renderRequests();
+
+
+/* AUTO REFRESH */
+
+setInterval(
+    renderRequests,
+    3000
+);
+
+</script>
+
+</body>
+
+</html>

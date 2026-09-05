@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Vehicle Documents - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.documents-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   VEHICLE SELECTOR
+===================================== */
+
+.vehicle-selector{
+    margin-bottom:14px;
+}
+
+.vehicle-selector label{
+    display:block;
+
+    color:#344054;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+}
+
+.vehicle-selector select{
+    width:100%;
+
+    height:44px;
+
+    background:#fff;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 12px;
+
+    color:#172033;
+
+    font-size:11px;
+
+    outline:none;
+}
+
+.vehicle-selector select:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.document-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:15px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:18px;
+}
+
+
+/* =====================================
+   DOCUMENT LIST
+===================================== */
+
+.document-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:13px;
+}
+
+
+/* =====================================
+   DOCUMENT CARD
+===================================== */
+
+.document-card{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    background:#fff;
+}
+
+.document-top{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.document-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:10px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+    flex-shrink:0;
+}
+
+.document-title{
+    flex:1;
+}
+
+.document-title strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.document-title small{
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:13px;
+}
+
+
+/* =====================================
+   DOCUMENT STATUS
+===================================== */
+
+.document-status{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.status-valid{
+    background:#eaf8ef;
+    color:#137333;
+}
+
+.status-expiring{
+    background:#fff5df;
+    color:#a15c00;
+}
+
+.status-expired{
+    background:#fff0f0;
+    color:#c62828;
+}
+
+
+/* =====================================
+   DOCUMENT INFO
+===================================== */
+
+.document-info{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:10px;
+}
+
+.info-box{
+    border:1px solid #edf0f4;
+
+    border-radius:7px;
+
+    padding:8px 5px;
+
+    text-align:center;
+}
+
+.info-box span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:7px;
+
+    margin-bottom:4px;
+}
+
+.info-box strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   DOCUMENT ACTIONS
+===================================== */
+
+.document-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.document-actions button{
+    flex:1;
+
+    height:34px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.view-doc-btn{
+    background:#1769e0;
+
+    border:0;
+
+    color:#fff;
+}
+
+.edit-doc-btn{
+    background:#fff;
+
+    border:1px solid #1769e0;
+
+    color:#1769e0;
+}
+
+.delete-doc-btn{
+    background:#fff;
+
+    border:1px solid #e2bcbc;
+
+    color:#c62828;
+}
+
+
+/* =====================================
+   ADD DOCUMENT
+===================================== */
+
+.add-document-btn{
+    width:100%;
+
+    height:44px;
+
+    border:1px dashed #1769e0;
+
+    background:#eef5ff;
+
+    color:#1769e0;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:18px;
+}
+
+.add-document-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   DOCUMENT TYPES
+===================================== */
+
+.document-types{
+    border-top:1px solid #edf0f4;
+
+    padding-top:15px;
+}
+
+.document-types h2{
+    font-size:13px;
+
+    margin-bottom:10px;
+}
+
+.type-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+}
+
+.type-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:9px;
+
+    padding:11px 7px;
+
+    text-align:center;
+}
+
+.type-box span{
+    display:block;
+
+    font-size:22px;
+
+    margin-bottom:5px;
+}
+
+.type-box strong{
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:3px;
+}
+
+.type-box small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:11px;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    color:#667085;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .documents-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .document-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .document-top{
+        flex-wrap:wrap;
+    }
+
+    .document-title{
+        min-width:
+            calc(100% - 56px);
+    }
+
+    .document-status{
+        margin-left:56px;
+    }
+
+    .document-info{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .type-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .documents-card{
+        padding:10px;
+    }
+
+    .type-grid{
+        grid-template-columns:1fr;
+    }
+
+    .document-actions button{
+        font-size:8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Vehicle Documents
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="documents-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                📄
+            </div>
+
+            <div>
+
+                <h1>
+                    Vehicle Documents
+                </h1>
+
+                <p>
+                    Apne vehicles ke important
+                    documents ko manage karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VEHICLE SELECT -->
+
+        <div class="vehicle-selector">
+
+            <label>
+                Select Vehicle
+            </label>
+
+            <select
+                id="vehicleSelect"
+                onchange="loadVehicleDocuments()">
+
+                <option value="">
+                    Select Vehicle
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- DOCUMENT SUMMARY -->
+
+        <div class="document-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="totalDocuments">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Valid
+                </span>
+
+                <strong id="validDocuments">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Expiring
+                </span>
+
+                <strong id="expiringDocuments">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Expired
+                </span>
+
+                <strong id="expiredDocuments">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- DOCUMENT LIST -->
+
+        <div
+            id="documentList"
+            class="document-list">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📄
+                </div>
+
+                <strong>
+                    Select a Vehicle
+                </strong>
+
+                <small>
+                    Documents dekhne ke liye
+                    vehicle select karein.
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ADD DOCUMENT -->
+
+        <button
+            class="add-document-btn"
+            onclick="addDocument()">
+
+            + Add Document
+
+        </button>
+
+
+
+        <!-- DOCUMENT TYPES -->
+
+        <div class="document-types">
+
+
+            <h2>
+                Supported Documents
+            </h2>
+
+
+            <div class="type-grid">
+
+
+                <div class="type-box">
+
+                    <span>
+                        📋
+                    </span>
+
+                    <strong>
+                        RC
+                    </strong>
+
+                    <small>
+                        Registration Certificate
+                    </small>
+
+                </div>
+
+
+                <div class="type-box">
+
+                    <span>
+                        🛡️
+                    </span>
+
+                    <strong>
+                        Insurance
+                    </strong>
+
+                    <small>
+                        Vehicle Insurance
+                    </small>
+
+                </div>
+
+
+                <div class="type-box">
+
+                    <span>
+                        🔧
+                    </span>
+
+                    <strong>
+                        Fitness
+                    </strong>
+
+                    <small>
+                        Fitness Certificate
+                    </small>
+
+                </div>
+
+
+                <div class="type-box">
+
+                    <span>
+                        🌱
+                    </span>
+
+                    <strong>
+                        PUC
+                    </strong>
+
+                    <small>
+                        Pollution Certificate
+                    </small>
+
+                </div>
+
+
+                <div class="type-box">
+
+                    <span>
+                        🪪
+                    </span>
+
+                    <strong>
+                        Permit
+                    </strong>
+
+                    <small>
+                        Transport Permit
+                    </small>
+
+                </div>
+
+
+                <div class="type-box">
+
+                    <span>
+                        📑
+                    </span>
+
+                    <strong>
+                        Other
+                    </strong>
+
+                    <small>
+                        Other Documents
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   VEHICLE DOCUMENTS - JAVASCRIPT
+===================================== */
+
+
+/* =====================================
+   DOCUMENT TYPES
+===================================== */
+
+const documentTypes = [
+    {
+        type: "RC",
+        icon: "📋"
+    },
+    {
+        type: "Insurance",
+        icon: "🛡️"
+    },
+    {
+        type: "Fitness",
+        icon: "🔧"
+    },
+    {
+        type: "PUC",
+        icon: "🌱"
+    },
+    {
+        type: "Permit",
+        icon: "🪪"
+    },
+    {
+        type: "Other",
+        icon: "📑"
+    }
+];
+
+
+/* =====================================
+   LOAD VEHICLES
+===================================== */
+
+function getVehicles(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_vehicles"
+        );
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }
+    catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD DOCUMENTS
+===================================== */
+
+function getDocuments(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_vehicle_documents"
+        );
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }
+    catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE DOCUMENTS
+===================================== */
+
+function saveDocuments(documents){
+
+    localStorage.setItem(
+        "tp_vehicle_documents",
+        JSON.stringify(documents)
+    );
+
+}
+
+
+/* =====================================
+   POPULATE VEHICLES
+===================================== */
+
+function populateVehicles(){
+
+    const select =
+        document.getElementById(
+            "vehicleSelect"
+        );
+
+    if(!select){
+        return;
+    }
+
+    const vehicles =
+        getVehicles();
+
+
+    select.innerHTML = `
+        <option value="">
+            Select Vehicle
+        </option>
+    `;
+
+
+    vehicles.forEach(vehicle => {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            vehicle.id;
+
+        option.textContent =
+            vehicle.number +
+            " - " +
+            vehicle.type;
+
+        select.appendChild(
+            option
+        );
+
+    });
+
+}
+
+
+/* =====================================
+   LOAD SELECTED VEHICLE DOCUMENTS
+===================================== */
+
+function loadVehicleDocuments(){
+
+    const select =
+        document.getElementById(
+            "vehicleSelect"
+        );
+
+
+    const vehicleId =
+        select.value;
+
+
+    if(!vehicleId){
+
+        showEmptyState();
+
+        updateSummary([]);
+
+        return;
+
+    }
+
+
+    const documents =
+        getDocuments();
+
+
+    const vehicleDocuments =
+        documents.filter(
+            doc =>
+                doc.vehicleId ===
+                vehicleId
+        );
+
+
+    displayDocuments(
+        vehicleDocuments
+    );
+
+
+    updateSummary(
+        vehicleDocuments
+    );
+
+}
+
+
+/* =====================================
+   DISPLAY DOCUMENTS
+===================================== */
+
+function displayDocuments(documents){
+
+    const list =
+        document.getElementById(
+            "documentList"
+        );
+
+
+    if(!list){
+        return;
+    }
+
+
+    if(documents.length === 0){
+
+        list.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    📄
+                </div>
+
+                <strong>
+                    No Documents Added
+                </strong>
+
+                <small>
+                    Is vehicle ke liye
+                    Add Document par click karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        documents.map(
+            doc => {
+
+                const status =
+                    getDocumentStatus(
+                        doc.expiry
+                    );
+
+
+                return `
+
+                    <div class="document-card">
+
+                        <div class="document-top">
+
+                            <div class="document-icon">
+                                ${doc.icon || "📄"}
+                            </div>
+
+
+                            <div class="document-title">
+
+                                <strong>
+                                    ${escapeHTML(doc.type)}
+                                </strong>
+
+                                <small>
+                                    Document No:
+                                    ${escapeHTML(
+                                        doc.number || "Not Added"
+                                    )}
+                                </small>
+
+                            </div>
+
+
+                            <span class="
+                                document-status
+                                ${status.className}
+                            ">
+
+                                ${status.text}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="document-info">
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Issue Date
+                                </span>
+
+                                <strong>
+                                    ${formatDate(
+                                        doc.issueDate
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Expiry Date
+                                </span>
+
+                                <strong>
+                                    ${formatDate(
+                                        doc.expiry
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <span>
+                                    Vehicle
+                                </span>
+
+                                <strong>
+                                    ${escapeHTML(
+                                        doc.vehicleNumber || "-"
+                                    )}
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="document-actions">
+
+
+                            <button
+                                class="view-doc-btn"
+                                onclick="viewDocument('${doc.id}')">
+
+                                👁 View
+
+                            </button>
+
+
+                            <button
+                                class="edit-doc-btn"
+                                onclick="editDocument('${doc.id}')">
+
+                                ✏️ Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-doc-btn"
+                                onclick="deleteDocument('${doc.id}')">
+
+                                🗑 Delete
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+function showEmptyState(){
+
+    const list =
+        document.getElementById(
+            "documentList"
+        );
+
+
+    list.innerHTML = `
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                📄
+            </div>
+
+            <strong>
+                Select a Vehicle
+            </strong>
+
+            <small>
+                Documents dekhne ke liye
+                vehicle select karein.
+            </small>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   DOCUMENT STATUS
+===================================== */
+
+function getDocumentStatus(expiry){
+
+    if(!expiry){
+
+        return {
+            text: "No Expiry",
+            className: "status-expiring"
+        };
+
+    }
+
+
+    const today =
+        new Date();
+
+    today.setHours(
+        0,0,0,0
+    );
+
+
+    const expiryDate =
+        new Date(
+            expiry
+        );
+
+    expiryDate.setHours(
+        0,0,0,0
+    );
+
+
+    const difference =
+        expiryDate -
+        today;
+
+
+    const days =
+        Math.ceil(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    if(days < 0){
+
+        return {
+            text: "Expired",
+            className: "status-expired"
+        };
+
+    }
+
+
+    if(days <= 30){
+
+        return {
+            text: "Expiring Soon",
+            className: "status-expiring"
+        };
+
+    }
+
+
+    return {
+        text: "Valid",
+        className: "status-valid"
+    };
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(documents){
+
+    let valid = 0;
+    let expiring = 0;
+    let expired = 0;
+
+
+    documents.forEach(doc => {
+
+        const status =
+            getDocumentStatus(
+                doc.expiry
+            );
+
+
+        if(
+            status.text ===
+            "Valid"
+        ){
+
+            valid++;
+
+        }
+        else if(
+            status.text ===
+            "Expiring Soon"
+        ){
+
+            expiring++;
+
+        }
+        else if(
+            status.text ===
+            "Expired"
+        ){
+
+            expired++;
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "totalDocuments"
+    ).innerText =
+        documents.length;
+
+
+    document.getElementById(
+        "validDocuments"
+    ).innerText =
+        valid;
+
+
+    document.getElementById(
+        "expiringDocuments"
+    ).innerText =
+        expiring;
+
+
+    document.getElementById(
+        "expiredDocuments"
+    ).innerText =
+        expired;
+
+}
+
+
+/* =====================================
+   ADD DOCUMENT
+===================================== */
+
+function addDocument(){
+
+    const vehicleSelect =
+        document.getElementById(
+            "vehicleSelect"
+        );
+
+
+    const vehicleId =
+        vehicleSelect.value;
+
+
+    if(!vehicleId){
+
+        alert(
+            "⚠️ Pehle vehicle select karein."
+        );
+
+        return;
+
+    }
+
+
+    const vehicles =
+        getVehicles();
+
+
+    const vehicle =
+        vehicles.find(
+            item =>
+                item.id ===
+                vehicleId
+        );
+
+
+    if(!vehicle){
+
+        alert(
+            "⚠️ Vehicle nahi mila."
+        );
+
+        return;
+
+    }
+
+
+    const type =
+        prompt(
+
+            "Document Type enter karein:\n\n" +
+
+            "1 = RC\n" +
+            "2 = Insurance\n" +
+            "3 = Fitness\n" +
+            "4 = PUC\n" +
+            "5 = Permit\n" +
+            "6 = Other"
+
+        );
+
+
+    if(type === null){
+        return;
+    }
+
+
+    const typeMap = {
+
+        "1": {
+            name:"RC",
+            icon:"📋"
+        },
+
+        "2": {
+            name:"Insurance",
+            icon:"🛡️"
+        },
+
+        "3": {
+            name:"Fitness",
+            icon:"🔧"
+        },
+
+        "4": {
+            name:"PUC",
+            icon:"🌱"
+        },
+
+        "5": {
+            name:"Permit",
+            icon:"🪪"
+        },
+
+        "6": {
+            name:"Other",
+            icon:"📑"
+        }
+
+    };
+
+
+    const selected =
+        typeMap[type];
+
+
+    if(!selected){
+
+        alert(
+            "⚠️ 1 se 6 tak valid option choose karein."
+        );
+
+        return;
+
+    }
+
+
+    const number =
+        prompt(
+            "Document Number:"
+        );
+
+
+    if(number === null){
+        return;
+    }
+
+
+    const issueDate =
+        prompt(
+            "Issue Date:\nExample: 2026-01-15"
+        );
+
+
+    if(issueDate === null){
+        return;
+    }
+
+
+    const expiry =
+        prompt(
+            "Expiry Date:\nExample: 2027-01-15"
+        );
+
+
+    if(expiry === null){
+        return;
+    }
+
+
+    if(
+        expiry &&
+        isNaN(
+            new Date(expiry)
+        )
+    ){
+
+        alert(
+            "⚠️ Date format sahi nahi hai."
+        );
+
+        return;
+
+    }
+
+
+    const documents =
+        getDocuments();
+
+
+    const newDocument = {
+
+        id:
+            "DOC" +
+            Date.now()
+            .toString()
+            .slice(-8),
+
+        vehicleId:
+            vehicleId,
+
+        vehicleNumber:
+            vehicle.number,
+
+        type:
+            selected.name,
+
+        icon:
+            selected.icon,
+
+        number:
+            number.trim(),
+
+        issueDate:
+            issueDate.trim(),
+
+        expiry:
+            expiry.trim(),
+
+        addedOn:
+            new Date()
+            .toISOString()
+
+    };
+
+
+    documents.push(
+        newDocument
+    );
+
+
+    saveDocuments(
+        documents
+    );
+
+
+    loadVehicleDocuments();
+
+
+    alert(
+        "✅ Document successfully added."
+    );
+
+}
+
+
+/* =====================================
+   VIEW DOCUMENT
+===================================== */
+
+function viewDocument(id){
+
+    const documents =
+        getDocuments();
+
+
+    const doc =
+        documents.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!doc){
+
+        alert(
+            "Document nahi mila."
+        );
+
+        return;
+
+    }
+
+
+    const status =
+        getDocumentStatus(
+            doc.expiry
+        );
+
+
+    alert(
+
+        "📄 DOCUMENT DETAILS\n\n" +
+
+        "Type: " +
+        doc.type +
+
+        "\n\nDocument No: " +
+        (doc.number || "Not Added") +
+
+        "\n\nVehicle: " +
+        doc.vehicleNumber +
+
+        "\n\nIssue Date: " +
+        formatDate(
+            doc.issueDate
+        ) +
+
+        "\n\nExpiry Date: " +
+        formatDate(
+            doc.expiry
+        ) +
+
+        "\n\nStatus: " +
+        status.text
+
+    );
+
+}
+
+
+/* =====================================
+   EDIT DOCUMENT
+===================================== */
+
+function editDocument(id){
+
+    const documents =
+        getDocuments();
+
+
+    const index =
+        documents.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const doc =
+        documents[index];
+
+
+    const newNumber =
+        prompt(
+            "Document Number:",
+            doc.number || ""
+        );
+
+
+    if(newNumber === null){
+        return;
+    }
+
+
+    const newIssueDate =
+        prompt(
+            "Issue Date:",
+            doc.issueDate || ""
+        );
+
+
+    if(newIssueDate === null){
+        return;
+    }
+
+
+    const newExpiry =
+        prompt(
+            "Expiry Date:",
+            doc.expiry || ""
+        );
+
+
+    if(newExpiry === null){
+        return;
+    }
+
+
+    doc.number =
+        newNumber.trim();
+
+
+    doc.issueDate =
+        newIssueDate.trim();
+
+
+    doc.expiry =
+        newExpiry.trim();
+
+
+    saveDocuments(
+        documents
+    );
+
+
+    loadVehicleDocuments();
+
+
+    alert(
+        "✅ Document updated successfully."
+    );
+
+}
+
+
+/* =====================================
+   DELETE DOCUMENT
+===================================== */
+
+function deleteDocument(id){
+
+    const documents =
+        getDocuments();
+
+
+    const index =
+        documents.findIndex(
+            item =>
+                item.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const doc =
+        documents[index];
+
+
+    const confirmDelete =
+        confirm(
+
+            "⚠️ Delete Document?\n\n" +
+
+            doc.type +
+
+            "\n" +
+
+            (doc.number || "") +
+
+            "\n\nKya aap ise delete karna chahte hain?"
+
+        );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    documents.splice(
+        index,
+        1
+    );
+
+
+    saveDocuments(
+        documents
+    );
+
+
+    loadVehicleDocuments();
+
+
+    alert(
+        "✅ Document deleted successfully."
+    );
+
+}
+
+
+/* =====================================
+   FORMAT DATE
+===================================== */
+
+function formatDate(date){
+
+    if(!date){
+        return "-";
+    }
+
+
+    const d =
+        new Date(date);
+
+
+    if(isNaN(d.getTime())){
+        return date;
+    }
+
+
+    return d.toLocaleDateString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "my-vehicles.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        populateVehicles();
+
+        updateSummary([]);
+
+        console.log(
+            "TransportPro Vehicle Documents loaded."
+        );
+
+    }
+);
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0">
+
+<title>Find Work | TransportPro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#111827;
+}
+
+.page{
+    max-width:700px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+
+/* HEADER */
+
+.header{
+    background:#07152d;
+    color:#fff;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.back{
+    color:#fff;
+    text-decoration:none;
+    font-size:24px;
+}
+
+.headerText{
+    flex:1;
+}
+
+.headerText strong{
+    display:block;
+    font-size:17px;
+}
+
+.headerText small{
+    display:block;
+    margin-top:3px;
+    color:#aebbd0;
+    font-size:9px;
+}
+
+
+/* ROLE */
+
+.roleBox{
+    margin:15px;
+    padding:15px;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.roleLabel{
+    font-size:9px;
+    color:#7b8797;
+    font-weight:bold;
+}
+
+.roleName{
+    margin-top:5px;
+    font-size:20px;
+    font-weight:900;
+}
+
+.roleWork{
+    margin-top:4px;
+    font-size:10px;
+    color:#6b7280;
+}
+
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:0 15px 12px;
+}
+
+.filter{
+    border:1px solid #dfe4ea;
+    background:#fff;
+    padding:9px 13px;
+    border-radius:20px;
+    white-space:nowrap;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.filter.active{
+    background:#07152d;
+    color:#fff;
+}
+
+
+/* JOBS */
+
+.sectionTitle{
+    padding:5px 15px 10px;
+}
+
+.sectionTitle strong{
+    font-size:15px;
+}
+
+.sectionTitle small{
+    display:block;
+    margin-top:3px;
+    color:#7b8797;
+    font-size:9px;
+}
+
+
+.jobList{
+    padding:0 15px;
+}
+
+
+.jobCard{
+    background:#fff;
+    border:1px solid #e7ebf0;
+    border-radius:17px;
+    padding:15px;
+    margin-bottom:11px;
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+}
+
+
+.jobTop{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.jobIcon{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:#eef3f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.jobInfo{
+    flex:1;
+}
+
+.jobInfo strong{
+    display:block;
+    font-size:13px;
+}
+
+.jobInfo small{
+    display:block;
+    margin-top:4px;
+    color:#7b8797;
+    font-size:9px;
+}
+
+
+.urgent{
+    background:#ffe7e7;
+    color:#c62828;
+    padding:5px 7px;
+    border-radius:7px;
+    font-size:8px;
+    font-weight:bold;
+}
+
+
+.jobRoute{
+    margin-top:12px;
+    padding:10px;
+    background:#f7f9fb;
+    border-radius:10px;
+    font-size:10px;
+    color:#374151;
+}
+
+
+.jobDetails{
+    margin-top:11px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+}
+
+.detail{
+    background:#f7f9fb;
+    padding:8px;
+    border-radius:9px;
+}
+
+.detail small{
+    display:block;
+    color:#8a94a2;
+    font-size:7px;
+}
+
+.detail strong{
+    display:block;
+    margin-top:3px;
+    font-size:9px;
+}
+
+
+.jobBottom{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.earning{
+    font-size:17px;
+    font-weight:900;
+}
+
+.earning small{
+    display:block;
+    font-size:7px;
+    color:#7b8797;
+    font-weight:normal;
+}
+
+
+.applyBtn{
+    border:0;
+    background:#07152d;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+
+/* EMPTY */
+
+.empty{
+    display:none;
+    margin:20px 15px;
+    padding:35px 20px;
+    text-align:center;
+    background:#fff;
+    border-radius:17px;
+}
+
+.emptyIcon{
+    font-size:35px;
+}
+
+.empty strong{
+    display:block;
+    margin-top:10px;
+    font-size:14px;
+}
+
+.empty p{
+    margin-top:5px;
+    color:#7b8797;
+    font-size:9px;
+}
+
+
+/* POST JOB */
+
+.postJob{
+    margin:15px;
+    padding:16px;
+    border-radius:16px;
+    background:#111827;
+    color:#fff;
+}
+
+.postJob span{
+    font-size:8px;
+    opacity:.65;
+}
+
+.postJob strong{
+    display:block;
+    margin-top:4px;
+    font-size:16px;
+}
+
+.postJob p{
+    margin-top:4px;
+    color:#c7cfdb;
+    font-size:9px;
+}
+
+.postJob a{
+    display:inline-block;
+    margin-top:10px;
+    padding:9px 12px;
+    background:#fff;
+    color:#111827;
+    border-radius:9px;
+    text-decoration:none;
+    font-size:9px;
+    font-weight:900;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<header class="header">
+
+    <a href="home.html"
+       class="back">
+        ‹
+    </a>
+
+    <div class="headerText">
+
+        <strong>
+            Find Work
+        </strong>
+
+        <small>
+            TransportPro Work Marketplace
+        </small>
+
+    </div>
+
+</header>
+
+
+<!-- ROLE -->
+
+<section class="roleBox">
+
+    <div class="roleLabel">
+        YOUR ROLE
+    </div>
+
+    <div id="roleName"
+         class="roleName">
+        Transport Professional
+    </div>
+
+    <div id="roleWork"
+         class="roleWork">
+        Available work for your role
+    </div>
+
+</section>
+
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+    <button class="filter active"
+            onclick="filterJobs('all',this)">
+        All Jobs
+    </button>
+
+    <button class="filter"
+            onclick="filterJobs('nearby',this)">
+        📍 Nearby
+    </button>
+
+    <button class="filter"
+            onclick="filterJobs('urgent',this)">
+        🔴 Urgent
+    </button>
+
+    <button class="filter"
+            onclick="filterJobs('today',this)">
+        📅 Today
+    </button>
+
+</div>
+
+
+<div class="sectionTitle">
+
+    <strong>
+        Available Work
+    </strong>
+
+    <small id="jobCount">
+        Finding suitable work...
+    </small>
+
+</div>
+
+
+<div id="jobList"
+     class="jobList">
+</div>
+
+
+<div id="empty"
+     class="empty">
+
+    <div class="emptyIcon">
+        🔎
+    </div>
+
+    <strong>
+        No matching work found
+    </strong>
+
+    <p>
+        New work opportunities will appear here.
+    </p>
+
+</div>
+
+
+<!-- POST JOB -->
+
+<section class="postJob">
+
+    <span>
+        NEED TRANSPORT PROFESSIONAL?
+    </span>
+
+    <strong>
+        Post a Work Request
+    </strong>
+
+    <p>
+        Apna transport kaam list karein aur
+        suitable professionals tak pahunchayein.
+    </p>
+
+    <a href="post-job.html">
+        + Post Work
+    </a>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   USER
+===================================================== */
+
+function getUser(){
+
+    const keys = [
+        "loggedInUser",
+        "currentUser",
+        "user",
+        "profile",
+        "customer"
+    ];
+
+    for(let key of keys){
+
+        const raw =
+            localStorage.getItem(key);
+
+        if(!raw){
+            continue;
+        }
+
+        try{
+
+            const data =
+                JSON.parse(raw);
+
+            if(data){
+                return data;
+            }
+
+        }catch(error){
+
+            return {
+                name:raw
+            };
+
+        }
+
+    }
+
+    return null;
+}
+
+
+/* =====================================================
+   ROLE DETECTION
+===================================================== */
+
+function getRole(){
+
+    const user = getUser();
+
+    if(!user){
+        return "Transport Professional";
+    }
+
+    const role =
+        user.role ||
+        user.userRole ||
+        user.accountType ||
+        user.userType ||
+        user.profession ||
+        "";
+
+    return normalizeRole(role);
+}
+
+
+function normalizeRole(role){
+
+    const r =
+        String(role)
+        .toLowerCase()
+        .trim();
+
+    if(
+        r.includes("driver")
+    ){
+        return "Driver";
+    }
+
+    if(
+        r.includes("mechanic")
+    ){
+        return "Mechanic";
+    }
+
+    if(
+        r.includes("truck") ||
+        r.includes("vehicle") ||
+        r.includes("owner")
+    ){
+        return "Truck Owner";
+    }
+
+    if(
+        r.includes("tyre") ||
+        r.includes("tire") ||
+        r.includes("puncture")
+    ){
+        return "Tyre Service";
+    }
+
+    if(
+        r.includes("spare") ||
+        r.includes("parts")
+    ){
+        return "Spare Parts";
+    }
+
+    if(
+        r.includes("dealer") ||
+        r.includes("transporter")
+    ){
+        return "Transport Dealer";
+    }
+
+    if(
+        r.includes("fleet")
+    ){
+        return "Fleet Owner";
+    }
+
+    if(
+        r.includes("roadside") ||
+        r.includes("service")
+    ){
+        return "Roadside Service";
+    }
+
+    return "Transport Professional";
+}
+
+
+/* =====================================================
+   ROLE TEXT
+===================================================== */
+
+const role =
+    getRole();
+
+const roleName =
+    document.getElementById(
+        "roleName"
+    );
+
+const roleWork =
+    document.getElementById(
+        "roleWork"
+    );
+
+
+const roleDescriptions = {
+
+    "Driver":
+        "Driving jobs, trips & delivery work",
+
+    "Mechanic":
+        "Vehicle repair & maintenance jobs",
+
+    "Truck Owner":
+        "Loads, drivers & vehicle opportunities",
+
+    "Tyre Service":
+        "Tyre, puncture & wheel service jobs",
+
+    "Spare Parts":
+        "Parts orders & supply requests",
+
+    "Transport Dealer":
+        "Load & vehicle matching opportunities",
+
+    "Fleet Owner":
+        "Fleet, driver & transport opportunities",
+
+    "Roadside Service":
+        "Emergency roadside service jobs",
+
+    "Transport Professional":
+        "Transport jobs & service opportunities"
+
+};
+
+
+roleName.textContent =
+    role;
+
+roleWork.textContent =
+    roleDescriptions[role] ||
+    roleDescriptions["Transport Professional"];
+
+
+/* =====================================================
+   DEMO JOB DATA
+===================================================== */
+
+const jobs = [
+
+    {
+        role:"Driver",
+        icon:"👨‍✈️",
+        title:"Heavy Truck Driver",
+        company:"Transport Partner",
+        from:"Delhi",
+        to:"Jaipur",
+        distance:"280 km",
+        time:"Today",
+        earning:"₹3,500",
+        type:"today"
+    },
+
+    {
+        role:"Driver",
+        icon:"🚚",
+        title:"Tata 407 Delivery Driver",
+        company:"Verified Transporter",
+        from:"Indore",
+        to:"Bhopal",
+        distance:"190 km",
+        time:"Today",
+        earning:"₹2,400",
+        type:"nearby"
+    },
+
+    {
+        role:"Mechanic",
+        icon:"🔧",
+        title:"Truck Clutch Repair",
+        company:"Vehicle Owner",
+        from:"Indore",
+        to:"Nearby",
+        distance:"8 km",
+        time:"Urgent",
+        earning:"₹2,500",
+        type:"urgent"
+    },
+
+    {
+        role:"Mechanic",
+        icon:"🛠️",
+        title:"Engine Overheating Repair",
+        company:"Fleet Owner",
+        from:"Bhopal",
+        to:"Nearby",
+        distance:"12 km",
+        time:"Today",
+        earning:"₹3,000",
+        type:"today"
+    },
+
+    {
+        role:"Truck Owner",
+        icon:"🚛",
+        title:"Load Available",
+        company:"Verified Dealer",
+        from:"Delhi",
+        to:"Mumbai",
+        distance:"1,420 km",
+        time:"Tomorrow",
+        earning:"₹42,000",
+        type:"all"
+    },
+
+    {
+        role:"Tyre Service",
+        icon:"🛞",
+        title:"Truck Tyre Replacement",
+        company:"Fleet Owner",
+        from:"Indore",
+        to:"Nearby",
+        distance:"5 km",
+        time:"Urgent",
+        earning:"₹1,800",
+        type:"urgent"
+    },
+
+    {
+        role:"Spare Parts",
+        icon:"🔩",
+        title:"Brake Parts Required",
+        company:"Truck Owner",
+        from:"Bhopal",
+        to:"Nearby",
+        distance:"18 km",
+        time:"Today",
+        earning:"₹4,500",
+        type:"today"
+    },
+
+    {
+        role:"Roadside Service",
+        icon:"🧰",
+        title:"Emergency Breakdown",
+        company:"Truck Owner",
+        from:"Dewas",
+        to:"Nearby",
+        distance:"9 km",
+        time:"Urgent",
+        earning:"₹2,000",
+        type:"urgent"
+    }
+
+];
+
+
+/* =====================================================
+   RENDER JOBS
+===================================================== */
+
+let currentFilter =
+    "all";
+
+
+function renderJobs(){
+
+    const list =
+        document.getElementById(
+            "jobList"
+        );
+
+    list.innerHTML = "";
+
+    let filtered =
+        jobs.filter(function(job){
+
+            /*
+             * Professional users should
+             * primarily see their role jobs.
+             */
+
+            if(
+                role !==
+                "Transport Professional" &&
+                job.role !== role
+            ){
+                return false;
+            }
+
+            if(
+                currentFilter ===
+                "all"
+            ){
+                return true;
+            }
+
+            return (
+                job.type ===
+                currentFilter
+            );
+
+        });
+
+
+    document.getElementById(
+        "jobCount"
+    ).textContent =
+        filtered.length +
+        " suitable opportunities";
+
+
+    document.getElementById(
+        "empty"
+    ).style.display =
+        filtered.length === 0
+        ? "block"
+        : "none";
+
+
+    filtered.forEach(function(job){
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+        card.className =
+            "jobCard";
+
+
+        card.innerHTML = `
+
+            <div class="jobTop">
+
+                <div class="jobIcon">
+                    ${job.icon}
+                </div>
+
+                <div class="jobInfo">
+
+                    <strong>
+                        ${job.title}
+                    </strong>
+
+                    <small>
+                        ${job.company}
+                    </small>
+
+                </div>
+
+                ${
+                    job.type === "urgent"
+                    ?
+                    `<span class="urgent">
+                        URGENT
+                    </span>`
+                    :
+                    ""
+                }
+
+            </div>
+
+
+            <div class="jobRoute">
+
+                📍 ${job.from}
+
+                &nbsp; →
+
+                📍 ${job.to}
+
+            </div>
+
+
+            <div class="jobDetails">
+
+                <div class="detail">
+
+                    <small>
+                        DISTANCE
+                    </small>
+
+                    <strong>
+                        ${job.distance}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <small>
+                        WHEN
+                    </small>
+
+                    <strong>
+                        ${job.time}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <small>
+                        ROLE
+                    </small>
+
+                    <strong>
+                        ${job.role}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="jobBottom">
+
+                <div class="earning">
+
+                    ${job.earning}
+
+                    <small>
+                        Estimated earning
+                    </small>
+
+                </div>
+
+
+                <button
+                    class="applyBtn"
+                    onclick="applyJob('${job.title}')">
+
+                    Apply for Work →
+
+                </button>
+
+            </div>
+
+        `;
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function filterJobs(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".filter"
+        )
+        .forEach(function(btn){
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    renderJobs();
+
+}
+
+
+/* =====================================================
+   APPLY
+===================================================== */
+
+function applyJob(
+    jobTitle
+){
+
+    const user =
+        getUser();
+
+
+    if(!user){
+
+        alert(
+            "Please login first to apply for work."
+        );
+
+        window.location.href =
+            "login.html";
+
+        return;
+
+    }
+
+
+    const applications =
+        JSON.parse(
+            localStorage.getItem(
+                "workApplications"
+            ) || "[]"
+        );
+
+
+    applications.push({
+
+        id:
+            "APP-" +
+            Date.now(),
+
+        job:
+            jobTitle,
+
+        role:
+            role,
+
+        status:
+            "Applied",
+
+        createdAt:
+            new Date().toISOString()
+
+    });
+
+
+    localStorage.setItem(
+        "workApplications",
+        JSON.stringify(
+            applications
+        )
+    );
+
+
+    alert(
+        "Application submitted successfully!\n\nJob: " +
+        jobTitle
+    );
+
+}
+
+
+/* START */
+
+renderJobs();
+
+</script>
+
+</body>
+</html>

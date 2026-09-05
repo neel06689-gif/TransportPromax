@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Driver Community - TransportPro</title>
+
+<!--
+========================================
+TRANSPORTPRO
+DRIVER COMMUNITY
+PART 1/3
+HTML STRUCTURE
+========================================
+-->
+
+<style>
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    height:62px;
+    width:100%;
+    background:#101820;
+    color:#ffffff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    background:transparent;
+    color:#ffffff;
+
+    font-size:27px;
+    cursor:pointer;
+
+    border-radius:8px;
+}
+
+.back-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    background:#ffffff;
+    color:#1769e0;
+
+    border-radius:9px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+    line-height:18px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    background:transparent;
+    color:#ffffff;
+
+    font-size:20px;
+    cursor:pointer;
+
+    border-radius:8px;
+}
+
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:0 auto;
+
+    padding:15px;
+}
+
+
+/* =====================================
+   DASHBOARD BUTTON
+===================================== */
+
+.dashboard-btn{
+    border:1px solid #dbe2ea;
+
+    background:#ffffff;
+    color:#172033;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.main-card{
+    background:#ffffff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:32px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+
+    color:#172033;
+}
+
+.page-heading p{
+    font-size:11px;
+
+    line-height:17px;
+
+    color:#667085;
+}
+
+
+/* =====================================
+   COMMUNITY STATUS
+===================================== */
+
+.community-status{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:13px;
+}
+
+.community-status strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.community-status small{
+    color:#667085;
+
+    font-size:9px;
+}
+
+.online-badge{
+    background:#eaf8ef;
+
+    color:#137333;
+
+    border-radius:20px;
+
+    padding:5px 9px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   SEARCH AREA
+===================================== */
+
+.search-area{
+    margin-bottom:13px;
+}
+
+.search-area input{
+    width:100%;
+
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+
+    background:#ffffff;
+}
+
+.search-area input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   DRIVER LIST
+===================================== */
+
+.driver-list{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================
+   DRIVER CARD
+===================================== */
+
+.driver-card{
+    border:1px solid #e2e8f0;
+
+    background:#ffffff;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    transition:.2s;
+}
+
+.driver-card:hover{
+    box-shadow:
+        0 5px 15px rgba(16,24,40,.07);
+
+    transform:translateY(-1px);
+}
+
+.driver-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:9px;
+}
+
+.driver-avatar{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#eef5ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:23px;
+
+    flex-shrink:0;
+}
+
+.driver-name{
+    flex:1;
+}
+
+.driver-name strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:3px;
+}
+
+.driver-name small{
+    font-size:9px;
+
+    color:#667085;
+}
+
+.verified{
+    color:#1769e0;
+
+    font-size:11px;
+}
+
+.driver-details{
+    border-top:1px solid #eef1f5;
+
+    padding-top:8px;
+}
+
+.driver-details div{
+    font-size:9px;
+
+    color:#667085;
+
+    margin-bottom:5px;
+}
+
+.driver-details b{
+    color:#172033;
+}
+
+
+/* =====================================
+   DRIVER ACTION BUTTONS
+===================================== */
+
+.driver-actions{
+    display:flex;
+
+    gap:7px;
+
+    margin-top:9px;
+}
+
+.connect-btn,
+.message-btn{
+    flex:1;
+
+    padding:8px 5px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:bold;
+}
+
+.connect-btn{
+    background:#1769e0;
+
+    color:#ffffff;
+
+    border:0;
+}
+
+.message-btn{
+    background:#ffffff;
+
+    color:#1769e0;
+
+    border:1px solid #1769e0;
+}
+
+
+/* =====================================
+   JOIN COMMUNITY
+===================================== */
+
+.join-box{
+    background:#eef6ff;
+
+    border:1px solid #d7e8ff;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.join-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:11px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+}
+
+.join-content{
+    flex:1;
+}
+
+.join-content h2{
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.join-content p{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+}
+
+.join-btn{
+    border:0;
+
+    background:#1769e0;
+
+    color:#ffffff;
+
+    padding:10px 13px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   COMMUNITY FEATURES
+===================================== */
+
+.features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:9px;
+
+    margin-top:13px;
+}
+
+.feature-card{
+    border:1px solid #e2e8f0;
+
+    background:#ffffff;
+
+    border-radius:10px;
+
+    padding:12px;
+
+    text-align:center;
+}
+
+.feature-icon{
+    font-size:23px;
+
+    margin-bottom:7px;
+}
+
+.feature-card strong{
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+.feature-card small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:12px;
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media(max-width:700px){
+
+    .driver-list{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .main-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .join-box{
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .join-content{
+        min-width:calc(100% - 60px);
+    }
+
+    .join-btn{
+        width:100%;
+        margin-top:3px;
+    }
+
+}
+
+
+/* =====================================
+   END OF CSS
+===================================== */
+
+</style>
+
+
+<!-- =====================================
+     JAVASCRIPT PART 3
+===================================== -->
+
+<script>
+
+const drivers = [
+
+    {
+        name: "Rajesh Kumar",
+        city: "Delhi",
+        vehicle: "Truck",
+        experience: "8 Years",
+        rating: "4.8"
+    },
+
+    {
+        name: "Amit Singh",
+        city: "Jaipur",
+        vehicle: "Trailer",
+        experience: "6 Years",
+        rating: "4.7"
+    },
+
+    {
+        name: "Mohan Yadav",
+        city: "Lucknow",
+        vehicle: "Heavy Truck",
+        experience: "10 Years",
+        rating: "4.9"
+    },
+
+    {
+        name: "Rahul Sharma",
+        city: "Mumbai",
+        vehicle: "Container",
+        experience: "7 Years",
+        rating: "4.6"
+    }
+
+];
+
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+function showNotification(){
+
+    alert(
+        "🔔 No new notifications"
+    );
+
+}
+
+
+function displayDrivers(list){
+
+    const container =
+        document.getElementById("driverList");
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:30px;
+                color:#667085;
+            ">
+
+                🔍
+
+                <h3>
+                    No Driver Found
+                </h3>
+
+                <small>
+                    Search another driver or city.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = list.map(
+        (driver,index) => `
+
+        <div class="driver-card">
+
+            <div class="driver-top">
+
+                <div class="driver-avatar">
+                    👨‍✈️
+                </div>
+
+                <div class="driver-name">
+
+                    <strong>
+                        ${driver.name}
+                    </strong>
+
+                    <small>
+                        ${driver.city}
+                    </small>
+
+                </div>
+
+                <span class="verified">
+                    ✓
+                </span>
+
+            </div>
+
+
+            <div class="driver-details">
+
+                <div>
+                    🚛 Vehicle:
+                    <b>${driver.vehicle}</b>
+                </div>
+
+                <div>
+                    📅 Experience:
+                    <b>${driver.experience}</b>
+                </div>
+
+                <div>
+                    ⭐ Rating:
+                    <b>${driver.rating}</b>
+                </div>
+
+            </div>
+
+
+            <div class="driver-actions">
+
+                <button
+                    class="connect-btn"
+                    onclick="connectDriver(${index})">
+
+                    Connect
+
+                </button>
+
+
+                <button
+                    class="message-btn"
+                    onclick="messageDriver('${driver.name}')">
+
+                    Message
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `
+    ).join("");
+
+}
+
+
+function searchDrivers(){
+
+    const search =
+        document
+        .getElementById("searchDriver")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        drivers.filter(driver =>
+
+            driver.name
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            driver.city
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            driver.vehicle
+            .toLowerCase()
+            .includes(search)
+
+        );
+
+
+    displayDrivers(filtered);
+
+}
+
+
+function connectDriver(index){
+
+    const driver =
+        drivers[index];
+
+
+    let connections =
+        JSON.parse(
+            localStorage.getItem(
+                "tp_driver_connections"
+            ) || "[]"
+        );
+
+
+    const alreadyConnected =
+        connections.some(
+            item =>
+            item.name === driver.name
+        );
+
+
+    if(alreadyConnected){
+
+        alert(
+            "ℹ️ Aap already " +
+            driver.name +
+            " se connected hain."
+        );
+
+        return;
+
+    }
+
+
+    connections.push({
+
+        name: driver.name,
+
+        city: driver.city,
+
+        vehicle: driver.vehicle,
+
+        date:
+            new Date()
+            .toLocaleString()
+
+    });
+
+
+    localStorage.setItem(
+
+        "tp_driver_connections",
+
+        JSON.stringify(connections)
+
+    );
+
+
+    alert(
+
+        "✅ Connection Request Sent!\n\n" +
+
+        driver.name
+
+    );
+
+}
+
+
+function messageDriver(name){
+
+    alert(
+
+        "💬 Messaging " +
+        name +
+        "\n\n" +
+        "Messaging system next step mein connect kiya ja sakta hai."
+
+    );
+
+}
+
+
+function joinCommunity(){
+
+    localStorage.setItem(
+
+        "tp_driver_community",
+
+        "joined"
+
+    );
+
+
+    alert(
+
+        "🎉 Welcome to Driver Community!\n\n" +
+
+        "Aap successfully community join kar chuke hain."
+
+    );
+
+
+    const button =
+        document.querySelector(
+            ".join-btn"
+        );
+
+
+    if(button){
+
+        button.innerText =
+            "✓ Joined";
+
+        button.style.background =
+            "#137333";
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD DRIVERS
+===================================== */
+
+displayDrivers(drivers);
+
+
+/* =====================================
+   PAGE READY
+===================================== */
+
+console.log(
+    "TransportPro Driver Community loaded successfully."
+);
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+
+    <!-- BACK BUTTON -->
+
+    <button
+        class="back-btn"
+        onclick="goDashboard()">
+
+        ←
+
+    </button>
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        TP
+
+    </div>
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Professional Transport Platform
+        </small>
+
+    </div>
+
+
+    <!-- NOTIFICATION -->
+
+    <button
+        class="notification-btn"
+        onclick="showNotification()">
+
+        🔔
+
+    </button>
+
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <!-- BACK TO DASHBOARD -->
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <!-- =================================
+         MAIN CARD
+    ================================== -->
+
+    <section class="main-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+
+            <div class="page-icon">
+
+                👨‍✈️
+
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Driver Community
+                </h1>
+
+
+                <p>
+                    Drivers ke professional network
+                    se connect karein aur transport
+                    opportunities explore karein.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             COMMUNITY STATUS
+        ================================== -->
+
+        <div class="community-status">
+
+
+            <div>
+
+                <strong>
+                    Driver Professional Network
+                </strong>
+
+
+                <small>
+                    Drivers, jobs aur transport
+                    opportunities
+                </small>
+
+            </div>
+
+
+            <span class="online-badge">
+
+                ● ACTIVE
+
+            </span>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             SEARCH
+        ================================== -->
+
+        <div class="search-area">
+
+
+            <input
+                type="search"
+                id="searchDriver"
+                placeholder="Search driver, city or vehicle..."
+                oninput="searchDrivers()">
+
+
+        </div>
+
+
+
+        <!-- =================================
+             DRIVER LIST
+        ================================== -->
+
+        <div
+            id="driverList"
+            class="driver-list">
+
+
+            <!--
+            Driver cards JavaScript
+            se automatically load honge.
+            -->
+
+
+        </div>
+
+
+
+        <!-- =================================
+             JOIN COMMUNITY
+        ================================== -->
+
+        <div class="join-box">
+
+
+            <div class="join-icon">
+
+                🤝
+
+            </div>
+
+
+            <div class="join-content">
+
+
+                <h2>
+                    Join Driver Community
+                </h2>
+
+
+                <p>
+                    Apna professional profile banayein,
+                    transport jobs aur naye business
+                    opportunities se connect karein.
+                </p>
+
+
+            </div>
+
+
+            <button
+                class="join-btn"
+                onclick="joinCommunity()">
+
+                Join Now
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             COMMUNITY FEATURES
+        ================================== -->
+
+        <div class="features">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    💼
+                </div>
+
+                <strong>
+                    Find Jobs
+                </strong>
+
+                <small>
+                    Driver jobs aur trips
+                    search karein.
+                </small>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🚛
+                </div>
+
+                <strong>
+                    Find Trips
+                </strong>
+
+                <small>
+                    Available transport
+                    trips dekhein.
+                </small>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⭐
+                </div>
+
+                <strong>
+                    Build Rating
+                </strong>
+
+                <small>
+                    Apni professional
+                    rating improve karein.
+                </small>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤝
+                </div>
+
+                <strong>
+                    Connect
+                </strong>
+
+                <small>
+                    Transporters aur
+                    drivers se connect karein.
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT PART 3
+===================================== -->
+
+<script>
+
+/*
+=========================================
+JAVASCRIPT PART 3 YAHAN PASTE HOGA
+=========================================
+*/
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Trip Requests | TransportPro
+</title>
+
+
+<style>
+
+/* =========================================
+   BASIC
+========================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+
+body{
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f5f7fb;
+
+    color:#101828;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+
+    background:#071529;
+
+    color:#fff;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:
+    0 3px 12px
+    rgba(0,0,0,.15);
+
+}
+
+
+.header{
+
+    max-width:900px;
+
+    margin:auto;
+
+    min-height:62px;
+
+    padding:
+    10px 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.backBtn{
+
+    width:38px;
+
+    height:38px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#ffffff18;
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+
+.logoBox{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:19px;
+
+}
+
+
+.headerTitle{
+
+    flex:1;
+
+}
+
+
+.headerTitle strong{
+
+    display:block;
+
+    font-size:15px;
+
+}
+
+
+.headerTitle small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#b8c4d6;
+
+    font-size:9px;
+
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:16px 12px 40px;
+
+}
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+.pageTitle{
+
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:16px;
+
+    padding:17px;
+
+    box-shadow:
+    0 4px 15px
+    rgba(16,24,40,.04);
+
+}
+
+
+.pageTitle small{
+
+    color:#667085;
+
+    font-size:9px;
+
+}
+
+
+.pageTitle h1{
+
+    margin-top:5px;
+
+    font-size:21px;
+
+}
+
+
+.pageTitle p{
+
+    margin-top:6px;
+
+    color:#667085;
+
+    font-size:10px;
+
+    line-height:1.5;
+
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.statsGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:10px;
+
+    margin-top:12px;
+
+}
+
+
+.statCard{
+
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:14px;
+
+    padding:13px;
+
+}
+
+
+.statCard span{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+}
+
+
+.statCard strong{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:20px;
+
+}
+
+
+/* =========================================
+   FILTER
+========================================= */
+
+.filterBox{
+
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:12px;
+
+    margin-top:12px;
+
+}
+
+
+.filterTitle{
+
+    font-size:10px;
+
+    font-weight:700;
+
+    margin-bottom:9px;
+
+}
+
+
+.filterButtons{
+
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+}
+
+
+.filterBtn{
+
+    border:1px solid #d0d5dd;
+
+    background:#fff;
+
+    color:#475467;
+
+    border-radius:20px;
+
+    padding:7px 12px;
+
+    font-size:8px;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+}
+
+
+.filterBtn.active{
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border-color:#2563eb;
+
+}
+
+
+/* =========================================
+   REQUEST LIST
+========================================= */
+
+#requestList{
+
+    margin-top:12px;
+
+}
+
+
+.requestCard{
+
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:16px;
+
+    padding:14px;
+
+    margin-bottom:10px;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+
+}
+
+
+.requestTop{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+}
+
+
+.requestIcon{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:11px;
+
+    background:#eff6ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+
+}
+
+
+.requestInfo{
+
+    flex:1;
+
+}
+
+
+.requestInfo strong{
+
+    display:block;
+
+    font-size:11px;
+
+}
+
+
+.requestInfo span{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:8px;
+
+}
+
+
+.statusBadge{
+
+    padding:6px 9px;
+
+    border-radius:20px;
+
+    background:#fff7ed;
+
+    color:#c2410c;
+
+    font-size:7px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   ROUTE
+========================================= */
+
+.routeBox{
+
+    margin-top:13px;
+
+    padding:11px;
+
+    border-radius:12px;
+
+    background:#f8fafc;
+
+}
+
+
+.routeRow{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+}
+
+
+.routeDot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#12b76a;
+
+    flex-shrink:0;
+
+}
+
+
+.routeDot.destination{
+
+    background:#ef4444;
+
+}
+
+
+.routeText{
+
+    flex:1;
+
+}
+
+
+.routeText small{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+}
+
+
+.routeText strong{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:9px;
+
+}
+
+
+.routeLine{
+
+    width:2px;
+
+    height:16px;
+
+    background:#d0d5dd;
+
+    margin-left:4px;
+
+}
+
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.detailsGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:8px;
+
+    margin-top:11px;
+
+}
+
+
+.detailBox{
+
+    background:#f8fafc;
+
+    border-radius:10px;
+
+    padding:9px;
+
+}
+
+
+.detailBox small{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+}
+
+
+.detailBox strong{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:9px;
+
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.emptyState{
+
+    background:#fff;
+
+    border:1px dashed #cbd5e1;
+
+    border-radius:16px;
+
+    padding:35px 15px;
+
+    text-align:center;
+
+    margin-top:12px;
+
+}
+
+
+.emptyState .emptyIcon{
+
+    font-size:32px;
+
+}
+
+
+.emptyState strong{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:12px;
+
+}
+
+
+.emptyState p{
+
+    margin-top:5px;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:1.5;
+
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media(min-width:600px){
+
+    .statsGrid{
+
+        grid-template-columns:
+        repeat(4,1fr);
+
+    }
+
+    .detailsGrid{
+
+        grid-template-columns:
+        repeat(4,1fr);
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="header">
+
+
+        <button
+            class="backBtn"
+            onclick="goBack()"
+        >
+            ←
+        </button>
+
+
+        <div class="logoBox">
+            🚚
+        </div>
+
+
+        <div class="headerTitle">
+
+            <strong>
+                TransportPro
+            </strong>
+
+            <small>
+                Driver • Trip Requests
+            </small>
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main>
+
+
+    <!-- PAGE TITLE -->
+
+    <section class="pageTitle">
+
+        <small>
+            DRIVER OPERATIONS
+        </small>
+
+        <h1>
+            Trip Requests 📩
+        </h1>
+
+        <p>
+            Customers द्वारा भेजी गई नई
+            transport booking requests यहाँ
+            दिखाई देंगी।
+        </p>
+
+    </section>
+
+
+    <!-- =====================================
+         STATS
+    ====================================== -->
+
+    <section class="statsGrid">
+
+
+        <div class="statCard">
+
+            <span>
+                TOTAL REQUESTS
+            </span>
+
+            <strong id="totalRequests">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="statCard">
+
+            <span>
+                PENDING
+            </span>
+
+            <strong id="pendingRequests">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="statCard">
+
+            <span>
+                ACCEPTED
+            </span>
+
+            <strong id="acceptedRequests">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="statCard">
+
+            <span>
+                REJECTED
+            </span>
+
+            <strong id="rejectedRequests">
+                0
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         FILTER
+    ====================================== -->
+
+    <section class="filterBox">
+
+        <div class="filterTitle">
+            Filter Requests
+        </div>
+
+
+        <div class="filterButtons">
+
+
+            <button
+                class="filterBtn active"
+                data-filter="all"
+                onclick="
+                    filterRequests('all')
+                "
+            >
+                All
+            </button>
+
+
+            <button
+                class="filterBtn"
+                data-filter="Pending"
+                onclick="
+                    filterRequests('Pending')
+                "
+            >
+                Pending
+            </button>
+
+
+            <button
+                class="filterBtn"
+                data-filter="Accepted"
+                onclick="
+                    filterRequests('Accepted')
+                "
+            >
+                Accepted
+            </button>
+
+
+            <button
+                class="filterBtn"
+                data-filter="Rejected"
+                onclick="
+                    filterRequests('Rejected')
+                "
+            >
+                Rejected
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         REQUEST LIST
+    ====================================== -->
+
+    <div id="requestList"></div>
+
+
+    <!-- EMPTY STATE -->
+
+    <div
+        id="emptyState"
+        class="emptyState"
+        style="display:none;"
+    >
+
+        <div class="emptyIcon">
+            📭
+        </div>
+
+        <strong>
+            No Trip Requests
+        </strong>
+
+        <p>
+            अभी कोई नई booking request
+            उपलब्ध नहीं है।
+        </p>
+
+    </div>
+
+
+</main>
+
+
+<!-- =========================================
+     PART 1 JAVASCRIPT
+========================================= -->
+
+<script>
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+let allRequests = [];
+
+let currentFilter = "all";
+
+
+/* =========================================
+   SAFE VALUE
+========================================= */
+
+function safeValue(
+    value,
+    fallback = "—"
+){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ""
+    ){
+
+        return fallback;
+
+    }
+
+
+    return String(value);
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(
+    value
+){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        safeValue(value,"");
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+function goBack(){
+
+    if(
+        window.history.length > 1
+    ){
+
+        window.history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "driver-dashboard.html";
+
+    }
+
+}
+
+
+/* =========================================
+   READ CUSTOMER BOOKINGS
+========================================= */
+
+function readBookingRequests(){
+
+    let bookings = [];
+
+
+    const saved =
+        localStorage.getItem(
+            "myBookings"
+        );
+
+
+    if(!saved){
+
+        return [];
+
+    }
+
+
+    try{
+
+        const data =
+            JSON.parse(saved);
+
+
+        if(
+            Array.isArray(data)
+        ){
+
+            bookings = data;
+
+        }
+        else if(
+            data &&
+            typeof data === "object"
+        ){
+
+            bookings = [
+                data
+            ];
+
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            "Booking data error:",
+            error
+        );
+
+        return [];
+
+    }
+
+
+    return bookings;
+
+}
+
+
+/* =========================================
+   LOAD REQUESTS
+========================================= */
+
+function loadRequests(){
+
+    allRequests =
+        readBookingRequests();
+
+
+    updateRequestStats();
+
+    renderRequests();
+
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+function updateRequestStats(){
+
+    const total =
+        allRequests.length;
+
+
+    const pending =
+        allRequests.filter(
+            function(item){
+
+                return (
+                    safeValue(
+                        item.status,
+                        "Pending"
+                    )
+                    .toLowerCase()
+                    ===
+                    "pending"
+                );
+
+            }
+        ).length;
+
+
+    const accepted =
+        allRequests.filter(
+            function(item){
+
+                return (
+                    safeValue(
+                        item.status,
+                        ""
+                    )
+                    .toLowerCase()
+                    ===
+                    "accepted"
+                );
+
+            }
+        ).length;
+
+
+    const rejected =
+        allRequests.filter(
+            function(item){
+
+                const status =
+                    safeValue(
+                        item.status,
+                        ""
+                    ).toLowerCase();
+
+
+                return (
+                    status === "rejected" ||
+                    status === "cancelled"
+                );
+
+            }
+        ).length;
+
+
+    document.getElementById(
+        "totalRequests"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "pendingRequests"
+    ).textContent =
+        pending;
+
+
+    document.getElementById(
+        "acceptedRequests"
+    ).textContent =
+        accepted;
+
+
+    document.getElementById(
+        "rejectedRequests"
+    ).textContent =
+        rejected;
+
+}
+
+
+/* =========================================
+   FILTER
+========================================= */
+
+function filterRequests(
+    filter
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".filterBtn"
+        )
+        .forEach(
+            function(button){
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.filter
+                    === filter
+                );
+
+            }
+        );
+
+
+    renderRequests();
+
+}
+
+
+/* =========================================
+   END PART 1
+========================================= */
+
+</script>
+/* =========================================
+   PART 2/4
+   CREATE REQUEST CARD
+========================================= */
+
+function createRequestCard(booking){
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "requestCard";
+
+
+    const status =
+        safeValue(
+            booking.status,
+            "Pending"
+        );
+
+
+    const requestId =
+        safeValue(
+            booking.requestId ||
+            booking.bookingId ||
+            booking.id,
+            "TRN-REQUEST"
+        );
+
+
+    const pickup =
+        safeValue(
+            booking.pickup ||
+            booking.pickupAddress
+        );
+
+
+    const destination =
+        safeValue(
+            booking.destination ||
+            booking.delivery ||
+            booking.deliveryAddress
+        );
+
+
+    const goodsType =
+        safeValue(
+            booking.goodsType
+        );
+
+
+    const weight =
+        safeValue(
+            booking.weight
+        );
+
+
+    const customerName =
+        safeValue(
+            booking.customerName ||
+            booking.name
+        );
+
+
+    const customerPhone =
+        safeValue(
+            booking.customerPhone ||
+            booking.phone ||
+            booking.mobile
+        );
+
+
+    const pickupDate =
+        safeValue(
+            booking.pickupDate
+        );
+
+
+    const pickupTime =
+        safeValue(
+            booking.pickupTime
+        );
+
+
+    const freight =
+        booking.fare ||
+        booking.freight ||
+        booking.total ||
+        booking.estimatedTotal ||
+        "Negotiable";
+
+
+    card.innerHTML = `
+
+        <div class="requestTop">
+
+            <div class="requestIcon">
+                📦
+            </div>
+
+
+            <div class="requestInfo">
+
+                <strong>
+                    ${escapeHTML(
+                        requestId
+                    )}
+                </strong>
+
+                <span>
+                    New Transport Booking
+                </span>
+
+            </div>
+
+
+            <span
+                class="statusBadge"
+                id="status-${escapeHTML(
+                    requestId
+                )}"
+            >
+
+                ${escapeHTML(
+                    status
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- ROUTE -->
+
+        <div class="routeBox">
+
+
+            <div class="routeRow">
+
+                <div class="routeDot">
+                </div>
+
+
+                <div class="routeText">
+
+                    <small>
+                        PICKUP
+                    </small>
+
+                    <strong>
+                        ${escapeHTML(
+                            pickup
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="routeLine">
+            </div>
+
+
+            <div class="routeRow">
+
+                <div
+                    class="routeDot destination"
+                >
+                </div>
+
+
+                <div class="routeText">
+
+                    <small>
+                        DELIVERY
+                    </small>
+
+                    <strong>
+                        ${escapeHTML(
+                            destination
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BOOKING DETAILS -->
+
+        <div class="detailsGrid">
+
+
+            <div class="detailBox">
+
+                <small>
+                    GOODS
+                </small>
+
+                <strong>
+                    ${escapeHTML(
+                        goodsType
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <small>
+                    WEIGHT
+                </small>
+
+                <strong>
+                    ${escapeHTML(
+                        weight
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <small>
+                    PICKUP DATE
+                </small>
+
+                <strong>
+                    ${escapeHTML(
+                        pickupDate
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <small>
+                    PICKUP TIME
+                </small>
+
+                <strong>
+                    ${escapeHTML(
+                        pickupTime
+                    )}
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- CUSTOMER -->
+
+        <div
+            style="
+                margin-top:10px;
+                padding:10px;
+                background:#f8fafc;
+                border-radius:10px;
+            "
+        >
+
+            <div
+                style="
+                    font-size:8px;
+                    color:#667085;
+                "
+            >
+                CUSTOMER
+            </div>
+
+
+            <div
+                style="
+                    margin-top:4px;
+                    font-size:10px;
+                    font-weight:700;
+                "
+            >
+
+                👤
+                ${escapeHTML(
+                    customerName
+                )}
+
+            </div>
+
+
+            <div
+                style="
+                    margin-top:3px;
+                    font-size:8px;
+                    color:#667085;
+                "
+            >
+
+                📞
+                ${escapeHTML(
+                    customerPhone
+                )}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- FARE -->
+
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-top:11px;
+                padding-top:10px;
+                border-top:1px solid #eaecf0;
+            "
+        >
+
+            <span
+                style="
+                    font-size:8px;
+                    color:#667085;
+                "
+            >
+                ESTIMATED FARE
+            </span>
+
+
+            <strong
+                style="
+                    font-size:13px;
+                "
+            >
+
+                ₹${escapeHTML(
+                    String(freight)
+                    .replace("₹","")
+                )}
+
+            </strong>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div
+            class="requestActions"
+            style="
+                display:flex;
+                gap:8px;
+                margin-top:12px;
+            "
+        >
+
+            <button
+                type="button"
+                class="viewRequestBtn"
+                style="
+                    flex:1;
+                    padding:10px;
+                    border:1px solid #d0d5dd;
+                    border-radius:9px;
+                    background:#fff;
+                    color:#344054;
+                    font-size:9px;
+                    font-weight:700;
+                    cursor:pointer;
+                "
+            >
+                👁 View Details
+            </button>
+
+
+            <button
+                type="button"
+                class="acceptRequestBtn"
+                style="
+                    flex:1;
+                    padding:10px;
+                    border:0;
+                    border-radius:9px;
+                    background:#16a34a;
+                    color:#fff;
+                    font-size:9px;
+                    font-weight:700;
+                    cursor:pointer;
+                "
+            >
+                ✓ Accept
+            </button>
+
+
+            <button
+                type="button"
+                class="rejectRequestBtn"
+                style="
+                    flex:1;
+                    padding:10px;
+                    border:0;
+                    border-radius:9px;
+                    background:#dc2626;
+                    color:#fff;
+                    font-size:9px;
+                    font-weight:700;
+                    cursor:pointer;
+                "
+            >
+                ✕ Reject
+            </button>
+
+        </div>
+
+    `;
+
+
+    /* =====================================
+       VIEW DETAILS
+    ===================================== */
+
+    card
+        .querySelector(
+            ".viewRequestBtn"
+        )
+        .addEventListener(
+            "click",
+            function(){
+
+                viewRequestDetails(
+                    booking
+                );
+
+            }
+        );
+
+
+    /* =====================================
+       ACCEPT
+    ===================================== */
+
+    card
+        .querySelector(
+            ".acceptRequestBtn"
+        )
+        .addEventListener(
+            "click",
+            function(){
+
+                acceptBooking(
+                    requestId
+                );
+
+            }
+        );
+
+
+    /* =====================================
+       REJECT
+    ===================================== */
+
+    card
+        .querySelector(
+            ".rejectRequestBtn"
+        )
+        .addEventListener(
+            "click",
+            function(){
+
+                rejectBooking(
+                    requestId
+                );
+
+            }
+        );
+
+
+    return card;
+
+}
+
+
+/* =========================================
+   RENDER REQUESTS
+========================================= */
+
+function renderRequests(){
+
+    const list =
+        document.getElementById(
+            "requestList"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "emptyState"
+        );
+
+
+    if(!list){
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    let requests =
+        allRequests.slice();
+
+
+    /* FILTER */
+
+    if(
+        currentFilter !== "all"
+    ){
+
+        requests =
+            requests.filter(
+                function(item){
+
+                    const status =
+                        safeValue(
+                            item.status,
+                            "Pending"
+                        ).toLowerCase();
+
+
+                    return (
+                        status ===
+                        currentFilter
+                        .toLowerCase()
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* EMPTY */
+
+    if(
+        requests.length === 0
+    ){
+
+        if(empty){
+
+            empty.style.display =
+                "block";
+
+        }
+
+        return;
+
+    }
+
+
+    if(empty){
+
+        empty.style.display =
+            "none";
+
+    }
+
+
+    /* CREATE CARDS */
+
+    requests.forEach(
+        function(booking){
+
+            list.appendChild(
+                createRequestCard(
+                    booking
+                )
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   VIEW REQUEST DETAILS
+========================================= */
+
+function viewRequestDetails(
+    booking
+){
+
+    const requestId =
+        safeValue(
+            booking.requestId ||
+            booking.bookingId ||
+            booking.id
+        );
+
+
+    const pickup =
+        safeValue(
+            booking.pickup ||
+            booking.pickupAddress
+        );
+
+
+    const destination =
+        safeValue(
+            booking.destination ||
+            booking.deliveryAddress
+        );
+
+
+    const goods =
+        safeValue(
+            booking.goodsType
+        );
+
+
+    const weight =
+        safeValue(
+            booking.weight
+        );
+
+
+    const customer =
+        safeValue(
+            booking.customerName ||
+            booking.name
+        );
+
+
+    const phone =
+        safeValue(
+            booking.customerPhone ||
+            booking.phone ||
+            booking.mobile
+        );
+
+
+    const date =
+        safeValue(
+            booking.pickupDate
+        );
+
+
+    const time =
+        safeValue(
+            booking.pickupTime
+        );
+
+
+    const description =
+        safeValue(
+            booking.goodsDescription
+        );
+
+
+    const instructions =
+        safeValue(
+            booking.specialInstructions
+        );
+
+
+    alert(
+
+        "BOOKING DETAILS\n\n" +
+
+        "Request ID: " +
+        requestId +
+
+        "\n\nCustomer: " +
+        customer +
+
+        "\nPhone: " +
+        phone +
+
+        "\n\nPickup:\n" +
+        pickup +
+
+        "\n\nDelivery:\n" +
+        destination +
+
+        "\n\nGoods: " +
+        goods +
+
+        "\nWeight: " +
+        weight +
+
+        "\n\nPickup Date: " +
+        date +
+
+        "\nPickup Time: " +
+        time +
+
+        "\n\nGoods Description:\n" +
+        description +
+
+        "\n\nSpecial Instructions:\n" +
+        instructions
+
+    );
+
+}
+
+
+/* =========================================
+   END PART 2
+========================================= */
+/* =========================================
+   PART 3/4
+   ACCEPT / REJECT BOOKING
+========================================= */
+
+
+/* =========================================
+   FIND BOOKING
+========================================= */
+
+function findBookingIndex(
+    requestId
+){
+
+    const bookings =
+        readBookingRequests();
+
+
+    for(
+        let i = 0;
+        i < bookings.length;
+        i++
+    ){
+
+        const id =
+            bookings[i].requestId ||
+            bookings[i].requestID ||
+            bookings[i].bookingId ||
+            bookings[i].bookingID ||
+            bookings[i].booking_id ||
+            bookings[i].id;
+
+
+        if(
+            String(id) ===
+            String(requestId)
+        ){
+
+            return i;
+
+        }
+
+    }
+
+
+    return -1;
+
+}
+
+
+/* =========================================
+   SAVE ALL BOOKINGS
+========================================= */
+
+function saveAllBookings(
+    bookings
+){
+
+    try{
+
+        localStorage.setItem(
+            "myBookings",
+            JSON.stringify(
+                bookings
+            )
+        );
+
+
+        /* Keep latest booking */
+
+        if(
+            bookings.length > 0
+        ){
+
+            localStorage.setItem(
+                "latestBooking",
+                JSON.stringify(
+                    bookings[
+                        bookings.length - 1
+                    ]
+                )
+            );
+
+        }
+
+
+        return true;
+
+    }
+    catch(error){
+
+        console.log(
+            "Save error:",
+            error
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================
+   ACCEPT BOOKING
+========================================= */
+
+function acceptBooking(
+    requestId
+){
+
+    const confirmed =
+        confirm(
+            "क्या आप यह booking accept करना चाहते हैं?"
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    const bookings =
+        readBookingRequests();
+
+
+    const index =
+        findBookingIndex(
+            requestId
+        );
+
+
+    if(
+        index === -1
+    ){
+
+        alert(
+            "Booking नहीं मिली।"
+        );
+
+        return;
+
+    }
+
+
+    /* -------------------------------------
+       UPDATE STATUS
+    ------------------------------------- */
+
+    bookings[index].status =
+        "Accepted";
+
+
+    bookings[index].acceptedAt =
+        new Date().toISOString();
+
+
+    /* -------------------------------------
+       DRIVER INFO
+    ------------------------------------- */
+
+    bookings[index].driverStatus =
+        "Accepted";
+
+
+    bookings[index].driverAction =
+        "accepted";
+
+
+    /* -------------------------------------
+       SAVE
+    ------------------------------------- */
+
+    const saved =
+        saveAllBookings(
+            bookings
+        );
+
+
+    if(!saved){
+
+        alert(
+            "Booking save नहीं हो पाई।"
+        );
+
+        return;
+
+    }
+
+
+    /* -------------------------------------
+       SUCCESS
+    ------------------------------------- */
+
+    alert(
+        "✅ Booking successfully accepted!"
+    );
+
+
+    /* -------------------------------------
+       REFRESH
+    ------------------------------------- */
+
+    loadRequests();
+
+}
+
+
+/* =========================================
+   REJECT BOOKING
+========================================= */
+
+function rejectBooking(
+    requestId
+){
+
+    const confirmed =
+        confirm(
+            "क्या आप यह booking reject करना चाहते हैं?"
+        );
+
+
+    if(!confirmed){
+
+        return;
+
+    }
+
+
+    const bookings =
+        readBookingRequests();
+
+
+    const index =
+        findBookingIndex(
+            requestId
+        );
+
+
+    if(
+        index === -1
+    ){
+
+        alert(
+            "Booking नहीं मिली।"
+        );
+
+        return;
+
+    }
+
+
+    /* -------------------------------------
+       UPDATE STATUS
+    ------------------------------------- */
+
+    bookings[index].status =
+        "Rejected";
+
+
+    bookings[index].rejectedAt =
+        new Date().toISOString();
+
+
+    bookings[index].driverStatus =
+        "Rejected";
+
+
+    bookings[index].driverAction =
+        "rejected";
+
+
+    /* -------------------------------------
+       SAVE
+    ------------------------------------- */
+
+    const saved =
+        saveAllBookings(
+            bookings
+        );
+
+
+    if(!saved){
+
+        alert(
+            "Booking save नहीं हो पाई।"
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "❌ Booking rejected."
+    );
+
+
+    loadRequests();
+
+}
+
+
+/* =========================================
+   ACCEPT BUTTON SAFETY
+========================================= */
+
+function acceptPendingBooking(
+    requestId
+){
+
+    const index =
+        findBookingIndex(
+            requestId
+        );
+
+
+    if(index === -1){
+
+        alert(
+            "Booking नहीं मिली।"
+        );
+
+        return;
+
+    }
+
+
+    const bookings =
+        readBookingRequests();
+
+
+    const currentStatus =
+        safeValue(
+            bookings[index].status,
+            "Pending"
+        );
+
+
+    if(
+        currentStatus !==
+        "Pending"
+    ){
+
+        alert(
+            "यह booking पहले ही " +
+            currentStatus +
+            " हो चुकी है।"
+        );
+
+        return;
+
+    }
+
+
+    acceptBooking(
+        requestId
+    );
+
+}
+
+
+/* =========================================
+   REJECT BUTTON SAFETY
+========================================= */
+
+function rejectPendingBooking(
+    requestId
+){
+
+    const index =
+        findBookingIndex(
+            requestId
+        );
+
+
+    if(index === -1){
+
+        alert(
+            "Booking नहीं मिली।"
+        );
+
+        return;
+
+    }
+
+
+    const bookings =
+        readBookingRequests();
+
+
+    const currentStatus =
+        safeValue(
+            bookings[index].status,
+            "Pending"
+        );
+
+
+    if(
+        currentStatus !==
+        "Pending"
+    ){
+
+        alert(
+            "यह booking पहले ही " +
+            currentStatus +
+            " हो चुकी है।"
+        );
+
+        return;
+
+    }
+
+
+    rejectBooking(
+        requestId
+    );
+
+}
+
+
+/* =========================================
+   REFRESH WHEN PAGE RETURNS
+========================================= */
+
+window.addEventListener(
+    "focus",
+    function(){
+
+        loadRequests();
+
+    }
+);
+
+
+/* =========================================
+   REFRESH WHEN STORAGE CHANGES
+========================================= */
+
+window.addEventListener(
+    "storage",
+    function(event){
+
+        if(
+            event.key ===
+            "myBookings"
+        ){
+
+            loadRequests();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadRequests();
+
+    }
+);
+
+
+/* =========================================
+   FINAL FUNCTION EXPORT
+========================================= */
+
+window.loadRequests =
+    loadRequests;
+
+window.filterRequests =
+    filterRequests;
+
+window.acceptBooking =
+    acceptBooking;
+
+window.rejectBooking =
+    rejectBooking;
+
+window.viewRequestDetails =
+    viewRequestDetails;
+
+window.goBack =
+    goBack;
+
+
+/* =========================================
+   END PART 3
+========================================= */
+/* =========================================
+   PART 4/4
+   FINAL INITIALIZATION
+========================================= */
+
+
+/* =========================================
+   PAGE INITIALIZATION
+========================================= */
+
+function initializeTripRequests(){
+
+    currentFilter = "all";
+
+    loadRequests();
+
+}
+
+
+/* =========================================
+   MANUAL REFRESH
+========================================= */
+
+function refreshTripRequests(){
+
+    loadRequests();
+
+}
+
+
+/* =========================================
+   UPDATE PAGE
+========================================= */
+
+function updateTripRequests(){
+
+    allRequests =
+        readBookingRequests();
+
+    updateRequestStats();
+
+    renderRequests();
+
+}
+
+
+/* =========================================
+   AUTO REFRESH
+========================================= */
+
+setInterval(
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            updateTripRequests();
+
+        }
+
+    },
+    10000
+);
+
+
+/* =========================================
+   PAGE VISIBILITY
+========================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            updateTripRequests();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   BROWSER BACK
+========================================= */
+
+window.addEventListener(
+    "popstate",
+    function(){
+
+        /* Keep normal browser navigation */
+
+    }
+);
+
+
+/* =========================================
+   KEYBOARD ESC
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape"
+        ){
+
+            /* Reserved for future modal */
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   GLOBAL FUNCTIONS
+========================================= */
+
+window.initializeTripRequests =
+    initializeTripRequests;
+
+window.refreshTripRequests =
+    refreshTripRequests;
+
+window.updateTripRequests =
+    updateTripRequests;
+
+
+/* =========================================
+   START
+========================================= */
+
+if(
+    document.readyState ===
+    "loading"
+){
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function(){
+
+            initializeTripRequests();
+
+        }
+    );
+
+}
+else{
+
+    initializeTripRequests();
+
+}
+
+
+/* =========================================
+   END SCRIPT
+========================================= */
+
+</script>
+
+
+</body>
+
+</html>

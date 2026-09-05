@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Service Provider - TransportPro</title>
+
+<style>
+
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    height:62px;
+    width:100%;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    background:transparent;
+    color:#fff;
+
+    font-size:25px;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    background:#fff;
+    color:#1769e0;
+
+    border-radius:9px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.main-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+    line-height:17px;
+}
+
+
+/* =====================================
+   SERVICE STATUS
+===================================== */
+
+.service-status{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:13px;
+}
+
+.service-status strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.service-status small{
+    color:#667085;
+
+    font-size:9px;
+}
+
+.online-badge{
+    background:#eaf8ef;
+
+    color:#137333;
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+.search-area{
+    margin-bottom:10px;
+}
+
+.search-area input{
+    width:100%;
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.search-area input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   FILTERS
+===================================== */
+
+.filter-row{
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-bottom:3px;
+
+    margin-bottom:13px;
+}
+
+.filter-btn{
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#172033;
+
+    border-radius:20px;
+
+    padding:8px 12px;
+
+    font-size:10px;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+
+    color:#fff;
+
+    border-color:#1769e0;
+}
+
+.filter-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   SERVICE LIST
+===================================== */
+
+.service-list{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================
+   SERVICE CARD
+===================================== */
+
+.service-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    transition:.2s;
+}
+
+.service-card:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(16,24,40,.08);
+}
+
+.service-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:9px;
+}
+
+.service-icon{
+    width:45px;
+    height:45px;
+
+    border-radius:11px;
+
+    background:#eef5ff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+    flex-shrink:0;
+}
+
+.service-name{
+    flex:1;
+}
+
+.service-name strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:3px;
+}
+
+.service-name small{
+    color:#667085;
+
+    font-size:9px;
+}
+
+.verified{
+    color:#1769e0;
+
+    font-size:11px;
+}
+
+
+/* =====================================
+   SERVICE DETAILS
+===================================== */
+
+.service-details{
+    border-top:1px solid #eef1f5;
+
+    padding-top:8px;
+}
+
+.service-details div{
+    font-size:9px;
+
+    color:#667085;
+
+    margin-bottom:5px;
+}
+
+.service-details b{
+    color:#172033;
+}
+
+
+/* =====================================
+   SERVICE ACTIONS
+===================================== */
+
+.service-actions{
+    display:flex;
+
+    gap:7px;
+
+    margin-top:9px;
+}
+
+.book-btn,
+.contact-btn{
+    flex:1;
+
+    padding:8px 5px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    font-weight:bold;
+}
+
+.book-btn{
+    background:#1769e0;
+
+    color:#fff;
+
+    border:0;
+}
+
+.contact-btn{
+    background:#fff;
+
+    color:#1769e0;
+
+    border:1px solid #1769e0;
+}
+
+
+/* =====================================
+   ADD SERVICE BOX
+===================================== */
+
+.provider-box{
+    background:#eef6ff;
+
+    border:1px solid #d7e8ff;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.provider-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:11px;
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+}
+
+.provider-content{
+    flex:1;
+}
+
+.provider-content h2{
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.provider-content p{
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:14px;
+}
+
+.provider-btn{
+    border:0;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    padding:10px 13px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    color:#667085;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+}
+
+.empty-state .empty-icon{
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    font-size:9px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:700px){
+
+    .service-list{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .main-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .provider-box{
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .provider-content{
+        min-width:calc(100% - 60px);
+    }
+
+    .provider-btn{
+        width:100%;
+        margin-top:3px;
+    }
+
+}
+
+
+/* =====================================
+   END OF CSS
+===================================== */
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goDashboard()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Professional Transport Platform
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="showNotification()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <section class="main-card">
+
+
+        <!-- =================================
+             PAGE HEADING
+        ================================== -->
+
+        <div class="page-heading">
+
+
+            <div class="page-icon">
+                🛠️
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Service Provider
+                </h1>
+
+                <p>
+                    Transport, repair, maintenance, loading,
+                    GPS aur logistics services provide karein.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             STATUS
+        ================================== -->
+
+        <div class="service-status">
+
+
+            <div>
+
+                <strong>
+                    Service Provider Network
+                </strong>
+
+                <small>
+                    Customers aur transport businesses se
+                    connect karein.
+                </small>
+
+            </div>
+
+
+            <span class="online-badge">
+                ● ACTIVE
+            </span>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             SEARCH
+        ================================== -->
+
+        <div class="search-area">
+
+            <input
+                type="search"
+                id="serviceSearch"
+                placeholder="Search service, provider or city..."
+                oninput="searchServices()">
+
+        </div>
+
+
+
+        <!-- =================================
+             FILTERS
+        ================================== -->
+
+        <div class="filter-row">
+
+
+            <button
+                class="filter-btn active"
+                onclick="filterServices('all',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterServices('mechanic',this)">
+
+                🔧 Mechanic
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterServices('gps',this)">
+
+                📍 GPS
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterServices('loading',this)">
+
+                📦 Loading
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterServices('repair',this)">
+
+                🛠 Repair
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             SERVICE LIST
+        ================================== -->
+
+        <div
+            id="serviceList"
+            class="service-list">
+
+            <!-- JavaScript se services load hongi -->
+
+        </div>
+
+
+
+        <!-- =================================
+             ADD SERVICE
+        ================================== -->
+
+        <div class="provider-box">
+
+
+            <div class="provider-icon">
+                ➕
+            </div>
+
+
+            <div class="provider-content">
+
+                <h2>
+                    Add Your Service
+                </h2>
+
+                <p>
+                    Apni service TransportPro marketplace
+                    par list karein aur customers tak pahunchhein.
+                </p>
+
+            </div>
+
+
+            <button
+                class="provider-btn"
+                onclick="addService()">
+
+                Add Service
+
+            </button>
+
+
+        </div>
+
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT PART 3
+===================================== -->
+
+<script>
+
+/* =====================================
+   SERVICE DATA
+===================================== */
+
+const services = [
+
+    {
+        id: 1,
+        name: "Sharma Truck Repair",
+        type: "mechanic",
+        icon: "🔧",
+        city: "Delhi",
+        service: "Truck & Engine Repair",
+        experience: "10 Years",
+        rating: "4.9"
+    },
+
+    {
+        id: 2,
+        name: "GPS Track Solutions",
+        type: "gps",
+        icon: "📍",
+        city: "Mumbai",
+        service: "GPS Tracking & Installation",
+        experience: "6 Years",
+        rating: "4.8"
+    },
+
+    {
+        id: 3,
+        name: "Fast Loading Services",
+        type: "loading",
+        icon: "📦",
+        city: "Jaipur",
+        service: "Loading & Unloading",
+        experience: "8 Years",
+        rating: "4.7"
+    },
+
+    {
+        id: 4,
+        name: "Roadside Repair Center",
+        type: "repair",
+        icon: "🛠️",
+        city: "Lucknow",
+        service: "Emergency Roadside Repair",
+        experience: "12 Years",
+        rating: "4.9"
+    },
+
+    {
+        id: 5,
+        name: "Raj Auto Mechanic",
+        type: "mechanic",
+        icon: "🔧",
+        city: "Pune",
+        service: "Heavy Vehicle Mechanic",
+        experience: "7 Years",
+        rating: "4.6"
+    },
+
+    {
+        id: 6,
+        name: "Smart GPS India",
+        type: "gps",
+        icon: "📍",
+        city: "Ahmedabad",
+        service: "Vehicle GPS & Fleet Tracking",
+        experience: "5 Years",
+        rating: "4.8"
+    }
+
+];
+
+
+/* =====================================
+   CURRENT FILTER
+===================================== */
+
+let currentFilter = "all";
+
+
+/* =====================================
+   GO TO DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   NOTIFICATION
+===================================== */
+
+function showNotification(){
+
+    alert(
+        "🔔 Notifications\n\n" +
+        "No new notifications."
+    );
+
+}
+
+
+/* =====================================
+   TYPE NAME
+===================================== */
+
+function getServiceType(type){
+
+    if(type === "mechanic"){
+        return "🔧 Mechanic";
+    }
+
+    if(type === "gps"){
+        return "📍 GPS";
+    }
+
+    if(type === "loading"){
+        return "📦 Loading";
+    }
+
+    if(type === "repair"){
+        return "🛠 Repair";
+    }
+
+    return "Service";
+
+}
+
+
+/* =====================================
+   DISPLAY SERVICES
+===================================== */
+
+function displayServices(list){
+
+    const container =
+        document.getElementById(
+            "serviceList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🔍
+                </div>
+
+                <strong>
+                    No Service Found
+                </strong>
+
+                <small>
+                    Search ya filter change karke
+                    dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+
+        list.map(
+            service => `
+
+            <div class="service-card">
+
+
+                <div class="service-top">
+
+
+                    <div class="service-icon">
+                        ${service.icon}
+                    </div>
+
+
+                    <div class="service-name">
+
+                        <strong>
+                            ${service.name}
+                        </strong>
+
+                        <small>
+                            ${service.city}
+                        </small>
+
+                    </div>
+
+
+                    <span class="verified">
+                        ✓
+                    </span>
+
+
+                </div>
+
+
+                <div class="service-details">
+
+
+                    <div>
+                        🛠 Service:
+                        <b>
+                            ${service.service}
+                        </b>
+                    </div>
+
+
+                    <div>
+                        📅 Experience:
+                        <b>
+                            ${service.experience}
+                        </b>
+                    </div>
+
+
+                    <div>
+                        ⭐ Rating:
+                        <b>
+                            ${service.rating}
+                        </b>
+                    </div>
+
+
+                    <div>
+                        📍 City:
+                        <b>
+                            ${service.city}
+                        </b>
+                    </div>
+
+
+                </div>
+
+
+                <div class="service-actions">
+
+
+                    <button
+                        class="book-btn"
+                        onclick="bookService(${service.id})">
+
+                        Book
+
+                    </button>
+
+
+                    <button
+                        class="contact-btn"
+                        onclick="contactProvider(${service.id})">
+
+                        Contact
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        `
+        ).join("");
+
+}
+
+
+/* =====================================
+   SEARCH SERVICES
+===================================== */
+
+function searchServices(){
+
+    const input =
+        document.getElementById(
+            "serviceSearch"
+        );
+
+
+    if(!input){
+        return;
+    }
+
+
+    const search =
+        input.value
+        .toLowerCase()
+        .trim();
+
+
+    let result =
+        services;
+
+
+    if(currentFilter !== "all"){
+
+        result =
+            result.filter(
+                service =>
+                    service.type ===
+                    currentFilter
+            );
+
+    }
+
+
+    if(search){
+
+        result =
+            result.filter(
+                service =>
+
+                    service.name
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    service.city
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    service.service
+                    .toLowerCase()
+                    .includes(search)
+
+                    ||
+
+                    service.type
+                    .toLowerCase()
+                    .includes(search)
+
+            );
+
+    }
+
+
+    displayServices(result);
+
+}
+
+
+/* =====================================
+   FILTER SERVICES
+===================================== */
+
+function filterServices(
+    type,
+    button
+){
+
+    currentFilter = type;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            btn =>
+                btn.classList.remove(
+                    "active"
+                )
+        );
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    searchServices();
+
+}
+
+
+/* =====================================
+   BOOK SERVICE
+===================================== */
+
+function bookService(id){
+
+    const service =
+        services.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!service){
+        return;
+    }
+
+
+    const confirmBooking =
+        confirm(
+
+            "🛠 BOOK SERVICE\n\n" +
+
+            service.name +
+
+            "\n" +
+            service.service +
+
+            "\n" +
+            service.city +
+
+            "\n\n" +
+
+            "Kya aap is service ko book karna chahte hain?"
+
+        );
+
+
+    if(!confirmBooking){
+        return;
+    }
+
+
+    let bookings =
+        JSON.parse(
+
+            localStorage.getItem(
+                "tp_service_bookings"
+            ) || "[]"
+
+        );
+
+
+    bookings.push({
+
+        id:
+            Date.now(),
+
+        provider:
+            service.name,
+
+        service:
+            service.service,
+
+        city:
+            service.city,
+
+        status:
+            "Booking Requested",
+
+        date:
+            new Date()
+            .toLocaleString()
+
+    });
+
+
+    localStorage.setItem(
+
+        "tp_service_bookings",
+
+        JSON.stringify(
+            bookings
+        )
+
+    );
+
+
+    alert(
+
+        "✅ Booking Request Sent!\n\n" +
+
+        "Provider: " +
+        service.name +
+
+        "\nService: " +
+        service.service
+
+    );
+
+}
+
+
+/* =====================================
+   CONTACT PROVIDER
+===================================== */
+
+function contactProvider(id){
+
+    const service =
+        services.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!service){
+        return;
+    }
+
+
+    alert(
+
+        "📞 CONTACT PROVIDER\n\n" +
+
+        "Provider:\n" +
+        service.name +
+
+        "\n\nService:\n" +
+        service.service +
+
+        "\n\nContact system opened."
+
+    );
+
+}
+
+
+/* =====================================
+   ADD SERVICE
+===================================== */
+
+function addService(){
+
+    const name =
+        prompt(
+            "Service provider ka naam:"
+        );
+
+
+    if(!name || !name.trim()){
+
+        alert(
+            "⚠️ Provider name required hai."
+        );
+
+        return;
+    }
+
+
+    const city =
+        prompt(
+            "City / Location:"
+        );
+
+
+    if(!city || !city.trim()){
+
+        alert(
+            "⚠️ City required hai."
+        );
+
+        return;
+    }
+
+
+    const serviceName =
+        prompt(
+            "Aap kaunsi service provide karte hain?"
+        );
+
+
+    if(!serviceName || !serviceName.trim()){
+
+        alert(
+            "⚠️ Service name required hai."
+        );
+
+        return;
+    }
+
+
+    const newService = {
+
+        id:
+            Date.now(),
+
+        name:
+            name.trim(),
+
+        type:
+            "repair",
+
+        icon:
+            "🛠️",
+
+        city:
+            city.trim(),
+
+        service:
+            serviceName.trim(),
+
+        experience:
+            "New Provider",
+
+        rating:
+            "New"
+
+    };
+
+
+    services.unshift(
+        newService
+    );
+
+
+    saveServices();
+
+
+    displayServices(
+        services
+    );
+
+
+    alert(
+
+        "✅ Service Successfully Added!\n\n" +
+
+        "Provider: " +
+        newService.name +
+
+        "\nCity: " +
+        newService.city +
+
+        "\nService: " +
+        newService.service
+
+    );
+
+}
+
+
+/* =====================================
+   SAVE SERVICES
+===================================== */
+
+function saveServices(){
+
+    localStorage.setItem(
+
+        "tp_service_providers",
+
+        JSON.stringify(
+            services
+        )
+
+    );
+
+}
+
+
+/* =====================================
+   LOAD SAVED SERVICES
+===================================== */
+
+function loadSavedServices(){
+
+    const saved =
+        localStorage.getItem(
+            "tp_service_providers"
+        );
+
+
+    if(!saved){
+        return;
+    }
+
+
+    try{
+
+        const savedServices =
+            JSON.parse(saved);
+
+
+        if(
+            Array.isArray(savedServices)
+        ){
+
+            savedServices.forEach(
+                savedService => {
+
+                    const exists =
+                        services.some(
+                            service =>
+                                service.id ===
+                                savedService.id
+                        );
+
+
+                    if(!exists){
+
+                        services.unshift(
+                            savedService
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            "Saved services could not be loaded."
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   PAGE START
+===================================== */
+
+loadSavedServices();
+
+displayServices(
+    services
+);
+
+
+/* =====================================
+   SEARCH KEYBOARD
+===================================== */
+
+const searchBox =
+    document.getElementById(
+        "serviceSearch"
+    );
+
+
+if(searchBox){
+
+    searchBox.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                event.preventDefault();
+
+                searchServices();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        loadSavedServices();
+
+        displayServices(
+            services
+        );
+
+        console.log(
+            "TransportPro Service Provider loaded successfully."
+        );
+
+    }
+);
+
+
+/* =====================================
+   END OF JAVASCRIPT
+===================================== */
+
+</script>
+
+
+</body>
+
+</html>
+</script>
+
+
+</body>
+
+</html>

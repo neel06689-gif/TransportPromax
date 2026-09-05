@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Load Details | TransportPro</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#07111f;
+    color:#fff;
+}
+
+.header{
+    max-width:900px;
+    min-height:64px;
+    margin:auto;
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+    font-size:22px;
+}
+
+.logoBox{
+    width:39px;
+    height:39px;
+    border-radius:11px;
+
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:14px;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+    color:#94a3b8;
+    font-size:7px;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+    padding:16px 14px 110px;
+}
+
+.intro{
+    background:#07111f;
+    color:#fff;
+    border-radius:18px;
+    padding:18px 16px;
+    margin-bottom:15px;
+}
+
+.intro small{
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.intro h1{
+    margin-top:6px;
+    font-size:20px;
+}
+
+.intro p{
+    margin-top:7px;
+    color:#cbd5e1;
+    font-size:8px;
+    line-height:1.6;
+}
+
+.progressCard{
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:15px;
+    padding:14px;
+    margin-bottom:15px;
+}
+
+.progressTop{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.progressTop strong{
+    font-size:9px;
+}
+
+.progressTop span{
+    color:#667085;
+    font-size:7px;
+}
+
+.progressBar{
+    height:6px;
+    background:#eaecf0;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progressFill{
+    width:66.66%;
+    height:100%;
+    background:#2563eb;
+}
+
+.formCard{
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:17px;
+    padding:15px;
+    margin-bottom:14px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.formTitle{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:14px;
+}
+
+.formTitleIcon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.formTitle strong{
+    display:block;
+    font-size:11px;
+}
+
+.formTitle span{
+    display:block;
+    margin-top:3px;
+    color:#667085;
+    font-size:6px;
+}
+
+.formGroup{
+    margin-bottom:13px;
+}
+
+.formGroup:last-child{
+    margin-bottom:0;
+}
+
+.formGroup label{
+    display:block;
+    margin-bottom:6px;
+
+    color:#344054;
+    font-size:7px;
+    font-weight:700;
+}
+
+.required{
+    color:#d92d20;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea{
+    width:100%;
+
+    border:1px solid #d0d5dd;
+    border-radius:10px;
+
+    background:#fff;
+    color:#101828;
+
+    outline:none;
+
+    padding:11px 12px;
+    font-size:8px;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus{
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px rgba(37,99,235,.10);
+}
+
+.formGroup textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.twoColumn{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.optionGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+}
+
+.option{
+    position:relative;
+}
+
+.option input{
+    position:absolute;
+    opacity:0;
+}
+
+.option label{
+    min-height:43px;
+
+    border:1px solid #d0d5dd;
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+
+    padding:9px;
+
+    gap:7px;
+
+    cursor:pointer;
+
+    font-size:7px;
+}
+
+.option input:checked + label{
+    border-color:#2563eb;
+    background:#eff6ff;
+    color:#175cd3;
+}
+
+.infoBox{
+    background:#f8fafc;
+    border:1px solid #e4e9f0;
+    border-radius:11px;
+
+    padding:11px;
+
+    display:flex;
+    gap:8px;
+
+    margin-bottom:14px;
+}
+
+.infoBox p{
+    color:#667085;
+    font-size:6px;
+    line-height:1.6;
+}
+
+.buttonRow{
+    display:flex;
+    gap:9px;
+}
+
+.secondaryBtn,
+.primaryBtn{
+    min-height:45px;
+    border-radius:11px;
+    font-size:8px;
+    font-weight:700;
+}
+
+.secondaryBtn{
+    width:110px;
+    background:#fff;
+    color:#344054;
+    border:1px solid #d0d5dd;
+}
+
+.primaryBtn{
+    flex:1;
+    background:#2563eb;
+    color:#fff;
+    border:0;
+}
+
+.summary{
+    background:#f8fafc;
+    border:1px solid #e4e9f0;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:14px;
+}
+
+.summaryRow{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+
+    padding:7px 0;
+
+    border-bottom:1px solid #eaecf0;
+}
+
+.summaryRow:last-child{
+    border-bottom:0;
+}
+
+.summaryRow span{
+    color:#667085;
+    font-size:6px;
+}
+
+.summaryRow strong{
+    text-align:right;
+    font-size:7px;
+}
+
+@media(max-width:420px){
+
+    .twoColumn{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="header">
+
+<button
+class="backBtn"
+onclick="goBack()">
+←
+</button>
+
+<div class="logoBox">
+📦
+</div>
+
+<div class="headerTitle">
+
+<strong>
+Load Details
+</strong>
+
+<small>
+TransportPro Dealer Portal
+</small>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<section class="intro">
+
+<small>
+DEALER • LOAD POSTING
+</small>
+
+<h1>
+Load Requirements 🚛
+</h1>
+
+<p>
+अब अपने load की freight, vehicle और
+special transport requirements दर्ज करें।
+</p>
+
+</section>
+
+
+
+<div class="progressCard">
+
+<div class="progressTop">
+
+<strong>
+Load Posting
+</strong>
+
+<span>
+Step 2 of 3
+</span>
+
+</div>
+
+<div class="progressBar">
+
+<div class="progressFill"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     LOAD SUMMARY
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+📦
+</div>
+
+<div>
+
+<strong>
+Load Summary
+</strong>
+
+<span>
+Step 1 में दी गई जानकारी
+</span>
+
+</div>
+
+</div>
+
+
+<div class="summary">
+
+<div class="summaryRow">
+
+<span>
+Goods
+</span>
+
+<strong id="summaryGoods">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Weight
+</span>
+
+<strong id="summaryWeight">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Pickup
+</span>
+
+<strong id="summaryPickup">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Destination
+</span>
+
+<strong id="summaryDestination">
+-
+</strong>
+
+</div>
+
+
+<div class="summaryRow">
+
+<span>
+Vehicle
+</span>
+
+<strong id="summaryVehicle">
+-
+</strong>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     FREIGHT
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+💰
+</div>
+
+<div>
+
+<strong>
+Freight & Pricing
+</strong>
+
+<span>
+आप कितना freight expect करते हैं?
+</span>
+
+</div>
+
+</div>
+
+
+<div class="twoColumn">
+
+<div class="formGroup">
+
+<label>
+Expected Freight
+<span class="required">*</span>
+</label>
+
+<input
+id="expectedFreight"
+type="number"
+min="0"
+placeholder="₹ Amount">
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+Payment Basis
+</label>
+
+<select id="paymentBasis">
+
+<option value="Full Trip">
+Full Trip
+</option>
+
+<option value="Per Ton">
+Per Ton
+</option>
+
+<option value="Per Km">
+Per Km
+</option>
+
+<option value="Negotiable">
+Negotiable
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+Advance Payment Required
+</label>
+
+<select id="advancePayment">
+
+<option value="No Advance">
+No Advance
+</option>
+
+<option value="10%">
+10%
+</option>
+
+<option value="20%">
+20%
+</option>
+
+<option value="30%">
+30%
+</option>
+
+<option value="50%">
+50%
+</option>
+
+<option value="Negotiable">
+Negotiable
+</option>
+
+</select>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     VEHICLE PREFERENCE
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+🚛
+</div>
+
+<div>
+
+<strong>
+Vehicle Preferences
+</strong>
+
+<span>
+Driver/transporter को आपकी requirements
+</span>
+
+</div>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+Preferred Vehicle Condition
+</label>
+
+<div class="optionGrid">
+
+<div class="option">
+
+<input
+type="radio"
+name="vehicleCondition"
+id="conditionAny"
+value="Any"
+checked>
+
+<label for="conditionAny">
+✓ Any
+</label>
+
+</div>
+
+
+<div class="option">
+
+<input
+type="radio"
+name="vehicleCondition"
+id="conditionGood"
+value="Good Condition">
+
+<label for="conditionGood">
+⭐ Good Condition
+</label>
+
+</div>
+
+
+<div class="option">
+
+<input
+type="radio"
+name="vehicleCondition"
+id="conditionNew"
+value="Newer Vehicle">
+
+<label for="conditionNew">
+✨ Newer Vehicle
+</label>
+
+</div>
+
+
+<div class="option">
+
+<input
+type="radio"
+name="vehicleCondition"
+id="conditionVerified"
+value="Verified Vehicle">
+
+<label for="conditionVerified">
+🛡️ Verified Vehicle
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="formGroup">
+
+<label>
+Driver Requirement
+</label>
+
+<select id="driverRequirement">
+
+<option value="Any Driver">
+Any Driver
+</option>
+
+<option value="Verified Driver">
+Verified Driver
+</option>
+
+<option value="Experienced Driver">
+Experienced Driver
+</option>
+
+</select>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     TRANSPORT REQUIREMENTS
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+🛡️
+</div>
+
+<div>
+
+<strong>
+Transport Requirements
+</strong>
+
+<span>
+Goods की safe delivery के लिए
+</span>
+
+</div>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+Insurance Requirement
+</label>
+
+<select id="insuranceRequirement">
+
+<option value="Not Required">
+Not Required
+</option>
+
+<option value="Required">
+Required
+</option>
+
+<option value="Preferred">
+Preferred
+</option>
+
+</select>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+Goods Handling
+</label>
+
+<select id="handlingRequirement">
+
+<option value="Normal">
+Normal
+</option>
+
+<option value="Careful Handling">
+Careful Handling
+</option>
+
+<option value="Fragile">
+Fragile
+</option>
+
+<option value="Special Handling">
+Special Handling
+</option>
+
+</select>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+Special Instructions
+</label>
+
+<textarea
+id="specialInstructions"
+placeholder="Loading, unloading, route या goods से संबंधित instructions..."></textarea>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     CONTACT
+========================================= -->
+
+<section class="formCard">
+
+<div class="formTitle">
+
+<div class="formTitleIcon">
+📞
+</div>
+
+<div>
+
+<strong>
+Contact Preference
+</strong>
+
+<span>
+Transporter आपसे कैसे संपर्क करे?
+</span>
+
+</div>
+
+</div>
+
+
+<div class="formGroup">
+
+<label>
+Preferred Contact Method
+</label>
+
+<select id="contactMethod">
+
+<option value="In-App Chat">
+In-App Chat
+</option>
+
+<option value="Phone">
+Phone
+</option>
+
+<option value="WhatsApp">
+WhatsApp
+</option>
+
+</select>
+
+</div>
+
+</section>
+
+
+
+<div class="infoBox">
+
+<div>
+💡
+</div>
+
+<p>
+Freight और requirements clear रखने से
+आपको सही transporter offer चुनने में आसानी होगी।
+Final payment और booking verification बाद में
+secure backend system से handle किए जाएंगे।
+</p>
+
+</div>
+
+
+
+<div class="buttonRow">
+
+<button
+type="button"
+class="secondaryBtn"
+onclick="goBack()">
+← Back
+</button>
+
+
+<button
+type="button"
+class="primaryBtn"
+onclick="continueToStep3()">
+Continue →
+</button>
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================================
+   BACK
+========================================= */
+
+function goBack(){
+
+    window.location.href =
+        "create-load.html";
+
+}
+
+
+/* =========================================
+   LOAD STEP 1 DATA
+========================================= */
+
+function loadStep1Data(){
+
+    const saved =
+        localStorage.getItem(
+            "dealerLoadDraft"
+        );
+
+
+    if(!saved){
+
+        alert(
+            "Load information नहीं मिली। पहले Step 1 पूरा करें।"
+        );
+
+        window.location.href =
+            "create-load.html";
+
+        return null;
+
+    }
+
+
+    try{
+
+        return JSON.parse(saved);
+
+    }catch(error){
+
+        alert(
+            "Saved load data पढ़ने में समस्या हुई।"
+        );
+
+        window.location.href =
+            "create-load.html";
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================
+   SHOW SUMMARY
+========================================= */
+
+function showSummary(){
+
+    const data =
+        loadStep1Data();
+
+
+    if(!data){
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "summaryGoods"
+    ).textContent =
+        data.goodsName || "-";
+
+
+    document.getElementById(
+        "summaryWeight"
+    ).textContent =
+        (
+            data.weight || "-"
+        )
+        + " "
+        + (
+            data.weightUnit || ""
+        );
+
+
+    document.getElementById(
+        "summaryPickup"
+    ).textContent =
+        data.pickupLocation || "-";
+
+
+    document.getElementById(
+        "summaryDestination"
+    ).textContent =
+        data.destination || "-";
+
+
+    document.getElementById(
+        "summaryVehicle"
+    ).textContent =
+        data.vehicleType || "-";
+
+}
+
+
+/* =========================================
+   SAVE STEP 2
+========================================= */
+
+function saveStep2(){
+
+    const oldData =
+        loadStep1Data();
+
+
+    if(!oldData){
+
+        return null;
+
+    }
+
+
+    const condition =
+        document.querySelector(
+            'input[name="vehicleCondition"]:checked'
+        );
+
+
+    const updatedData = {
+
+        ...oldData,
+
+        expectedFreight:
+            document.getElementById(
+                "expectedFreight"
+            ).value,
+
+        paymentBasis:
+            document.getElementById(
+                "paymentBasis"
+            ).value,
+
+        advancePayment:
+            document.getElementById(
+                "advancePayment"
+            ).value,
+
+        vehicleCondition:
+            condition ?
+            condition.value :
+            "Any",
+
+        driverRequirement:
+            document.getElementById(
+                "driverRequirement"
+            ).value,
+
+        insuranceRequirement:
+            document.getElementById(
+                "insuranceRequirement"
+            ).value,
+
+        handlingRequirement:
+            document.getElementById(
+                "handlingRequirement"
+            ).value,
+
+        specialInstructions:
+            document.getElementById(
+                "specialInstructions"
+            ).value.trim(),
+
+        contactMethod:
+            document.getElementById(
+                "contactMethod"
+            ).value
+
+    };
+
+
+    localStorage.setItem(
+        "dealerLoadDraft",
+        JSON.stringify(updatedData)
+    );
+
+
+    return updatedData;
+
+}
+
+
+/* =========================================
+   VALIDATE
+========================================= */
+
+function validateStep2(){
+
+    const freight =
+        document.getElementById(
+            "expectedFreight"
+        ).value;
+
+
+    if(!freight){
+
+        alert(
+            "Expected Freight डालें।"
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        Number(freight) <= 0
+    ){
+
+        alert(
+            "Freight amount सही डालें।"
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================
+   CONTINUE
+========================================= */
+
+function continueToStep3(){
+
+    if(!validateStep2()){
+
+        return;
+
+    }
+
+
+    const data =
+        saveStep2();
+
+
+    if(!data){
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "create-load-step3.html";
+
+}
+
+
+/* =========================================
+   AUTO SAVE
+========================================= */
+
+document.addEventListener(
+    "input",
+    function(){
+
+        saveStep2();
+
+    }
+);
+
+
+document.addEventListener(
+    "change",
+    function(){
+
+        saveStep2();
+
+    }
+);
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        showSummary();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

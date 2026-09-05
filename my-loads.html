@@ -1,0 +1,3746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>My Loads | TransportPro</title>
+
+<style>
+
+/* =====================================================
+   TRANSPORTPRO — MY LOADS
+   PART 1 / 3
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f4f7fb;
+
+    color:#101828;
+
+    min-height:100vh;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.loadsHeader{
+
+    height:68px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 15px;
+
+    background:#07152d;
+
+    color:#fff;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:
+    0 4px 18px
+    rgba(0,0,0,.16);
+
+}
+
+
+.backBtn{
+
+    width:38px;
+
+    height:38px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:
+    rgba(255,255,255,.10);
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.loadsBrand{
+
+    flex:1;
+
+}
+
+
+.loadsBrand strong{
+
+    display:block;
+
+    font-size:14px;
+
+    font-weight:950;
+
+}
+
+
+.loadsBrand small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#b9c7dc;
+
+    font-size:8px;
+
+}
+
+
+.headerIcon{
+
+    font-size:24px;
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.loadsPage{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:16px 13px 100px;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.loadsHero{
+
+    padding:20px 17px;
+
+    border-radius:18px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0b2445,
+        #1765a8
+    );
+
+    box-shadow:
+    0 10px 30px
+    rgba(10,50,100,.17);
+
+}
+
+
+.loadsHero .badge{
+
+    display:inline-block;
+
+    padding:6px 9px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,.12);
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:.7px;
+
+}
+
+
+.loadsHero h1{
+
+    margin-top:10px;
+
+    font-size:24px;
+
+    font-weight:950;
+
+}
+
+
+.loadsHero p{
+
+    margin-top:7px;
+
+    color:#d7e5f5;
+
+    font-size:9px;
+
+    line-height:1.5;
+
+}
+
+
+/* =====================================================
+   STAT CARDS
+===================================================== */
+
+.statsGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:9px;
+
+    margin-top:14px;
+
+}
+
+
+.statCard{
+
+    padding:13px 9px;
+
+    border-radius:13px;
+
+    background:#fff;
+
+    border:
+    1px solid #e5eaf1;
+
+    box-shadow:
+    0 4px 16px
+    rgba(16,24,40,.05);
+
+    text-align:center;
+
+}
+
+
+.statIcon{
+
+    font-size:18px;
+
+}
+
+
+.statCard strong{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:16px;
+
+    font-weight:950;
+
+}
+
+
+.statCard span{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:7px;
+
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:15px;
+
+}
+
+
+.searchBox{
+
+    flex:1;
+
+    position:relative;
+
+}
+
+
+.searchBox span{
+
+    position:absolute;
+
+    left:11px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    font-size:13px;
+
+}
+
+
+.searchBox input{
+
+    width:100%;
+
+    height:42px;
+
+    border:
+    1px solid #d9dee8;
+
+    border-radius:10px;
+
+    padding:
+    0 10px 0 32px;
+
+    outline:none;
+
+    background:#fff;
+
+    font-size:9px;
+
+}
+
+
+.searchBox input:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.08);
+
+}
+
+
+.refreshBtn{
+
+    width:42px;
+
+    height:42px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    border:
+    1px solid #d9dee8;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+}
+
+
+/* =====================================================
+   FILTER TABS
+===================================================== */
+
+.filterTabs{
+
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding:3px 1px 7px;
+
+    margin-top:10px;
+
+}
+
+
+.filterTabs::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+.filterTab{
+
+    flex-shrink:0;
+
+    border:
+    1px solid #d9dee8;
+
+    background:#fff;
+
+    color:#475467;
+
+    border-radius:20px;
+
+    padding:8px 12px;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+}
+
+
+.filterTab.active{
+
+    background:#155eef;
+
+    color:#fff;
+
+    border-color:#155eef;
+
+}
+
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.sectionTitle{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-top:12px;
+
+    margin-bottom:9px;
+
+}
+
+
+.sectionTitle strong{
+
+    font-size:11px;
+
+    font-weight:950;
+
+}
+
+
+.sectionTitle span{
+
+    color:#667085;
+
+    font-size:7px;
+
+}
+
+
+/* =====================================================
+   LOAD LIST
+===================================================== */
+
+.loadsList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:11px;
+
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.emptyState{
+
+    display:none;
+
+    padding:35px 18px;
+
+    background:#fff;
+
+    border:
+    1px solid #e5eaf1;
+
+    border-radius:16px;
+
+    text-align:center;
+
+}
+
+
+.emptyState .emptyIcon{
+
+    font-size:38px;
+
+}
+
+
+.emptyState h3{
+
+    margin-top:9px;
+
+    font-size:13px;
+
+}
+
+
+.emptyState p{
+
+    margin-top:6px;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:1.5;
+
+}
+
+
+.emptyState button{
+
+    margin-top:13px;
+
+    border:0;
+
+    border-radius:9px;
+
+    padding:10px 15px;
+
+    background:#155eef;
+
+    color:#fff;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+   LOAD CARD
+===================================================== */
+
+.loadCard{
+
+    background:#fff;
+
+    border:
+    1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:14px;
+
+    box-shadow:
+    0 5px 18px
+    rgba(16,24,40,.05);
+
+}
+
+
+.loadTop{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+}
+
+
+.loadId{
+
+    color:#155eef;
+
+    font-size:8px;
+
+    font-weight:950;
+
+}
+
+
+.loadTime{
+
+    margin-top:3px;
+
+    color:#98a2b3;
+
+    font-size:7px;
+
+}
+
+
+.statusBadge{
+
+    padding:6px 8px;
+
+    border-radius:20px;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    font-size:7px;
+
+    font-weight:900;
+
+}
+
+
+.routeBox{
+
+    display:grid;
+
+    grid-template-columns:
+    12px 1fr;
+
+    column-gap:9px;
+
+    margin-top:13px;
+
+}
+
+
+.routeLine{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+.routeDot{
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    box-shadow:
+    0 0 0 4px
+    rgba(37,99,235,.10);
+
+}
+
+
+.routeDot.destination{
+
+    background:#16a34a;
+
+    box-shadow:
+    0 0 0 4px
+    rgba(22,163,74,.10);
+
+}
+
+
+.routeConnector{
+
+    width:2px;
+
+    height:31px;
+
+    background:#d9dee8;
+
+}
+
+
+.routeLocation{
+
+    min-width:0;
+
+}
+
+
+.locationRow{
+
+    min-height:40px;
+
+}
+
+
+.locationRow strong{
+
+    display:block;
+
+    font-size:10px;
+
+    font-weight:950;
+
+}
+
+
+.locationRow small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:7px;
+
+}
+
+
+/* =====================================================
+   LOAD INFO
+===================================================== */
+
+.loadInfoGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+
+    margin-top:12px;
+
+}
+
+
+.infoItem{
+
+    padding:9px;
+
+    border-radius:9px;
+
+    background:#f8fafc;
+
+}
+
+
+.infoItem span{
+
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+}
+
+
+.infoItem strong{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#344054;
+
+    font-size:8px;
+
+    word-break:break-word;
+
+}
+
+
+/* =====================================================
+   CARD ACTIONS
+===================================================== */
+
+.cardActions{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr 1fr;
+
+    gap:7px;
+
+    margin-top:12px;
+
+}
+
+
+.cardActions button{
+
+    min-height:36px;
+
+    border-radius:9px;
+
+    border:
+    1px solid #d9dee8;
+
+    background:#fff;
+
+    color:#344054;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+}
+
+
+.cardActions button.primary{
+
+    background:#155eef;
+
+    color:#fff;
+
+    border-color:#155eef;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .loadsPage{
+
+        padding:
+        13px 10px 90px;
+
+    }
+
+
+    .loadsHero h1{
+
+        font-size:21px;
+
+    }
+
+
+    .statsGrid{
+
+        gap:7px;
+
+    }
+
+
+    .statCard{
+
+        padding:
+        11px 6px;
+
+    }
+
+
+    .loadInfoGrid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+
+    .cardActions{
+
+        grid-template-columns:
+        1fr 1fr 1fr;
+
+    }
+
+}
+
+
+@media(max-width:380px){
+
+    .statsGrid{
+
+        grid-template-columns:
+        1fr 1fr 1fr;
+
+    }
+
+
+    .statCard strong{
+
+        font-size:14px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="loadsHeader">
+
+    <button
+        type="button"
+        class="backBtn"
+        onclick="history.back()"
+    >
+        ‹
+    </button>
+
+
+    <div class="loadsBrand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            My Loads
+        </small>
+
+    </div>
+
+
+    <div class="headerIcon">
+        📦
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="loadsPage">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="loadsHero">
+
+    <span class="badge">
+        LOAD MANAGEMENT
+    </span>
+
+
+    <h1>
+        My Loads
+    </h1>
+
+
+    <p>
+        Track, manage and review all the loads
+        you have posted on TransportPro.
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATISTICS
+===================================================== -->
+
+<section class="statsGrid">
+
+    <div class="statCard">
+
+        <div class="statIcon">
+            📦
+        </div>
+
+        <strong id="totalLoads">
+            0
+        </strong>
+
+        <span>
+            Total Loads
+        </span>
+
+    </div>
+
+
+    <div class="statCard">
+
+        <div class="statIcon">
+            🟢
+        </div>
+
+        <strong id="activeLoads">
+            0
+        </strong>
+
+        <span>
+            Active
+        </span>
+
+    </div>
+
+
+    <div class="statCard">
+
+        <div class="statIcon">
+            ✅
+        </div>
+
+        <strong id="completedLoads">
+            0
+        </strong>
+
+        <span>
+            Completed
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEARCH + REFRESH
+===================================================== -->
+
+<div class="toolbar">
+
+    <div class="searchBox">
+
+        <span>
+            🔎
+        </span>
+
+        <input
+            type="search"
+            id="loadSearch"
+            placeholder="Search Load ID, city or goods..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <button
+        type="button"
+        class="refreshBtn"
+        id="refreshLoads"
+        title="Refresh"
+    >
+        🔄
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     FILTERS
+===================================================== -->
+
+<div class="filterTabs">
+
+    <button
+        type="button"
+        class="filterTab active"
+        data-filter="all"
+    >
+        All
+    </button>
+
+
+    <button
+        type="button"
+        class="filterTab"
+        data-filter="Posted"
+    >
+        Posted
+    </button>
+
+
+    <button
+        type="button"
+        class="filterTab"
+        data-filter="Active"
+    >
+        Active
+    </button>
+
+
+    <button
+        type="button"
+        class="filterTab"
+        data-filter="Completed"
+    >
+        Completed
+    </button>
+
+
+    <button
+        type="button"
+        class="filterTab"
+        data-filter="Cancelled"
+    >
+        Cancelled
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     LOAD SECTION
+===================================================== -->
+
+<div class="sectionTitle">
+
+    <strong>
+        Your Loads
+    </strong>
+
+    <span id="loadCount">
+        0 loads
+    </span>
+
+</div>
+
+
+
+<div
+    class="loadsList"
+    id="loadsList"
+></div>
+
+
+
+<!-- =====================================================
+     EMPTY STATE
+===================================================== -->
+
+<div
+    class="emptyState"
+    id="emptyState"
+>
+
+    <div class="emptyIcon">
+        📦
+    </div>
+
+
+    <h3>
+        No Loads Found
+    </h3>
+
+
+    <p>
+        You haven't posted any load yet,
+        or no load matches your search.
+    </p>
+
+
+    <button
+        type="button"
+        id="postNewLoadBtn"
+    >
+        + Post New Load
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     PART 1 END
+===================================================== -->
+
+<!-- PART 2 WILL CONTINUE HERE --><!-- =====================================================
+     MY LOADS — PART 2 / 3
+     LOAD DATA + CARDS + SEARCH + FILTER
+===================================================== -->
+
+<script>
+
+(function(){
+
+    "use strict";
+
+
+    /* =================================================
+       DATA
+    ================================================= */
+
+    let allLoads = [];
+
+    let currentFilter = "all";
+
+
+
+    /* =================================================
+       GET ELEMENT
+    ================================================= */
+
+    function get(id){
+
+        return document.getElementById(id);
+
+    }
+
+
+
+    /* =================================================
+       LOAD DATA FROM LOCAL STORAGE
+    ================================================= */
+
+    function loadSavedData(){
+
+        try{
+
+            allLoads =
+                JSON.parse(
+                    localStorage.getItem(
+                        "transportProLoads"
+                    )
+                ) || [];
+
+        }
+        catch(error){
+
+            console.error(
+                "Unable to read saved loads:",
+                error
+            );
+
+            allLoads = [];
+
+        }
+
+
+        renderLoads();
+
+        updateStats();
+
+    }
+
+
+
+    /* =================================================
+       FORMAT DATE
+    ================================================= */
+
+    function formatDate(dateValue){
+
+        if(!dateValue){
+
+            return "Not specified";
+
+        }
+
+
+        const date =
+            new Date(dateValue);
+
+
+        if(isNaN(date.getTime())){
+
+            return dateValue;
+
+        }
+
+
+        return date.toLocaleDateString(
+            "en-IN",
+            {
+                day:"2-digit",
+                month:"short",
+                year:"numeric"
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       FORMAT TIME
+    ================================================= */
+
+    function formatTime(dateValue){
+
+        if(!dateValue){
+
+            return "";
+
+        }
+
+
+        const date =
+            new Date(dateValue);
+
+
+        if(isNaN(date.getTime())){
+
+            return "";
+
+        }
+
+
+        return date.toLocaleTimeString(
+            "en-IN",
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       ESCAPE HTML
+    ================================================= */
+
+    function escapeHTML(value){
+
+        if(value === null ||
+           value === undefined){
+
+            return "";
+
+        }
+
+
+        return String(value)
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
+
+    }
+
+
+
+    /* =================================================
+       STATUS CLASS
+    ================================================= */
+
+    function statusClass(status){
+
+        const value =
+            String(status || "Posted")
+            .toLowerCase();
+
+
+        if(value === "completed"){
+
+            return "completed";
+
+        }
+
+
+        if(value === "cancelled"){
+
+            return "cancelled";
+
+        }
+
+
+        if(value === "active"){
+
+            return "active";
+
+        }
+
+
+        return "posted";
+
+    }
+
+
+
+    /* =================================================
+       CREATE LOAD CARD
+    ================================================= */
+
+    function createLoadCard(load){
+
+        const status =
+            load.status || "Posted";
+
+
+        const pickup =
+            load.pickupCity || "Unknown";
+
+
+        const destination =
+            load.destinationCity || "Unknown";
+
+
+        const goods =
+            load.goodsType || "General";
+
+
+        const weight =
+            load.weight
+            ? load.weight + " " +
+              (load.weightUnit || "Ton")
+            : "Not specified";
+
+
+        const truck =
+            load.truckType ||
+            "Any Suitable Truck";
+
+
+        const budget =
+            load.budget
+            ? "₹" +
+              Number(load.budget)
+              .toLocaleString("en-IN")
+            : "Negotiable";
+
+
+        const card =
+            document.createElement("article");
+
+
+        card.className =
+            "loadCard";
+
+
+        card.dataset.status =
+            status;
+
+
+        card.dataset.search =
+            (
+                (load.id || "") + " " +
+                goods + " " +
+                pickup + " " +
+                destination + " " +
+                truck
+            ).toLowerCase();
+
+
+        card.innerHTML = `
+
+            <div class="loadTop">
+
+                <div>
+
+                    <div class="loadId">
+
+                        ${escapeHTML(
+                            load.id || "TP-LOAD"
+                        )}
+
+                    </div>
+
+                    <div class="loadTime">
+
+                        Posted
+                        ${formatDate(
+                            load.createdAt
+                        )}
+
+                        ${formatTime(
+                            load.createdAt
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <span
+                    class="statusBadge
+                    ${statusClass(status)}"
+                >
+
+                    ${escapeHTML(status)}
+
+                </span>
+
+            </div>
+
+
+            <div class="routeBox">
+
+                <div class="routeLine">
+
+                    <span class="routeDot"></span>
+
+                    <span class="routeConnector"></span>
+
+                    <span
+                        class="routeDot destination"
+                    ></span>
+
+                </div>
+
+
+                <div class="routeLocation">
+
+                    <div class="locationRow">
+
+                        <strong>
+                            ${escapeHTML(
+                                pickup
+                            )}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(
+                                load.pickupState ||
+                                ""
+                            )}
+                        </small>
+
+                    </div>
+
+
+                    <div class="locationRow">
+
+                        <strong>
+                            ${escapeHTML(
+                                destination
+                            )}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(
+                                load.destinationState ||
+                                ""
+                            )}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="loadInfoGrid">
+
+
+                <div class="infoItem">
+
+                    <span>
+                        GOODS
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(goods)}
+                    </strong>
+
+                </div>
+
+
+                <div class="infoItem">
+
+                    <span>
+                        WEIGHT
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(weight)}
+                    </strong>
+
+                </div>
+
+
+                <div class="infoItem">
+
+                    <span>
+                        TRUCK
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(truck)}
+                    </strong>
+
+                </div>
+
+
+                <div class="infoItem">
+
+                    <span>
+                        PICKUP DATE
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(
+                            formatDate(
+                                load.pickupDate
+                            )
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="infoItem">
+
+                    <span>
+                        CAPACITY
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(
+                            load.truckCapacity ||
+                            "—"
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="infoItem">
+
+                    <span>
+                        FREIGHT
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(budget)}
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="cardActions">
+
+                <button
+                    type="button"
+                    class="viewLoadBtn primary"
+                    data-id="${escapeHTML(
+                        load.id || ""
+                    )}"
+                >
+                    👁 View
+                </button>
+
+
+                <button
+                    type="button"
+                    class="editLoadBtn"
+                    data-id="${escapeHTML(
+                        load.id || ""
+                    )}"
+                >
+                    ✏️ Edit
+                </button>
+
+
+                <button
+                    type="button"
+                    class="cancelLoadBtn"
+                    data-id="${escapeHTML(
+                        load.id || ""
+                    )}"
+                >
+                    ✕ Cancel
+                </button>
+
+            </div>
+
+        `;
+
+
+        return card;
+
+    }
+
+
+
+    /* =================================================
+       RENDER LOADS
+    ================================================= */
+
+    function renderLoads(){
+
+        const list =
+            get("loadsList");
+
+
+        const empty =
+            get("emptyState");
+
+
+        const count =
+            get("loadCount");
+
+
+        if(!list){
+
+            return;
+
+        }
+
+
+        list.innerHTML = "";
+
+
+        const searchInput =
+            get("loadSearch");
+
+
+        const search =
+            searchInput
+            ? searchInput.value
+                .trim()
+                .toLowerCase()
+            : "";
+
+
+        let filtered =
+            allLoads.filter(function(load){
+
+                const status =
+                    String(
+                        load.status ||
+                        "Posted"
+                    ).toLowerCase();
+
+
+                const filterMatch =
+                    currentFilter === "all" ||
+                    status ===
+                    currentFilter.toLowerCase();
+
+
+                const searchText =
+                    (
+                        (load.id || "") + " " +
+                        (load.goodsType || "") + " " +
+                        (load.pickupCity || "") + " " +
+                        (load.destinationCity || "") + " " +
+                        (load.truckType || "")
+                    ).toLowerCase();
+
+
+                const searchMatch =
+                    !search ||
+                    searchText.includes(search);
+
+
+                return (
+                    filterMatch &&
+                    searchMatch
+                );
+
+            });
+
+
+        if(count){
+
+            count.textContent =
+                filtered.length +
+                (
+                    filtered.length === 1
+                    ? " load"
+                    : " loads"
+                );
+
+        }
+
+
+        if(filtered.length === 0){
+
+            if(empty){
+
+                empty.style.display =
+                    "block";
+
+            }
+
+            return;
+
+        }
+
+
+        if(empty){
+
+            empty.style.display =
+                "none";
+
+        }
+
+
+        filtered.forEach(function(load){
+
+            list.appendChild(
+                createLoadCard(load)
+            );
+
+        });
+
+    }
+
+
+
+    /* =================================================
+       UPDATE STATISTICS
+    ================================================= */
+
+    function updateStats(){
+
+        const total =
+            allLoads.length;
+
+
+        const active =
+            allLoads.filter(function(load){
+
+                return (
+                    String(
+                        load.status ||
+                        "Posted"
+                    ).toLowerCase()
+                    === "active"
+                );
+
+            }).length;
+
+
+        const completed =
+            allLoads.filter(function(load){
+
+                return (
+                    String(
+                        load.status ||
+                        ""
+                    ).toLowerCase()
+                    === "completed"
+                );
+
+            }).length;
+
+
+        if(get("totalLoads")){
+
+            get("totalLoads").textContent =
+                total;
+
+        }
+
+
+        if(get("activeLoads")){
+
+            get("activeLoads").textContent =
+                active;
+
+        }
+
+
+        if(get("completedLoads")){
+
+            get("completedLoads").textContent =
+                completed;
+
+        }
+
+    }
+
+
+
+    /* =================================================
+       SEARCH
+    ================================================= */
+
+    const searchInput =
+        get("loadSearch");
+
+
+    if(searchInput){
+
+        searchInput.addEventListener(
+            "input",
+            function(){
+
+                renderLoads();
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       FILTER TABS
+    ================================================= */
+
+    document
+    .querySelectorAll(".filterTab")
+    .forEach(function(button){
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                document
+                .querySelectorAll(
+                    ".filterTab"
+                )
+                .forEach(function(tab){
+
+                    tab.classList.remove(
+                        "active"
+                    );
+
+                });
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                currentFilter =
+                    button.dataset.filter ||
+                    "all";
+
+
+                renderLoads();
+
+            }
+        );
+
+    });
+
+
+
+    /* =================================================
+       REFRESH
+    ================================================= */
+
+    const refresh =
+        get("refreshLoads");
+
+
+    if(refresh){
+
+        refresh.addEventListener(
+            "click",
+            function(){
+
+                refresh.textContent =
+                    "⏳";
+
+
+                setTimeout(
+                    function(){
+
+                        loadSavedData();
+
+                        refresh.textContent =
+                            "🔄";
+
+                    },
+                    300
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       POST NEW LOAD
+    ================================================= */
+
+    const postNew =
+        get("postNewLoadBtn");
+
+
+    if(postNew){
+
+        postNew.addEventListener(
+            "click",
+            function(){
+
+                window.location.href =
+                    "post-load.html";
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       INITIAL LOAD
+    ================================================= */
+
+    loadSavedData();
+
+
+    /* =================================================
+       EXPOSE FUNCTIONS
+       FOR PART 3
+    ================================================= */
+
+    window.TransportProLoads = {
+
+        getLoads:function(){
+
+            return allLoads;
+
+        },
+
+        refresh:function(){
+
+            loadSavedData();
+
+        },
+
+        render:function(){
+
+            renderLoads();
+
+        },
+
+        updateStats:function(){
+
+            updateStats();
+
+        }
+
+    };
+
+
+})();
+
+</script>
+
+
+<!-- =====================================================
+     PART 2 END
+===================================================== -->
+
+<!-- PART 3 WILL CONTINUE HERE --><!-- =====================================================
+     MY LOADS — PART 3 / 3
+     VIEW + EDIT + CANCEL + DETAILS
+===================================================== -->
+
+
+<!-- =====================================================
+     LOAD DETAILS MODAL
+===================================================== -->
+
+<div
+    id="loadDetailsModal"
+    class="detailsModal"
+>
+
+    <div class="detailsCard">
+
+        <button
+            type="button"
+            id="closeDetailsBtn"
+            class="closeDetailsBtn"
+        >
+            ×
+        </button>
+
+
+        <div class="detailsHeader">
+
+            <div class="detailsIcon">
+                📦
+            </div>
+
+            <div>
+
+                <strong>
+                    Load Details
+                </strong>
+
+                <small id="detailsLoadId">
+                    TP-LOAD
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="detailsContent"
+            class="detailsContent"
+        ></div>
+
+
+        <button
+            type="button"
+            id="detailsCloseBottom"
+            class="detailsCloseBottom"
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PART 3 CSS
+===================================================== -->
+
+<style>
+
+.detailsModal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+
+    background:
+    rgba(3,12,28,.68);
+
+    backdrop-filter:blur(6px);
+
+}
+
+
+.detailsModal.show{
+
+    display:flex;
+
+}
+
+
+.detailsCard{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:470px;
+
+    max-height:88vh;
+
+    overflow-y:auto;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    box-shadow:
+    0 25px 70px
+    rgba(0,0,0,.28);
+
+}
+
+
+.closeDetailsBtn{
+
+    position:absolute;
+
+    right:12px;
+
+    top:12px;
+
+    width:32px;
+
+    height:32px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#f2f4f7;
+
+    color:#344054;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+.detailsHeader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding-right:35px;
+
+}
+
+
+.detailsIcon{
+
+    width:43px;
+
+    height:43px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#eaf1ff;
+
+    font-size:21px;
+
+}
+
+
+.detailsHeader strong{
+
+    display:block;
+
+    font-size:13px;
+
+    font-weight:950;
+
+}
+
+
+.detailsHeader small{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:#667085;
+
+    font-size:7px;
+
+}
+
+
+.detailsContent{
+
+    margin-top:16px;
+
+}
+
+
+.detailSection{
+
+    margin-bottom:13px;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    background:#f8fafc;
+
+}
+
+
+.detailSectionTitle{
+
+    margin-bottom:9px;
+
+    color:#155eef;
+
+    font-size:8px;
+
+    font-weight:950;
+
+}
+
+
+.detailGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+}
+
+
+.detailItem{
+
+    padding:8px;
+
+    border-radius:8px;
+
+    background:#fff;
+
+}
+
+
+.detailItem span{
+
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+}
+
+
+.detailItem strong{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#344054;
+
+    font-size:8px;
+
+    word-break:break-word;
+
+}
+
+
+.detailRoute{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+
+.detailRouteRow{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+.detailRouteDot{
+
+    width:9px;
+
+    height:9px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+}
+
+
+.detailRouteDot.green{
+
+    background:#16a34a;
+
+}
+
+
+.detailRouteRow strong{
+
+    font-size:9px;
+
+}
+
+
+.detailRouteRow small{
+
+    display:block;
+
+    margin-top:2px;
+
+    color:#667085;
+
+    font-size:7px;
+
+}
+
+
+.detailsCloseBottom{
+
+    width:100%;
+
+    min-height:40px;
+
+    margin-top:5px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#155eef;
+
+    color:#fff;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+}
+
+
+.statusBadge.completed{
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+}
+
+
+.statusBadge.cancelled{
+
+    background:#fee2e2;
+
+    color:#b42318;
+
+}
+
+
+.statusBadge.active{
+
+    background:#dbeafe;
+
+    color:#1d4ed8;
+
+}
+
+
+.statusBadge.posted{
+
+    background:#fef3c7;
+
+    color:#92400e;
+
+}
+
+
+@media(max-width:600px){
+
+    .detailsCard{
+
+        max-height:91vh;
+
+        padding:15px;
+
+    }
+
+
+    .detailGrid{
+
+        grid-template-columns:
+        1fr 1fr;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =====================================================
+     PART 3 JAVASCRIPT
+===================================================== -->
+
+<script>
+
+(function(){
+
+    "use strict";
+
+
+    /* =================================================
+       HELPERS
+    ================================================= */
+
+    function get(id){
+
+        return document.getElementById(id);
+
+    }
+
+
+    function getLoads(){
+
+        try{
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "transportProLoads"
+                )
+            ) || [];
+
+        }
+        catch(error){
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveLoads(loads){
+
+        localStorage.setItem(
+            "transportProLoads",
+            JSON.stringify(loads)
+        );
+
+    }
+
+
+    function escapeHTML(value){
+
+        if(
+            value === null ||
+            value === undefined
+        ){
+
+            return "";
+
+        }
+
+
+        return String(value)
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
+
+    }
+
+
+    /* =================================================
+       FIND LOAD
+    ================================================= */
+
+    function findLoad(id){
+
+        const loads =
+            getLoads();
+
+        return loads.find(
+            function(load){
+
+                return String(load.id) ===
+                       String(id);
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       VIEW DETAILS
+    ================================================= */
+
+    function viewDetails(id){
+
+        const load =
+            findLoad(id);
+
+
+        if(!load){
+
+            alert(
+                "Load details could not be found."
+            );
+
+            return;
+
+        }
+
+
+        get("detailsLoadId").textContent =
+            load.id || "TP-LOAD";
+
+
+        const content =
+            get("detailsContent");
+
+
+        content.innerHTML = `
+
+            <div class="detailSection">
+
+                <div class="detailSectionTitle">
+                    📍 Route
+                </div>
+
+
+                <div class="detailRoute">
+
+                    <div class="detailRouteRow">
+
+                        <span
+                            class="detailRouteDot"
+                        ></span>
+
+                        <div>
+
+                            <strong>
+                                ${escapeHTML(
+                                    load.pickupCity ||
+                                    "Unknown"
+                                )}
+                            </strong>
+
+                            <small>
+                                ${escapeHTML(
+                                    load.pickupState ||
+                                    ""
+                                )}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detailRouteRow">
+
+                        <span
+                            class="detailRouteDot green"
+                        ></span>
+
+                        <div>
+
+                            <strong>
+                                ${escapeHTML(
+                                    load.destinationCity ||
+                                    "Unknown"
+                                )}
+                            </strong>
+
+                            <small>
+                                ${escapeHTML(
+                                    load.destinationState ||
+                                    ""
+                                )}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detailSection">
+
+                <div class="detailSectionTitle">
+                    📦 Goods
+                </div>
+
+
+                <div class="detailGrid">
+
+                    <div class="detailItem">
+
+                        <span>
+                            TYPE
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.goodsType ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            WEIGHT
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.weight || "—"
+                            )}
+                            ${escapeHTML(
+                                load.weightUnit || ""
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            PACKAGES
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.packageCount ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            PACKAGE TYPE
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.packageType ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detailSection">
+
+                <div class="detailSectionTitle">
+                    🚛 Truck
+                </div>
+
+
+                <div class="detailGrid">
+
+                    <div class="detailItem">
+
+                        <span>
+                            TRUCK TYPE
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.truckType ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            CAPACITY
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.truckCapacity ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            BODY TYPE
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.bodyType ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            SPECIAL
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.specialRequirement ||
+                                "None"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detailSection">
+
+                <div class="detailSectionTitle">
+                    💰 Payment
+                </div>
+
+
+                <div class="detailGrid">
+
+                    <div class="detailItem">
+
+                        <span>
+                            EXPECTED FREIGHT
+                        </span>
+
+                        <strong>
+                            ${
+                                load.budget
+                                ? "₹" +
+                                  Number(
+                                    load.budget
+                                  )
+                                  .toLocaleString(
+                                    "en-IN"
+                                  )
+                                : "Negotiable"
+                            }
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            PAYMENT MODE
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.paymentMode ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detailSection">
+
+                <div class="detailSectionTitle">
+                    📅 Schedule
+                </div>
+
+
+                <div class="detailGrid">
+
+                    <div class="detailItem">
+
+                        <span>
+                            PICKUP DATE
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.pickupDate ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            PICKUP TIME
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.pickupTime ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detailSection">
+
+                <div class="detailSectionTitle">
+                    👤 Contact
+                </div>
+
+
+                <div class="detailGrid">
+
+                    <div class="detailItem">
+
+                        <span>
+                            NAME
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.contactName ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detailItem">
+
+                        <span>
+                            MOBILE
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                load.contactPhone ||
+                                "—"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="detailSection">
+
+                <div class="detailSectionTitle">
+                    📝 Description
+                </div>
+
+                <div class="detailItem">
+
+                    <strong>
+                        ${escapeHTML(
+                            load.goodsDescription ||
+                            "No description"
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        get("loadDetailsModal")
+            .classList.add("show");
+
+    }
+
+
+
+    /* =================================================
+       CLOSE DETAILS
+    ================================================= */
+
+    function closeDetails(){
+
+        const modal =
+            get("loadDetailsModal");
+
+
+        if(modal){
+
+            modal.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+
+
+    const closeBtn =
+        get("closeDetailsBtn");
+
+
+    if(closeBtn){
+
+        closeBtn.addEventListener(
+            "click",
+            closeDetails
+        );
+
+    }
+
+
+    const closeBottom =
+        get("detailsCloseBottom");
+
+
+    if(closeBottom){
+
+        closeBottom.addEventListener(
+            "click",
+            closeDetails
+        );
+
+    }
+
+
+    const modal =
+        get("loadDetailsModal");
+
+
+    if(modal){
+
+        modal.addEventListener(
+            "click",
+            function(event){
+
+                if(
+                    event.target === modal
+                ){
+
+                    closeDetails();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       EDIT LOAD
+    ================================================= */
+
+    function editLoad(id){
+
+        const load =
+            findLoad(id);
+
+
+        if(!load){
+
+            alert(
+                "Load could not be found."
+            );
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+            "transportProEditLoad",
+            JSON.stringify(load)
+        );
+
+
+        window.location.href =
+            "post-load.html";
+
+    }
+
+
+
+    /* =================================================
+       CANCEL LOAD
+    ================================================= */
+
+    function cancelLoad(id){
+
+        const loads =
+            getLoads();
+
+
+        const index =
+            loads.findIndex(
+                function(load){
+
+                    return String(load.id) ===
+                           String(id);
+
+                }
+            );
+
+
+        if(index === -1){
+
+            alert(
+                "Load could not be found."
+            );
+
+            return;
+
+        }
+
+
+        if(
+            String(
+                loads[index].status
+            ).toLowerCase()
+            === "cancelled"
+        ){
+
+            alert(
+                "This load is already cancelled."
+            );
+
+            return;
+
+        }
+
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to cancel this load?"
+            );
+
+
+        if(!confirmed){
+
+            return;
+
+        }
+
+
+        loads[index].status =
+            "Cancelled";
+
+
+        loads[index].cancelledAt =
+            new Date().toISOString();
+
+
+        saveLoads(loads);
+
+
+        if(
+            window.TransportProLoads &&
+            typeof
+            window.TransportProLoads.refresh
+            === "function"
+        ){
+
+            window.TransportProLoads.refresh();
+
+        }
+        else{
+
+            location.reload();
+
+        }
+
+
+        alert(
+            "Load cancelled successfully."
+        );
+
+    }
+
+
+
+    /* =================================================
+       CARD BUTTON EVENTS
+    ================================================= */
+
+    <!-- =====================================================
+     CARD BUTTON EVENTS
+===================================================== -->
+
+<script>
+
+(function(){
+
+    "use strict";
+
+
+    /* =================================================
+       FIND LOADS
+    ================================================= */
+
+    function getLoads(){
+
+        try{
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "transportProLoads"
+                )
+            ) || [];
+
+        }catch(error){
+
+            return [];
+
+        }
+
+    }
+
+
+    /* =================================================
+       SAVE LOADS
+    ================================================= */
+
+    function saveLoads(loads){
+
+        localStorage.setItem(
+            "transportProLoads",
+            JSON.stringify(loads)
+        );
+
+    }
+
+
+    /* =================================================
+       VIEW BUTTON
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        function(event){
+
+            const viewBtn =
+                event.target.closest(
+                    ".viewLoadBtn"
+                );
+
+
+            if(viewBtn){
+
+                const id =
+                    viewBtn.dataset.id;
+
+
+                const loads =
+                    getLoads();
+
+
+                const load =
+                    loads.find(
+                        function(item){
+
+                            return String(item.id)
+                                === String(id);
+
+                        }
+                    );
+
+
+                if(!load){
+
+                    alert(
+                        "Load details not found."
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+
+                    "LOAD ID: " +
+                    (load.id || "—") +
+
+                    "\n\nGoods: " +
+                    (load.goodsType || "—") +
+
+                    "\nWeight: " +
+                    (load.weight || "—") +
+                    " " +
+                    (load.weightUnit || "") +
+
+                    "\n\nRoute: " +
+                    (load.pickupCity || "—") +
+                    " → " +
+                    (load.destinationCity || "—") +
+
+                    "\n\nTruck: " +
+                    (load.truckType || "—") +
+
+                    "\nCapacity: " +
+                    (load.truckCapacity || "—") +
+
+                    "\n\nPickup Date: " +
+                    (load.pickupDate || "—") +
+
+                    "\nFreight: " +
+                    (
+                        load.budget
+                        ? "₹" +
+                          Number(
+                              load.budget
+                          ).toLocaleString(
+                              "en-IN"
+                          )
+                        : "Negotiable"
+                    ) +
+
+                    "\n\nStatus: " +
+                    (load.status || "Posted")
+
+                );
+
+                return;
+
+            }
+
+
+
+            /* =================================================
+               EDIT BUTTON
+            ================================================= */
+
+            const editBtn =
+                event.target.closest(
+                    ".editLoadBtn"
+                );
+
+
+            if(editBtn){
+
+                const id =
+                    editBtn.dataset.id;
+
+
+                const loads =
+                    getLoads();
+
+
+                const load =
+                    loads.find(
+                        function(item){
+
+                            return String(item.id)
+                                === String(id);
+
+                        }
+                    );
+
+
+                if(!load){
+
+                    alert(
+                        "Load not found."
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                 * Save selected load
+                 * so post-load.html can read it later.
+                 */
+
+                localStorage.setItem(
+                    "transportProEditLoad",
+                    JSON.stringify(load)
+                );
+
+
+                window.location.href =
+                    "post-load.html";
+
+
+                return;
+
+            }
+
+
+
+            /* =================================================
+               CANCEL BUTTON
+            ================================================= */
+
+            const cancelBtn =
+                event.target.closest(
+                    ".cancelLoadBtn"
+                );
+
+
+            if(cancelBtn){
+
+                const id =
+                    cancelBtn.dataset.id;
+
+
+                const loads =
+                    getLoads();
+
+
+                const index =
+                    loads.findIndex(
+                        function(item){
+
+                            return String(item.id)
+                                === String(id);
+
+                        }
+                    );
+
+
+                if(index === -1){
+
+                    alert(
+                        "Load not found."
+                    );
+
+                    return;
+
+                }
+
+
+                if(
+                    String(
+                        loads[index].status ||
+                        ""
+                    ).toLowerCase()
+                    === "cancelled"
+                ){
+
+                    alert(
+                        "This load is already cancelled."
+                    );
+
+                    return;
+
+                }
+
+
+                const confirmCancel =
+                    confirm(
+                        "Are you sure you want to cancel this load?"
+                    );
+
+
+                if(!confirmCancel){
+
+                    return;
+
+                }
+
+
+                loads[index].status =
+                    "Cancelled";
+
+
+                loads[index].cancelledAt =
+                    new Date().toISOString();
+
+
+                saveLoads(loads);
+
+
+                /*
+                 * Refresh page
+                 * so card status changes immediately.
+                 */
+
+                location.reload();
+
+
+                return;
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================================
+       POST NEW LOAD
+    ================================================= */
+
+    const postNewLoadBtn =
+        document.getElementById(
+            "postNewLoadBtn"
+        );
+
+
+    if(postNewLoadBtn){
+
+        postNewLoadBtn.addEventListener(
+            "click",
+            function(){
+
+                /*
+                 * Remove old edit data
+                 * before creating a new load.
+                 */
+
+                localStorage.removeItem(
+                    "transportProEditLoad"
+                );
+
+
+                window.location.href =
+                    "post-load.html";
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       REFRESH BUTTON
+    ================================================= */
+
+    const refreshBtn =
+        document.getElementById(
+            "refreshLoads"
+        );
+
+
+    if(refreshBtn){
+
+        refreshBtn.addEventListener(
+            "click",
+            function(){
+
+                refreshBtn.textContent =
+                    "⏳";
+
+
+                setTimeout(
+                    function(){
+
+                        location.reload();
+
+                    },
+                    400
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       BACK BUTTON
+    ================================================= */
+
+    const backBtn =
+        document.querySelector(
+            ".backBtn"
+        );
+
+
+    if(backBtn){
+
+        backBtn.addEventListener(
+            "click",
+            function(){
+
+                window.location.href =
+                    "home.html";
+
+            }
+        );
+
+    }
+
+
+
+    /* =================================================
+       ESCAPE KEY
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Escape"){
+
+                const modal =
+                    document.getElementById(
+                        "loadDetailsModal"
+                    );
+
+
+                if(modal){
+
+                    modal.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+
+        }
+    );
+
+
+
+})();
+
+</script>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="postFooter">
+
+    <strong>
+        TransportPro
+    </strong>
+
+    <span>
+        Smart • Reliable • Connected
+    </span>
+
+</footer>
+
+
+
+<!-- =====================================================
+     FINAL HTML CLOSE
+===================================================== -->
+
+</main>
+
+</body>
+
+</html>

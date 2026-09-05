@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Report Truck Problem | TransportPro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#111827;
+}
+
+.page{
+    max-width:700px;
+    margin:auto;
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+/* HEADER */
+
+.header{
+    background:#07152d;
+    color:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    font-size:25px;
+}
+
+.headerText{
+    flex:1;
+}
+
+.headerText strong{
+    display:block;
+    font-size:17px;
+}
+
+.headerText small{
+    display:block;
+    margin-top:3px;
+    color:#aebbd0;
+    font-size:9px;
+}
+
+
+/* INTRO */
+
+.intro{
+    margin:15px;
+    padding:16px;
+    background:white;
+    border-radius:16px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.introBadge{
+    font-size:8px;
+    color:#dc2626;
+    font-weight:900;
+    letter-spacing:.8px;
+}
+
+.intro h2{
+    margin-top:5px;
+    font-size:19px;
+}
+
+.intro p{
+    margin-top:5px;
+    color:#707b8b;
+    font-size:9px;
+    line-height:1.5;
+}
+
+
+/* FORM */
+
+.formCard{
+    margin:15px;
+    padding:16px;
+    background:white;
+    border-radius:17px;
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+}
+
+.formTitle{
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:14px;
+}
+
+.field{
+    margin-bottom:13px;
+}
+
+.field label{
+    display:block;
+    margin-bottom:5px;
+    font-size:9px;
+    font-weight:900;
+    color:#374151;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    border:1px solid #dfe4ea;
+    border-radius:10px;
+    padding:11px;
+    font-size:11px;
+    outline:none;
+    background:#fff;
+}
+
+.field textarea{
+    min-height:85px;
+    resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:#07152d;
+}
+
+
+/* PROBLEM GRID */
+
+.problemGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+}
+
+.problem{
+    border:1px solid #e1e6ec;
+    background:#fff;
+    border-radius:11px;
+    padding:11px 8px;
+    text-align:left;
+    cursor:pointer;
+}
+
+.problem.selected{
+    background:#07152d;
+    color:#fff;
+    border-color:#07152d;
+}
+
+.problemIcon{
+    font-size:18px;
+}
+
+.problem strong{
+    display:block;
+    margin-top:4px;
+    font-size:9px;
+}
+
+.problem small{
+    display:block;
+    margin-top:2px;
+    font-size:7px;
+    opacity:.7;
+}
+
+
+/* LOCATION */
+
+.locationBox{
+    display:flex;
+    gap:8px;
+}
+
+.locationBox input{
+    flex:1;
+}
+
+.locationBtn{
+    border:0;
+    background:#eaf0f7;
+    border-radius:10px;
+    padding:0 12px;
+    font-size:16px;
+}
+
+
+/* PHOTO */
+
+.photoBox{
+    border:1.5px dashed #cbd3dd;
+    border-radius:12px;
+    padding:17px;
+    text-align:center;
+    background:#fafbfd;
+}
+
+.photoBox input{
+    border:0;
+    padding:0;
+    margin-top:8px;
+}
+
+
+/* URGENCY */
+
+.urgencyGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+}
+
+.urgency{
+    border:1px solid #dfe4ea;
+    background:white;
+    border-radius:9px;
+    padding:9px 5px;
+    font-size:8px;
+    font-weight:900;
+}
+
+.urgency.selected{
+    background:#dc2626;
+    color:white;
+    border-color:#dc2626;
+}
+
+
+/* SUBMIT */
+
+.submitBtn{
+    width:100%;
+    border:0;
+    background:#07152d;
+    color:#fff;
+    padding:14px;
+    border-radius:12px;
+    font-size:11px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.submitBtn:active{
+    transform:scale(.98);
+}
+
+
+/* NOTE */
+
+.note{
+    margin:15px;
+    padding:13px;
+    background:#fff8e7;
+    border:1px solid #ffe4a3;
+    border-radius:13px;
+    color:#765b16;
+    font-size:8px;
+    line-height:1.5;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <a href="home.html"
+       class="back">
+        ‹
+    </a>
+
+    <div class="headerText">
+
+        <strong>
+            Report Truck Problem
+        </strong>
+
+        <small>
+            Connect with the right service professional
+        </small>
+
+    </div>
+
+</header>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+    <span class="introBadge">
+        🚨 VEHICLE SERVICE REQUEST
+    </span>
+
+    <h2>
+        Truck Kharab Hai?
+    </h2>
+
+    <p>
+        Truck ki problem details submit karein.
+        Suitable mechanic, tyre service ya roadside
+        professional ko request bhejne ke liye ye details use hongi.
+    </p>
+
+</section>
+
+
+<!-- FORM -->
+
+<section class="formCard">
+
+    <div class="formTitle">
+        Vehicle Details
+    </div>
+
+
+    <!-- VEHICLE -->
+
+    <div class="field">
+
+        <label>
+            VEHICLE NUMBER *
+        </label>
+
+        <input
+            id="vehicleNumber"
+            type="text"
+            placeholder="Example: MP09AB1234"
+        >
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            VEHICLE TYPE *
+        </label>
+
+        <select id="vehicleType">
+
+            <option value="">
+                Select vehicle type
+            </option>
+
+            <option>
+                Truck
+            </option>
+
+            <option>
+                Mini Truck
+            </option>
+
+            <option>
+                Trailer
+            </option>
+
+            <option>
+                Pickup
+            </option>
+
+            <option>
+                Bus
+            </option>
+
+            <option>
+                Other
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- PROBLEM -->
+
+    <div class="field">
+
+        <label>
+            WHAT IS THE PROBLEM? *
+        </label>
+
+        <div class="problemGrid">
+
+            <button
+                type="button"
+                class="problem"
+                onclick="selectProblem(this,'Engine')">
+
+                <div class="problemIcon">
+                    🔧
+                </div>
+
+                <strong>
+                    Engine
+                </strong>
+
+                <small>
+                    Engine problem
+                </small>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="problem"
+                onclick="selectProblem(this,'Clutch')">
+
+                <div class="problemIcon">
+                    ⚙️
+                </div>
+
+                <strong>
+                    Clutch
+                </strong>
+
+                <small>
+                    Clutch problem
+                </small>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="problem"
+                onclick="selectProblem(this,'Brake')">
+
+                <div class="problemIcon">
+                    🛑
+                </div>
+
+                <strong>
+                    Brake
+                </strong>
+
+                <small>
+                    Brake problem
+                </small>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="problem"
+                onclick="selectProblem(this,'Tyre')">
+
+                <div class="problemIcon">
+                    🛞
+                </div>
+
+                <strong>
+                    Tyre
+                </strong>
+
+                <small>
+                    Tyre / puncture
+                </small>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="problem"
+                onclick="selectProblem(this,'Electrical')">
+
+                <div class="problemIcon">
+                    🔋
+                </div>
+
+                <strong>
+                    Electrical
+                </strong>
+
+                <small>
+                    Battery / wiring
+                </small>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="problem"
+                onclick="selectProblem(this,'Suspension')">
+
+                <div class="problemIcon">
+                    🛠️
+                </div>
+
+                <strong>
+                    Suspension
+                </strong>
+
+                <small>
+                    Suspension problem
+                </small>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+
+    <div class="field">
+
+        <label>
+            PROBLEM DETAILS *
+        </label>
+
+        <textarea
+            id="problemDetails"
+            placeholder="Problem ko detail me likhein..."></textarea>
+
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="field">
+
+        <label>
+            CURRENT LOCATION *
+        </label>
+
+        <div class="locationBox">
+
+            <input
+                id="location"
+                type="text"
+                placeholder="City / area">
+
+            <button
+                type="button"
+                class="locationBtn"
+                onclick="getLocation()">
+                📍
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PHOTO -->
+
+    <div class="field">
+
+        <label>
+            PHOTO / VIDEO
+        </label>
+
+        <div class="photoBox">
+
+            📷 Add vehicle/problem photo
+
+            <input
+                id="problemPhoto"
+                type="file"
+                accept="image/*,video/*"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- URGENCY -->
+
+    <div class="field">
+
+        <label>
+            URGENCY *
+        </label>
+
+        <div class="urgencyGrid">
+
+            <button
+                type="button"
+                class="urgency"
+                onclick="selectUrgency(this,'Normal')">
+                🟢 Normal
+            </button>
+
+            <button
+                type="button"
+                class="urgency"
+                onclick="selectUrgency(this,'Today')">
+                🟡 Today
+            </button>
+
+            <button
+                type="button"
+                class="urgency"
+                onclick="selectUrgency(this,'Urgent')">
+                🔴 Urgent
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="submitBtn"
+        onclick="submitProblem()">
+
+        🚨 List Truck Problem
+
+    </button>
+
+</section>
+
+
+<div class="note">
+
+    🔒 Your request will be stored locally for now.
+    Backend/database connection ke baad nearby verified
+    service professionals ko real-time request bheji ja sakegi.
+
+</div>
+
+
+</div>
+
+
+<script>
+
+let selectedProblem = "";
+
+let selectedUrgency = "";
+
+
+/* PROBLEM */
+
+function selectProblem(
+    button,
+    problem
+){
+
+    document
+        .querySelectorAll(".problem")
+        .forEach(function(item){
+
+            item.classList.remove(
+                "selected"
+            );
+
+        });
+
+    button.classList.add(
+        "selected"
+    );
+
+    selectedProblem =
+        problem;
+}
+
+
+/* URGENCY */
+
+function selectUrgency(
+    button,
+    urgency
+){
+
+    document
+        .querySelectorAll(".urgency")
+        .forEach(function(item){
+
+            item.classList.remove(
+                "selected"
+            );
+
+        });
+
+    button.classList.add(
+        "selected"
+    );
+
+    selectedUrgency =
+        urgency;
+}
+
+
+/* LOCATION */
+
+function getLocation(){
+
+    if(
+        !navigator.geolocation
+    ){
+
+        alert(
+            "Location is not supported on this device."
+        );
+
+        return;
+    }
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            const lat =
+                position.coords.latitude;
+
+            const lon =
+                position.coords.longitude;
+
+            document.getElementById(
+                "location"
+            ).value =
+                lat.toFixed(6) +
+                ", " +
+                lon.toFixed(6);
+
+        },
+
+        function(){
+
+            alert(
+                "Location permission allow karein."
+            );
+
+        }
+
+    );
+
+}
+
+
+/* SUBMIT */
+
+function submitProblem(){
+
+    const vehicleNumber =
+        document.getElementById(
+            "vehicleNumber"
+        ).value.trim();
+
+    const vehicleType =
+        document.getElementById(
+            "vehicleType"
+        ).value;
+
+    const details =
+        document.getElementById(
+            "problemDetails"
+        ).value.trim();
+
+    const location =
+        document.getElementById(
+            "location"
+        ).value.trim();
+
+
+    if(!vehicleNumber){
+
+        alert(
+            "Vehicle number enter karein."
+        );
+
+        return;
+    }
+
+
+    if(!vehicleType){
+
+        alert(
+            "Vehicle type select karein."
+        );
+
+        return;
+    }
+
+
+    if(!selectedProblem){
+
+        alert(
+            "Vehicle problem select karein."
+        );
+
+        return;
+    }
+
+
+    if(!details){
+
+        alert(
+            "Problem details likhein."
+        );
+
+        return;
+    }
+
+
+    if(!location){
+
+        alert(
+            "Current location enter karein."
+        );
+
+        return;
+    }
+
+
+    if(!selectedUrgency){
+
+        alert(
+            "Urgency select karein."
+        );
+
+        return;
+    }
+
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem(
+                "truckRepairRequests"
+            ) || "[]"
+        );
+
+
+    const request = {
+
+        id:
+            "REP-" +
+            Date.now(),
+
+        vehicleNumber:
+            vehicleNumber,
+
+        vehicleType:
+            vehicleType,
+
+        problem:
+            selectedProblem,
+
+        details:
+            details,
+
+        location:
+            location,
+
+        urgency:
+            selectedUrgency,
+
+        status:
+            "Open",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    requests.push(
+        request
+    );
+
+
+    localStorage.setItem(
+        "truckRepairRequests",
+        JSON.stringify(
+            requests
+        )
+    );
+
+
+    alert(
+        "Truck problem successfully listed!\n\n" +
+        "Request ID: " +
+        request.id
+    );
+
+
+    window.location.href =
+        "find-work.html";
+
+}
+
+</script>
+
+</body>
+</html>

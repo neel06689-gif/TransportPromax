@@ -1,0 +1,3437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#07111f">
+
+<title>Manager Dashboard | TransportPro</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+}
+
+a,
+button{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:1100px;
+    min-height:64px;
+    margin:auto;
+
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+.logoBox{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#2563eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.headerTitle{
+    flex:1;
+    min-width:0;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:14px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.headerAction{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:17px;
+
+    cursor:pointer;
+    position:relative;
+}
+
+.notificationDot{
+    position:absolute;
+
+    top:7px;
+    right:7px;
+
+    width:7px;
+    height:7px;
+
+    background:#ef4444;
+
+    border-radius:50%;
+    border:1px solid #172235;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main{
+    max-width:1100px;
+    margin:auto;
+
+    padding:16px 14px 100px;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome{
+    background:#07111f;
+    color:#fff;
+
+    border-radius:19px;
+
+    padding:19px 16px;
+
+    margin-bottom:14px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.welcome:after{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    right:-55px;
+    top:-55px;
+
+    border-radius:50%;
+
+    border:25px solid rgba(255,255,255,.05);
+}
+
+.welcome small{
+    color:#94a3b8;
+    font-size:7px;
+}
+
+.welcome h1{
+    margin-top:6px;
+    font-size:21px;
+}
+
+.welcome p{
+    margin-top:7px;
+
+    color:#cbd5e1;
+
+    font-size:8px;
+    line-height:1.7;
+}
+
+.managerMini{
+    margin-top:13px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.managerAvatar{
+    width:39px;
+    height:39px;
+
+    border-radius:50%;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.managerMiniText strong{
+    display:block;
+    font-size:8px;
+}
+
+.managerMiniText span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#94a3b8;
+    font-size:6px;
+}
+
+
+/* =========================================
+   MANAGER STATUS
+========================================= */
+
+.statusCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.statusIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+}
+
+.statusInfo{
+    flex:1;
+}
+
+.statusInfo span{
+    display:block;
+
+    color:#667085;
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.statusInfo strong{
+    display:block;
+
+    color:#175cd3;
+    font-size:10px;
+}
+
+.statusInfo small{
+    display:block;
+
+    color:#98a2b3;
+    font-size:6px;
+
+    margin-top:3px;
+}
+
+
+/* =========================================
+   MANAGER ID
+========================================= */
+
+.idCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:13px;
+
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.idIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    flex-shrink:0;
+}
+
+.idInfo{
+    flex:1;
+}
+
+.idInfo span{
+    display:block;
+
+    color:#667085;
+    font-size:6px;
+
+    margin-bottom:4px;
+}
+
+.idInfo strong{
+    display:block;
+
+    color:#175cd3;
+
+    font-size:11px;
+
+    letter-spacing:.6px;
+}
+
+.verified{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:#ecfdf3;
+
+    color:#067647;
+
+    font-size:6px;
+    font-weight:700;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.sectionTitle{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin:17px 2px 9px;
+}
+
+.sectionTitle h2{
+    font-size:12px;
+}
+
+.sectionTitle span{
+    color:#667085;
+    font-size:7px;
+}
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.quickGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.quickCard{
+    min-height:100px;
+
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:15px;
+
+    padding:12px;
+
+    text-decoration:none;
+
+    color:#101828;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+
+    transition:.15s;
+}
+
+.quickCard:active{
+    transform:scale(.97);
+}
+
+.quickIcon{
+    width:39px;
+    height:39px;
+
+    border-radius:11px;
+
+    background:#f2f4f7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    margin-bottom:9px;
+}
+
+.quickCard strong{
+    display:block;
+
+    font-size:8px;
+
+    margin-bottom:4px;
+}
+
+.quickCard span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   MANAGEMENT FEATURES
+========================================= */
+
+.featureGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.featureCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:14px;
+
+    padding:12px;
+
+    min-height:87px;
+
+    text-decoration:none;
+
+    color:#101828;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:9px;
+
+    box-shadow:
+    0 3px 10px rgba(16,24,40,.03);
+}
+
+.featureCard:active{
+    transform:scale(.98);
+}
+
+.featureIcon{
+    width:34px;
+    height:34px;
+
+    border-radius:9px;
+
+    background:#f2f4f7;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:16px;
+
+    flex-shrink:0;
+}
+
+.featureText strong{
+    display:block;
+
+    font-size:8px;
+
+    margin-bottom:4px;
+}
+
+.featureText span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   BUSINESS STATS
+========================================= */
+
+.statsGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+}
+
+.statCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:14px;
+
+    padding:13px;
+}
+
+.statCard span{
+    display:block;
+
+    color:#667085;
+
+    font-size:6px;
+
+    margin-bottom:7px;
+}
+
+.statCard strong{
+    display:block;
+
+    font-size:17px;
+}
+
+.statCard small{
+    display:block;
+
+    margin-top:4px;
+
+    color:#98a2b3;
+
+    font-size:6px;
+}
+
+
+/* =========================================
+   TEAM OVERVIEW
+========================================= */
+
+.teamCard{
+    background:#fff;
+
+    border:1px solid #e4e9f0;
+
+    border-radius:16px;
+
+    padding:14px;
+
+    margin-top:9px;
+
+    box-shadow:
+    0 4px 14px rgba(16,24,40,.04);
+}
+
+.teamRow{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:9px 0;
+
+    border-bottom:1px solid #f2f4f7;
+}
+
+.teamRow:last-child{
+    border-bottom:0;
+}
+
+.teamIcon{
+    width:38px;
+    height:38px;
+
+    border-radius:10px;
+
+    background:#f2f4f7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+}
+
+.teamInfo{
+    flex:1;
+}
+
+.teamInfo strong{
+    display:block;
+
+    font-size:8px;
+}
+
+.teamInfo span{
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:6px;
+}
+
+.teamCount{
+    font-size:9px;
+    font-weight:700;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(min-width:600px){
+
+    .quickGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .featureGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .statsGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+<div class="header">
+
+
+<button
+class="backBtn"
+onclick="goBack()">
+
+←
+
+</button>
+
+
+<div class="logoBox">
+    👔
+</div>
+
+
+<div class="headerTitle">
+
+<strong>
+    TransportPro
+</strong>
+
+<small>
+    Manager Dashboard
+</small>
+
+</div>
+
+
+<button
+class="headerAction"
+onclick="openNotifications()">
+
+🔔
+
+<div class="notificationDot"></div>
+
+</button>
+
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================
+     WELCOME
+========================================= -->
+
+<section class="welcome">
+
+<small>
+    MANAGEMENT PORTAL
+</small>
+
+
+<h1>
+    Manager Dashboard 👔
+</h1>
+
+
+<p>
+    Drivers, employees, vehicles, trips,
+    loads और business operations को एक जगह manage करें।
+</p>
+
+
+<div class="managerMini">
+
+<div class="managerAvatar">
+
+👔
+
+</div>
+
+
+<div class="managerMiniText">
+
+<strong id="managerName">
+    Manager
+</strong>
+
+<span id="managerRole">
+    Transport Manager
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     MANAGER STATUS
+========================================= -->
+
+<div class="statusCard">
+
+<div class="statusIcon">
+    📊
+</div>
+
+
+<div class="statusInfo">
+
+<span>
+    MANAGEMENT STATUS
+</span>
+
+<strong>
+    Operations Active
+</strong>
+
+<small>
+    Your management dashboard is active
+</small>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     MANAGER ID
+========================================= -->
+
+<div class="idCard">
+
+<div class="idIcon">
+    🪪
+</div>
+
+
+<div class="idInfo">
+
+<span>
+    MANAGER PROFESSIONAL ID
+</span>
+
+<strong id="professionalId">
+    TP-MGR-2026-000000
+</strong>
+
+</div>
+
+
+<div class="verified">
+    ✓ ACTIVE
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     QUICK ACTIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Quick Management
+</h2>
+
+<span>
+    Important
+</span>
+
+</div>
+
+
+<div class="quickGrid">
+
+
+<a
+href="driver-management.html"
+class="quickCard">
+
+<div class="quickIcon">
+    👨‍✈️
+</div>
+
+<strong>
+    Drivers
+</strong>
+
+<span>
+    Drivers manage और assign करें।
+</span>
+
+</a>
+
+
+
+<a
+href="employee-management.html"
+class="quickCard">
+
+<div class="quickIcon">
+    👥
+</div>
+
+<strong>
+    Employees
+</strong>
+
+<span>
+    Staff और employee operations manage करें।
+</span>
+
+</a>
+
+
+
+<a
+href="trip-management.html"
+class="quickCard">
+
+<div class="quickIcon">
+    🛣️
+</div>
+
+<strong>
+    Trips
+</strong>
+
+<span>
+    Active और upcoming trips manage करें।
+</span>
+
+</a>
+
+
+
+<a
+href="live-tracking.html"
+class="quickCard">
+
+<div class="quickIcon">
+    📍
+</div>
+
+<strong>
+    Live Tracking
+</strong>
+
+<span>
+    Vehicles और drivers की live status देखें।
+</span>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     MANAGEMENT FEATURES
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Management Tools
+</h2>
+
+<span>
+    Operations
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="driver-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🚚
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driver Management
+</strong>
+
+<span>
+    Driver profiles, assignments और status manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="employee-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👥
+</div>
+
+<div class="featureText">
+
+<strong>
+    Employee Management
+</strong>
+
+<span>
+    Employees, departments और work assignments manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🚛
+</div>
+
+<div class="featureText">
+
+<strong>
+    Vehicle Management
+</strong>
+
+<span>
+    Vehicles, documents और maintenance manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="dealer-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    Dealer Management
+</strong>
+
+<span>
+    Dealers और transport partners manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="load-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📋
+</div>
+
+<div class="featureText">
+
+<strong>
+    Load Management
+</strong>
+
+<span>
+    Goods और load assignments manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛣️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip Management
+</strong>
+
+<span>
+    Pickup, delivery और trip status manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="live-tracking.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📍
+</div>
+
+<div class="featureText">
+
+<strong>
+    Live Tracking
+</strong>
+
+<span>
+    Active vehicles की real-time location देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="route-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🗺️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Route Management
+</strong>
+
+<span>
+    Routes, stops और delivery planning।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     BUSINESS OVERVIEW
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Operations Overview
+</h2>
+
+<span>
+    Today
+</span>
+
+</div>
+
+
+<div class="statsGrid">
+
+
+<div class="statCard">
+
+<span>
+    ACTIVE DRIVERS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Currently working
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    ACTIVE VEHICLES
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    On the road
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    ACTIVE TRIPS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    In progress
+</small>
+
+</div>
+
+
+
+<div class="statCard">
+
+<span>
+    PENDING LOADS
+</span>
+
+<strong>
+    0
+</strong>
+
+<small>
+    Need assignment
+</small>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     TEAM OVERVIEW
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Team Overview
+</h2>
+
+<span>
+    Workforce
+</span>
+
+</div>
+
+
+<div class="teamCard">
+
+
+<div class="teamRow">
+
+<div class="teamIcon">
+    👨‍✈️
+</div>
+
+<div class="teamInfo">
+
+<strong>
+    Drivers
+</strong>
+
+<span>
+    Active transport drivers
+</span>
+
+</div>
+
+<div class="teamCount">
+    0
+</div>
+
+</div>
+
+
+
+<div class="teamRow">
+
+<div class="teamIcon">
+    👔
+</div>
+
+<div class="teamInfo">
+
+<strong>
+    Managers
+</strong>
+
+<span>
+    Management team
+</span>
+
+</div>
+
+<div class="teamCount">
+    0
+</div>
+
+</div>
+
+
+
+<div class="teamRow">
+
+<div class="teamIcon">
+    💼
+</div>
+
+<div class="teamInfo">
+
+<strong>
+    Salesmen
+</strong>
+
+<span>
+    Sales & business team
+</span>
+
+</div>
+
+<div class="teamCount">
+    0
+</div>
+
+</div>
+
+
+
+<div class="teamRow">
+
+<div class="teamIcon">
+    📦
+</div>
+
+<div class="teamInfo">
+
+<strong>
+    Dealers
+</strong>
+
+<span>
+    Transport partners
+</span>
+
+</div>
+
+<div class="teamCount">
+    0
+</div>
+
+</div>
+
+
+
+<div class="teamRow">
+
+<div class="teamIcon">
+    👤
+</div>
+
+<div class="teamInfo">
+
+<strong>
+    Employees
+</strong>
+
+<span>
+    Other staff members
+</span>
+
+</div>
+
+<div class="teamCount">
+    0
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     PART 1 END
+========================================= -->
+
+<!--
+
+=================================================
+MANAGER-DASHBOARD.HTML — PART 2
+
+अगले Part में आएगा:
+
+• Driver & employee operations
+• Vehicle management
+• Dealer management
+• Load management
+• Trip assignment
+• Live tracking
+• Route management
+• Task management
+• Team communication
+
+=================================================
+
+-->
+<!-- =========================================
+     PART 2 : MANAGER OPERATIONS
+========================================= -->
+
+
+<!-- =========================================
+     DRIVER OPERATIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Driver Operations
+</h2>
+
+<span>
+    Manage drivers
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="driver-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👨‍✈️
+</div>
+
+<div class="featureText">
+
+<strong>
+    All Drivers
+</strong>
+
+<span>
+    सभी registered drivers की list और status देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-assignment.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔗
+</div>
+
+<div class="featureText">
+
+<strong>
+    Assign Driver
+</strong>
+
+<span>
+    Driver को vehicle, load और trip assign करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-performance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⭐
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driver Performance
+</strong>
+
+<span>
+    Rating, completed trips और performance देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="driver-documents.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📄
+</div>
+
+<div class="featureText">
+
+<strong>
+    Driver Documents
+</strong>
+
+<span>
+    Licence और verification documents manage करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     EMPLOYEE OPERATIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Employee Management
+</h2>
+
+<span>
+    Team control
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="employee-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👥
+</div>
+
+<div class="featureText">
+
+<strong>
+    All Employees
+</strong>
+
+<span>
+    Company के सभी employees और staff देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="create-employee.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ➕
+</div>
+
+<div class="featureText">
+
+<strong>
+    Create Employee
+</strong>
+
+<span>
+    नए employee का professional account बनाएं।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="employee-id-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🪪
+</div>
+
+<div class="featureText">
+
+<strong>
+    Employee IDs
+</strong>
+
+<span>
+    Unique Employee ID और role information manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="employee-attendance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🕘
+</div>
+
+<div class="featureText">
+
+<strong>
+    Attendance
+</strong>
+
+<span>
+    Team attendance और working status देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     VEHICLE OPERATIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Vehicle Operations
+</h2>
+
+<span>
+    Fleet management
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="vehicle-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🚛
+</div>
+
+<div class="featureText">
+
+<strong>
+    All Vehicles
+</strong>
+
+<span>
+    Fleet में मौजूद सभी vehicles manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-assignment.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔗
+</div>
+
+<div class="featureText">
+
+<strong>
+    Vehicle Assignment
+</strong>
+
+<span>
+    Driver और vehicle को properly assign करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-maintenance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔧
+</div>
+
+<div class="featureText">
+
+<strong>
+    Maintenance
+</strong>
+
+<span>
+    Service, repair और maintenance records देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="vehicle-documents.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📑
+</div>
+
+<div class="featureText">
+
+<strong>
+    Vehicle Documents
+</strong>
+
+<span>
+    RC, insurance, permit और fitness documents।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     DEALER OPERATIONS
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Dealer & Partner Management
+</h2>
+
+<span>
+    Business network
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="dealer-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🏪
+</div>
+
+<div class="featureText">
+
+<strong>
+    Dealers
+</strong>
+
+<span>
+    सभी dealers और transport partners manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="dealer-requests.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📩
+</div>
+
+<div class="featureText">
+
+<strong>
+    Dealer Requests
+</strong>
+
+<span>
+    नए dealer registration requests देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="dealer-loads.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    Dealer Loads
+</strong>
+
+<span>
+    Dealers द्वारा दिए गए loads manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="dealer-performance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⭐
+</div>
+
+<div class="featureText">
+
+<strong>
+    Partner Performance
+</strong>
+
+<span>
+    Dealer और partner performance देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     LOAD MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Load Management
+</h2>
+
+<span>
+    Goods operations
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="load-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    All Loads
+</strong>
+
+<span>
+    सभी available और assigned loads देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="create-load.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ➕
+</div>
+
+<div class="featureText">
+
+<strong>
+    Create Load
+</strong>
+
+<span>
+    नया goods/load order create करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="assign-load.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🔗
+</div>
+
+<div class="featureText">
+
+<strong>
+    Assign Load
+</strong>
+
+<span>
+    Load को driver और vehicle के साथ assign करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="load-status.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📊
+</div>
+
+<div class="featureText">
+
+<strong>
+    Load Status
+</strong>
+
+<span>
+    Pending, assigned, transit और delivered status देखें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     TRIP MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Trip Management
+</h2>
+
+<span>
+    Transport operations
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="trip-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🛣️
+</div>
+
+<div class="featureText">
+
+<strong>
+    All Trips
+</strong>
+
+<span>
+    सभी active, upcoming और completed trips।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="create-trip.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ➕
+</div>
+
+<div class="featureText">
+
+<strong>
+    Create Trip
+</strong>
+
+<span>
+    Pickup और destination के साथ नई trip बनाएं।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-assignment.html"
+class="featureCard">
+
+<div class="featureIcon">
+    👨‍✈️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Assign Trip
+</strong>
+
+<span>
+    Driver और vehicle को trip assign करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="trip-status.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📋
+</div>
+
+<div class="featureText">
+
+<strong>
+    Trip Status
+</strong>
+
+<span>
+    Trip की current progress और delivery status।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     LIVE TRACKING
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Live Tracking
+</h2>
+
+<span>
+    Fleet location
+</span>
+
+</div>
+
+
+<div
+style="
+    background:#fff;
+    border:1px solid #e4e9f0;
+    border-radius:16px;
+    padding:14px;
+    margin-top:9px;
+"
+>
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:11px;
+"
+>
+
+<div
+style="
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#eff6ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+"
+>
+    📍
+</div>
+
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:9px;
+"
+>
+    Fleet Live Location
+</strong>
+
+<span
+style="
+    display:block;
+    margin-top:4px;
+    color:#667085;
+    font-size:6px;
+    line-height:1.5;
+"
+>
+    Active vehicles और drivers की location
+    देखने के लिए tracking center खोलें।
+</span>
+
+</div>
+
+
+<button
+onclick="openTracking()"
+style="
+    border:0;
+    background:#2563eb;
+    color:#fff;
+    border-radius:9px;
+    padding:9px 11px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    Open
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     ROUTE MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Route & Delivery
+</h2>
+
+<span>
+    Route control
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="route-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    🗺️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Route Management
+</strong>
+
+<span>
+    सभी transport routes manage करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="delivery-planning.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📍
+</div>
+
+<div class="featureText">
+
+<strong>
+    Delivery Planning
+</strong>
+
+<span>
+    Delivery stops और schedules plan करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="route-performance.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📊
+</div>
+
+<div class="featureText">
+
+<strong>
+    Route Performance
+</strong>
+
+<span>
+    Distance, time और route performance देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="delivery-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    📦
+</div>
+
+<div class="featureText">
+
+<strong>
+    Delivery Management
+</strong>
+
+<span>
+    Delivery progress और proof manage करें।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     TASK MANAGEMENT
+========================================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Team Tasks
+</h2>
+
+<span>
+    Work management
+</span>
+
+</div>
+
+
+<div class="featureGrid">
+
+
+<a
+href="task-management.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ✅
+</div>
+
+<div class="featureText">
+
+<strong>
+    All Tasks
+</strong>
+
+<span>
+    Team के सभी tasks और assignments देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="create-task.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ➕
+</div>
+
+<div class="featureText">
+
+<strong>
+    Create Task
+</strong>
+
+<span>
+    Employee या driver को नया task assign करें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="pending-tasks.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ⏳
+</div>
+
+<div class="featureText">
+
+<strong>
+    Pending Tasks
+</strong>
+
+<span>
+    अभी complete नहीं हुए tasks देखें।
+</span>
+
+</div>
+
+</a>
+
+
+
+<a
+href="completed-tasks.html"
+class="featureCard">
+
+<div class="featureIcon">
+    ✔️
+</div>
+
+<div class="featureText">
+
+<strong>
+    Completed Tasks
+</strong>
+
+<span>
+    Team द्वारा complete किए गए tasks।
+</span>
+
+</div>
+
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     PART 2 END
+========================================= -->
+
+<!--
+
+=================================================
+MANAGER-DASHBOARD.HTML — PART 3
+
+अगले Part में आएगा:
+
+• Payments & accounts
+• Business reports
+• Communication
+• Manager community
+• Notifications
+• Manager profile
+• Employee ID
+• Security
+• Settings
+• Bottom navigation
+• Role protection
+• JavaScript
+• Logout
+• Final HTML closing tags
+
+=================================================
+
+-->
+<!-- =========================================
+     PART 3 : FINANCE + REPORTS + PROFILE
+========================================= -->
+
+
+<!-- =========================================
+     PAYMENTS & ACCOUNTS
+========================================= -->
+
+<div class="sectionTitle">
+    <h2>Payments & Accounts</h2>
+    <span>Finance</span>
+</div>
+
+<div class="featureGrid">
+
+<a href="payment-management.html" class="featureCard">
+    <div class="featureIcon">💳</div>
+    <div class="featureText">
+        <strong>Payment Management</strong>
+        <span>Business payments और transactions manage करें।</span>
+    </div>
+</a>
+
+<a href="pending-payments.html" class="featureCard">
+    <div class="featureIcon">⏳</div>
+    <div class="featureText">
+        <strong>Pending Payments</strong>
+        <span>Pending और due payments देखें।</span>
+    </div>
+</a>
+
+<a href="bank-account.html" class="featureCard">
+    <div class="featureIcon">🏦</div>
+    <div class="featureText">
+        <strong>Bank Account</strong>
+        <span>Business banking details manage करें।</span>
+    </div>
+</a>
+
+<a href="transaction-history.html" class="featureCard">
+    <div class="featureIcon">🧾</div>
+    <div class="featureText">
+        <strong>Transactions</strong>
+        <span>Payment और transaction history देखें।</span>
+    </div>
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     BUSINESS REPORTS
+========================================= -->
+
+<div class="sectionTitle">
+    <h2>Business Reports</h2>
+    <span>Analytics</span>
+</div>
+
+<div class="featureGrid">
+
+<a href="business-reports.html" class="featureCard">
+    <div class="featureIcon">📊</div>
+    <div class="featureText">
+        <strong>Business Reports</strong>
+        <span>Transport business की performance reports।</span>
+    </div>
+</a>
+
+<a href="trip-reports.html" class="featureCard">
+    <div class="featureIcon">📈</div>
+    <div class="featureText">
+        <strong>Trip Reports</strong>
+        <span>Trips और delivery performance देखें।</span>
+    </div>
+</a>
+
+<a href="driver-reports.html" class="featureCard">
+    <div class="featureIcon">👨‍✈️</div>
+    <div class="featureText">
+        <strong>Driver Reports</strong>
+        <span>Driver performance और activity reports।</span>
+    </div>
+</a>
+
+<a href="financial-reports.html" class="featureCard">
+    <div class="featureIcon">💰</div>
+    <div class="featureText">
+        <strong>Financial Reports</strong>
+        <span>Revenue, expenses और financial overview।</span>
+    </div>
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     COMMUNICATION
+========================================= -->
+
+<div class="sectionTitle">
+    <h2>Communication</h2>
+    <span>Team network</span>
+</div>
+
+<div class="featureGrid">
+
+<a href="messages.html" class="featureCard">
+    <div class="featureIcon">💬</div>
+    <div class="featureText">
+        <strong>Messages</strong>
+        <span>Drivers, employees और dealers से chat करें।</span>
+    </div>
+</a>
+
+<a href="manager-community.html" class="featureCard">
+    <div class="featureIcon">👥</div>
+    <div class="featureText">
+        <strong>Manager Community</strong>
+        <span>Verified managers की professional community।</span>
+    </div>
+</a>
+
+<a href="team-announcements.html" class="featureCard">
+    <div class="featureIcon">📢</div>
+    <div class="featureText">
+        <strong>Announcements</strong>
+        <span>Team के लिए important announcements भेजें।</span>
+    </div>
+</a>
+
+<a href="support.html" class="featureCard">
+    <div class="featureIcon">🆘</div>
+    <div class="featureText">
+        <strong>Support</strong>
+        <span>TransportPro support team से सहायता लें।</span>
+    </div>
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     NOTIFICATIONS
+========================================= -->
+
+<div class="sectionTitle">
+    <h2>Notifications</h2>
+    <span>Updates</span>
+</div>
+
+<div class="featureGrid">
+
+<a href="notifications.html" class="featureCard">
+    <div class="featureIcon">🔔</div>
+    <div class="featureText">
+        <strong>All Notifications</strong>
+        <span>Trips, employees, payments और system updates।</span>
+    </div>
+</a>
+
+<a href="trip-alerts.html" class="featureCard">
+    <div class="featureIcon">🚨</div>
+    <div class="featureText">
+        <strong>Trip Alerts</strong>
+        <span>Important trip और delivery alerts।</span>
+    </div>
+</a>
+
+<a href="employee-alerts.html" class="featureCard">
+    <div class="featureIcon">👥</div>
+    <div class="featureText">
+        <strong>Employee Alerts</strong>
+        <span>Team और employee related updates।</span>
+    </div>
+</a>
+
+<a href="payment-alerts.html" class="featureCard">
+    <div class="featureIcon">💰</div>
+    <div class="featureText">
+        <strong>Payment Alerts</strong>
+        <span>Payment received और pending alerts।</span>
+    </div>
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     MANAGER ACCOUNT
+========================================= -->
+
+<div class="sectionTitle">
+    <h2>Manager Account</h2>
+    <span>My account</span>
+</div>
+
+<div class="featureGrid">
+
+<a href="manager-profile.html" class="featureCard">
+    <div class="featureIcon">👤</div>
+    <div class="featureText">
+        <strong>My Profile</strong>
+        <span>Manager की personal और professional details।</span>
+    </div>
+</a>
+
+<a href="employee-id.html" class="featureCard">
+    <div class="featureIcon">🪪</div>
+    <div class="featureText">
+        <strong>Employee ID</strong>
+        <span>Unique Manager Employee ID देखें।</span>
+    </div>
+</a>
+
+<a href="manager-verification.html" class="featureCard">
+    <div class="featureIcon">✅</div>
+    <div class="featureText">
+        <strong>Verification</strong>
+        <span>Manager account verification status।</span>
+    </div>
+</a>
+
+<a href="manager-settings.html" class="featureCard">
+    <div class="featureIcon">⚙️</div>
+    <div class="featureText">
+        <strong>Settings</strong>
+        <span>Dashboard और account settings manage करें।</span>
+    </div>
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     SECURITY
+========================================= -->
+
+<div class="sectionTitle">
+    <h2>Security</h2>
+    <span>Protected access</span>
+</div>
+
+<div class="featureGrid">
+
+<a href="change-password.html" class="featureCard">
+    <div class="featureIcon">🔑</div>
+    <div class="featureText">
+        <strong>Change Password</strong>
+        <span>Manager account password बदलें।</span>
+    </div>
+</a>
+
+<a href="login-security.html" class="featureCard">
+    <div class="featureIcon">🔐</div>
+    <div class="featureText">
+        <strong>Login Security</strong>
+        <span>Login sessions और security controls।</span>
+    </div>
+</a>
+
+<a href="role-access.html" class="featureCard">
+    <div class="featureIcon">🛡️</div>
+    <div class="featureText">
+        <strong>Role Access</strong>
+        <span>Manager के authorized features देखें।</span>
+    </div>
+</a>
+
+<a href="privacy.html" class="featureCard">
+    <div class="featureIcon">🔒</div>
+    <div class="featureText">
+        <strong>Privacy</strong>
+        <span>Account और professional information controls।</span>
+    </div>
+</a>
+
+</div>
+
+
+
+<!-- =========================================
+     SUPPORT BANNER
+========================================= -->
+
+<div class="sectionTitle">
+    <h2>Manager Support</h2>
+    <span>Help</span>
+</div>
+
+<div
+style="
+    background:#07111f;
+    color:#fff;
+    border-radius:16px;
+    padding:15px;
+"
+>
+
+<div
+style="
+    display:flex;
+    align-items:center;
+    gap:11px;
+"
+>
+
+<div
+style="
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    background:#172235;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+"
+>
+    🆘
+</div>
+
+<div style="flex:1;">
+
+<strong
+style="
+    display:block;
+    font-size:9px;
+"
+>
+    Need Management Support?
+</strong>
+
+<span
+style="
+    display:block;
+    color:#cbd5e1;
+    font-size:6px;
+    line-height:1.5;
+    margin-top:4px;
+"
+>
+    Operations, employees, trips, payments
+    या account से संबंधित सहायता लें।
+</span>
+
+</div>
+
+<button
+onclick="openSupport()"
+style="
+    border:0;
+    background:#fff;
+    color:#07111f;
+    border-radius:9px;
+    padding:9px 11px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    Help
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================
+     LOGOUT
+========================================= -->
+
+<div style="margin-top:14px;">
+
+<button
+onclick="logoutManager()"
+style="
+    width:100%;
+    min-height:45px;
+    border:1px solid #fecdca;
+    background:#fff;
+    color:#b42318;
+    border-radius:11px;
+    font-size:8px;
+    font-weight:700;
+    cursor:pointer;
+"
+>
+    ↪ Logout Manager Account
+</button>
+
+</div>
+
+
+</main>
+
+
+
+<!-- =========================================
+     BOTTOM NAVIGATION
+========================================= -->
+
+<nav
+style="
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:999;
+    background:#fff;
+    border-top:1px solid #e4e7ec;
+    box-shadow:0 -3px 15px rgba(16,24,40,.08);
+"
+>
+
+<div
+style="
+    max-width:600px;
+    margin:auto;
+    min-height:61px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+"
+>
+
+<a
+href="manager-dashboard.html"
+style="
+    text-decoration:none;
+    color:#175cd3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    <span style="font-size:18px;">🏠</span>
+    Home
+</a>
+
+
+<a
+href="driver-management.html"
+style="
+    text-decoration:none;
+    color:#667085;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    <span style="font-size:18px;">👥</span>
+    Team
+</a>
+
+
+<a
+href="live-tracking.html"
+style="
+    text-decoration:none;
+    color:#667085;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    <span style="font-size:18px;">📍</span>
+    Tracking
+</a>
+
+
+<a
+href="reports.html"
+style="
+    text-decoration:none;
+    color:#667085;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    <span style="font-size:18px;">📊</span>
+    Reports
+</a>
+
+
+<a
+href="manager-profile.html"
+style="
+    text-decoration:none;
+    color:#667085;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    font-size:6px;
+    font-weight:700;
+"
+>
+    <span style="font-size:18px;">👤</span>
+    Profile
+</a>
+
+</div>
+
+</nav>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   BACK
+========================================= */
+
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href =
+            "professional-dashboard.html";
+
+    }
+
+}
+
+
+
+/* =========================================
+   LOAD MANAGER DATA
+========================================= */
+
+function loadManagerData(){
+
+    let name =
+        localStorage.getItem(
+            "managerName"
+        );
+
+    let professionalId =
+        localStorage.getItem(
+            "professionalId"
+        );
+
+    let role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+    let registrationData =
+        localStorage.getItem(
+            "registrationData"
+        );
+
+
+    if(registrationData){
+
+        try{
+
+            const data =
+                JSON.parse(
+                    registrationData
+                );
+
+
+            if(!name){
+
+                name =
+                    data.name ||
+                    data.fullName ||
+                    "";
+
+            }
+
+
+            if(!professionalId){
+
+                professionalId =
+                    data.professionalId ||
+                    "";
+
+            }
+
+
+            if(!role){
+
+                role =
+                    data.role ||
+                    "";
+
+            }
+
+        }catch(error){
+
+            console.log(
+                "Registration data unavailable"
+            );
+
+        }
+
+    }
+
+
+    if(!name){
+
+        name = "Manager";
+
+    }
+
+
+    if(!professionalId){
+
+        professionalId =
+            "TP-MGR-2026-000000";
+
+    }
+
+
+    if(!role){
+
+        role = "Manager";
+
+    }
+
+
+    const nameElement =
+        document.getElementById(
+            "managerName"
+        );
+
+
+    const roleElement =
+        document.getElementById(
+            "managerRole"
+        );
+
+
+    const idElement =
+        document.getElementById(
+            "professionalId"
+        );
+
+
+    if(nameElement){
+
+        nameElement.textContent =
+            name;
+
+    }
+
+
+    if(roleElement){
+
+        roleElement.textContent =
+            "Verified " + role;
+
+    }
+
+
+    if(idElement){
+
+        idElement.textContent =
+            professionalId;
+
+    }
+
+}
+
+
+
+/* =========================================
+   NOTIFICATIONS
+========================================= */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+
+/* =========================================
+   TRACKING
+========================================= */
+
+function openTracking(){
+
+    window.location.href =
+        "live-tracking.html";
+
+}
+
+
+
+/* =========================================
+   SUPPORT
+========================================= */
+
+function openSupport(){
+
+    window.location.href =
+        "support.html";
+
+}
+
+
+
+/* =========================================
+   MANAGER COMMUNITY
+========================================= */
+
+function openManagerCommunity(){
+
+    window.location.href =
+        "manager-community.html";
+
+}
+
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logoutManager(){
+
+    const confirmLogout =
+        confirm(
+            "क्या आप Manager account से logout करना चाहते हैं?"
+        );
+
+
+    if(!confirmLogout){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "loginSession"
+    );
+
+
+    localStorage.removeItem(
+        "isLoggedIn"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =========================================
+   FRONTEND ROLE PROTECTION
+========================================= */
+
+function checkManagerRole(){
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    /*
+       यह केवल frontend protection है।
+       Real security backend में लागू होगी।
+    */
+
+    if(
+        role &&
+        role !== "Manager"
+    ){
+
+        window.location.href =
+            "professional-dashboard.html";
+
+    }
+
+}
+
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        checkManagerRole();
+
+        loadManagerData();
+
+    }
+);
+
+
+
+/* =========================================
+   REFRESH DATA
+========================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            loadManagerData();
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

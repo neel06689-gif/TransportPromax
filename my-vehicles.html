@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>My Vehicles - TransportPro</title>
+
+<style>
+
+/* =====================================
+   BASIC RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+    gap:12px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.vehicles-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:16px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:15px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   VEHICLE SUMMARY
+===================================== */
+
+.vehicle-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:14px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:18px;
+}
+
+
+/* =====================================
+   TOOLBAR
+===================================== */
+
+.toolbar{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:10px;
+}
+
+.search-box{
+    flex:1;
+}
+
+.search-box input{
+    width:100%;
+
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.search-box input:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+.add-btn{
+    height:44px;
+
+    padding:0 15px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.add-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   FILTER
+===================================== */
+
+.filter-row{
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-bottom:3px;
+
+    margin-bottom:13px;
+}
+
+.filter-btn{
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#172033;
+
+    border-radius:20px;
+
+    padding:8px 13px;
+
+    font-size:10px;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+
+    color:#fff;
+
+    border-color:#1769e0;
+}
+
+
+/* =====================================
+   VEHICLE LIST
+===================================== */
+
+.vehicle-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+
+/* =====================================
+   VEHICLE CARD
+===================================== */
+
+.vehicle-card{
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    background:#fff;
+
+    transition:.2s;
+}
+
+.vehicle-card:hover{
+    box-shadow:
+        0 4px 13px rgba(16,24,40,.07);
+}
+
+
+/* =====================================
+   VEHICLE TOP
+===================================== */
+
+.vehicle-top{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+.vehicle-icon{
+    width:48px;
+    height:48px;
+
+    border-radius:11px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    flex-shrink:0;
+}
+
+.vehicle-title{
+    flex:1;
+}
+
+.vehicle-title strong{
+    display:block;
+
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.vehicle-title small{
+    color:#667085;
+
+    font-size:8px;
+}
+
+
+/* =====================================
+   STATUS
+===================================== */
+
+.vehicle-status{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.status-active{
+    background:#eaf8ef;
+
+    color:#137333;
+}
+
+.status-available{
+    background:#eaf2ff;
+
+    color:#1769e0;
+}
+
+.status-maintenance{
+    background:#fff5df;
+
+    color:#a15c00;
+}
+
+
+/* =====================================
+   VEHICLE INFORMATION
+===================================== */
+
+.vehicle-info{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:7px;
+
+    margin-bottom:10px;
+}
+
+.info-box{
+    border:1px solid #edf0f4;
+
+    border-radius:7px;
+
+    padding:8px 5px;
+
+    text-align:center;
+}
+
+.info-box span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:7px;
+
+    margin-bottom:4px;
+}
+
+.info-box strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+/* =====================================
+   VEHICLE ACTIONS
+===================================== */
+
+.vehicle-actions{
+    display:flex;
+
+    gap:7px;
+}
+
+.vehicle-actions button{
+    flex:1;
+
+    height:34px;
+
+    border-radius:7px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.view-btn{
+    background:#1769e0;
+
+    border:0;
+
+    color:#fff;
+}
+
+.edit-btn{
+    background:#fff;
+
+    border:1px solid #1769e0;
+
+    color:#1769e0;
+}
+
+.delete-btn{
+    background:#fff;
+
+    border:1px solid #e2bcbc;
+
+    color:#c62828;
+}
+
+
+/* =====================================
+   QUICK ACTIONS
+===================================== */
+
+.quick-actions{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:9px;
+
+    margin-top:5px;
+}
+
+.quick-actions button{
+    min-height:46px;
+
+    border:1px solid #dbe2ea;
+
+    background:#f8fafc;
+
+    color:#172033;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.quick-actions button:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+
+    color:#667085;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    color:#172033;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+}
+
+.empty-state small{
+    font-size:9px;
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .vehicles-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .vehicle-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .toolbar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .add-btn{
+        width:100%;
+    }
+
+    .vehicle-top{
+        flex-wrap:wrap;
+    }
+
+    .vehicle-title{
+        min-width:
+            calc(100% - 58px);
+    }
+
+    .vehicle-status{
+        margin-left:58px;
+    }
+
+    .vehicle-info{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .quick-actions{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            My Vehicles
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goDashboard()">
+
+        ← Back to Dashboard
+
+    </button>
+
+
+
+    <section class="vehicles-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                🚛
+            </div>
+
+            <div>
+
+                <h1>
+                    My Vehicles
+                </h1>
+
+                <p>
+                    Apne registered vehicles ko
+                    manage aur monitor karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="vehicle-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Vehicles
+                </span>
+
+                <strong id="totalVehicles">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Active
+                </span>
+
+                <strong id="activeVehicles">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Available
+                </span>
+
+                <strong id="availableVehicles">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Maintenance
+                </span>
+
+                <strong id="maintenanceVehicles">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SEARCH + ADD -->
+
+        <div class="toolbar">
+
+
+            <div class="search-box">
+
+                <input
+                    type="search"
+                    id="vehicleSearch"
+                    placeholder="Search vehicle, number or type..."
+                    oninput="searchVehicles()">
+
+            </div>
+
+
+            <button
+                class="add-btn"
+                onclick="addVehicle()">
+
+                + Add Vehicle
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- FILTER -->
+
+        <div class="filter-row">
+
+
+            <button
+                class="filter-btn active"
+                onclick="filterVehicles('all',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterVehicles('Active',this)">
+
+                Active
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterVehicles('Available',this)">
+
+                Available
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterVehicles('Maintenance',this)">
+
+                Maintenance
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- VEHICLE LIST -->
+
+        <div
+            id="vehicleList"
+            class="vehicle-list">
+
+            <!-- JavaScript se vehicles show honge -->
+
+        </div>
+
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="quick-actions">
+
+
+            <button
+                onclick="openDocuments()">
+
+                📄 Vehicle Documents
+
+            </button>
+
+
+            <button
+                onclick="openMaintenance()">
+
+                🔧 Maintenance
+
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   VEHICLE DATA
+===================================== */
+
+let vehicles = [
+
+    {
+        id: "VH1001",
+        number: "DL 01 AB 1234",
+        type: "32 FT Container",
+        model: "Tata Prima",
+        year: "2023",
+        capacity: "16 Ton",
+        driver: "Rahul Kumar",
+        status: "Active"
+    },
+
+    {
+        id: "VH1002",
+        number: "UP 16 CD 5678",
+        type: "14 FT Truck",
+        model: "Ashok Leyland",
+        year: "2022",
+        capacity: "7 Ton",
+        driver: "Amit Singh",
+        status: "Available"
+    },
+
+    {
+        id: "VH1003",
+        number: "HR 26 EF 9012",
+        type: "20 FT Truck",
+        model: "Tata 1612",
+        year: "2021",
+        capacity: "9 Ton",
+        driver: "Vikas Sharma",
+        status: "Maintenance"
+    }
+
+];
+
+
+/* =====================================
+   FILTER
+===================================== */
+
+let currentFilter = "all";
+
+
+/* =====================================
+   LOAD SAVED VEHICLES
+===================================== */
+
+const savedVehicles =
+    localStorage.getItem(
+        "tp_vehicles"
+    );
+
+if(savedVehicles){
+
+    try{
+
+        const parsed =
+            JSON.parse(savedVehicles);
+
+        if(Array.isArray(parsed)){
+            vehicles = parsed;
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            "Vehicle data error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   SAVE VEHICLES
+===================================== */
+
+function saveVehicles(){
+
+    localStorage.setItem(
+        "tp_vehicles",
+        JSON.stringify(vehicles)
+    );
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(){
+
+    document.getElementById(
+        "totalVehicles"
+    ).innerText =
+        vehicles.length;
+
+
+    document.getElementById(
+        "activeVehicles"
+    ).innerText =
+        vehicles.filter(
+            v => v.status === "Active"
+        ).length;
+
+
+    document.getElementById(
+        "availableVehicles"
+    ).innerText =
+        vehicles.filter(
+            v => v.status === "Available"
+        ).length;
+
+
+    document.getElementById(
+        "maintenanceVehicles"
+    ).innerText =
+        vehicles.filter(
+            v => v.status === "Maintenance"
+        ).length;
+
+}
+
+
+/* =====================================
+   DISPLAY VEHICLES
+===================================== */
+
+function displayVehicles(list){
+
+    const container =
+        document.getElementById(
+            "vehicleList"
+        );
+
+
+    if(!container){
+        return;
+    }
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🚛
+                </div>
+
+                <strong>
+                    No Vehicles Found
+                </strong>
+
+                <small>
+                    Search ya filter change karke
+                    dobara try karein.
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        list.map(vehicle => `
+
+            <div class="vehicle-card">
+
+                <div class="vehicle-top">
+
+                    <div class="vehicle-icon">
+                        🚛
+                    </div>
+
+
+                    <div class="vehicle-title">
+
+                        <strong>
+                            ${vehicle.number}
+                        </strong>
+
+                        <small>
+                            ${vehicle.id} •
+                            ${vehicle.model}
+                        </small>
+
+                    </div>
+
+
+                    <span class="
+                        vehicle-status
+                        ${
+                            vehicle.status === "Active"
+                            ? "status-active"
+                            : vehicle.status === "Available"
+                            ? "status-available"
+                            : "status-maintenance"
+                        }
+                    ">
+
+                        ${vehicle.status}
+
+                    </span>
+
+                </div>
+
+
+                <div class="vehicle-info">
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Vehicle Type
+                        </span>
+
+                        <strong>
+                            ${vehicle.type}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Capacity
+                        </span>
+
+                        <strong>
+                            ${vehicle.capacity}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Driver
+                        </span>
+
+                        <strong>
+                            ${vehicle.driver}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <span>
+                            Year
+                        </span>
+
+                        <strong>
+                            ${vehicle.year}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="vehicle-actions">
+
+
+                    <button
+                        class="view-btn"
+                        onclick="viewVehicle('${vehicle.id}')">
+
+                        👁 View
+
+                    </button>
+
+
+                    <button
+                        class="edit-btn"
+                        onclick="editVehicle('${vehicle.id}')">
+
+                        ✏️ Edit
+
+                    </button>
+
+
+                    <button
+                        class="delete-btn"
+                        onclick="deleteVehicle('${vehicle.id}')">
+
+                        🗑 Delete
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+/* =====================================
+   SEARCH VEHICLES
+===================================== */
+
+function searchVehicles(){
+
+    applyFilters();
+
+}
+
+
+/* =====================================
+   FILTER VEHICLES
+===================================== */
+
+function filterVehicles(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================
+   APPLY FILTERS
+===================================== */
+
+function applyFilters(){
+
+    const input =
+        document.getElementById(
+            "vehicleSearch"
+        );
+
+
+    const search =
+        input
+        ?
+        input.value
+            .trim()
+            .toLowerCase()
+        :
+        "";
+
+
+    let result =
+        [...vehicles];
+
+
+    if(
+        currentFilter !==
+        "all"
+    ){
+
+        result =
+            result.filter(
+                vehicle =>
+                    vehicle.status ===
+                    currentFilter
+            );
+
+    }
+
+
+    if(search){
+
+        result =
+            result.filter(
+                vehicle =>
+
+                    vehicle.id
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    vehicle.number
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    vehicle.type
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    vehicle.model
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    vehicle.driver
+                        .toLowerCase()
+                        .includes(search)
+
+            );
+
+    }
+
+
+    displayVehicles(result);
+
+}
+
+
+/* =====================================
+   VIEW VEHICLE
+===================================== */
+
+function viewVehicle(id){
+
+    const vehicle =
+        vehicles.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!vehicle){
+        return;
+    }
+
+
+    alert(
+
+        "🚛 VEHICLE DETAILS\n\n" +
+
+        "Vehicle ID: " +
+        vehicle.id +
+
+        "\n\nRegistration No: " +
+        vehicle.number +
+
+        "\n\nType: " +
+        vehicle.type +
+
+        "\n\nModel: " +
+        vehicle.model +
+
+        "\n\nManufacturing Year: " +
+        vehicle.year +
+
+        "\n\nCapacity: " +
+        vehicle.capacity +
+
+        "\n\nDriver: " +
+        vehicle.driver +
+
+        "\n\nStatus: " +
+        vehicle.status
+
+    );
+
+}
+
+
+/* =====================================
+   ADD VEHICLE
+===================================== */
+
+function addVehicle(){
+
+    const number =
+        prompt(
+            "Vehicle Registration Number:"
+        );
+
+
+    if(!number){
+        return;
+    }
+
+
+    const type =
+        prompt(
+            "Vehicle Type:\nExample: 32 FT Container"
+        );
+
+
+    if(!type){
+        return;
+    }
+
+
+    const model =
+        prompt(
+            "Vehicle Model:"
+        );
+
+
+    if(!model){
+        return;
+    }
+
+
+    const year =
+        prompt(
+            "Manufacturing Year:"
+        );
+
+
+    if(!year){
+        return;
+    }
+
+
+    const capacity =
+        prompt(
+            "Vehicle Capacity:\nExample: 10 Ton"
+        );
+
+
+    if(!capacity){
+        return;
+    }
+
+
+    const driver =
+        prompt(
+            "Driver Name:"
+        );
+
+
+    if(!driver){
+        return;
+    }
+
+
+    const newVehicle = {
+
+        id:
+            "VH" +
+            Date.now()
+                .toString()
+                .slice(-6),
+
+        number:
+            number,
+
+        type:
+            type,
+
+        model:
+            model,
+
+        year:
+            year,
+
+        capacity:
+            capacity,
+
+        driver:
+            driver,
+
+        status:
+            "Available"
+
+    };
+
+
+    vehicles.push(
+        newVehicle
+    );
+
+
+    saveVehicles();
+
+    updateSummary();
+
+    applyFilters();
+
+
+    alert(
+        "✅ Vehicle successfully added."
+    );
+
+}
+
+
+/* =====================================
+   EDIT VEHICLE
+===================================== */
+
+function editVehicle(id){
+
+    const vehicle =
+        vehicles.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!vehicle){
+        return;
+    }
+
+
+    const newNumber =
+        prompt(
+            "Registration Number:",
+            vehicle.number
+        );
+
+
+    if(newNumber === null){
+        return;
+    }
+
+
+    const newDriver =
+        prompt(
+            "Driver Name:",
+            vehicle.driver
+        );
+
+
+    if(newDriver === null){
+        return;
+    }
+
+
+    const newStatus =
+        prompt(
+
+            "Status enter karein:\n\n" +
+
+            "1 = Active\n" +
+
+            "2 = Available\n" +
+
+            "3 = Maintenance\n\n" +
+
+            "Current: " +
+            vehicle.status
+
+        );
+
+
+    if(newStatus === null){
+        return;
+    }
+
+
+    if(newStatus === "1"){
+
+        vehicle.status =
+            "Active";
+
+    }
+    else if(newStatus === "2"){
+
+        vehicle.status =
+            "Available";
+
+    }
+    else if(newStatus === "3"){
+
+        vehicle.status =
+            "Maintenance";
+
+    }
+    else{
+
+        alert(
+            "⚠️ 1, 2 ya 3 enter karein."
+        );
+
+        return;
+
+    }
+
+
+    vehicle.number =
+        newNumber;
+
+    vehicle.driver =
+        newDriver;
+
+
+    saveVehicles();
+
+    updateSummary();
+
+    applyFilters();
+
+
+    alert(
+        "✅ Vehicle updated successfully."
+    );
+
+}
+
+
+/* =====================================
+   DELETE VEHICLE
+===================================== */
+
+function deleteVehicle(id){
+
+    const index =
+        vehicles.findIndex(
+            vehicle =>
+                vehicle.id === id
+        );
+
+
+    if(index === -1){
+        return;
+    }
+
+
+    const vehicle =
+        vehicles[index];
+
+
+    const confirmDelete =
+        confirm(
+
+            "⚠️ Delete Vehicle?\n\n" +
+
+            vehicle.number +
+
+            "\n\nKya aap is vehicle ko delete karna chahte hain?"
+
+        );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    vehicles.splice(
+        index,
+        1
+    );
+
+
+    saveVehicles();
+
+    updateSummary();
+
+    applyFilters();
+
+
+    alert(
+        "✅ Vehicle deleted successfully."
+    );
+
+}
+
+
+/* =====================================
+   OPEN DOCUMENTS
+===================================== */
+
+function openDocuments(){
+
+    window.location.href =
+        "vehicle-documents.html";
+
+}
+
+
+/* =====================================
+   OPEN MAINTENANCE
+===================================== */
+
+function openMaintenance(){
+
+    window.location.href =
+        "vehicle-maintenance.html";
+
+}
+
+
+/* =====================================
+   ADD VEHICLE PAGE
+===================================== */
+
+function goAddVehicle(){
+
+    window.location.href =
+        "add-vehicle.html";
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "professional-dashboard.html";
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        goDashboard();
+
+    }
+
+}
+
+
+/* =====================================
+   INITIALIZE
+===================================== */
+
+saveVehicles();
+
+updateSummary();
+
+displayVehicles(
+    vehicles
+);
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        updateSummary();
+
+        displayVehicles(
+            vehicles
+        );
+
+        console.log(
+            "TransportPro My Vehicles loaded successfully."
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

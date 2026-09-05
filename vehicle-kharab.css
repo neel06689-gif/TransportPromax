@@ -1,0 +1,956 @@
+/* =========================================
+   TRANSPORTPRO
+   VEHICLE KHARAB / BREAKDOWN CSS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #155eef;
+    --primary-dark: #0b46c9;
+    --danger: #e53935;
+    --danger-dark: #c62828;
+    --text: #172033;
+    --muted: #6b7280;
+    --bg: #f5f7fb;
+    --white: #ffffff;
+    --border: #e5e9f0;
+    --success: #16834b;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 30px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.page-header {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 16px;
+    gap: 12px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+}
+
+.back-button,
+.help-button {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    font-size: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.help-button {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.back-button:active,
+.help-button:active {
+    transform: scale(0.92);
+}
+
+.header-title {
+    flex: 1;
+}
+
+.header-title h1 {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.header-title p {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.page-container {
+    width: min(900px, 100%);
+    margin: auto;
+    padding: 16px;
+}
+
+
+/* =========================================
+   EMERGENCY BANNER
+========================================= */
+
+.emergency-banner {
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(255,255,255,0.16),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #d92d20,
+            #a61b16
+        );
+
+    color: #ffffff;
+
+    border-radius: 22px;
+
+    padding: 21px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow:
+        0 15px 30px rgba(217, 45, 32, 0.20);
+
+    margin-bottom: 15px;
+}
+
+.emergency-icon {
+    width: 55px;
+    height: 55px;
+
+    background: rgba(255,255,255,0.16);
+
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 29px;
+
+    flex-shrink: 0;
+}
+
+.emergency-text h2 {
+    font-size: 20px;
+}
+
+.emergency-text p {
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 6px;
+    opacity: 0.92;
+}
+
+
+/* =========================================
+   LOCATION CARD
+========================================= */
+
+.location-card {
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 19px;
+
+    padding: 17px;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+
+    margin-bottom: 18px;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.location-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 13px;
+
+    background: #eef4ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+.card-top h3 {
+    font-size: 15px;
+}
+
+.card-top p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.location-button {
+    width: 100%;
+
+    margin-top: 13px;
+
+    border: 1px solid #cbd9ff;
+
+    background: #f4f7ff;
+
+    color: var(--primary);
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.location-button:hover {
+    background: #eaf0ff;
+}
+
+.location-button:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   COMMON SECTION
+========================================= */
+
+.problem-section,
+.details-card,
+.media-card,
+.summary-card {
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 19px;
+
+    margin-bottom: 17px;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,0.035);
+}
+
+.section-heading {
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: 17px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   PROBLEM GRID
+========================================= */
+
+.problem-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.problem-card {
+    min-height: 105px;
+
+    background: #fafbfe;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 12px 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+    transition: 0.22s;
+}
+
+.problem-card span {
+    font-size: 28px;
+}
+
+.problem-card strong {
+    font-size: 12px;
+}
+
+.problem-card small {
+    color: var(--muted);
+    font-size: 9px;
+    text-align: center;
+}
+
+.problem-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #b9cbff;
+
+    background: #f4f7ff;
+
+    box-shadow:
+        0 8px 18px rgba(21,94,239,0.08);
+}
+
+.problem-card.selected {
+    background: #eef4ff;
+
+    border: 2px solid var(--primary);
+
+    color: var(--primary);
+
+    box-shadow:
+        0 8px 20px rgba(21,94,239,0.12);
+}
+
+.problem-card:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #fafbfe;
+
+    color: var(--text);
+
+    padding: 13px;
+
+    font-size: 13px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    transition: 0.2s;
+}
+
+.input-group select {
+    cursor: pointer;
+}
+
+.input-group textarea {
+    resize: vertical;
+
+    min-height: 100px;
+
+    line-height: 1.5;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--primary);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(21,94,239,0.08);
+}
+
+
+/* =========================================
+   MEDIA UPLOAD
+========================================= */
+
+.media-upload {
+    min-height: 125px;
+
+    border: 2px dashed #cfd7e6;
+
+    border-radius: 17px;
+
+    background: #fafbfe;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.media-upload:hover {
+    border-color: var(--primary);
+
+    background: #f4f7ff;
+}
+
+.media-upload span {
+    font-size: 30px;
+}
+
+.media-upload strong {
+    font-size: 13px;
+}
+
+.media-upload small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.media-preview {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+.media-preview img,
+.media-preview video {
+    width: 100%;
+
+    height: 100px;
+
+    object-fit: cover;
+
+    border-radius: 11px;
+}
+
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.summary-card {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8faff
+        );
+}
+
+.summary-card h2 {
+    font-size: 17px;
+
+    margin-bottom: 13px;
+}
+
+.summary-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid #edf0f5;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row span {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.summary-row strong {
+    font-size: 11px;
+
+    text-align: right;
+
+    max-width: 60%;
+
+    word-break: break-word;
+}
+
+
+/* =========================================
+   SEND REQUEST
+========================================= */
+
+.send-request-button {
+    width: 100%;
+
+    min-height: 55px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #4938d5
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 25px rgba(21,94,239,0.20);
+
+    transition: 0.2s;
+
+    position: relative;
+}
+
+.send-request-button:hover {
+    transform: translateY(-2px);
+}
+
+.send-request-button:active {
+    transform: scale(0.98);
+}
+
+.send-request-button.loading {
+    pointer-events: none;
+
+    opacity: 0.8;
+}
+
+.request-loader {
+    width: 20px;
+    height: 20px;
+
+    border: 3px solid rgba(255,255,255,0.35);
+
+    border-top-color: #ffffff;
+
+    border-radius: 50%;
+
+    display: none;
+
+    animation:
+        requestSpin 0.8s linear infinite;
+}
+
+.send-request-button.loading .request-loader {
+    display: inline-block;
+}
+
+.send-request-button.loading #sendButtonText {
+    display: none;
+}
+
+@keyframes requestSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   SECURITY TEXT
+========================================= */
+
+.security-text {
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.vehicle-modal {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(15, 23, 42, 0.60);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 500;
+}
+
+.vehicle-modal.show {
+    display: flex;
+}
+
+.vehicle-modal-box {
+    width: min(390px, 100%);
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    padding: 27px 21px;
+
+    text-align: center;
+
+    position: relative;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.22);
+
+    animation: modalOpen 0.25s ease;
+}
+
+@keyframes modalOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 9px;
+    right: 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #777;
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+.modal-icon {
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+.vehicle-modal-box h2 {
+    font-size: 19px;
+}
+
+.vehicle-modal-box p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    margin: 9px 0 20px;
+}
+
+.modal-action {
+    width: 100%;
+
+    border: none;
+
+    background: var(--primary);
+
+    color: #ffffff;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+    .problem-grid {
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .page-header {
+        height: 64px;
+
+        padding: 0 12px;
+    }
+
+    .back-button,
+    .help-button {
+        width: 39px;
+        height: 39px;
+    }
+
+    .header-title h1 {
+        font-size: 16px;
+    }
+
+    .page-container {
+        padding: 12px;
+    }
+
+    .emergency-banner {
+        padding: 17px;
+
+        border-radius: 19px;
+    }
+
+    .emergency-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 25px;
+    }
+
+    .emergency-text h2 {
+        font-size: 17px;
+    }
+
+    .location-card,
+    .problem-section,
+    .details-card,
+    .media-card,
+    .summary-card {
+        padding: 15px;
+
+        border-radius: 17px;
+    }
+
+    .problem-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+    .problem-card {
+        min-height: 94px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .emergency-text h2 {
+        font-size: 15px;
+    }
+
+    .emergency-text p {
+        font-size: 10px;
+    }
+
+    .problem-card {
+        min-height: 88px;
+    }
+
+    .problem-card span {
+        font-size: 24px;
+    }
+
+    .problem-card strong {
+        font-size: 11px;
+    }
+
+    .problem-card small {
+        font-size: 8px;
+    }
+
+}
+
+
+/* =========================================
+   LANDSCAPE MOBILE
+========================================= */
+
+@media (max-height: 500px)
+and (orientation: landscape) {
+
+    .page-header {
+        height: 58px;
+    }
+
+    .emergency-banner {
+        padding: 14px;
+    }
+
+    .problem-card {
+        min-height: 80px;
+    }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+button,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(21,94,239,0.20);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+
+/* =========================================
+   END OF VEHICLE KHARAB CSS
+========================================= */

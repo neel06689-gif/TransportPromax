@@ -1,0 +1,2400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Driver Assignment - TransportPro</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.top-header{
+    width:100%;
+    height:62px;
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:23px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    font-size:9px;
+    color:#cbd5e1;
+}
+
+/* MAIN */
+
+.container{
+    width:100%;
+    max-width:900px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.back-dashboard{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:11px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+/* CARD */
+
+.driver-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+/* HEADING */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:16px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:10px;
+    line-height:16px;
+}
+
+/* STATS */
+
+.stats-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:17px;
+}
+
+.stat-box{
+    min-height:78px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px;
+}
+
+.stat-icon{
+    width:36px;
+    height:36px;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+
+    flex-shrink:0;
+}
+
+.stat-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-bottom:4px;
+}
+
+.stat-box strong{
+    display:block;
+
+    font-size:17px;
+}
+
+/* SEARCH */
+
+.search-box{
+    height:43px;
+
+    display:flex;
+    align-items:center;
+
+    gap:9px;
+
+    padding:0 12px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    margin-bottom:9px;
+}
+
+.search-box span{
+    font-size:15px;
+}
+
+.search-box input{
+    width:100%;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
+
+    font-size:10px;
+
+    color:#172033;
+}
+
+/* FILTER */
+
+.filter-row{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:6px;
+
+    margin-bottom:10px;
+}
+
+.filter-btn{
+    height:35px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#667085;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.filter-btn.active{
+    background:#1769e0;
+
+    border-color:#1769e0;
+
+    color:#fff;
+}
+
+.filter-btn:active{
+    transform:scale(.97);
+}
+
+/* ADD DRIVER */
+
+.add-driver-btn{
+    width:100%;
+
+    height:43px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:15px;
+}
+
+.add-driver-btn:active{
+    transform:scale(.98);
+}
+
+/* LIST HEADING */
+
+.list-heading{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    padding-bottom:9px;
+
+    border-bottom:1px solid #edf0f4;
+
+    margin-bottom:9px;
+}
+
+.list-heading strong{
+    font-size:12px;
+}
+
+.list-heading span{
+    color:#667085;
+
+    font-size:8px;
+}
+
+/* DRIVER LIST */
+
+.driver-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+/* DRIVER ITEM */
+
+.driver-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:11px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:10px;
+
+    background:#fff;
+}
+
+.driver-icon{
+    width:45px;
+    height:45px;
+
+    border-radius:9px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    flex-shrink:0;
+}
+
+.driver-info{
+    flex:1;
+
+    min-width:0;
+}
+
+.driver-info strong{
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+.driver-info small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:12px;
+}
+
+.driver-status{
+    padding:5px 7px;
+
+    border-radius:20px;
+
+    font-size:7px;
+
+    white-space:nowrap;
+}
+
+.driver-assigned{
+    background:#eef5ff;
+    color:#1769e0;
+}
+
+.driver-available{
+    background:#ecfdf3;
+    color:#087443;
+}
+
+.driver-inactive{
+    background:#f2f4f7;
+    color:#667085;
+}
+
+/* ACTIONS */
+
+.driver-actions{
+    display:flex;
+
+    gap:4px;
+}
+
+.driver-actions button{
+    width:30px;
+    height:30px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:#f2f4f7;
+
+    cursor:pointer;
+
+    font-size:12px;
+}
+
+.driver-actions button:active{
+    transform:scale(.94);
+}
+
+/* EMPTY */
+
+.empty-state{
+    text-align:center;
+
+    padding:30px 12px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:10px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:14px;
+
+    margin-bottom:11px;
+}
+
+.empty-state button{
+    border:1px solid #1769e0;
+
+    background:#eef5ff;
+
+    color:#1769e0;
+
+    padding:8px 12px;
+
+    border-radius:7px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px;
+
+    z-index:500;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:430px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:17px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.2);
+}
+
+/* MODAL HEADER */
+
+.modal-header{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+}
+
+.modal-header strong{
+    font-size:15px;
+}
+
+.modal-header button{
+    width:32px;
+    height:32px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:#f2f4f7;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+/* FORM */
+
+.form-group{
+    margin-bottom:13px;
+}
+
+.form-group label{
+    display:block;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    color:#344054;
+
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+
+    height:42px;
+
+    padding:0 10px;
+
+    border:1px solid #dbe2ea;
+
+    border-radius:8px;
+
+    outline:0;
+
+    background:#fff;
+
+    color:#172033;
+
+    font-size:9px;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#1769e0;
+}
+
+/* BUTTONS */
+
+.save-btn{
+    width:100%;
+
+    height:43px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#1769e0;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:7px;
+}
+
+.cancel-btn{
+    width:100%;
+
+    height:40px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:650px){
+
+    .stats-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:430px){
+
+    .container{
+        padding:10px;
+    }
+
+    .driver-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+        font-size:26px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .filter-row{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .driver-item{
+        align-items:flex-start;
+    }
+
+    .driver-status{
+        display:none;
+    }
+
+    .driver-actions{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:350px){
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+        ←
+    </button>
+
+    <div class="logo">
+        TP
+    </div>
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Driver Assignment
+        </small>
+
+    </div>
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+        🔔
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="back-dashboard"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+
+    <section class="driver-card">
+
+
+        <!-- HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                👨‍✈️
+            </div>
+
+            <div>
+
+                <h1>
+                    Driver Assignment
+                </h1>
+
+                <p>
+                    Drivers ko vehicles ke saath
+                    assign aur manage karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             STATS
+        ================================== -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    👨‍✈️
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Drivers
+                    </span>
+
+                    <strong id="totalDrivers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    🔗
+                </div>
+
+                <div>
+
+                    <span>
+                        Assigned
+                    </span>
+
+                    <strong id="assignedDrivers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    🟢
+                </div>
+
+                <div>
+
+                    <span>
+                        Available
+                    </span>
+
+                    <strong id="availableDrivers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <div class="stat-icon">
+                    🔴
+                </div>
+
+                <div>
+
+                    <span>
+                        Inactive
+                    </span>
+
+                    <strong id="inactiveDrivers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             SEARCH
+        ================================== -->
+
+        <div class="search-box">
+
+            <span>
+                🔍
+            </span>
+
+            <input
+                type="search"
+                id="driverSearch"
+                placeholder="Search driver, phone or vehicle..."
+                oninput="renderDrivers()">
+
+        </div>
+
+
+
+        <!-- =================================
+             FILTER
+        ================================== -->
+
+        <div class="filter-row">
+
+            <button
+                class="filter-btn active"
+                onclick="filterDrivers('All',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterDrivers('Assigned',this)">
+
+                🔗 Assigned
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterDrivers('Available',this)">
+
+                🟢 Available
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterDrivers('Inactive',this)">
+
+                🔴 Inactive
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================
+             ADD DRIVER
+        ================================== -->
+
+        <button
+            class="add-driver-btn"
+            onclick="openDriverModal()">
+
+            + Add Driver
+
+        </button>
+
+
+
+        <!-- =================================
+             DRIVER LIST HEADER
+        ================================== -->
+
+        <div class="list-heading">
+
+            <strong>
+                My Drivers
+            </strong>
+
+            <span id="driverCount">
+                0 Drivers
+            </span>
+
+        </div>
+
+
+
+        <!-- =================================
+             DRIVER LIST
+        ================================== -->
+
+        <div
+            id="driverList"
+            class="driver-list">
+
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    👨‍✈️
+                </div>
+
+                <strong>
+                    No Drivers Added
+                </strong>
+
+                <small>
+                    Add a driver to assign them
+                    to your fleet vehicle.
+                </small>
+
+                <button
+                    onclick="openDriverModal()">
+
+                    + Add Driver
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================
+     ADD / EDIT DRIVER MODAL
+===================================== -->
+
+<div
+    id="driverModal"
+    class="modal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <strong id="driverModalTitle">
+                Add Driver
+            </strong>
+
+            <button
+                onclick="closeDriverModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+
+        <!-- DRIVER NAME -->
+
+        <div class="form-group">
+
+            <label>
+                Driver Name
+            </label>
+
+            <input
+                type="text"
+                id="driverName"
+                placeholder="Enter driver name">
+
+        </div>
+
+
+
+        <!-- PHONE -->
+
+        <div class="form-group">
+
+            <label>
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="driverPhone"
+                placeholder="Enter phone number"
+                maxlength="10">
+
+        </div>
+
+
+
+        <!-- LICENSE -->
+
+        <div class="form-group">
+
+            <label>
+                License Number
+            </label>
+
+            <input
+                type="text"
+                id="driverLicense"
+                placeholder="Enter driving license number">
+
+        </div>
+
+
+
+        <!-- VEHICLE -->
+
+        <div class="form-group">
+
+            <label>
+                Assign Vehicle
+            </label>
+
+            <select id="driverVehicle">
+
+                <option value="">
+                    -- No Vehicle / Available --
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- STATUS -->
+
+        <div class="form-group">
+
+            <label>
+                Driver Status
+            </label>
+
+            <select id="driverStatus">
+
+                <option value="Active">
+                    Active
+                </option>
+
+                <option value="Inactive">
+                    Inactive
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- SAVE -->
+
+        <button
+            class="save-btn"
+            onclick="saveDriver()">
+
+            💾 Save Driver
+
+        </button>
+
+
+
+        <button
+            class="cancel-btn"
+            onclick="closeDriverModal()">
+
+            Cancel
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+const DRIVER_KEY = "transportpro_drivers";
+
+let currentFilter = "All";
+let editingDriverId = null;
+
+
+/* =====================================
+   STORAGE
+===================================== */
+
+function getDrivers(){
+
+    try{
+
+        const data = JSON.parse(
+            localStorage.getItem(DRIVER_KEY) || "[]"
+        );
+
+        return Array.isArray(data) ? data : [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+function saveDrivers(drivers){
+
+    localStorage.setItem(
+        DRIVER_KEY,
+        JSON.stringify(drivers)
+    );
+
+}
+
+
+/* =====================================
+   FLEET VEHICLES
+===================================== */
+
+function getFleetVehicles(){
+
+    try{
+
+        const data = JSON.parse(
+            localStorage.getItem(
+                "transportpro_fleet_vehicles"
+            ) || "[]"
+        );
+
+        return Array.isArray(data) ? data : [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   VEHICLE DROPDOWN
+===================================== */
+
+function loadVehicleDropdown(){
+
+    const select =
+        document.getElementById(
+            "driverVehicle"
+        );
+
+    if(!select){
+        return;
+    }
+
+
+    const vehicles =
+        getFleetVehicles();
+
+
+    select.innerHTML = `
+
+        <option value="">
+            -- No Vehicle / Available --
+        </option>
+
+    `;
+
+
+    vehicles.forEach(vehicle => {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            vehicle.id;
+
+        option.textContent =
+            vehicle.number +
+            " • " +
+            vehicle.brand +
+            " " +
+            vehicle.model;
+
+
+        select.appendChild(
+            option
+        );
+
+    });
+
+}
+
+
+/* =====================================
+   OPEN MODAL
+===================================== */
+
+function openDriverModal(){
+
+    editingDriverId = null;
+
+    document.getElementById(
+        "driverModalTitle"
+    ).innerText =
+        "Add Driver";
+
+
+    document.querySelector(
+        ".save-btn"
+    ).innerText =
+        "💾 Save Driver";
+
+
+    clearDriverForm();
+
+    loadVehicleDropdown();
+
+
+    document.getElementById(
+        "driverModal"
+    ).classList.add("show");
+
+}
+
+
+/* =====================================
+   CLOSE MODAL
+===================================== */
+
+function closeDriverModal(){
+
+    document.getElementById(
+        "driverModal"
+    ).classList.remove("show");
+
+
+    editingDriverId = null;
+
+    clearDriverForm();
+
+}
+
+
+/* =====================================
+   CLEAR FORM
+===================================== */
+
+function clearDriverForm(){
+
+    document.getElementById(
+        "driverName"
+    ).value = "";
+
+
+    document.getElementById(
+        "driverPhone"
+    ).value = "";
+
+
+    document.getElementById(
+        "driverLicense"
+    ).value = "";
+
+
+    document.getElementById(
+        "driverVehicle"
+    ).value = "";
+
+
+    document.getElementById(
+        "driverStatus"
+    ).value = "Active";
+
+}
+
+
+/* =====================================
+   SAVE DRIVER
+===================================== */
+
+function saveDriver(){
+
+    const name =
+        document.getElementById(
+            "driverName"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "driverPhone"
+        ).value.trim();
+
+
+    const license =
+        document.getElementById(
+            "driverLicense"
+        ).value.trim()
+        .toUpperCase();
+
+
+    const vehicleId =
+        document.getElementById(
+            "driverVehicle"
+        ).value;
+
+
+    const status =
+        document.getElementById(
+            "driverStatus"
+        ).value;
+
+
+    if(!name){
+
+        alert(
+            "Please enter driver name."
+        );
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+        alert(
+            "Please enter a valid 10 digit phone number."
+        );
+
+        return;
+
+    }
+
+
+    if(!license){
+
+        alert(
+            "Please enter license number."
+        );
+
+        return;
+
+    }
+
+
+    let drivers =
+        getDrivers();
+
+
+    /* DUPLICATE PHONE */
+
+    const duplicatePhone =
+        drivers.some(driver =>
+
+            driver.phone === phone &&
+            driver.id !== editingDriverId
+
+        );
+
+
+    if(duplicatePhone){
+
+        alert(
+            "This phone number is already registered."
+        );
+
+        return;
+
+    }
+
+
+    /* =================================
+       EDIT
+    ================================= */
+
+    if(editingDriverId){
+
+        drivers =
+            drivers.map(driver => {
+
+                if(
+                    driver.id ===
+                    editingDriverId
+                ){
+
+                    return {
+
+                        ...driver,
+
+                        name:name,
+
+                        phone:phone,
+
+                        license:license,
+
+                        vehicleId:vehicleId,
+
+                        status:status
+
+                    };
+
+                }
+
+                return driver;
+
+            });
+
+
+        saveDrivers(
+            drivers
+        );
+
+
+        closeDriverModal();
+
+        renderDrivers();
+
+
+        alert(
+            "Driver updated successfully!"
+        );
+
+        return;
+
+    }
+
+
+    /* =================================
+       NEW DRIVER
+    ================================= */
+
+    const driver = {
+
+        id:
+            "DR-" +
+            Date.now()
+                .toString()
+                .slice(-8),
+
+        name:name,
+
+        phone:phone,
+
+        license:license,
+
+        vehicleId:vehicleId,
+
+        status:status,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    drivers.unshift(
+        driver
+    );
+
+
+    saveDrivers(
+        drivers
+    );
+
+
+    closeDriverModal();
+
+    renderDrivers();
+
+
+    alert(
+        "Driver added successfully!"
+    );
+
+}
+
+
+/* =====================================
+   FILTER
+===================================== */
+
+function filterDrivers(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+
+    renderDrivers();
+
+}
+
+
+/* =====================================
+   GET VEHICLE NAME
+===================================== */
+
+function getVehicleName(
+    vehicleId
+){
+
+    if(!vehicleId){
+
+        return "No Vehicle";
+
+    }
+
+
+    const vehicles =
+        getFleetVehicles();
+
+
+    const vehicle =
+        vehicles.find(
+            item =>
+                item.id === vehicleId
+        );
+
+
+    if(!vehicle){
+
+        return "Vehicle Not Found";
+
+    }
+
+
+    return (
+        vehicle.number +
+        " • " +
+        vehicle.brand +
+        " " +
+        vehicle.model
+    );
+
+}
+
+
+/* =====================================
+   RENDER DRIVERS
+===================================== */
+
+function renderDrivers(){
+
+    const list =
+        document.getElementById(
+            "driverList"
+        );
+
+
+    if(!list){
+        return;
+    }
+
+
+    const allDrivers =
+        getDrivers();
+
+
+    updateDriverStats(
+        allDrivers
+    );
+
+
+    let drivers =
+        [...allDrivers];
+
+
+    /* FILTER */
+
+    if(
+        currentFilter ===
+        "Assigned"
+    ){
+
+        drivers =
+            drivers.filter(
+                driver =>
+                    driver.vehicleId
+            );
+
+    }
+
+
+    if(
+        currentFilter ===
+        "Available"
+    ){
+
+        drivers =
+            drivers.filter(
+                driver =>
+                    !driver.vehicleId &&
+                    driver.status ===
+                    "Active"
+            );
+
+    }
+
+
+    if(
+        currentFilter ===
+        "Inactive"
+    ){
+
+        drivers =
+            drivers.filter(
+                driver =>
+                    driver.status ===
+                    "Inactive"
+            );
+
+    }
+
+
+    /* SEARCH */
+
+    const searchInput =
+        document.getElementById(
+            "driverSearch"
+        );
+
+
+    const search =
+        searchInput
+            ? searchInput.value
+                .trim()
+                .toLowerCase()
+            : "";
+
+
+    if(search){
+
+        drivers =
+            drivers.filter(driver => {
+
+                const vehicle =
+                    getVehicleName(
+                        driver.vehicleId
+                    )
+                    .toLowerCase();
+
+
+                return (
+
+                    driver.name
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    driver.phone
+                        .includes(search)
+
+                    ||
+
+                    driver.license
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    vehicle
+                        .includes(search)
+
+                );
+
+            });
+
+    }
+
+
+    const count =
+        document.getElementById(
+            "driverCount"
+        );
+
+
+    if(count){
+
+        count.innerText =
+            drivers.length +
+            (
+                drivers.length === 1
+                ? " Driver"
+                : " Drivers"
+            );
+
+    }
+
+
+    if(drivers.length === 0){
+
+        list.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    👨‍✈️
+                </div>
+
+                <strong>
+                    No Drivers Found
+                </strong>
+
+                <small>
+                    Add a driver or change
+                    your search/filter.
+                </small>
+
+                <button
+                    onclick="openDriverModal()">
+
+                    + Add Driver
+
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        drivers
+        .map(
+            driver =>
+                createDriverHTML(
+                    driver
+                )
+        )
+        .join("");
+
+}
+
+
+/* =====================================
+   DRIVER HTML
+===================================== */
+
+function createDriverHTML(
+    driver
+){
+
+    let statusClass =
+        "driver-available";
+
+    let statusText =
+        "Available";
+
+
+    if(
+        driver.status ===
+        "Inactive"
+    ){
+
+        statusClass =
+            "driver-inactive";
+
+        statusText =
+            "Inactive";
+
+    }
+    else if(
+        driver.vehicleId
+    ){
+
+        statusClass =
+            "driver-assigned";
+
+        statusText =
+            "Assigned";
+
+    }
+
+
+    const vehicle =
+        getVehicleName(
+            driver.vehicleId
+        );
+
+
+    return `
+
+        <div class="driver-item">
+
+            <div class="driver-icon">
+                👨‍✈️
+            </div>
+
+
+            <div class="driver-info">
+
+                <strong>
+                    ${escapeHTML(
+                        driver.name
+                    )}
+                </strong>
+
+                <small>
+                    📱
+                    ${escapeHTML(
+                        driver.phone
+                    )}
+                </small>
+
+                <small>
+                    🪪
+                    ${escapeHTML(
+                        driver.license
+                    )}
+                </small>
+
+                <small>
+                    🚛
+                    ${escapeHTML(
+                        vehicle
+                    )}
+                </small>
+
+            </div>
+
+
+            <span
+                class="driver-status ${statusClass}">
+
+                ${statusText}
+
+            </span>
+
+
+            <div class="driver-actions">
+
+                <button
+                    onclick="
+                        editDriver(
+                            '${driver.id}'
+                        )
+                    "
+                    title="Edit">
+
+                    ✏️
+
+                </button>
+
+
+                <button
+                    onclick="
+                        deleteDriver(
+                            '${driver.id}'
+                        )
+                    "
+                    title="Delete">
+
+                    🗑️
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   EDIT DRIVER
+===================================== */
+
+function editDriver(id){
+
+    const drivers =
+        getDrivers();
+
+
+    const driver =
+        drivers.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!driver){
+
+        alert(
+            "Driver not found."
+        );
+
+        return;
+
+    }
+
+
+    editingDriverId =
+        driver.id;
+
+
+    loadVehicleDropdown();
+
+
+    document.getElementById(
+        "driverName"
+    ).value =
+        driver.name;
+
+
+    document.getElementById(
+        "driverPhone"
+    ).value =
+        driver.phone;
+
+
+    document.getElementById(
+        "driverLicense"
+    ).value =
+        driver.license;
+
+
+    document.getElementById(
+        "driverVehicle"
+    ).value =
+        driver.vehicleId || "";
+
+
+    document.getElementById(
+        "driverStatus"
+    ).value =
+        driver.status;
+
+
+    document.getElementById(
+        "driverModalTitle"
+    ).innerText =
+        "Edit Driver";
+
+
+    document.querySelector(
+        ".save-btn"
+    ).innerText =
+        "💾 Update Driver";
+
+
+    document.getElementById(
+        "driverModal"
+    ).classList.add("show");
+
+}
+
+
+/* =====================================
+   DELETE DRIVER
+===================================== */
+
+function deleteDriver(id){
+
+    const drivers =
+        getDrivers();
+
+
+    const driver =
+        drivers.find(
+            item =>
+                item.id === id
+        );
+
+
+    if(!driver){
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "Delete driver " +
+            driver.name +
+            "?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    const updated =
+        drivers.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveDrivers(
+        updated
+    );
+
+
+    renderDrivers();
+
+
+    alert(
+        "Driver deleted successfully."
+    );
+
+}
+
+
+/* =====================================
+   STATISTICS
+===================================== */
+
+function updateDriverStats(
+    drivers
+){
+
+    const total =
+        drivers.length;
+
+
+    const assigned =
+        drivers.filter(
+            driver =>
+                driver.vehicleId &&
+                driver.status ===
+                "Active"
+        ).length;
+
+
+    const available =
+        drivers.filter(
+            driver =>
+                !driver.vehicleId &&
+                driver.status ===
+                "Active"
+        ).length;
+
+
+    const inactive =
+        drivers.filter(
+            driver =>
+                driver.status ===
+                "Inactive"
+        ).length;
+
+
+    document.getElementById(
+        "totalDrivers"
+    ).innerText =
+        total;
+
+
+    document.getElementById(
+        "assignedDrivers"
+    ).innerText =
+        assigned;
+
+
+    document.getElementById(
+        "availableDrivers"
+    ).innerText =
+        available;
+
+
+    document.getElementById(
+        "inactiveDrivers"
+    ).innerText =
+        inactive;
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "fleet-management.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   OUTSIDE CLICK
+===================================== */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const modal =
+            document.getElementById(
+                "driverModal"
+            );
+
+
+        if(
+            event.target === modal
+        ){
+
+            closeDriverModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   PAGE LOAD
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        renderDrivers();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,4499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>TransportPro | Home</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+  --bg:#07111f;
+  --card:#0d1a2b;
+  --card2:#101f32;
+  --text:#f5f8ff;
+  --muted:#91a1b7;
+  --line:rgba(255,255,255,.09);
+  --blue:#35a7ff;
+  --cyan:#42e8ff;
+  --green:#36d98b;
+  --orange:#ffad42;
+  --red:#ff5f6d;
+  --purple:#9b7cff;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(53,167,255,.12),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(155,124,255,.10),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding-bottom:88px;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.app{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  padding:18px 17px 13px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(7,17,31,.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:43px;
+  height:43px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#35a7ff,#7d5cff);
+  box-shadow:0 8px 28px rgba(53,167,255,.25);
+  font-size:22px;
+}
+
+.brand h1{
+  font-size:19px;
+  letter-spacing:.2px;
+}
+
+.brand small{
+  color:var(--muted);
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+}
+
+.header-actions{
+  display:flex;
+  gap:8px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  background:rgba(255,255,255,.06);
+  color:white;
+  border:1px solid var(--line);
+  font-size:18px;
+}
+
+.location{
+  margin-top:13px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#c9d5e6;
+  font-size:12px;
+}
+
+/* ================= SEARCH ================= */
+
+.search{
+  margin-top:12px;
+  height:47px;
+  border-radius:15px;
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  gap:10px;
+}
+
+.search span{
+  font-size:18px;
+}
+
+.search input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:white;
+}
+
+.search input::placeholder{
+  color:#718197;
+}
+
+/* ================= SLIDER ================= */
+
+.slider-wrap{
+  padding:15px 15px 3px;
+}
+
+.slider{
+  position:relative;
+  height:205px;
+  overflow:hidden;
+  border-radius:23px;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 45px rgba(0,0,0,.25);
+}
+
+.slides{
+  display:flex;
+  height:100%;
+  transition:transform .55s cubic-bezier(.22,.61,.36,1);
+}
+
+.slide{
+  min-width:100%;
+  height:100%;
+  position:relative;
+  overflow:hidden;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+.slide:nth-child(1){
+  background:
+    linear-gradient(90deg,rgba(4,13,25,.96),rgba(4,13,25,.35)),
+    url("image/trucks-banner.jpg") center/cover;
+}
+
+.slide:nth-child(2){
+  background:linear-gradient(135deg,#112d4d,#173c60 55%,#1b6b82);
+}
+
+.slide:nth-child(3){
+  background:linear-gradient(135deg,#20153f,#35256c,#155e73);
+}
+
+.slide:nth-child(4){
+  background:linear-gradient(135deg,#142e27,#17624b,#103e54);
+}
+
+.slide:nth-child(5){
+  background:linear-gradient(135deg,#3b1b20,#722d32,#263453);
+}
+
+.slide::after{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  right:-50px;
+  top:-55px;
+  background:rgba(255,255,255,.09);
+}
+
+.badge{
+  position:absolute;
+  top:18px;
+  left:20px;
+  z-index:2;
+  padding:6px 10px;
+  border-radius:30px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(8px);
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:.7px;
+}
+
+.slide-content{
+  position:relative;
+  z-index:3;
+}
+
+.slide h2{
+  font-size:24px;
+  line-height:1.05;
+  margin-bottom:7px;
+}
+
+.slide p{
+  color:#d6e0ec;
+  font-size:12px;
+  max-width:280px;
+  line-height:1.45;
+}
+
+.slide-btn{
+  margin-top:13px;
+  width:max-content;
+  padding:9px 15px;
+  border-radius:10px;
+  color:white;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.17);
+  font-size:11px;
+  font-weight:bold;
+}
+
+.dots{
+  position:absolute;
+  bottom:12px;
+  right:17px;
+  z-index:5;
+  display:flex;
+  gap:5px;
+}
+
+.dot{
+  width:6px;
+  height:6px;
+  border-radius:10px;
+  background:rgba(255,255,255,.4);
+}
+
+.dot.active{
+  width:19px;
+  background:white;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+  padding:18px 15px 0;
+}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.section-title{
+  font-size:17px;
+  font-weight:800;
+}
+
+.section-sub{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:4px;
+}
+
+.see{
+  color:#58b8ff;
+  font-size:11px;
+}
+
+/* ================= QUICK ACTIONS ================= */
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+}
+
+.quick{
+  min-height:93px;
+  padding:11px 6px;
+  border-radius:17px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  border:1px solid var(--line);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:.2s;
+}
+
+.quick:active{
+  transform:scale(.95);
+}
+
+.quick-icon{
+  width:39px;
+  height:39px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(53,167,255,.13);
+  font-size:20px;
+}
+
+.quick span:last-child{
+  font-size:10px;
+  font-weight:bold;
+}
+
+/* ================= ACTIVE BOOKING ================= */
+
+.booking-card{
+  padding:16px;
+  border-radius:21px;
+  background:
+    linear-gradient(135deg,rgba(53,167,255,.12),rgba(155,124,255,.08)),
+    var(--card);
+  border:1px solid rgba(91,171,255,.18);
+}
+
+.booking-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.status{
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:9px;
+  font-weight:bold;
+  background:rgba(54,217,139,.12);
+  color:#55e99e;
+}
+
+.booking-route{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:17px 0;
+}
+
+.place{
+  flex:1;
+}
+
+.place small{
+  color:var(--muted);
+  font-size:9px;
+}
+
+.place strong{
+  display:block;
+  font-size:14px;
+  margin-top:4px;
+}
+
+.route-line{
+  width:55px;
+  height:1px;
+  border-top:1px dashed #4e6680;
+  position:relative;
+}
+
+.route-line::after{
+  content:"🚚";
+  position:absolute;
+  left:18px;
+  top:-12px;
+  font-size:16px;
+}
+
+.booking-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.info-box{
+  background:rgba(255,255,255,.045);
+  border-radius:12px;
+  padding:9px;
+}
+
+.info-box small{
+  color:var(--muted);
+  font-size:8px;
+}
+
+.info-box b{
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+}
+
+.primary-btn{
+  width:100%;
+  margin-top:12px;
+  height:43px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#2196f3,#705cff);
+  color:white;
+  font-weight:bold;
+  font-size:12px;
+  box-shadow:0 9px 25px rgba(60,120,255,.2);
+}
+
+/* ================= SERVICE CARDS ================= */
+
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.service{
+  padding:15px;
+  border-radius:19px;
+  background:var(--card);
+  border:1px solid var(--line);
+  text-align:left;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.service::after{
+  content:"";
+  position:absolute;
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  right:-30px;
+  bottom:-30px;
+  background:rgba(53,167,255,.08);
+}
+
+.service-icon{
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.service strong{
+  font-size:13px;
+  display:block;
+}
+
+.service p{
+  color:var(--muted);
+  font-size:9px;
+  margin-top:5px;
+  line-height:1.4;
+}
+
+.pro-tag{
+  position:absolute;
+  top:11px;
+  right:10px;
+  padding:4px 7px;
+  border-radius:7px;
+  font-size:8px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#ffb347,#ff7b3d);
+  color:#211004;
+}
+
+/* ================= SECOND BANNER ================= */
+
+.mini-slider{
+  position:relative;
+  height:120px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+
+.mini-slides{
+  height:100%;
+  display:flex;
+  transition:transform .5s ease;
+}
+
+.mini-slide{
+  min-width:100%;
+  padding:20px;
+  background:linear-gradient(135deg,#122c4a,#174b69);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.mini-slide:nth-child(2){
+  background:linear-gradient(135deg,#281947,#4a2770);
+}
+
+.mini-slide:nth-child(3){
+  background:linear-gradient(135deg,#17382e,#126050);
+}
+
+.mini-slide h3{
+  font-size:17px;
+}
+
+.mini-slide p{
+  margin-top:5px;
+  color:#c3d0df;
+  font-size:10px;
+}
+
+/* ================= COMMUNITY ================= */
+
+.community{
+  display:flex;
+  overflow-x:auto;
+  gap:10px;
+  scrollbar-width:none;
+}
+
+.community::-webkit-scrollbar{
+  display:none;
+}
+
+.role{
+  min-width:112px;
+  padding:15px 12px;
+  border-radius:18px;
+  background:var(--card);
+  border:1px solid var(--line);
+  color:white;
+  text-align:left;
+}
+
+.role-icon{
+  font-size:26px;
+}
+
+.role strong{
+  display:block;
+  margin-top:9px;
+  font-size:11px;
+}
+
+.role small{
+  color:var(--muted);
+  font-size:8px;
+}
+
+/* ================= PRO ================= */
+
+.pro-card{
+  padding:20px;
+  border-radius:23px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,191,67,.25),transparent 30%),
+    linear-gradient(135deg,#1b1735,#151f3c);
+  border:1px solid rgba(255,183,69,.2);
+}
+
+.pro-card h2{
+  font-size:20px;
+}
+
+.pro-card p{
+  color:#b5c0d2;
+  font-size:10px;
+  margin:7px 0 14px;
+  line-height:1.5;
+}
+
+.pro-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.pro-feature{
+  font-size:9px;
+  padding:8px;
+  border-radius:9px;
+  background:rgba(255,255,255,.06);
+}
+
+.pro-btn{
+  margin-top:14px;
+  padding:11px 18px;
+  border-radius:11px;
+  background:linear-gradient(135deg,#ffca5c,#ff8c3a);
+  color:#251507;
+  font-weight:800;
+  font-size:11px;
+}
+
+/* ================= ACTIVITY ================= */
+
+.activity{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.activity-item{
+  padding:13px 15px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid var(--line);
+}
+
+.activity-item:last-child{
+  border-bottom:0;
+}
+
+.activity-icon{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.activity-text{
+  flex:1;
+}
+
+.activity-text strong{
+  font-size:11px;
+}
+
+.activity-text small{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+  margin-top:3px;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+  position:fixed;
+  z-index:100;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:520px;
+  height:73px;
+  background:rgba(7,17,31,.96);
+  backdrop-filter:blur(18px);
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  padding:7px 7px 5px;
+}
+
+.nav-item{
+  background:none;
+  color:#718197;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  font-size:9px;
+}
+
+.nav-item span:first-child{
+  font-size:20px;
+}
+
+.nav-item.active{
+  color:#53b7ff;
+}
+
+.nav-center{
+  position:relative;
+}
+
+.nav-center::before{
+  content:"";
+  position:absolute;
+  width:47px;
+  height:47px;
+  top:-1px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#2196f3,#705cff);
+  box-shadow:0 8px 25px rgba(50,130,255,.3);
+  z-index:-1;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:flex-end;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.sheet{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+  background:#0c1929;
+  border:1px solid var(--line);
+  border-radius:25px 25px 0 0;
+  padding:20px;
+  max-height:82vh;
+  overflow:auto;
+  animation:sheetUp .25s ease;
+}
+
+@keyframes sheetUp{
+  from{transform:translateY(100%)}
+  to{transform:translateY(0)}
+}
+
+.handle{
+  width:38px;
+  height:4px;
+  background:#4c5d72;
+  border-radius:5px;
+  margin:0 auto 18px;
+}
+
+.sheet h2{
+  font-size:20px;
+}
+
+.sheet p{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.5;
+  margin-top:7px;
+}
+
+.modal-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:17px;
+}
+
+.modal-option{
+  padding:14px;
+  border-radius:15px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line);
+  color:white;
+  text-align:left;
+}
+
+.modal-option b{
+  font-size:11px;
+}
+
+.modal-option small{
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+  font-size:8px;
+}
+
+.close-btn{
+  width:100%;
+  height:42px;
+  margin-top:14px;
+  border-radius:12px;
+  background:#17263a;
+  color:white;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:88px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  z-index:300;
+  background:#15263b;
+  border:1px solid var(--line);
+  color:white;
+  padding:11px 16px;
+  border-radius:12px;
+  font-size:11px;
+  transition:.3s;
+  pointer-events:none;
+  white-space:nowrap;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:360px){
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .slider{
+    height:190px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-top">
+
+    <div class="brand">
+      <div class="logo">🚛</div>
+      <div>
+        <h1>TransportPro</h1>
+        <small>Smart Transport Network</small>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="icon-btn" onclick="openNotifications()">🔔</button>
+      <button class="icon-btn" onclick="openProfile()">👤</button>
+    </div>
+
+  </div>
+
+  <div class="location">
+    📍 <span id="locationText">Detecting your location...</span>
+  </div>
+
+  <div class="search">
+    <span>🔎</span>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search trucks, loads, services..."
+      oninput="searchApp(this.value)"
+    >
+  </div>
+
+</header>
+
+
+<!-- ================= MAIN SLIDING BANNER ================= -->
+
+<section class="slider-wrap">
+
+  <div class="slider" id="mainSlider">
+
+    <div class="slides" id="slides">
+
+      <div class="slide">
+        <span class="badge">TRANSPORTPRO</span>
+        <div class="slide-content">
+          <h2>Find Your<br>Perfect Truck</h2>
+          <p>Search verified vehicles according to your route and load.</p>
+          <button class="slide-btn" onclick="goTo('find-truck.html')">
+            Find Truck →
+          </button>
+        </div>
+      </div>
+
+      <div class="slide">
+        <span class="badge">FOR DEALERS</span>
+        <div class="slide-content">
+          <h2>Post Your<br>Load Faster</h2>
+          <p>Publish your load and connect with suitable transport partners.</p>
+          <button class="slide-btn" onclick="goTo('create-load.html')">
+            Post Load →
+          </button>
+        </div>
+      </div>
+
+      <div class="slide">
+        <span class="badge">TRANSPORTPRO PRO</span>
+        <div class="slide-content">
+          <h2>Unlock<br>PRO Power</h2>
+          <p>Advanced matching, analytics, priority services and more.</p>
+          <button class="slide-btn" onclick="openPro()">
+            Explore PRO →
+          </button>
+        </div>
+      </div>
+
+      <div class="slide">
+        <span class="badge">24 × 7 ASSISTANCE</span>
+        <div class="slide-content">
+          <h2>Vehicle<br>Breakdown?</h2>
+          <p>Request roadside mechanic assistance from your phone.</p>
+          <button class="slide-btn" onclick="goTo('Vehicle-Kharab.html')">
+            Get Help →
+          </button>
+        </div>
+      </div>
+
+      <div class="slide">
+        <span class="badge">LIVE TRANSPORT</span>
+        <div class="slide-content">
+          <h2>Track Your<br>Shipment</h2>
+          <p>Keep your booking progress and delivery status in one place.</p>
+          <button class="slide-btn" onclick="openFeature('Live Tracking')">
+            Track Now →
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dots" id="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= QUICK ACTIONS ================= -->
+
+<section class="section">
+
+  <div class="section-head">
+    <div>
+      <div class="section-title">⚡ Quick Actions</div>
+      <div class="section-sub">Most used transport services</div>
+    </div>
+  </div>
+
+  <div class="quick-grid">
+
+    <button class="quick" onclick="goTo('find-truck.html')">
+      <div class="quick-icon">🚚</div>
+      <span>Find Truck</span>
+    </button>
+
+    <button class="quick" onclick="openFeature('Find Load')">
+      <div class="quick-icon">📦</div>
+      <span>Find Load</span>
+    </button>
+
+    <button class="quick" onclick="goTo('create-load.html')">
+      <div class="quick-icon">📝</div>
+      <span>Post Load</span>
+    </button>
+
+    <button class="quick" onclick="goTo('booking.html')">
+      <div class="quick-icon">📋</div>
+      <span>Bookings</span>
+    </button>
+
+    <button class="quick" onclick="openFeature('Live Tracking')">
+      <div class="quick-icon">📍</div>
+      <span>Tracking</span>
+    </button>
+
+    <button class="quick" onclick="goTo('Customer-Messages.html')">
+      <div class="quick-icon">💬</div>
+      <span>Messages</span>
+    </button>
+
+    <button class="quick" onclick="goTo('Customer-Payments.html')">
+      <div class="quick-icon">💳</div>
+      <span>Payments</span>
+    </button>
+
+    <button class="quick" onclick="goTo('Vehicle-Kharab.html')">
+      <div class="quick-icon">🔧</div>
+      <span>Breakdown</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ACTIVE BOOKING ================= -->
+
+<section class="section">
+
+  <div class="section-head">
+    <div>
+      <div class="section-title">🚛 Active Booking</div>
+      <div class="section-sub">Your current transport</div>
+    </div>
+    <button class="see" onclick="goTo('booking.html')">View All</button>
+  </div>
+
+  <div class="booking-card">
+
+    <div class="booking-top">
+      <div>
+        <small style="color:#91a1b7;font-size:9px;">BOOKING ID</small>
+        <div style="font-size:12px;font-weight:bold;margin-top:3px;">TP-20481</div>
+      </div>
+
+      <span class="status">● IN TRANSIT</span>
+    </div>
+
+    <div class="booking-route">
+
+      <div class="place">
+        <small>PICKUP</small>
+        <strong>Delhi</strong>
+      </div>
+
+      <div class="route-line"></div>
+
+      <div class="place">
+        <small>DELIVERY</small>
+        <strong>Mumbai</strong>
+      </div>
+
+    </div>
+
+    <div class="booking-info">
+
+      <div class="info-box">
+        <small>ETA</small>
+        <b>18h 40m</b>
+      </div>
+
+      <div class="info-box">
+        <small>DISTANCE</small>
+        <b>742 km</b>
+      </div>
+
+      <div class="info-box">
+        <small>VEHICLE</small>
+        <b>Truck</b>
+      </div>
+
+    </div>
+
+    <button class="primary-btn" onclick="openFeature('Live Tracking')">
+      📍 LIVE TRACKING
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SERVICE & REPAIR ================= -->
+<!-- ================= SERVICE & REPAIR ================= -->
+
+<section class="section">
+
+  <div class="section-head">
+    <div>
+      <div class="section-title">🔧 Service & Repair</div>
+      <div class="section-sub">Roadside & vehicle services</div>
+    </div>
+
+    <button class="see" onclick="openFeature('Service & Repair')">
+      View All
+    </button>
+  </div>
+
+  <div class="service-grid">
+
+    <button class="service" onclick="goTo('Vehicle-Kharab.html')">
+      <div class="service-icon">🚨</div>
+      <strong>Vehicle Breakdown</strong>
+      <p>Vehicle kharab hone par roadside assistance.</p>
+    </button>
+
+    <button class="service" onclick="openFeature('Find Mechanic')">
+      <div class="service-icon">👨‍🔧</div>
+      <strong>Find Mechanic</strong>
+      <p>Nearby mechanic aur workshop search karo.</p>
+    </button>
+
+    <button class="service" onclick="openFeature('Service Booking')">
+      <div class="service-icon">🛠️</div>
+      <strong>Service Booking</strong>
+      <p>Vehicle service appointment book karo.</p>
+      <span class="pro-tag">PRO</span>
+    </button>
+
+    <button class="service" onclick="openFeature('Repair History')">
+      <div class="service-icon">📋</div>
+      <strong>Repair History</strong>
+      <p>Vehicle ki complete repair history.</p>
+      <span class="pro-tag">PRO</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PROMOTIONAL SLIDER ================= -->
+
+<section class="section">
+
+  <div class="section-head">
+    <div>
+      <div class="section-title">🔥 TransportPro Updates</div>
+      <div class="section-sub">Latest services & offers</div>
+    </div>
+  </div>
+
+  <div class="mini-slider" id="miniSlider">
+
+    <div class="mini-slides" id="miniSlides">
+
+      <div class="mini-slide">
+        <h3>🚚 One Platform. Every Transport Need.</h3>
+        <p>
+          Drivers, owners, dealers, transporters, mechanics
+          aur customers — sab ek platform par.
+        </p>
+      </div>
+
+      <div class="mini-slide">
+        <h3>💎 Upgrade to TransportPro PRO</h3>
+        <p>
+          Advanced matching, analytics, fleet tools
+          aur priority services unlock karein.
+        </p>
+      </div>
+
+      <div class="mini-slide">
+        <h3>🔧 Vehicle Breakdown?</h3>
+        <p>
+          Nearby mechanic assistance ke liye
+          TransportPro use karein.
+        </p>
+      </div>
+
+      <div class="mini-slide">
+        <h3>📍 Smart Live Tracking</h3>
+        <p>
+          Apne shipment ki location aur ETA
+          ek hi jagah dekhein.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= COMMUNITY ================= -->
+
+<section class="section">
+
+  <div class="section-head">
+
+    <div>
+      <div class="section-title">👥 Transport Community</div>
+      <div class="section-sub">Choose your transport role</div>
+    </div>
+
+  </div>
+
+  <div class="community">
+
+    <button class="role" onclick="openRole('Driver')">
+      <div class="role-icon">👨‍✈️</div>
+      <strong>Driver</strong>
+      <small>Jobs & Trips</small>
+    </button>
+
+    <button class="role" onclick="openRole('Vehicle Owner')">
+      <div class="role-icon">🚛</div>
+      <strong>Vehicle Owner</strong>
+      <small>Manage Vehicles</small>
+    </button>
+
+    <button class="role" onclick="openRole('Goods Dealer')">
+      <div class="role-icon">📦</div>
+      <strong>Goods Dealer</strong>
+      <small>Manage Loads</small>
+    </button>
+
+    <button class="role" onclick="openRole('Transporter')">
+      <div class="role-icon">🏢</div>
+      <strong>Transporter</strong>
+      <small>Business Tools</small>
+    </button>
+
+    <button class="role" onclick="openRole('Mechanic')">
+      <div class="role-icon">🔧</div>
+      <strong>Mechanic</strong>
+      <small>Service Jobs</small>
+    </button>
+
+    <button class="role" onclick="openRole('Customer')">
+      <div class="role-icon">👤</div>
+      <strong>Customer</strong>
+      <small>Book Transport</small>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PRO PREMIUM ================= -->
+
+<section class="section">
+
+  <div class="pro-card">
+
+    <div style="
+      font-size:10px;
+      color:#ffca5c;
+      font-weight:bold;
+      letter-spacing:1px;
+    ">
+      ✦ TRANSPORTPRO PRO
+    </div>
+
+    <h2>
+      Work Smarter.<br>
+      Transport Faster.
+    </h2>
+
+    <p>
+      Professional transport users ke liye advanced
+      tools aur priority services.
+    </p>
+
+    <div class="pro-list">
+
+      <div class="pro-feature">
+        ⚡ Priority Matching
+      </div>
+
+      <div class="pro-feature">
+        📍 Advanced Tracking
+      </div>
+
+      <div class="pro-feature">
+        📊 Business Analytics
+      </div>
+
+      <div class="pro-feature">
+        🚛 Fleet Management
+      </div>
+
+      <div class="pro-feature">
+        🧠 Smart Route
+      </div>
+
+      <div class="pro-feature">
+        🚨 Priority Support
+      </div>
+
+      <div class="pro-feature">
+        💰 Smart Fare
+      </div>
+
+      <div class="pro-feature">
+        📈 Transport Reports
+      </div>
+
+    </div>
+
+    <button class="pro-btn" onclick="openPro()">
+      Explore TransportPro PRO →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MORE SERVICES ================= -->
+
+<section class="section">
+
+  <div class="section-head">
+
+    <div>
+      <div class="section-title">📲 More Services</div>
+      <div class="section-sub">
+        Everything in one transport ecosystem
+      </div>
+    </div>
+
+  </div>
+
+  <div class="service-grid">
+
+    <button
+      class="service"
+      onclick="openFeature('Documents')"
+    >
+      <div class="service-icon">📄</div>
+      <strong>Documents</strong>
+      <p>
+        RC, DL, Insurance, PUC aur permits manage karein.
+      </p>
+    </button>
+
+
+    <button
+      class="service"
+      onclick="openFeature('Notifications')"
+    >
+      <div class="service-icon">🔔</div>
+      <strong>Notifications</strong>
+      <p>
+        Booking, payment aur transport updates.
+      </p>
+    </button>
+
+
+    <button
+      class="service"
+      onclick="openFeature('Ratings & Reviews')"
+    >
+      <div class="service-icon">⭐</div>
+      <strong>Ratings & Reviews</strong>
+      <p>
+        Drivers, mechanics aur partners ko rate karein.
+      </p>
+    </button>
+
+
+    <button
+      class="service"
+      onclick="openFeature('Help & Support')"
+    >
+      <div class="service-icon">🆘</div>
+      <strong>Help & Support</strong>
+      <p>
+        Complaint, dispute aur customer support.
+      </p>
+    </button>
+
+
+    <button
+      class="service"
+      onclick="openFeature('Transactions')"
+    >
+      <div class="service-icon">💰</div>
+      <strong>Transactions</strong>
+      <p>
+        Payment aur transaction history.
+      </p>
+    </button>
+
+
+    <button
+      class="service"
+      onclick="openFeature('Fleet Management')"
+    >
+      <div class="service-icon">🚛</div>
+      <strong>Fleet Management</strong>
+      <p>
+        Multiple vehicles aur drivers manage karein.
+      </p>
+      <span class="pro-tag">PRO</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= RECENT ACTIVITY ================= -->
+
+<section class="section">
+
+  <div class="section-head">
+
+    <div>
+      <div class="section-title">🕘 Recent Activity</div>
+      <div class="section-sub">
+        Your latest transport actions
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="activity">
+
+    <button
+      class="activity-item"
+      style="
+        width:100%;
+        background:none;
+        color:white;
+        text-align:left;
+      "
+      onclick="goTo('booking.html')"
+    >
+
+      <div class="activity-icon">
+        🚚
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+          Booking TP-20481
+        </strong>
+
+        <small>
+          Delhi → Mumbai • In Transit
+        </small>
+
+      </div>
+
+      <span>›</span>
+
+    </button>
+
+
+    <button
+      class="activity-item"
+      style="
+        width:100%;
+        background:none;
+        color:white;
+        text-align:left;
+      "
+      onclick="goTo('Customer-Payments.html')"
+    >
+
+      <div class="activity-icon">
+        💳
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+          Payment History
+        </strong>
+
+        <small>
+          View your recent transactions
+        </small>
+
+      </div>
+
+      <span>›</span>
+
+    </button>
+
+
+    <button
+      class="activity-item"
+      style="
+        width:100%;
+        background:none;
+        color:white;
+        text-align:left;
+      "
+      onclick="goTo('Customer-Messages.html')"
+    >
+
+      <div class="activity-icon">
+        💬
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+          Messages
+        </strong>
+
+        <small>
+          Chat with transport partners
+        </small>
+
+      </div>
+
+      <span>›</span>
+
+    </button>
+
+
+    <button
+      class="activity-item"
+      style="
+        width:100%;
+        background:none;
+        color:white;
+        text-align:left;
+      "
+      onclick="openFeature('Notifications')"
+    >
+
+      <div class="activity-icon">
+        🔔
+      </div>
+
+      <div class="activity-text">
+
+        <strong>
+          Transport Updates
+        </strong>
+
+        <small>
+          Check latest notifications
+        </small>
+
+      </div>
+
+      <span>›</span>
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FINAL APP BANNER ================= -->
+
+<section class="section">
+
+  <div
+    style="
+      padding:20px;
+      border-radius:22px;
+      background:
+      linear-gradient(
+        135deg,
+        rgba(53,167,255,.13),
+        rgba(155,124,255,.12)
+      );
+      border:1px solid rgba(255,255,255,.08);
+      text-align:center;
+    "
+  >
+
+    <div style="font-size:28px;">
+      🚛
+    </div>
+
+    <h3 style="
+      margin-top:8px;
+      font-size:17px;
+    ">
+      TransportPro
+    </h3>
+
+    <p style="
+      color:#91a1b7;
+      font-size:10px;
+      margin-top:5px;
+      line-height:1.5;
+    ">
+      India's smart transport ecosystem
+    </p>
+
+    <button
+      class="primary-btn"
+      onclick="openFeature('TransportPro')"
+    >
+      Explore All Features
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= BOTTOM NAVIGATION ================= -->
+
+<nav class="bottom-nav">
+
+  <button
+    class="nav-item active"
+    onclick="scrollTopHome()"
+  >
+    <span>⌂</span>
+    <span>Home</span>
+  </button>
+
+
+  <button
+    class="nav-item"
+    onclick="openFeature('Jobs')"
+  >
+    <span>💼</span>
+    <span>Jobs</span>
+  </button>
+
+
+  <button
+    class="nav-item nav-center"
+    onclick="goTo('booking.html')"
+  >
+    <span>📦</span>
+    <span>Bookings</span>
+  </button>
+
+
+  <button
+    class="nav-item"
+    onclick="goTo('Customer-Messages.html')"
+  >
+    <span>💬</span>
+    <span>Messages</span>
+  </button>
+
+
+  <button
+    class="nav-item"
+    onclick="openProfile()"
+  >
+    <span>👤</span>
+    <span>Profile</span>
+  </button>
+
+</nav>
+
+
+</div>
+
+
+<!-- =====================================================
+     MODAL / BOTTOM SHEET
+===================================================== -->
+
+<div
+  class="modal"
+  id="modal"
+  onclick="closeOutside(event)"
+>
+
+  <div class="sheet">
+
+    <div class="handle"></div>
+
+    <h2 id="modalTitle">
+      TransportPro
+    </h2>
+
+    <p id="modalDescription">
+      Feature preview
+    </p>
+
+    <div
+      class="modal-grid"
+      id="modalOptions"
+    ></div>
+
+    <button
+      class="close-btn"
+      onclick="closeModal()"
+    >
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  Done
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =====================================================
+   TRANSPORTPRO HOME APP
+===================================================== */
+
+
+/* ================= PAGE NAVIGATION ================= */
+
+function goTo(page){
+
+  window.location.href = page;
+
+}
+
+
+/* ================= MODAL SYSTEM ================= */
+
+function openModal(title, description, options){
+
+  const modal =
+    document.getElementById("modal");
+
+  const titleBox =
+    document.getElementById("modalTitle");
+
+  const descriptionBox =
+    document.getElementById("modalDescription");
+
+  const optionBox =
+    document.getElementById("modalOptions");
+
+
+  titleBox.innerText = title;
+
+  descriptionBox.innerText = description;
+
+  optionBox.innerHTML = "";
+
+
+  options.forEach(function(item){
+
+    const button =
+      document.createElement("button");
+
+    button.className =
+      "modal-option";
+
+
+    button.innerHTML =
+
+      "<b>" +
+      item.icon +
+      " " +
+      item.title +
+      "</b>" +
+
+      "<small>" +
+      item.text +
+      "</small>";
+
+
+    button.onclick = function(){
+
+      if(item.page){
+
+        goTo(item.page);
+
+      }
+
+      else if(item.action){
+
+        item.action();
+
+      }
+
+      else{
+
+        showToast(
+          item.title + " selected"
+        );
+
+      }
+
+    };
+
+
+    optionBox.appendChild(button);
+
+  });
+
+
+  modal.classList.add("show");
+
+}
+
+
+/* ================= CLOSE MODAL ================= */
+
+function closeModal(){
+
+  document
+    .getElementById("modal")
+    .classList.remove("show");
+
+}
+
+
+function closeOutside(event){
+
+  if(event.target.id === "modal"){
+
+    closeModal();
+
+  }
+
+}
+
+
+/* =====================================================
+   FEATURE SYSTEM
+===================================================== */
+
+<!-- ================= FEATURE SYSTEM ================= -->
+
+<script>
+/* =====================================================
+   TRANSPORTPRO - FEATURE SYSTEM
+   Frontend Feature Controller
+===================================================== */
+
+const TP = {
+    appName: "TransportPro",
+    pro: localStorage.getItem("transportPro") === "true"
+};
+
+
+/* ================= NAVIGATION ================= */
+
+function goTo(page) {
+    if (!page) return;
+
+    showToast("Opening...");
+
+    setTimeout(() => {
+        window.location.href = page;
+    }, 250);
+}
+
+
+/* ================= FEATURE OPEN ================= */
+
+function openFeature(feature) {
+
+    const features = {
+
+        "find-truck": {
+            title: "Find Truck",
+            icon: "🚚",
+            text: "Find suitable trucks according to your route, vehicle type and load requirement.",
+            actions: [
+                {
+                    name: "Find Truck Now",
+                    action: () => goTo("find-truck.html")
+                }
+            ]
+        },
+
+        "find-load": {
+            title: "Find Load",
+            icon: "📦",
+            text: "Search available loads and connect with suitable transport opportunities.",
+            actions: [
+                {
+                    name: "Search Loads",
+                    action: () => showToast("Load search will be connected with backend.")
+                }
+            ]
+        },
+
+        "post-load": {
+            title: "Post New Load",
+            icon: "➕",
+            text: "Create a transport requirement and receive vehicle offers.",
+            actions: [
+                {
+                    name: "Post Load",
+                    action: () => goTo("create-load.html")
+                }
+            ]
+        },
+
+        "booking": {
+            title: "My Bookings",
+            icon: "📋",
+            text: "Manage your active, completed and cancelled transport bookings.",
+            actions: [
+                {
+                    name: "Open Bookings",
+                    action: () => goTo("booking.html")
+                }
+            ]
+        },
+
+        "breakdown": {
+            title: "24×7 Breakdown Assistance",
+            icon: "🛠️",
+            text: "Request mechanic assistance when your vehicle breaks down.",
+            actions: [
+                {
+                    name: "Request Mechanic",
+                    action: () => goTo("Vehicle-Kharab.html")
+                }
+            ]
+        },
+
+        "tracking": {
+            title: "Live Shipment Tracking",
+            icon: "📍",
+            text: "Track shipment location, route and estimated arrival time.",
+            actions: [
+                {
+                    name: "Start Tracking",
+                    action: () => showToast("Live GPS tracking requires backend connection.")
+                }
+            ]
+        },
+
+        "messages": {
+            title: "Messages",
+            icon: "💬",
+            text: "Chat with drivers, vehicle owners, dealers and transport partners.",
+            actions: [
+                {
+                    name: "Open Messages",
+                    action: () => goTo("Customer-Messages.html")
+                }
+            ]
+        },
+
+        "payments": {
+            title: "Payments",
+            icon: "💳",
+            text: "Manage UPI payments, transaction history and payment records.",
+            actions: [
+                {
+                    name: "Open Payments",
+                    action: () => goTo("Customer-Payments.html")
+                }
+            ]
+        },
+
+        "documents": {
+            title: "Documents",
+            icon: "📄",
+            text: "Keep your transport documents organised in one place.",
+            actions: [
+                {
+                    name: "Manage Documents",
+                    action: () => showToast("Document manager will be connected with backend.")
+                }
+            ]
+        },
+
+        "mechanic": {
+            title: "Find Mechanic",
+            icon: "🔧",
+            text: "Find nearby mechanics and request vehicle repair assistance.",
+            actions: [
+                {
+                    name: "Find Mechanic",
+                    action: () => goTo("Vehicle-Kharab.html")
+                }
+            ]
+        },
+
+        "repair-history": {
+            title: "Repair History",
+            icon: "🧾",
+            text: "View your previous vehicle repair requests and service records.",
+            actions: [
+                {
+                    name: "View History",
+                    action: () => showToast("No repair history available yet.")
+                }
+            ]
+        },
+
+        "notifications": {
+            title: "Notifications",
+            icon: "🔔",
+            text: "Stay updated about bookings, loads, payments and transport alerts.",
+            actions: [
+                {
+                    name: "View Notifications",
+                    action: () => openNotifications()
+                }
+            ]
+        },
+
+        "reviews": {
+            title: "Ratings & Reviews",
+            icon: "⭐",
+            text: "Rate transport partners and share your service experience.",
+            actions: [
+                {
+                    name: "Give Rating",
+                    action: () => showToast("Rating system opened.")
+                }
+            ]
+        },
+
+        "transactions": {
+            title: "Transactions",
+            icon: "💰",
+            text: "View your complete payment and earning transaction history.",
+            actions: [
+                {
+                    name: "View Transactions",
+                    action: () => showToast("Transaction history will appear here.")
+                }
+            ]
+        },
+
+        "profile": {
+            title: "My Profile",
+            icon: "👤",
+            text: "Manage your account information, role and personal details.",
+            actions: [
+                {
+                    name: "Open Profile",
+                    action: () => openProfile()
+                }
+            ]
+        },
+
+        "settings": {
+            title: "Settings",
+            icon: "⚙️",
+            text: "Manage application preferences and account settings.",
+            actions: [
+                {
+                    name: "Open Settings",
+                    action: () => showToast("Settings panel opened.")
+                }
+            ]
+        },
+
+        "support": {
+            title: "Help & Support",
+            icon: "🎧",
+            text: "Get help with bookings, payments, vehicles and other services.",
+            actions: [
+                {
+                    name: "Contact Support",
+                    action: () => showToast("Support request started.")
+                }
+            ]
+        }
+    };
+
+
+    const data = features[feature];
+
+    if (!data) {
+        showToast("Feature coming soon.");
+        return;
+    }
+
+    openFeatureModal(data);
+}
+
+
+/* ================= FEATURE MODAL ================= */
+
+function openFeatureModal(data) {
+
+    const modal = document.getElementById("featureModal");
+
+    if (!modal) return;
+
+    document.getElementById("featureIcon").textContent = data.icon;
+    document.getElementById("featureTitle").textContent = data.title;
+    document.getElementById("featureDescription").textContent = data.text;
+
+    const actionBox = document.getElementById("featureActions");
+
+    actionBox.innerHTML = "";
+
+    data.actions.forEach(item => {
+
+        const button = document.createElement("button");
+
+        button.className = "feature-action-btn";
+        button.textContent = item.name;
+
+        button.onclick = () => {
+            closeModal("featureModal");
+            item.action();
+        };
+
+        actionBox.appendChild(button);
+
+    });
+
+    modal.classList.add("active");
+    document.body.classList.add("modal-open");
+}
+
+
+/* ================= MODAL SYSTEM ================= */
+
+function closeModal(id) {
+
+    const modal = document.getElementById(id);
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+
+    document.body.classList.remove("modal-open");
+}
+
+
+function closeOutside(event, id) {
+
+    if (event.target.id === id) {
+        closeModal(id);
+    }
+
+}
+
+
+/* ================= PRO SYSTEM ================= */
+
+function openPro() {
+
+    const modal = document.getElementById("proModal");
+
+    if (!modal) return;
+
+    modal.classList.add("active");
+    document.body.classList.add("modal-open");
+}
+
+
+function activatePro() {
+
+    localStorage.setItem("transportPro", "true");
+
+    TP.pro = true;
+
+    closeModal("proModal");
+
+    showToast("TransportPro PRO activated!");
+
+    updateProUI();
+}
+
+
+function updateProUI() {
+
+    const proButtons = document.querySelectorAll(".pro-btn");
+
+    proButtons.forEach(btn => {
+
+        if (TP.pro) {
+
+            btn.textContent = "PRO ACTIVE";
+            btn.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+/* ================= PRO FEATURE CHECK ================= */
+
+function useProFeature(featureName) {
+
+    if (!TP.pro) {
+
+        openPro();
+
+        return;
+
+    }
+
+    showToast(featureName + " activated.");
+}
+
+
+/* ================= ROLE SYSTEM ================= */
+
+function openRole(role) {
+
+    const roleData = {
+
+        driver: {
+            title: "Driver",
+            icon: "🚛",
+            text: "Find loads, manage trips, track earnings and connect with customers."
+        },
+
+        owner: {
+            title: "Vehicle Owner",
+            icon: "🚚",
+            text: "Manage vehicles, drivers, bookings, maintenance and earnings."
+        },
+
+        dealer: {
+            title: "Goods Dealer",
+            icon: "📦",
+            text: "Post loads, find vehicles and manage shipments."
+        },
+
+        transporter: {
+            title: "Transporter",
+            icon: "🏢",
+            text: "Manage transport operations, fleet and business activities."
+        },
+
+        mechanic: {
+            title: "Mechanic",
+            icon: "🔧",
+            text: "Receive breakdown requests and manage repair services."
+        },
+
+        customer: {
+            title: "Customer",
+            icon: "👤",
+            text: "Book transport, track shipments and manage payments."
+        }
+
+    };
+
+
+    const data = roleData[role];
+
+    if (!data) return;
+
+    const modal = document.getElementById("roleModal");
+
+    document.getElementById("roleIcon").textContent = data.icon;
+    document.getElementById("roleTitle").textContent = data.title;
+    document.getElementById("roleDescription").textContent = data.text;
+
+    modal.classList.add("active");
+
+    document.body.classList.add("modal-open");
+}
+
+
+/* ================= PROFILE ================= */
+
+function openProfile() {
+
+    const modal = document.getElementById("profileModal");
+
+    if (!modal) return;
+
+    const name =
+        localStorage.getItem("userName") ||
+        "TransportPro User";
+
+    document.getElementById("profileName").textContent = name;
+
+    modal.classList.add("active");
+
+    document.body.classList.add("modal-open");
+}
+
+
+/* ================= NOTIFICATIONS ================= */
+
+function openNotifications() {
+
+    const modal = document.getElementById("notificationModal");
+
+    if (!modal) return;
+
+    modal.classList.add("active");
+
+    document.body.classList.add("modal-open");
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchApp() {
+
+    const input = document.getElementById("globalSearch");
+
+    if (!input) return;
+
+    const value = input.value.trim().toLowerCase();
+
+    if (!value) {
+
+        showToast("Search something first.");
+
+        return;
+    }
+
+
+    const searchMap = {
+
+        truck: "find-truck.html",
+        "find truck": "find-truck.html",
+
+        load: "create-load.html",
+        "post load": "create-load.html",
+
+        booking: "booking.html",
+        bookings: "booking.html",
+
+        mechanic: "Vehicle-Kharab.html",
+        breakdown: "Vehicle-Kharab.html",
+
+        message: "Customer-Messages.html",
+        messages: "Customer-Messages.html",
+
+        payment: "Customer-Payments.html",
+        payments: "Customer-Payments.html"
+    };
+
+
+    if (searchMap[value]) {
+
+        goTo(searchMap[value]);
+
+        return;
+    }
+
+
+    showToast("No direct result found.");
+}
+
+
+/* ================= ENTER SEARCH ================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+
+        const active = document.activeElement;
+
+        if (active && active.id === "globalSearch") {
+
+            searchApp();
+
+        }
+
+    }
+
+});
+
+
+/* ================= MAIN SLIDER ================= */
+
+let currentSlide = 0;
+
+
+function showSlide(index) {
+
+    const slides = document.querySelectorAll(".slide");
+
+    if (!slides.length) return;
+
+    if (index >= slides.length) {
+
+        currentSlide = 0;
+
+    } else if (index < 0) {
+
+        currentSlide = slides.length - 1;
+
+    } else {
+
+        currentSlide = index;
+
+    }
+
+
+    const container = document.querySelector(".slides");
+
+    if (!container) return;
+
+    container.style.transform =
+        "translateX(-" + (currentSlide * 100) + "%)";
+
+
+    document
+        .querySelectorAll(".dot")
+        .forEach((dot, i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === currentSlide
+            );
+
+        });
+
+}
+
+
+function nextSlide() {
+
+    showSlide(currentSlide + 1);
+
+}
+
+
+function previousSlide() {
+
+    showSlide(currentSlide - 1);
+
+}
+
+
+/* ================= AUTO SLIDE ================= */
+
+setInterval(() => {
+
+    nextSlide();
+
+}, 5000);
+
+
+/* ================= MINI SLIDER ================= */
+
+let miniSlide = 0;
+
+
+function nextMini() {
+
+    const slides = document.querySelectorAll(".mini-slide");
+
+    if (!slides.length) return;
+
+    miniSlide++;
+
+    if (miniSlide >= slides.length) {
+
+        miniSlide = 0;
+
+    }
+
+    const container =
+        document.querySelector(".mini-slides");
+
+    if (!container) return;
+
+    container.style.transform =
+        "translateX(-" + (miniSlide * 100) + "%)";
+
+}
+
+
+/* ================= LOCATION ================= */
+
+function detectLocation() {
+
+    if (!navigator.geolocation) {
+
+        showToast("Location not supported.");
+
+        return;
+    }
+
+
+    showToast("Detecting location...");
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            localStorage.setItem(
+                "userLatitude",
+                lat
+            );
+
+            localStorage.setItem(
+                "userLongitude",
+                lng
+            );
+
+            showToast("Location detected successfully.");
+
+        },
+
+        function() {
+
+            showToast(
+                "Location permission required."
+            );
+
+        }
+
+    );
+
+}
+
+
+/* ================= TOAST ================= */
+
+function showToast(message) {
+
+    let toast =
+        document.getElementById("tpToast");
+
+    if (!toast) {
+
+        toast = document.createElement("div");
+
+        toast.id = "tpToast";
+
+        toast.className = "tp-toast";
+
+        document.body.appendChild(toast);
+
+    }
+
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+
+    clearTimeout(window.toastTimer);
+
+
+    window.toastTimer =
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 2500);
+
+}
+
+
+/* ================= SCROLL TOP ================= */
+
+function scrollTopHome() {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* ================= SWIPE MAIN SLIDER ================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+
+document.addEventListener(
+    "touchstart",
+    function(event) {
+
+        if (
+            event.touches &&
+            event.touches.length
+        ) {
+
+            touchStartX =
+                event.touches[0].clientX;
+
+        }
+
+    },
+    { passive: true }
+);
+
+
+document.addEventListener(
+    "touchend",
+    function(event) {
+
+        if (
+            event.changedTouches &&
+            event.changedTouches.length
+        ) {
+
+            touchEndX =
+                event.changedTouches[0].clientX;
+
+            const difference =
+                touchStartX - touchEndX;
+
+
+            if (Math.abs(difference) > 50) {
+
+                if (difference > 0) {
+
+                    nextSlide();
+
+                } else {
+
+                    previousSlide();
+
+                }
+
+            }
+
+        }
+
+    },
+    { passive: true }
+);
+
+
+/* ================= LOGOUT ================= */
+
+function logoutUser() {
+
+    localStorage.removeItem("userName");
+
+    localStorage.removeItem("userRole");
+
+    localStorage.removeItem("loggedIn");
+
+    showToast("Logged out successfully.");
+
+    setTimeout(() => {
+
+        window.location.href = "index.html";
+
+    }, 1000);
+
+}
+
+
+/* ================= PROTECTION FOR PRO ================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const target =
+            event.target.closest(
+                "[data-pro-feature]"
+            );
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        const feature =
+            target.getAttribute(
+                "data-pro-feature"
+            );
+
+        useProFeature(feature);
+
+    }
+);
+
+
+/* ================= INITIALIZE ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        updateProUI();
+
+        showSlide(0);
+
+        const locationBtn =
+            document.getElementById(
+                "locationBtn"
+            );
+
+        if (locationBtn) {
+
+            locationBtn.addEventListener(
+                "click",
+                detectLocation
+            );
+
+        }
+
+    }
+);
+
+
+/* ================= ESC CLOSE ================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            document
+                .querySelectorAll(".modal.active")
+                .forEach(modal => {
+
+                    modal.classList.remove(
+                        "active"
+                    );
+
+                });
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+<!-- ================= FEATURE MODALS ================= -->
+
+<div
+    id="featureModal"
+    class="modal"
+    onclick="closeOutside(event,'featureModal')"
+>
+
+    <div class="sheet">
+
+        <div class="handle"></div>
+
+        <button
+            class="close-btn"
+            onclick="closeModal('featureModal')"
+        >
+            ×
+        </button>
+
+        <div
+            id="featureIcon"
+            class="modal-big-icon"
+        >
+            🚚
+        </div>
+
+        <h2 id="featureTitle">
+            Feature
+        </h2>
+
+        <p id="featureDescription">
+            Feature description
+        </p>
+
+        <div
+            id="featureActions"
+            class="feature-actions"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PRO MODAL ================= -->
+<!-- ================= PRO MODAL ================= -->
+
+<div
+    id="proModal"
+    class="modal"
+    onclick="closeOutside(event,'proModal')"
+>
+
+    <div class="sheet pro-sheet">
+
+        <div class="handle"></div>
+
+        <button
+            class="close-btn"
+            onclick="closeModal('proModal')"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <!-- PRO HEADER -->
+
+        <div class="pro-crown">
+            👑
+        </div>
+
+        <div class="pro-badge">
+            TRANSPORTPRO PRO
+        </div>
+
+        <h2>
+            Upgrade Your Transport Business
+        </h2>
+
+        <p>
+            Unlock advanced tools for faster,
+            smarter and more professional transport
+            management.
+        </p>
+
+
+        <!-- PRO FEATURES -->
+
+        <div class="pro-feature-grid">
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">🚚</div>
+                <strong>
+                    Priority Truck Matching
+                </strong>
+                <span>
+                    Get faster and better vehicle
+                    matching for your loads.
+                </span>
+            </div>
+
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">📍</div>
+                <strong>
+                    Advanced Live GPS
+                </strong>
+                <span>
+                    Track vehicles and shipments
+                    with advanced location tools.
+                </span>
+            </div>
+
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">🤖</div>
+                <strong>
+                    Smart Matching
+                </strong>
+                <span>
+                    Find suitable trucks and loads
+                    using intelligent matching.
+                </span>
+            </div>
+
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">💰</div>
+                <strong>
+                    Business Analytics
+                </strong>
+                <span>
+                    Monitor trips, revenue,
+                    expenses and performance.
+                </span>
+            </div>
+
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">🛣️</div>
+                <strong>
+                    Smart Route & ETA
+                </strong>
+                <span>
+                    Get advanced route planning
+                    and estimated arrival tools.
+                </span>
+            </div>
+
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">🔧</div>
+                <strong>
+                    Priority Breakdown
+                </strong>
+                <span>
+                    Get priority assistance during
+                    vehicle breakdowns.
+                </span>
+            </div>
+
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">📄</div>
+                <strong>
+                    Document Automation
+                </strong>
+                <span>
+                    Manage documents and expiry
+                    reminders more efficiently.
+                </span>
+            </div>
+
+
+            <div class="pro-feature-box">
+                <div class="pf-icon">🏢</div>
+                <strong>
+                    Fleet Management
+                </strong>
+                <span>
+                    Manage multiple vehicles,
+                    drivers and operations.
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- PRO PLAN -->
+
+        <div class="pro-plan-card">
+
+            <div class="plan-top">
+
+                <div>
+                    <small>
+                        TRANSPORTPRO
+                    </small>
+
+                    <h3>
+                        PRO PLAN
+                    </h3>
+                </div>
+
+                <div class="plan-icon">
+                    👑
+                </div>
+
+            </div>
+
+
+            <div class="plan-price">
+
+                <strong>
+                    PRO
+                </strong>
+
+                <span>
+                    Advanced Transport Tools
+                </span>
+
+            </div>
+
+
+            <div class="plan-points">
+
+                <div>
+                    ✓ Priority Matching
+                </div>
+
+                <div>
+                    ✓ Advanced GPS
+                </div>
+
+                <div>
+                    ✓ Smart Analytics
+                </div>
+
+                <div>
+                    ✓ Priority Support
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVATE BUTTON -->
+
+        <button
+            class="pro-main-btn"
+            onclick="activatePro()"
+        >
+            🚀 Activate TransportPro PRO
+        </button>
+
+
+        <button
+            class="pro-later-btn"
+            onclick="closeModal('proModal')"
+        >
+            Maybe Later
+        </button>
+
+
+        <small class="pro-note">
+            Frontend demo mode. Real subscription,
+            payment and PRO verification will be
+            connected with the backend later.
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- ================= ROLE MODAL ================= -->
+
+<div
+    id="roleModal"
+    class="modal"
+    onclick="closeOutside(event,'roleModal')"
+>
+
+    <div class="sheet">
+
+        <div class="handle"></div>
+
+        <button
+            class="close-btn"
+            onclick="closeModal('roleModal')"
+        >
+            ×
+        </button>
+
+        <div
+            id="roleIcon"
+            class="modal-big-icon"
+        >
+            👤
+        </div>
+
+        <h2 id="roleTitle">
+            Transport Role
+        </h2>
+
+        <p id="roleDescription">
+            Select your transport role.
+        </p>
+
+        <button
+            class="feature-action-btn"
+            onclick="closeModal('roleModal')"
+        >
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PROFILE MODAL ================= -->
+
+<div
+    id="profileModal"
+    class="modal"
+    onclick="closeOutside(event,'profileModal')"
+>
+
+    <div class="sheet">
+
+        <div class="handle"></div>
+
+        <button
+            class="close-btn"
+            onclick="closeModal('profileModal')"
+        >
+            ×
+        </button>
+
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+
+        <h2 id="profileName">
+            TransportPro User
+        </h2>
+
+
+        <p>
+            Manage your TransportPro account
+            and personal preferences.
+        </p>
+
+
+        <div class="profile-options">
+
+            <button
+                onclick="showToast('Profile editing coming soon.')"
+            >
+                👤
+                <span>Edit Profile</span>
+            </button>
+
+
+            <button
+                onclick="showToast('My documents opened.')"
+            >
+                📄
+                <span>My Documents</span>
+            </button>
+
+
+            <button
+                onclick="showToast('Settings opened.')"
+            >
+                ⚙️
+                <span>Settings</span>
+            </button>
+
+
+            <button
+                onclick="showToast('Security settings opened.')"
+            >
+                🔐
+                <span>Security</span>
+            </button>
+
+
+            <button
+                class="logout-option"
+                onclick="logoutUser()"
+            >
+                🚪
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= NOTIFICATION MODAL ================= -->
+
+<div
+    id="notificationModal"
+    class="modal"
+    onclick="closeOutside(event,'notificationModal')"
+>
+
+    <div class="sheet">
+
+        <div class="handle"></div>
+
+        <button
+            class="close-btn"
+            onclick="closeModal('notificationModal')"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-big-icon">
+            🔔
+        </div>
+
+
+        <h2>
+            Notifications
+        </h2>
+
+
+        <p>
+            Stay updated with your transport
+            activities.
+        </p>
+
+
+        <div class="notification-list">
+
+
+            <div class="notification-card">
+
+                <div class="notification-icon">
+                    👋
+                </div>
+
+                <div>
+
+                    <b>
+                        Welcome to TransportPro
+                    </b>
+
+                    <span>
+                        Your transport journey
+                        starts here.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="notification-card">
+
+                <div class="notification-icon">
+                    🚚
+                </div>
+
+                <div>
+
+                    <b>
+                        Find Your Truck
+                    </b>
+
+                    <span>
+                        Search vehicles according
+                        to your requirement.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="notification-card">
+
+                <div class="notification-icon">
+                    🔧
+                </div>
+
+                <div>
+
+                    <b>
+                        Breakdown Assistance
+                    </b>
+
+                    <span>
+                        Get mechanic assistance
+                        when your vehicle needs help.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="notification-card">
+
+                <div class="notification-icon">
+                    👑
+                </div>
+
+                <div>
+
+                    <b>
+                        TransportPro PRO
+                    </b>
+
+                    <span>
+                        Unlock advanced professional
+                        transport tools.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= GLOBAL TOAST ================= -->
+
+<div
+    id="tpToast"
+    class="tp-toast"
+></div>
+
+
+<!-- ================= PRO / MODAL CSS ================= -->
+
+<style>
+
+/* =========================================
+   MODAL SYSTEM
+========================================= */
+
+body.modal-open{
+    overflow:hidden;
+}
+
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    background:rgba(0,0,0,.62);
+
+    backdrop-filter:blur(9px);
+
+    -webkit-backdrop-filter:blur(9px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+    z-index:99999;
+}
+
+
+.modal.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+
+/* =========================================
+   BOTTOM SHEET
+========================================= */
+
+.sheet{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:650px;
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    padding:25px 20px 32px;
+
+    background:#fff;
+
+    border-radius:
+        30px
+        30px
+        0
+        0;
+
+    text-align:center;
+
+    transform:translateY(100%);
+
+    transition:
+        transform .38s
+        cubic-bezier(.2,.8,.2,1);
+
+    box-shadow:
+        0 -15px 50px
+        rgba(0,0,0,.20);
+}
+
+
+.modal.active .sheet{
+
+    transform:translateY(0);
+}
+
+
+.handle{
+
+    width:45px;
+
+    height:5px;
+
+    margin:
+        0
+        auto
+        18px;
+
+    border-radius:50px;
+
+    background:#d9dce1;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.close-btn{
+
+    position:absolute;
+
+    top:17px;
+
+    right:17px;
+
+    width:38px;
+
+    height:38px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#f1f3f5;
+
+    color:#222;
+
+    font-size:25px;
+
+    line-height:38px;
+
+    cursor:pointer;
+
+    z-index:5;
+}
+
+
+.close-btn:active{
+
+    transform:scale(.9);
+}
+
+
+/* =========================================
+   MODAL ICON
+========================================= */
+
+.modal-big-icon{
+
+    width:78px;
+
+    height:78px;
+
+    margin:
+        5px
+        auto
+        15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:24px;
+
+    background:#f2f5ff;
+
+    font-size:39px;
+}
+
+
+.sheet h2{
+
+    margin:
+        5px
+        0
+        10px;
+
+    font-size:24px;
+
+    line-height:1.25;
+
+    color:#101828;
+}
+
+
+.sheet p{
+
+    margin:
+        0
+        auto
+        20px;
+
+    max-width:540px;
+
+    color:#667085;
+
+    font-size:14px;
+
+    line-height:1.65;
+}
+
+
+/* =========================================
+   FEATURE BUTTON
+========================================= */
+
+.feature-actions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+
+.feature-action-btn{
+
+    width:100%;
+
+    border:0;
+
+    padding:15px 18px;
+
+    border-radius:16px;
+
+    background:#111827;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.feature-action-btn:active{
+
+    transform:scale(.97);
+}
+
+
+/* =========================================
+   PRO SHEET
+========================================= */
+
+.pro-sheet{
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffaf0 0%,
+            #ffffff 42%
+        );
+}
+
+
+.pro-crown{
+
+    margin-top:2px;
+
+    font-size:50px;
+
+    line-height:1;
+}
+
+
+.pro-badge{
+
+    display:inline-flex;
+
+    margin:
+        12px
+        auto
+        10px;
+
+    padding:
+        7px
+        13px;
+
+    border-radius:50px;
+
+    background:#111827;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:1.3px;
+}
+
+
+.pro-sheet h2{
+
+    font-size:25px;
+
+    max-width:480px;
+
+    margin-left:auto;
+
+    margin-right:auto;
+}
+
+
+/* =========================================
+   PRO FEATURE GRID
+========================================= */
+
+.pro-feature-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:11px;
+
+    margin:
+        20px
+        0;
+}
+
+
+.pro-feature-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:6px;
+
+    min-height:145px;
+
+    padding:15px;
+
+    text-align:left;
+
+    border:
+        1px solid
+        #ececec;
+
+    border-radius:19px;
+
+    background:#fff;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,.035);
+
+    transition:.2s;
+}
+
+
+.pro-feature-box:active{
+
+    transform:scale(.98);
+}
+
+
+.pf-icon{
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#f5f6f8;
+
+    font-size:22px;
+
+    margin-bottom:2px;
+}
+
+
+.pro-feature-box strong{
+
+    color:#101828;
+
+    font-size:13px;
+
+    line-height:1.35;
+}
+
+
+.pro-feature-box span{
+
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:1.45;
+}
+
+
+/* =========================================
+   PRO PLAN CARD
+========================================= */
+
+.pro-plan-card{
+
+    margin:
+        5px
+        0
+        15px;
+
+    padding:18px;
+
+    border-radius:21px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #273244
+        );
+
+    color:#fff;
+
+    text-align:left;
+
+    box-shadow:
+        0 12px 30px
+        rgba(17,24,39,.18);
+}
+
+
+.plan-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+
+.plan-top small{
+
+    display:block;
+
+    opacity:.65;
+
+    font-size:9px;
+
+    letter-spacing:1.2px;
+}
+
+
+.plan-top h3{
+
+    margin:
+        3px
+        0
+        0;
+
+    font-size:20px;
+
+    color:#fff;
+}
+
+
+.plan-icon{
+
+    width:50px;
+
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.12);
+
+    font-size:26px;
+}
+
+
+.plan-price{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+
+.plan-price strong{
+
+    font-size:18px;
+}
+
+
+.plan-price span{
+
+    opacity:.7;
+
+    font-size:12px;
+}
+
+
+.plan-points{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:8px;
+
+    margin-top:15px;
+
+    font-size:11px;
+
+    opacity:.9;
+}
+
+
+/* =========================================
+   PRO BUTTONS
+========================================= */
+
+.pro-main-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:0;
+
+    border-radius:17px;
+
+    background:#111827;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(17,24,39,.16);
+}
+
+
+.pro-main-btn:active{
+
+    transform:scale(.98);
+}
+
+
+.pro-later-btn{
+
+    width:100%;
+
+    margin-top:8px;
+
+    padding:13px;
+
+    border:0;
+
+    background:transparent;
+
+    color:#667085;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+
+.pro-note{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#98a2b3;
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile-avatar{
+
+    width:88px;
+
+    height:88px;
+
+    margin:
+        4px
+        auto
+        15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#eef2ff;
+
+    font-size:42px;
+
+    border:
+        5px solid
+        #f7f8ff;
+}
+
+
+.profile-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+    margin-top:18px;
+}
+
+
+.profile-options button{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px;
+
+    border:0;
+
+    border-radius:16px;
+
+    background:#f6f7f9;
+
+    color:#20242c;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    text-align:left;
+
+    cursor:pointer;
+}
+
+
+.profile-options button:active{
+
+    transform:scale(.98);
+}
+
+
+.profile-options .logout-option{
+
+    background:#fff0f0;
+
+    color:#d92d20;
+}
+
+
+/* =========================================
+   NOTIFICATIONS
+========================================= */
+
+.notification-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    text-align:left;
+}
+
+
+.notification-card{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    padding:14px;
+
+    border:
+        1px solid
+        #eeeeee;
+
+    border-radius:17px;
+
+    background:#fafafa;
+}
+
+
+.notification-icon{
+
+    width:40px;
+
+    height:40px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#f0f2f5;
+
+    font-size:20px;
+}
+
+
+.notification-card b{
+
+    display:block;
+
+    color:#101828;
+
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+
+.notification-card span{
+
+    display:block;
+
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:1.45;
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+.tp-toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:88px;
+
+    transform:
+        translate(-50%,20px);
+
+    width:max-content;
+
+    max-width:90%;
+
+    padding:
+        12px
+        18px;
+
+    border-radius:14px;
+
+    background:#111827;
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:100000;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.20);
+}
+
+
+.tp-toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px){
+
+    .pro-feature-grid{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .pro-feature-box{
+        min-height:135px;
+        padding:13px;
+    }
+
+    .pro-feature-box strong{
+        font-size:12px;
+    }
+
+    .pro-feature-box span{
+        font-size:10px;
+    }
+
+    .plan-points{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .sheet{
+        max-height:94vh;
+        padding:
+            22px
+            16px
+            28px;
+    }
+
+}
+
+
+@media (max-width: 380px){
+
+    .pro-feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .pro-feature-box{
+        min-height:auto;
+    }
+
+    .plan-points{
+        grid-template-columns:1fr;
+    }
+
+    .sheet h2{
+        font-size:22px;
+    }
+
+}
+
+
+@media (min-width: 768px){
+
+    .sheet{
+        border-radius:30px;
+        margin-bottom:20px;
+    }
+
+    .modal{
+        align-items:center;
+    }
+
+}
+
+
+/* =========================================
+   FINAL INITIALIZATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        /* FEATURE BUTTONS */
+
+        document
+        .querySelectorAll(
+            "[data-feature]"
+        )
+        .forEach(function(button){
+
+            button.addEventListener(
+                "click",
+                function(event){
+
+                    event.preventDefault();
+
+                    const feature =
+                        button.getAttribute(
+                            "data-feature"
+                        );
+
+                    if(
+                        typeof openFeature ===
+                        "function"
+                    ){
+
+                        openFeature(feature);
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* ROLE BUTTONS */
+
+        document
+        .querySelectorAll(
+            "[data-role]"
+        )
+        .forEach(function(button){
+
+            button.addEventListener(
+                "click",
+                function(event){
+
+                    event.preventDefault();
+
+                    const role =
+                        button.getAttribute(
+                            "data-role"
+                        );
+
+                    if(
+                        typeof openRole ===
+                        "function"
+                    ){
+
+                        openRole(role);
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* PRO BUTTONS */
+
+        document
+        .querySelectorAll(
+            "[data-open-pro]"
+        )
+        .forEach(function(button){
+
+            button.addEventListener(
+                "click",
+                function(event){
+
+                    event.preventDefault();
+
+                    if(
+                        typeof openPro ===
+                        "function"
+                    ){
+
+                        openPro();
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* PRO UI */
+
+        if(
+            typeof updateProUI ===
+            "function"
+        ){
+
+            updateProUI();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   ESC KEY - CLOSE MODALS
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            document
+            .querySelectorAll(
+                ".modal.active"
+            )
+            .forEach(function(modal){
+
+                modal.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   MODAL SHEET CLICK PROTECTION
+========================================= */
+
+document
+.querySelectorAll(".sheet")
+.forEach(function(sheet){
+
+    sheet.addEventListener(
+        "click",
+        function(event){
+
+            event.stopPropagation();
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   FINAL PRO STATUS
+========================================= */
+
+function checkProStatus(){
+
+    const proStatus =
+        localStorage.getItem(
+            "transportPro"
+        );
+
+    if(proStatus === "true"){
+
+        document
+        .querySelectorAll(
+            ".pro-btn"
+        )
+        .forEach(function(button){
+
+            button.classList.add(
+                "active"
+            );
+
+            button.textContent =
+                "PRO ACTIVE";
+
+        });
+
+    }
+
+}
+
+
+/* =========================================
+   RUN PRO STATUS
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        checkProStatus();
+
+    }
+);
+
+
+/* =========================================
+   END
+========================================= */
+
+</script>
+
+
+<!-- ================= END OF TRANSPORTPRO HOME ================= -->
+
+</body>
+</html>

@@ -1,0 +1,8292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#07111f"
+>
+
+<title>Find Truck | TransportPro</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:
+        0 3px 15px
+        rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:1200px;
+    min-height:65px;
+
+    margin:auto;
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+
+/* BACK BUTTON */
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+
+/* TITLE */
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:16px;
+}
+
+.headerTitle small{
+    display:block;
+    color:#94a3b8;
+    font-size:8px;
+    margin-top:2px;
+}
+
+
+/* FILTER BUTTON */
+
+.filterBtn{
+    width:40px;
+    height:40px;
+
+    border:1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:100%;
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:
+        16px
+        14px
+        30px;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    margin-bottom:15px;
+}
+
+.intro h1{
+    font-size:23px;
+    margin-bottom:6px;
+}
+
+.intro p{
+    color:#667085;
+    font-size:10px;
+    line-height:1.6;
+}
+
+
+/* =========================
+   SEARCH FORM
+========================= */
+
+.searchPanel{
+    background:#fff;
+
+    border:
+        1px solid
+        #e4e9f0;
+
+    border-radius:20px;
+
+    padding:16px;
+
+    box-shadow:
+        0 7px 20px
+        rgba(16,24,40,.05);
+}
+
+
+/* FORM GROUP */
+
+.formGroup{
+    margin-bottom:12px;
+}
+
+.formGroup:last-child{
+    margin-bottom:0;
+}
+
+.formGroup label{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#344054;
+
+    font-size:9px;
+
+    font-weight:700;
+}
+
+
+/* INPUT */
+
+.inputWrap{
+    position:relative;
+}
+
+.inputIcon{
+    position:absolute;
+
+    left:11px;
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    font-size:16px;
+}
+
+.formInput,
+.formSelect{
+    width:100%;
+
+    height:45px;
+
+    border:
+        1px solid
+        #d0d5dd;
+
+    border-radius:11px;
+
+    outline:none;
+
+    background:#fff;
+
+    color:#101828;
+
+    padding:
+        0
+        12px
+        0
+        39px;
+
+    font-size:10px;
+
+    transition:.2s;
+}
+
+.formSelect{
+    padding-left:12px;
+}
+
+.formInput:focus,
+.formSelect:focus{
+    border-color:#2563eb;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37,99,235,.10);
+}
+
+
+/* LOCATION ROW */
+
+.locationRow{
+    display:grid;
+
+    grid-template-columns:
+        1fr;
+
+    gap:10px;
+}
+
+
+/* SWAP */
+
+.swapBtn{
+    width:38px;
+    height:38px;
+
+    margin:-5px auto;
+
+    border:1px solid
+        #d0d5dd;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    color:#2563eb;
+
+    font-size:17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    z-index:3;
+
+    cursor:pointer;
+}
+
+
+/* SEARCH BUTTON */
+
+.searchTruckBtn{
+    width:100%;
+
+    height:46px;
+
+    margin-top:14px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 7px 15px
+        rgba(37,99,235,.22);
+
+    transition:.2s;
+}
+
+.searchTruckBtn:active{
+    transform:scale(.97);
+}
+
+
+/* =========================
+   FILTER BAR
+========================= */
+
+.filterBar{
+    display:flex;
+
+    gap:8px;
+
+    overflow-x:auto;
+
+    padding:
+        2px
+        1px
+        5px;
+
+    margin-top:17px;
+
+    scrollbar-width:none;
+}
+
+.filterBar::-webkit-scrollbar{
+    display:none;
+}
+
+.filterChip{
+    flex:0 0 auto;
+
+    border:
+        1px solid
+        #d0d5dd;
+
+    background:#fff;
+
+    color:#344054;
+
+    border-radius:20px;
+
+    padding:
+        8px
+        12px;
+
+    font-size:8px;
+
+    cursor:pointer;
+}
+
+.filterChip.active{
+    background:#07111f;
+    color:#fff;
+    border-color:#07111f;
+}
+
+
+/* =========================
+   RESULTS HEADER
+========================= */
+
+.resultsHeader{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-top:20px;
+
+    margin-bottom:11px;
+}
+
+.resultsHeader h2{
+    font-size:16px;
+}
+
+.resultsHeader span{
+    color:#667085;
+    font-size:8px;
+}
+
+
+/* =========================
+   TRUCK CARD
+========================= */
+
+.truckList{
+    display:grid;
+
+    grid-template-columns:
+        1fr;
+
+    gap:11px;
+}
+
+.truckCard{
+    background:#fff;
+
+    border:
+        1px solid
+        #e4e9f0;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    box-shadow:
+        0 5px 16px
+        rgba(16,24,40,.04);
+}
+
+
+/* TRUCK TOP */
+
+.truckTop{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:11px;
+}
+
+.truckImage{
+    width:62px;
+    height:62px;
+
+    border-radius:15px;
+
+    background:#eff4ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.truckInfo{
+    flex:1;
+}
+
+.truckInfo h3{
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.truckInfo p{
+    color:#667085;
+    font-size:8px;
+    line-height:1.5;
+}
+
+
+/* VERIFIED */
+
+.verified{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:3px;
+
+    margin-top:6px;
+
+    padding:
+        4px
+        7px;
+
+    border-radius:10px;
+
+    background:#ecfdf3;
+
+    color:#027a48;
+
+    font-size:7px;
+
+    font-weight:700;
+}
+
+
+/* RATING */
+
+.rating{
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    margin-top:8px;
+
+    font-size:8px;
+}
+
+.rating span{
+    color:#f79009;
+}
+
+
+/* DETAILS */
+
+.truckDetails{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:7px;
+
+    margin-top:13px;
+
+    padding-top:12px;
+
+    border-top:
+        1px solid
+        #eef1f5;
+}
+
+.detail{
+    text-align:center;
+}
+
+.detail strong{
+    display:block;
+
+    font-size:9px;
+}
+
+.detail small{
+    display:block;
+
+    margin-top:3px;
+
+    color:#667085;
+
+    font-size:7px;
+}
+
+
+/* CARD BOTTOM */
+
+.truckBottom{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:8px;
+
+    margin-top:13px;
+}
+
+.price strong{
+    display:block;
+
+    font-size:14px;
+}
+
+.price small{
+    color:#667085;
+
+    font-size:7px;
+}
+
+
+/* VIEW BUTTON */
+
+.viewBtn{
+    border:0;
+
+    border-radius:10px;
+
+    padding:
+        10px
+        14px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   EMPTY / SEARCH MESSAGE
+========================= */
+
+.messageBox{
+    display:none;
+
+    text-align:center;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #e4e9f0;
+
+    border-radius:18px;
+
+    padding:30px 15px;
+
+    margin-top:12px;
+}
+
+.messageBox .big{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.messageBox strong{
+    display:block;
+    font-size:13px;
+}
+
+.messageBox p{
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:1.5;
+
+    margin-top:5px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(min-width:650px){
+
+    .locationRow{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .swapBtn{
+        position:absolute;
+
+        left:50%;
+
+        transform:
+            translate(-50%,-50%);
+    }
+
+    .searchPanel{
+        padding:20px;
+    }
+
+    .truckList{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(min-width:1000px){
+
+    main{
+        padding-left:22px;
+        padding-right:22px;
+    }
+
+    .truckList{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="header">
+
+
+        <!-- BACK -->
+
+        <button
+            class="backBtn"
+            onclick="goBack()"
+            aria-label="Back"
+        >
+
+            ←
+
+        </button>
+
+
+        <!-- TITLE -->
+
+        <div class="headerTitle">
+
+            <strong>
+                Find Truck
+            </strong>
+
+            <small>
+                Find the right vehicle for your load
+            </small>
+
+        </div>
+
+
+        <!-- FILTER -->
+
+        <button
+            class="filterBtn"
+            onclick="showFilters()"
+            aria-label="Filter"
+        >
+
+            ⚙️
+
+        </button>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro">
+
+    <h1>
+        Find the Right Truck 🚛
+    </h1>
+
+    <p>
+        Enter your pickup and destination
+        to find available transport vehicles
+        and compare options.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     SEARCH PANEL
+========================= -->
+
+<section class="searchPanel">
+
+
+    <!-- LOCATION -->
+
+    <div class="locationRow">
+
+
+        <!-- PICKUP -->
+
+        <div class="formGroup">
+
+            <label>
+                PICKUP LOCATION
+            </label>
+
+            <div class="inputWrap">
+
+                <span class="inputIcon">
+                    📍
+                </span>
+
+                <input
+                    id="pickup"
+                    class="formInput"
+                    type="text"
+                    placeholder="Enter pickup location"
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTINATION -->
+
+        <div class="formGroup">
+
+            <label>
+                DESTINATION
+            </label>
+
+            <div class="inputWrap">
+
+                <span class="inputIcon">
+                    🏁
+                </span>
+
+                <input
+                    id="destination"
+                    class="formInput"
+                    type="text"
+                    placeholder="Enter destination"
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- SWAP -->
+
+    <button
+        class="swapBtn"
+        onclick="swapLocations()"
+        aria-label="Swap locations"
+    >
+
+        ⇅
+
+    </button>
+
+
+
+    <!-- GOODS -->
+
+    <div class="formGroup">
+
+        <label>
+            GOODS / LOAD TYPE
+        </label>
+
+        <select
+            id="goodsType"
+            class="formSelect"
+        >
+
+            <option value="">
+                Select goods type
+            </option>
+
+            <option value="general">
+                General Goods
+            </option>
+
+            <option value="food">
+                Food & Grocery
+            </option>
+
+            <option value="furniture">
+                Furniture
+            </option>
+
+            <option value="construction">
+                Construction Material
+            </option>
+
+            <option value="machinery">
+                Machinery
+            </option>
+
+            <option value="agriculture">
+                Agriculture Products
+            </option>
+
+            <option value="parcel">
+                Parcel / Courier
+            </option>
+
+            <option value="other">
+                Other
+            </option>
+
+        </select>
+
+    </div>
+
+
+
+    <!-- WEIGHT -->
+
+    <div class="formGroup">
+
+        <label>
+            LOAD WEIGHT
+        </label>
+
+        <div class="inputWrap">
+
+            <span class="inputIcon">
+                ⚖️
+            </span>
+
+            <input
+                id="weight"
+                class="formInput"
+                type="number"
+                min="1"
+                placeholder="Enter weight in kg"
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- VEHICLE -->
+
+    <div class="formGroup">
+
+        <label>
+            VEHICLE TYPE
+        </label>
+
+        <select
+            id="vehicleType"
+            class="formSelect"
+        >
+
+            <option value="">
+                Any vehicle
+            </option>
+
+            <option value="mini">
+                Mini Truck
+            </option>
+
+            <option value="pickup">
+                Pickup
+            </option>
+
+            <option value="407">
+                Tata 407
+            </option>
+
+            <option value="lcv">
+                Light Commercial Vehicle
+            </option>
+
+            <option value="open">
+                Open Truck
+            </option>
+
+            <option value="container">
+                Container Truck
+            </option>
+
+            <option value="trailer">
+                Trailer
+            </option>
+
+            <option value="tanker">
+                Tanker
+            </option>
+
+        </select>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <button
+        class="searchTruckBtn"
+        onclick="findTrucks()"
+    >
+
+        🔎 Search Available Trucks
+
+    </button>
+
+
+</section>
+
+
+
+<!-- =========================
+     FILTER BAR
+========================= -->
+
+<div class="filterBar">
+
+
+    <button
+        class="filterChip active"
+        onclick="setFilter(this,'all')"
+    >
+        All Trucks
+    </button>
+
+
+    <button
+        class="filterChip"
+        onclick="setFilter(this,'verified')"
+    >
+        ✓ Verified
+    </button>
+
+
+    <button
+        class="filterChip"
+        onclick="setFilter(this,'nearby')"
+    >
+        📍 Nearby
+    </button>
+
+
+    <button
+        class="filterChip"
+        onclick="setFilter(this,'price')"
+    >
+        💰 Lowest Price
+    </button>
+
+
+    <button
+        class="filterChip"
+        onclick="setFilter(this,'rating')"
+    >
+        ⭐ Top Rated
+    </button>
+
+
+</div>
+
+
+
+<!-- =========================
+     RESULTS HEADER
+========================= -->
+
+<div class="resultsHeader">
+
+    <h2>
+        Available Trucks
+    </h2>
+
+    <span id="resultCount">
+        0 trucks found
+    </span>
+
+</div>
+
+
+
+<!-- =========================
+     TRUCK LIST
+========================= -->
+
+<div
+    class="truckList"
+    id="truckList"
+>
+
+
+<!-- TRUCK CARD 1 -->
+
+<div
+    class="truckCard"
+    data-verified="true"
+    data-rating="4.9"
+    data-price="1800"
+>
+
+
+    <div class="truckTop">
+
+
+        <div class="truckImage">
+            🚛
+        </div>
+
+
+        <div class="truckInfo">
+
+            <h3>
+                Tata 407
+            </h3>
+
+            <p>
+                Open Body • 2.5 Ton
+                <br>
+                Available near pickup
+            </p>
+
+
+            <span class="verified">
+                ✓ Verified
+            </span>
+
+
+            <div class="rating">
+
+                <span>
+                    ★★★★★
+                </span>
+
+                4.9
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="truckDetails">
+
+
+        <div class="detail">
+
+            <strong>
+                2.5 T
+            </strong>
+
+            <small>
+                Capacity
+            </small>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                12 ft
+            </strong>
+
+            <small>
+                Body
+            </small>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                8 km
+            </strong>
+
+            <small>
+                Away
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="truckBottom">
+
+
+        <div class="price">
+
+            <strong>
+                ₹1,800
+            </strong>
+
+            <small>
+                Estimated fare
+            </small>
+
+        </div>
+
+
+        <button
+            class="viewBtn"
+            onclick="viewTruck('Tata 407')"
+        >
+
+            View Details
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- TRUCK CARD 2 -->
+
+<div
+    class="truckCard"
+    data-verified="true"
+    data-rating="4.8"
+    data-price="2200"
+>
+
+
+    <div class="truckTop">
+
+
+        <div class="truckImage">
+            🚚
+        </div>
+
+
+        <div class="truckInfo">
+
+            <h3>
+                Ashok Leyland Dost
+            </h3>
+
+            <p>
+                Pickup • 1.5 Ton
+                <br>
+                Available now
+            </p>
+
+
+            <span class="verified">
+                ✓ Verified
+            </span>
+
+
+            <div class="rating">
+
+                <span>
+                    ★★★★★
+                </span>
+
+                4.8
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="truckDetails">
+
+
+        <div class="detail">
+
+            <strong>
+                1.5 T
+            </strong>
+
+            <small>
+                Capacity
+            </small>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                10 ft
+            </strong>
+
+            <small>
+                Body
+            </small>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                5 km
+            </strong>
+
+            <small>
+                Away
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="truckBottom">
+
+
+        <div class="price">
+
+            <strong>
+                ₹2,200
+            </strong>
+
+            <small>
+                Estimated fare
+            </small>
+
+        </div>
+
+
+        <button
+            class="viewBtn"
+            onclick="viewTruck('Ashok Leyland Dost')"
+        >
+
+            View Details
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- TRUCK CARD 3 -->
+
+<div
+    class="truckCard"
+    data-verified="false"
+    data-rating="4.6"
+    data-price="2600"
+>
+
+
+    <div class="truckTop">
+
+
+        <div class="truckImage">
+            🚛
+        </div>
+
+
+        <div class="truckInfo">
+
+            <h3>
+                BharatBenz Truck
+            </h3>
+
+            <p>
+                Open Truck • 7 Ton
+                <br>
+                Available today
+            </p>
+
+
+            <span class="verified">
+                ✓ Verified
+            </span>
+
+
+            <div class="rating">
+
+                <span>
+                    ★★★★★
+                </span>
+
+                4.6
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="truckDetails">
+
+
+        <div class="detail">
+
+            <strong>
+                7 T
+            </strong>
+
+            <small>
+                Capacity
+            </small>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                20 ft
+            </strong>
+
+            <small>
+                Body
+            </small>
+
+        </div>
+
+
+        <div class="detail">
+
+            <strong>
+                14 km
+            </strong>
+
+            <small>
+                Away
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="truckBottom">
+
+
+        <div class="price">
+
+            <strong>
+                ₹2,600
+            </strong>
+
+            <small>
+                Estimated fare
+            </small>
+
+        </div>
+
+
+        <button
+            class="viewBtn"
+            onclick="viewTruck('BharatBenz Truck')"
+        >
+
+            View Details
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- =========================
+     MESSAGE BOX
+========================= -->
+
+<div
+    class="messageBox"
+    id="messageBox"
+>
+
+    <div class="big">
+        🚛
+    </div>
+
+    <strong>
+        Search for available trucks
+    </strong>
+
+    <p>
+        Enter pickup and destination,
+        then tap Search Available Trucks.
+    </p>
+
+</div>
+
+
+</main>
+
+
+
+<!-- =========================
+     PART 1 END
+======================
+<!-- =========================
+     VEHICLE CATEGORIES
+========================= -->
+
+<section class="vehicleSection">
+
+    <div class="sectionTitle">
+
+        <h2>
+            Choose Vehicle Type
+        </h2>
+
+        <span>
+            More options
+        </span>
+
+    </div>
+
+
+    <div class="vehicleCategories">
+
+
+        <div
+            class="vehicleCategory active"
+            onclick="chooseVehicle('Any Vehicle',this)"
+        >
+
+            <div class="vehicleCategoryIcon">
+                🚛
+            </div>
+
+            <strong>
+                Any
+            </strong>
+
+            <small>
+                Best match
+            </small>
+
+        </div>
+
+
+
+        <div
+            class="vehicleCategory"
+            onclick="chooseVehicle('Mini Truck',this)"
+        >
+
+            <div class="vehicleCategoryIcon">
+                🚚
+            </div>
+
+            <strong>
+                Mini Truck
+            </strong>
+
+            <small>
+                Up to 1.5T
+            </small>
+
+        </div>
+
+
+
+        <div
+            class="vehicleCategory"
+            onclick="chooseVehicle('Pickup',this)"
+        >
+
+            <div class="vehicleCategoryIcon">
+                🛻
+            </div>
+
+            <strong>
+                Pickup
+            </strong>
+
+            <small>
+                Small loads
+            </small>
+
+        </div>
+
+
+
+        <div
+            class="vehicleCategory"
+            onclick="chooseVehicle('LCV',this)"
+        >
+
+            <div class="vehicleCategoryIcon">
+                🚐
+            </div>
+
+            <strong>
+                LCV
+            </strong>
+
+            <small>
+                2–7T
+            </small>
+
+        </div>
+
+
+
+        <div
+            class="vehicleCategory"
+            onclick="chooseVehicle('Container',this)"
+        >
+
+            <div class="vehicleCategoryIcon">
+                🚛
+            </div>
+
+            <strong>
+                Container
+            </strong>
+
+            <small>
+                Large loads
+            </small>
+
+        </div>
+
+
+
+        <div
+            class="vehicleCategory"
+            onclick="chooseVehicle('Trailer',this)"
+        >
+
+            <div class="vehicleCategoryIcon">
+                🚜
+            </div>
+
+            <strong>
+                Trailer
+            </strong>
+
+            <small>
+                Heavy loads
+            </small>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SORT & FILTER
+========================= -->
+
+<section class="sortSection">
+
+    <div class="sortHeader">
+
+        <div>
+
+            <h2>
+                Compare Trucks
+            </h2>
+
+            <small>
+                Choose the best option for your shipment
+            </small>
+
+        </div>
+
+
+        <button
+            class="sortButton"
+            onclick="toggleSort()"
+        >
+
+            ↕ Sort
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="sortMenu"
+        id="sortMenu"
+    >
+
+        <button
+            onclick="sortTrucks('price')"
+        >
+            💰 Lowest Price
+        </button>
+
+        <button
+            onclick="sortTrucks('rating')"
+        >
+            ⭐ Highest Rating
+        </button>
+
+        <button
+            onclick="sortTrucks('distance')"
+        >
+            📍 Nearest Truck
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FARE ESTIMATE
+========================= -->
+
+<section class="fareCard">
+
+    <div class="fareTop">
+
+        <div>
+
+            <span class="fareLabel">
+                ESTIMATED TRANSPORT FARE
+            </span>
+
+            <h2 id="fareAmount">
+                ₹1,800 – ₹3,500
+            </h2>
+
+        </div>
+
+
+        <div class="fareIcon">
+            💰
+        </div>
+
+    </div>
+
+
+    <div class="fareInfo">
+
+        <div>
+
+            <small>
+                Distance
+            </small>
+
+            <strong id="distanceValue">
+                —
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <small>
+                Load
+            </small>
+
+            <strong id="loadValue">
+                —
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <small>
+                Vehicle
+            </small>
+
+            <strong id="vehicleValue">
+                Any
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <p class="fareNote">
+
+        Final fare may vary based on distance,
+        vehicle type, load, route and transporter.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     TRUCK DETAILS MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="truckModal"
+>
+
+
+    <div class="modalOverlay"
+         onclick="closeTruckModal()">
+    </div>
+
+
+    <div class="modalBox">
+
+
+        <button
+            class="modalClose"
+            onclick="closeTruckModal()"
+        >
+            ×
+        </button>
+
+
+        <div class="modalTruckIcon">
+            🚛
+        </div>
+
+
+        <h2 id="modalTruckName">
+            Truck Details
+        </h2>
+
+
+        <div class="modalVerified">
+            ✓ Verified Transporter
+        </div>
+
+
+        <div class="modalRating">
+
+            ⭐ 4.9
+
+            <span>
+                Excellent rating
+            </span>
+
+        </div>
+
+
+        <div class="modalDetails">
+
+
+            <div>
+
+                <small>
+                    Capacity
+                </small>
+
+                <strong id="modalCapacity">
+                    2.5 Ton
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <small>
+                    Body
+                </small>
+
+                <strong id="modalBody">
+                    12 ft
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <small>
+                    Distance
+                </small>
+
+                <strong id="modalDistance">
+                    8 km
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <small>
+                    Availability
+                </small>
+
+                <strong>
+                    Available
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="transporterBox">
+
+            <div class="transporterAvatar">
+                👨‍✈️
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Verified Transporter
+                </strong>
+
+                <small>
+                    TransportPro verified partner
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="modalPrice">
+
+            <small>
+                Estimated fare
+            </small>
+
+            <strong id="modalPrice">
+                ₹1,800
+            </strong>
+
+        </div>
+
+
+        <button
+            class="bookTruckBtn"
+            onclick="bookSelectedTruck()"
+        >
+
+            🚛 Book This Truck
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FILTER MODAL
+========================= -->
+
+<div
+    class="filterModal"
+    id="filterModal"
+>
+
+
+    <div
+        class="filterOverlay"
+        onclick="closeFilters()"
+    >
+    </div>
+
+
+    <div class="filterBox">
+
+
+        <div class="filterHeader">
+
+            <h2>
+                Filters
+            </h2>
+
+
+            <button
+                onclick="closeFilters()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="filterGroup">
+
+            <label>
+                Maximum Budget
+            </label>
+
+
+            <input
+                id="maxBudget"
+                type="number"
+                placeholder="₹ Maximum fare"
+            >
+
+        </div>
+
+
+        <div class="filterGroup">
+
+            <label>
+                Minimum Rating
+            </label>
+
+
+            <select id="minRating">
+
+                <option value="0">
+                    Any rating
+                </option>
+
+                <option value="4">
+                    4.0+ ⭐
+                </option>
+
+                <option value="4.5">
+                    4.5+ ⭐
+                </option>
+
+                <option value="4.8">
+                    4.8+ ⭐
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filterGroup">
+
+            <label>
+                Verification
+            </label>
+
+
+            <label class="checkRow">
+
+                <input
+                    type="checkbox"
+                    id="verifiedOnly"
+                >
+
+                <span>
+                    Show verified trucks only
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <button
+            class="applyFilterBtn"
+            onclick="applyFilters()"
+        >
+
+            Apply Filters
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     ADDITIONAL CSS
+========================= -->
+
+<style>
+
+
+/* =========================
+   VEHICLE SECTION
+========================= */
+
+.vehicleSection{
+    margin-top:23px;
+}
+
+.sectionTitle{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:11px;
+}
+
+.sectionTitle h2{
+    font-size:16px;
+}
+
+.sectionTitle span{
+    font-size:8px;
+    color:#2563eb;
+}
+
+
+.vehicleCategories{
+    display:flex;
+
+    gap:9px;
+
+    overflow-x:auto;
+
+    padding:
+        2px
+        1px
+        6px;
+
+    scrollbar-width:none;
+}
+
+.vehicleCategories::-webkit-scrollbar{
+    display:none;
+}
+
+
+.vehicleCategory{
+    flex:0 0 105px;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #e4e9f0;
+
+    border-radius:16px;
+
+    padding:11px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.vehicleCategory:active{
+    transform:scale(.95);
+}
+
+.vehicleCategory.active{
+    border-color:#2563eb;
+
+    background:#eff4ff;
+}
+
+
+.vehicleCategoryIcon{
+    width:42px;
+    height:42px;
+
+    margin:auto;
+
+    border-radius:12px;
+
+    background:#f1f5f9;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+}
+
+
+.vehicleCategory strong{
+    display:block;
+
+    font-size:9px;
+
+    margin-top:7px;
+}
+
+
+.vehicleCategory small{
+    display:block;
+
+    font-size:7px;
+
+    color:#667085;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   SORT
+========================= */
+
+.sortSection{
+    position:relative;
+
+    margin-top:22px;
+}
+
+.sortHeader{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+}
+
+.sortHeader h2{
+    font-size:16px;
+}
+
+.sortHeader small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-top:4px;
+}
+
+
+.sortButton{
+    border:
+        1px solid
+        #d0d5dd;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    padding:
+        9px
+        12px;
+
+    font-size:8px;
+
+    color:#344054;
+}
+
+
+.sortMenu{
+    display:none;
+
+    position:absolute;
+
+    right:0;
+    top:55px;
+
+    z-index:50;
+
+    width:170px;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #e4e9f0;
+
+    border-radius:13px;
+
+    padding:5px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.14);
+}
+
+.sortMenu button{
+    display:block;
+
+    width:100%;
+
+    border:0;
+
+    background:#fff;
+
+    text-align:left;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    font-size:8px;
+
+    color:#344054;
+}
+
+.sortMenu button:active{
+    background:#f2f4f7;
+}
+
+
+/* =========================
+   FARE CARD
+========================= */
+
+.fareCard{
+    margin-top:17px;
+
+    background:#07111f;
+
+    color:#fff;
+
+    border-radius:18px;
+
+    padding:16px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(7,17,31,.14);
+}
+
+.fareTop{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+}
+
+.fareLabel{
+    color:#94a3b8;
+
+    font-size:7px;
+
+    font-weight:700;
+}
+
+.fareTop h2{
+    font-size:21px;
+
+    margin-top:5px;
+}
+
+.fareIcon{
+    width:45px;
+    height:45px;
+
+    border-radius:14px;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+}
+
+.fareInfo{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+
+    margin-top:15px;
+
+    padding-top:12px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.fareInfo small{
+    display:block;
+
+    color:#94a3b8;
+
+    font-size:7px;
+}
+
+.fareInfo strong{
+    display:block;
+
+    font-size:9px;
+
+    margin-top:4px;
+}
+
+.fareNote{
+    color:#94a3b8;
+
+    font-size:7px;
+
+    line-height:1.5;
+
+    margin-top:12px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal,
+.filterModal{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+}
+
+.modalOverlay,
+.filterOverlay{
+    position:absolute;
+
+    inset:0;
+
+    background:
+        rgba(0,0,0,.58);
+}
+
+
+.modalBox{
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    transform:
+        translateX(-50%);
+
+    width:100%;
+    max-width:550px;
+
+    background:#fff;
+
+    border-radius:
+        23px
+        23px
+        0
+        0;
+
+    padding:24px 18px 25px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+}
+
+
+.modalClose{
+    position:absolute;
+
+    top:12px;
+    right:14px;
+
+    width:34px;
+    height:34px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#f2f4f7;
+
+    font-size:22px;
+
+    color:#344054;
+}
+
+
+.modalTruckIcon{
+    width:65px;
+    height:65px;
+
+    border-radius:17px;
+
+    background:#eff4ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:34px;
+
+    margin-bottom:12px;
+}
+
+
+.modalBox h2{
+    font-size:20px;
+
+    margin-bottom:7px;
+}
+
+
+.modalVerified{
+    display:inline-block;
+
+    background:#ecfdf3;
+
+    color:#027a48;
+
+    border-radius:9px;
+
+    padding:5px 8px;
+
+    font-size:7px;
+
+    font-weight:700;
+}
+
+
+.modalRating{
+    margin-top:9px;
+
+    font-size:9px;
+
+    color:#f79009;
+}
+
+.modalRating span{
+    color:#667085;
+
+    margin-left:4px;
+
+    font-size:7px;
+}
+
+
+.modalDetails{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:9px;
+
+    margin-top:15px;
+}
+
+
+.modalDetails > div{
+    background:#f8fafc;
+
+    border-radius:11px;
+
+    padding:10px;
+}
+
+
+.modalDetails small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+}
+
+
+.modalDetails strong{
+    display:block;
+
+    font-size:9px;
+
+    margin-top:4px;
+}
+
+
+.transporterBox{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:14px;
+
+    padding:11px;
+
+    border:
+        1px solid
+        #e4e9f0;
+
+    border-radius:13px;
+}
+
+
+.transporterAvatar{
+    width:38px;
+    height:38px;
+
+    border-radius:11px;
+
+    background:#eff4ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+
+.transporterBox strong{
+    display:block;
+
+    font-size:9px;
+}
+
+
+.transporterBox small{
+    display:block;
+
+    color:#667085;
+
+    font-size:7px;
+
+    margin-top:3px;
+}
+
+
+.modalPrice{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:15px;
+
+    padding-top:13px;
+
+    border-top:
+        1px solid
+        #eef1f5;
+}
+
+
+.modalPrice small{
+    color:#667085;
+
+    font-size:8px;
+}
+
+
+.modalPrice strong{
+    font-size:18px;
+}
+
+
+.bookTruckBtn{
+    width:100%;
+
+    height:47px;
+
+    margin-top:14px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   FILTER BOX
+========================= */
+
+.filterBox{
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    transform:
+        translateX(-50%);
+
+    width:100%;
+    max-width:550px;
+
+    background:#fff;
+
+    border-radius:
+        22px
+        22px
+        0
+        0;
+
+    padding:20px 17px 25px;
+}
+
+
+.filterHeader{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:17px;
+}
+
+
+.filterHeader h2{
+    font-size:19px;
+}
+
+
+.filterHeader button{
+    width:33px;
+    height:33px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#f2f4f7;
+
+    font-size:20px;
+}
+
+
+.filterGroup{
+    margin-bottom:16px;
+}
+
+
+.filterGroup > label{
+    display:block;
+
+    margin-bottom:7px;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    color:#344054;
+}
+
+
+.filterGroup input,
+.filterGroup select{
+    width:100%;
+
+    height:43px;
+
+    border:
+        1px solid
+        #d0d5dd;
+
+    border-radius:10px;
+
+    outline:0;
+
+    padding:
+        0
+        11px;
+
+    font-size:9px;
+
+    background:#fff;
+}
+
+
+.checkRow{
+    display:flex !important;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-weight:400 !important;
+
+    margin-top:8px;
+}
+
+
+.checkRow input{
+    width:17px !important;
+    height:17px !important;
+}
+
+
+.applyFilterBtn{
+    width:100%;
+
+    height:46px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:10px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .vehicleCategory{
+        flex-basis:96px;
+    }
+
+    .fareTop h2{
+        font-size:19px;
+    }
+
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(min-width:650px){
+
+    .vehicleCategories{
+        display:grid;
+
+        grid-template-columns:
+            repeat(6,1fr);
+
+        overflow:visible;
+    }
+
+    .vehicleCategory{
+        flex-basis:auto;
+    }
+
+    .modalBox,
+    .filterBox{
+        bottom:50%;
+
+        transform:
+            translate(-50%,50%);
+
+        border-radius:22px;
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================
+     PART 2 END
+========================= -->
+
+<!--
+====================================================
+PART 3 इसी जगह से शुरू होगा.
+
+अभी </body> और </html> मत लगाना.
+====================================================
+-->
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+/* =========================================================
+   FIND TRUCK — PART 1/5
+   SMART SEARCH + DYNAMIC FARE FOUNDATION
+========================================================= */
+
+(function () {
+
+    "use strict";
+
+    /* =====================================================
+       TRUCK DATA
+    ===================================================== */
+
+    window.TPTruckSystem = {
+
+        trucks: [
+
+            {
+                id: "TP001",
+                name: "Tata 407",
+                type: "Mini Truck",
+                category: "mini",
+                capacity: 2500,
+                capacityText: "2.5 Ton",
+                baseRate: 24,
+                rating: 4.8,
+                reviews: 126,
+                verified: true,
+                nearby: true,
+                distance: 18,
+                icon: "🚚"
+            },
+
+            {
+                id: "TP002",
+                name: "Ashok Leyland Dost",
+                type: "Pickup",
+                category: "pickup",
+                capacity: 1500,
+                capacityText: "1.5 Ton",
+                baseRate: 22,
+                rating: 4.7,
+                reviews: 98,
+                verified: true,
+                nearby: true,
+                distance: 24,
+                icon: "🚛"
+            },
+
+            {
+                id: "TP003",
+                name: "Tata 1512",
+                type: "Medium Truck",
+                category: "medium",
+                capacity: 7000,
+                capacityText: "7 Ton",
+                baseRate: 31,
+                rating: 4.6,
+                reviews: 87,
+                verified: true,
+                nearby: true,
+                distance: 31,
+                icon: "🚚"
+            },
+
+            {
+                id: "TP004",
+                name: "BharatBenz 1917",
+                type: "Heavy Truck",
+                category: "heavy",
+                capacity: 10000,
+                capacityText: "10 Ton",
+                baseRate: 38,
+                rating: 4.9,
+                reviews: 214,
+                verified: true,
+                nearby: false,
+                distance: 42,
+                icon: "🚛"
+            },
+
+            {
+                id: "TP005",
+                name: "Eicher Pro 2055",
+                type: "Heavy Truck",
+                category: "heavy",
+                capacity: 9000,
+                capacityText: "9 Ton",
+                baseRate: 36,
+                rating: 4.8,
+                reviews: 153,
+                verified: false,
+                nearby: false,
+                distance: 55,
+                icon: "🚛"
+            },
+
+            {
+                id: "TP006",
+                name: "Tata Ace",
+                type: "Mini Truck",
+                category: "mini",
+                capacity: 750,
+                capacityText: "750 Kg",
+                baseRate: 20,
+                rating: 4.5,
+                reviews: 71,
+                verified: true,
+                nearby: true,
+                distance: 12,
+                icon: "🚚"
+            }
+
+        ],
+
+        currentSearch: null,
+
+        results: []
+
+    };
+
+
+    /* =====================================================
+       HELPER
+    ===================================================== */
+
+    function get(id) {
+
+        return document.getElementById(id);
+
+    }
+
+
+    /* =====================================================
+       NUMBER HELPER
+    ===================================================== */
+
+    function numberValue(value) {
+
+        const number = Number(value);
+
+        if (Number.isFinite(number)) {
+
+            return number;
+
+        }
+
+        return 0;
+
+    }
+
+
+    /* =====================================================
+       LOCATION SWAP
+    ===================================================== */
+
+    window.swapLocations = function () {
+
+        const pickup = get("pickup");
+
+        const destination = get("destination");
+
+        if (!pickup || !destination) {
+
+            return;
+
+        }
+
+        const oldValue = pickup.value;
+
+        pickup.value = destination.value;
+
+        destination.value = oldValue;
+
+    };
+
+
+    /* =====================================================
+       DYNAMIC FARE ENGINE
+       FEATURE #6
+    ===================================================== */
+
+    window.calculateDynamicFare = function (
+        truck,
+        searchData
+    ) {
+
+        let distance =
+            numberValue(searchData.distance);
+
+
+        if (distance <= 0) {
+
+            distance =
+                numberValue(truck.distance);
+
+        }
+
+
+        if (distance <= 0) {
+
+            distance = 20;
+
+        }
+
+
+        /* BASE FARE */
+
+        let fare =
+            distance * truck.baseRate;
+
+
+        /* LOAD WEIGHT FACTOR */
+
+        const weight =
+            numberValue(searchData.weight);
+
+
+        if (weight > 0) {
+
+            const capacity =
+                numberValue(truck.capacity);
+
+
+            if (
+                capacity > 0 &&
+                weight >= capacity * 0.75
+            ) {
+
+                fare *= 1.08;
+
+            }
+
+
+            if (
+                capacity > 0 &&
+                weight < capacity * 0.25
+            ) {
+
+                fare *= 1.03;
+
+            }
+
+        }
+
+
+        /* FUEL / OPERATING COST */
+
+        const fuelFactor = 1.08;
+
+        fare *= fuelFactor;
+
+
+        /* INFLATION */
+
+        const inflationFactor = 1.05;
+
+        fare *= inflationFactor;
+
+
+        /* DEMAND */
+
+        const demandFactor = 1.00;
+
+        fare *= demandFactor;
+
+
+        /* VERIFIED VEHICLE */
+
+        if (truck.verified) {
+
+            fare *= 1.02;
+
+        }
+
+
+        /* MINIMUM FARE */
+
+        const minimumFare = 2500;
+
+        if (fare < minimumFare) {
+
+            fare = minimumFare;
+
+        }
+
+
+        /* ROUND */
+
+        fare =
+            Math.round(fare / 100) * 100;
+
+
+        /* FARE RANGE */
+
+        const minFare =
+            Math.round(
+                fare * 0.94 / 100
+            ) * 100;
+
+
+        const maxFare =
+            Math.round(
+                fare * 1.06 / 100
+            ) * 100;
+
+
+        return {
+
+            estimated: fare,
+
+            min: minFare,
+
+            max: maxFare,
+
+            distance: distance,
+
+            fuelFactor: fuelFactor,
+
+            inflationFactor: inflationFactor,
+
+            demandFactor: demandFactor
+
+        };
+
+    };
+
+
+    /* =====================================================
+       VALIDATE SEARCH
+    ===================================================== */
+
+    function validateSearch() {
+
+        const pickup =
+            get("pickup");
+
+        const destination =
+            get("destination");
+
+
+        if (!pickup) {
+
+            alert(
+                "Pickup location field not found."
+            );
+
+            return false;
+
+        }
+
+
+        if (!destination) {
+
+            alert(
+                "Destination field not found."
+            );
+
+            return false;
+
+        }
+
+
+        const pickupValue =
+            pickup.value.trim();
+
+
+        const destinationValue =
+            destination.value.trim();
+
+
+        if (!pickupValue) {
+
+            alert(
+                "Please enter pickup location."
+            );
+
+            pickup.focus();
+
+            return false;
+
+        }
+
+
+        if (!destinationValue) {
+
+            alert(
+                "Please enter destination."
+            );
+
+            destination.focus();
+
+            return false;
+
+        }
+
+
+        if (
+            pickupValue.toLowerCase() ===
+            destinationValue.toLowerCase()
+        ) {
+
+            alert(
+                "Pickup and destination cannot be the same."
+            );
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
+
+
+    /* =====================================================
+       SAVE SEARCH
+    ===================================================== */
+
+    function saveSearch(data) {
+
+        try {
+
+            localStorage.setItem(
+                "transportProTruckSearch",
+                JSON.stringify(data)
+            );
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Search could not be saved."
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SEARCH TRUCKS
+    ===================================================== */
+
+    window.findTrucks = function () {
+
+        if (!validateSearch()) {
+
+            return;
+
+        }
+
+
+        const pickup =
+            get("pickup").value.trim();
+
+
+        const destination =
+            get("destination").value.trim();
+
+
+        const goodsElement =
+            get("goodsType");
+
+
+        const weightElement =
+            get("weight");
+
+
+        const goods =
+            goodsElement
+            ? goodsElement.value
+            : "";
+
+
+        const weight =
+            weightElement
+            ? numberValue(
+                weightElement.value
+            )
+            : 0;
+
+
+        if (weight < 0) {
+
+            alert(
+                "Please enter a valid load weight."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Temporary distance estimate.
+         *
+         * Later this can be replaced
+         * with live Maps/route distance.
+         */
+
+        const distance =
+            100 +
+            (
+                Math.abs(
+                    pickup.length -
+                    destination.length
+                ) * 7
+            );
+
+
+        const searchData = {
+
+            pickup: pickup,
+
+            destination: destination,
+
+            goods: goods,
+
+            weight: weight,
+
+            distance: distance,
+
+            searchedAt:
+                new Date().toISOString()
+
+        };
+
+
+        TPTruckSystem.currentSearch =
+            searchData;
+
+
+        saveSearch(
+            searchData
+        );
+
+
+        /* FILTER BY CAPACITY */
+
+        let trucks =
+            TPTruckSystem.trucks.filter(
+                function (truck) {
+
+                    if (weight <= 0) {
+
+                        return true;
+
+                    }
+
+                    return (
+                        truck.capacity >=
+                        weight
+                    );
+
+                }
+            );
+
+
+        /* CALCULATE DYNAMIC FARE */
+
+        trucks =
+            trucks.map(
+                function (truck) {
+
+                    const fare =
+                        calculateDynamicFare(
+                            truck,
+                            searchData
+                        );
+
+
+                    return {
+
+                        ...truck,
+
+                        fare: fare
+
+                    };
+
+                }
+            );
+
+
+        TPTruckSystem.results =
+            trucks;
+
+
+        try {
+
+            localStorage.setItem(
+
+                "transportProTruckResults",
+
+                JSON.stringify(
+                    trucks
+                )
+
+            );
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Truck results could not be saved."
+            );
+
+        }
+
+
+        /*
+         * Part 3 will provide
+         * the final card renderer.
+         */
+
+        if (
+            typeof window.renderTruckResults
+            === "function"
+        ) {
+
+            window.renderTruckResults();
+
+        }
+
+
+        /* SCROLL TO RESULTS */
+
+        const results =
+            document.querySelector(
+                ".resultsHeader"
+            );
+
+
+        if (results) {
+
+            results.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "start"
+
+            });
+
+        }
+
+    };
+
+
+    /* =====================================================
+       RESTORE PREVIOUS SEARCH
+    ===================================================== */
+
+    function restoreSearch() {
+
+        try {
+
+            const saved =
+                JSON.parse(
+
+                    localStorage.getItem(
+                        "transportProTruckSearch"
+                    ) || "{}"
+
+                );
+
+
+            if (
+                saved.pickup &&
+                get("pickup")
+            ) {
+
+                get("pickup").value =
+                    saved.pickup;
+
+            }
+
+
+            if (
+                saved.destination &&
+                get("destination")
+            ) {
+
+                get("destination").value =
+                    saved.destination;
+
+            }
+
+
+            if (
+                saved.goods &&
+                get("goodsType")
+            ) {
+
+                get("goodsType").value =
+                    saved.goods;
+
+            }
+
+
+            if (
+                saved.weight &&
+                get("weight")
+            ) {
+
+                get("weight").value =
+                    saved.weight;
+
+            }
+
+
+            if (saved.distance) {
+
+                TPTruckSystem.currentSearch =
+                    saved;
+
+            }
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Previous search could not be restored."
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       ENTER KEY SEARCH
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                const field =
+                    event.target.id;
+
+
+                if (
+                    field === "pickup" ||
+                    field === "destination" ||
+                    field === "weight"
+                ) {
+
+                    event.preventDefault();
+
+                    findTrucks();
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INITIALIZATION
+    ===================================================== */
+
+    function initializePart1() {
+
+        restoreSearch();
+
+
+        TPTruckSystem.results =
+            TPTruckSystem.trucks.map(
+                function (truck) {
+
+                    const fare =
+                        calculateDynamicFare(
+
+                            truck,
+
+                            {
+                                distance:
+                                    truck.distance,
+
+                                weight: 0
+
+                            }
+
+                        );
+
+
+                    return {
+
+                        ...truck,
+
+                        fare: fare
+
+                    };
+
+                }
+            );
+
+    }
+
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializePart1
+        );
+
+    }
+    else {
+
+        initializePart1();
+
+    }
+
+})();
+
+/* =========================================================
+   END PART 1/5
+========================================================= */
+/* =========================================================
+   FIND TRUCK — PART 2/5
+   VEHICLE TYPE + FILTERS + SORT
+========================================================= */
+
+
+/* =====================================================
+   FILTER STATE
+===================================================== */
+
+TPTruckSystem.activeFilter = "all";
+
+TPTruckSystem.activeVehicle = "all";
+
+TPTruckSystem.filterSettings = {
+
+    maxBudget: 0,
+
+    minCapacity: 0,
+
+    verifiedOnly: false,
+
+    nearbyOnly: false
+
+};
+
+
+
+/* =====================================================
+   GET CURRENT TRUCK RESULTS
+===================================================== */
+
+function getCurrentTruckResults() {
+
+    if (
+        Array.isArray(
+            TPTruckSystem.results
+        )
+    ) {
+
+        return [
+            ...TPTruckSystem.results
+        ];
+
+    }
+
+
+    return [
+        ...TPTruckSystem.trucks
+    ];
+
+}
+
+
+
+/* =====================================================
+   APPLY VEHICLE TYPE
+===================================================== */
+
+window.selectVehicleType =
+    function (type) {
+
+        type =
+            String(
+                type || "all"
+            ).toLowerCase();
+
+
+        TPTruckSystem.activeVehicle =
+            type;
+
+
+        applyAllTruckFilters();
+
+    };
+
+
+
+/* =====================================================
+   VEHICLE TYPE CHANGE
+===================================================== */
+
+const vehicleTypeSelect =
+    document.getElementById(
+        "vehicleType"
+    );
+
+
+if (vehicleTypeSelect) {
+
+    vehicleTypeSelect.addEventListener(
+        "change",
+        function () {
+
+            TPTruckSystem.activeVehicle =
+                String(
+                    this.value || "all"
+                ).toLowerCase();
+
+
+            applyAllTruckFilters();
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   QUICK FILTER
+===================================================== */
+
+window.setFilter =
+    function (
+        element,
+        filter
+    ) {
+
+        TPTruckSystem.activeFilter =
+            String(
+                filter || "all"
+            ).toLowerCase();
+
+
+        document
+        .querySelectorAll(
+            ".filterChip"
+        )
+        .forEach(
+            function (chip) {
+
+                chip.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        if (element) {
+
+            element.classList.add(
+                "active"
+            );
+
+        }
+
+
+        applyAllTruckFilters();
+
+    };
+
+
+
+/* =====================================================
+   APPLY ALL FILTERS
+===================================================== */
+
+function applyAllTruckFilters() {
+
+    let trucks =
+        getCurrentTruckResults();
+
+
+    /* =============================================
+       VEHICLE TYPE
+    ============================================= */
+
+    const vehicle =
+        TPTruckSystem.activeVehicle;
+
+
+    if (
+        vehicle &&
+        vehicle !== "all"
+    ) {
+
+        trucks =
+            trucks.filter(
+                function (truck) {
+
+                    const category =
+                        String(
+                            truck.category ||
+                            ""
+                        ).toLowerCase();
+
+
+                    const type =
+                        String(
+                            truck.type ||
+                            ""
+                        ).toLowerCase();
+
+
+                    return (
+                        category === vehicle ||
+                        type.includes(vehicle)
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    /* =============================================
+       VERIFIED
+    ============================================= */
+
+    if (
+        TPTruckSystem.activeFilter ===
+        "verified"
+    ) {
+
+        trucks =
+            trucks.filter(
+                function (truck) {
+
+                    return (
+                        truck.verified ===
+                        true
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    /* =============================================
+       NEARBY
+    ============================================= */
+
+    if (
+        TPTruckSystem.activeFilter ===
+        "nearby"
+    ) {
+
+        trucks =
+            trucks.filter(
+                function (truck) {
+
+                    return (
+                        truck.nearby ===
+                        true
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    /* =============================================
+       LOWEST PRICE
+    ============================================= */
+
+    if (
+        TPTruckSystem.activeFilter ===
+        "lowest"
+    ) {
+
+        trucks.sort(
+            function (a, b) {
+
+                const priceA =
+                    a.fare
+                    ? a.fare.estimated
+                    : a.price || 0;
+
+
+                const priceB =
+                    b.fare
+                    ? b.fare.estimated
+                    : b.price || 0;
+
+
+                return priceA - priceB;
+
+            }
+        );
+
+    }
+
+
+
+    /* =============================================
+       TOP RATED
+    ============================================= */
+
+    if (
+        TPTruckSystem.activeFilter ===
+        "top"
+    ) {
+
+        trucks.sort(
+            function (a, b) {
+
+                return (
+                    Number(b.rating || 0) -
+                    Number(a.rating || 0)
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =============================================
+       CUSTOM FILTERS
+    ============================================= */
+
+    const settings =
+        TPTruckSystem.filterSettings;
+
+
+    if (
+        settings.maxBudget > 0
+    ) {
+
+        trucks =
+            trucks.filter(
+                function (truck) {
+
+                    const fare =
+                        truck.fare
+                        ? truck.fare.estimated
+                        : truck.price || 0;
+
+
+                    return (
+                        fare <=
+                        settings.maxBudget
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    if (
+        settings.minCapacity > 0
+    ) {
+
+        trucks =
+            trucks.filter(
+                function (truck) {
+
+                    return (
+                        Number(
+                            truck.capacity || 0
+                        ) >=
+                        settings.minCapacity
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    if (
+        settings.verifiedOnly
+    ) {
+
+        trucks =
+            trucks.filter(
+                function (truck) {
+
+                    return truck.verified;
+
+                }
+            );
+
+    }
+
+
+
+    if (
+        settings.nearbyOnly
+    ) {
+
+        trucks =
+            trucks.filter(
+                function (truck) {
+
+                    return truck.nearby;
+
+                }
+            );
+
+    }
+
+
+
+    /* =============================================
+       SAVE FILTERED RESULTS
+    ============================================= */
+
+    TPTruckSystem.filteredResults =
+        trucks;
+
+
+    /*
+     * Part 3 का renderer
+     * इन्हीं filtered results को दिखाएगा।
+     */
+
+    if (
+        typeof window.renderTruckResults ===
+        "function"
+    ) {
+
+        window.renderTruckResults();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FILTER MODAL
+===================================================== */
+
+window.showFilters =
+    function () {
+
+        const modal =
+            document.getElementById(
+                "filterModal"
+            );
+
+
+        if (!modal) {
+
+            return;
+
+        }
+
+
+        modal.style.display =
+            "block";
+
+
+        modal.classList.add(
+            "show"
+        );
+
+    };
+
+
+
+window.closeFilters =
+    function () {
+
+        const modal =
+            document.getElementById(
+                "filterModal"
+            );
+
+
+        if (!modal) {
+
+            return;
+
+        }
+
+
+        modal.style.display =
+            "none";
+
+
+        modal.classList.remove(
+            "show"
+        );
+
+    };
+
+
+
+/* =====================================================
+   APPLY FILTER MODAL
+===================================================== */
+
+window.applyFilters =
+    function () {
+
+        const maxBudgetElement =
+            document.getElementById(
+                "maxBudget"
+            );
+
+
+        const minCapacityElement =
+            document.getElementById(
+                "minCapacity"
+            );
+
+
+        const verifiedElement =
+            document.getElementById(
+                "verifiedOnly"
+            );
+
+
+        const nearbyElement =
+            document.getElementById(
+                "nearbyOnly"
+            );
+
+
+        TPTruckSystem.filterSettings = {
+
+            maxBudget:
+                maxBudgetElement
+                ? Number(
+                    maxBudgetElement.value || 0
+                )
+                : 0,
+
+
+            minCapacity:
+                minCapacityElement
+                ? Number(
+                    minCapacityElement.value || 0
+                )
+                : 0,
+
+
+            verifiedOnly:
+                verifiedElement
+                ? Boolean(
+                    verifiedElement.checked
+                )
+                : false,
+
+
+            nearbyOnly:
+                nearbyElement
+                ? Boolean(
+                    nearbyElement.checked
+                )
+                : false
+
+        };
+
+
+        applyAllTruckFilters();
+
+
+        closeFilters();
+
+    };
+
+
+
+/* =====================================================
+   RESET FILTERS
+===================================================== */
+
+window.resetFilters =
+    function () {
+
+        TPTruckSystem.activeFilter =
+            "all";
+
+
+        TPTruckSystem.activeVehicle =
+            "all";
+
+
+        TPTruckSystem.filterSettings = {
+
+            maxBudget: 0,
+
+            minCapacity: 0,
+
+            verifiedOnly: false,
+
+            nearbyOnly: false
+
+        };
+
+
+        const maxBudget =
+            document.getElementById(
+                "maxBudget"
+            );
+
+
+        if (maxBudget) {
+
+            maxBudget.value = "";
+
+        }
+
+
+        const minCapacity =
+            document.getElementById(
+                "minCapacity"
+            );
+
+
+        if (minCapacity) {
+
+            minCapacity.value = "";
+
+        }
+
+
+        const verifiedOnly =
+            document.getElementById(
+                "verifiedOnly"
+            );
+
+
+        if (verifiedOnly) {
+
+            verifiedOnly.checked =
+                false;
+
+        }
+
+
+        const nearbyOnly =
+            document.getElementById(
+                "nearbyOnly"
+            );
+
+
+        if (nearbyOnly) {
+
+            nearbyOnly.checked =
+                false;
+
+        }
+
+
+        document
+        .querySelectorAll(
+            ".filterChip"
+        )
+        .forEach(
+            function (chip) {
+
+                chip.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        const firstChip =
+            document.querySelector(
+                ".filterChip"
+            );
+
+
+        if (firstChip) {
+
+            firstChip.classList.add(
+                "active"
+            );
+
+        }
+
+
+        applyAllTruckFilters();
+
+    };
+
+
+
+/* =====================================================
+   SORT TRUCKS
+===================================================== */
+
+window.sortTrucks =
+    function (sortType) {
+
+        sortType =
+            String(
+                sortType || ""
+            ).toLowerCase();
+
+
+        let trucks =
+            getCurrentTruckResults();
+
+
+        if (
+            sortType ===
+            "price"
+        ) {
+
+            trucks.sort(
+                function (a, b) {
+
+                    const aPrice =
+                        a.fare
+                        ? a.fare.estimated
+                        : a.price || 0;
+
+
+                    const bPrice =
+                        b.fare
+                        ? b.fare.estimated
+                        : b.price || 0;
+
+
+                    return (
+                        aPrice -
+                        bPrice
+                    );
+
+                }
+            );
+
+        }
+
+
+        else if (
+            sortType ===
+            "rating"
+        ) {
+
+            trucks.sort(
+                function (a, b) {
+
+                    return (
+                        Number(
+                            b.rating || 0
+                        ) -
+                        Number(
+                            a.rating || 0
+                        )
+                    );
+
+                }
+            );
+
+        }
+
+
+        else if (
+            sortType ===
+            "distance"
+        ) {
+
+            trucks.sort(
+                function (a, b) {
+
+                    return (
+                        Number(
+                            a.distance || 0
+                        ) -
+                        Number(
+                            b.distance || 0
+                        )
+                    );
+
+                }
+            );
+
+        }
+
+
+        else if (
+            sortType ===
+            "capacity"
+        ) {
+
+            trucks.sort(
+                function (a, b) {
+
+                    return (
+                        Number(
+                            a.capacity || 0
+                        ) -
+                        Number(
+                            b.capacity || 0
+                        )
+                    );
+
+                }
+            );
+
+        }
+
+
+        TPTruckSystem.results =
+            trucks;
+
+
+        TPTruckSystem.filteredResults =
+            trucks;
+
+
+        if (
+            typeof window.renderTruckResults ===
+            "function"
+        ) {
+
+            window.renderTruckResults();
+
+        }
+
+    };
+
+
+
+/* =====================================================
+   END PART 2/5
+========================================================= */
+/* =========================================================
+   FIND TRUCK — PART 3/5
+   TRUCK RESULTS + PREMIUM CARDS
+========================================================= */
+
+window.renderTruckResults = function () {
+
+    const list =
+        document.getElementById("truckList");
+
+    if (!list) {
+
+        console.warn(
+            "truckList element not found."
+        );
+
+        return;
+
+    }
+
+
+    let trucks =
+        TPTruckSystem.filteredResults;
+
+
+    if (
+        !Array.isArray(trucks)
+    ) {
+
+        trucks =
+            TPTruckSystem.results || [];
+
+    }
+
+
+    if (
+        !Array.isArray(trucks)
+    ) {
+
+        trucks = [];
+
+    }
+
+
+    /* =====================================================
+       RESULT COUNT
+    ===================================================== */
+
+    const countElements =
+        document.querySelectorAll(
+            ".resultCount, .resultsCount"
+        );
+
+
+    countElements.forEach(
+        function (element) {
+
+            element.textContent =
+                trucks.length +
+                (
+                    trucks.length === 1
+                    ? " truck found"
+                    : " trucks found"
+                );
+
+        }
+    );
+
+
+    /* =====================================================
+       EMPTY RESULT
+    ===================================================== */
+
+    if (!trucks.length) {
+
+        list.innerHTML = `
+
+            <div class="noTruckResult">
+
+                <div class="noTruckIcon">
+                    🚛
+                </div>
+
+                <h3>
+                    No suitable truck found
+                </h3>
+
+                <p>
+                    Try changing your
+                    pickup, destination,
+                    weight or filters.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="resetFilters()"
+                >
+                    Reset Filters
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       CLEAR OLD CARDS
+    ===================================================== */
+
+    list.innerHTML = "";
+
+
+    /* =====================================================
+       CREATE CARDS
+    ===================================================== */
+
+    trucks.forEach(
+        function (truck) {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "truckCard tpDynamicTruckCard";
+
+
+            card.dataset.truckId =
+                truck.id;
+
+
+            const fare =
+                truck.fare
+                ? truck.fare
+                : calculateDynamicFare(
+                    truck,
+                    TPTruckSystem.currentSearch || {
+                        distance:
+                            truck.distance,
+                        weight: 0
+                    }
+                );
+
+
+            const estimatedFare =
+                Number(
+                    fare.estimated || 0
+                );
+
+
+            const minimumFare =
+                Number(
+                    fare.min ||
+                    estimatedFare
+                );
+
+
+            const maximumFare =
+                Number(
+                    fare.max ||
+                    estimatedFare
+                );
+
+
+            card.innerHTML = `
+
+                <!-- ======================================
+                     CARD HEADER
+                ======================================= -->
+
+                <div class="truckCardHeader">
+
+                    <div class="truckVisual">
+
+                        <div class="truckEmoji">
+                            ${truck.icon || "🚛"}
+                        </div>
+
+                    </div>
+
+
+                    <div class="truckMainInfo">
+
+                        <h3>
+                            ${escapeTruckText(
+                                truck.name
+                            )}
+                        </h3>
+
+
+                        <p class="truckType">
+
+                            ${escapeTruckText(
+                                truck.type
+                            )}
+
+                        </p>
+
+
+                        ${
+                            truck.verified
+                            ?
+                            `
+                            <span class="verifiedBadge">
+                                ✓ Verified
+                            </span>
+                            `
+                            :
+                            `
+                            <span class="availableBadge">
+                                Available
+                            </span>
+                            `
+                        }
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="truckMoreBtn"
+                        onclick="
+                            viewTruckById(
+                                '${truck.id}'
+                            )
+                        "
+                        aria-label="View truck"
+                    >
+                        ⋮
+                    </button>
+
+                </div>
+
+
+
+                <!-- ======================================
+                     RATING
+                ======================================= -->
+
+                <div class="truckRating">
+
+                    <span class="stars">
+                        ★★★★★
+                    </span>
+
+                    <strong>
+                        ${truck.rating}
+                    </strong>
+
+                    <span>
+                        (${truck.reviews} reviews)
+                    </span>
+
+                </div>
+
+
+
+                <!-- ======================================
+                     TRUCK INFORMATION
+                ======================================= -->
+
+                <div class="truckInfoGrid">
+
+                    <div class="truckInfoItem">
+
+                        <span>
+                            Capacity
+                        </span>
+
+                        <strong>
+                            ${escapeTruckText(
+                                truck.capacityText
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="truckInfoItem">
+
+                        <span>
+                            Distance
+                        </span>
+
+                        <strong>
+                            ${truck.distance} km
+                        </strong>
+
+                    </div>
+
+
+                    <div class="truckInfoItem">
+
+                        <span>
+                            Body
+                        </span>
+
+                        <strong>
+                            ${escapeTruckText(
+                                truck.body ||
+                                "Standard"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="truckInfoItem">
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong>
+
+                            ${
+                                truck.nearby
+                                ? "🟢 Nearby"
+                                : "🔵 Available"
+                            }
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ======================================
+                     ROUTE
+                ======================================= -->
+
+                <div class="truckRoute">
+
+                    <div>
+
+                        <span class="routeDot pickupDot">
+                            ●
+                        </span>
+
+                        <span>
+
+                            ${
+                                TPTruckSystem.currentSearch
+                                &&
+                                TPTruckSystem.currentSearch.pickup
+                                ?
+                                escapeTruckText(
+                                    TPTruckSystem.currentSearch.pickup
+                                )
+                                :
+                                "Pickup location"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="routeLine"></div>
+
+
+                    <div>
+
+                        <span class="routeDot destinationDot">
+                            ●
+                        </span>
+
+                        <span>
+
+                            ${
+                                TPTruckSystem.currentSearch
+                                &&
+                                TPTruckSystem.currentSearch.destination
+                                ?
+                                escapeTruckText(
+                                    TPTruckSystem.currentSearch.destination
+                                )
+                                :
+                                "Destination"
+                            }
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ======================================
+                     DYNAMIC FARE
+                ======================================= -->
+
+                <div class="dynamicFareBox">
+
+                    <div class="fareTitle">
+
+                        <span>
+                            💰 Smart Estimated Fare
+                        </span>
+
+                        <small>
+                            Dynamic
+                        </small>
+
+                    </div>
+
+
+                    <div class="fareMain">
+
+                        ₹${estimatedFare.toLocaleString(
+                            "en-IN"
+                        )}
+
+                    </div>
+
+
+                    <div class="fareRange">
+
+                        Expected range:
+                        ₹${minimumFare.toLocaleString(
+                            "en-IN"
+                        )}
+                        –
+                        ₹${maximumFare.toLocaleString(
+                            "en-IN"
+                        )}
+
+                    </div>
+
+
+                    <div class="fareNote">
+
+                        Fuel + operating cost +
+                        market adjustment included
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ======================================
+                     CARD ACTIONS
+                ======================================= -->
+
+                <div class="truckCardActions">
+
+                    <button
+                        type="button"
+                        class="viewTruckBtn"
+                        onclick="
+                            viewTruckById(
+                                '${truck.id}'
+                            )
+                        "
+                    >
+                        View Details
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="bookTruckBtn"
+                        onclick="
+                            bookTruckById(
+                                '${truck.id}'
+                            )
+                        "
+                    >
+                        Book Now
+                    </button>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(
+                card
+            );
+
+        }
+    );
+
+};
+
+
+
+/* =========================================================
+   SAFE TEXT
+========================================================= */
+
+function escapeTruckText(value) {
+
+    return String(
+        value === undefined ||
+        value === null
+        ? ""
+        : value
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+
+/* =========================================================
+   FIND TRUCK BY ID
+========================================================= */
+
+function findTruckById(id) {
+
+    const all =
+        TPTruckSystem.trucks || [];
+
+
+    return all.find(
+        function (truck) {
+
+            return String(
+                truck.id
+            ) === String(id);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   VIEW TRUCK DETAILS
+========================================================= */
+
+window.viewTruckById =
+    function (id) {
+
+        const truck =
+            findTruckById(id);
+
+
+        if (!truck) {
+
+            alert(
+                "Truck details not found."
+            );
+
+            return;
+
+        }
+
+
+        const search =
+            TPTruckSystem.currentSearch ||
+            {};
+
+
+        const fare =
+            truck.fare ||
+            calculateDynamicFare(
+                truck,
+                search
+            );
+
+
+        const selectedTruck = {
+
+            ...truck,
+
+            search:
+                search,
+
+            fare:
+                fare,
+
+            selectedAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+
+            "transportProSelectedTruck",
+
+            JSON.stringify(
+                selectedTruck
+            )
+
+        );
+
+
+        /* ==============================================
+           TRY EXISTING MODAL
+        ============================================== */
+
+        const modal =
+            document.getElementById(
+                "truckModal"
+            );
+
+
+        if (modal) {
+
+            modal.style.display =
+                "block";
+
+
+            modal.classList.add(
+                "show"
+            );
+
+
+            const name =
+                modal.querySelector(
+                    ".modalTruckName"
+                );
+
+
+            const capacity =
+                modal.querySelector(
+                    ".modalCapacity"
+                );
+
+
+            const price =
+                modal.querySelector(
+                    ".modalPrice"
+                );
+
+
+            if (name) {
+
+                name.textContent =
+                    truck.name;
+
+            }
+
+
+            if (capacity) {
+
+                capacity.textContent =
+                    truck.capacityText;
+
+            }
+
+
+            if (price) {
+
+                price.textContent =
+                    "₹" +
+                    fare.estimated
+                    .toLocaleString(
+                        "en-IN"
+                    );
+
+            }
+
+
+            return;
+
+        }
+
+
+        /* ==============================================
+           FALLBACK DETAILS
+        ============================================== */
+
+        const message =
+
+            "🚛 " +
+            truck.name +
+
+            "\n\nType: " +
+            truck.type +
+
+            "\nCapacity: " +
+            truck.capacityText +
+
+            "\nRating: " +
+            truck.rating +
+
+            "\nDistance: " +
+            truck.distance +
+            " km" +
+
+            "\n\n💰 Estimated Fare: ₹" +
+            fare.estimated
+            .toLocaleString(
+                "en-IN"
+            ) +
+
+            "\n\nFare Range: ₹" +
+            fare.min
+            .toLocaleString(
+                "en-IN"
+            ) +
+            " - ₹" +
+            fare.max
+            .toLocaleString(
+                "en-IN"
+            );
+
+
+        alert(
+            message
+        );
+
+    };
+
+
+
+/* =========================================================
+   BOOK TRUCK BY ID
+========================================================= */
+
+window.bookTruckById =
+    function (id) {
+
+        const truck =
+            findTruckById(id);
+
+
+        if (!truck) {
+
+            alert(
+                "Truck not found."
+            );
+
+            return;
+
+        }
+
+
+        const search =
+            TPTruckSystem.currentSearch ||
+            {};
+
+
+        const fare =
+            truck.fare ||
+            calculateDynamicFare(
+                truck,
+                search
+            );
+
+
+        const bookingData = {
+
+            truckId:
+                truck.id,
+
+            truckName:
+                truck.name,
+
+            truckType:
+                truck.type,
+
+            capacity:
+                truck.capacity,
+
+            capacityText:
+                truck.capacityText,
+
+            pickup:
+                search.pickup || "",
+
+            destination:
+                search.destination || "",
+
+            goods:
+                search.goods || "",
+
+            weight:
+                search.weight || "",
+
+            distance:
+                fare.distance,
+
+            estimatedFare:
+                fare.estimated,
+
+            minimumFare:
+                fare.min,
+
+            maximumFare:
+                fare.max,
+
+            verified:
+                truck.verified,
+
+            rating:
+                truck.rating,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+
+            "transportProSelectedTruck",
+
+            JSON.stringify(
+                bookingData
+            )
+
+        );
+
+
+        localStorage.setItem(
+
+            "transportProBookingDraft",
+
+            JSON.stringify(
+                bookingData
+            )
+
+        );
+
+
+        /*
+         * Continue to booking page.
+         */
+
+        window.location.href =
+            "booking.html";
+
+    };
+
+
+
+/* =========================================================
+   COMPATIBILITY WITH OLD viewTruck()
+========================================================= */
+
+window.viewTruck =
+    function (truckName) {
+
+        const truck =
+            TPTruckSystem.trucks.find(
+                function (item) {
+
+                    return (
+                        item.name ===
+                        truckName
+                    );
+
+                }
+            );
+
+
+        if (!truck) {
+
+            alert(
+                "Truck details not found."
+            );
+
+            return;
+
+        }
+
+
+        viewTruckById(
+            truck.id
+        );
+
+    };
+
+
+
+/* =========================================================
+   COMPATIBILITY WITH OLD BOOK BUTTONS
+========================================================= */
+
+window.bookSelectedTruck =
+    function () {
+
+        const saved =
+            localStorage.getItem(
+                "transportProSelectedTruck"
+            );
+
+
+        if (!saved) {
+
+            alert(
+                "Please select a truck first."
+            );
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "booking.html";
+
+    };
+
+
+
+/* =========================================================
+   END PART 3/5
+========================================================= */
+/* =========================================================
+   FIND TRUCK — PART 4/5
+   DETAILS + BOOKING CONNECTION + NAVIGATION
+========================================================= */
+
+
+/* =========================================================
+   SELECTED TRUCK STORAGE
+========================================================= */
+
+window.getSelectedTruck =
+    function () {
+
+        try {
+
+            const data =
+                localStorage.getItem(
+                    "transportProSelectedTruck"
+                );
+
+
+            if (!data) {
+
+                return null;
+
+            }
+
+
+            return JSON.parse(data);
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Selected truck data is invalid."
+            );
+
+            return null;
+
+        }
+
+    };
+
+
+
+/* =========================================================
+   SHOW TRUCK DETAILS MODAL
+========================================================= */
+
+window.showTruckDetails =
+    function (id) {
+
+        const truck =
+            findTruckById(id);
+
+
+        if (!truck) {
+
+            alert(
+                "Truck details not found."
+            );
+
+            return;
+
+        }
+
+
+        const search =
+            TPTruckSystem.currentSearch ||
+            {};
+
+
+        const fare =
+            truck.fare ||
+            calculateDynamicFare(
+                truck,
+                search
+            );
+
+
+        let modal =
+            document.getElementById(
+                "tpTruckDetailsModal"
+            );
+
+
+        /* ==============================================
+           CREATE MODAL IF IT DOES NOT EXIST
+        ============================================== */
+
+        if (!modal) {
+
+            modal =
+                document.createElement(
+                    "div"
+                );
+
+
+            modal.id =
+                "tpTruckDetailsModal";
+
+
+            modal.innerHTML = `
+
+                <div class="tpDetailsOverlay">
+
+                    <div class="tpDetailsBox">
+
+                        <button
+                            type="button"
+                            class="tpDetailsClose"
+                            onclick="closeTruckDetails()"
+                        >
+                            ×
+                        </button>
+
+
+                        <div
+                            id="tpDetailsContent"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            document.body.appendChild(
+                modal
+            );
+
+
+            addDetailsModalCSS();
+
+        }
+
+
+        const content =
+            document.getElementById(
+                "tpDetailsContent"
+            );
+
+
+        if (!content) {
+
+            return;
+
+        }
+
+
+        content.innerHTML = `
+
+            <div class="tpDetailsTruckIcon">
+                ${truck.icon || "🚛"}
+            </div>
+
+
+            <h2>
+                ${escapeTruckText(
+                    truck.name
+                )}
+            </h2>
+
+
+            <p class="tpDetailsType">
+                ${escapeTruckText(
+                    truck.type
+                )}
+            </p>
+
+
+            <div class="tpDetailsBadges">
+
+                ${
+                    truck.verified
+                    ?
+                    `<span>✓ Verified</span>`
+                    :
+                    `<span>Available</span>`
+                }
+
+                ${
+                    truck.nearby
+                    ?
+                    `<span>📍 Nearby</span>`
+                    :
+                    ""
+                }
+
+            </div>
+
+
+            <div class="tpDetailsGrid">
+
+                <div>
+                    <small>Capacity</small>
+                    <strong>
+                        ${escapeTruckText(
+                            truck.capacityText
+                        )}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <small>Rating</small>
+                    <strong>
+                        ⭐ ${truck.rating}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <small>Reviews</small>
+                    <strong>
+                        ${truck.reviews}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <small>Distance</small>
+                    <strong>
+                        ${fare.distance} km
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="tpDetailsRoute">
+
+                <div>
+                    <b>Pickup</b>
+
+                    <span>
+                        ${
+                            search.pickup
+                            ?
+                            escapeTruckText(
+                                search.pickup
+                            )
+                            :
+                            "Not selected"
+                        }
+                    </span>
+                </div>
+
+
+                <div>
+                    <b>Destination</b>
+
+                    <span>
+                        ${
+                            search.destination
+                            ?
+                            escapeTruckText(
+                                search.destination
+                            )
+                            :
+                            "Not selected"
+                        }
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="tpDetailsFare">
+
+                <small>
+                    Smart Estimated Fare
+                </small>
+
+                <strong>
+                    ₹${Number(
+                        fare.estimated || 0
+                    ).toLocaleString(
+                        "en-IN"
+                    )}
+                </strong>
+
+                <span>
+                    ₹${Number(
+                        fare.min || 0
+                    ).toLocaleString(
+                        "en-IN"
+                    )}
+                    -
+                    ₹${Number(
+                        fare.max || 0
+                    ).toLocaleString(
+                        "en-IN"
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="tpDetailsActions">
+
+                <button
+                    type="button"
+                    onclick="
+                        closeTruckDetails();
+                        bookTruckById(
+                            '${truck.id}'
+                        );
+                    "
+                >
+                    🚛 Book This Truck
+                </button>
+
+            </div>
+
+        `;
+
+
+        modal.style.display =
+            "flex";
+
+    };
+
+
+
+/* =========================================================
+   CLOSE DETAILS
+========================================================= */
+
+window.closeTruckDetails =
+    function () {
+
+        const modal =
+            document.getElementById(
+                "tpTruckDetailsModal"
+            );
+
+
+        if (modal) {
+
+            modal.style.display =
+                "none";
+
+        }
+
+    };
+
+
+
+/* =========================================================
+   UPDATE VIEW DETAILS BUTTON
+========================================================= */
+
+window.viewTruckDetails =
+    function (id) {
+
+        showTruckDetails(
+            id
+        );
+
+    };
+
+
+
+/* =========================================================
+   ADD MODAL CSS
+========================================================= */
+
+function addDetailsModalCSS() {
+
+    if (
+        document.getElementById(
+            "tpDetailsModalStyle"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const style =
+        document.createElement(
+            "style"
+        );
+
+
+    style.id =
+        "tpDetailsModalStyle";
+
+
+    style.textContent = `
+
+        #tpTruckDetailsModal {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 99999;
+
+            padding: 18px;
+
+        }
+
+
+        .tpDetailsOverlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.72);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .tpDetailsBox {
+
+            position: relative;
+
+            width: min(
+                500px,
+                100%
+            );
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: #ffffff;
+
+            border-radius: 24px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,.35);
+
+        }
+
+
+        .tpDetailsClose {
+
+            position: absolute;
+
+            top: 12px;
+
+            right: 15px;
+
+            width: 38px;
+
+            height: 38px;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            font-size: 26px;
+
+            cursor: pointer;
+
+            background: #f1f3f5;
+
+        }
+
+
+        .tpDetailsTruckIcon {
+
+            font-size: 60px;
+
+            text-align: center;
+
+            margin-top: 10px;
+
+        }
+
+
+        .tpDetailsBox h2 {
+
+            text-align: center;
+
+            margin: 8px 0 4px;
+
+        }
+
+
+        .tpDetailsType {
+
+            text-align: center;
+
+            margin: 0;
+
+            opacity: .7;
+
+        }
+
+
+        .tpDetailsBadges {
+
+            display: flex;
+
+            gap: 8px;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            margin: 15px 0;
+
+        }
+
+
+        .tpDetailsBadges span {
+
+            background: #eef7ff;
+
+            border-radius: 30px;
+
+            padding: 7px 12px;
+
+            font-size: 13px;
+
+        }
+
+
+        .tpDetailsGrid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 10px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .tpDetailsGrid div {
+
+            padding: 14px;
+
+            background: #f7f8fa;
+
+            border-radius: 14px;
+
+        }
+
+
+        .tpDetailsGrid small {
+
+            display: block;
+
+            opacity: .65;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .tpDetailsGrid strong {
+
+            display: block;
+
+        }
+
+
+        .tpDetailsRoute {
+
+            margin-top: 15px;
+
+            padding: 15px;
+
+            background: #f8fafc;
+
+            border-radius: 15px;
+
+        }
+
+
+        .tpDetailsRoute div {
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .tpDetailsRoute div:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        .tpDetailsRoute b {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .tpDetailsRoute span {
+
+            opacity: .75;
+
+        }
+
+
+        .tpDetailsFare {
+
+            margin-top: 15px;
+
+            padding: 18px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef7ff,
+                    #f5f0ff
+                );
+
+        }
+
+
+        .tpDetailsFare small {
+
+            display: block;
+
+            opacity: .7;
+
+        }
+
+
+        .tpDetailsFare strong {
+
+            display: block;
+
+            font-size: 30px;
+
+            margin: 5px 0;
+
+        }
+
+
+        .tpDetailsFare span {
+
+            opacity: .7;
+
+        }
+
+
+        .tpDetailsActions {
+
+            margin-top: 18px;
+
+        }
+
+
+        .tpDetailsActions button {
+
+            width: 100%;
+
+            border: 0;
+
+            border-radius: 14px;
+
+            padding: 15px;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
+    );
+
+}
+
+
+
+/* =========================================================
+   BOOKING DRAFT CREATOR
+========================================================= */
+
+window.createBookingDraft =
+    function (id) {
+
+        const truck =
+            findTruckById(id);
+
+
+        if (!truck) {
+
+            return null;
+
+        }
+
+
+        const search =
+            TPTruckSystem.currentSearch ||
+            {};
+
+
+        const fare =
+            truck.fare ||
+            calculateDynamicFare(
+                truck,
+                search
+            );
+
+
+        const draft = {
+
+            bookingId:
+                "TP-" +
+                Date.now(),
+
+            truckId:
+                truck.id,
+
+            truckName:
+                truck.name,
+
+            truckType:
+                truck.type,
+
+            capacity:
+                truck.capacity,
+
+            capacityText:
+                truck.capacityText,
+
+            pickup:
+                search.pickup || "",
+
+            destination:
+                search.destination || "",
+
+            goods:
+                search.goods || "",
+
+            weight:
+                search.weight || 0,
+
+            distance:
+                fare.distance,
+
+            estimatedFare:
+                fare.estimated,
+
+            fareMin:
+                fare.min,
+
+            fareMax:
+                fare.max,
+
+            status:
+                "draft",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        localStorage.setItem(
+
+            "transportProBookingDraft",
+
+            JSON.stringify(
+                draft
+            )
+
+        );
+
+
+        return draft;
+
+    };
+
+
+
+/* =========================================================
+   OLD BOOK NOW COMPATIBILITY
+========================================================= */
+
+window.bookNow =
+    function (id) {
+
+        if (id) {
+
+            bookTruckById(
+                id
+            );
+
+            return;
+
+        }
+
+
+        const selected =
+            getSelectedTruck();
+
+
+        if (selected) {
+
+            window.location.href =
+                "booking.html";
+
+            return;
+
+        }
+
+
+        alert(
+            "Please select a truck first."
+        );
+
+    };
+
+
+
+/* =========================================================
+   BACK TO HOME
+========================================================= */
+
+window.goToHome =
+    function () {
+
+        window.location.href =
+            "Home.html";
+
+    };
+
+
+
+/* =========================================================
+   BACK TO FIND TRUCK
+========================================================= */
+
+window.goToFindTruck =
+    function () {
+
+        window.location.href =
+            "find-truck.html";
+
+    };
+
+
+
+/* =========================================================
+   OPEN BOOKING PAGE
+========================================================= */
+
+window.openBooking =
+    function () {
+
+        const draft =
+            localStorage.getItem(
+                "transportProBookingDraft"
+            );
+
+
+        if (!draft) {
+
+            alert(
+                "Please select a truck first."
+            );
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "booking.html";
+
+    };
+
+
+
+/* =========================================================
+   CLOSE ANY OPEN MODALS
+========================================================= */
+
+window.closeAllTruckModals =
+    function () {
+
+        const details =
+            document.getElementById(
+                "tpTruckDetailsModal"
+            );
+
+
+        if (details) {
+
+            details.style.display =
+                "none";
+
+        }
+
+
+        const modal =
+            document.getElementById(
+                "truckModal"
+            );
+
+
+        if (modal) {
+
+            modal.style.display =
+                "none";
+
+            modal.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        if (
+            typeof window.closeFilters ===
+            "function"
+        ) {
+
+            closeFilters();
+
+        }
+
+    };
+
+
+
+/* =========================================================
+   ESC KEY CLOSE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeAllTruckModals();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   END PART 4/5
+========================================================= */
+/* =========================================================
+   FIND TRUCK — PART 5/5 FINAL
+   INITIALIZATION + BUTTON COMPATIBILITY + SAFETY
+========================================================= */
+
+
+/* =========================================================
+   FINAL HOME / FIND TRUCK INITIALIZATION
+========================================================= */
+
+(function () {
+
+    "use strict";
+
+
+    /* =====================================================
+       PAGE CHECK
+    ===================================================== */
+
+    const isFindTruckPage =
+        window.location.pathname
+        .toLowerCase()
+        .includes("find-truck");
+
+
+    if (!isFindTruckPage) {
+
+        return;
+
+    }
+
+
+
+    /* =====================================================
+       INITIAL SEARCH DATA
+    ===================================================== */
+
+    function loadSavedData() {
+
+        try {
+
+            const savedSearch =
+                localStorage.getItem(
+                    "transportProTruckSearch"
+                );
+
+
+            if (savedSearch) {
+
+                const data =
+                    JSON.parse(
+                        savedSearch
+                    );
+
+
+                TPTruckSystem.currentSearch =
+                    data;
+
+            }
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Saved search data unavailable."
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       INITIAL FILTERED RESULTS
+    ===================================================== */
+
+    function prepareResults() {
+
+        if (
+            !Array.isArray(
+                TPTruckSystem.results
+            )
+        ) {
+
+            TPTruckSystem.results =
+                [
+                    ...TPTruckSystem.trucks
+                ];
+
+        }
+
+
+        TPTruckSystem.filteredResults =
+            [
+                ...TPTruckSystem.results
+            ];
+
+    }
+
+
+
+    /* =====================================================
+       SAFE INITIAL RENDER
+    ===================================================== */
+
+    function renderInitialResults() {
+
+        /*
+         * Only render if truckList exists.
+         */
+
+        if (
+            document.getElementById(
+                "truckList"
+            )
+        ) {
+
+            if (
+                typeof window.renderTruckResults
+                === "function"
+            ) {
+
+                window.renderTruckResults();
+
+            }
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       SEARCH BUTTON AUTO CONNECTION
+    ===================================================== */
+
+    function connectSearchButtons() {
+
+        const possibleButtons = [
+
+            "#findTruckBtn",
+
+            "#searchTruckBtn",
+
+            "#searchBtn",
+
+            ".findTruckBtn",
+
+            ".searchTruckBtn"
+
+        ];
+
+
+        possibleButtons.forEach(
+            function (selector) {
+
+                document
+                .querySelectorAll(
+                    selector
+                )
+                .forEach(
+                    function (button) {
+
+                        /*
+                         * Prevent duplicate listeners.
+                         */
+
+                        if (
+                            button.dataset
+                            .tpSearchConnected
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        button.dataset
+                        .tpSearchConnected =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            function (event) {
+
+                                event.preventDefault();
+
+                                findTrucks();
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SWAP BUTTON AUTO CONNECTION
+    ===================================================== */
+
+    function connectSwapButtons() {
+
+        const buttons = [
+
+            "#swapLocationsBtn",
+
+            ".swapLocationsBtn",
+
+            ".swap-btn"
+
+        ];
+
+
+        buttons.forEach(
+            function (selector) {
+
+                document
+                .querySelectorAll(
+                    selector
+                )
+                .forEach(
+                    function (button) {
+
+                        if (
+                            button.dataset
+                            .tpSwapConnected
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        button.dataset
+                        .tpSwapConnected =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            function (event) {
+
+                                event.preventDefault();
+
+                                swapLocations();
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       FILTER BUTTON CONNECTION
+    ===================================================== */
+
+    function connectFilterButtons() {
+
+        document
+        .querySelectorAll(
+            "[data-filter]"
+        )
+        .forEach(
+            function (button) {
+
+                if (
+                    button.dataset
+                    .tpFilterConnected
+                ) {
+
+                    return;
+
+                }
+
+
+                button.dataset
+                .tpFilterConnected =
+                    "true";
+
+
+                button.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        const filter =
+                            button.dataset
+                            .filter;
+
+
+                        setFilter(
+                            button,
+                            filter
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SORT SELECT CONNECTION
+    ===================================================== */
+
+    function connectSortSelect() {
+
+        const sortSelect =
+            document.getElementById(
+                "sortTrucks"
+            );
+
+
+        if (!sortSelect) {
+
+            return;
+
+        }
+
+
+        if (
+            sortSelect.dataset
+            .tpSortConnected
+        ) {
+
+            return;
+
+        }
+
+
+        sortSelect.dataset
+        .tpSortConnected =
+            "true";
+
+
+        sortSelect.addEventListener(
+            "change",
+            function () {
+
+                sortTrucks(
+                    this.value
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       FILTER MODAL CLOSE ON OUTSIDE CLICK
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            const modal =
+                document.getElementById(
+                    "tpTruckDetailsModal"
+                );
+
+
+            if (
+                modal &&
+                event.target === modal
+            ) {
+
+                closeTruckDetails();
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       BOOKING RETURN DATA
+    ===================================================== */
+
+    function restoreBookingSelection() {
+
+        try {
+
+            const booking =
+                localStorage.getItem(
+                    "transportProBookingDraft"
+                );
+
+
+            if (!booking) {
+
+                return;
+
+            }
+
+
+            const data =
+                JSON.parse(
+                    booking
+                );
+
+
+            /*
+             * Keep booking data available
+             * for booking.html.
+             */
+
+            window.TPBookingDraft =
+                data;
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Booking draft unavailable."
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       CLEAR SEARCH
+    ===================================================== */
+
+    window.clearTruckSearch =
+        function () {
+
+            const fields = [
+
+                "pickup",
+
+                "destination",
+
+                "goodsType",
+
+                "weight"
+
+            ];
+
+
+            fields.forEach(
+                function (id) {
+
+                    const element =
+                        document.getElementById(
+                            id
+                        );
+
+
+                    if (element) {
+
+                        element.value =
+                            "";
+
+                    }
+
+                }
+            );
+
+
+            TPTruckSystem.currentSearch =
+                null;
+
+
+            TPTruckSystem.results =
+                [
+                    ...TPTruckSystem.trucks
+                ];
+
+
+            TPTruckSystem.filteredResults =
+                [
+                    ...TPTruckSystem.trucks
+                ];
+
+
+            try {
+
+                localStorage.removeItem(
+                    "transportProTruckSearch"
+                );
+
+                localStorage.removeItem(
+                    "transportProTruckResults"
+                );
+
+            }
+            catch (error) {}
+
+
+
+            if (
+                typeof window.renderTruckResults
+                === "function"
+            ) {
+
+                window.renderTruckResults();
+
+            }
+
+        };
+
+
+
+    /* =====================================================
+       CLEAR BUTTON CONNECTION
+    ===================================================== */
+
+    function connectClearButton() {
+
+        const selectors = [
+
+            "#clearSearch",
+
+            "#clearForm",
+
+            ".clearSearch",
+
+            ".clearForm"
+
+        ];
+
+
+        selectors.forEach(
+            function (selector) {
+
+                document
+                .querySelectorAll(
+                    selector
+                )
+                .forEach(
+                    function (button) {
+
+                        if (
+                            button.dataset
+                            .tpClearConnected
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        button.dataset
+                        .tpClearConnected =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            function (event) {
+
+                                event.preventDefault();
+
+                                clearTruckSearch();
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       HOME BUTTON CONNECTION
+    ===================================================== */
+
+    function connectHomeButtons() {
+
+        document
+        .querySelectorAll(
+            "[data-home], .homeBtn, .goHomeBtn"
+        )
+        .forEach(
+            function (button) {
+
+                if (
+                    button.dataset
+                    .tpHomeConnected
+                ) {
+
+                    return;
+
+                }
+
+
+                button.dataset
+                .tpHomeConnected =
+                    "true";
+
+
+                button.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+                        goToHome();
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       BACK BUTTON CONNECTION
+    ===================================================== */
+
+    function connectBackButtons() {
+
+        document
+        .querySelectorAll(
+            "[data-back], .backBtn, .goBackBtn"
+        )
+        .forEach(
+            function (button) {
+
+                if (
+                    button.dataset
+                    .tpBackConnected
+                ) {
+
+                    return;
+
+                }
+
+
+                button.dataset
+                .tpBackConnected =
+                    "true";
+
+
+                button.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        if (
+                            history.length > 1
+                        ) {
+
+                            history.back();
+
+                        }
+                        else {
+
+                            goToHome();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       ONLINE / OFFLINE STATUS
+    ===================================================== */
+
+    function setupNetworkStatus() {
+
+        function updateStatus() {
+
+            const online =
+                navigator.onLine;
+
+
+            document.body
+            .classList.toggle(
+                "tpOffline",
+                !online
+            );
+
+
+            document.body
+            .classList.toggle(
+                "tpOnline",
+                online
+            );
+
+        }
+
+
+        window.addEventListener(
+            "online",
+            updateStatus
+        );
+
+
+        window.addEventListener(
+            "offline",
+            updateStatus
+        );
+
+
+        updateStatus();
+
+    }
+
+
+
+    /* =====================================================
+       FINAL INITIALIZATION
+    ===================================================== */
+
+    function finalInitialize() {
+
+        loadSavedData();
+
+        prepareResults();
+
+        restoreBookingSelection();
+
+        connectSearchButtons();
+
+        connectSwapButtons();
+
+        connectFilterButtons();
+
+        connectSortSelect();
+
+        connectClearButton();
+
+        connectHomeButtons();
+
+        connectBackButtons();
+
+        setupNetworkStatus();
+
+        renderInitialResults();
+
+
+        console.log(
+            "TransportPro Find Truck System initialized."
+        );
+
+    }
+
+
+
+    /* =====================================================
+       START
+    ===================================================== */
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            finalInitialize
+        );
+
+    }
+    else {
+
+        finalInitialize();
+
+    }
+
+
+})();
+
+
+
+/* =========================================================
+   FINAL GLOBAL ERROR PROTECTION
+========================================================= */
+
+window.addEventListener(
+    "error",
+    function (event) {
+
+        console.warn(
+            "TransportPro page error:",
+            event.message
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   FINAL VERSION
+========================================================= */
+
+window.TP_FIND_TRUCK_VERSION =
+    "6.0.0-DYNAMIC-FARE";
+
+
+
+/* =========================================================
+   PART 5/5 COMPLETE
+========================================================= */
+/* =========================================================
+   FIND TRUCK — PART 5/5 FINAL
+   INITIALIZATION + BUTTON COMPATIBILITY + FINAL SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   FINAL INITIALIZATION
+========================================================= */
+
+function finalTruckInitialization() {
+
+    /* ---------------------------------------------
+       MAKE SURE SYSTEM EXISTS
+    --------------------------------------------- */
+
+    if (
+        !window.TPTruckSystem
+    ) {
+
+        console.error(
+            "TPTruckSystem not initialized."
+        );
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------
+       INITIAL RESULT SET
+    --------------------------------------------- */
+
+    if (
+        !Array.isArray(
+            TPTruckSystem.results
+        )
+    ) {
+
+        TPTruckSystem.results =
+            [
+                ...TPTruckSystem.trucks
+            ];
+
+    }
+
+
+    if (
+        !Array.isArray(
+            TPTruckSystem.filteredResults
+        )
+    ) {
+
+        TPTruckSystem.filteredResults =
+            [
+                ...TPTruckSystem.results
+            ];
+
+    }
+
+
+    /* ---------------------------------------------
+       ADD FARE TO ALL TRUCKS
+    --------------------------------------------- */
+
+    TPTruckSystem.results =
+        TPTruckSystem.results.map(
+            function (truck) {
+
+                if (!truck.fare) {
+
+                    truck.fare =
+                        calculateDynamicFare(
+
+                            truck,
+
+                            {
+                                distance:
+                                    truck.distance,
+
+                                weight: 0
+
+                            }
+
+                        );
+
+                }
+
+                return truck;
+
+            }
+        );
+
+
+    TPTruckSystem.filteredResults =
+        [
+            ...TPTruckSystem.results
+        ];
+
+
+    /* ---------------------------------------------
+       INITIAL RENDER
+    --------------------------------------------- */
+
+    if (
+        typeof window.renderTruckResults ===
+        "function"
+    ) {
+
+        const list =
+            document.getElementById(
+                "truckList"
+            );
+
+
+        if (list) {
+
+            renderTruckResults();
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CLEAR SEARCH FORM
+========================================================= */
+
+window.clearTruckSearch =
+    function () {
+
+        const pickup =
+            document.getElementById(
+                "pickup"
+            );
+
+
+        const destination =
+            document.getElementById(
+                "destination"
+            );
+
+
+        const goods =
+            document.getElementById(
+                "goodsType"
+            );
+
+
+        const weight =
+            document.getElementById(
+                "weight"
+            );
+
+
+        if (pickup) {
+
+            pickup.value = "";
+
+        }
+
+
+        if (destination) {
+
+            destination.value = "";
+
+        }
+
+
+        if (goods) {
+
+            goods.value = "";
+
+        }
+
+
+        if (weight) {
+
+            weight.value = "";
+
+        }
+
+
+        /* RESET SYSTEM */
+
+        TPTruckSystem.currentSearch =
+            null;
+
+
+        TPTruckSystem.activeFilter =
+            "all";
+
+
+        TPTruckSystem.activeVehicle =
+            "all";
+
+
+        TPTruckSystem.filterSettings = {
+
+            maxBudget: 0,
+
+            minCapacity: 0,
+
+            verifiedOnly: false,
+
+            nearbyOnly: false
+
+        };
+
+
+        TPTruckSystem.results =
+            [
+                ...TPTruckSystem.trucks
+            ];
+
+
+        TPTruckSystem.filteredResults =
+            [
+                ...TPTruckSystem.trucks
+            ];
+
+
+        /* CLEAR STORAGE */
+
+        try {
+
+            localStorage.removeItem(
+                "transportProTruckSearch"
+            );
+
+            localStorage.removeItem(
+                "transportProTruckResults"
+            );
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Search storage could not be cleared."
+            );
+
+        }
+
+
+        /* RENDER */
+
+        if (
+            typeof window.renderTruckResults ===
+            "function"
+        ) {
+
+            renderTruckResults();
+
+        }
+
+    };
+
+
+
+/* =========================================================
+   OLD CLEAR FORM COMPATIBILITY
+========================================================= */
+
+window.clearForm =
+    function () {
+
+        clearTruckSearch();
+
+    };
+
+
+
+/* =========================================================
+   SEARCH BUTTON AUTO CONNECTION
+========================================================= */
+
+function connectSearchButtons() {
+
+    const possibleButtons = [
+
+        "findTruckBtn",
+
+        "searchTruckBtn",
+
+        "searchBtn",
+
+        "findTruck",
+
+        "findTrucksBtn"
+
+    ];
+
+
+    possibleButtons.forEach(
+        function (id) {
+
+            const button =
+                document.getElementById(
+                    id
+                );
+
+
+            if (!button) {
+
+                return;
+
+            }
+
+
+            if (
+                button.dataset
+                .tpConnected ===
+                "true"
+            ) {
+
+                return;
+
+            }
+
+
+            button.dataset
+                .tpConnected =
+                "true";
+
+
+            button.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    findTrucks();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   CLEAR BUTTON AUTO CONNECTION
+========================================================= */
+
+function connectClearButtons() {
+
+    const possibleButtons = [
+
+        "clearBtn",
+
+        "clearFormBtn",
+
+        "resetSearchBtn",
+
+        "resetBtn"
+
+    ];
+
+
+    possibleButtons.forEach(
+        function (id) {
+
+            const button =
+                document.getElementById(
+                    id
+                );
+
+
+            if (!button) {
+
+                return;
+
+            }
+
+
+            if (
+                button.dataset
+                .tpClearConnected ===
+                "true"
+            ) {
+
+                return;
+
+            }
+
+
+            button.dataset
+                .tpClearConnected =
+                "true";
+
+
+            button.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    clearTruckSearch();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   FILTER CHIP AUTO CONNECTION
+========================================================= */
+
+function connectFilterChips() {
+
+    const chips =
+        document.querySelectorAll(
+            ".filterChip"
+        );
+
+
+    chips.forEach(
+        function (chip) {
+
+            if (
+                chip.dataset
+                .tpFilterConnected ===
+                "true"
+            ) {
+
+                return;
+
+            }
+
+
+            chip.dataset
+                .tpFilterConnected =
+                "true";
+
+
+            chip.addEventListener(
+                "click",
+                function () {
+
+                    const filter =
+                        this.dataset.filter ||
+                        this.getAttribute(
+                            "data-filter"
+                        ) ||
+                        "all";
+
+
+                    setFilter(
+                        this,
+                        filter
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   FILTER SELECT AUTO CONNECTION
+========================================================= */
+
+function connectFilterSelect() {
+
+    const select =
+        document.getElementById(
+            "sortSelect"
+        );
+
+
+    if (!select) {
+
+        return;
+
+    }
+
+
+    if (
+        select.dataset
+        .tpSortConnected ===
+        "true"
+    ) {
+
+        return;
+
+    }
+
+
+    select.dataset
+        .tpSortConnected =
+        "true";
+
+
+    select.addEventListener(
+        "change",
+        function () {
+
+            sortTrucks(
+                this.value
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICK OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const modal =
+            document.getElementById(
+                "tpTruckDetailsModal"
+            );
+
+
+        if (!modal) {
+
+            return;
+
+        }
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeTruckDetails();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   SMART FARE DISPLAY HELPER
+========================================================= */
+
+window.getTruckFareText =
+    function (truck) {
+
+        if (!truck) {
+
+            return "Fare unavailable";
+
+        }
+
+
+        const search =
+            TPTruckSystem.currentSearch ||
+            {
+
+                distance:
+                    truck.distance,
+
+                weight: 0
+
+            };
+
+
+        const fare =
+            truck.fare ||
+            calculateDynamicFare(
+                truck,
+                search
+            );
+
+
+        return (
+            "₹" +
+            Number(
+                fare.estimated || 0
+            ).toLocaleString(
+                "en-IN"
+            )
+        );
+
+    };
+
+
+
+/* =========================================================
+   REFRESH RESULTS
+========================================================= */
+
+window.refreshTruckResults =
+    function () {
+
+        TPTruckSystem.results =
+            TPTruckSystem.trucks.map(
+                function (truck) {
+
+                    const fare =
+                        calculateDynamicFare(
+
+                            truck,
+
+                            TPTruckSystem.currentSearch ||
+                            {
+
+                                distance:
+                                    truck.distance,
+
+                                weight: 0
+
+                            }
+
+                        );
+
+
+                    return {
+
+                        ...truck,
+
+                        fare: fare
+
+                    };
+
+                }
+            );
+
+
+        applyAllTruckFilters();
+
+    };
+
+
+
+/* =========================================================
+   REFRESH DASHBOARD
+========================================================= */
+
+window.refreshTruckDashboard =
+    function () {
+
+        refreshTruckResults();
+
+
+        const status =
+            document.querySelector(
+                ".searchStatus"
+            );
+
+
+        if (status) {
+
+            status.textContent =
+                "Truck data refreshed";
+
+        }
+
+    };
+
+
+
+/* =========================================================
+   HOME BUTTON
+========================================================= */
+
+function connectHomeButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            "[data-home]"
+        );
+
+
+    buttons.forEach(
+        function (button) {
+
+            if (
+                button.dataset
+                .tpHomeConnected ===
+                "true"
+            ) {
+
+                return;
+
+            }
+
+
+            button.dataset
+                .tpHomeConnected =
+                "true";
+
+
+            button.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    goToHome();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+function connectBackButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            "[data-back]"
+        );
+
+
+    buttons.forEach(
+        function (button) {
+
+            if (
+                button.dataset
+                .tpBackConnected ===
+                "true"
+            ) {
+
+                return;
+
+            }
+
+
+            button.dataset
+                .tpBackConnected =
+                "true";
+
+
+            button.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    if (
+                        window.history.length >
+                        1
+                    ) {
+
+                        window.history.back();
+
+                    }
+                    else {
+
+                        goToHome();
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   FINAL START
+========================================================= */
+
+function startFinalTruckSystem() {
+
+    finalTruckInitialization();
+
+    connectSearchButtons();
+
+    connectClearButtons();
+
+    connectFilterChips();
+
+    connectFilterSelect();
+
+    connectHomeButtons();
+
+    connectBackButtons();
+
+}
+
+
+
+/* =========================================================
+   DOM READY
+========================================================= */
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        startFinalTruckSystem
+    );
+
+}
+else {
+
+    startFinalTruckSystem();
+
+}
+
+
+
+/* =========================================================
+   WINDOW LOAD SAFETY
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function () {
+
+        connectSearchButtons();
+
+        connectClearButtons();
+
+        connectFilterChips();
+
+        connectFilterSelect();
+
+        connectHomeButtons();
+
+        connectBackButtons();
+
+    }
+);
+
+
+
+/* =========================================================
+   FINAL HOME INITIALIZATION
+========================================================= */
+
+window.FIND_TRUCK_SYSTEM_READY =
+    true;
+
+
+/* =========================================================
+   END FIND TRUCK — PART 5/5
+========================================================= */
+
+</script>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer
+    style="
+        text-align:center;
+        padding:25px 15px;
+        color:#667085;
+        font-size:8px;
+        line-height:1.6;
+    "
+>
+
+    <strong
+        style="
+            display:block;
+            color:#101828;
+            font-size:11px;
+            margin-bottom:4px;
+        "
+    >
+        TransportPro
+    </strong>
+
+    Find verified trucks,
+    compare transport options
+    and book your transport.
+
+    <br><br>
+
+    © 2026 TransportPro
+
+</footer>
+
+
+
+<!-- =========================
+     END
+========================= -->
+
+</body>
+
+</html>

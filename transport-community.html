@@ -1,0 +1,2702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#07111f">
+
+<title>Transport Community | TransportPro</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#101828;
+    min-height:100vh;
+    padding-bottom:40px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#07111f;
+    color:#fff;
+
+    box-shadow:
+    0 3px 15px rgba(0,0,0,.18);
+}
+
+.header{
+    max-width:950px;
+    min-height:64px;
+    margin:auto;
+
+    padding:10px 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.backBtn{
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#172235;
+    color:#fff;
+
+    font-size:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+.headerTitle{
+    flex:1;
+}
+
+.headerTitle strong{
+    display:block;
+    font-size:16px;
+}
+
+.headerTitle small{
+    display:block;
+    margin-top:3px;
+
+    color:#94a3b8;
+    font-size:8px;
+}
+
+.communityIcon{
+    width:39px;
+    height:39px;
+
+    border-radius:50%;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    max-width:950px;
+    margin:auto;
+
+    padding:18px 14px 35px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:#07111f;
+    color:#fff;
+
+    border-radius:21px;
+
+    padding:22px 17px;
+
+    margin-bottom:15px;
+
+    box-shadow:
+    0 9px 25px rgba(7,17,31,.15);
+}
+
+.heroIcon{
+    width:50px;
+    height:50px;
+
+    border-radius:14px;
+
+    background:#172235;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    margin-bottom:13px;
+}
+
+.hero h1{
+    font-size:24px;
+    margin-bottom:7px;
+}
+
+.hero p{
+    color:#cbd5e1;
+
+    font-size:9px;
+
+    line-height:1.7;
+
+    max-width:650px;
+}
+
+
+/* =========================
+   HERO STATS
+========================= */
+
+.heroStats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:8px;
+
+    margin-top:16px;
+}
+
+.heroStat{
+    background:#172235;
+
+    border-radius:11px;
+
+    padding:10px;
+
+    text-align:center;
+}
+
+.heroStat strong{
+    display:block;
+
+    font-size:14px;
+
+    margin-bottom:4px;
+}
+
+.heroStat span{
+    color:#94a3b8;
+
+    font-size:6px;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.sectionTitle{
+    margin:
+    18px 2px 11px;
+}
+
+.sectionTitle h2{
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.sectionTitle p{
+    color:#667085;
+
+    font-size:8px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.searchBox{
+    background:#fff;
+
+    border:
+    1px solid #e4e9f0;
+
+    border-radius:13px;
+
+    height:46px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:0 12px;
+
+    margin-bottom:13px;
+
+    box-shadow:
+    0 4px 15px rgba(16,24,40,.04);
+}
+
+.searchBox span{
+    font-size:16px;
+}
+
+.searchBox input{
+    flex:1;
+
+    height:100%;
+
+    border:0;
+
+    outline:none;
+
+    font-size:9px;
+
+    background:transparent;
+}
+
+
+/* =========================
+   ROLE GRID
+========================= */
+
+.roleGrid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:10px;
+}
+
+
+/* =========================
+   ROLE CARD
+========================= */
+
+.roleCard{
+    position:relative;
+
+    background:#fff;
+
+    border:
+    1px solid #e4e9f0;
+
+    border-radius:16px;
+
+    padding:14px 12px;
+
+    min-height:142px;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    transition:
+    transform .2s,
+    box-shadow .2s,
+    border-color .2s;
+
+    box-shadow:
+    0 4px 14px
+    rgba(16,24,40,.04);
+}
+
+.roleCard:hover{
+    transform:
+    translateY(-2px);
+
+    box-shadow:
+    0 8px 20px
+    rgba(16,24,40,.08);
+}
+
+.roleCard:active{
+    transform:
+    scale(.98);
+}
+
+.roleIcon{
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    background:#eff4ff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    margin-bottom:10px;
+}
+
+.roleCard h3{
+    font-size:10px;
+
+    margin-bottom:5px;
+
+    color:#101828;
+}
+
+.roleCard p{
+    font-size:7px;
+
+    color:#667085;
+
+    line-height:1.5;
+}
+
+.roleArrow{
+    position:absolute;
+
+    right:10px;
+    bottom:10px;
+
+    width:22px;
+    height:22px;
+
+    border-radius:7px;
+
+    background:#f2f4f7;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:#344054;
+
+    font-size:11px;
+}
+
+
+/* =========================
+   ROLE BADGE
+========================= */
+
+.roleBadge{
+    position:absolute;
+
+    top:9px;
+    right:9px;
+
+    background:#ecfdf3;
+
+    color:#027a48;
+
+    border-radius:6px;
+
+    padding:4px 5px;
+
+    font-size:5px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   INFO CARD
+========================= */
+
+.infoCard{
+    background:#fff;
+
+    border:
+    1px solid #e4e9f0;
+
+    border-radius:17px;
+
+    padding:15px;
+
+    margin-top:15px;
+
+    box-shadow:
+    0 4px 15px rgba(16,24,40,.04);
+}
+
+.infoRow{
+    display:flex;
+
+    gap:10px;
+
+    align-items:flex-start;
+
+    padding:8px 0;
+}
+
+.infoRow + .infoRow{
+    border-top:
+    1px solid #eef1f5;
+}
+
+.infoNumber{
+    width:25px;
+    height:25px;
+
+    border-radius:50%;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    flex-shrink:0;
+}
+
+.infoText strong{
+    display:block;
+
+    font-size:8px;
+
+    margin-bottom:3px;
+}
+
+.infoText span{
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   FOOT NOTE
+========================= */
+
+.footerNote{
+    text-align:center;
+
+    color:#667085;
+
+    font-size:7px;
+
+    line-height:1.6;
+
+    margin-top:16px;
+
+    padding:0 15px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(min-width:600px){
+
+    .roleGrid{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+}
+
+@media(min-width:850px){
+
+    .roleGrid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="header">
+
+
+<button
+    class="backBtn"
+    onclick="goBack()">
+
+    ←
+
+</button>
+
+
+<div class="headerTitle">
+
+<strong>
+    Transport Community
+</strong>
+
+<small>
+    India's professional transport network
+</small>
+
+</div>
+
+
+<div class="communityIcon">
+    👥
+</div>
+
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+
+<div class="heroIcon">
+    🚛
+</div>
+
+
+<h1>
+    Transport Community
+</h1>
+
+
+<p>
+    Connect with drivers, vehicle owners,
+    transporters, managers, dealers,
+    mechanics, employees and other
+    professionals working in the transport
+    business.
+</p>
+
+
+<div class="heroStats">
+
+
+<div class="heroStat">
+
+<strong>
+    15+
+</strong>
+
+<span>
+    PROFESSIONAL ROLES
+</span>
+
+</div>
+
+
+<div class="heroStat">
+
+<strong>
+    24×7
+</strong>
+
+<span>
+    BUSINESS NETWORK
+</span>
+
+</div>
+
+
+<div class="heroStat">
+
+<strong>
+    1
+</strong>
+
+<span>
+    CONNECTED PLATFORM
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ROLE SELECTION
+========================= -->
+
+<div class="sectionTitle">
+
+<h2>
+    Select Your Professional Role
+</h2>
+
+<p>
+    Choose the role that matches your work.
+    Your role will determine your professional
+    dashboard and available features.
+</p>
+
+</div>
+
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="searchBox">
+
+<span>
+    🔎
+</span>
+
+<input
+    id="roleSearch"
+    type="text"
+    placeholder="Search Driver, Manager, Dealer..."
+    oninput="searchRoles()">
+
+</div>
+
+
+
+<!-- =========================
+     ROLE GRID
+========================= -->
+
+<div
+    class="roleGrid"
+    id="roleGrid">
+
+
+<!-- DRIVER -->
+
+<button
+    class="roleCard"
+    data-role="Driver"
+    onclick="selectRole('Driver')">
+
+<div class="roleIcon">
+    👨‍✈️
+</div>
+
+<h3>
+    Driver
+</h3>
+
+<p>
+    Find trips, accept jobs,
+    manage earnings and track
+    your assigned vehicle.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- VEHICLE OWNER -->
+
+<button
+    class="roleCard"
+    data-role="Vehicle Owner"
+    onclick="selectRole('Vehicle Owner')">
+
+<div class="roleIcon">
+    🚚
+</div>
+
+<h3>
+    Vehicle Owner
+</h3>
+
+<p>
+    Manage trucks, drivers,
+    documents, maintenance
+    and earnings.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- TRANSPORTER -->
+
+<button
+    class="roleCard"
+    data-role="Transporter"
+    onclick="selectRole('Transporter')">
+
+<div class="roleIcon">
+    🏢
+</div>
+
+<h3>
+    Transporter
+</h3>
+
+<p>
+    Manage loads, vehicles,
+    bookings, drivers and
+    transport operations.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- MANAGER -->
+
+<button
+    class="roleCard"
+    data-role="Manager"
+    onclick="selectRole('Manager')">
+
+<div class="roleIcon">
+    👨‍💼
+</div>
+
+<span class="roleBadge">
+    BUSINESS
+</span>
+
+<h3>
+    Manager
+</h3>
+
+<p>
+    Manage staff, drivers,
+    vehicles, loads, tasks
+    and business reports.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- DEALER -->
+
+<button
+    class="roleCard"
+    data-role="Dealer"
+    onclick="selectRole('Dealer')">
+
+<div class="roleIcon">
+    📦
+</div>
+
+<h3>
+    Dealer
+</h3>
+
+<p>
+    Manage goods, transport
+    requirements, customers
+    and orders.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- DEALER MANAGER -->
+
+<button
+    class="roleCard"
+    data-role="Dealer Manager"
+    onclick="selectRole('Dealer Manager')">
+
+<div class="roleIcon">
+    🧑‍💼
+</div>
+
+<h3>
+    Dealer Manager
+</h3>
+
+<p>
+    Manage dealer operations,
+    dispatch, staff, orders
+    and reports.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- SALESMAN -->
+
+<button
+    class="roleCard"
+    data-role="Salesman"
+    onclick="selectRole('Salesman')">
+
+<div class="roleIcon">
+    📈
+</div>
+
+<h3>
+    Salesman
+</h3>
+
+<p>
+    Manage leads, customers,
+    quotations, follow-ups
+    and commissions.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- EMPLOYEE -->
+
+<button
+    class="roleCard"
+    data-role="Employee"
+    onclick="selectRole('Employee')">
+
+<div class="roleIcon">
+    👷
+</div>
+
+<h3>
+    Employee / Staff
+</h3>
+
+<p>
+    View assigned tasks,
+    attendance, work history
+    and notifications.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- FLEET MANAGER -->
+
+<button
+    class="roleCard"
+    data-role="Fleet Manager"
+    onclick="selectRole('Fleet Manager')">
+
+<div class="roleIcon">
+    🚛
+</div>
+
+<h3>
+    Fleet Manager
+</h3>
+
+<p>
+    Control vehicles, drivers,
+    fuel, maintenance and
+    fleet performance.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- MECHANIC -->
+
+<button
+    class="roleCard"
+    data-role="Mechanic"
+    onclick="selectRole('Mechanic')">
+
+<div class="roleIcon">
+    🔧
+</div>
+
+<h3>
+    Mechanic
+</h3>
+
+<p>
+    Manage repair jobs,
+    vehicle service and
+    maintenance history.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- WORKSHOP OWNER -->
+
+<button
+    class="roleCard"
+    data-role="Workshop Owner"
+    onclick="selectRole('Workshop Owner')">
+
+<div class="roleIcon">
+    🛠️
+</div>
+
+<h3>
+    Workshop Owner
+</h3>
+
+<p>
+    Manage workshop bookings,
+    mechanics, parts, customers
+    and billing.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- BROKER -->
+
+<button
+    class="roleCard"
+    data-role="Broker"
+    onclick="selectRole('Broker')">
+
+<div class="roleIcon">
+    🤝
+</div>
+
+<h3>
+    Broker / Agent
+</h3>
+
+<p>
+    Match available loads
+    with trucks and manage
+    commissions.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- GOODS SUPPLIER -->
+
+<button
+    class="roleCard"
+    data-role="Goods Supplier"
+    onclick="selectRole('Goods Supplier')">
+
+<div class="roleIcon">
+    📦
+</div>
+
+<h3>
+    Goods Supplier
+</h3>
+
+<p>
+    Manage shipments, loads,
+    transport bookings and
+    delivery information.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- BUSINESS -->
+
+<button
+    class="roleCard"
+    data-role="Business Company"
+    onclick="selectRole('Business Company')">
+
+<div class="roleIcon">
+    🏭
+</div>
+
+<h3>
+    Business / Company
+</h3>
+
+<p>
+    Manage commercial transport,
+    employees, orders, vehicles
+    and reports.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- CUSTOMER -->
+
+<button
+    class="roleCard"
+    data-role="Customer"
+    onclick="selectRole('Customer')">
+
+<div class="roleIcon">
+    👤
+</div>
+
+<h3>
+    Customer
+</h3>
+
+<p>
+    Find trucks, book transport,
+    make payments and track
+    deliveries.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- ADMIN -->
+
+<button
+    class="roleCard"
+    data-role="Admin"
+    onclick="selectRole('Admin')">
+
+<div class="roleIcon">
+    🛡️
+</div>
+
+<span class="roleBadge">
+    CONTROL
+</span>
+
+<h3>
+    Admin
+</h3>
+
+<p>
+    Manage users, verification,
+    complaints, payments,
+    commission and platform.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+
+<!-- OTHER -->
+
+<button
+    class="roleCard"
+    data-role="Other Transport Professional"
+    onclick="selectRole('Other Transport Professional')">
+
+<div class="roleIcon">
+    ➕
+</div>
+
+<h3>
+    Other Professional
+</h3>
+
+<p>
+    Select this if your transport
+    business role is not listed.
+</p>
+
+<div class="roleArrow">
+    →
+</div>
+
+</button>
+
+
+</div>
+
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="infoCard">
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    1
+</div>
+
+<div class="infoText">
+
+<strong>
+    Choose Your Role
+</strong>
+
+<span>
+    Select the professional role
+    that matches your work.
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    2
+</div>
+
+<div class="infoText">
+
+<strong>
+    Create Your Professional Profile
+</strong>
+
+<span>
+    Add your work information,
+    experience and required details.
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    3
+</div>
+
+<div class="infoText">
+
+<strong>
+    Get Your Unique ID
+</strong>
+
+<span>
+    In the final backend system,
+    a unique professional/employee
+    ID will be generated automatically.
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    4
+</div>
+
+<div class="infoText">
+
+<strong>
+    Enter Your Role Dashboard
+</strong>
+
+<span>
+    Your selected role will determine
+    which tools and features are available.
+</span>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<p class="footerNote">
+
+Your role-specific features will be designed
+around the real problems of each transport
+professional.
+
+</p>
+
+
+<!-- =========================
+     PART 1 END
+========================= -->
+
+<!--
+
+====================================================
+PART 2 यहाँ से नीचे paste होगा.
+
+Part 2 में:
+• Role selection popup
+• Professional benefits
+• Role-specific problem/solution preview
+• Register / Login buttons
+• Employee ID information
+• Verification information
+
+आएगा.
+
+अभी </body> और </html> मत लगाना.
+====================================================
+
+-->
+<!-- =========================
+     ROLE DETAILS PANEL
+========================= -->
+
+<section
+    id="roleDetails"
+    style="
+        display:none;
+        background:#fff;
+        border:1px solid #e4e9f0;
+        border-radius:18px;
+        padding:16px;
+        margin-top:15px;
+        box-shadow:0 5px 18px rgba(16,24,40,.05);
+    "
+>
+
+<div
+    style="
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin-bottom:13px;
+    "
+>
+
+<div
+    id="selectedRoleIcon"
+    style="
+        width:45px;
+        height:45px;
+        border-radius:12px;
+        background:#eff4ff;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:22px;
+    "
+>
+    👤
+</div>
+
+
+<div>
+
+<h2
+    id="selectedRoleTitle"
+    style="
+        font-size:15px;
+        margin-bottom:3px;
+    "
+>
+    Select Role
+</h2>
+
+<small
+    style="
+        color:#667085;
+        font-size:7px;
+    "
+>
+    Your role-specific workspace
+</small>
+
+</div>
+
+</div>
+
+
+
+<div
+    id="roleProblem"
+    style="
+        background:#fff8ed;
+        border:1px solid #fedf89;
+        border-radius:11px;
+        padding:10px;
+        margin-bottom:9px;
+    "
+>
+
+<strong
+    style="
+        display:block;
+        font-size:8px;
+        color:#b54708;
+        margin-bottom:4px;
+    "
+>
+    ⚠️ Common Problem
+</strong>
+
+<span
+    id="problemText"
+    style="
+        color:#667085;
+        font-size:7px;
+        line-height:1.5;
+    "
+>
+    Select a role to see the problems
+    this dashboard will solve.
+</span>
+
+</div>
+
+
+
+<div
+    style="
+        background:#ecfdf3;
+        border:1px solid #abefc6;
+        border-radius:11px;
+        padding:10px;
+        margin-bottom:12px;
+    "
+>
+
+<strong
+    style="
+        display:block;
+        font-size:8px;
+        color:#027a48;
+        margin-bottom:4px;
+    "
+>
+    ✓ Platform Solution
+</strong>
+
+<span
+    id="solutionText"
+    style="
+        color:#667085;
+        font-size:7px;
+        line-height:1.5;
+    "
+>
+    Role-specific tools will appear here.
+</span>
+
+</div>
+
+
+
+<button
+    id="continueRoleBtn"
+    onclick="continueWithRole()"
+    style="
+        width:100%;
+        height:46px;
+        border:0;
+        border-radius:11px;
+        background:#2563eb;
+        color:#fff;
+        font-size:9px;
+        font-weight:800;
+        cursor:pointer;
+    "
+>
+    Continue with this Role →
+</button>
+
+
+</section>
+
+
+
+<!-- =========================
+     PROFESSIONAL BENEFITS
+========================= -->
+
+<section class="infoCard">
+
+<div class="sectionTitle"
+     style="margin-top:0;">
+
+<h2>
+    Why Join the Community?
+</h2>
+
+<p>
+    Every professional gets tools designed
+    around their actual transport-business work.
+</p>
+
+</div>
+
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    🚚
+</div>
+
+<div class="infoText">
+
+<strong>
+    Find Business Opportunities
+</strong>
+
+<span>
+    Discover transport jobs, loads,
+    vehicles and business opportunities
+    relevant to your role.
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    🤝
+</div>
+
+<div class="infoText">
+
+<strong>
+    Connect With Professionals
+</strong>
+
+<span>
+    Connect with drivers, owners,
+    transporters, dealers, managers,
+    mechanics and other professionals.
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    📊
+</div>
+
+<div class="infoText">
+
+<strong>
+    Manage Your Work
+</strong>
+
+<span>
+    Keep your jobs, vehicles, customers,
+    tasks, payments and business activity
+    in one place.
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="infoRow">
+
+<div class="infoNumber">
+    🔐
+</div>
+
+<div class="infoText">
+
+<strong>
+    Professional Identity
+</strong>
+
+<span>
+    Your final account will receive a
+    unique system-generated professional
+    or employee ID.
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ROLE SECURITY
+========================= -->
+
+<section class="infoCard">
+
+<div class="cardHeader">
+
+<div class="cardIcon">
+    🔐
+</div>
+
+<div>
+
+<h2>
+    Secure Role Access
+</h2>
+
+<small>
+    Your selected role will control your dashboard
+</small>
+
+</div>
+
+</div>
+
+
+<div
+style="
+background:#f8fafc;
+border-radius:12px;
+padding:12px;
+"
+>
+
+<div
+style="
+display:flex;
+gap:9px;
+align-items:flex-start;
+margin-bottom:9px;
+"
+>
+
+<div
+style="
+font-size:13px;
+"
+>
+✓
+</div>
+
+<div
+style="
+font-size:7px;
+color:#475467;
+line-height:1.5;
+"
+>
+
+Each professional account will have
+a unique ID.
+
+</div>
+
+</div>
+
+
+
+<div
+style="
+display:flex;
+gap:9px;
+align-items:flex-start;
+margin-bottom:9px;
+"
+>
+
+<div
+style="
+font-size:13px;
+"
+>
+✓
+</div>
+
+<div
+style="
+font-size:7px;
+color:#475467;
+line-height:1.5;
+"
+>
+
+The account's verified role will be
+stored securely in the backend.
+
+</div>
+
+</div>
+
+
+
+<div
+style="
+display:flex;
+gap:9px;
+align-items:flex-start;
+"
+>
+
+<div
+style="
+font-size:13px;
+"
+>
+✓
+</div>
+
+<div
+style="
+font-size:7px;
+color:#475467;
+line-height:1.5;
+"
+>
+
+Users will only get access to the
+features permitted for their role.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PROFESSIONAL NETWORK
+========================= -->
+
+<section
+style="
+background:#07111f;
+color:#fff;
+border-radius:18px;
+padding:17px;
+margin-top:15px;
+"
+>
+
+<h2
+style="
+font-size:14px;
+margin-bottom:7px;
+"
+>
+    One Transport Network
+</h2>
+
+<p
+style="
+font-size:7px;
+color:#cbd5e1;
+line-height:1.6;
+margin-bottom:13px;
+"
+>
+    Different roles, one connected transport
+    ecosystem. Professionals can work together
+    while maintaining separate role-specific
+    dashboards.
+</p>
+
+
+<div
+style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+"
+>
+
+<div
+style="
+background:#172235;
+border-radius:10px;
+padding:9px;
+"
+>
+
+<strong
+style="
+display:block;
+font-size:8px;
+margin-bottom:3px;
+"
+>
+    👨‍✈️ Drivers
+</strong>
+
+<span
+style="
+font-size:6px;
+color:#94a3b8;
+"
+>
+    Jobs & Trips
+</span>
+
+</div>
+
+
+
+<div
+style="
+background:#172235;
+border-radius:10px;
+padding:9px;
+"
+>
+
+<strong
+style="
+display:block;
+font-size:8px;
+margin-bottom:3px;
+"
+>
+    🚚 Owners
+</strong>
+
+<span
+style="
+font-size:6px;
+color:#94a3b8;
+"
+>
+    Fleet & Vehicles
+</span>
+
+</div>
+
+
+
+<div
+style="
+background:#172235;
+border-radius:10px;
+padding:9px;
+"
+>
+
+<strong
+style="
+display:block;
+font-size:8px;
+margin-bottom:3px;
+"
+>
+    👨‍💼 Managers
+</strong>
+
+<span
+style="
+font-size:6px;
+color:#94a3b8;
+"
+>
+    Operations
+</span>
+
+</div>
+
+
+
+<div
+style="
+background:#172235;
+border-radius:10px;
+padding:9px;
+"
+>
+
+<strong
+style="
+display:block;
+font-size:8px;
+margin-bottom:3px;
+"
+>
+    📦 Dealers
+</strong>
+
+<span
+style="
+font-size:6px;
+color:#94a3b8;
+"
+>
+    Goods & Orders
+</span>
+
+</div>
+
+
+
+<div
+style="
+background:#172235;
+border-radius:10px;
+padding:9px;
+"
+>
+
+<strong
+style="
+display:block;
+font-size:8px;
+margin-bottom:3px;
+"
+>
+    🔧 Mechanics
+</strong>
+
+<span
+style="
+font-size:6px;
+color:#94a3b8;
+"
+>
+    Vehicle Service
+</span>
+
+</div>
+
+
+
+<div
+style="
+background:#172235;
+border-radius:10px;
+padding:9px;
+"
+>
+
+<strong
+style="
+display:block;
+font-size:8px;
+margin-bottom:3px;
+"
+>
+    🤝 Brokers
+</strong>
+
+<span
+style="
+font-size:6px;
+color:#94a3b8;
+"
+>
+    Load Matching
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FRONTEND DEMO NOTICE
+========================= -->
+
+<div
+style="
+margin-top:13px;
+padding:10px 12px;
+border-radius:10px;
+background:#fff7ed;
+border:1px solid #fed7aa;
+color:#9a3412;
+font-size:7px;
+line-height:1.6;
+"
+>
+
+<strong>
+    Frontend Phase:
+</strong>
+
+अभी role selection और interface तैयार
+किया जा रहा है। Unique ID generation,
+verification, secure login और permissions
+backend phase में वास्तविक रूप से काम करेंगे।
+
+</div>
+
+
+
+<!-- =========================
+     PART 2 END
+========================= -->
+
+<!--
+
+====================================================
+PART 3 इसी जगह से नीचे paste होगा.
+
+Part 3 में:
+• सभी roles की automatic search
+• Role selection logic
+• Role-specific problem/solution data
+• Employee/Professional ID demo generation
+• Role save
+• Dashboard routing
+• Back button
+• Final JavaScript
+• </body>
+• </html>
+
+आएगा.
+====================================================
+
+-->
+<!-- =========================
+     PART 3 : JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================================
+   ROLE DATABASE
+========================================= */
+
+const roleData = {
+
+    "Driver": {
+        icon: "👨‍✈️",
+        problem:
+            "खाली ट्रिप, सही काम न मिलना, payment tracking और vehicle location की समस्या।",
+        solution:
+            "Available Jobs, Trip Management, Live Tracking, Earnings, Documents, Fuel Log और Emergency tools."
+    },
+
+    "Vehicle Owner": {
+        icon: "🚚",
+        problem:
+            "Vehicles, drivers, maintenance और income को एक साथ manage करना मुश्किल।",
+        solution:
+            "Fleet Management, Driver Assignment, Documents, Maintenance, Earnings और Vehicle Availability."
+    },
+
+    "Transporter": {
+        icon: "🏢",
+        problem:
+            "Loads, trucks, drivers, bookings और customers को manage करने में समय लगता है।",
+        solution:
+            "Load Management, Truck Search, Booking Management, Driver Management, Fleet और Reports."
+    },
+
+    "Manager": {
+        icon: "👨‍💼",
+        problem:
+            "पूरे transport operation, staff, drivers, vehicles और tasks को control करना कठिन।",
+        solution:
+            "Manager Control Center, Staff Management, Driver Management, Vehicle Management, Tasks, Approvals और Reports."
+    },
+
+    "Dealer": {
+        icon: "📦",
+        problem:
+            "Goods, customers, transport requirement और orders को manage करना कठिन।",
+        solution:
+            "Goods Management, Load Posting, Transport Booking, Customer Management, Orders और Delivery Tracking."
+    },
+
+    "Dealer Manager": {
+        icon: "🧑‍💼",
+        problem:
+            "Dealer के orders, staff, dispatch और customer operations को manage करना कठिन।",
+        solution:
+            "Order Management, Dispatch, Staff Management, Customer Management, Reports और Notifications."
+    },
+
+    "Salesman": {
+        icon: "📈",
+        problem:
+            "Leads, customers, follow-ups और sales commission track करना मुश्किल।",
+        solution:
+            "CRM, Leads, Customers, Follow-ups, Quotations, Orders और Commission Tracking."
+    },
+
+    "Employee": {
+        icon: "👷",
+        problem:
+            "Assigned work, tasks, attendance और work history manage करना मुश्किल।",
+        solution:
+            "Task Dashboard, Attendance, Work History, Notifications, Documents और Performance."
+    },
+
+    "Fleet Manager": {
+        icon: "🚛",
+        problem:
+            "बड़ी fleet में vehicles, drivers, fuel और maintenance का control कठिन।",
+        solution:
+            "Fleet Dashboard, Vehicle Tracking, Driver Management, Fuel Monitoring, Maintenance और Alerts."
+    },
+
+    "Mechanic": {
+        icon: "🔧",
+        problem:
+            "Repair jobs, vehicle history और service requirements को track करना कठिन।",
+        solution:
+            "Service Requests, Repair Jobs, Parts, Vehicle History, Job Status और Service Schedule."
+    },
+
+    "Workshop Owner": {
+        icon: "🛠️",
+        problem:
+            "Workshop customers, mechanics, service jobs और billing manage करना कठिन।",
+        solution:
+            "Service Booking, Mechanics, Job Management, Parts, Customer Records और Billing."
+    },
+
+    "Broker": {
+        icon: "🤝",
+        problem:
+            "Load और suitable truck को manually match करने में समय लगता है।",
+        solution:
+            "Load Finder, Truck Finder, Smart Matching, Deal Management और Commission Tracking."
+    },
+
+    "Goods Supplier": {
+        icon: "📦",
+        problem:
+            "Goods shipment, transport booking और delivery status की जानकारी manage करना कठिन।",
+        solution:
+            "Shipment Management, Load Booking, Documents, Delivery Tracking और Notifications."
+    },
+
+    "Business Company": {
+        icon: "🏭",
+        problem:
+            "Multiple employees, vehicles, orders और transport operations manage करना कठिन।",
+        solution:
+            "Company Dashboard, Employee Management, Fleet, Orders, Transport और Business Reports."
+    },
+
+    "Customer": {
+        icon: "👤",
+        problem:
+            "सही truck, उचित price, booking और delivery tracking की समस्या।",
+        solution:
+            "Truck Search, Price Comparison, Booking, Payment, Live Tracking और Customer Support."
+    },
+
+    "Admin": {
+        icon: "🛡️",
+        problem:
+            "पूरे platform के users, verification, complaints, payments और security को control करना।",
+        solution:
+            "Admin Control Center, User Management, Verification, Complaints, Payments, Commission, Reports और Security."
+    },
+
+    "Other Transport Professional": {
+        icon: "➕",
+        problem:
+            "हर transport profession को सामान्य categories में fit करना संभव नहीं।",
+        solution:
+            "Custom professional profile और बाद में role-specific tools उपलब्ध कराए जा सकते हैं."
+    }
+
+};
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+function goBack(){
+
+    if(
+        window.history.length > 1
+    ){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href =
+            "home.html";
+
+    }
+
+}
+
+
+/* =========================================
+   SELECT ROLE
+========================================= */
+
+function selectRole(role){
+
+    const data =
+        roleData[role];
+
+    if(!data){
+
+        return;
+
+    }
+
+
+    /* Save selected role */
+
+    localStorage.setItem(
+        "selectedRole",
+        role
+    );
+
+
+    /* Change panel */
+
+    const panel =
+        document.getElementById(
+            "roleDetails"
+        );
+
+
+    const icon =
+        document.getElementById(
+            "selectedRoleIcon"
+        );
+
+
+    const title =
+        document.getElementById(
+            "selectedRoleTitle"
+        );
+
+
+    const problem =
+        document.getElementById(
+            "problemText"
+        );
+
+
+    const solution =
+        document.getElementById(
+            "solutionText"
+        );
+
+
+    icon.textContent =
+        data.icon;
+
+
+    title.textContent =
+        role;
+
+
+    problem.textContent =
+        data.problem;
+
+
+    solution.textContent =
+        data.solution;
+
+
+    panel.style.display =
+        "block";
+
+
+    /* Highlight selected card */
+
+    document
+        .querySelectorAll(
+            ".roleCard"
+        )
+        .forEach(
+            function(card){
+
+                card.style.borderColor =
+                    "#e4e9f0";
+
+                card.style.boxShadow =
+                    "0 4px 14px rgba(16,24,40,.04)";
+
+            }
+        );
+
+
+    const selectedCard =
+        document.querySelector(
+            '[data-role="' +
+            CSS.escape(role) +
+            '"]'
+        );
+
+
+    if(selectedCard){
+
+        selectedCard.style.borderColor =
+            "#2563eb";
+
+        selectedCard.style.boxShadow =
+            "0 0 0 2px rgba(37,99,235,.10)";
+
+    }
+
+
+    /* Scroll to details */
+
+    setTimeout(
+        function(){
+
+            panel.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+        },
+        100
+    );
+
+}
+
+
+/* =========================================
+   SEARCH ROLES
+========================================= */
+
+function searchRoles(){
+
+    const input =
+        document.getElementById(
+            "roleSearch"
+        );
+
+
+    const search =
+        input.value
+            .trim()
+            .toLowerCase();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".roleCard"
+        );
+
+
+    cards.forEach(
+        function(card){
+
+            const role =
+                card
+                    .getAttribute(
+                        "data-role"
+                    )
+                    .toLowerCase();
+
+
+            if(
+                role.includes(search)
+            ){
+
+                card.style.display =
+                    "block";
+
+            }else{
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   CREATE UNIQUE DEMO ID
+========================================= */
+
+function createProfessionalID(role){
+
+    const prefixes = {
+
+        "Driver":"DRV",
+
+        "Vehicle Owner":"OWN",
+
+        "Transporter":"TRP",
+
+        "Manager":"MGR",
+
+        "Dealer":"DLR",
+
+        "Dealer Manager":"DLM",
+
+        "Salesman":"SLM",
+
+        "Employee":"EMP",
+
+        "Fleet Manager":"FLT",
+
+        "Mechanic":"MEC",
+
+        "Workshop Owner":"WRK",
+
+        "Broker":"BRK",
+
+        "Goods Supplier":"SUP",
+
+        "Business Company":"BUS",
+
+        "Customer":"CUS",
+
+        "Admin":"ADM",
+
+        "Other Transport Professional":"PRO"
+
+    };
+
+
+    const prefix =
+        prefixes[role] ||
+        "PRO";
+
+
+    const random =
+        Math.random()
+            .toString(36)
+            .substring(2,8)
+            .toUpperCase();
+
+
+    return (
+        prefix +
+        "-" +
+        random
+    );
+
+}
+
+
+/* =========================================
+   CONTINUE WITH ROLE
+========================================= */
+
+function continueWithRole(){
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    if(!role){
+
+        alert(
+            "Please select your professional role first."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       FRONTEND DEMO ID
+
+       Real secure ID backend में
+       automatically generate होगी.
+    */
+
+    let employeeID =
+        localStorage.getItem(
+            "professionalID"
+        );
+
+
+    const savedRole =
+        localStorage.getItem(
+            "professionalIDRole"
+        );
+
+
+    /*
+       Same role के लिए existing ID रखें.
+       Role बदलने पर demo में नया ID बनेगा.
+    */
+
+    if(
+        !employeeID ||
+        savedRole !== role
+    ){
+
+        employeeID =
+            createProfessionalID(
+                role
+            );
+
+
+        localStorage.setItem(
+            "professionalID",
+            employeeID
+        );
+
+
+        localStorage.setItem(
+            "professionalIDRole",
+            role
+        );
+
+    }
+
+
+    /*
+       Registration page अभी हम
+       frontend phase में बनाएँगे.
+    */
+
+    localStorage.setItem(
+        "registrationRole",
+        role
+    );
+
+
+    /*
+       अभी temporary message.
+       अगला page बनने के बाद इसी जगह
+       registration page open होगा.
+    */
+
+    alert(
+        "Selected Role: " +
+        role +
+        "\n\n" +
+        "Demo Professional ID: " +
+        employeeID +
+        "\n\n" +
+        "Next step: Professional Registration"
+    );
+
+
+    /*
+       जब registration page बनेगा,
+       नीचे वाली line को activate करेंगे:
+
+       window.location.href =
+       "professional-registration.html";
+    */
+
+}
+
+
+/* =========================================
+   RESTORE PREVIOUS ROLE
+========================================= */
+
+function restoreSelectedRole(){
+
+    const role =
+        localStorage.getItem(
+            "selectedRole"
+        );
+
+
+    if(
+        role &&
+        roleData[role]
+    ){
+
+        selectRole(role);
+
+    }
+
+}
+
+
+/* =========================================
+   PAGE LOAD
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        restoreSelectedRole();
+
+    }
+);
+
+</script>
+
+
+
+<!-- =========================
+     FINAL FOOTER
+========================= -->
+
+<footer
+style="
+    max-width:950px;
+    margin:0 auto;
+    padding:18px 14px;
+    text-align:center;
+    color:#667085;
+    font-size:7px;
+">
+
+<div
+style="
+    padding-top:14px;
+    border-top:1px solid #e4e9f0;
+">
+
+<strong
+style="
+    display:block;
+    color:#344054;
+    font-size:8px;
+    margin-bottom:5px;
+">
+    TransportPro
+</strong>
+
+<span>
+    One connected platform for the transport industry.
+</span>
+
+</div>
+
+</footer>
+
+
+</body>
+
+</html>

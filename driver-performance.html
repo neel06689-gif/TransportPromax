@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Driver Performance - TransportPro</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f6fb;
+    color:#172033;
+    min-height:100vh;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.top-header{
+    width:100%;
+    height:62px;
+
+    background:#101820;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+    padding:0 14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.back-btn,
+.notification-btn{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:8px;
+
+    background:transparent;
+    color:#fff;
+
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:active,
+.notification-btn:active{
+    background:#26313d;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#fff;
+    color:#1769e0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.brand{
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.brand strong{
+    font-size:15px;
+}
+
+.brand small{
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+
+/* =====================================
+   MAIN
+===================================== */
+
+.container{
+    width:100%;
+    max-width:850px;
+
+    margin:auto;
+    padding:15px;
+}
+
+.dashboard-btn{
+    background:#fff;
+    color:#172033;
+
+    border:1px solid #dbe2ea;
+
+    padding:10px 13px;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-bottom:12px;
+}
+
+.dashboard-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =====================================
+   MAIN CARD
+===================================== */
+
+.performance-card{
+    background:#fff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:
+        0 4px 15px rgba(16,24,40,.05);
+}
+
+
+/* =====================================
+   PAGE HEADING
+===================================== */
+
+.page-heading{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:17px;
+}
+
+.page-icon{
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    flex-shrink:0;
+}
+
+.page-heading h1{
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#667085;
+
+    font-size:11px;
+
+    line-height:17px;
+}
+
+
+/* =====================================
+   DRIVER SELECTOR
+===================================== */
+
+.driver-selector{
+    margin-bottom:14px;
+}
+
+.driver-selector label{
+    display:block;
+
+    color:#344054;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+}
+
+.driver-selector select{
+    width:100%;
+    height:44px;
+
+    border:1px solid #d7dee8;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    color:#172033;
+
+    padding:0 12px;
+
+    font-size:11px;
+
+    outline:none;
+}
+
+.driver-selector select:focus{
+    border-color:#1769e0;
+
+    box-shadow:
+        0 0 0 3px rgba(23,105,224,.08);
+}
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+.performance-summary{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:15px;
+}
+
+.summary-box{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:10px;
+
+    padding:11px 5px;
+
+    text-align:center;
+}
+
+.summary-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.summary-box strong{
+    font-size:16px;
+}
+
+
+/* =====================================
+   SCORE
+===================================== */
+
+.score-section{
+    background:#f8fafc;
+
+    border:1px solid #e5eaf0;
+
+    border-radius:11px;
+
+    padding:13px;
+
+    margin-bottom:17px;
+}
+
+.score-header{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:9px;
+}
+
+.score-header strong{
+    font-size:11px;
+}
+
+.score-header span{
+    color:#1769e0;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+.progress-bar{
+    width:100%;
+
+    height:9px;
+
+    background:#e4e9f0;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+
+    height:100%;
+
+    background:#1769e0;
+
+    border-radius:20px;
+
+    transition:
+        width .4s ease;
+}
+
+
+/* =====================================
+   METRICS
+===================================== */
+
+.metrics-section{
+    border-top:1px solid #edf0f4;
+
+    padding-top:15px;
+
+    margin-bottom:17px;
+}
+
+.metrics-section h2,
+.rating-section h2{
+    font-size:13px;
+
+    margin-bottom:10px;
+}
+
+.metrics-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+}
+
+.metric-box{
+    border:1px solid #e5eaf0;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    padding:11px 6px;
+
+    text-align:center;
+}
+
+.metric-box span{
+    display:block;
+
+    color:#667085;
+
+    font-size:8px;
+
+    margin-bottom:5px;
+}
+
+.metric-box strong{
+    font-size:11px;
+}
+
+
+/* =====================================
+   TRIP SECTION
+===================================== */
+
+.trip-section{
+    border-top:1px solid #edf0f4;
+
+    padding-top:15px;
+
+    margin-bottom:17px;
+}
+
+.section-header{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:10px;
+}
+
+.section-header h2{
+    font-size:13px;
+}
+
+.section-header button{
+    height:30px;
+
+    padding:0 10px;
+
+    border:1px solid #d7dee8;
+
+    background:#fff;
+
+    color:#1769e0;
+
+    border-radius:7px;
+
+    font-size:8px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.section-header button:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================
+   TRIP LIST
+===================================== */
+
+.trip-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.trip-item{
+    border:1px solid #e5eaf0;
+
+    border-radius:9px;
+
+    padding:10px;
+
+    background:#fff;
+}
+
+.trip-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:8px;
+}
+
+.trip-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:8px;
+
+    background:#eef5ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+}
+
+.trip-title{
+    flex:1;
+}
+
+.trip-title strong{
+    display:block;
+
+    font-size:10px;
+
+    margin-bottom:3px;
+}
+
+.trip-title small{
+    color:#667085;
+
+    font-size:7px;
+}
+
+.trip-status{
+    padding:5px 8px;
+
+    border-radius:20px;
+
+    background:#eaf8ef;
+
+    color:#137333;
+
+    font-size:7px;
+
+    font-weight:bold;
+}
+
+.trip-details{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:6px;
+}
+
+.trip-info{
+    border:1px solid #edf0f4;
+
+    border-radius:6px;
+
+    padding:7px 4px;
+
+    text-align:center;
+}
+
+.trip-info span{
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:6px;
+
+    margin-bottom:3px;
+}
+
+.trip-info strong{
+    display:block;
+
+    font-size:8px;
+}
+
+
+/* =====================================
+   RATING
+===================================== */
+
+.rating-section{
+    border-top:1px solid #edf0f4;
+
+    padding-top:15px;
+}
+
+.rating-display{
+    background:#fffaf0;
+
+    border:1px solid #f0dfb8;
+
+    border-radius:10px;
+
+    padding:13px;
+
+    text-align:center;
+}
+
+.stars{
+    font-size:28px;
+
+    letter-spacing:2px;
+
+    margin-bottom:5px;
+}
+
+.rating-display strong{
+    display:block;
+
+    font-size:10px;
+
+    color:#a15c00;
+}
+
+
+/* =====================================
+   EMPTY STATE
+===================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:35px 10px;
+
+    border:1px dashed #d7dee8;
+
+    border-radius:11px;
+}
+
+.empty-icon{
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+.empty-state strong{
+    display:block;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.empty-state small{
+    display:block;
+
+    color:#667085;
+
+    font-size:9px;
+
+    line-height:15px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:450px){
+
+    .container{
+        padding:10px;
+    }
+
+    .performance-card{
+        padding:12px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-icon{
+        width:50px;
+        height:50px;
+
+        font-size:27px;
+    }
+
+    .page-heading h1{
+        font-size:18px;
+    }
+
+    .page-heading p{
+        font-size:10px;
+    }
+
+    .performance-summary{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .metrics-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .trip-details{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+/* =====================================
+   VERY SMALL MOBILE
+===================================== */
+
+@media(max-width:340px){
+
+    .performance-card{
+        padding:10px;
+    }
+
+    .summary-box strong{
+        font-size:14px;
+    }
+
+    .metric-box strong{
+        font-size:10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="top-header">
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ←
+
+    </button>
+
+
+    <div class="logo">
+        TP
+    </div>
+
+
+    <div class="brand">
+
+        <strong>
+            TransportPro
+        </strong>
+
+        <small>
+            Driver Performance
+        </small>
+
+    </div>
+
+
+    <button
+        class="notification-btn"
+        onclick="openNotifications()">
+
+        🔔
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <button
+        class="dashboard-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+
+    <section class="performance-card">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <div class="page-icon">
+                📊
+            </div>
+
+            <div>
+
+                <h1>
+                    Driver Performance
+                </h1>
+
+                <p>
+                    Driver performance, trips,
+                    ratings aur efficiency analyse karein.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DRIVER SELECT -->
+
+        <div class="driver-selector">
+
+            <label>
+                Select Driver
+            </label>
+
+            <select
+                id="driverSelect"
+                onchange="loadPerformance()">
+
+                <option value="">
+                    Select Driver
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- PERFORMANCE SUMMARY -->
+
+        <div class="performance-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Total Trips
+                </span>
+
+                <strong id="totalTrips">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Completed
+                </span>
+
+                <strong id="completedTrips">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Rating
+                </span>
+
+                <strong id="driverRating">
+                    ⭐ 0.0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Efficiency
+                </span>
+
+                <strong id="efficiency">
+                    0%
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- PERFORMANCE SCORE -->
+
+        <div class="score-section">
+
+            <div class="score-header">
+
+                <strong>
+                    Performance Score
+                </strong>
+
+                <span id="scoreValue">
+                    0/100
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="scoreProgress"
+                    class="progress-fill">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- METRICS -->
+
+        <div class="metrics-section">
+
+            <h2>
+                Performance Metrics
+            </h2>
+
+
+            <div class="metrics-grid">
+
+
+                <div class="metric-box">
+
+                    <span>
+                        On-Time Rate
+                    </span>
+
+                    <strong id="onTimeRate">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="metric-box">
+
+                    <span>
+                        Safety Score
+                    </span>
+
+                    <strong id="safetyScore">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="metric-box">
+
+                    <span>
+                        Fuel Efficiency
+                    </span>
+
+                    <strong id="fuelEfficiency">
+                        0 km/L
+                    </strong>
+
+                </div>
+
+
+                <div class="metric-box">
+
+                    <span>
+                        Total Distance
+                    </span>
+
+                    <strong id="totalDistance">
+                        0 km
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TRIP PERFORMANCE -->
+
+        <div class="trip-section">
+
+            <div class="section-header">
+
+                <h2>
+                    Trip Performance
+                </h2>
+
+                <button
+                    onclick="refreshPerformance()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="tripPerformanceList"
+                class="trip-list">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        📊
+                    </div>
+
+                    <strong>
+                        Select a Driver
+                    </strong>
+
+                    <small>
+                        Driver select karne ke baad
+                        performance details yahan show hongi.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RATING -->
+
+        <div class="rating-section">
+
+            <h2>
+                Driver Rating
+            </h2>
+
+
+            <div class="rating-display">
+
+                <div
+                    id="ratingStars"
+                    class="stars">
+
+                    ☆☆☆☆☆
+
+                </div>
+
+                <strong
+                    id="ratingText">
+
+                    No Rating
+
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+/* =====================================
+   DRIVER PERFORMANCE - JAVASCRIPT
+===================================== */
+
+const DRIVER_KEY = "tp_drivers";
+
+let selectedDriverId = "";
+
+
+/* =====================================
+   GET DRIVERS
+===================================== */
+
+function getDrivers(){
+
+    const saved =
+        localStorage.getItem(DRIVER_KEY);
+
+    if(!saved){
+        return [];
+    }
+
+    try{
+
+        const data = JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    }catch(error){
+
+        console.log(error);
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD DRIVER DROPDOWN
+===================================== */
+
+function loadDrivers(){
+
+    const select =
+        document.getElementById(
+            "driverSelect"
+        );
+
+    if(!select){
+        return;
+    }
+
+
+    const drivers =
+        getDrivers();
+
+
+    select.innerHTML = `
+        <option value="">
+            Select Driver
+        </option>
+    `;
+
+
+    drivers.forEach(driver => {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            driver.id;
+
+        option.textContent =
+            driver.name +
+            " — " +
+            driver.id;
+
+        select.appendChild(
+            option
+        );
+
+    });
+
+
+    if(drivers.length === 0){
+
+        showEmptyPerformance();
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD PERFORMANCE
+===================================== */
+
+function loadPerformance(){
+
+    const select =
+        document.getElementById(
+            "driverSelect"
+        );
+
+
+    selectedDriverId =
+        select.value;
+
+
+    if(!selectedDriverId){
+
+        showEmptyPerformance();
+
+        return;
+
+    }
+
+
+    const drivers =
+        getDrivers();
+
+
+    const driver =
+        drivers.find(
+            item =>
+                item.id ===
+                selectedDriverId
+        );
+
+
+    if(!driver){
+
+        showEmptyPerformance();
+
+        return;
+
+    }
+
+
+    calculatePerformance(
+        driver
+    );
+
+}
+
+
+/* =====================================
+   CALCULATE PERFORMANCE
+===================================== */
+
+function calculatePerformance(driver){
+
+    /*
+     * Driver ke available data ke basis
+     * par performance calculate ki ja rahi hai.
+     */
+
+    const rating =
+        Number(
+            driver.rating || 5
+        );
+
+
+    const experience =
+        Number(
+            driver.experience || 0
+        );
+
+
+    /*
+     * Demo performance calculation.
+     * Backend aane ke baad real trip data
+     * se replace kiya ja sakta hai.
+     */
+
+    const totalTrips =
+        Math.max(
+            5,
+            experience * 8
+        );
+
+
+    const completedTrips =
+        Math.round(
+            totalTrips * 0.94
+        );
+
+
+    const onTimeRate =
+        Math.min(
+            99,
+            Math.round(
+                80 +
+                rating * 3
+            )
+        );
+
+
+    const safetyScore =
+        Math.min(
+            99,
+            Math.round(
+                75 +
+                rating * 4
+            )
+        );
+
+
+    const fuelEfficiency =
+        (
+            10 +
+            rating * 0.8
+        ).toFixed(1);
+
+
+    const totalDistance =
+        totalTrips * 185;
+
+
+    const efficiency =
+        Math.round(
+            (
+                onTimeRate +
+                safetyScore +
+                rating * 20
+            ) / 3
+        );
+
+
+    const score =
+        Math.min(
+            100,
+            Math.round(
+                (
+                    rating / 5 * 30
+                ) +
+
+                (
+                    onTimeRate * 0.25
+                ) +
+
+                (
+                    safetyScore * 0.25
+                )
+            )
+        );
+
+
+    updateSummary(
+
+        totalTrips,
+
+        completedTrips,
+
+        rating,
+
+        efficiency
+
+    );
+
+
+    updateScore(
+        score
+    );
+
+
+    updateMetrics(
+
+        onTimeRate,
+
+        safetyScore,
+
+        fuelEfficiency,
+
+        totalDistance
+
+    );
+
+
+    updateRating(
+        rating
+    );
+
+
+    generateTripPerformance(
+        driver,
+        totalTrips
+    );
+
+}
+
+
+/* =====================================
+   UPDATE SUMMARY
+===================================== */
+
+function updateSummary(
+    totalTrips,
+    completedTrips,
+    rating,
+    efficiency
+){
+
+    document.getElementById(
+        "totalTrips"
+    ).innerText =
+        totalTrips;
+
+
+    document.getElementById(
+        "completedTrips"
+    ).innerText =
+        completedTrips;
+
+
+    document.getElementById(
+        "driverRating"
+    ).innerText =
+        "⭐ " +
+        rating.toFixed(1);
+
+
+    document.getElementById(
+        "efficiency"
+    ).innerText =
+        efficiency +
+        "%";
+
+}
+
+
+/* =====================================
+   UPDATE SCORE
+===================================== */
+
+function updateScore(score){
+
+    document.getElementById(
+        "scoreValue"
+    ).innerText =
+        score +
+        "/100";
+
+
+    const progress =
+        document.getElementById(
+            "scoreProgress"
+        );
+
+
+    progress.style.width =
+        score +
+        "%";
+
+}
+
+
+/* =====================================
+   UPDATE METRICS
+===================================== */
+
+function updateMetrics(
+
+    onTimeRate,
+    safetyScore,
+    fuelEfficiency,
+    totalDistance
+
+){
+
+    document.getElementById(
+        "onTimeRate"
+    ).innerText =
+        onTimeRate +
+        "%";
+
+
+    document.getElementById(
+        "safetyScore"
+    ).innerText =
+        safetyScore +
+        "%";
+
+
+    document.getElementById(
+        "fuelEfficiency"
+    ).innerText =
+        fuelEfficiency +
+        " km/L";
+
+
+    document.getElementById(
+        "totalDistance"
+    ).innerText =
+        totalDistance +
+        " km";
+
+}
+
+
+/* =====================================
+   UPDATE RATING
+===================================== */
+
+function updateRating(rating){
+
+    const stars =
+        document.getElementById(
+            "ratingStars"
+        );
+
+
+    const ratingText =
+        document.getElementById(
+            "ratingText"
+        );
+
+
+    const fullStars =
+        Math.round(
+            rating
+        );
+
+
+    const emptyStars =
+        5 -
+        fullStars;
+
+
+    stars.innerText =
+        "★".repeat(
+            fullStars
+        ) +
+
+        "☆".repeat(
+            Math.max(
+                0,
+                emptyStars
+            )
+        );
+
+
+    ratingText.innerText =
+        rating.toFixed(1) +
+        " / 5.0";
+
+}
+
+
+/* =====================================
+   GENERATE TRIP PERFORMANCE
+===================================== */
+
+function generateTripPerformance(
+    driver,
+    totalTrips
+){
+
+    const container =
+        document.getElementById(
+            "tripPerformanceList"
+        );
+
+
+    const tripCount =
+        Math.min(
+            5,
+            Math.max(
+                3,
+                totalTrips
+            )
+        );
+
+
+    let html = "";
+
+
+    for(
+        let i = 0;
+        i < tripCount;
+        i++
+    ){
+
+        const tripNumber =
+            totalTrips -
+            i;
+
+
+        const distance =
+            120 +
+            (i * 37);
+
+
+        const status =
+            i === 0
+            ? "Completed"
+            : "Delivered";
+
+
+        html += `
+
+            <div class="trip-item">
+
+                <div class="trip-top">
+
+                    <div class="trip-icon">
+                        🚛
+                    </div>
+
+                    <div class="trip-title">
+
+                        <strong>
+                            Trip #TRP-${String(
+                                tripNumber
+                            ).padStart(4,"0")}
+                        </strong>
+
+                        <small>
+                            Driver:
+                            ${escapeHTML(
+                                driver.name
+                            )}
+                        </small>
+
+                    </div>
+
+                    <span class="trip-status">
+                        ${status}
+                    </span>
+
+                </div>
+
+
+                <div class="trip-details">
+
+
+                    <div class="trip-info">
+
+                        <span>
+                            Distance
+                        </span>
+
+                        <strong>
+                            ${distance} km
+                        </strong>
+
+                    </div>
+
+
+                    <div class="trip-info">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <strong>
+                            On Time
+                        </strong>
+
+                    </div>
+
+
+                    <div class="trip-info">
+
+                        <span>
+                            Rating
+                        </span>
+
+                        <strong>
+                            ⭐ ${escapeHTML(
+                                driver.rating ||
+                                "5.0"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================
+   EMPTY PERFORMANCE
+===================================== */
+
+function showEmptyPerformance(){
+
+    document.getElementById(
+        "totalTrips"
+    ).innerText =
+        "0";
+
+
+    document.getElementById(
+        "completedTrips"
+    ).innerText =
+        "0";
+
+
+    document.getElementById(
+        "driverRating"
+    ).innerText =
+        "⭐ 0.0";
+
+
+    document.getElementById(
+        "efficiency"
+    ).innerText =
+        "0%";
+
+
+    document.getElementById(
+        "scoreValue"
+    ).innerText =
+        "0/100";
+
+
+    document.getElementById(
+        "scoreProgress"
+    ).style.width =
+        "0%";
+
+
+    document.getElementById(
+        "onTimeRate"
+    ).innerText =
+        "0%";
+
+
+    document.getElementById(
+        "safetyScore"
+    ).innerText =
+        "0%";
+
+
+    document.getElementById(
+        "fuelEfficiency"
+    ).innerText =
+        "0 km/L";
+
+
+    document.getElementById(
+        "totalDistance"
+    ).innerText =
+        "0 km";
+
+
+    document.getElementById(
+        "ratingStars"
+    ).innerText =
+        "☆☆☆☆☆";
+
+
+    document.getElementById(
+        "ratingText"
+    ).innerText =
+        "No Rating";
+
+
+    document.getElementById(
+        "tripPerformanceList"
+    ).innerHTML = `
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                📊
+            </div>
+
+            <strong>
+                Select a Driver
+            </strong>
+
+            <small>
+                Driver select karne ke baad
+                performance details yahan show hongi.
+            </small>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   REFRESH
+===================================== */
+
+function refreshPerformance(){
+
+    if(!selectedDriverId){
+
+        alert(
+            "⚠️ Pehle driver select karein."
+        );
+
+        return;
+
+    }
+
+
+    loadPerformance();
+
+
+    alert(
+        "✅ Performance refreshed."
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================
+   BACK
+===================================== */
+
+function goBack(){
+
+    if(
+        document.referrer &&
+        document.referrer !==
+        window.location.href
+    ){
+
+        history.back();
+
+    }
+    else{
+
+        window.location.href =
+            "driver-search.html";
+
+    }
+
+}
+
+
+/* =====================================
+   NOTIFICATIONS
+===================================== */
+
+function openNotifications(){
+
+    window.location.href =
+        "notifications.html";
+
+}
+
+
+/* =====================================
+   PAGE LOADED
+===================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadDrivers();
+
+        showEmptyPerformance();
+
+        console.log(
+            "Driver Performance loaded successfully."
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
