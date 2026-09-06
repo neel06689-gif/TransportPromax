@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TransportPro Global — Admin Login</title><style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#07111f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    padding:20px;
+}
+
+.login-box{
+    width:100%;
+    max-width:420px;
+    background:#101c2d;
+    border:1px solid #263850;
+    border-radius:20px;
+    padding:32px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.logo{
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#8fa1b8;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    margin:15px 0 8px;
+    color:#cbd5e1;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #34465e;
+    background:#07111f;
+    color:white;
+    outline:none;
+}
+
+input:focus{
+    border-color:#4f8cff;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    border:0;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+#error{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    border-radius:8px;
+    background:#451a1a;
+    color:#ff9b9b;
+    text-align:center;
+}
+</style></head><body><div class="login-box"><div class="logo">TransportPro Global</div>
+
+<div class="subtitle">
+    Super Admin Panel
+</div>
+
+<label>Admin Email</label>
+<input
+    type="email"
+    id="email"
+    placeholder="Enter admin email"
+>
+
+<label>Admin Password</label>
+<input
+    type="password"
+    id="password"
+    placeholder="Enter admin password"
+>
+
+<button onclick="adminLogin()">
+    Login to Admin Panel
+</button>
+
+<div id="error">
+    Invalid admin credentials
+</div>
+
+</div><script>
+
+function adminLogin(){
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const error =
+        document.getElementById("error");
+
+    if(email === "" || password === ""){
+        error.innerText = "Email aur password enter karo";
+        error.style.display = "block";
+        return;
+    }
+
+    /*
+      Temporary test login.
+      Supabase authentication next step me connect karenge.
+    */
+
+    if(
+        email === "admin@transportpro.com" &&
+        password === "Admin@123"
+    ){
+
+        localStorage.setItem(
+            "transportpro_admin",
+            "true"
+        );
+
+        window.location.href = "admin-dashboard.html";
+
+    }else{
+
+        error.innerText =
+            "Wrong admin email or password";
+
+        error.style.display = "block";
+    }
+}
+
+</script></body>
+</html>

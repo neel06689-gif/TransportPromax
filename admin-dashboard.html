@@ -1,0 +1,661 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+      
+      function showPage(page){
+          const SUPABASE_URL =
+    "https://cohhrmnyjrjyymgtymkr.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_b8lurBDOeF6P5EQr2tmBbg_4CFiXOiA";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+console.log("Supabase connected:", supabaseClient);
+
+  </script>
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TransportPro Global — Admin Dashboard</title><style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#07111f;
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    height:65px;
+    background:#0d1929;
+    border-bottom:1px solid #263850;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.brand{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.admin{
+    color:#8fa1b8;
+    font-size:13px;
+}
+
+.layout{
+    display:flex;
+    min-height:calc(100vh - 65px);
+}
+
+.sidebar{
+    width:230px;
+    background:#0b1727;
+    border-right:1px solid #263850;
+    padding:18px 12px;
+}
+
+.menu{
+    width:100%;
+    padding:13px;
+    margin-bottom:7px;
+    border:0;
+    border-radius:9px;
+    background:transparent;
+    color:#cbd5e1;
+    text-align:left;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.menu:hover,
+.menu.active{
+    background:#162943;
+    color:#fff;
+}
+
+.main{
+    flex:1;
+    padding:22px;
+    overflow:hidden;
+}
+
+.page-title{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.page-subtitle{
+    color:#8fa1b8;
+    margin-top:5px;
+    margin-bottom:22px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    background:#101c2d;
+    border:1px solid #263850;
+    border-radius:15px;
+    padding:20px;
+}
+
+.card-title{
+    color:#8fa1b8;
+    font-size:13px;
+}
+
+.card-value{
+    font-size:27px;
+    font-weight:bold;
+    margin-top:9px;
+}
+
+.section{
+    margin-top:22px;
+    background:#101c2d;
+    border:1px solid #263850;
+    border-radius:15px;
+    padding:20px;
+}
+
+.section h2{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+}
+
+th,td{
+    padding:13px 10px;
+    border-bottom:1px solid #263850;
+    text-align:left;
+    font-size:13px;
+}
+
+th{
+    color:#8fa1b8;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    background:#17351f;
+    color:#75e39a;
+    font-size:11px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.action-btn{
+    border:1px solid #344b68;
+    background:#14243a;
+    color:white;
+    padding:8px 12px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.action-btn:hover{
+    background:#1d3554;
+}
+
+.logout{
+    margin-top:20px;
+    background:#35191d;
+    color:#ff9b9b;
+}
+
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .sidebar{
+        width:190px;
+    }
+}
+
+@media(max-width:600px){
+
+    .sidebar{
+        width:70px;
+        padding:12px 7px;
+    }
+
+    .menu{
+        font-size:0;
+        text-align:center;
+    }
+
+    .menu::first-letter{
+        font-size:20px;
+    }
+
+    .main{
+        padding:14px;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+    .card-value{
+        font-size:21px;
+    }
+
+    .page-title{
+        font-size:21px;
+    }
+}
+</style></head><body><header>
+    <div class="brand">TransportPro Global</div>
+    <div class="admin">SUPER ADMIN</div>
+</header><div class="layout"><aside class="sidebar"><button class="menu active" onclick="showPage('dashboard')">
+    📊 Dashboard
+</button>
+
+<button class="menu" onclick="showPage('bookings')">
+    🚛 Bookings
+</button>
+
+<button class="menu" onclick="showPage('transactions')">
+    💳 Transactions
+</button>
+
+<button class="menu" onclick="showPage('users')">
+    👥 Users
+</button>
+
+<button class="menu" onclick="showPage('plans')">
+    👑 Premium Plans
+</button>
+
+<button class="menu" onclick="showPage('settings')">
+    ⚙️ Website Control
+</button>
+
+<button class="menu logout" onclick="logout()">
+    🚪 Logout
+</button>
+
+</aside><main class="main" id="mainContent"><div class="page-title">
+    Admin Dashboard
+</div>
+
+<div class="page-subtitle">
+    TransportPro Global control center
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="card-title">Total Users</div>
+        <div class="card-value">0</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Total Bookings</div>
+        <div class="card-value">0</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Transactions</div>
+        <div class="card-value">₹0</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Premium Users</div>
+        <div class="card-value">0</div>
+    </div>
+
+</div>
+
+<div class="section">
+
+    <h2>Recent Bookings</h2>
+
+    <div class="table-wrap">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Customer</th>
+                <th>Route</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>—</td>
+                <td>No bookings yet</td>
+                <td>—</td>
+                <td>₹0</td>
+                <td><span class="status">Waiting</span></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    </div>
+
+</div>
+
+</main></div><script>
+
+function showPage(page){
+
+    const main =
+        document.getElementById("mainContent");
+
+    if(page === "dashboard"){
+
+        main.innerHTML = `
+        <div class="page-title">Admin Dashboard</div>
+        <div class="page-subtitle">
+            Complete platform overview
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-title">Total Users</div>
+                <div class="card-value">0</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Total Bookings</div>
+                <div class="card-value">0</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Revenue</div>
+                <div class="card-value">₹0</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Premium Users</div>
+                <div class="card-value">0</div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>Platform Status</h2>
+            <p style="color:#8fa1b8">
+                System is ready for Supabase integration.
+            </p>
+        </div>
+        `;
+
+    }
+
+    if(page === "bookings"){
+
+        main.innerHTML = `
+        <div class="page-title">🚛 Booking Management</div>
+        <div class="page-subtitle">
+            View and control all bookings
+        </div>
+
+        <div class="section">
+
+        <div class="table-wrap">
+
+        <table>
+
+        <thead>
+        <tr>
+        <th>Booking ID</th>
+        <th>Customer</th>
+        <th>Pickup</th>
+        <th>Delivery</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+        <td>—</td>
+        <td>No data</td>
+        <td>—</td>
+        <td>—</td>
+        <td>₹0</td>
+        <td>Waiting</td>
+        <td>
+        <button class="action-btn">
+        View
+        </button>
+        </td>
+        </tr>
+        </tbody>
+
+        </table>
+
+        </div>
+        </div>
+        `;
+
+    }
+
+    if(page === "transactions"){
+
+        main.innerHTML = `
+        <div class="page-title">💳 Transactions</div>
+        <div class="page-subtitle">
+            Monitor every payment and refund
+        </div>
+
+        <div class="cards">
+
+        <div class="card">
+        <div class="card-title">Successful</div>
+        <div class="card-value">₹0</div>
+        </div>
+
+        <div class="card">
+        <div class="card-title">Pending</div>
+        <div class="card-value">₹0</div>
+        </div>
+
+        <div class="card">
+        <div class="card-title">Refunded</div>
+        <div class="card-value">₹0</div>
+        </div>
+
+        </div>
+
+        <div class="section">
+        <h2>Transaction History</h2>
+        <p style="color:#8fa1b8">
+        No transactions yet.
+        </p>
+        </div>
+        `;
+
+    }
+
+    if(page === "users"){
+
+        main.innerHTML = `
+        <div class="page-title">👥 User Management</div>
+        <div class="page-subtitle">
+            Manage all platform users
+        </div>
+
+        <div class="section">
+
+        <div class="table-wrap">
+
+        <table>
+
+        <thead>
+        <tr>
+        <th>User</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+        <td>No users yet</td>
+        <td>—</td>
+        <td>—</td>
+        <td>
+        <button class="action-btn">
+        Manage
+        </button>
+        </td>
+        </tr>
+        </tbody>
+
+        </table>
+
+        </div>
+        </div>
+        `;
+
+    }
+
+    if(page === "plans"){
+
+        main.innerHTML = `
+        <div class="page-title">👑 Premium Plans</div>
+        <div class="page-subtitle">
+            Create and control your subscription plans
+        </div>
+
+        <div class="section">
+
+        <h2>Plan Management</h2>
+
+        <div class="actions">
+
+        <button class="action-btn"
+        onclick="createPlan()">
+        + Create New Plan
+        </button>
+
+        </div>
+
+        <br>
+
+        <div class="cards">
+
+        <div class="card">
+        <div class="card-title">FREE</div>
+        <div class="card-value">₹0</div>
+        <p style="color:#8fa1b8;margin-top:8px">
+        Default plan
+        </p>
+        </div>
+
+        <div class="card">
+        <div class="card-title">BASIC</div>
+        <div class="card-value">₹199</div>
+        <p style="color:#8fa1b8;margin-top:8px">
+        Monthly
+        </p>
+        </div>
+
+        <div class="card">
+        <div class="card-title">BUSINESS</div>
+        <div class="card-value">₹499</div>
+        <p style="color:#8fa1b8;margin-top:8px">
+        Monthly
+        </p>
+        </div>
+
+        </div>
+
+        </div>
+        `;
+
+    }
+
+    if(page === "settings"){
+
+        main.innerHTML = `
+        <div class="page-title">⚙️ Website Control</div>
+
+        <div class="page-subtitle">
+        Control important platform settings
+        </div>
+
+        <div class="section">
+
+        <h2>Platform Settings</h2>
+
+        <p style="color:#8fa1b8;margin-bottom:15px">
+        Commission
+        </p>
+
+        <input
+        id="commission"
+        type="number"
+        value="5"
+        style="padding:12px;width:100%;max-width:300px;
+        background:#07111f;color:white;
+        border:1px solid #34465e;border-radius:8px"
+        >
+
+        <br><br>
+
+        <button
+        class="action-btn"
+        onclick="saveSettings()">
+        Save Settings
+        </button>
+
+        </div>
+        `;
+
+    }
+
+}
+
+function createPlan(){
+
+    const name =
+        prompt("Plan name:");
+
+    if(!name) return;
+
+    const price =
+        prompt("Monthly price ₹:");
+
+    if(price === null) return;
+
+    alert(
+        "Plan created: " +
+        name +
+        " — ₹" +
+        price
+    );
+}
+
+function saveSettings(){
+
+    alert("Settings saved successfully.");
+}
+
+function logout(){
+
+    localStorage.removeItem(
+        "transportpro_admin"
+    );
+
+    window.location.href =
+        "admin.html";
+}
+
+</script></body>
+</html>
