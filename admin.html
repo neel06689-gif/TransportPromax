@@ -1,166 +1,323 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TransportPro Global — Admin Login</title><style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,sans-serif;
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>TransportPro Global - Admin Panel</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f4f7fb;color:#172033}
+.header{background:#07111f;color:#fff;padding:16px;position:sticky;top:0;z-index:20}
+.header h2{font-size:20px}.header p{font-size:12px;color:#b9c5d6;margin-top:4px}
+.layout{display:flex;min-height:calc(100vh - 70px)}
+.sidebar{width:230px;background:#fff;border-right:1px solid #e5eaf0;padding:12px;flex-shrink:0}
+.nav{width:100%;border:0;background:#fff;text-align:left;padding:11px;border-radius:9px;margin-bottom:4px;font-weight:bold;color:#344054}
+.nav.active,.nav:hover{background:#eaf2ff;color:#1677ff}
+.main{flex:1;padding:18px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}
+.top h1{font-size:22px}.logout{border:0;background:#dc3545;color:#fff;padding:10px 14px;border-radius:9px;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:#fff;border-radius:14px;padding:15px;box-shadow:0 3px 15px rgba(0,0,0,.06)}
+.num{font-size:24px;font-weight:bold}.lbl{font-size:12px;color:#667085;margin-top:5px}
+.panel{background:#fff;border-radius:15px;box-shadow:0 3px 20px rgba(0,0,0,.06);overflow:hidden}
+.panel-head{padding:15px;border-bottom:1px solid #edf0f4;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.panel-head h2{font-size:17px}.search{padding:10px;border:1px solid #d7deea;border-radius:9px;outline:none;width:250px}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:800px}
+th,td{padding:12px;border-bottom:1px solid #edf0f4;text-align:left;font-size:12px;vertical-align:top}
+th{background:#f8fafc;font-size:11px}.badge{display:inline-block;padding:5px 8px;border-radius:15px;background:#eef2ff;font-weight:bold}
+.green{color:#138a42}.red{color:#d92d20}.gray{color:#667085}
+.loading,.empty{text-align:center;padding:30px;color:#667085}
+.section{display:none}.section.active{display:block}
+.notice{background:#fff8e6;border:1px solid #f4d58d;padding:12px;border-radius:10px;margin-bottom:15px;font-size:13px}
+@media(max-width:750px){
+.layout{display:block}.sidebar{width:100%;display:flex;overflow:auto;gap:6px;border-right:0;border-bottom:1px solid #e5eaf0}
+.nav{white-space:nowrap;width:auto}.main{padding:12px}.search{width:100%}.panel-head{align-items:stretch;flex-direction:column}
 }
+</style>
+</head>
+<body>
 
-body{
-    min-height:100vh;
-    background:#07111f;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    padding:20px;
-}
-
-.login-box{
-    width:100%;
-    max-width:420px;
-    background:#101c2d;
-    border:1px solid #263850;
-    border-radius:20px;
-    padding:32px;
-    box-shadow:0 20px 60px rgba(0,0,0,.45);
-}
-
-.logo{
-    text-align:center;
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.subtitle{
-    text-align:center;
-    color:#8fa1b8;
-    margin-bottom:30px;
-}
-
-label{
-    display:block;
-    margin:15px 0 8px;
-    color:#cbd5e1;
-}
-
-input{
-    width:100%;
-    padding:14px;
-    border-radius:10px;
-    border:1px solid #34465e;
-    background:#07111f;
-    color:white;
-    outline:none;
-}
-
-input:focus{
-    border-color:#4f8cff;
-}
-
-button{
-    width:100%;
-    margin-top:25px;
-    padding:14px;
-    border:0;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:active{
-    transform:scale(.98);
-}
-
-#error{
-    display:none;
-    margin-top:15px;
-    padding:12px;
-    border-radius:8px;
-    background:#451a1a;
-    color:#ff9b9b;
-    text-align:center;
-}
-</style></head><body><div class="login-box"><div class="logo">TransportPro Global</div>
-
-<div class="subtitle">
-    Super Admin Panel
+<div class="header">
+<h2>🚛 TransportPro Global</h2>
+<p>Master Admin Control Center</p>
 </div>
 
-<label>Admin Email</label>
-<input
-    type="email"
-    id="email"
-    placeholder="Enter admin email"
->
+<div class="layout">
+<aside class="sidebar">
+<button class="nav active" onclick="openSection('overview',this)">📊 Overview</button>
+<button class="nav" onclick="openSection('users',this)">👥 Users</button>
+<button class="nav" onclick="openSection('loads',this)">📦 Loads</button>
+<button class="nav" onclick="openSection('bookings',this)">📋 Bookings</button>
+<button class="nav" onclick="openSection('payments',this)">💳 Payments</button>
+<button class="nav" onclick="openSection('vehicles',this)">🚚 Fleet</button>
+<button class="nav" onclick="openSection('trips',this)">📍 Tracking</button>
+<button class="nav" onclick="openSection('documents',this)">📄 Documents</button>
+<button class="nav" onclick="openSection('listings',this)">🏪 Marketplace</button>
+<button class="nav" onclick="openSection('orders',this)">🛒 Orders</button>
+<button class="nav" onclick="openSection('support',this)">💬 Support</button>
+<button class="nav" onclick="openSection('activity',this)">🔐 Activity</button>
+<button class="nav" onclick="logout()">🚪 Logout</button>
+</aside>
 
-<label>Admin Password</label>
-<input
-    type="password"
-    id="password"
-    placeholder="Enter admin password"
->
+<main class="main">
 
-<button onclick="adminLogin()">
-    Login to Admin Panel
-</button>
-
-<div id="error">
-    Invalid admin credentials
+<div class="top">
+<h1 id="pageTitle">📊 Overview</h1>
+<button class="logout" onclick="loadAll()">↻ Refresh</button>
 </div>
 
-</div><script>
+<div id="notice" class="notice" style="display:none"></div>
 
-function adminLogin(){
+<section id="overview" class="section active">
+<div class="stats">
+<div class="stat"><div class="num" id="sUsers">0</div><div class="lbl">👥 Total Users</div></div>
+<div class="stat"><div class="num" id="sDrivers">0</div><div class="lbl">🚛 Drivers</div></div>
+<div class="stat"><div class="num" id="sMechanics">0</div><div class="lbl">🔧 Mechanics</div></div>
+<div class="stat"><div class="num" id="sDealers">0</div><div class="lbl">📦 Dealers</div></div>
+<div class="stat"><div class="num" id="sTransporters">0</div><div class="lbl">🏢 Transporters</div></div>
+<div class="stat"><div class="num" id="sLoads">0</div><div class="lbl">📦 Loads</div></div>
+<div class="stat"><div class="num" id="sBookings">0</div><div class="lbl">📋 Bookings</div></div>
+<div class="stat"><div class="num" id="sPayments">₹0</div><div class="lbl">💳 Payment Total</div></div>
+</div>
 
-    const email =
-        document.getElementById("email").value.trim();
+<div class="panel">
+<div class="panel-head"><h2>System Summary</h2></div>
+<div style="padding:18px;font-size:13px;line-height:1.8">
+<p>Admin Panel is connected to the Supabase tables created by the master SQL.</p>
+<p>Users, roles, loads, bookings, payments, vehicles, trips, documents, marketplace, support and login activity are available from the menu.</p>
+<p><b>Online:</b> user is considered online when <code>last_seen</code> was updated within the last 5 minutes.</p>
+</div>
+</div>
+</section>
 
-    const password =
-        document.getElementById("password").value;
+<section id="users" class="section"><div id="usersBox" class="panel"></div></section>
+<section id="loads" class="section"><div id="loadsBox" class="panel"></div></section>
+<section id="bookings" class="section"><div id="bookingsBox" class="panel"></div></section>
+<section id="payments" class="section"><div id="paymentsBox" class="panel"></div></section>
+<section id="vehicles" class="section"><div id="vehiclesBox" class="panel"></div></section>
+<section id="trips" class="section"><div id="tripsBox" class="panel"></div></section>
+<section id="documents" class="section"><div id="documentsBox" class="panel"></div></section>
+<section id="listings" class="section"><div id="listingsBox" class="panel"></div></section>
+<section id="orders" class="section"><div id="ordersBox" class="panel"></div></section>
+<section id="support" class="section"><div id="supportBox" class="panel"></div></section>
+<section id="activity" class="section"><div id="activityBox" class="panel"></div></section>
 
-    const error =
-        document.getElementById("error");
+</main>
+</div>
 
-    if(email === "" || password === ""){
-        error.innerText = "Email aur password enter karo";
-        error.style.display = "block";
-        return;
-    }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "cohhrmnyjrjyymgtymkr";
+const SUPABASE_ANON_KEY = "sb_publishable_8b2lvSFekgg2e96odt68Hg_uEQaoufI";
 
-    /*
-      Temporary test login.
-      Supabase authentication next step me connect karenge.
-    */
 
-    if(
-        email === "admin@transportpro.com" &&
-        password === "Admin@123"
-    ){
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 
-        localStorage.setItem(
-            "transportpro_admin",
-            "true"
-        );
+let cache={};
 
-        window.location.href = "admin-dashboard.html";
-
-    }else{
-
-        error.innerText =
-            "Wrong admin email or password";
-
-        error.style.display = "block";
-    }
+function esc(v){
+ return String(v??"-").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
+function date(v){
+ if(!v)return "-";
+ return new Date(v).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"});
+}
+function money(v){
+ return "₹"+Number(v||0).toLocaleString("en-IN");
+}
+function role(v){
+ const x={admin:"👨‍💼 Admin",driver:"🚛 Driver",mechanic:"🔧 Mechanic",dealer:"📦 Dealer",transporter:"🏢 Transporter",fleet_owner:"🚚 Fleet Owner",customer:"👤 Customer"};
+ return x[v]||v||"-";
+}
+function online(u){
+ if(u.account_status==="blocked")return '<span class="red">🔴 Blocked</span>';
+ if(!u.last_seen)return '<span class="gray">⚪ Offline</span>';
+ return (Date.now()-new Date(u.last_seen).getTime()<=300000)
+ ? '<span class="green">🟢 Online</span>'
+ : '<span class="gray">⚪ Offline</span>';
 }
 
-</script></body>
-</html>
+async function checkAdmin(){
+ const {data:{user},error}=await sb.auth.getUser();
+ if(error||!user){location.href="login.html";return false}
+ const {data:p,error:e}=await sb.from("profiles").select("role,account_status").eq("id",user.id).single();
+ if(e||!p||p.role!=="admin"||p.account_status!=="active"){
+  alert("Admin access required.");
+  await sb.auth.signOut();
+  location.href="login.html";
+  return false;
+ }
+ return true;
+}
+
+function openSection(id,btn){
+ document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
+ if(btn)btn.classList.add("active");
+ document.getElementById("pageTitle").textContent=
+ ({overview:"📊 Overview",users:"👥 Users",loads:"📦 Loads",bookings:"📋 Bookings",payments:"💳 Payments",vehicles:"🚚 Fleet",trips:"📍 Tracking",documents:"📄 Documents",listings:"🏪 Marketplace",orders:"🛒 Orders",support:"💬 Support",activity:"🔐 Activity"})[id];
+ render(id);
+}
+
+async function get(table,limit=500){
+ const {data,error}=await sb.from(table).select("*").order("created_at",{ascending:false}).limit(limit);
+ if(error)throw error;
+ return data||[];
+}
+
+async function loadAll(){
+ const ok=await checkAdmin(); if(!ok)return;
+ const tables=["profiles","loads","bookings","payments","vehicles","trips","documents","marketplace_listings","marketplace_orders","support_requests","user_activity"];
+ const results=await Promise.all(tables.map(t=>get(t).catch(e=>({__error:e.message}))));
+ tables.forEach((t,i)=>cache[t]=results[i]);
+ const u=cache.profiles?.__error?[]:cache.profiles;
+ document.getElementById("sUsers").textContent=u.length;
+ document.getElementById("sDrivers").textContent=u.filter(x=>x.role==="driver").length;
+ document.getElementById("sMechanics").textContent=u.filter(x=>x.role==="mechanic").length;
+ document.getElementById("sDealers").textContent=u.filter(x=>x.role==="dealer").length;
+ document.getElementById("sTransporters").textContent=u.filter(x=>x.role==="transporter").length;
+ document.getElementById("sLoads").textContent=Array.isArray(cache.loads)?cache.loads.length:0;
+ document.getElementById("sBookings").textContent=Array.isArray(cache.bookings)?cache.bookings.length:0;
+ document.getElementById("sPayments").textContent=money(Array.isArray(cache.payments)?cache.payments.reduce((a,x)=>a+Number(x.amount||0),0):0);
+ render(document.querySelector(".section.active").id);
+}
+
+function box(title,cols,rows){
+ const head=`<div class="panel-head"><h2>${title}</h2><input class="search" placeholder="Search..." oninput="searchTable(this)"></div>`;
+ if(!Array.isArray(rows))return head+'<div class="empty">Table could not be loaded.</div>';
+ if(!rows.length)return head+'<div class="empty">No records yet.</div>';
+ const th=cols.map(c=>`<th>${esc(c.label)}</th>`).join("");
+ const body=rows.map((r,i)=>`<tr>${cols.map(c=>`<td>${c.render?c.render(r,i):esc(r[c.key])}</td>`).join("")}</tr>`).join("");
+ return head+`<div class="table-wrap"><table><thead><tr>${th}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+function searchTable(input){
+ const q=input.value.toLowerCase();
+ const table=input.closest(".panel").querySelector("table");
+ if(!table)return;
+ [...table.tBodies[0].rows].forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q)?"":"none");
+}
+
+function render(id){
+ const C=cache;
+ if(id==="users")document.getElementById("usersBox").innerHTML=box("All Registered Users",[
+ {label:"Name",key:"full_name"},
+ {label:"Email",key:"email"},
+ {label:"Phone",key:"phone"},
+ {label:"Role",render:r=>`<span class="badge">${esc(role(r.role))}</span>`},
+ {label:"Status",render:r=>online(r)},
+ {label:"Last Login",render:r=>esc(date(r.last_login))},
+ {label:"Registered",render:r=>esc(date(r.created_at))}
+ ],C.profiles);
+ if(id==="loads")document.getElementById("loadsBox").innerHTML=box("All Posted Loads",[
+ {label:"Title",key:"load_title"},
+ {label:"Material",key:"material"},
+ {label:"Pickup",key:"pickup_location"},
+ {label:"Delivery",key:"delivery_location"},
+ {label:"Weight",render:r=>esc((r.weight||"-")+" "+(r.weight_unit||""))},
+ {label:"Freight",render:r=>money(r.freight_amount)},
+ {label:"Truck",key:"truck_type"},
+ {label:"Status",key:"status"},
+ {label:"Date",render:r=>esc(date(r.created_at))}
+ ],C.loads);
+ if(id==="bookings")document.getElementById("bookingsBox").innerHTML=box("All Bookings",[
+ {label:"ID",key:"id"},
+ {label:"Load",key:"load_id"},
+ {label:"Customer",key:"customer_id"},
+ {label:"Driver",key:"driver_id"},
+ {label:"Vehicle",key:"vehicle_id"},
+ {label:"Amount",render:r=>money(r.booking_amount)},
+ {label:"Status",key:"status"},
+ {label:"Booking Date",render:r=>esc(date(r.booking_date))}
+ ],C.bookings);
+ if(id==="payments")document.getElementById("paymentsBox").innerHTML=box("All Payments",[
+ {label:"ID",key:"id"},
+ {label:"Booking",key:"booking_id"},
+ {label:"User",key:"user_id"},
+ {label:"Amount",render:r=>money(r.amount)},
+ {label:"Method",key:"payment_method"},
+ {label:"Transaction",key:"transaction_id"},
+ {label:"Status",key:"status"},
+ {label:"Paid At",render:r=>esc(date(r.paid_at))}
+ ],C.payments);
+ if(id==="vehicles")document.getElementById("vehiclesBox").innerHTML=box("Fleet / Vehicles",[
+ {label:"Vehicle No.",key:"vehicle_number"},
+ {label:"Type",key:"vehicle_type"},
+ {label:"Model",key:"model"},
+ {label:"Owner",key:"owner_id"},
+ {label:"Capacity",render:r=>esc((r.capacity||"-")+" "+(r.capacity_unit||""))},
+ {label:"Status",key:"status"},
+ {label:"Insurance",key:"insurance_expiry"},
+ {label:"Fitness",key:"fitness_expiry"}
+ ],C.vehicles);
+ if(id==="trips")document.getElementById("tripsBox").innerHTML=box("Trips & Live Tracking",[
+ {label:"ID",key:"id"},
+ {label:"Driver",key:"driver_id"},
+ {label:"Vehicle",key:"vehicle_id"},
+ {label:"Pickup",key:"pickup_location"},
+ {label:"Destination",key:"destination"},
+ {label:"Current Location",key:"current_location"},
+ {label:"Status",key:"status"},
+ {label:"Last Location",render:r=>esc(date(r.last_location_at))}
+ ],C.trips);
+ if(id==="documents")document.getElementById("documentsBox").innerHTML=box("Documents & Verification",[
+ {label:"ID",key:"id"},
+ {label:"User",key:"user_id"},
+ {label:"Vehicle",key:"vehicle_id"},
+ {label:"Type",key:"document_type"},
+ {label:"Number",key:"document_number"},
+ {label:"Verification",key:"verification_status"},
+ {label:"Verified",render:r=>esc(date(r.verified_at))},
+ {label:"Created",render:r=>esc(date(r.created_at))}
+ ],C.documents);
+ if(id==="listings")document.getElementById("listingsBox").innerHTML=box("Marketplace Listings",[
+ {label:"ID",key:"id"},
+ {label:"Seller",key:"seller_id"},
+ {label:"Title",key:"title"},
+ {label:"Category",key:"category"},
+ {label:"Price",render:r=>money(r.price)},
+ {label:"Quantity",key:"quantity"},
+ {label:"Status",key:"status"},
+ {label:"Created",render:r=>esc(date(r.created_at))}
+ ],C.marketplace_listings);
+ if(id==="orders")document.getElementById("ordersBox").innerHTML=box("Marketplace Orders",[
+ {label:"ID",key:"id"},
+ {label:"Listing",key:"listing_id"},
+ {label:"Buyer",key:"buyer_id"},
+ {label:"Seller",key:"seller_id"},
+ {label:"Quantity",key:"quantity"},
+ {label:"Total",render:r=>money(r.total_amount)},
+ {label:"Status",key:"status"},
+ {label:"Created",render:r=>esc(date(r.created_at))}
+ ],C.marketplace_orders);
+ if(id==="support")document.getElementById("supportBox").innerHTML=box("Support Requests",[
+ {label:"ID",key:"id"},
+ {label:"User",key:"user_id"},
+ {label:"Subject",key:"subject"},
+ {label:"Priority",key:"priority"},
+ {label:"Status",key:"status"},
+ {label:"Message",key:"message"},
+ {label:"Created",render:r=>esc(date(r.created_at))}
+ ],C.support_requests);
+ if(id==="activity")document.getElementById("activityBox").innerHTML=box("Login / User Activity",[
+ {label:"ID",key:"id"},
+ {label:"User",key:"user_id"},
+ {label:"Activity",key:"activity_type"},
+ {label:"Details",key:"details"},
+ {label:"Time",render:r=>esc(date(r.created_at))}
+ ],C.user_activity);
+}
+
+async function logout(){
+ await sb.auth.signOut();
+ location.href="login.html";
+}
+
+loadAll();
+setInterval(loadAll,60000);
+</script>
+</body>
+    </html>
+    
